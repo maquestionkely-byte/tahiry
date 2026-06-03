@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>hita - Quiz Sécurisé</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 80px;
+            color: #e94560;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            animation: pulse 2s infinite;
+            margin-bottom: 30px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .quiz-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .question-text {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(15, 52, 96, 0.8);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        
+        .option:hover {
+            background: rgba(233, 69, 96, 0.3);
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            background: #e94560;
+            border-color: #fff;
+        }
+        
+        .option input {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            pointer-events: none;
+        }
+        
+        .option label {
+            color: white;
+            cursor: pointer;
+            flex: 1;
+            font-size: 14px;
+            pointer-events: none;
+        }
+        
+        button {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #ff6b6b;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .result.success {
+            background: #1a5f4b;
+            color: #d4ffd4;
+            display: block;
+        }
+        
+        .result.error {
+            background: #5f1a1a;
+            color: #ffcccc;
+            display: block;
+        }
+        
+        .score {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: #e94560;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+            animation: fadeOut 2s ease forwards;
+            pointer-events: none;
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0); }
+            70% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); display: none; }
+        }
+        
+        .footer {
+            margin-top: 20px;
+            color: #666;
+            font-size: 11px;
+            font-family: monospace;
+        }
+        
+        /* Bouton de sauvegarde */
+        .save-btn {
+            background: #4CAF50;
+            margin-top: 10px;
+        }
+        
+        .save-btn:hover {
+            background: #45a049;
+        }
+        
+        /* Overlay de confirmation pour empêcher le refresh */
+        .refresh-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 20000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .refresh-warning .message-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #e94560;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px;
+        }
+        
+        .refresh-warning .message-box h3 {
+            color: #e94560;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .refresh-warning .message-box p {
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .refresh-warning .message-box button {
+            width: auto;
+            padding: 10px 30px;
+            margin-top: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Anti-screenshot */
+        .anti-screenshot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 99999;
+        }
+    </style>
+</head>
+<body>
+    <div class="anti-screenshot"></div>
+    <div class="container">
+        <h1>hita</h1>
+        
+        <div class="quiz-container">
+            <div class="question">
+                <div class="question-text">🎬 Question 1 : Qui a réalisé le film "Inception" ?</div>
+                <div class="options" data-question="1">
+                    <div class="option" data-value="0">
+                        <input type="radio" name="q1" value="0">
+                        <label>James Cameron</label>
+                    </div>
+                    <div class="option" data-value="1">
+                        <input type="radio" name="q1" value="1">
+                        <label>Christopher Nolan</label>
+                    </div>
+                    <div class="option" data-value="2">
+                        <input type="radio" name="q1" value="2">
+                        <label>Quentin Tarantino</label>
+                    </div>
+                    <div class="option" data-value="3">
+                        <input type="radio" name="q1" value="3">
+                        <label>Steven Spielberg</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">🎵 Question 2 : Quel chanteur interprète "Bohemian Rhapsody" ?</div>
+                <div class="options" data-question="2">
+                    <div class="option" data-value="0">
+                        <input type="radio" name="q2" value="0">
+                        <label>David Bowie</label>
+                    </div>
+                    <div class="option" data-value="1">
+                        <input type="radio" name="q2" value="1">
+                        <label>Mick Jagger</label>
+                    </div>
+                    <div class="option" data-value="2">
+                        <input type="radio" name="q2" value="2">
+                        <label>Freddie Mercury</label>
+                    </div>
+                    <div class="option" data-value="3">
+                        <input type="radio" name="q2" value="3">
+                        <label>Elton John</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="verifierReponses()">✅ Vérifier mes réponses</button>
+            <button onclick="sauvegarderProgres()" class="save-btn">💾 Sauvegarder ma progression</button>
+            <button onclick="chargerProgres()" class="save-btn" style="background:#2196F3;">📂 Charger progression sauvegardée</button>
+            <div id="result" class="result"></div>
+        </div>
+        <div class="footer">🔒 Quiz sécurisé - Rafraîchissement désactivé - Sauvegarde automatique</div>
+    </div>
+
+    <script>
+        // ============================================
+        // DÉTECTION DES OUTILS DE DÉVELOPPEMENT
+        // ============================================
+        
+        // Détection de la console ouverte
+        function detectDevTools() {
+            const startTime = performance.now();
+            debugger;
+            const endTime = performance.now();
+            if (endTime - startTime > 100) {
+                showNotification('🔒 Console développeur détectée et bloquée');
+                return true;
+            }
+            return false;
+        }
+        
+        // Vérification périodique
+        setInterval(() => {
+            detectDevTools();
+        }, 1000);
+        
+        // ============================================
+        // RÉPONSES CORRECTES
+        // ============================================
+        const REPONSES = {
+            q1: 1,  // Christopher Nolan (index 1)
+            q2: 2   // Freddie Mercury (index 2)
+        };
+        
+        // ============================================
+        // SAUVEGARDE AVEC INDEXEDDB
+        // ============================================
+        
+        let db = null;
+        const DB_NAME = "QuizDB_Secure";
+        const STORE_NAME = "progress_secure";
+        
+        // Ouvrir la base de données
+        function ouvrirDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, 1);
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                };
+            });
+        }
+        
+        // Sauvegarder la progression
+        async function sauvegarderProgres() {
+            try {
+                const q1Selected = document.querySelector('input[name="q1"]:checked');
+                const q2Selected = document.querySelector('input[name="q2"]:checked');
+                
+                const progression = {
+                    id: "quiz_hita_secure",
+                    q1: q1Selected ? q1Selected.value : null,
+                    q2: q2Selected ? q2Selected.value : null,
+                    date: new Date().toISOString(),
+                    timestamp: Date.now()
+                };
+                
+                await ouvrirDB();
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                await store.put(progression);
+                await tx.done;
+                
+                showNotification('✅ Progression sauvegardée !');
+                return true;
+            } catch (error) {
+                console.error("Erreur sauvegarde:", error);
+                showNotification('❌ Erreur lors de la sauvegarde');
+                return false;
+            }
+        }
+        
+        // Charger la progression
+        async function chargerProgres() {
+            try {
+                await ouvrirDB();
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const progression = await new Promise((resolve) => {
+                    const request = store.get("quiz_hita_secure");
+                    request.onsuccess = () => resolve(request.result);
+                });
+                
+                if (progression) {
+                    if (progression.q1 !== null) {
+                        const q1Radio = document.querySelector(`input[name="q1"][value="${progression.q1}"]`);
+                        if (q1Radio) {
+                            q1Radio.checked = true;
+                            const q1Option = q1Radio.closest('.option');
+                            if (q1Option) {
+                                const parentOptions = q1Option.closest('.options');
+                                parentOptions.querySelectorAll('.option').forEach(opt => {
+                                    opt.classList.remove('selected');
+                                });
+                                q1Option.classList.add('selected');
+                            }
+                        }
+                    }
+                    
+                    if (progression.q2 !== null) {
+                        const q2Radio = document.querySelector(`input[name="q2"][value="${progression.q2}"]`);
+                        if (q2Radio) {
+                            q2Radio.checked = true;
+                            const q2Option = q2Radio.closest('.option');
+                            if (q2Option) {
+                                const parentOptions = q2Option.closest('.options');
+                                parentOptions.querySelectorAll('.option').forEach(opt => {
+                                    opt.classList.remove('selected');
+                                });
+                                q2Option.classList.add('selected');
+                            }
+                        }
+                    }
+                    
+                    showNotification(`📀 Progression chargée (${new Date(progression.date).toLocaleDateString()})`);
+                } else {
+                    showNotification('📭 Aucune progression sauvegardée');
+                }
+                
+            } catch (error) {
+                console.error("Erreur chargement:", error);
+                showNotification('❌ Erreur lors du chargement');
+            }
+        }
+        
+        // Charger automatiquement au démarrage
+        async function autoCharger() {
+            try {
+                await ouvrirDB();
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const progression = await new Promise((resolve) => {
+                    const request = store.get("quiz_hita_secure");
+                    request.onsuccess = () => resolve(request.result);
+                });
+                
+                if (progression) {
+                    if (progression.q1 !== null) {
+                        const q1Radio = document.querySelector(`input[name="q1"][value="${progression.q1}"]`);
+                        if (q1Radio) {
+                            q1Radio.checked = true;
+                            const q1Option = q1Radio.closest('.option');
+                            if (q1Option) {
+                                const parentOptions = q1Option.closest('.options');
+                                parentOptions.querySelectorAll('.option').forEach(opt => {
+                                    opt.classList.remove('selected');
+                                });
+                                q1Option.classList.add('selected');
+                            }
+                        }
+                    }
+                    
+                    if (progression.q2 !== null) {
+                        const q2Radio = document.querySelector(`input[name="q2"][value="${progression.q2}"]`);
+                        if (q2Radio) {
+                            q2Radio.checked = true;
+                            const q2Option = q2Radio.closest('.option');
+                            if (q2Option) {
+                                const parentOptions = q2Option.closest('.options');
+                                parentOptions.querySelectorAll('.option').forEach(opt => {
+                                    opt.classList.remove('selected');
+                                });
+                                q2Option.classList.add('selected');
+                            }
+                        }
+                    }
+                    
+                    console.log("Auto-chargement réussi");
+                }
+            } catch(e) {
+                console.log("Pas de sauvegarde existante");
+            }
+        }
+        
+        // ============================================
+        // GESTION DES OPTIONS
+        // ============================================
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    
+                    const parentOptions = this.closest('.options');
+                    parentOptions.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    this.classList.add('selected');
+                    sauvegarderProgres(); // Sauvegarde automatique à chaque sélection
+                }
+            });
+        });
+        
+        // ============================================
+        // VÉRIFICATION DES RÉPONSES
+        // ============================================
+        function verifierReponses() {
+            let score = 0;
+            
+            const q1Selected = document.querySelector('input[name="q1"]:checked');
+            if (q1Selected && parseInt(q1Selected.value) === REPONSES.q1) score++;
+            
+            const q2Selected = document.querySelector('input[name="q2"]:checked');
+            if (q2Selected && parseInt(q2Selected.value) === REPONSES.q2) score++;
+            
+            const resultDiv = document.getElementById('result');
+            const total = 2;
+            
+            if (score === total) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <div class="score">🎉 Félicitations ! 🎉</div>
+                    <div>Score : ${score}/${total}</div>
+                    <div>Bravo, tu es incollable sur la culture générale !</div>
+                `;
+                showNotification('🎉 Parfait ! Tu as tout bon !');
+            } else if (score === 1) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <div class="score">📝 Bonne réponse partielle</div>
+                    <div>Score : ${score}/${total}</div>
+                    <div>Encore un petit effort !</div>
+                `;
+                showNotification(`📝 Score: ${score}/${total}`);
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <div class="score">❌ Aucune bonne réponse</div>
+                    <div>Score : ${score}/${total}</div>
+                    <div>Révise les réponses et réessaie !</div>
+                `;
+                showNotification(`❌ Score: ${score}/${total}`);
+            }
+        }
+        
+        // ============================================
+        // SÉCURITÉ RENFORCÉE
+        // ============================================
+        
+        let refreshAttempts = 0;
+        let blockOverlay = null;
+        
+        // Fonction pour afficher un avertissement
+        function showRefreshWarning() {
+            if (blockOverlay) return;
+            
+            refreshAttempts++;
+            
+            blockOverlay = document.createElement('div');
+            blockOverlay.className = 'refresh-warning';
+            blockOverlay.innerHTML = `
+                <div class="message-box">
+                    <h3>⚠️ Rafraîchissement bloqué ⚠️</h3>
+                    <p>Le rafraîchissement de la page est désactivé pour ce quiz.</p>
+                    <p>Votre progression est automatiquement sauvegardée.</p>
+                    <button onclick="this.closest('.refresh-warning').remove(); blockOverlay = null;">🔓 Continuer le quiz</button>
+                </div>
+            `;
+            document.body.appendChild(blockOverlay);
+            
+            showNotification('🚫 Rafraîchissement de la page bloqué !');
+            
+            setTimeout(() => {
+                if (blockOverlay) {
+                    blockOverlay.remove();
+                    blockOverlay = null;
+                }
+            }, 5000);
+        }
+        
+        // Bloquer toutes les combinaisons de rafraîchissement
+        window.addEventListener('keydown', function(e) {
+            // F5, F5 avec modificateurs
+            if (e.key === "F5" || e.code === "F5" || (e.ctrlKey && e.key === "F5")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showRefreshWarning();
+                return false;
+            }
+            
+            // Ctrl+R, Cmd+R
+            if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showRefreshWarning();
+                return false;
+            }
+            
+            // Ctrl+Shift+R
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "R" || e.key === "r")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showRefreshWarning();
+                return false;
+            }
+            
+            // F12 - Outils développeur
+            if (e.key === "F12" || e.code === "F12") {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🔒 F12 désactivé');
+                return false;
+            }
+            
+            // Ctrl+Shift+I (Inspecteur)
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🔒 Inspecteur désactivé');
+                return false;
+            }
+            
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🔒 Console désactivée');
+                return false;
+            }
+            
+            // Ctrl+Shift+C (Sélecteur)
+            if (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🔒 Sélecteur désactivé');
+                return false;
+            }
+            
+            // Ctrl+U (Code source)
+            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🔒 Code source masqué');
+                return false;
+            }
+            
+            // Ctrl+S (Sauvegarde page)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('💾 Sauvegarde de page désactivée');
+                return false;
+            }
+            
+            // Ctrl+P (Impression)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNotification('🖨️ Impression désactivée');
+                return false;
+            }
+        });
+        
+        // Bloquer le clic droit
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            showNotification('🔒 Clic droit désactivé');
+            return false;
+        });
+        
+        // Bloquer la sélection de texte
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Bloquer le drag & drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Empêcher la copie
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            showNotification('📋 Copie désactivée');
+            return false;
+        });
+        
+        // Empêcher le cut
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Empêcher le paste
+        document.addEventListener('paste', function(e) {
+            e.preventDefault();
+            showNotification('📌 Coller désactivé');
+            return false;
+        });
+        
+        // Sauvegarde avant fermeture (sans message de confirmation)
+        window.addEventListener('beforeunload', function(e) {
+            sauvegarderProgres();
+            // Ne pas définir e.returnValue pour éviter le message de confirmation
+        });
+        
+        // Bloquer les raccourcis de navigation
+        window.addEventListener('keydown', function(e) {
+            if (e.altKey && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+                e.preventDefault();
+                showRefreshWarning();
+                return false;
+            }
+            
+            // Bloquer Ctrl+W (fermeture onglet)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "w" || e.key === "W")) {
+                e.preventDefault();
+                showNotification('🔒 Fermeture d\'onglet désactivée');
+                return false;
+            }
+        });
+        
+        // Détection des tentatives de rafraîchissement via les événements de la souris
+        let mouseX, mouseY;
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Bloquer les gestes du trackpad pour refresh
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+                showNotification('🔒 Zoom désactivé');
+                return false;
+            }
+        }, { passive: false });
+        
+        // Sauvegarde automatique périodique (toutes les 10 secondes)
+        setInterval(() => {
+            sauvegarderProgres();
+        }, 10000);
+        
+        // Fonction de notification améliorée
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 2000);
+        }
+        
+        // Nettoyer la console
+        if (window.console) {
+            const noop = function() {};
+            console.log = noop;
+            console.info = noop;
+            console.warn = noop;
+            console.debug = noop;
+            console.table = noop;
+            console.dir = noop;
+            console.trace = noop;
+            console.group = noop;
+            console.groupEnd = noop;
+        }
+        
+        // Bloquer les tentatives d'ouverture des outils dev
+        window.addEventListener('devtools', function(e) {
+            e.preventDefault();
+            showNotification('🔒 Outils développeur bloqués');
+        });
+        
+        // Override de la fonction window.open
+        const originalOpen = window.open;
+        window.open = function() {
+            showNotification('🔒 Ouverture de nouvelle fenêtre désactivée');
+            return null;
+        };
+        
+        // Protection contre l'utilisation de la touche Windows (optionnel)
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "Meta" || e.key === "Win") {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Exposer les fonctions globales
+        window.verifierReponses = verifierReponses;
+        window.sauvegarderProgres = sauvegarderProgres;
+        window.chargerProgres = chargerProgres;
+        window.showNotification = showNotification;
+        window.showRefreshWarning = showRefreshWarning;
+        
+        // Initialisation
+        (async function init() {
+            await ouvrirDB();
+            await autoCharger();
+            await sauvegarderProgres();
+            
+            // Vérification initiale des outils dev
+            detectDevTools();
+        })();
+    </script>
+</body>
+</html>
