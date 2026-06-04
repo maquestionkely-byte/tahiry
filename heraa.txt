@@ -403,7 +403,7 @@
                 </div>
                 <h1><span>Mianatra Français isika</span></h1>
                 <div class="sentence">Mirary soa amin'ny fianarana français izay ataonao.</div>
-                <div style="font-size: 2.1rem; margin-top: 6px;">Ndao ary e! 😊</div>
+                <div style="font-size: 2.1rem; margin-top: 6px;">Ndao ary eee! 😊</div>
             </div>
         </div>
         <div class="niveau-toolbar" id="niveauToolbar"><span class="niveau-label">🎯 Fidio eto :</span></div>
@@ -484,6 +484,7 @@
         { nom: "pqplecon.txt", type: "lecon", dbName: "pqplecon" },
         { nom: "francma.txt", type: "dictionnaire", dbName: "francma" },
         { nom: "franseul.txt", type: "dialogue", dbName: "franseul" },
+{ nom: "typeqcm.txt", type: "qcm", dbName: "typeqcm" },
         { nom: "conjugai.txt", type: "conjugaison", dbName: "conjugai" },
         { nom: "mirelecon.txt", type: "hiresaka", dbName: "mirelecon" }
     ];
