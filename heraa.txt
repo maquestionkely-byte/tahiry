@@ -55,8 +55,8 @@
             transition: 0.35s;
             cursor: pointer;
         }
-        .hero-section h1 { font-size: 2.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-        .greeting { font-size: 1.3rem; font-weight: 500; background: rgba(255,255,255,0.15); display: inline-block; padding: 0.4rem 1.5rem; border-radius: 60px; margin-bottom: 0.9rem; }
+        .hero-section h1 { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+        .greeting { font-size: 1.3rem; font-weight: 5030; background: rgba(255,255,255,0.15); display: inline-block; padding: 0.4rem 1.5rem; border-radius: 660px; margin-bottom: 0.9rem; }
         .sentence { font-size: 1rem; max-width: 90%; margin: 0.6rem auto 0; background: rgba(0,0,0,0.3); padding: 0.55rem 1.4rem; border-radius: 60px; }
         
         .niveau-toolbar {
@@ -402,8 +402,8 @@
                     <img src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg" alt="Droite" class="side-image" id="imgDroite">
                 </div>
                 <h1><span>Mianatra Français isika</span></h1>
-                <div class="sentence">Mirary soa amin'ny fianarana français izay ataonao.</div>
-                <div style="font-size: 2.1rem; margin-top: 6px;">Ndao ary eee! 😊</div>
+                <div class="sentence"style="font-size: 1.1rem; margin-top: 6px;">Mirary soa amin'ny fianarana français izay ataonao.</div>
+                <div style="font-size: 2.1rem; margin-top: 6px;">Ndao ary e! 😊</div>
             </div>
         </div>
         <div class="niveau-toolbar" id="niveauToolbar"><span class="niveau-label">🎯 Fidio eto :</span></div>
