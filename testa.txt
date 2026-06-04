@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM - Être et Avoir (5 questions)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .question-card {
+            background: #f9f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff9800;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1a2a3a;
+        }
+        .option {
+            display: block;
+            margin: 10px 0;
+            padding: 8px 15px;
+            background: #eef2f7;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .option:hover {
+            background: #d4e0ea;
+            transform: translateX(5px);
+        }
+        .option.selected {
+            background: #ff9800;
+            color: white;
+        }
+        .feedback {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #2c7a4b;
+        }
+        .feedback.wrong {
+            color: #c0392b;
+        }
+        button {
+            background: #ff9800;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        .score {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+        .correction {
+            margin-top: 25px;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <h1>📖 ÊTRE & AVOIR au présent</h1>
+    <p style="text-align:center; color:#555;">Expressions : âge, faim, peur, raison, fatigue</p>
+
+    <div id="questionsContainer"></div>
+    <button id="corrigeBtn">✅ Voir le corrigé</button>
+    <div id="scoreDiv" class="score"></div>
+    <div id="correctionDiv" class="correction" style="display:none;"></div>
+</div>
+
+<script>
+    const questions = [
+        {
+            text: "Julie _____ 10 ans.",
+            options: ["est", "a", "suis", "ont"],
+            correct: "a",
+            explanation: "Avoir + âge : Julie a 10 ans."
+        },
+        {
+            text: "Nous _____ faim.",
+            options: ["sommes", "ont", "avons", "est"],
+            correct: "avons",
+            explanation: "Avoir faim : Nous avons faim."
+        },
+        {
+            text: "Ils _____ peur du noir.",
+            options: ["sont", "ont", "avez", "est"],
+            correct: "ont",
+            explanation: "Avoir peur : Ils ont peur du noir."
+        },
+        {
+            text: "Tu _____ raison.",
+            options: ["es", "as", "a", "suis"],
+            correct: "as",
+            explanation: "Avoir raison : Tu as raison."
+        },
+        {
+            text: "Je _____ fatigué.",
+            options: ["ai", "est", "suis", "sont"],
+            correct: "suis",
+            explanation: "Être fatigué : Je suis fatigué."
+        }
+    ];
+
+    let userAnswers = new Array(5).fill(null);
+
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `
+                <div class="question-text">${idx+1}. ${q.text}</div>
+                ${q.options.map(opt => `
+                    <div class="option" data-qidx="${idx}" data-opt="${opt}">
+                        ${opt}
+                    </div>
+                `).join('')}
+                <div class="feedback" id="fb-${idx}"></div>
+            `;
+            container.appendChild(card);
+        });
+
+        document.querySelectorAll('.option').forEach(optDiv => {
+            optDiv.addEventListener('click', (e) => {
+                const qidx = parseInt(optDiv.dataset.qidx);
+                const selected = optDiv.dataset.opt;
+                userAnswers[qidx] = selected;
+                updateSelectionUI(qidx, selected);
+                // Afficher feedback immédiat
+                const fbDiv = document.getElementById(`fb-${qidx}`);
+                const isCorrect = (selected === questions[qidx].correct);
+                if (isCorrect) {
+                    fbDiv.innerHTML = "✅ Bonne réponse !";
+                    fbDiv.className = "feedback";
+                } else {
+                    fbDiv.innerHTML = `❌ Faux. Bonne réponse : ${questions[qidx].correct}`;
+                    fbDiv.className = "feedback wrong";
+                }
+            });
+        });
+    }
+
+    function updateSelectionUI(qidx, selected) {
+        const card = document.querySelectorAll('.question-card')[qidx];
+        const options = card.querySelectorAll('.option');
+        options.forEach(opt => {
+            if (opt.dataset.opt === selected) {
+                opt.classList.add('selected');
+            } else {
+                opt.classList.remove('selected');
+            }
+        });
+    }
+
+    function showCorrection() {
+        let score = 0;
+        for (let i = 0; i < questions.length; i++) {
+            if (userAnswers[i] === questions[i].correct) score++;
+        }
+        document.getElementById('scoreDiv').innerHTML = `🎯 Votre score : ${score} / 5 (${score*20}%)`;
+
+        let correctionHtml = `<h3>📋 Corrigé détaillé</h3>`;
+        questions.forEach((q, i) => {
+            const user = userAnswers[i] || "(non répondue)";
+            const isOk = (user === q.correct);
+            correctionHtml += `
+                <p><strong>${i+1}. ${q.text}</strong><br>
+                Votre réponse : ${user}<br>
+                ✅ Bonne réponse : ${q.correct}<br>
+                📖 Explication : ${q.explanation}<br>
+                ${isOk ? '✔️ Correct' : '❌ Erreur'}</p>
+                <hr>
+            `;
+        });
+        document.getElementById('correctionDiv').innerHTML = correctionHtml;
+        document.getElementById('correctionDiv').style.display = 'block';
+    }
+
+    renderQuestions();
+    document.getElementById('corrigeBtn').addEventListener('click', showCorrection);
+</script>
+</body>
+</html>
