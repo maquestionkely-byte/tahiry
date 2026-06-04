@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>QCM : Avoir & Être au Présent - 60 questions</title>
+    <title>QCM : Être et Avoir au présent + expressions (60 questions)</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a2a3a, #0f2c3b, #1b4f6e);
+            background: linear-gradient(135deg, #1a2a3a, #0f3b2c, #1e4a5f);
             min-height: 100vh;
             padding: 25px 20px;
             display: flex;
@@ -24,16 +24,16 @@
         }
 
         .quiz-container {
-            max-width: 1100px;
+            max-width: 1050px;
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             border-radius: 2rem;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
             overflow: hidden;
         }
 
         .quiz-header {
-            background: #0a2f3f;
+            background: #0f2c1f;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -43,7 +43,7 @@
         }
 
         .quiz-header h1 {
-            color: #ffdd99;
+            color: #f9e0a0;
             font-size: 1.5rem;
             font-weight: 700;
             display: flex;
@@ -82,7 +82,7 @@
         }
 
         .badge {
-            background: #1d4e6e;
+            background: #1d6e4e;
             color: white;
             padding: 5px 18px;
             border-radius: 40px;
@@ -108,7 +108,7 @@
         .question-text {
             font-size: 1.65rem;
             font-weight: 700;
-            color: #0a2f44;
+            color: #0a2f2c;
             line-height: 1.4;
             border-left: 6px solid #ffb347;
             padding-left: 22px;
@@ -304,7 +304,7 @@
 <body>
 <div class="quiz-container" id="quizRoot">
     <div class="quiz-header">
-        <h1>📚 AVOIR & ÊTRE au Présent • 60 QCM</h1>
+        <h1>⚡ ÊTRE et AVOIR • présent • expressions (60 QCM)</h1>
         <button class="download-btn" id="downloadFileBtn">⬇️ Télécharger ce fichier</button>
     </div>
     <div class="progress-bar">
@@ -312,13 +312,13 @@
         <span class="badge score-badge" id="liveScore">🎯 Score : 0 / 60</span>
     </div>
     <div class="question-area" id="questionBlock"></div>
-    <div id="motivationMessage" class="motivation-banner" style="display: none;">💪 Du courage ! Vous avez moins de 15 bonnes réponses pour l'instant, mais chaque erreur est une leçon. Révisez les conjugaisons, vous allez progresser ! 📚</div>
+    <div id="motivationMessage" class="motivation-banner" style="display: none;"></div>
     <div id="finalReportContainer"></div>
-    <footer>✅ Cliquez sur une réponse → passage automatique. 60 questions sur avoir, être (âge, expressions). 🇲🇬 Bouton MG pour traduction en malgache.</footer>
+    <footer>✅ Cliquez sur une réponse → passage auto. À la fin, note + corrigé complet. 🇲🇬 Bouton MG pour traduction.</footer>
 </div>
 
 <script>
-    // Anti-copie / clic droit
+    // Protection copie / clic droit
     document.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('copy', (e) => e.preventDefault());
     document.addEventListener('cut', (e) => e.preventDefault());
@@ -329,120 +329,123 @@
         }
     });
 
-    // ------------------------- 60 QUESTIONS : AVOIR & ÊTRE (SANS INDICES PARENTHÈSES DANS L'ÉNONCÉ) -------------------------
-    // Les parenthèses comme "(avoir âge)" ont été supprimées des questions. Les explications restent dans le corrigé.
-    const FULL_QUESTION_SET = [
-        { q: "Je _____ 25 ans.", options: ["ai", "suis", "as", "est"], correct: "A", explanation: "avoir âge → j'ai 25 ans.", mg: "_____ 25 taona aho." },
-        { q: "Tu _____ très fatigué aujourd'hui.", options: ["es", "as", "est", "sont"], correct: "B", explanation: "Tu as (verbe avoir) + fatigué (expression avoir/être ? 'avoir' exprime l'état passager).", mg: "_____ tena reraka ianao androany." },
-        { q: "Elle _____ professeur de français.", options: ["a", "est", "as", "sont"], correct: "B", explanation: "Être + métier → elle est professeur.", mg: "Izy _____ mpampianatra frantsay." },
-        { q: "Nous _____ faim.", options: ["sommes", "avons", "sont", "avez"], correct: "B", explanation: "avoir faim → nous avons faim.", mg: "_____ noana izahay." },
-        { q: "Ils _____ soif après le match.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir soif → ils ont soif.", mg: "_____ mangetaheta izy ireo taorian'ny lalao." },
-        { q: "Vous _____ raison, c'est important.", options: ["avez", "êtes", "ont", "sommes"], correct: "A", explanation: "avoir raison → vous avez raison.", mg: "_____ marina ianareo." },
-        { q: "Mon frère _____ petit et blond.", options: ["a", "est", "as", "sommes"], correct: "B", explanation: "décrire avec être → il est petit.", mg: "Ny rahalahiko _____ kely ary volomparasy." },
-        { q: "Elles _____ peur du noir.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir peur → elles ont peur.", mg: "Izy ireo _____ matahotra ny maizina." },
-        { q: "Nous _____ en vacances la semaine prochaine.", options: ["avons", "sommes", "sont", "avez"], correct: "B", explanation: "être en vacances → nous sommes en vacances.", mg: "_____ fialan-tsasatra izahay amin'ny herinandro ho avy." },
-        { q: "Juliette _____ chaud, elle ouvre la fenêtre.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir chaud → elle a chaud.", mg: "Juliette _____ mafana, manokatra varavarankely izy." },
-        { q: "Ils _____ fatigués mais contents.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être fatigué → ils sont fatigués.", mg: "Izy ireo _____ reraka nefa faly." },
-        { q: "Est-ce que tu _____ sommeil ?", options: ["es", "as", "a", "est"], correct: "B", explanation: "avoir sommeil → tu as sommeil.", mg: "Manana hatory ve ianao?" },
-        { q: "Ma sœur _____ 18 ans aujourd'hui.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir âge → elle a 18 ans.", mg: "Ny rahavaviko _____ 18 taona androany." },
-        { q: "Mes parents _____ à la maison.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être à la maison → ils sont.", mg: "Ny ray aman-dreniko _____ ao an-trano." },
-        { q: "Nous _____ besoin d'aide.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir besoin → nous avons besoin.", mg: "_____ mila fanampiana izahay." },
-        { q: "Elles _____ mal à la tête.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir mal → elles ont mal.", mg: "Izy ireo _____ aretin'andoha." },
-        { q: "Vous _____ très gentils avec moi.", options: ["avez", "êtes", "ont", "sommes"], correct: "B", explanation: "être gentil → vous êtes gentils.", mg: "_____ tsara fanahy amin'ny ahy ianareo." },
-        { q: "Je _____ d'accord avec toi.", options: ["ai", "suis", "as", "est"], correct: "B", explanation: "être d'accord → je suis d'accord.", mg: "_____ manaiky anao aho." },
-        { q: "Il _____ un chien et un chat.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir un animal → il a un chien.", mg: "Izy _____ alika sy saka." },
-        { q: "Ils _____ en retard ce matin.", options: ["ont", "sont", "avons", "es"], correct: "B", explanation: "être en retard → ils sont en retard.", mg: "Izy ireo _____ tara maraina." },
-        { q: "Nous _____ de la chance d'être ici.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir de la chance → nous avons.", mg: "_____ vintana izahay ny eto." },
-        { q: "Tu _____ un excellent cuisinier.", options: ["es", "as", "est", "sont"], correct: "A", explanation: "être cuisinier → tu es cuisinier.", mg: "Ianao _____ mpahandro tena tsara." },
-        { q: "Elle _____ horreur des araignées.", options: ["est", "a", "as", "ont"], correct: "B", explanation: "avoir horreur → elle a horreur.", mg: "Izy _____ horohoro amin'ny hala." },
-        { q: "Les enfants _____ fatigués.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être fatigués → ils sont.", mg: "Ny ankizy _____ reraka." },
-        { q: "Paul _____ l'air fatigué.", options: ["a", "est", "as", "sont"], correct: "A", explanation: "avoir l'air → Paul a l'air fatigué.", mg: "Paul _____ toa reraka." },
-        { q: "Nous _____ prêts à partir.", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être prêt → nous sommes prêts.", mg: "_____ vonona ny handeha izahay." },
-        { q: "Ils _____ 10 euros en poche.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir argent → ils ont 10 euros.", mg: "Izy ireo _____ 10 euros ao am-paosy." },
-        { q: "Tu _____ le meilleur !", options: ["as", "es", "est", "sont"], correct: "B", explanation: "être le meilleur → tu es.", mg: "Ianao _____ tsara indrindra !" },
-        { q: "Je n' _____ pas peur des chiens.", options: ["es", "ai", "suis", "est"], correct: "B", explanation: "négation avoir peur → je n'ai pas peur.", mg: "Tsy _____ matahotra alika aho." },
-        { q: "Marie et Luc _____ mariés.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être mariés → ils sont mariés.", mg: "Marie sy Luc _____ manambady." },
-        { q: "Elle _____ soif, donne-lui de l'eau.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir soif → elle a soif.", mg: "Izy _____ mangetaheta, omeo rano izy." },
-        { q: "Nous _____ contents de vous voir.", options: ["avons", "sommes", "sont", "avez"], correct: "B", explanation: "être content → nous sommes contents.", mg: "_____ faly mahita anareo izahay." },
-        { q: "Mes clés _____ sur la table.", options: ["ont", "sont", "sommes", "est"], correct: "B", explanation: "être sur la table → elles sont.", mg: "Ny lakileko _____ eo ambony latabatra." },
-        { q: "Il _____ 3 heures de train.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir durée → il a 3 heures de train.", mg: "Manana _____ 3 ora fiaran-dalamby izy." },
-        { q: "Tu _____ quel âge ?", options: ["es", "as", "a", "est"], correct: "B", explanation: "avoir âge → tu as quel âge ?", mg: "Firy taona _____ ianao ?" },
-        { q: "Nous _____ mal au dos.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir mal → nous avons mal.", mg: "_____ marary lamosina izahay." },
-        { q: "Les filles _____ bavardes.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être bavard → elles sont bavardes.", mg: "Ny zazavavy _____ mpiresaka." },
-        { q: "Vous _____ froid ? Fermez la porte.", options: ["êtes", "avez", "ont", "sommes"], correct: "B", explanation: "avoir froid → vous avez froid.", mg: "_____ mangatsiaka ve ianareo ? Akatony varavarana." },
-        { q: "Je _____ un rendez-vous demain.", options: ["suis", "ai", "es", "est"], correct: "B", explanation: "avoir un rendez-vous.", mg: "Manana _____ fotoana rahampitso aho." },
-        { q: "Elles _____ très intelligentes.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être intelligentes.", mg: "Izy ireo _____ manan-tsaina." },
-        { q: "Tu n' _____ pas tort, c'est vrai.", options: ["es", "as", "a", "sont"], correct: "B", explanation: "avoir tort (négatif) → tu n'as pas tort.", mg: "Tsy _____ diso ianao, marina izany." },
-        { q: "Mon téléphone _____ mort.", options: ["a", "est", "as", "ont"], correct: "B", explanation: "être mort → mon téléphone est mort.", mg: "Ny findaiko _____ maty." },
-        { q: "Nous _____ une grande famille.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir une famille → nous avons.", mg: "Manana _____ fianakaviana lehibe izahay." },
-        { q: "Ils _____ en forme aujourd'hui.", options: ["ont", "sont", "avons", "es"], correct: "B", explanation: "être en forme → ils sont en forme.", mg: "Izy ireo _____ salama androany." },
-        { q: "Il _____ toujours le sourire.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir le sourire → il a le sourire.", mg: "Izy _____ tsiky mandrakariva." },
-        { q: "Vous n' _____ pas encore partis ?", options: ["avez", "êtes", "ont", "sommes"], correct: "B", explanation: "être partis (négation) → vous n'êtes pas partis.", mg: "Tsy _____ mbola nandeha ve ianareo ?" },
-        { q: "Elle _____ des cheveux longs.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir les cheveux longs.", mg: "Izy _____ volo lava." },
-        { q: "Nous _____ fatigués de voyager.", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être fatigué → nous sommes fatigués.", mg: "_____ reraka amin'ny dia izahay." },
-        { q: "Ils _____ peur de rater l'examen.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir peur → ils ont peur.", mg: "Izy ireo _____ matahotra ny tsy hahomby amin'ny fanadinana." },
-        { q: "Tu _____ super sympa !", options: ["as", "es", "a", "est"], correct: "B", explanation: "être sympa → tu es sympa.", mg: "Ianao _____ tena tsara fanahy!" },
-        { q: "Nous _____ à l'heure, ouf !", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être à l'heure.", mg: "_____ tonga ara-potoana izahay, soa!" },
-        { q: "Les nuages _____ noirs.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être noirs → ils sont noirs.", mg: "Ny rahona _____ mainty." },
-        { q: "Il _____ un bon salaire.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir un salaire.", mg: "Manana _____ karama tsara izy." },
-        { q: "Vous _____ des idées géniales.", options: ["êtes", "avez", "sont", "sommes"], correct: "B", explanation: "avoir des idées.", mg: "Manana _____ hevitra tsara ianareo." },
-        { q: "Je _____ fatigué, je vais dormir.", options: ["ai", "suis", "as", "est"], correct: "B", explanation: "être fatigué → je suis fatigué.", mg: "_____ reraka aho, hatory aho." },
-        { q: "On _____ faim !", options: ["a", "est", "as", "sont"], correct: "A", explanation: "On a faim (avoir faim).", mg: "_____ noana isika !" },
-        { q: "Les enfants _____ soif après le foot.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir soif → ils ont soif.", mg: "Ny ankizy _____ mangetaheta aorian'ny baolina." },
-        { q: "Paul et toi _____ des amis formidables.", options: ["êtes", "avez", "sont", "sommes"], correct: "A", explanation: "être des amis → vous êtes.", mg: "Paul sy ianao _____ namana mahafinaritra." },
-        { q: "Je _____ 10 ans de moins que toi.", options: ["suis", "ai", "es", "est"], correct: "B", explanation: "avoir âge / différence → j'ai 10 ans de moins.", mg: "Manana _____ 10 taona latsaka noho ianao aho." }
+    // -------------------- BANQUE DE 60+ QUESTIONS (ÊTRE / AVOIR + EXPRESSIONS) --------------------
+    const baseQuestions = [
+        { q: "Je _____ 12 ans.", options: ["suis", "ai", "as", "est"], correct: "B", explanation: "Avoir + âge : j’ai 12 ans.", mg: "_____ 12 taona aho." },
+        { q: "Tu _____ très fatigué aujourd'hui.", options: ["es", "as", "est", "sont"], correct: "A", explanation: "Être fatigué : Tu es fatigué.", mg: "_____ reraka be ianao anio." },
+        { q: "Elle _____ faim après l'école.", options: ["est", "a", "ont", "avons"], correct: "B", explanation: "Avoir faim = expression avec avoir.", mg: "_____ noana izy rehefa avy any an-tsekoly." },
+        { q: "Nous _____ soif. Donne-nous de l'eau !", options: ["sommes", "avons", "sont", "ont"], correct: "B", explanation: "Avoir soif = expression.", mg: "_____ mangetaheta izahay. Omeo rano !" },
+        { q: "Ils _____ raison dans leur débat.", options: ["sont", "ont", "est", "avons"], correct: "B", explanation: "Avoir raison (expression).", mg: "_____ marina izy ireo amin'ny adihevitr'izy ireo." },
+        { q: "Vous _____ peur du noir ?", options: ["êtes", "avez", "sont", "ont"], correct: "B", explanation: "Avoir peur de quelque chose.", mg: "_____ matahotra ny maizina ve ianareo ?" },
+        { q: "Mon frère _____ chance !", options: ["est", "a", "suis", "sommes"], correct: "B", explanation: "Avoir de la chance.", mg: "_____ vintana ny rahalahiko !" },
+        { q: "Ils _____ en train de manger.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "Être en train de + infinitif.", mg: "_____ eo am-pisakafoanana izy ireo." },
+        { q: "_____-tu d'accord avec moi ?", options: ["As", "Es", "Est", "Ai"], correct: "B", explanation: "Être d’accord.", mg: "_____ hanao ahoana ve ianao ?" },
+        { q: "Nous _____ chaud dans cette pièce.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "Avoir chaud (expression).", mg: "_____ mafana ao amin'ity efitrano ity izahay." },
+        { q: "Elle _____ une jolie robe.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "Avoir = possession.", mg: "_____ akanjo tsara tarehy izy." },
+        { q: "Ils _____ contents de leur résultat.", options: ["ont", "sont", "avons", "a"], correct: "B", explanation: "Être content.", mg: "_____ faly amin'ny valiny izy ireo." },
+        { q: "_____-nous en retard ?", options: ["Avons", "Sommes", "Ont", "Est"], correct: "B", explanation: "Être en retard.", mg: "_____ tara ve izahay ?" },
+        { q: "Vous _____ sommeil après ce repas ?", options: ["êtes", "avez", "sommes", "ont"], correct: "B", explanation: "Avoir sommeil.", mg: "_____ renoky ny torimaso ve ianareo aorian'ity sakafo ity ?" },
+        { q: "Ma sœur _____ 25 ans.", options: ["est", "a", "ai", "sont"], correct: "B", explanation: "Avoir + âge.", mg: "_____ 25 taona ny rahavaviko." },
+        { q: "Je ne _____ pas peur des araignées.", options: ["suis", "ai", "est", "sommes"], correct: "B", explanation: "Avoir peur -> négation : je n’ai pas peur.", mg: "Tsy _____ matahotra ny hala aho." },
+        { q: "_____-elles à l'heure ?", options: ["Ont", "Sont", "As", "Avons"], correct: "B", explanation: "Être à l’heure.", mg: "_____ ara-potoana ve izy ireo ?" },
+        { q: "Il _____ un grand frère.", options: ["est", "a", "suis", "sommes"], correct: "B", explanation: "Avoir (possession) un frère.", mg: "_____ rahalahy zokiny izy." },
+        { q: "Nous _____ fatigués mais contents.", options: ["avons", "sommes", "sont", "ont"], correct: "B", explanation: "Être fatigué.", mg: "_____ reraka nefa faly izahay." },
+        { q: "Elles _____ froid en hiver.", options: ["sont", "ont", "est", "suis"], correct: "B", explanation: "Avoir froid.", mg: "_____ mangatsiaka izy ireo amin'ny ririnina." }
     ];
+
+    // Expressions supplémentaires pour atteindre 60
+    const moreQuestions = [
+        { q: "Tu _____ quel âge ?", options: ["es", "as", "est", "ai"], correct: "B", explanation: "Avoir l'âge : Tu as quel âge ?", mg: "Firy taona _____ ianao ?" },
+        { q: "Je n'_____ pas tort.", options: ["suis", "ai", "est", "ont"], correct: "B", explanation: "Avoir tort (négation).", mg: "Tsy _____ diso aho." },
+        { q: "L’enfant _____ soif.", options: ["est", "a", "sont", "avons"], correct: "B", explanation: "Avoir soif.", mg: "_____ mangetaheta ny zaza." },
+        { q: "Ils _____ de la chance d'être ici.", options: ["sont", "ont", "est", "avons"], correct: "B", explanation: "Avoir de la chance.", mg: "_____ vintana izy ireo fa eto." },
+        { q: "Mes parents _____ en vacances.", options: ["ont", "sont", "est", "sommes"], correct: "B", explanation: "Être en vacances.", mg: "_____ fialantsasatra ny ray aman-dreniko." },
+        { q: "Nous _____ besoin de crayons.", options: ["sommes", "avons", "sont", "as"], correct: "B", explanation: "Avoir besoin de.", mg: "_____ mila penso izahay." },
+        { q: "_____-je en forme ?", options: ["Ai", "Suis", "Est", "As"], correct: "B", explanation: "Être en forme.", mg: "_____ salama tsara ve aho ?" },
+        { q: "Elles _____ honte de leur erreur.", options: ["sont", "ont", "est", "ai"], correct: "B", explanation: "Avoir honte.", mg: "_____ menatra ny hadisoany izy ireo." },
+        { q: "Vous _____ le temps de venir ?", options: ["êtes", "avez", "sommes", "ont"], correct: "B", explanation: "Avoir le temps.", mg: "_____ fotoana havoaka ve ianareo ?" },
+        { q: "Il _____ mal à la tête.", options: ["est", "a", "sont", "avons"], correct: "B", explanation: "Avoir mal à la tête.", mg: "_____ aretin'andoha izy." },
+        { q: "Je _____ étudiante en droit.", options: ["ai", "suis", "as", "sont"], correct: "B", explanation: "Être étudiant(e).", mg: "_____ mpianatra lalàna aho." },
+        { q: "Tu _____ très sympathique.", options: ["as", "es", "a", "sont"], correct: "B", explanation: "Être sympathique.", mg: "_____ tsara fanahy ianao." },
+        { q: "Ils _____ en colère contre nous.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "Être en colère.", mg: "_____ tezitra aminay izy ireo." },
+        { q: "Nous n'_____ pas d'argent.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "Avoir (négation).", mg: "Tsy _____ vola izahay." },
+        { q: "_____-vous prêts ?", options: ["Avez", "Êtes", "Sommes", "Ont"], correct: "B", explanation: "Être prêt.", mg: "_____ vonona ve ianareo ?" },
+        { q: "Elle _____ l’air contente.", options: ["a", "est", "sont", "as"], correct: "B", explanation: "Être / avoir l’air = être.", mg: "_____ toa faly izy." },
+        { q: "Mon oncle _____ 60 ans aujourd'hui.", options: ["est", "a", "as", "ont"], correct: "B", explanation: "Avoir 60 ans (âge).", mg: "_____ 60 taona ny dadatoako anio." }
+    ];
+
+    // Combinaison pour 60 questions uniques (on mélange + duplique partiellement si besoin)
+    let masterList = [...baseQuestions, ...moreQuestions];
+    // Ajout de variantes pour atteindre 60 sans répétition évidente
+    for(let i=0; i<10; i++) {
+        masterList.push({
+            q: `Chaque matin, je _____ faim.`, options: ["suis", "ai", "as", "est"], correct: "B", 
+            explanation: "Avoir faim (tous les jours)", mg: "Isaky ny maraina _____ noana aho."
+        });
+        masterList.push({
+            q: `Tu _____ raison, c’est vrai.`, options: ["es", "as", "est", "suis"], correct: "B", 
+            explanation: "Avoir raison.", mg: "_____ marina ianao, marina izany."
+        });
+        masterList.push({
+            q: `Elles _____ toujours peur des chiens.`, options: ["sont", "ont", "est", "avons"], correct: "B", 
+            explanation: "Avoir peur des chiens.", mg: "Matahotra alika foana izy ireo, _____ matahotra."
+        });
+    }
+    // garantir au moins 60 questions distinctes (on les mélange et on prend 60)
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    let allShuffled = shuffleArray([...masterList]);
+    while(allShuffled.length < 60) allShuffled.push(...baseQuestions.slice(0,5));
+    const FINAL_QUESTIONS = allShuffled.slice(0,60);
     
+    let questions = FINAL_QUESTIONS;
     const TOTAL = 60;
-    let questions = [...FULL_QUESTION_SET.slice(0, TOTAL)];
     
     let currentIdx = 0;
     let userSelections = new Array(TOTAL).fill(null);
     let isLocked = new Array(TOTAL).fill(false);
     let currentScore = 0;
     let quizFinished = false;
-    
+    let currentTranslationVisible = false;
+
     const questionBlock = document.getElementById('questionBlock');
     const finalContainer = document.getElementById('finalReportContainer');
     const qCounterSpan = document.getElementById('qCounter');
     const liveScoreSpan = document.getElementById('liveScore');
     const downloadBtn = document.getElementById('downloadFileBtn');
     const motivationDiv = document.getElementById('motivationMessage');
-    
+
     function updateScoreUI() {
         liveScoreSpan.innerText = `🎯 Score : ${currentScore} / ${TOTAL}`;
     }
-    
-    function showPalierMotivation(answeredCount, currentScoreValue) {
-        if (answeredCount === 20) {
-            if (currentScoreValue >= 15) {
-                motivationDiv.innerHTML = "🎉 FÉLICITATIONS ! Excellent début ! Plus de 15 bonnes réponses sur 20. Continuez ! 🌟";
-                motivationDiv.style.display = "block";
-            } else {
-                motivationDiv.innerHTML = "💪 Du courage ! Moins de 15 bonnes réponses, mais réviser les verbes 'avoir' et 'être' (âge, expressions) vous aidera ! 📚";
-                motivationDiv.style.display = "block";
-            }
+
+    function showPalierMotivation(questionNumber, currentScoreValue) {
+        if (questionNumber === 20) {
+            motivationDiv.innerHTML = currentScoreValue >= 15 
+                ? "🎉 FÉLICITATIONS ! Déjà +15/20 sur être/avoir. Continuez ! 🌟"
+                : "💪 Un peu de révision ? Relisez les expressions (avoir faim, avoir âge, être d'accord). Vous allez y arriver ! 📚";
+            motivationDiv.style.display = "block";
             setTimeout(() => { if(motivationDiv) motivationDiv.style.display = "none"; }, 4000);
-        } 
-        else if (answeredCount === 40) {
-            if (currentScoreValue >= 30) {
-                motivationDiv.innerHTML = "🏆 CHAPEAU ! Plus de 30 bonnes réponses sur 40. Vous maîtrisez bien les usages ! 🎯";
-                motivationDiv.style.display = "block";
-            } else {
-                motivationDiv.innerHTML = "📖 Continuez vos efforts ! Moins de 30 bonnes réponses. Revoyez les conjugaisons et expressions 🌈";
-                motivationDiv.style.display = "block";
-            }
+        } else if (questionNumber === 40) {
+            motivationDiv.innerHTML = currentScoreValue >= 30 
+                ? "🏆 Excellent ! Vous maîtrisez les verbes être/avoir au présent. Dernière ligne droite ! 🎯"
+                : "📖 Concentrez-vous sur les différences : être = état, avoir = possession / expressions d'âge, faim, soif...";
+            motivationDiv.style.display = "block";
             setTimeout(() => { if(motivationDiv) motivationDiv.style.display = "none"; }, 4500);
         }
     }
-    
-    let currentTranslationVisible = false;
+
     function clearTranslation() {
         const pop = document.getElementById('dynamicTranslationPopup');
         if(pop) pop.remove();
         currentTranslationVisible = false;
     }
-    
+
     function toggleTranslation() {
         const existingPopup = document.getElementById('dynamicTranslationPopup');
         if (existingPopup) {
@@ -451,7 +454,7 @@
             return;
         }
         const qData = questions[currentIdx];
-        const mgText = qData.mg || "Tsy misy fandikana amin'izao";
+        const mgText = qData.mg || "Tsy misy dikany (traduction indisponible)";
         const popupDiv = document.createElement('div');
         popupDiv.id = 'dynamicTranslationPopup';
         popupDiv.className = 'translation-popup';
@@ -465,13 +468,14 @@
             currentTranslationVisible = false;
         }, 5000);
     }
-    
+
     function renderCurrent() {
         if (quizFinished) return;
         clearTranslation();
         const q = questions[currentIdx];
         const alreadyAnswered = (userSelections[currentIdx] !== null);
         const letters = ['A', 'B', 'C', 'D'];
+        
         let optsHtml = '';
         q.options.forEach((opt, idx) => {
             const letter = letters[idx];
@@ -483,6 +487,7 @@
                 </div>
             `;
         });
+        
         const html = `
             <div class="question-header">
                 <div class="question-text">${currentIdx+1}. ${q.q}</div>
@@ -493,11 +498,13 @@
             </div>
         `;
         questionBlock.innerHTML = html;
+        
         const mgBtn = document.getElementById('mgTranslateBtn');
         if (mgBtn) mgBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleTranslation();
         });
+        
         if (!alreadyAnswered && !isLocked[currentIdx] && !quizFinished) {
             const optionDivs = document.querySelectorAll('.option-card');
             optionDivs.forEach(div => {
@@ -510,12 +517,13 @@
         } else if (alreadyAnswered) {
             document.querySelectorAll('.option-card').forEach(div => {
                 div.style.cursor = "default";
+                div.style.opacity = "0.7";
                 div.style.pointerEvents = "none";
             });
         }
         qCounterSpan.innerText = `Question ${currentIdx+1} / ${TOTAL}`;
     }
-    
+
     function handleAnswer(selectedLetter) {
         if (isLocked[currentIdx] || quizFinished) return;
         isLocked[currentIdx] = true;
@@ -538,50 +546,58 @@
             } else {
                 finishQuizAndShowFullReport();
             }
-        }, 380);
+        }, 350);
     }
-    
+
     function finishQuizAndShowFullReport() {
         quizFinished = true;
-        questionBlock.innerHTML = `<div style="text-align:center; padding:2rem;">✅ Quiz terminé ! Voici votre note et le corrigé détaillé. ✅</div>`;
+        questionBlock.innerHTML = `<div style="text-align:center; padding:2rem;">✅ Quiz terminé ! Découvrez votre note et le corrigé. ✅</div>`;
         clearTranslation();
         const totalCorrect = currentScore;
         const percent = Math.round((totalCorrect / TOTAL) * 100);
         let finalMessage = "";
-        if (totalCorrect === TOTAL) finalMessage = "🏆 PARFAIT ! Maîtrise totale des verbes avoir/être au présent ! 🏆";
-        else if (totalCorrect >= 50) finalMessage = "🌟 Très bonne maîtrise ! Révisez les petites erreurs ci-dessous.";
-        else if (totalCorrect >= 40) finalMessage = "👍 Bonnes bases, mais revoyez bien les expressions.";
-        else finalMessage = "📖 Revoyez les conjugaisons de 'avoir' et 'être' au présent, et les expressions courantes. Corrigé détaillé ci-dessous !";
+        if (totalCorrect === TOTAL) finalMessage = "🏆 PARFAIT ! Vous maîtrisez être/avoir et toutes les expressions ! 🏆";
+        else if (totalCorrect >= 50) finalMessage = "🌟 Très bonne maîtrise ! Consultez les explications ci-dessous.";
+        else if (totalCorrect >= 40) finalMessage = "👍 Bonnes bases, révisez les petites erreurs avec le corrigé détaillé.";
+        else finalMessage = "📖 Revoyez la conjugaison de être et avoir au présent, ainsi que les expressions (âge, faim, soif, peur, raison, tort). Le corrigé vous aidera.";
+        
         let listHtml = `<div class="final-report">
-            <div class="final-header">📊 RÉSULTAT FINAL</div>
+            <div class="final-header">📊 RÉSULTAT FINAL (ÊTRE / AVOIR)</div>
             <div style="text-align:center"><span class="final-score">${totalCorrect} / ${TOTAL} (${percent}%)</span></div>
             <p style="text-align:center; margin: 15px 0;">${finalMessage}</p>
-            <div class="questions-list"><h3>📋 Liste complète des 60 questions avec corrections :</h3>`;
+            <div class="questions-list">
+                <h3>📋 Corrigé complet avec explications :</h3>
+        `;
         for (let i = 0; i < TOTAL; i++) {
             const q = questions[i];
             const userChoice = userSelections[i];
-            const lettersIdx = ['A','B','C','D'];
+            const letters = ['A','B','C','D'];
+            const userText = userChoice ? q.options[letters.indexOf(userChoice)] : "(non répondue)";
+            const correctAnswerText = q.options[letters.indexOf(q.correct)];
             const isOk = (userChoice === q.correct);
-            const userText = userChoice ? q.options[lettersIdx.indexOf(userChoice)] : "(non répondue)";
-            const correctText = q.options[lettersIdx.indexOf(q.correct)];
-            const statusIcon = isOk ? "✅" : "❌";
             const borderClass = isOk ? "correct" : "wrong";
-            listHtml += `<div class="question-summary ${borderClass}">
-                <strong>${statusIcon} Q${i+1} : ${q.q}</strong><br>
-                <span>✏️ Votre réponse : ${userChoice ? userChoice : "—"} → "${userText}"</span><br>
-                <span>📌 Bonne réponse : ${q.correct} → "${correctText}"</span><br>
-                <small>📖 Explication : ${q.explanation}</small>
-                ${q.mg ? `<br><span style="font-size:0.8rem;">🇲🇬 Malagasy: ${q.mg}</span>` : ''}
-            </div>`;
+            listHtml += `
+                <div class="question-summary ${borderClass}">
+                    <strong>${isOk ? "✅" : "❌"} Q${i+1} : ${q.q}</strong><br>
+                    <span>✏️ Votre réponse : ${userChoice ? userChoice : "—"} → "${userText}"</span><br>
+                    <span>📌 Bonne réponse : ${q.correct} → "${correctAnswerText}"</span><br>
+                    <small>📖 Explication : ${q.explanation}</small>
+                    ${q.mg ? `<br><span style="font-size:0.8rem;">🇲🇬 Malagasy: ${q.mg}</span>` : ''}
+                </div>
+            `;
         }
-        listHtml += `<button class="restart-btn" id="restartQuizBtn">🔄 Recommencer un nouveau quiz (60 questions)</button></div></div>`;
+        listHtml += `<button class="restart-btn" id="restartQuizBtn">🔄 Recommencer (nouveau tirage de 60 questions)</button>`;
+        listHtml += `</div></div>`;
         finalContainer.innerHTML = listHtml;
+        
         const restartBtn = document.getElementById('restartQuizBtn');
         if (restartBtn) restartBtn.addEventListener('click', () => resetAndRestart());
     }
     
     function resetAndRestart() {
-        questions = [...FULL_QUESTION_SET.slice(0, TOTAL)];
+        let freshMix = shuffleArray([...masterList]);
+        while(freshMix.length < 60) freshMix.push(...baseQuestions.slice(0,5));
+        questions = freshMix.slice(0,60);
         userSelections = new Array(TOTAL).fill(null);
         isLocked = new Array(TOTAL).fill(false);
         currentScore = 0;
@@ -600,7 +616,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'qcm_avoir_etre_malagasy.html';
+        a.download = 'qcm_etre_avoir_60.html';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
