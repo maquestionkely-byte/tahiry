@@ -1130,7 +1130,7 @@
     }
     
     const leconsDebutant = [
-        { id: 1, titre: "Types de phrases", fichier: "typelecon.txt", description: "Phrase affirmative, exclamative, interrogative", defaut: "4 types : déclarative, interrogative, exclamative, impérative." },
+        { id: 1, titre: "Verbe être et AVOIR", fichier: "typelecon.txt", description: "Phrase affirmative, exclamative, interrogative", defaut: "4 types : déclarative, interrogative, exclamative, impérative." },
         { id: 2, titre: "Pronoms possessifs", fichier: "pronlecon.txt", description: "le mien, la tienne...", defaut: "Remplacent nom + possesseur. Ex: le mien, la tienne, les siens." },
         { id: 3, titre: "Conditionnel", fichier: "condlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 4, titre: "andrana", fichier: "andrlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
