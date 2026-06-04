@@ -1010,7 +1010,7 @@
     async function telechargerEtOuvrirExercice(leconTitre, typeCode, niveau) {
         const code4 = get4Caracteres(leconTitre);
         const nomFichier = `${code4}${typeCode}.txt`;
-        const url = `https://falyaho.ahofaly62.workers.dev/${nomFichier}`;
+        const url = `https://falytokoa.ahofaly62.workers.dev/${nomFichier}`;
         
         sauvegarderContexte(leconTitre, code4, niveau);
         
