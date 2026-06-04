@@ -1,1766 +1,614 @@
 <!DOCTYPE html>
-<html lang="mg">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Fianarana ny teny FRANÇAIS </title>
+    <title>QCM : Avoir & Être au Présent - 60 questions</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        .container { max-width: 1300px; margin: 0 auto; }
-        
-        .screen { display: none; }
-        .screen.active { display: block; }
-        
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 1.5rem;
-            box-shadow: 0 30px 30px -20px rgba(0,0,0,0.3);
-            overflow: hidden;
-            margin-bottom: 3px;
-        }
-        .hero-section {
-            background: linear-gradient(112deg, #0f2b3d 0%, #1a3f5c 100%);
-            padding: 1.8rem 2rem 1.5rem;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-section::before { content: "🎓"; font-size: 180px; opacity: 0.5; position: absolute; bottom: 175px; left: -20px; pointer-events: none; }
-        .hero-section::after { content: "📖"; font-size: 160px; opacity: 0.15; position: absolute; top: -50px; right: -10px; pointer-events: none; }
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            flex-wrap: wrap;
-            margin-bottom: 0.8rem;
-            position: relative;
-            z-index: 2;
-        }
-        .side-image {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #FFD966;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            background-color: #f0f0f0;
-            transition: 0.35s;
-            cursor: pointer;
-        }
-        .hero-section h1 { font-size: 2.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-        .greeting { font-size: 1.3rem; font-weight: 500; background: rgba(255,255,255,0.15); display: inline-block; padding: 0.4rem 1.5rem; border-radius: 60px; margin-bottom: 0.9rem; }
-        .sentence { font-size: 1rem; max-width: 90%; margin: 0.6rem auto 0; background: rgba(0,0,0,0.3); padding: 0.55rem 1.4rem; border-radius: 60px; }
-        
-        .niveau-toolbar {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 60px;
-            padding: 12px 20px;
-            margin: 25px 0 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            border: 1px solid rgba(255,215,0,0.3);
-        }
-        .niveau-label { color: #FFD966; font-weight: 600; }
-        .niveau-btn {
-            background: transparent;
-            border: 2px solid #FFD700;
-            color: #FFD700;
-            padding: 10px 22px;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-        .niveau-btn:hover { background: rgba(255,215,0,0.2); transform: scale(1.03); }
-        .niveau-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-        .niveau-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 24px;
-            padding: 18px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            border-left: 8px solid #0055A4;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .niveau-card:hover { transform: translateX(5px); background: white; }
-        .niveau-info { display: flex; align-items: center; gap: 18px; flex: 2; }
-        .niveau-icon { font-size: 2.5rem; }
-        .niveau-title { font-weight: bold; font-size: 1.2rem; color: #1e3c72; }
-        .niveau-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
-        .niveau-arrow { font-size: 1.5rem; color: #0055A4; }
-        
-        .page-niveau {
-            background: white;
-            border-radius: 2rem;
-            overflow: hidden;
-        }
-        .bandeau-haut {
-            background: #1e2a3e;
-            padding: 1.4rem 1.8rem;
-            text-align: center;
-        }
-        .bandeau-haut h1 { color: #facc15; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .bandeau-haut p { color: #cbd5e6; font-size: 0.85rem; }
-        .liste-matiere { padding: 1.6rem 1.8rem 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
-        
-        .bloc-theme {
-            background: #fffcf7;
-            border-radius: 1.5rem;
-            border: 1px solid #f2e2d2;
-            overflow: hidden;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        .bloc-theme:hover { border-color: #facc1566; box-shadow: 0 10px 20px -8px rgba(0,0,0,0.08); }
-        .lecon-click {
-            padding: 0.9rem 1.2rem 0.7rem;
-            background: #ffffff;
-            border-bottom: 1px solid #f3e7db;
-            cursor: pointer;
-            transition: background 0.15s;
-        }
-        .lecon-click:hover { background: #fffaf2; }
-        .titre-rond { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.2rem; }
-        .rond-jaune {
-            background: #facc15;
-            color: #1e293b;
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 800;
-            font-size: 1.1rem;
-        }
-        .rond-orange {
-            background: #f39c12;
-            color: white;
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 800;
-        }
-        .rond-vert {
-            background: #2ecc71;
-            color: white;
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 800;
-        }
-        .rond-bleu {
-            background: #3498db;
-            color: white;
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 800;
-        }
-        .nom-theme { font-size: 1.2rem; font-weight: 700; color: #2c3e4f; }
-        .sous-accroche { font-size: 0.75rem; color: #6b7c93; margin-top: 0.25rem; margin-left: 3rem; }
-        
-        .barre-exercice {
-            background: #eef2f7;
-            margin: 0.4rem 1rem 0.9rem;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.4rem 1.1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid #dee4ec;
-        }
-        .barre-exercice:hover { background: #facc15; transform: scale(0.99); }
-        .texte-exo { font-weight: 600; font-size: 0.8rem; color: #2c3e50; }
-        
-        .btn-retour {
-            background: #0055A4;
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 20px auto;
-            display: inline-block;
-        }
-        .btn-retour:hover { background: #003f7a; }
-        .footer-info { background: #f1f5f9; padding: 0.7rem; text-align: center; font-size: 0.7rem; color: #4a5b6e; }
-        .text-center { text-align: center; }
-        .footer { text-align: center; margin-top: 40px; color: #aaa; font-size: 0.8rem; }
-        .mantra { text-align: center; color: #ffd966; margin: 20px 0; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
-        
-        .modal-fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 20000;
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            animation: fadeIn 0.2s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal-fullscreen-header {
-            background: #0f2c3d;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .modal-fullscreen-header h2 {
-            color: #ffdd99;
+        * {
             margin: 0;
-            font-size: 1.3rem;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
-        .btn-close-fullscreen {
-            background: #ef4444;
-            color: white;
+
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #0f2c3b, #1b4f6e);
+            min-height: 100vh;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .quiz-container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .quiz-header {
+            background: #0a2f3f;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quiz-header h1 {
+            color: #ffdd99;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn {
+            background: #ffb347;
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.3rem;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 0.9rem;
             cursor: pointer;
+            color: #1e2f3a;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .download-btn:hover {
+            background: #ff9f1a;
+            transform: scale(0.96);
+        }
+
+        .progress-bar {
+            background: #eef2f7;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #cbdae9;
+            font-weight: 600;
+        }
+
+        .badge {
+            background: #1d4e6e;
+            color: white;
+            padding: 5px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+
+        .score-badge {
+            background: #2b7a4b;
+        }
+
+        .question-area {
+            padding: 2rem 2rem 1rem 2rem;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .question-text {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #0a2f44;
+            line-height: 1.4;
+            border-left: 6px solid #ffb347;
+            padding-left: 22px;
+            flex: 1;
+        }
+
+        .mg-translate-btn {
+            background: #2c7a47;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .mg-translate-btn:hover {
+            background: #1f5e38;
+            transform: scale(0.96);
+        }
+
+        .translation-popup {
+            background: #f0e6c5;
+            color: #2d4a22;
+            padding: 6px 12px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #ffb347;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card {
+            background: #f8fafc;
+            border-radius: 80px;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e2edf7;
+        }
+
+        .option-card:hover {
+            background: #eef4ff;
+            transform: translateX(6px);
+            border-color: #ffb347;
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            background: #cbdde9;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-right: 18px;
+            color: #1e2f3f;
+        }
+
+        .option-card.selected {
+            background: #ffefd6;
+            border: 2px solid #ffb347;
+        }
+
+        .option-card.selected .option-letter {
+            background: #ffb347;
+            color: white;
+        }
+
+        .option-text {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1a3e50;
+        }
+
+        .motivation-banner {
+            background: #f9eec1;
+            margin: 10px 2rem 0 2rem;
+            padding: 10px 18px;
+            border-radius: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #b45f1b;
+            font-size: 0.95rem;
             transition: 0.2s;
         }
-        .modal-fullscreen-body {
-            flex: 1;
-            padding: 20px;
-            background: #f5f7fb;
-            overflow-y: auto;
-        }
-        
-        .error-notification {
-            background: #fee2e2;
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            margin: 1rem;
-        }
-        .error-notification i { font-size: 3rem; color: #c0392b; margin-bottom: 1rem; display: block; }
-        .error-filename {
-            background: #f1f5f9;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin: 10px auto;
-            display: inline-block;
-        }
-        .default-cours {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 8px;
+
+        .final-report {
+            background: #eef3fc;
+            margin: 1rem 2rem 2rem 2rem;
+            border-radius: 28px;
+            padding: 1.5rem;
             text-align: left;
-            margin-top: 15px;
         }
-        
-        .floating-nav-bar {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e2a3e;
-            backdrop-filter: blur(10px);
-            border-radius: 60px;
-            padding: 8px 20px;
-            display: flex;
-            gap: 15px;
-            z-index: 9999;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            border: 1px solid #facc1566;
-        }
-        .floating-nav-bar button {
-            background: #facc15;
-            color: #1e2a3e;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
+
+        .final-header {
+            font-size: 1.6rem;
             font-weight: bold;
-            cursor: pointer;
-            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 1rem;
         }
-        .floating-nav-bar .btn-back { background: #0055A4; color: white; }
-        
-        .exo-card {
-            background: #f8fafc;
-            border-radius: 1rem;
-            padding: 1rem;
-            cursor: pointer;
-            border-left: 4px solid #2c7a4d;
-            margin-bottom: 0.8rem;
-            transition: all 0.2s;
-        }
-        .exo-card:hover {
-            transform: translateX(5px);
-            background-color: #fef3e2;
-        }
-        
-        @media (max-width: 650px) {
-            .side-image { width: 95px; height: 95px; }
-            .floating-nav-bar button { padding: 8px 16px; font-size: 0.8rem; }
-        }
-        
-        .contenu-texte {
-            line-height: 1.8;
-            font-size: 1rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        /* Style spécial pour Hiresaka */
-        .niveau-card-hiresaka {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,245,220,0.95) 100%);
-            border-left: 8px solid #e67e22;
-        }
-        .niveau-card-hiresaka:hover {
-            background: linear-gradient(135deg, white 0%, #fff5e6 100%);
-        }
-        
-        /* Notification style */
-        .update-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2b7a4b;
+
+        .final-score {
+            background: #1d4e6e;
             color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            z-index: 30000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: slideIn 0.3s ease;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+        }
+
+        .questions-list {
+            max-height: 550px;
+            overflow-y: auto;
+            margin-top: 20px;
+            padding-right: 8px;
+        }
+
+        .question-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 12px 18px;
+            margin-bottom: 12px;
+            border-left: 5px solid;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question-summary.correct {
+            border-left-color: #2b7a4b;
+        }
+
+        .question-summary.wrong {
+            border-left-color: #c0392b;
+        }
+
+        .restart-btn {
+            background: #ffb347;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 60px;
             font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            color: #2c3e50;
+            transition: 0.2s;
         }
-        .update-notification.error {
-            background: #c0392b;
+        .restart-btn:hover {
+            background: #ffa01e;
+            transform: scale(0.97);
         }
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 1rem;
+            color: #6b8ba0;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 620px) {
+            .question-text { font-size: 1.2rem; }
+            .option-text { font-size: 0.85rem; }
+            .mg-translate-btn { font-size: 0.7rem; padding: 5px 12px; }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    
-    <div id="screenAccueil" class="screen active">
-        <div class="welcome-card">
-            <div class="hero-section">
-                <div class="greeting">🥰 Faly miarahaba anao! 😊</div>
-                <div class="title-container">
-                    <img src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/ok.jpg" alt="Gauche" class="side-image" id="imgGauche">
-                    <img src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg" alt="Droite" class="side-image" id="imgDroite">
-                </div>
-                <h1><span>Mianatra Français isika</span></h1>
-                <div class="sentence">Mirary soa amin'ny fianarana français izay ataonao.</div>
-                <div style="font-size: 2.1rem; margin-top: 6px;">Ndao ary e! 😊</div>
-            </div>
-        </div>
-        <div class="niveau-toolbar" id="niveauToolbar"><span class="niveau-label">🎯 Fidio eto :</span></div>
-        <div class="niveau-list" id="niveauList"></div>
-        <div class="mantra">✨ Tsara ny mahay ✨</div>
+<div class="quiz-container" id="quizRoot">
+    <div class="quiz-header">
+        <h1>📚 AVOIR & ÊTRE au Présent • 60 QCM</h1>
+        <button class="download-btn" id="downloadFileBtn">⬇️ Télécharger ce fichier</button>
     </div>
-    
-    <div id="screenDebutant" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>📖 Grammaire · Débutant A1-A2</h1><p>📘 Cliquez sur la leçon pour voir le cours | ✏️ Cliquez sur EXERCICES pour choisir un type</p></div>
-            <div id="debutantContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
+    <div class="progress-bar">
+        <span class="badge" id="qCounter">Question 1 / 60</span>
+        <span class="badge score-badge" id="liveScore">🎯 Score : 0 / 60</span>
     </div>
-    
-    <div id="screenIntermediaire" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>📖 Intermédiaire · B1-B2</h1><p>📘 Cliquez sur la leçon pour voir le cours | ✏️ Cliquez sur EXERCICES pour choisir un type</p></div>
-            <div id="intermediaireContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
-    </div>
-    
-    <div id="screenAvance" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>📖 Avancé · C1-C2</h1><p>📘 Cliquez sur la leçon pour voir le cours | ✏️ Cliquez sur EXERCICES pour choisir un type</p></div>
-            <div id="avanceContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
-    </div>
-    
-    <div id="screenDictionnaire" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>📖 Dictionnaire</h1><p>Français ⇄ Malagasy</p></div>
-            <div id="dictionnaireContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
-    </div>
-    
-    <div id="screenConjugaison" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>📘 Conjugaison</h1><p>Conjugaison des verbes français</p></div>
-            <div id="conjugaisonContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
-    </div>
-    
-    <div id="screenDialoguer" class="screen">
-        <div class="page-niveau">
-            <div class="bandeau-haut"><h1>💬 Dialoguer</h1><p>Conversations françaises</p></div>
-            <div id="dialoguerContent" class="conteneur-dynamique"></div>
-            <div class="text-center"><button class="btn-retour" onclick="showScreen('accueil')">← Retour accueil</button></div>
-        </div>
-    </div>
-    
-    <div class="footer">📖 Tsara ny mianatra 📖</div>
+    <div class="question-area" id="questionBlock"></div>
+    <div id="motivationMessage" class="motivation-banner" style="display: none;">💪 Du courage ! Vous avez moins de 15 bonnes réponses pour l'instant, mais chaque erreur est une leçon. Révisez les conjugaisons, vous allez progresser ! 📚</div>
+    <div id="finalReportContainer"></div>
+    <footer>✅ Cliquez sur une réponse → passage automatique. 60 questions sur avoir, être (âge, expressions). 🇲🇬 Bouton MG pour traduction en malgache.</footer>
 </div>
 
 <script>
-    // ======================= CONFIGURATION DU SYSTÈME DE MISE À JOUR =======================
-    const WORKER_URL = 'https://apkhtml.ahofaly62.workers.dev';
-    const DATE_INFO_URL = WORKER_URL + '/date_mise_a_jour.txt';
-    const DB_VERSION = 19;
-    
-    // Liste de tous les fichiers à vérifier (nom unique par type) - VITAA.TXT SUPPRIME
-    const FICHIERS_A_VERIFIER = [
-        { nom: "typelecon.txt", type: "lecon", dbName: "typelecon" },
-        { nom: "pronlecon.txt", type: "lecon", dbName: "pronlecon" },
-{ nom: "moralecon.txt", type: "lecon", dbName: "moralecon" },
-        { nom: "jerelecon.txt", type: "lecon", dbName: "jerelecon" },
-        { nom: "condlecon.txt", type: "lecon", dbName: "condlecon" },
-        { nom: "andrlecon.txt", type: "lecon", dbName: "andrlecon" },
-        { nom: "pcomlecon.txt", type: "lecon", dbName: "pcomlecon" },
-        { nom: "impllecon.txt", type: "lecon", dbName: "impllecon" },
-        { nom: "futslecon.txt", type: "lecon", dbName: "futslecon" },
-        { nom: "subjlecon.txt", type: "lecon", dbName: "subjlecon" },
-        { nom: "condplecon.txt", type: "lecon", dbName: "condplecon" },
-        { nom: "pqplecon.txt", type: "lecon", dbName: "pqplecon" },
-        { nom: "francma.txt", type: "dictionnaire", dbName: "francma" },
-        { nom: "franseul.txt", type: "dialogue", dbName: "franseul" },
-        { nom: "conjugai.txt", type: "conjugaison", dbName: "conjugai" },
-        { nom: "mirelecon.txt", type: "hiresaka", dbName: "mirelecon" }
+    // Anti-copie / clic droit
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('copy', (e) => e.preventDefault());
+    document.addEventListener('cut', (e) => e.preventDefault());
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X')) || 
+            (e.metaKey && (e.key === 'c' || e.key === 'C'))) {
+            e.preventDefault();
+        }
+    });
+
+    // ------------------------- 60 QUESTIONS : AVOIR & ÊTRE (SANS INDICES PARENTHÈSES DANS L'ÉNONCÉ) -------------------------
+    // Les parenthèses comme "(avoir âge)" ont été supprimées des questions. Les explications restent dans le corrigé.
+    const FULL_QUESTION_SET = [
+        { q: "Je _____ 25 ans.", options: ["ai", "suis", "as", "est"], correct: "A", explanation: "avoir âge → j'ai 25 ans.", mg: "_____ 25 taona aho." },
+        { q: "Tu _____ très fatigué aujourd'hui.", options: ["es", "as", "est", "sont"], correct: "B", explanation: "Tu as (verbe avoir) + fatigué (expression avoir/être ? 'avoir' exprime l'état passager).", mg: "_____ tena reraka ianao androany." },
+        { q: "Elle _____ professeur de français.", options: ["a", "est", "as", "sont"], correct: "B", explanation: "Être + métier → elle est professeur.", mg: "Izy _____ mpampianatra frantsay." },
+        { q: "Nous _____ faim.", options: ["sommes", "avons", "sont", "avez"], correct: "B", explanation: "avoir faim → nous avons faim.", mg: "_____ noana izahay." },
+        { q: "Ils _____ soif après le match.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir soif → ils ont soif.", mg: "_____ mangetaheta izy ireo taorian'ny lalao." },
+        { q: "Vous _____ raison, c'est important.", options: ["avez", "êtes", "ont", "sommes"], correct: "A", explanation: "avoir raison → vous avez raison.", mg: "_____ marina ianareo." },
+        { q: "Mon frère _____ petit et blond.", options: ["a", "est", "as", "sommes"], correct: "B", explanation: "décrire avec être → il est petit.", mg: "Ny rahalahiko _____ kely ary volomparasy." },
+        { q: "Elles _____ peur du noir.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir peur → elles ont peur.", mg: "Izy ireo _____ matahotra ny maizina." },
+        { q: "Nous _____ en vacances la semaine prochaine.", options: ["avons", "sommes", "sont", "avez"], correct: "B", explanation: "être en vacances → nous sommes en vacances.", mg: "_____ fialan-tsasatra izahay amin'ny herinandro ho avy." },
+        { q: "Juliette _____ chaud, elle ouvre la fenêtre.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir chaud → elle a chaud.", mg: "Juliette _____ mafana, manokatra varavarankely izy." },
+        { q: "Ils _____ fatigués mais contents.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être fatigué → ils sont fatigués.", mg: "Izy ireo _____ reraka nefa faly." },
+        { q: "Est-ce que tu _____ sommeil ?", options: ["es", "as", "a", "est"], correct: "B", explanation: "avoir sommeil → tu as sommeil.", mg: "Manana hatory ve ianao?" },
+        { q: "Ma sœur _____ 18 ans aujourd'hui.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir âge → elle a 18 ans.", mg: "Ny rahavaviko _____ 18 taona androany." },
+        { q: "Mes parents _____ à la maison.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être à la maison → ils sont.", mg: "Ny ray aman-dreniko _____ ao an-trano." },
+        { q: "Nous _____ besoin d'aide.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir besoin → nous avons besoin.", mg: "_____ mila fanampiana izahay." },
+        { q: "Elles _____ mal à la tête.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir mal → elles ont mal.", mg: "Izy ireo _____ aretin'andoha." },
+        { q: "Vous _____ très gentils avec moi.", options: ["avez", "êtes", "ont", "sommes"], correct: "B", explanation: "être gentil → vous êtes gentils.", mg: "_____ tsara fanahy amin'ny ahy ianareo." },
+        { q: "Je _____ d'accord avec toi.", options: ["ai", "suis", "as", "est"], correct: "B", explanation: "être d'accord → je suis d'accord.", mg: "_____ manaiky anao aho." },
+        { q: "Il _____ un chien et un chat.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir un animal → il a un chien.", mg: "Izy _____ alika sy saka." },
+        { q: "Ils _____ en retard ce matin.", options: ["ont", "sont", "avons", "es"], correct: "B", explanation: "être en retard → ils sont en retard.", mg: "Izy ireo _____ tara maraina." },
+        { q: "Nous _____ de la chance d'être ici.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir de la chance → nous avons.", mg: "_____ vintana izahay ny eto." },
+        { q: "Tu _____ un excellent cuisinier.", options: ["es", "as", "est", "sont"], correct: "A", explanation: "être cuisinier → tu es cuisinier.", mg: "Ianao _____ mpahandro tena tsara." },
+        { q: "Elle _____ horreur des araignées.", options: ["est", "a", "as", "ont"], correct: "B", explanation: "avoir horreur → elle a horreur.", mg: "Izy _____ horohoro amin'ny hala." },
+        { q: "Les enfants _____ fatigués.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être fatigués → ils sont.", mg: "Ny ankizy _____ reraka." },
+        { q: "Paul _____ l'air fatigué.", options: ["a", "est", "as", "sont"], correct: "A", explanation: "avoir l'air → Paul a l'air fatigué.", mg: "Paul _____ toa reraka." },
+        { q: "Nous _____ prêts à partir.", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être prêt → nous sommes prêts.", mg: "_____ vonona ny handeha izahay." },
+        { q: "Ils _____ 10 euros en poche.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir argent → ils ont 10 euros.", mg: "Izy ireo _____ 10 euros ao am-paosy." },
+        { q: "Tu _____ le meilleur !", options: ["as", "es", "est", "sont"], correct: "B", explanation: "être le meilleur → tu es.", mg: "Ianao _____ tsara indrindra !" },
+        { q: "Je n' _____ pas peur des chiens.", options: ["es", "ai", "suis", "est"], correct: "B", explanation: "négation avoir peur → je n'ai pas peur.", mg: "Tsy _____ matahotra alika aho." },
+        { q: "Marie et Luc _____ mariés.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être mariés → ils sont mariés.", mg: "Marie sy Luc _____ manambady." },
+        { q: "Elle _____ soif, donne-lui de l'eau.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir soif → elle a soif.", mg: "Izy _____ mangetaheta, omeo rano izy." },
+        { q: "Nous _____ contents de vous voir.", options: ["avons", "sommes", "sont", "avez"], correct: "B", explanation: "être content → nous sommes contents.", mg: "_____ faly mahita anareo izahay." },
+        { q: "Mes clés _____ sur la table.", options: ["ont", "sont", "sommes", "est"], correct: "B", explanation: "être sur la table → elles sont.", mg: "Ny lakileko _____ eo ambony latabatra." },
+        { q: "Il _____ 3 heures de train.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir durée → il a 3 heures de train.", mg: "Manana _____ 3 ora fiaran-dalamby izy." },
+        { q: "Tu _____ quel âge ?", options: ["es", "as", "a", "est"], correct: "B", explanation: "avoir âge → tu as quel âge ?", mg: "Firy taona _____ ianao ?" },
+        { q: "Nous _____ mal au dos.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir mal → nous avons mal.", mg: "_____ marary lamosina izahay." },
+        { q: "Les filles _____ bavardes.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être bavard → elles sont bavardes.", mg: "Ny zazavavy _____ mpiresaka." },
+        { q: "Vous _____ froid ? Fermez la porte.", options: ["êtes", "avez", "ont", "sommes"], correct: "B", explanation: "avoir froid → vous avez froid.", mg: "_____ mangatsiaka ve ianareo ? Akatony varavarana." },
+        { q: "Je _____ un rendez-vous demain.", options: ["suis", "ai", "es", "est"], correct: "B", explanation: "avoir un rendez-vous.", mg: "Manana _____ fotoana rahampitso aho." },
+        { q: "Elles _____ très intelligentes.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être intelligentes.", mg: "Izy ireo _____ manan-tsaina." },
+        { q: "Tu n' _____ pas tort, c'est vrai.", options: ["es", "as", "a", "sont"], correct: "B", explanation: "avoir tort (négatif) → tu n'as pas tort.", mg: "Tsy _____ diso ianao, marina izany." },
+        { q: "Mon téléphone _____ mort.", options: ["a", "est", "as", "ont"], correct: "B", explanation: "être mort → mon téléphone est mort.", mg: "Ny findaiko _____ maty." },
+        { q: "Nous _____ une grande famille.", options: ["sommes", "avons", "sont", "est"], correct: "B", explanation: "avoir une famille → nous avons.", mg: "Manana _____ fianakaviana lehibe izahay." },
+        { q: "Ils _____ en forme aujourd'hui.", options: ["ont", "sont", "avons", "es"], correct: "B", explanation: "être en forme → ils sont en forme.", mg: "Izy ireo _____ salama androany." },
+        { q: "Il _____ toujours le sourire.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir le sourire → il a le sourire.", mg: "Izy _____ tsiky mandrakariva." },
+        { q: "Vous n' _____ pas encore partis ?", options: ["avez", "êtes", "ont", "sommes"], correct: "B", explanation: "être partis (négation) → vous n'êtes pas partis.", mg: "Tsy _____ mbola nandeha ve ianareo ?" },
+        { q: "Elle _____ des cheveux longs.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir les cheveux longs.", mg: "Izy _____ volo lava." },
+        { q: "Nous _____ fatigués de voyager.", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être fatigué → nous sommes fatigués.", mg: "_____ reraka amin'ny dia izahay." },
+        { q: "Ils _____ peur de rater l'examen.", options: ["sont", "ont", "avons", "as"], correct: "B", explanation: "avoir peur → ils ont peur.", mg: "Izy ireo _____ matahotra ny tsy hahomby amin'ny fanadinana." },
+        { q: "Tu _____ super sympa !", options: ["as", "es", "a", "est"], correct: "B", explanation: "être sympa → tu es sympa.", mg: "Ianao _____ tena tsara fanahy!" },
+        { q: "Nous _____ à l'heure, ouf !", options: ["avons", "sommes", "sont", "est"], correct: "B", explanation: "être à l'heure.", mg: "_____ tonga ara-potoana izahay, soa!" },
+        { q: "Les nuages _____ noirs.", options: ["ont", "sont", "avons", "est"], correct: "B", explanation: "être noirs → ils sont noirs.", mg: "Ny rahona _____ mainty." },
+        { q: "Il _____ un bon salaire.", options: ["est", "a", "as", "sont"], correct: "B", explanation: "avoir un salaire.", mg: "Manana _____ karama tsara izy." },
+        { q: "Vous _____ des idées géniales.", options: ["êtes", "avez", "sont", "sommes"], correct: "B", explanation: "avoir des idées.", mg: "Manana _____ hevitra tsara ianareo." },
+        { q: "Je _____ fatigué, je vais dormir.", options: ["ai", "suis", "as", "est"], correct: "B", explanation: "être fatigué → je suis fatigué.", mg: "_____ reraka aho, hatory aho." },
+        { q: "On _____ faim !", options: ["a", "est", "as", "sont"], correct: "A", explanation: "On a faim (avoir faim).", mg: "_____ noana isika !" },
+        { q: "Les enfants _____ soif après le foot.", options: ["sont", "ont", "avons", "est"], correct: "B", explanation: "avoir soif → ils ont soif.", mg: "Ny ankizy _____ mangetaheta aorian'ny baolina." },
+        { q: "Paul et toi _____ des amis formidables.", options: ["êtes", "avez", "sont", "sommes"], correct: "A", explanation: "être des amis → vous êtes.", mg: "Paul sy ianao _____ namana mahafinaritra." },
+        { q: "Je _____ 10 ans de moins que toi.", options: ["suis", "ai", "es", "est"], correct: "B", explanation: "avoir âge / différence → j'ai 10 ans de moins.", mg: "Manana _____ 10 taona latsaka noho ianao aho." }
     ];
     
-    // Cache des versions stockées localement
-    let cacheVersions = {};
+    const TOTAL = 60;
+    let questions = [...FULL_QUESTION_SET.slice(0, TOTAL)];
     
-    // ======================= FONCTIONS DE NOTIFICATION =======================
-    function showUpdateNotification(message, isError = false, duration = 5000) {
-        const existingNotif = document.querySelector('.update-notification');
-        if (existingNotif) existingNotif.remove();
-        
-        const notif = document.createElement('div');
-        notif.className = `update-notification ${isError ? 'error' : ''}`;
-        notif.innerHTML = isError ? `⚠️ ${message}` : `✅ ${message}`;
-        document.body.appendChild(notif);
-        
-        setTimeout(() => {
-            if (notif.parentNode) notif.remove();
-        }, duration);
+    let currentIdx = 0;
+    let userSelections = new Array(TOTAL).fill(null);
+    let isLocked = new Array(TOTAL).fill(false);
+    let currentScore = 0;
+    let quizFinished = false;
+    
+    const questionBlock = document.getElementById('questionBlock');
+    const finalContainer = document.getElementById('finalReportContainer');
+    const qCounterSpan = document.getElementById('qCounter');
+    const liveScoreSpan = document.getElementById('liveScore');
+    const downloadBtn = document.getElementById('downloadFileBtn');
+    const motivationDiv = document.getElementById('motivationMessage');
+    
+    function updateScoreUI() {
+        liveScoreSpan.innerText = `🎯 Score : ${currentScore} / ${TOTAL}`;
     }
     
-    // ======================= INDEXEDDB POUR LE SYSTÈME DE MISE À JOUR =======================
-    function ouvrirDB(nomDB) {
-        return new Promise((resolve, reject) => {
-            const request = indexedDB.open(nomDB, DB_VERSION);
-            request.onerror = () => reject(request.error);
-            request.onsuccess = (event) => resolve(event.target.result);
-            request.onupgradeneeded = (event) => {
-                const db = event.target.result;
-                if (!db.objectStoreNames.contains('contenu')) {
-                    db.createObjectStore('contenu');
-                }
-                if (!db.objectStoreNames.contains('version')) {
-                    db.createObjectStore('version');
-                }
-            };
-        });
-    }
-    
-    async function stockerContenuEtVersion(nomDB, contenu, version) {
-        const db = await ouvrirDB(nomDB);
-        return new Promise((resolve, reject) => {
-            const transaction = db.transaction(['contenu', 'version'], 'readwrite');
-            transaction.objectStore('contenu').put(contenu, 'htmlContent');
-            transaction.objectStore('version').put(version, 'versionDate');
-            transaction.oncomplete = () => resolve();
-            transaction.onerror = () => reject(transaction.error);
-        });
-    }
-    
-    async function recupererVersion(nomDB) {
-        try {
-            const db = await ouvrirDB(nomDB);
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction(['version'], 'readonly');
-                const request = transaction.objectStore('version').get('versionDate');
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        } catch {
-            return null;
-        }
-    }
-    
-    async function recupererContenu(nomDB) {
-        try {
-            const db = await ouvrirDB(nomDB);
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction(['contenu'], 'readonly');
-                const request = transaction.objectStore('contenu').get('htmlContent');
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        } catch {
-            return null;
-        }
-    }
-    
-    // ======================= RÉCUPÉRATION DATE VERSION DEPUIS WORKER =======================
-    async function getRemoteVersionDate(nomFichier) {
-        try {
-            const response = await fetch(DATE_INFO_URL, { cache: 'no-cache' });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const content = await response.text();
-            
-            const blocks = content.split(/DERNIÈRE MISE À JOUR/);
-            
-            for (const block of blocks) {
-                const fileMatch = block.match(/📁 Fichier:\s*([^\n]+)/);
-                if (fileMatch && fileMatch[1].trim() === nomFichier) {
-                    const dateMatch = block.match(/📆\s*([\d\/]+\s+[\d:]+)/);
-                    if (dateMatch) {
-                        return dateMatch[1].trim();
-                    }
-                    const dayMatch = block.match(/📅\s*([\d\/]+)/);
-                    const timeMatch = block.match(/⏰\s*([\d:]+)/);
-                    if (dayMatch && timeMatch) {
-                        return `${dayMatch[1]} ${timeMatch[1]}`;
-                    }
-                }
-            }
-            return null;
-        } catch (error) {
-            console.error(`Erreur récupération date pour ${nomFichier}:`, error);
-            return null;
-        }
-    }
-    
-    // ======================= TÉLÉCHARGER UN FICHIER =======================
-    async function telechargerFichier(nomFichier) {
-        const url = `${WORKER_URL}/${nomFichier}`;
-        const response = await fetch(url, { cache: 'no-cache' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const content = await response.text();
-        if (!content || content.length < 50) throw new Error("Contenu invalide");
-        return content;
-    }
-    
-    // ======================= VÉRIFIER ET METTRE À JOUR UN SEUL FICHIER =======================
-    async function verifierEtMettreAJourFichier(fichierInfo, afficherNotification = false) {
-        const { nom, dbName } = fichierInfo;
-        
-        try {
-            console.log(`🔍 Vérification de ${nom}...`);
-            
-            const remoteVersion = await getRemoteVersionDate(nom);
-            if (!remoteVersion) {
-                console.log(`⚠️ Pas de version trouvée pour ${nom}`);
-                return false;
-            }
-            
-            const storedVersion = await recupererVersion(dbName);
-            
-            if (storedVersion && storedVersion === remoteVersion) {
-                console.log(`✅ ${nom} à jour (${remoteVersion})`);
-                return true;
-            }
-            
-            console.log(`🆕 Nouvelle version de ${nom} détectée: ${storedVersion} → ${remoteVersion}`);
-            
-            const nouveauContenu = await telechargerFichier(nom);
-            await stockerContenuEtVersion(dbName, nouveauContenu, remoteVersion);
-            
-            if (afficherNotification) {
-                showUpdateNotification(`${nom} mis à jour (${remoteVersion})`);
-            }
-            
-            return true;
-            
-        } catch (error) {
-            console.error(`❌ Erreur mise à jour ${nom}:`, error);
-            if (afficherNotification) {
-                showUpdateNotification(`Erreur: ${nom}`, true);
-            }
-            return false;
-        }
-    }
-    
-    // ======================= VÉRIFIER TOUS LES FICHIERS SÉQUENTIELLEMENT =======================
-    async function verifierTousLesFichiers() {
-        console.log("🚀 Début de la vérification de tous les fichiers...");
-        
-        for (const fichier of FICHIERS_A_VERIFIER) {
-            try {
-                await verifierEtMettreAJourFichier(fichier, false);
-                // Petit délai entre les vérifications pour ne pas surcharger
-                await new Promise(r => setTimeout(r, 500));
-            } catch (error) {
-                console.error(`Erreur sur ${fichier.nom}:`, error);
-            }
-        }
-        
-        console.log("✅ Vérification terminée");
-        showUpdateNotification("Tous les contenus sont à jour !");
-    }
-    
-    // ======================= FONCTION POUR CHARGER UN FICHIER (AVEC VÉRIFICATION CACHE) =======================
-    async function chargerFichierAvecCache(nomFichier, dbName) {
-        // Vérifier d'abord dans IndexedDB
-        let contenu = await recupererContenu(dbName);
-        
-        if (contenu) {
-            return contenu;
-        }
-        
-        // Sinon télécharger
-        try {
-            contenu = await telechargerFichier(nomFichier);
-            const version = await getRemoteVersionDate(nomFichier);
-            if (version) {
-                await stockerContenuEtVersion(dbName, contenu, version);
-            }
-            return contenu;
-        } catch (error) {
-            console.error(`Erreur chargement ${nomFichier}:`, error);
-            return null;
-        }
-    }
-    
-    // ======================= LE RESTE DU CODE ORIGINAL (ADAPTÉ) =======================
-    let originalPageUrl = window.location.href;
-    let historiqueNavigation = [];
-    
-    let dernierContexte = {
-        leconTitre: null,
-        code4: null,
-        niveau: null
-    };
-    
-    const exercicesEcrits = [
-        { nom: "QCM", code: "qcm", description: "Choisir la bonne réponse parmi plusieurs propositions." },
-        { nom: "Malala", code: "mal", description: "Exercice spécial Malala - Choix multiples." },
-        { nom: "Vrai ou Faux", code: "vra", description: "Indiquer si une affirmation est correcte ou non." },
-        { nom: "Texte à trous", code: "tex", description: "Compléter les mots manquants." },
-        { nom: "Association", code: "ass", description: "Associer les éléments entre eux." }
-    ];
-    
-    function get4Caracteres(titre) {
-        let nettoye = titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        nettoye = nettoye.replace(/[^a-zA-Z0-9]/g, "");
-        return nettoye.substring(0, 4).toLowerCase();
-    }
-    
-    async function stockerEnIndexedDB(nomFichier, contenuHTML) {
-        // Utiliser le même système que la mise à jour
-        const dbName = nomFichier.replace('.txt', '');
-        const version = new Date().toLocaleString('fr-FR');
-        await stockerContenuEtVersion(dbName, contenuHTML, version);
-    }
-    
-    async function getFromIndexedDB(nomBase) {
-        return await recupererContenu(nomBase);
-    }
-    
-    function sauvegarderContexte(leconTitre, code4, niveau) {
-        dernierContexte = {
-            leconTitre: leconTitre,
-            code4: code4,
-            niveau: niveau,
-            timestamp: Date.now()
-        };
-        localStorage.setItem('dernierContexteExercice', JSON.stringify(dernierContexte));
-        localStorage.setItem('pagePrincipaleUrl', originalPageUrl);
-    }
-    
-    function sauvegarderContexteLecon(leconTitre, nomFichier) {
-        localStorage.setItem('dernierContexteLecon', JSON.stringify({
-            leconTitre: leconTitre,
-            nomFichier: nomFichier,
-            timestamp: Date.now()
-        }));
-        localStorage.setItem('pagePrincipaleUrl', originalPageUrl);
-    }
-    
-    function revenirAListeExercices() {
-        const contexteStr = localStorage.getItem('dernierContexteExercice');
-        if (contexteStr) {
-            const contexte = JSON.parse(contexteStr);
-            if (contexte.leconTitre) {
-                window.location.href = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-                return;
-            }
-        }
-        window.history.back();
-    }
-    
-    function revenirApresLecon() {
-        window.location.href = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-    }
-    
-    function revenirAccueil() {
-        window.location.href = originalPageUrl;
-    }
-    
-    function injecterBarreNavigation(leconTitre, typeExercice) {
-        setTimeout(() => {
-            if (document.getElementById('floatingNavBar')) return;
-            
-            const navBar = document.createElement('div');
-            navBar.id = 'floatingNavBar';
-            navBar.className = 'floating-nav-bar';
-            navBar.innerHTML = `
-                <button class="btn-back" id="backToListBtn"><i class="fas fa-arrow-left"></i> ← Liste des exercices</button>
-                <button id="backToHomeBtn"><i class="fas fa-home"></i> Accueil</button>
-            `;
-            document.body.appendChild(navBar);
-            
-            document.getElementById('backToListBtn').addEventListener('click', () => revenirAListeExercices());
-            document.getElementById('backToHomeBtn').addEventListener('click', () => revenirAccueil());
-            
-            window.addEventListener('popstate', function(event) { revenirAListeExercices(); });
-            history.pushState({ page: "exercice" }, "Exercice", window.location.href);
-        }, 100);
-    }
-    
-    function injecterBarreNavigationLecon(leconTitre) {
-        setTimeout(() => {
-            if (document.getElementById('floatingNavBar')) return;
-            
-            const navBar = document.createElement('div');
-            navBar.id = 'floatingNavBar';
-            navBar.className = 'floating-nav-bar';
-            navBar.innerHTML = `
-                <button class="btn-back" id="backToLeconsBtn"><i class="fas fa-arrow-left"></i> ← Retour aux leçons</button>
-                <button id="backToHomeBtn"><i class="fas fa-home"></i> Accueil</button>
-            `;
-            document.body.appendChild(navBar);
-            
-            document.getElementById('backToLeconsBtn').addEventListener('click', () => revenirApresLecon());
-            document.getElementById('backToHomeBtn').addEventListener('click', () => revenirAccueil());
-            
-            window.addEventListener('popstate', function(event) { revenirApresLecon(); });
-            history.pushState({ page: "lecon" }, "Lecon", window.location.href);
-        }, 100);
-    }
-    
-    async function chargerLecon(titre, nomFichier, urlComplet, contenuDefaut) {
-        historiqueNavigation.push({ type: 'lecon', titre: titre });
-        
-        const modal = document.createElement('div');
-        modal.className = 'modal-fullscreen';
-        modal.innerHTML = `
-            <div class="modal-fullscreen-header">
-                <h2><i class="fas fa-book-open"></i> Chargement - ${titre}</h2>
-                <button class="btn-close-fullscreen" id="closeLoadingBtn">✕</button>
-            </div>
-            <div class="modal-fullscreen-body" style="display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center;">
-                    <i class="fas fa-spinner fa-pulse" style="font-size: 3rem; color: #1d4e6e;"></i>
-                    <p style="margin-top: 20px;">Chargement de ${nomFichier}...</p>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        const closeBtn = modal.querySelector('#closeLoadingBtn');
-        closeBtn.addEventListener('click', () => modal.remove());
-        
-        try {
-            let contenu = await recupererContenu(nomFichier.replace('.txt', ''));
-            
-            if (!contenu) {
-                const response = await fetch(urlComplet);
-                if (!response.ok) throw new Error(`Fichier non trouvé (HTTP ${response.status})`);
-                contenu = await response.text();
-                await stockerEnIndexedDB(nomFichier, contenu);
-            }
-            
-            modal.remove();
-            
-            const blob = new Blob([contenu], { type: 'text/html' });
-            const blobUrl = URL.createObjectURL(blob);
-            
-            sauvegarderContexteLecon(titre, nomFichier);
-            
-            window.location.href = blobUrl;
-            
-        } catch (error) {
-            modal.remove();
-            
-            const errorModal = document.createElement('div');
-            errorModal.className = 'modal-fullscreen';
-            errorModal.innerHTML = `
-                <div class="modal-fullscreen-header">
-                    <h2><i class="fas fa-exclamation-triangle"></i> Erreur</h2>
-                    <button class="btn-close-fullscreen" id="closeErrorBtn">✕</button>
-                </div>
-                <div class="modal-fullscreen-body">
-                    <div class="error-notification">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>❌ Cours non disponible</strong></p>
-                        <div class="error-filename">Fichier: ${nomFichier}</div>
-                        <p>Pour créer ce cours, nommez le fichier : <strong>${nomFichier}</strong></p>
-                        <div class="default-cours"><strong>📖 Contenu par défaut :</strong><br><br>${contenuDefaut}</div>
-                        <button class="btn-retour" id="closeErrorModalBtn" style="margin-top: 20px;">Fermer</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(errorModal);
-            
-            const closeError = () => errorModal.remove();
-            errorModal.querySelector('#closeErrorBtn')?.addEventListener('click', closeError);
-            errorModal.querySelector('#closeErrorModalBtn')?.addEventListener('click', closeError);
-        }
-    }
-    
-    async function chargerHiresaka() {
-        const titre = "Hiresaka mivantana";
-        const nomFichier = "mirelecon.txt";
-        const urlComplet = `https://apkhtml.ahofaly62.workers.dev/${nomFichier}`;
-        const contenuDefaut = "Contenu de Hiresaka mivantana. Créez le fichier mirelecon.txt avec le contenu souhaité.";
-        
-        historiqueNavigation.push({ type: 'lecon', titre: titre });
-        
-        const modal = document.createElement('div');
-        modal.className = 'modal-fullscreen';
-        modal.innerHTML = `
-            <div class="modal-fullscreen-header">
-                <h2><i class="fas fa-comments"></i> Chargement - ${titre}</h2>
-                <button class="btn-close-fullscreen" id="closeLoadingBtn">✕</button>
-            </div>
-            <div class="modal-fullscreen-body" style="display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center;">
-                    <i class="fas fa-spinner fa-pulse" style="font-size: 3rem; color: #1d4e6e;"></i>
-                    <p style="margin-top: 20px;">Chargement de ${nomFichier}...</p>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        const closeBtn = modal.querySelector('#closeLoadingBtn');
-        closeBtn.addEventListener('click', () => modal.remove());
-        
-        try {
-            let contenu = await recupererContenu("mirelecon");
-            
-            if (!contenu) {
-                const response = await fetch(urlComplet);
-                if (!response.ok) throw new Error(`Fichier non trouvé (HTTP ${response.status})`);
-                contenu = await response.text();
-                await stockerEnIndexedDB(nomFichier, contenu);
-            }
-            
-            modal.remove();
-            
-            const blob = new Blob([contenu], { type: 'text/html' });
-            const blobUrl = URL.createObjectURL(blob);
-            
-            sauvegarderContexteLecon(titre, nomFichier);
-            
-            window.location.href = blobUrl;
-            
-        } catch (error) {
-            modal.remove();
-            
-            const errorModal = document.createElement('div');
-            errorModal.className = 'modal-fullscreen';
-            errorModal.innerHTML = `
-                <div class="modal-fullscreen-header">
-                    <h2><i class="fas fa-exclamation-triangle"></i> Erreur</h2>
-                    <button class="btn-close-fullscreen" id="closeErrorBtn">✕</button>
-                </div>
-                <div class="modal-fullscreen-body">
-                    <div class="error-notification">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>❌ Cours non disponible</strong></p>
-                        <div class="error-filename">Fichier: ${nomFichier}</div>
-                        <p>Pour créer ce cours, nommez le fichier : <strong>${nomFichier}</strong></p>
-                        <div class="default-cours"><strong>📖 Contenu par défaut :</strong><br><br>${contenuDefaut}</div>
-                        <button class="btn-retour" id="closeErrorModalBtn" style="margin-top: 20px;">Fermer</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(errorModal);
-            
-            const closeError = () => errorModal.remove();
-            errorModal.querySelector('#closeErrorBtn')?.addEventListener('click', closeError);
-            errorModal.querySelector('#closeErrorModalBtn')?.addEventListener('click', closeError);
-        }
-    }
-    
-    function removeExistingModals() {
-        const existingModals = document.querySelectorAll('.modal-fullscreen');
-        existingModals.forEach(modal => modal.remove());
-    }
-    
-    function afficherListeExercices(leconTitre, niveau) {
-        removeExistingModals();
-        
-        const modal = document.createElement('div');
-        modal.className = 'modal-fullscreen';
-        const code4 = get4Caracteres(leconTitre);
-        
-        let ecritHtml = '';
-        exercicesEcrits.forEach(exo => {
-            const nomFichier = `${code4}${exo.code}.txt`;
-            ecritHtml += `
-                <div class="exo-card" data-type="${exo.nom}" data-code="${exo.code}" data-lecon="${leconTitre.replace(/"/g, '&quot;')}" data-niveau="${niveau}">
-                    <div style="font-weight: 700; font-size: 1rem;">📝 ${exo.nom}</div>
-                    <div style="font-size: 0.8rem; color: #475569;">${exo.description}</div>
-                    <div style="font-size: 0.7rem; color: #888; margin-top: 5px;">📄 Fichier: <code>${nomFichier}</code></div>
-                </div>
-            `;
-        });
-        
-        modal.innerHTML = `
-            <div class="modal-fullscreen-header">
-                <h2><i class="fas fa-tasks"></i> Types d'exercices · ${leconTitre}</h2>
-                <button class="btn-close-fullscreen" id="closeModalBtn">✕</button>
-            </div>
-            <div class="modal-fullscreen-body">
-                <div style="max-width: 700px; margin: 0 auto;">
-                    <div style="margin-bottom: 1rem;">
-                        <h3 style="color: #1e3c72;"><i class="fas fa-pen-fancy"></i> Exercices écrits</h3>
-                        <p style="font-size: 0.8rem; color: #666;">Format des fichiers : <code>XXXXcode.txt</code> (ex: <code>${code4}qcm.txt</code>)</p>
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">🔑 Code de la leçon : <strong>${code4}</strong></p>
-                    </div>
-                    <div id="exercicesList">${ecritHtml}</div>
-                    <button class="btn-retour" id="backToLeconsBtn" style="margin-top: 20px; background: #6c757d;">← Retour aux leçons</button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        document.getElementById('backToLeconsBtn')?.addEventListener('click', () => { modal.remove(); });
-        
-        modal.querySelectorAll('.exo-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const code = this.getAttribute('data-code');
-                const lecon = this.getAttribute('data-lecon');
-                const niveauCard = this.getAttribute('data-niveau');
-                modal.remove();
-                telechargerEtOuvrirExercice(lecon, code, niveauCard);
-            });
-        });
-        
-        const closeBtn = modal.querySelector('#closeModalBtn');
-        if (closeBtn) closeBtn.addEventListener('click', () => modal.remove());
-    }
-    
-    async function telechargerEtOuvrirExercice(leconTitre, typeCode, niveau) {
-        const code4 = get4Caracteres(leconTitre);
-        const nomFichier = `${code4}${typeCode}.txt`;
-        const url = `https://apkhtml.ahofaly62.workers.dev/${nomFichier}`;
-        
-        sauvegarderContexte(leconTitre, code4, niveau);
-        
-        const modal = document.createElement('div');
-        modal.className = 'modal-fullscreen';
-        modal.innerHTML = `
-            <div class="modal-fullscreen-header">
-                <h2><i class="fas fa-download"></i> Téléchargement - ${leconTitre}</h2>
-                <button class="btn-close-fullscreen" id="closeLoadingBtn">✕</button>
-            </div>
-            <div class="modal-fullscreen-body" style="display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center;">
-                    <i class="fas fa-spinner fa-pulse" style="font-size: 3rem; color: #1d4e6e;"></i>
-                    <p style="margin-top: 20px;">Téléchargement de ${nomFichier}...</p>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        const closeBtn = modal.querySelector('#closeLoadingBtn');
-        closeBtn.addEventListener('click', () => modal.remove());
-        
-        try {
-            let contenu = await recupererContenu(nomFichier.replace('.txt', ''));
-            
-            if (!contenu) {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`Fichier non trouvé (HTTP ${response.status})`);
-                contenu = await response.text();
-                await stockerEnIndexedDB(nomFichier, contenu);
-            }
-            
-            modal.remove();
-            
-            const blob = new Blob([contenu], { type: 'text/html' });
-            const blobUrl = URL.createObjectURL(blob);
-            
-            sessionStorage.setItem('exerciceInfo', JSON.stringify({
-                leconTitre: leconTitre,
-                typeCode: typeCode,
-                typeNom: exercicesEcrits.find(e => e.code === typeCode)?.nom || typeCode,
-                niveau: niveau
-            }));
-            
-            window.location.href = blobUrl;
-            
-        } catch (error) {
-            modal.remove();
-            
-            const errorModal = document.createElement('div');
-            errorModal.className = 'modal-fullscreen';
-            errorModal.innerHTML = `
-                <div class="modal-fullscreen-header">
-                    <h2><i class="fas fa-exclamation-triangle"></i> Erreur</h2>
-                    <button class="btn-close-fullscreen" id="closeErrorBtn">✕</button>
-                </div>
-                <div class="modal-fullscreen-body">
-                    <div class="error-notification">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>❌ Fichier non trouvé</strong></p>
-                        <div class="error-filename">${nomFichier}</div>
-                        <button class="btn-retour" id="closeErrorModalBtn">Fermer</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(errorModal);
-            
-            const closeError = () => errorModal.remove();
-            errorModal.querySelector('#closeErrorBtn')?.addEventListener('click', closeError);
-            errorModal.querySelector('#closeErrorModalBtn')?.addEventListener('click', closeError);
-        }
-    }
-    
-    function genererListeLecons(lecons, containerId, rondClass, urlPrefix = 'https://apkhtml.ahofaly62.workers.dev/', niveau = '') {
-        let html = `<div class="liste-matiere">`;
-        lecons.forEach(lecon => {
-            const nomFichier = lecon.fichier;
-            const urlComplet = urlPrefix + nomFichier;
-            const code4 = get4Caracteres(lecon.titre);
-            html += `
-                <div class="bloc-theme">
-                    <div class="lecon-click" data-fichier="${nomFichier}" data-titre="${lecon.titre}" data-url="${urlComplet}" data-defaut="${lecon.defaut.replace(/"/g, '&quot;')}">
-                        <div class="titre-rond">
-                            <span class="${rondClass}">${lecon.id}</span>
-                            <span class="nom-theme">${lecon.titre}</span>
-                        </div>
-                        <div class="sous-accroche">${lecon.description} <span style="font-size: 0.65rem;">(${nomFichier})</span></div>
-                    </div>
-                    <div class="barre-exercice" data-lecon-titre="${lecon.titre}" data-lecon-code="${code4}" data-niveau="${niveau}">
-                        <span class="texte-exo">✏️ EXERCICES — ${lecon.titre}</span>
-                    </div>
-                </div>
-            `;
-        });
-        html += `</div><div class="footer-info">📘 Cliquez sur la leçon pour voir le cours | ✏️ Cliquez sur EXERCICES pour choisir un type</div>`;
-        document.getElementById(containerId).innerHTML = html;
-        
-        document.querySelectorAll(`#${containerId} .lecon-click`).forEach(el => {
-            el.addEventListener('click', () => {
-                const fichier = el.getAttribute('data-fichier');
-                const titre = el.getAttribute('data-titre');
-                const url = el.getAttribute('data-url');
-                const defaut = el.getAttribute('data-defaut');
-                chargerLecon(titre, fichier, url, defaut);
-            });
-        });
-        
-        document.querySelectorAll(`#${containerId} .barre-exercice`).forEach(el => {
-            el.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const leconTitre = el.getAttribute('data-lecon-titre');
-                const niveauCard = el.getAttribute('data-niveau');
-                afficherListeExercices(leconTitre, niveauCard);
-            });
-        });
-    }
-    
-    const leconsDebutant = [
-        { id: 1, titre: "Types de phrases", fichier: "typelecon.txt", description: "Phrase affirmative, exclamative, interrogative", defaut: "4 types : déclarative, interrogative, exclamative, impérative." },
-        { id: 2, titre: "Pronoms possessifs", fichier: "pronlecon.txt", description: "le mien, la tienne...", defaut: "Remplacent nom + possesseur. Ex: le mien, la tienne, les siens." },
-        { id: 3, titre: "Conditionnel", fichier: "condlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
-        { id: 4, titre: "andrana", fichier: "andrlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
-        { id: 5, titre: "JERENA FA LESONA", fichier: "jerelecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
-        { id: 8, titre: "MORANA", fichier: "moralecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." }
-    ];//eo aloha
-    
-    const leconsIntermediaire = [
-        { id: 1, titre: "Passé composé", fichier: "pcomlecon.txt", description: "Former le passé composé", defaut: "Auxiliaire avoir/être + participe passé." },
-        { id: 2, titre: "Imparfait", fichier: "impllecon.txt", description: "Description au passé", defaut: "Radical nous présent + ais, ais, ait, ions, iez, aient." },
-        { id: 3, titre: "Futur simple", fichier: "futslecon.txt", description: "Exprimer l'avenir", defaut: "Infinitif + ai, as, a, ons, ez, ont." }
-    ];
-    
-    const leconsAvance = [
-        { id: 1, titre: "Subjonctif présent", fichier: "subjlecon.txt", description: "Emploi et conjugaison", defaut: "Que je parle, que tu parles, qu'il parle..." },
-        { id: 2, titre: "Conditionnel passé", fichier: "condplecon.txt", description: "Hypothèse non réalisée", defaut: "Aurais parlé, serais allé." },
-        { id: 3, titre: "Plus-que-parfait", fichier: "pqplecon.txt", description: "Antériorité dans le passé", defaut: "Auxiliaire à l'imparfait + participe passé." }
-    ];
-    
-    const dictionnaireLecons = [
-        { id: 1, titre: "📖 Dictionnaire Français ⇄ Malagasy", fichier: "francma.txt", description: "Dictionnaire bilingue complet", defaut: "Dictionnaire non disponible." }
-    ];
-    
-    const conjugaisonLecons = [
-        { id: 1, titre: "📘 Conjugaison des verbes français", fichier: "conjugai.txt", description: "Conjugaison complète", defaut: "Conjugaison non disponible." }
-    ];
-    
-    const dialoguerLecons = [
-        { id: 1, titre: "💬 Dialogue Français & Malagasy", fichier: "francma.txt", description: "Dialogues bilingues", defaut: "Dialogue bilingue non disponible." },
-        { id: 2, titre: "💬 Dialogue Français seulement", fichier: "franseul.txt", description: "Dialogues uniquement en français", defaut: "Dialogue français seul non disponible." }
-    ];
-    
-    async function stockerImage(url, blob) {
-        return new Promise((resolve) => {
-            const request = indexedDB.open('image_cache', 7);
-            request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains('images')) e.target.result.createObjectStore('images'); };
-            request.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction('images', 'readwrite');
-                tx.objectStore('images').put(blob, url);
-                tx.oncomplete = () => { db.close(); resolve(); };
-            };
-        });
-    }
-    
-    async function chargerImage(element, url) {
-        const request = indexedDB.open('image_cache', 7);
-        request.onsuccess = async (e) => {
-            const db = e.target.result;
-            if (db.objectStoreNames.contains('images')) {
-                const tx = db.transaction('images', 'readonly');
-                const store = tx.objectStore('images');
-                const get = store.get(url);
-                get.onsuccess = () => {
-                    if (get.result) {
-                        element.src = URL.createObjectURL(get.result);
-                        db.close();
-                        return;
-                    }
-                    db.close();
-                    fetch(url).then(res => res.blob()).then(blob => { stockerImage(url, blob); element.src = URL.createObjectURL(blob); }).catch(() => element.src = url);
-                };
+    function showPalierMotivation(answeredCount, currentScoreValue) {
+        if (answeredCount === 20) {
+            if (currentScoreValue >= 15) {
+                motivationDiv.innerHTML = "🎉 FÉLICITATIONS ! Excellent début ! Plus de 15 bonnes réponses sur 20. Continuez ! 🌟";
+                motivationDiv.style.display = "block";
             } else {
-                db.close();
-                fetch(url).then(res => res.blob()).then(blob => { stockerImage(url, blob); element.src = URL.createObjectURL(blob); }).catch(() => element.src = url);
+                motivationDiv.innerHTML = "💪 Du courage ! Moins de 15 bonnes réponses, mais réviser les verbes 'avoir' et 'être' (âge, expressions) vous aidera ! 📚";
+                motivationDiv.style.display = "block";
             }
-        };
-    }
-    
-    function showScreen(screenName) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        const screens = { accueil:'screenAccueil', debutant:'screenDebutant', intermediaire:'screenIntermediaire', avance:'screenAvance', dictionnaire:'screenDictionnaire', conjugaison:'screenConjugaison', dialoguer:'screenDialoguer' };
-        document.getElementById(screens[screenName])?.classList.add('active');
-        historiqueNavigation.push({ type: 'screen', name: screenName });
-        
-        if (screenName === 'dictionnaire') genererListeLecons(dictionnaireLecons, 'dictionnaireContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'dictionnaire');
-        if (screenName === 'conjugaison') genererListeLecons(conjugaisonLecons, 'conjugaisonContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'conjugaison');
-        if (screenName === 'dialoguer') genererListeLecons(dialoguerLecons, 'dialoguerContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'dialoguer');
-    }
-    
-    function gererRetour() {
-        if (historiqueNavigation.length > 1) {
-            historiqueNavigation.pop();
-            const dernier = historiqueNavigation[historiqueNavigation.length - 1];
-            if (dernier.type === 'screen') showScreen(dernier.name);
-            else if (dernier.type === 'lecon') {
-                const screenPrec = historiqueNavigation[historiqueNavigation.length - 2];
-                if (screenPrec) showScreen(screenPrec.name);
-                else showScreen('accueil');
+            setTimeout(() => { if(motivationDiv) motivationDiv.style.display = "none"; }, 4000);
+        } 
+        else if (answeredCount === 40) {
+            if (currentScoreValue >= 30) {
+                motivationDiv.innerHTML = "🏆 CHAPEAU ! Plus de 30 bonnes réponses sur 40. Vous maîtrisez bien les usages ! 🎯";
+                motivationDiv.style.display = "block";
+            } else {
+                motivationDiv.innerHTML = "📖 Continuez vos efforts ! Moins de 30 bonnes réponses. Revoyez les conjugaisons et expressions 🌈";
+                motivationDiv.style.display = "block";
             }
-        } else {
-            showScreen('accueil');
+            setTimeout(() => { if(motivationDiv) motivationDiv.style.display = "none"; }, 4500);
         }
     }
     
-    const menuItems = [
-        { id: 'debutant', icon: '🌱', title: 'Débutant', desc: 'A1 - A2' },
-        { id: 'intermediaire', icon: '🌿', title: 'Intermédiaire', desc: 'B1 - B2' },
-        { id: 'avance', icon: '🌳', title: 'Avancé', desc: 'C1 - C2' },
-        { id: 'dictionnaire', icon: '📖', title: 'Dictionnaire', desc: 'Français ⇄ Malagasy' },
-        { id: 'conjugaison', icon: '📘', title: 'Conjugaison', desc: 'Conjuguer les verbes' },
-        { id: 'dialoguer', icon: '💬', title: 'Dialoguer', desc: 'Conversations' }
-    ];
+    let currentTranslationVisible = false;
+    function clearTranslation() {
+        const pop = document.getElementById('dynamicTranslationPopup');
+        if(pop) pop.remove();
+        currentTranslationVisible = false;
+    }
     
-    const toolbar = document.getElementById('niveauToolbar');
-    const niveauList = document.getElementById('niveauList');
-    
-    menuItems.forEach(item => {
-        const btn = document.createElement('button');
-        btn.className = 'niveau-btn';
-        btn.innerHTML = `${item.icon} ${item.title}`;
-        btn.addEventListener('click', () => showScreen(item.id));
-        toolbar.appendChild(btn);
-    });
-    
-    const btnHiresaka = document.createElement('button');
-    btnHiresaka.className = 'niveau-btn';
-    btnHiresaka.style.background = '#e67e22';
-    btnHiresaka.style.borderColor = '#e67e22';
-    btnHiresaka.style.color = 'white';
-    btnHiresaka.innerHTML = `🗣️ Hiresaka mivantana`;
-    btnHiresaka.addEventListener('click', () => chargerHiresaka());
-    toolbar.appendChild(btnHiresaka);
-    
-    menuItems.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'niveau-card';
-        card.innerHTML = `<div class="niveau-info"><span class="niveau-icon">${item.icon}</span><div><div class="niveau-title">${item.icon} ${item.title}</div><div class="niveau-desc">${item.desc}</div></div></div><span class="niveau-arrow">→</span>`;
-        card.addEventListener('click', () => showScreen(item.id));
-        niveauList.appendChild(card);
-    });
-    
-    const cardHiresaka = document.createElement('div');
-    cardHiresaka.className = 'niveau-card niveau-card-hiresaka';
-    cardHiresaka.innerHTML = `
-        <div class="niveau-info">
-            <span class="niveau-icon">🗣️</span>
-            <div>
-                <div class="niveau-title">🗣️ Hiresaka mivantana</div>
-                <div class="niveau-desc">Miresaka mivantana amin'ny pejy</div>
-                <div style="font-size: 0.7rem; color: #e67e22; margin-top: 4px;">📄 Fichier: mirelecon.txt</div>
-            </div>
-        </div>
-        <span class="niveau-arrow">📖</span>
-    `;
-    cardHiresaka.addEventListener('click', () => chargerHiresaka());
-    niveauList.appendChild(cardHiresaka);
-    
-    genererListeLecons(leconsDebutant, 'debutantContent', 'rond-jaune', 'https://apkhtml.ahofaly62.workers.dev/', 'debutant');
-    genererListeLecons(leconsIntermediaire, 'intermediaireContent', 'rond-orange', 'https://apkhtml.ahofaly62.workers.dev/', 'intermediaire');
-    genererListeLecons(leconsAvance, 'avanceContent', 'rond-jaune', 'https://apkhtml.ahofaly62.workers.dev/', 'avance');
-    genererListeLecons(dictionnaireLecons, 'dictionnaireContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'dictionnaire');
-    genererListeLecons(conjugaisonLecons, 'conjugaisonContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'conjugaison');
-    genererListeLecons(dialoguerLecons, 'dialoguerContent', 'rond-vert', 'https://apkhtml.ahofaly62.workers.dev/', 'dialoguer');
-    
-    chargerImage(document.getElementById('imgGauche'), 'https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/ok.jpg');
-    chargerImage(document.getElementById('imgDroite'), 'https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg');
-    
-    window.addEventListener('popstate', () => gererRetour());
-    history.pushState({ page: "main" }, "Main", window.location.href);
-    
-    if (window.location.href.startsWith('blob:')) {
-        const exerciceInfo = sessionStorage.getItem('exerciceInfo');
-        const leconInfo = localStorage.getItem('dernierContexteLecon');
-        
-        if (exerciceInfo) {
-            const info = JSON.parse(exerciceInfo);
-            injecterBarreNavigation(info.leconTitre, info.typeNom);
-        } else if (leconInfo) {
-            const info = JSON.parse(leconInfo);
-            injecterBarreNavigationLecon(info.leconTitre);
-            localStorage.removeItem('dernierContexteLecon');
-        } else {
-            injecterBarreNavigationLecon("Leçon");
+    function toggleTranslation() {
+        const existingPopup = document.getElementById('dynamicTranslationPopup');
+        if (existingPopup) {
+            existingPopup.remove();
+            currentTranslationVisible = false;
+            return;
         }
-    }
-    
-    // ======================= LANCEMENT DE LA VÉRIFICATION DES MISES À JOUR (SANS VITAA) =======================
-    console.log("🚀 Lancement du système de mise à jour (sans vitaa.txt)...");    
-    console.log("📀 Système de mise à jour actif");
-    console.log("📋 Fichiers surveillés:", FICHIERS_A_VERIFIER.map(f => f.nom).join(", "));
-    
-    // Lancer directement la vérification de tous les fichiers (vitaa.txt est exclu)
-    setTimeout(() => {
-        verifierTousLesFichiers();
-    }, 1000);
-
-// ======================= GESTION DU BOUTON RETOUR ANDROID (VERSION HISTORIQUE PARFAITE) =======================
-
-let navigationStack = []; // Pile d'historique complète
-let currentScreen = 'accueil';
-let isInBlobView = false;
-let blobType = null;
-let ignoreNextPop = false;
-
-// Sauvegarder l'écran actuel
-function getCurrentScreenId() {
-    const activeScreen = document.querySelector('.screen.active');
-    if (!activeScreen) return currentScreen;
-    
-    const id = activeScreen.id;
-    if (id === 'screenAccueil') return 'accueil';
-    if (id === 'screenDebutant') return 'debutant';
-    if (id === 'screenIntermediaire') return 'intermediaire';
-    if (id === 'screenAvance') return 'avance';
-    if (id === 'screenDictionnaire') return 'dictionnaire';
-    if (id === 'screenConjugaison') return 'conjugaison';
-    if (id === 'screenDialoguer') return 'dialoguer';
-    return currentScreen;
-}
-
-// Mettre à jour currentScreen
-function updateCurrentScreen() {
-    currentScreen = getCurrentScreenId();
-    return currentScreen;
-}
-
-// Ajouter un écran à l'historique (appelé à chaque navigation)
-function pushToHistory(screenName, context = {}) {
-    updateCurrentScreen();
-    
-    // Éviter les doublons consécutifs
-    if (navigationStack.length > 0 && navigationStack[navigationStack.length - 1].screen === screenName) {
-        return;
-    }
-    
-    navigationStack.push({
-        screen: screenName,
-        from: currentScreen,
-        timestamp: Date.now(),
-        context: context
-    });
-    
-    // Limiter la taille
-    if (navigationStack.length > 50) {
-        navigationStack.shift();
-    }
-    
-    // Push dans l'historique du navigateur
-    history.pushState({ stackIndex: navigationStack.length - 1, screen: screenName }, '', window.location.href);
-    
-    return navigationStack.length - 1;
-}
-
-// Revenir à un écran spécifique
-function popToScreen(screenName) {
-    // Trouver la dernière occurrence de cet écran dans la pile
-    let index = -1;
-    for (let i = navigationStack.length - 1; i >= 0; i--) {
-        if (navigationStack[i].screen === screenName) {
-            index = i;
-            break;
-        }
-    }
-    
-    if (index !== -1 && index < navigationStack.length - 1) {
-        // Supprimer l'historique après cet index
-        navigationStack = navigationStack.slice(0, index + 1);
-        return true;
-    }
-    return false;
-}
-
-// Gérer le blob
-function checkIfInBlob() {
-    isInBlobView = window.location.href.startsWith('blob:');
-    
-    if (isInBlobView) {
-        const exerciceInfo = sessionStorage.getItem('exerciceInfo');
-        const leconInfo = localStorage.getItem('dernierContexteLecon');
-        
-        if (exerciceInfo) {
-            blobType = 'exercice';
-        } else if (leconInfo) {
-            blobType = 'lecon';
-        } else {
-            blobType = 'unknown';
-        }
-    } else {
-        blobType = null;
-    }
-    return isInBlobView;
-}
-
-// Fermer blob et retourner
-function closeBlobAndReturn() {
-    const exerciceInfo = sessionStorage.getItem('exerciceInfo');
-    const leconInfo = localStorage.getItem('dernierContexteLecon');
-    
-    if (exerciceInfo && blobType === 'exercice') {
-        const info = JSON.parse(exerciceInfo);
-        sessionStorage.removeItem('exerciceInfo');
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        localStorage.setItem('retourExerciceLecon', info.leconTitre);
-        localStorage.setItem('retourExerciceNiveau', info.niveau || 'debutant');
-        window.location.href = mainUrl;
-        return true;
-    } else if (leconInfo && blobType === 'lecon') {
-        localStorage.removeItem('dernierContexteLecon');
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        window.location.href = mainUrl;
-        return true;
-    } else {
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        window.location.href = mainUrl;
-        return true;
-    }
-}
-
-// Fonction principale retour
-function handleAndroidBack() {
-    console.log("🔙 Retour - Pile actuelle:", navigationStack.map(s => s.screen));
-    
-    // 1. Priorité: Blob
-    if (checkIfInBlob()) {
-        closeBlobAndReturn();
-        return true;
-    }
-    
-    // 2. Restaurer liste exercices
-    const retourExerciceLecon = localStorage.getItem('retourExerciceLecon');
-    if (retourExerciceLecon) {
-        const leconTitre = retourExerciceLecon;
-        const niveau = localStorage.getItem('retourExerciceNiveau') || 'debutant';
-        localStorage.removeItem('retourExerciceLecon');
-        localStorage.removeItem('retourExerciceNiveau');
-        
-        // Ajouter à l'historique
-        pushToHistory('exercices', { leconTitre, niveau });
-        
+        const qData = questions[currentIdx];
+        const mgText = qData.mg || "Tsy misy fandikana amin'izao";
+        const popupDiv = document.createElement('div');
+        popupDiv.id = 'dynamicTranslationPopup';
+        popupDiv.className = 'translation-popup';
+        popupDiv.innerHTML = `🇲🇬 ${mgText}`;
+        const headerDiv = document.querySelector('.question-header');
+        if (headerDiv) headerDiv.insertAdjacentElement('afterend', popupDiv);
+        currentTranslationVisible = true;
         setTimeout(() => {
-            if (typeof afficherListeExercices === 'function') {
-                afficherListeExercices(leconTitre, niveau);
-            }
-        }, 100);
-        return true;
+            const p = document.getElementById('dynamicTranslationPopup');
+            if(p) p.remove();
+            currentTranslationVisible = false;
+        }, 5000);
     }
     
-    // 3. Fermer modal
-    const modals = document.querySelectorAll('.modal-fullscreen');
-    if (modals.length > 0) {
-        const lastModal = modals[modals.length - 1];
-        lastModal.remove();
-        console.log("✅ Modal fermé");
-        return true;
-    }
-    
-    // 4. Navigation dans l'historique (le plus important!)
-    if (navigationStack.length > 1) {
-        // Retirer l'écran actuel
-        navigationStack.pop();
-        // Récupérer l'écran précédent
-        const previous = navigationStack[navigationStack.length - 1];
-        
-        if (previous && previous.screen !== currentScreen) {
-            console.log(`↩ Retour vers: ${previous.screen} (depuis ${currentScreen})`);
-            
-            if (typeof originalShowScreen === 'function') {
-                originalShowScreen(previous.screen);
-            } else if (typeof showScreen === 'function') {
-                showScreen(previous.screen);
-            }
-            
-            updateCurrentScreen();
-            return true;
+    function renderCurrent() {
+        if (quizFinished) return;
+        clearTranslation();
+        const q = questions[currentIdx];
+        const alreadyAnswered = (userSelections[currentIdx] !== null);
+        const letters = ['A', 'B', 'C', 'D'];
+        let optsHtml = '';
+        q.options.forEach((opt, idx) => {
+            const letter = letters[idx];
+            let selectedClass = (alreadyAnswered && userSelections[currentIdx] === letter) ? 'selected' : '';
+            optsHtml += `
+                <div class="option-card ${selectedClass}" data-opt-letter="${letter}">
+                    <div class="option-letter">${letter}</div>
+                    <span class="option-text">${opt}</span>
+                </div>
+            `;
+        });
+        const html = `
+            <div class="question-header">
+                <div class="question-text">${currentIdx+1}. ${q.q}</div>
+                <button class="mg-translate-btn" id="mgTranslateBtn">🇲🇬 MG</button>
+            </div>
+            <div class="options-list" id="optionsContainer">
+                ${optsHtml}
+            </div>
+        `;
+        questionBlock.innerHTML = html;
+        const mgBtn = document.getElementById('mgTranslateBtn');
+        if (mgBtn) mgBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleTranslation();
+        });
+        if (!alreadyAnswered && !isLocked[currentIdx] && !quizFinished) {
+            const optionDivs = document.querySelectorAll('.option-card');
+            optionDivs.forEach(div => {
+                div.addEventListener('click', (e) => {
+                    if (isLocked[currentIdx] || quizFinished) return;
+                    const chosenLetter = div.getAttribute('data-opt-letter');
+                    if (chosenLetter) handleAnswer(chosenLetter);
+                });
+            });
+        } else if (alreadyAnswered) {
+            document.querySelectorAll('.option-card').forEach(div => {
+                div.style.cursor = "default";
+                div.style.pointerEvents = "none";
+            });
         }
+        qCounterSpan.innerText = `Question ${currentIdx+1} / ${TOTAL}`;
     }
     
-    // 5. Retour à l'accueil si pas dans l'historique
-    const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen && activeScreen.id !== 'screenAccueil') {
-        console.log("🏠 Retour forcé à l'accueil");
-        
-        // Ajouter l'accueil à l'historique
-        pushToHistory('accueil');
-        
-        if (typeof originalShowScreen === 'function') {
-            originalShowScreen('accueil');
-        } else if (typeof showScreen === 'function') {
-            showScreen('accueil');
+    function handleAnswer(selectedLetter) {
+        if (isLocked[currentIdx] || quizFinished) return;
+        isLocked[currentIdx] = true;
+        const q = questions[currentIdx];
+        const isCorrect = (selectedLetter === q.correct);
+        userSelections[currentIdx] = selectedLetter;
+        if (isCorrect) {
+            currentScore++;
+            updateScoreUI();
         }
-        
-        updateCurrentScreen();
-        return true;
-   
-    } else {
-        window.lastBackTime = now;
-    }
-    
-    return false;
-}
-
-// Intercepter popstate
-window.addEventListener('popstate', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    
-    if (ignoreNextPop) {
-        ignoreNextPop = false;
-        return;
-    }
-    
-    handleAndroidBack();
-});
-
-// === INTERCEPTION DE TOUTES LES NAVIGATIONS ===
-
-// Sauvegarder la fonction showScreen originale
-const originalShowScreen = window.showScreen || showScreen;
-
-// Nouvelle fonction showScreen avec enregistrement auto
-window.showScreen = function(screenName, ...args) {
-    const currentId = getCurrentScreenId();
-    
-    // Ne pas enregistrer si c'est le même écran
-    if (currentId !== screenName) {
-        // Enregistrer dans l'historique
-        pushToHistory(screenName, { from: currentId, args: args });
-        console.log(`📜 Navigation enregistrée: ${currentId} → ${screenName}`);
-    }
-    
-    // Appeler la fonction originale
-    if (typeof originalShowScreen === 'function') {
-        return originalShowScreen(screenName, ...args);
-    }
-    
-    updateCurrentScreen();
-};
-
-// Intercepter chargerLecon
-const originalChargerLecon = window.chargerLecon || chargerLecon;
-window.chargerLecon = function(titre, nomFichier, urlComplet, contenuDefaut) {
-    pushToHistory('lecon', { leconTitre: titre });
-    console.log(`📖 Leçon enregistrée: ${titre}`);
-    
-    if (typeof originalChargerLecon === 'function') {
-        return originalChargerLecon(titre, nomFichier, urlComplet, contenuDefaut);
-    }
-};
-
-// Intercepter afficherListeExercices
-const originalAfficherListeExercices = window.afficherListeExercices || afficherListeExercices;
-window.afficherListeExercices = function(leconTitre, niveau) {
-    pushToHistory('exercices', { leconTitre, niveau });
-    console.log(`📝 Liste exercices enregistrée: ${leconTitre}`);
-    
-    if (typeof originalAfficherListeExercices === 'function') {
-        return originalAfficherListeExercices(leconTitre, niveau);
-    }
-};
-
-// Intercepter chargerHiresaka
-const originalChargerHiresaka = window.chargerHiresaka || chargerHiresaka;
-window.chargerHiresaka = function() {
-    pushToHistory('hiresaka');
-    console.log(`💬 Hiresaka enregistré`);
-    
-    if (typeof originalChargerHiresaka === 'function') {
-        return originalChargerHiresaka();
-    }
-};
-
-// Intercepter tous les clics sur les liens de navigation
-document.addEventListener('click', function(event) {
-    // Chercher les éléments de navigation
-    let target = event.target;
-    while (target && target !== document.body) {
-        // Boutons de navigation
-        if (target.matches && target.matches('[data-screen], .nav-btn, .screen-btn, [onclick*="showScreen"]')) {
-            const screenName = target.getAttribute('data-screen') || 
-                              target.getAttribute('data-target') ||
-                              (target.onclick && target.onclick.toString().match(/showScreen\(['"](.+)['"]\)/)?.[1]);
-            
-            if (screenName && screenName !== getCurrentScreenId()) {
-                pushToHistory(screenName, { source: 'click' });
-                console.log(`🖱️ Click enregistré: vers ${screenName}`);
-            }
+        renderCurrent();
+        const answeredCount = userSelections.filter(a => a !== null).length;
+        if (answeredCount === 20 || answeredCount === 40) {
+            showPalierMotivation(answeredCount, currentScore);
         }
-        target = target.parentElement;
+        setTimeout(() => {
+            if (currentIdx + 1 < TOTAL) {
+                currentIdx++;
+                renderCurrent();
+            } else {
+                finishQuizAndShowFullReport();
+            }
+        }, 380);
     }
-}, true);
-
-// Réinitialiser
-function resetNavigationHistory() {
-    const currentId = getCurrentScreenId();
-    navigationStack = [{ screen: currentId, from: null, timestamp: Date.now(), context: {} }];
-    currentScreen = currentId;
-    window.lastBackTime = 0;
-    localStorage.removeItem('retourExerciceLecon');
-    localStorage.removeItem('retourExerciceNiveau');
     
-    // Nettoyer l'historique navigateur
-    ignoreNextPop = true;
-    history.pushState({ stackIndex: 0, screen: currentId }, '', window.location.href);
-    
-    console.log("🔄 Historique réinitialisé, écran actuel:", currentId);
-    console.log("📚 Pile:", navigationStack.map(s => s.screen));
-}
-
-// Initialisation
-if (!window.location.href.startsWith('blob:')) {
-    setTimeout(() => {
-        resetNavigationHistory();
-    }, 50);
-}
-
-// Écouter Capacitor
-if (window.Capacitor && window.Capacitor.isNative) {
-    document.addEventListener('backbutton', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        handleAndroidBack();
-    }, false);
-}
-
-// Écouter touches clavier (debug)
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' || event.key === 'Backspace' || event.keyCode === 27) {
-        event.preventDefault();
-        event.stopPropagation();
-        handleAndroidBack();
+    function finishQuizAndShowFullReport() {
+        quizFinished = true;
+        questionBlock.innerHTML = `<div style="text-align:center; padding:2rem;">✅ Quiz terminé ! Voici votre note et le corrigé détaillé. ✅</div>`;
+        clearTranslation();
+        const totalCorrect = currentScore;
+        const percent = Math.round((totalCorrect / TOTAL) * 100);
+        let finalMessage = "";
+        if (totalCorrect === TOTAL) finalMessage = "🏆 PARFAIT ! Maîtrise totale des verbes avoir/être au présent ! 🏆";
+        else if (totalCorrect >= 50) finalMessage = "🌟 Très bonne maîtrise ! Révisez les petites erreurs ci-dessous.";
+        else if (totalCorrect >= 40) finalMessage = "👍 Bonnes bases, mais revoyez bien les expressions.";
+        else finalMessage = "📖 Revoyez les conjugaisons de 'avoir' et 'être' au présent, et les expressions courantes. Corrigé détaillé ci-dessous !";
+        let listHtml = `<div class="final-report">
+            <div class="final-header">📊 RÉSULTAT FINAL</div>
+            <div style="text-align:center"><span class="final-score">${totalCorrect} / ${TOTAL} (${percent}%)</span></div>
+            <p style="text-align:center; margin: 15px 0;">${finalMessage}</p>
+            <div class="questions-list"><h3>📋 Liste complète des 60 questions avec corrections :</h3>`;
+        for (let i = 0; i < TOTAL; i++) {
+            const q = questions[i];
+            const userChoice = userSelections[i];
+            const lettersIdx = ['A','B','C','D'];
+            const isOk = (userChoice === q.correct);
+            const userText = userChoice ? q.options[lettersIdx.indexOf(userChoice)] : "(non répondue)";
+            const correctText = q.options[lettersIdx.indexOf(q.correct)];
+            const statusIcon = isOk ? "✅" : "❌";
+            const borderClass = isOk ? "correct" : "wrong";
+            listHtml += `<div class="question-summary ${borderClass}">
+                <strong>${statusIcon} Q${i+1} : ${q.q}</strong><br>
+                <span>✏️ Votre réponse : ${userChoice ? userChoice : "—"} → "${userText}"</span><br>
+                <span>📌 Bonne réponse : ${q.correct} → "${correctText}"</span><br>
+                <small>📖 Explication : ${q.explanation}</small>
+                ${q.mg ? `<br><span style="font-size:0.8rem;">🇲🇬 Malagasy: ${q.mg}</span>` : ''}
+            </div>`;
+        }
+        listHtml += `<button class="restart-btn" id="restartQuizBtn">🔄 Recommencer un nouveau quiz (60 questions)</button></div></div>`;
+        finalContainer.innerHTML = listHtml;
+        const restartBtn = document.getElementById('restartQuizBtn');
+        if (restartBtn) restartBtn.addEventListener('click', () => resetAndRestart());
     }
-});
-
-// Exporter
-window.handleAndroidBack = handleAndroidBack;
-window.resetNavigationHistory = resetNavigationHistory;
-window.getNavigationStack = () => navigationStack;
-
-console.log("✅ Gestion du bouton retour - Version historique parfaite");
-
-// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
-    (function() {
-        function showBlockOverlay() {
-            if (document.getElementById('securityOverlay')) return;
-            const overlay = document.createElement('div');
-            overlay.id = 'securityOverlay';
-            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
-            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
-            document.body.appendChild(overlay);
-            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
-        }
-
-        function hideBlockOverlay() {
-            const overlay = document.getElementById('securityOverlay');
-            if (overlay) overlay.remove();
-        }
-
-        window.addEventListener('keydown', function(e) {
-            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
-                e.preventDefault();
-                return false;
-            }
-if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
-                e.preventDefault();
-                return false;
-            }
-// Ajoutez ceci dans la liste des vérifications
-if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
-    e.preventDefault();
-    return false;
-}
-// Ctrl+P (Imprimer)
-if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+F (Rechercher)
-if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
-if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
-    e.preventDefault();
-    return false;
-}
-
-// F5 (Rafraîchir)
-if (e.key === "F5" || e.keyCode === 116) {
-    e.preventDefault();
-    return false;
-}
-            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
-                e.preventDefault();
-                return false;
-            }
-        }, true);
-
-        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
-
-        function detectDevTools() {
-            let devToolsOpen = false;
-            const threshold = 160;
-            setInterval(() => {
-                const widthDiff = window.outerWidth - window.innerWidth;
-                const heightDiff = window.outerHeight - window.innerHeight;
-                if (widthDiff > threshold || heightDiff > threshold) {
-                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
-                } else {
-                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
-                }
-            }, 1000);
-        }
-
-        setInterval(() => { debugger; }, 50);
-        
-        if (window.console) {
-            const noop = () => {};
-            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
-        }
-
-        detectDevTools();
-    })();
+    
+    function resetAndRestart() {
+        questions = [...FULL_QUESTION_SET.slice(0, TOTAL)];
+        userSelections = new Array(TOTAL).fill(null);
+        isLocked = new Array(TOTAL).fill(false);
+        currentScore = 0;
+        currentIdx = 0;
+        quizFinished = false;
+        updateScoreUI();
+        finalContainer.innerHTML = '';
+        if (motivationDiv) motivationDiv.style.display = 'none';
+        clearTranslation();
+        renderCurrent();
+    }
+    
+    downloadBtn.addEventListener('click', () => {
+        const htmlContent = document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'qcm_avoir_etre_malagasy.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    
+    renderCurrent();
+    updateScoreUI();
 </script>
 </body>
 </html>
