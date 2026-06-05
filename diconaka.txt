@@ -1,34 +1,43 @@
 1. abolir
+emoji : 🚫
 Explication : abolir : verbe 2e groupe. Supprimer complètement une loi, une règle ou une pratique.
 Exemples :
 - Abolir l'esclavage.
 - Cette loi a été abolie.
+- Abolir l'esclavage.
+- Cette loi a été abolie.
+
 
 2. agir
+emoji : ⚡
 Explication : agir : verbe 2e groupe. Faire quelque chose, accomplir une action.
 Exemples :
 - Il faut agir rapidement.
 - Elle agit toujours avec gentillesse.
 
 3. choisir
+emoji : ✅
 Explication : choisir : verbe 2e groupe. Prendre une option parmi plusieurs possibilités.
 Exemples :
 - Je choisis le gâteau au chocolat.
 - Tu dois choisir ton métier.
 
 4. finir
+emoji : 🏁
 Explication : finir : verbe 2e groupe. Achever, terminer une action ou un travail.
 Exemples :
 - Je finis mes devoirs.
 - Le film finit à 21 heures.
 
 5. réussir
+emoji : 🏆
 Explication : réussir : verbe 2e groupe. Obtenir un bon résultat, atteindre un objectif.
 Exemples :
 - Il réussit son examen.
 - Elle a réussi dans la vie.
 
 6. grandir
+emoji : 🌱
 Explication : grandir : verbe 2e groupe. Devenir plus grand physiquement ou mûrir moralement.
 Exemples :
 - Les enfants grandissent vite.
