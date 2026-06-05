@@ -1,6 +1,6 @@
 1. abaisser
 manalefaka na mampidina
-emoji : 📉
+emoji : 😂
 Explication : abaisser : verbe 1er groupe. Mampidina na mampihena ny haavony, ny ambaratonga na ny hamafin'ny zavatra.
 Exemples :
 - Il faut abaisser la voix. → Tokony hanalefaka ny feony izy.
@@ -8,7 +8,7 @@ Exemples :
 
 2. abdiquer
 miala amin'ny andraikitra na miala amin'ny fahefana
-emoji : 👑
+emoji : 😅
 Explication : abdiquer : verbe 1er groupe. Miala amin'ny fahefana na andraikitra; mandà ny zo na ny andraikitra tokony hotanterahina.
 Exemples :
 - Le roi a abdiqué en faveur de son fils. → Niala tamin'ny fahefany ny mpanjaka mba hanome izany ho an'ny zanany lahy.
@@ -16,7 +16,7 @@ Exemples :
 
 3. abhorrer
 mankahala fatratra
-emoji : 💢
+emoji : 🤩
 Explication : abhorrer : verbe 1er groupe. Mankahala na misoroka zavatra fatratra noho izy ratsy na maharikoriko.
 Exemples :
 - Il abhorre la violence. → Mankahala fatratra ny herisetra izy.
