@@ -1,4 +1,19 @@
-1. atyyyisser
+1. aimer
+tia
+emoji : ❤️
+
+Version française : aimer : verbe du 1er groupe. Éprouver de l'affection, de l'attachement ou du plaisir pour quelqu'un ou quelque chose.
+
+Explication : aimer : matoanteny voalohany. Mahatsapa fitiavana, firaiketam-po na fahafinaretana amin'olona na zavatra iray.
+
+Exemples :
+
+- J'aime mes parents. → Tiako ny ray aman-dreniko.
+
+- Elle aime lire des livres. → Tiany mamaky boky izy.
+
+
+2. atyyyisser
 manalefaka na mampidina
 emoji : 😂
 Explication : abaisser : verbe 1er groupe. Mampidina na mampihena ny haavony, ny ambaratonga na ny hamafin'ny zavatra.
@@ -6,7 +21,7 @@ Exemples :
 - Il faut abaisser la voix. → Tokony hanalefaka ny feony izy.
 - Abaisser le rideau. → Ampidino kely ny lambam-baravarana.
 
-2. abdiquer
+3. abdiquer
 miala amin'ny andraikitra na miala amin'ny fahefana
 emoji : 😅
 Explication : abdiquer : verbe 1er groupe. Miala amin'ny fahefana na andraikitra; mandà ny zo na ny andraikitra tokony hotanterahina.
