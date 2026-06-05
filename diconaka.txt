@@ -1,158 +1,35 @@
-1. aimer
-tia
-emoji : ❤️
-
-Version française : aimer : verbe du 1er groupe. Éprouver de l'affection, de l'attachement ou du plaisir pour quelqu'un ou quelque chose.
-
-Explication : aimer : matoanteny voalohany. Mahatsapa fitiavana, firaiketam-po na fahafinaretana amin'olona na zavatra iray.
-
+1. abolir
+Explication : abolir : verbe 2e groupe. Supprimer complètement une loi, une règle ou une pratique.
 Exemples :
+- Abolir l'esclavage.
+- Cette loi a été abolie.
 
-- J'aime mes parents. → Tiako ny ray aman-dreniko.
-
-- Elle aime lire des livres. → Tiany mamaky boky izy.
-
-
-2. atyyyisser
-manalefaka na mampidina
-emoji : 😂
-Explication : abaisser : verbe 1er groupe. Mampidina na mampihena ny haavony, ny ambaratonga na ny hamafin'ny zavatra.
+2. agir
+Explication : agir : verbe 2e groupe. Faire quelque chose, accomplir une action.
 Exemples :
-- Il faut abaisser la voix. → Tokony hanalefaka ny feony izy.
-- Abaisser le rideau. → Ampidino kely ny lambam-baravarana.
+- Il faut agir rapidement.
+- Elle agit toujours avec gentillesse.
 
-3. abdiquer
-miala amin'ny andraikitra na miala amin'ny fahefana
-emoji : 😅
-Explication : abdiquer : verbe 1er groupe. Miala amin'ny fahefana na andraikitra; mandà ny zo na ny andraikitra tokony hotanterahina.
+3. choisir
+Explication : choisir : verbe 2e groupe. Prendre une option parmi plusieurs possibilités.
 Exemples :
-- Le roi a abdiqué en faveur de son fils. → Niala tamin'ny fahefany ny mpanjaka mba hanome izany ho an'ny zanany lahy.
-- Il a abdiqué ses responsabilités. → Niala tamin'ny andraikiny izy.
+- Je choisis le gâteau au chocolat.
+- Tu dois choisir ton métier.
 
-3. abhorrer
-mankahala fatratra
-emoji : 🤩
-Explication : abhorrer : verbe 1er groupe. Mankahala na misoroka zavatra fatratra noho izy ratsy na maharikoriko.
+4. finir
+Explication : finir : verbe 2e groupe. Achever, terminer une action ou un travail.
 Exemples :
-- Il abhorre la violence. → Mankahala fatratra ny herisetra izy.
-- Elle abhorre l'injustice. → Mankahala fatratra ny tsy rariny izy.
+- Je finis mes devoirs.
+- Le film finit à 21 heures.
 
-4. abjurer
-mandà ampahibemaso
-emoji : 🗣️
-Explication : abjurer : verbe 1er groupe. Mandà ampahibemaso ny finoana, ny hevitra, na ny foto-kevitra efa nomena.
+5. réussir
+Explication : réussir : verbe 2e groupe. Obtenir un bon résultat, atteindre un objectif.
 Exemples :
-- Il a abjuré sa religion. → Nandà ampahibemaso ny fivavahany izy.
-- Abjurer ses erreurs. → Mandà ny fahadisoany ampahibemaso.
-5. ablater  
-manapaka sy manaisotra  
-Explication : ablater : verbe 1er groupe. Manaisotra na manapaka ampahany amin'ny vatana amin'ny alalan'ny fandidiana.  
-Exemples :  
-- Les chirurgiens ont ablaté la tumeur. → Nanaisotra ny fivontosana ny mpandidy.  
-- Il faut ablater le rein malade. → Tokony hesorina ny voa marary.  
+- Il réussit son examen.
+- Elle a réussi dans la vie.
 
-6. abolir  
-manafoana tanteraka  
-Explication : abolir : verbe 2e groupe. Manafoana tanteraka lalàna, rafitra, na fomba fanao efa misy.  
-Exemples :  
-- Abolir l’esclavage. → Manafoana tanteraka ny fanandevozana.  
-- Cette loi a été abolie. → Nofoanana tanteraka io lalàna io.  
-
-7. abominer  
-mankahala fatratra  
-Explication : abominer : verbe 1er groupe. Mankahala zavatra iray fatratra satria heverina ho tena ratsy na maharikoriko.  
-Exemples :  
-- Il abomine le mensonge. → Mankahala fatratra ny lainga izy.  
-- Elle abomine la trahison. → Mankahala fatratra ny famadihana izy.  
-
-8. abonder  
-be dia be  
-Explication : abonder : verbe 1er groupe. Misy betsaka na be dia be zavatra ao amin’ny toerana iray na zavatra iray.  
-Exemples :  
-- Ce jardin abonde en fleurs. → Feno voninkazo be dia be ity zaridaina ity.  
-- Les preuves abondent. → Be dia be ny porofo.  
-
-9. aborder  
-manatona  
-Explication : aborder : verbe 1er groupe. Manatona olona na zavatra, na manomboka miresaka lohahevitra iray.  
-Exemples :  
-- Aborder un sujet difficile. → Manatona lohahevitra sarotra.  
-- Il a abordé un inconnu. → Nanatona olona tsy fantany izy.  
-
-10. abouter  
-mampifandray farany  
-Explication : abouter : verbe 1er groupe. Mampifandray ny faran’ny zavatra roa mba hitohy na hiaraka.  
-Exemples :  
-- Abouter deux planches. → Mampifandray ny faran’ny hazo roa.  
-- Il faut abouter les tuyaux. → Tokony hampifandray ny faran’ny fantsona.  
-
-11. abréger  
-manafohy  
-Explication : abréger : verbe 1er groupe. Manafohy ny halavan’ny teny, lahatsoratra, na ny fotoana iainana.  
-Exemples :  
-- Abréger un texte. → Manafohy lahatsoratra iray.  
-- Il a abrégé son discours. → Nanafohy ny lahateniny izy.  
-
-12. abroger  
-manafoana lalàna  
-Explication : abroger : verbe 1er groupe. Manafoana lalàna na didy iray amin’ny alalan’ny lalàna vaovao.  
-Exemples :  
-- Abroger un décret. → Manafoana didy iray.  
-- Cette loi a été abrogée. → Nofoanana io lalàna io.  
-
-13. absenter  
-tsy manatrika  
-Explication : absenter : verbe 1er groupe. Tsy manatrika toerana iray na fivoriana iray; manao tsy hita.  
-Exemples :  
-- S’absenter du travail. → Tsy manatrika ny asa.  
-- Il s’est absenté une heure. → Tsy nanatrika nandritra ny adiny iray izy.  
-
-14. absorber  
-mitroka  
-Explication : absorber : verbe 1er groupe. Mitroka ranon-javatra na angovo; koa mandany ny saina na ny herin’olona.  
-Exemples :  
-- Le papier absorbe l’encre. → Mitroka ny ranomainty ny taratasy.  
-- Ce travail l’absorbe totalement. → Mandany ny sainy tanteraka ity asa ity.  
-
-15. abuser  
-mampiasa tsy ara-dalàna  
-Explication : abuser : verbe 1er groupe. Mampiasa zavatra na olona mihoatra noho ny tokony ho izy na tsy ara-dalàna.  
-Exemples :  
-- Abuser de son pouvoir. → Mampiasa ny fahefany amin’ny fomba tsy ara-dalàna.  
-- Il abuse de ma gentillesse. → Mampiasa ny fahatsarako tafahoatra izy.  
-
-16. accabler  
-mampijaly mafy  
-Explication : accabler : verbe 1er groupe. Mampijaly olona na mampitondra loza mafy; mandany hery.  
-Exemples :  
-- La chaleur nous accable. → Mampijaly mafy antsika ny hafanana.  
-- Il est accablé de dettes. → Voaatrika trosa mafy izy.  
-
-17. accéder  
-miditra na mankatò  
-Explication : accéder : verbe 1er groupe. Miditra any amin’ny toerana iray na manaiky fangatahana iray.  
-Exemples :  
-- Accéder à une demande. → Mankatò ny fangatahana.  
-- Il a accédé à la présidence. → Niditra tamin’ny filoham-pirenena izy.  
-
-18. acclamer  
-midera amin’ny horakoraka  
-Explication : acclamer : verbe 1er groupe. Midera olona amin’ny alalan’ny horakoraka na tehafana.  
-Exemples :  
-- La foule acclame le champion. → Midera amin’ny horakoraka ny tompondaka ny vahoaka.  
-- Ils ont acclamé le président. → Nidera ny filoha izy ireo.  
-
-19. acclimater  
-zatra amin’ny toetany  
-Explication : acclimater : verbe 1er groupe. Mampizatra olona na zavamaniry amin’ny toetany vaovao.  
-Exemples :  
-- Acclimater une plante. → Mampizatra zavamaniry amin’ny toetany vaovao.  
-- Il s’est acclimaté rapidement. → Nizatra haingana tamin’ny toetany izy.  
-
-20. accommoder  
-manamboatra na mampifanaraka  
-Explication : accommoder : verbe 1er groupe. Manamboatra zavatra na mampifanaraka amin’ny filana iray.  
-Exemples :  
-- Accommoder un plat. → Manamboatra sakafo.  
-- Il s’accommode de tout. → Mampifanaraka amin’ny zavatra rehetra izy.  
-
+6. grandir
+Explication : grandir : verbe 2e groupe. Devenir plus grand physiquement ou mûrir moralement.
+Exemples :
+- Les enfants grandissent vite.
+- Il a grandi en sagesse.
