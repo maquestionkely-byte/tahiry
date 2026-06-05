@@ -1,5 +1,6 @@
 1. abaisser
 manalefaka na mampidina
+emoji : 📉
 Explication : abaisser : verbe 1er groupe. Mampidina na mampihena ny haavony, ny ambaratonga na ny hamafin'ny zavatra.
 Exemples :
 - Il faut abaisser la voix. → Tokony hanalefaka ny feony izy.
@@ -7,26 +8,27 @@ Exemples :
 
 2. abdiquer
 miala amin'ny andraikitra na miala amin'ny fahefana
+emoji : 👑
 Explication : abdiquer : verbe 1er groupe. Miala amin'ny fahefana na andraikitra; mandà ny zo na ny andraikitra tokony hotanterahina.
 Exemples :
 - Le roi a abdiqué en faveur de son fils. → Niala tamin'ny fahefany ny mpanjaka mba hanome izany ho an'ny zanany lahy.
 - Il a abdiqué ses responsabilités. → Niala tamin'ny andraikiny izy.
 
+3. abhorrer
+mankahala fatratra
+emoji : 💢
+Explication : abhorrer : verbe 1er groupe. Mankahala na misoroka zavatra fatratra noho izy ratsy na maharikoriko.
+Exemples :
+- Il abhorre la violence. → Mankahala fatratra ny herisetra izy.
+- Elle abhorre l'injustice. → Mankahala fatratra ny tsy rariny izy.
 
-3. abhorrer  
-mankahala fatratra  
-Explication : abhorrer : verbe 1er groupe. Mankahala na misoroka zavatra fatratra noho izy ratsy na maharikoriko.  
-Exemples :  
-- Il abhorre la violence. → Mankahala fatratra ny herisetra izy.  
-- Elle abhorre l’injustice. → Mankahala fatratra ny tsy rariny izy.  
-
-4. abjurer  
-mandà ampahibemaso  
-Explication : abjurer : verbe 1er groupe. Mandà ampahibemaso ny finoana, ny hevitra, na ny foto-kevitra efa nomena.  
-Exemples :  
-- Il a abjuré sa religion. → Nandà ampahibemaso ny fivavahany izy.  
-- Abjurer ses erreurs. → Mandà ny fahadisoany ampahibemaso.  
-
+4. abjurer
+mandà ampahibemaso
+emoji : 🗣️
+Explication : abjurer : verbe 1er groupe. Mandà ampahibemaso ny finoana, ny hevitra, na ny foto-kevitra efa nomena.
+Exemples :
+- Il a abjuré sa religion. → Nandà ampahibemaso ny fivavahany izy.
+- Abjurer ses erreurs. → Mandà ny fahadisoany ampahibemaso.
 5. ablater  
 manapaka sy manaisotra  
 Explication : ablater : verbe 1er groupe. Manaisotra na manapaka ampahany amin'ny vatana amin'ny alalan'ny fandidiana.  
