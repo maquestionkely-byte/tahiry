@@ -520,8 +520,7 @@
 { nom: "typeqcm.txt", type: "qcm", dbName: "typeqcm" },
         { nom: "conjugai.txt", type: "conjugaison", dbName: "conjugai" },
         { nom: "mirelecon.txt", type: "hiresaka", dbName: "mirelecon" }
-// ajout_fichier_ici 
-];
+    ];
     
     // Cache des versions stockées localement
     let cacheVersions = {};
@@ -729,14 +728,13 @@
         niveau: null
     };
     
-    const = [
+    const exercicesEcrits = [
         { nom: "QCM", code: "qcm", description: "Choisir la bonne réponse parmi plusieurs propositions." },
         { nom: "Malala", code: "mal", description: "Exercice spécial Malala - Choix multiples." },
         { nom: "Vrai ou Faux", code: "vra", description: "Indiquer si une affirmation est correcte ou non." },
         { nom: "Texte à trous", code: "tex", description: "Compléter les mots manquants." },
         { nom: "Association", code: "ass", description: "Associer les éléments entre eux." }
-    // ajout_exercice_ici
-];
+    ];
     
     function get4Caracteres(titre) {
         let nettoye = titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -1185,38 +1183,32 @@ if (exoCards.length > 0) {
         { id: 4, titre: "andrana", fichier: "andrlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 5, titre: "JERENA FA LESONA", fichier: "jerelecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 8, titre: "MORANA", fichier: "moralecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." }
-    // ajout_debutant_ici
- ];
+    ];//eo aloha
     
     const leconsIntermediaire = [
         { id: 1, titre: "Passé composé", fichier: "pcomlecon.txt", description: "Former le passé composé", defaut: "Auxiliaire avoir/être + participe passé." },
         { id: 2, titre: "Imparfait", fichier: "impllecon.txt", description: "Description au passé", defaut: "Radical nous présent + ais, ais, ait, ions, iez, aient." },
         { id: 3, titre: "Futur simple", fichier: "futslecon.txt", description: "Exprimer l'avenir", defaut: "Infinitif + ai, as, a, ons, ez, ont." }
-        // ajout_intermediaire_ici
-];
+    ];
     
     const leconsAvance = [
         { id: 1, titre: "Subjonctif présent", fichier: "subjlecon.txt", description: "Emploi et conjugaison", defaut: "Que je parle, que tu parles, qu'il parle..." },
         { id: 2, titre: "Conditionnel passé", fichier: "condplecon.txt", description: "Hypothèse non réalisée", defaut: "Aurais parlé, serais allé." },
         { id: 3, titre: "Plus-que-parfait", fichier: "pqplecon.txt", description: "Antériorité dans le passé", defaut: "Auxiliaire à l'imparfait + participe passé." }
-// ajout_avance_ici
-];
+    ];
     
     const dictionnaireLecons = [
         { id: 1, titre: "📖 Dictionnaire Français ⇄ Malagasy", fichier: "francma.txt", description: "Dictionnaire bilingue complet", defaut: "Dictionnaire non disponible." }
-// ajout_dictionnaire_ici    
-];
+    ];
     
     const conjugaisonLecons = [
         { id: 1, titre: "📘 Conjugaison des verbes français", fichier: "conjugai.txt", description: "Conjugaison complète", defaut: "Conjugaison non disponible." }
-    // ajout_conjugaison_ici
-];
+    ];
     
     const dialoguerLecons = [
         { id: 1, titre: "💬 Dialogue Français & Malagasy", fichier: "francma.txt", description: "Dialogues bilingues", defaut: "Dialogue bilingue non disponible." },
         { id: 2, titre: "💬 Dialogue Français seulement", fichier: "franseul.txt", description: "Dialogues uniquement en français", defaut: "Dialogue français seul non disponible." }
-// ajout_dialoguer_ici   
- ];
+    ];
     
     async function stockerImage(url, blob) {
         return new Promise((resolve) => {
