@@ -1,610 +1,283 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="mg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Exercice : Avoir & Être - Conjugaison</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Verbe avoir et être - Conjugaison & utilisation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, sans-serif;
-            padding: 1.5rem;
-        }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f7f0;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.55;
+    }
 
-        /* Carte d'attente (simple, sans compteur) */
-        .waiting-screen {
-            max-width: 500px;
-            width: 100%;
-            background: #1e293b;
-            border-radius: 2rem;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid #334155;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
-            transition: opacity 0.6s ease;
-        }
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+    }
 
-        .loader {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1.5rem auto;
-            border: 4px solid #475569;
-            border-top: 4px solid #3b82f6;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+    .title-main {
+      background: #1f5442;
+      color: white;
+      padding: 28px 20px;
+      border-radius: 42px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    .title-main h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
 
-        .dots-wait {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 1.2rem 0 1rem;
-        }
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dde8d5;
+    }
 
-        .dot-wait {
-            width: 8px;
-            height: 8px;
-            background: #60a5fa;
-            border-radius: 50%;
-            animation: pulseWait 1.2s infinite ease;
-        }
+    .card h2 {
+      font-size: 1.65rem;
+      font-weight: 650;
+      color: #2c7a5a;
+      border-left: 7px solid #f9c74f;
+      padding-left: 16px;
+      margin-bottom: 20px;
+    }
 
-        .dot-wait:nth-child(2) { animation-delay: 0.2s; background: #a78bfa; }
-        .dot-wait:nth-child(3) { animation-delay: 0.4s; background: #f472b6; }
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #b6581a;
+      margin: 16px 0 12px 0;
+      padding-left: 8px;
+    }
 
-        @keyframes pulseWait {
-            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-            40% { transform: scale(1.1); opacity: 1; }
-        }
+    .definition-mg {
+      background: #eef4ea;
+      padding: 18px;
+      border-radius: 24px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
 
-        .waiting-screen h2 {
-            color: #f1f5f9;
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-        }
+    .conjugaison-box {
+      background: #fff8ed;
+      padding: 16px;
+      border-radius: 24px;
+      margin: 16px 0;
+      font-family: 'SF Mono', 'Courier New', monospace;
+      font-size: 1rem;
+      border-left: 5px solid #f9c74f;
+    }
 
-        .waiting-screen p {
-            color: #94a3b8;
-        }
+    .conjugaison-box strong {
+      color: #c45c1a;
+      font-weight: 700;
+    }
 
-        /* Carte principale de l'exercice (cachée au départ) */
-        .exercise-container {
-            max-width: 800px;
-            width: 100%;
-            background: #1e293b;
-            border-radius: 2rem;
-            padding: 2rem;
-            border: 1px solid #334155;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+    .exemple-fr {
+      background: #fff6e5;
+      padding: 16px;
+      border-radius: 24px;
+      margin: 16px 0 10px 0;
+      font-family: 'SF Mono', 'Courier New', monospace;
+      border-left: 5px solid #f9c74f;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .exemple-fr strong {
+      color: #c45c1a;
+    }
 
-        h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #60a5fa, #c084fc);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
+    .highlight {
+      background: #fef1cf;
+      padding: 12px 16px;
+      border-radius: 28px;
+      margin-top: 14px;
+      font-size: 0.95rem;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #94a3b8;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 1rem;
-            margin-bottom: 1.8rem;
-        }
+    .utilisation-list {
+      margin: 12px 0 8px 25px;
+    }
 
-        /* Tableaux de conjugaison */
-        .conjug-table {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-        }
+    .utilisation-list li {
+      margin-bottom: 10px;
+    }
 
-        .verb-card {
-            flex: 1;
-            min-width: 220px;
-            background: #0f172a;
-            border-radius: 1.2rem;
-            padding: 1rem;
-            border-left: 4px solid #3b82f6;
-        }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 22px;
+      font-size: 0.8rem;
+      color: #5f7a6b;
+      border-top: 1px solid #d4e0ca;
+    }
 
-        .verb-card.etre-card {
-            border-left-color: #ec489a;
-        }
-
-        .verb-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .verb-title.avoir { color: #60a5fa; }
-        .verb-title.etre { color: #f472b6; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-
-        td {
-            padding: 6px 4px;
-            border-bottom: 1px solid #334155;
-            color: #e2e8f0;
-        }
-
-        td:first-child {
-            font-weight: 600;
-            color: #cbd5e1;
-            width: 40%;
-        }
-
-        /* Zone d'exercice QCM */
-        .quiz-area {
-            background: #0f172a;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .question {
-            background: #1e293b;
-            padding: 1rem 1.2rem;
-            border-radius: 1rem;
-            margin-bottom: 1.2rem;
-            transition: 0.1s;
-        }
-
-        .question-text {
-            font-weight: 600;
-            color: #f1f5f9;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
-
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: center;
-        }
-
-        .option-btn {
-            background: #334155;
-            border: none;
-            padding: 6px 16px;
-            border-radius: 40px;
-            color: white;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: monospace;
-            font-weight: 500;
-        }
-
-        .option-btn:hover {
-            background: #475569;
-            transform: scale(1.02);
-        }
-
-        .option-btn.correct-glow {
-            background: #10b981;
-            box-shadow: 0 0 8px #34d399;
-        }
-
-        .option-btn.wrong-glow {
-            background: #ef4444;
-            text-decoration: line-through;
-        }
-
-        .feedback {
-            margin-top: 8px;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            padding-left: 5px;
-        }
-
-        .score-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #334155;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .score-text {
-            color: #cbd5e6;
-            font-weight: 600;
-            background: #0f172a;
-            padding: 6px 14px;
-            border-radius: 40px;
-        }
-
-        .reset-btn {
-            background: #3b82f6;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .reset-btn:hover {
-            background: #2563eb;
-            transform: scale(0.97);
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #5b6e8c;
-            margin-top: 1.8rem;
-        }
-
-        @media (max-width: 550px) {
-            .exercise-container { padding: 1.2rem; }
-            .option-btn { padding: 4px 12px; font-size: 0.75rem; }
-        }
-    </style>
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+  </style>
 </head>
 <body>
+<div class="container">
+  <div class="title-main">
+    <h1>Verbe avoir et être</h1>
+  </div>
 
-<!-- ÉCRAN D'ATTENTE SIMPLE (sans compteur, jolie animation) -->
-<div id="waitingScreen" class="waiting-screen">
-    <div class="loader"></div>
-    <div class="dots-wait">
-        <span class="dot-wait"></span>
-        <span class="dot-wait"></span>
-        <span class="dot-wait"></span>
+  <!-- INTRODUCTION GÉNÉRALE -->
+  <div class="card">
+    <h2>📖 Inona ny matoanteny "avoir" sy "être" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>avoir</strong> sy <strong>être</strong> no matoanteny manan-danja indrindra amin’ny teny frantsay.<br>
+      🔹 Izy ireo no ampiasaina matetika indrindra ary ilaina hanamboarana fehezanteny maro (taona, fananana, toetra, toerana, sns).<br>
+      🔹 Raha tsy fantatrao tsara ireo matoanteny roa ireo dia ho sarotra ny miteny frantsay. "Garder la forme comme mobile" : avereno tsianjery isan'andro!
     </div>
-    <h2>⚡ Miandry kely ⚡</h2>
-    <p>Mbola tsy vita ny exercice</p>
+  </div>
+
+  <!-- ==================== VERBE AVOIR ==================== -->
+  <div class="card">
+    <h2>1️⃣ Verbe AVOIR (manana)</h2>
+    
+    <h3>🔸 Conjugaison – ankehitriny (présent)</h3>
+    <div class="conjugaison-box">
+      <strong>j'ai</strong> → izaho dia manana / manana aho<br>
+      <strong>tu as</strong> → ianao dia manana<br>
+      <strong>il / elle / on a</strong> → izy dia manana<br>
+      <strong>nous avons</strong> → isika/izahay dia manana<br>
+      <strong>vous avez</strong> → ianareo dia manana (na fanajana tokana)<br>
+      <strong>ils / elles ont</strong> → izy ireo dia manana
+    </div>
+
+    <h3>🔸 Fampiasana (utilisation) – avoir</h3>
+    <div class="definition-mg">
+      <ul class="utilisation-list">
+        <li><strong>✅ manana zavatra (fananana)</strong> : J'ai une voiture. (Manana fiara aho.)</li>
+        <li><strong>🎂 milaza taona</strong> : J'ai 20 ans. (20 taona aho.)</li>
+        <li><strong>🥵 maneho hanoanana, hetaheta, hatsiaka, sns</strong> : J'ai faim. (Noana aho.) / J'ai soif. (Hetaheta aho.) / J'ai chaud. (Mafana aho.)</li>
+        <li><strong>🧠 maneho tahotra, torimaso</strong> : J'ai peur. (Matahotra aho.) / J'ai sommeil. (Renoky ny torimaso aho.)</li>
+        <li><strong>📅 milaza adidy na zavatra tokony hatao (avoir à)</strong> : J'ai à travailler. (Misy asa tsy maintsy ataoko.)</li>
+      </ul>
+    </div>
+
+    <div class="exemple-fr">
+      <strong>✨ Ohatra maro amin’ny avoir :</strong><br>
+      • Nous avons deux chiens. (Manana alika roa izahay.)<br>
+      • Elle a 25 ans. (25 taona izy.)<br>
+      • Ils ont froid. (Mangatsiaka izy ireo.)<br>
+      • Tu as raison. (Marina ianao.)<br>
+      • Il a de la chance. (Tsara vintana izy.)
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Avoir" dia tena ilaina ihany koa hanamboarana ny passé composé (lasa): j'ai mangé, tu as fini...
+    </div>
+  </div>
+
+  <!-- ==================== VERBE ÊTRE ==================== -->
+  <div class="card">
+    <h2>2️⃣ Verbe ÊTRE (misy / dia / toetra)</h2>
+    
+    <h3>🔸 Conjugaison – ankehitriny (présent)</h3>
+    <div class="conjugaison-box">
+      <strong>je suis</strong> → izaho dia (na : misy aho, toetra...)<br>
+      <strong>tu es</strong> → ianao dia<br>
+      <strong>il / elle / on est</strong> → izy dia / misy<br>
+      <strong>nous sommes</strong> → isika/izahay dia<br>
+      <strong>vous êtes</strong> → ianareo dia<br>
+      <strong>ils / elles sont</strong> → izy ireo dia
+    </div>
+
+    <h3>🔸 Fampiasana (utilisation) – être</h3>
+    <div class="definition-mg">
+      <ul class="utilisation-list">
+        <li><strong>👤 maha-izy, momba ny olona</strong> : Je suis étudiant. (mpianatra aho.)</li>
+        <li><strong>🎨 famaritana toetra (loko, habe, endrika)</strong> : La maison est grande. (Lehibe ny trano.)</li>
+        <li><strong>📍 toerana misy</strong> : Nous sommes à l'école. (Any an-tsekoly izahay.)</li>
+        <li><strong>😊 toe-pihetseham-po na toe-batana maharitra</strong> : Elle est fatiguée. (Reraka izy.) / Il est heureux. (Faly izy.)</li>
+        <li><strong>🌍 fiaviana na zom-pirenena</strong> : Je suis malgache. (Malagasy aho.) / Il est français.</li>
+        <li><strong>⏰ ora sy daty</strong> : Il est 8 heures. (Amin'ny 8 ora izao.) / Nous sommes lundi.</li>
+        <li><strong>🎭 asa na fanjakana</strong> : Elle est médecin. (Dokotera izy.)</li>
+      </ul>
+    </div>
+
+    <div class="exemple-fr">
+      <strong>✨ Ohatra maro amin’ny être :</strong><br>
+      • Tu es gentil. (Tsara fanahy ianao.)<br>
+      • Il est en France. (Any Frantsa izy.)<br>
+      • Nous sommes contents. (Faly izahay.)<br>
+      • Elles sont professeurs. (Mpampianatra izy ireo.)<br>
+      • C'est une belle journée. (Andro tsara izao.)
+    </div>
+    <div class="highlight">
+      🔔 <strong>Marihina :</strong> "Être" koa dia ampiasaina amin'ny fehezanteny atao pasif (voalaza): Le livre est écrit par... (Nosoratan'ny ... ny boky).
+    </div>
+  </div>
+
+  <!-- Comparaison avoir vs être -->
+  <div class="card">
+    <h2>⚖️ Avoir vs Être – fampitahana</h2>
+    <div class="definition-mg">
+      <strong>🔹 Avoir</strong> → matetika milaza zavatra anananao, na fihetseham-po vetivety (hanoanana, hetaheta, taona).<br>
+      <strong>🔹 Être</strong> → milaza ny maha-izy anao (asa, toetra, toerana, fiaviana).<br><br>
+      <strong>📌 Ohatra tsotra :</strong><br>
+      • J'ai faim → noana aho (avy amin'ny avoir).<br>
+      • Je suis fatigué → reraka aho (avy amin'ny être).<br>
+      • Il a 10 ans → 10 taona izy (avoir).<br>
+      • Il est petit → kely izy (être).
+    </div>
+    <div class="exemple-fr" style="margin-top: 8px;">
+      🧪 <strong>Fehezanteny mampiasa avoir sy être miaraka :</strong><br>
+      J'ai un frère qui est grand. (Manana rahalahy aho izay lava.)<br>
+      Nous avons une maison qui est belle. (Manana trano tsara tarehy izahay.)
+    </div>
+  </div>
+
+  <!-- Tableau récapitulatif rapide -->
+  <div class="card">
+    <h2>📋 Famintinana haingana (résumé)</h2>
+    <div class="definition-mg" style="background: #fff0db;">
+      <strong>AVOIR (manana)</strong><br>
+      • j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont<br>
+      • ampiasaina amin'ny : fananana, taona, hanoanana, hetaheta, tahotra, torimaso, vintana...<br>
+      <br>
+      <strong>ÊTRE (dia / misy / toetra)</strong><br>
+      • je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont<br>
+      • ampiasaina amin'ny : asa, toetra, toerana, fiaviana, fihetseham-po maharitra, ora...
+    </div>
+  </div>
+
+  <!-- Conseil "garder la forme comme mobile" -->
+  <div class="card" style="background: #fef3e2; border-left: 8px solid #f1b24a;">
+    <h2 style="color: #b6520f;">📱💪 « Garder la forme comme un mobile »</h2>
+    <div class="definition-mg" style="background: #fff1e0;">
+      🔋 <strong>Ho an'ny fianarana ny matoanteny avoir sy être :</strong><br>
+      Toy ny finday mila ampandoavina hery isan'andro, ny conjugaison dia tsy maintsy averina matetika. Soraty enina ny andian-teny (je suis, tu es...), avereno am-peo, ampiasao amin'ny fehezanteny. Raha 5 minitra isan'andro fotsiny aza, dia ho "voalamina tsara" ny français anananao. Tazony ho mazava sy matanjaka toy ny batterie 100% !
+    </div>
+    <div class="highlight" style="background: #ffefcf;">
+      🎯 Torohevitra : ataovy flashcards na horonantsary kely ho an'ny tenanao. Avereno isan'andro ny fehezan-teny : "J'ai ...", "Je suis ...". Ho hitanao fa miorina tsara ny fototra.
+    </div>
+  </div>
+
+  <footer>
+    🌟 Mianara tsikelikely — A1 → A2. Fanazavana tsotra amin'ny teny malagasy, ho an'ny mpianatra rehetra.<br>
+    © Verbe avoir & être — Conjugaison + utilisation
+  </footer>
 </div>
-
-<!-- EXERCICE PRINCIPAL (caché au départ) -->
-<div id="exerciseContainer" class="exercise-container">
-    <h1>📖 Verbes essentiels : AVOIR & ÊTRE</h1>
-    <div class="subtitle">Conjugaison + utilisation pratique</div>
-
-    <!-- Tableaux de conjugaison -->
-    <div class="conjug-table">
-        <div class="verb-card">
-            <div class="verb-title avoir">AVOIR</div>
-            <table>
-                <tr><td>Je</td><td>j'ai</td></tr>
-                <tr><td>Tu</td><td>tu as</td></tr>
-                <tr><td>Il / Elle / On</td><td>il a</td></tr>
-                <tr><td>Nous</td><td>nous avons</td></tr>
-                <tr><td>Vous</td><td>vous avez</td></tr>
-                <tr><td>Ils / Elles</td><td>ils ont</td></tr>
-            </table>
-        </div>
-        <div class="verb-card etre-card">
-            <div class="verb-title etre">ÊTRE</div>
-            <table>
-                <tr><td>Je</td><td>je suis</td></tr>
-                <tr><td>Tu</td><td>tu es</td></tr>
-                <tr><td>Il / Elle / On</td><td>il est</td></tr>
-                <tr><td>Nous</td><td>nous sommes</td></tr>
-                <tr><td>Vous</td><td>vous êtes</td></tr>
-                <tr><td>Ils / Elles</td><td>ils sont</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- EXERCICE QCM -->
-    <div class="quiz-area">
-        <div id="questionsContainer"></div>
-        <div class="score-area">
-            <span class="score-text">✅ Score : <span id="scoreValue">0</span> / <span id="totalQuestions"></span></span>
-            <button class="reset-btn" id="resetQuizBtn">🔄 Recommencer l'exercice</button>
-        </div>
-    </div>
-    <footer>Choisis la bonne forme du verbe selon la phrase ✨</footer>
-</div>
-
-<script>
-    // Base de questions : mélange d'utilisation du présent (avoir/être)
-    const questionsData = [
-        { text: "Nous ______ contents de te voir.", correct: "sommes", verb: "être" },
-        { text: "Elles ______ deux chiens adorables.", correct: "ont", verb: "avoir" },
-        { text: "Je ______ fatigué aujourd'hui.", correct: "suis", verb: "être" },
-        { text: "Tu ______ un joli sourire.", correct: "as", verb: "avoir" },
-        { text: "Il ______ toujours à l'heure.", correct: "est", verb: "être" },
-        { text: "Vous ______ raison dans ce débat.", correct: "avez", verb: "avoir" },
-        { text: "Marie et Sophie ______ les meilleures amies.", correct: "sont", verb: "être" },
-        { text: "Mon frère ______ 15 ans.", correct: "a", verb: "avoir" },
-        { text: "Nous ______ déjà mangé.", correct: "avons", verb: "avoir" },
-        { text: "Ils ______ très talentueux.", correct: "sont", verb: "être" }
-    ];
-
-    // On va prendre 6 questions aléatoires pour que ce soit dynamique mais pédagogique
-    let currentQuestions = [];
-    let userAnswers = new Array(6).fill(null); // stocke la réponse sélectionnée (texte)
-    let answerStatus = new Array(6).fill(null); // 'correct', 'wrong' ou null
-    let score = 0;
-
-    let totalQ = 0;
-
-    function shuffleArray(arr) {
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-    }
-
-    function initQuiz() {
-        // Sélectionner 6 questions aléatoires parmi le pool
-        const shuffledAll = shuffleArray([...questionsData]);
-        currentQuestions = shuffledAll.slice(0, 6);
-        totalQ = currentQuestions.length;
-        document.getElementById('totalQuestions').innerText = totalQ;
-        userAnswers = new Array(totalQ).fill(null);
-        answerStatus = new Array(totalQ).fill(null);
-        score = 0;
-        updateScoreDisplay();
-        renderQuestions();
-    }
-
-    function renderQuestions() {
-        const container = document.getElementById('questionsContainer');
-        if (!container) return;
-        container.innerHTML = '';
-        currentQuestions.forEach((q, idx) => {
-            // définir les options possibles selon le verbe (pour l'exercice cohérent)
-            let options = [];
-            if (q.verb === 'avoir') {
-                options = ['ai', 'as', 'a', 'avons', 'avez', 'ont'];
-            } else {
-                options = ['suis', 'es', 'est', 'sommes', 'êtes', 'sont'];
-            }
-            // on s'assure que la bonne réponse est toujours présente
-            if (!options.includes(q.correct)) {
-                options.push(q.correct);
-                options = [...new Set(options)];
-            }
-            // mélanger les options pour chaque question
-            const shuffledOpts = shuffleArray([...options]);
-
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            questionDiv.setAttribute('data-qidx', idx);
-            
-            const questionText = document.createElement('div');
-            questionText.className = 'question-text';
-            questionText.innerHTML = `<span style="color:#a5f3fc;">${idx+1}.</span> ${q.text}`;
-            
-            const optionsDiv = document.createElement('div');
-            optionsDiv.className = 'options';
-            
-            shuffledOpts.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = opt;
-                btn.setAttribute('data-value', opt);
-                // si déjà une réponse sélectionnée
-                if (userAnswers[idx] === opt) {
-                    // Appliquer la classe visuelle selon statut
-                    if (answerStatus[idx] === 'correct') {
-                        btn.classList.add('correct-glow');
-                    } else if (answerStatus[idx] === 'wrong') {
-                        btn.classList.add('wrong-glow');
-                    }
-                }
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    handleAnswer(idx, opt, q.correct);
-                });
-                optionsDiv.appendChild(btn);
-            });
-            
-            const feedbackSpan = document.createElement('div');
-            feedbackSpan.className = 'feedback';
-            if (answerStatus[idx] === 'correct') {
-                feedbackSpan.innerHTML = '✅ Bonne réponse !';
-                feedbackSpan.style.color = '#86efac';
-            } else if (answerStatus[idx] === 'wrong') {
-                feedbackSpan.innerHTML = `❌ Mauvais. La bonne réponse était : ${q.correct}.`;
-                feedbackSpan.style.color = '#fca5a5';
-            } else {
-                feedbackSpan.innerHTML = '🔍 Clique sur une réponse.';
-                feedbackSpan.style.color = '#94a3b8';
-            }
-            
-            questionDiv.appendChild(questionText);
-            questionDiv.appendChild(optionsDiv);
-            questionDiv.appendChild(feedbackSpan);
-            container.appendChild(questionDiv);
-        });
-    }
-
-    function handleAnswer(qIdx, selected, correctAnswer) {
-        // Si déjà répondu correctement, on ne permet pas de changer ? Pour plus de clarté, on permet de changer avant validation ? On va autoriser le changement mais mettre à jour le score proprement.
-        // On traite le nouveau statut
-        const wasCorrect = (answerStatus[qIdx] === 'correct');
-        const isNowCorrect = (selected === correctAnswer);
-        
-        // Mettre à jour userAnswers et status
-        const oldAnswer = userAnswers[qIdx];
-        userAnswers[qIdx] = selected;
-        
-        if (isNowCorrect) {
-            if (!wasCorrect) {
-                // si c'était faux ou null avant, on augmente le score
-                answerStatus[qIdx] = 'correct';
-                score++;
-            } else {
-                // déjà correct, ne rien changer
-                answerStatus[qIdx] = 'correct';
-            }
-        } else {
-            // réponse fausse
-            if (wasCorrect) {
-                // précédemment correct, on perd le point
-                answerStatus[qIdx] = 'wrong';
-                score--;
-            } else {
-                answerStatus[qIdx] = 'wrong';
-            }
-        }
-        
-        // S'assurer que le score ne descende pas sous 0
-        if (score < 0) score = 0;
-        updateScoreDisplay();
-        // Re-rendu pour actualiser les couleurs des boutons et feedback
-        refreshQuestionUI();
-    }
-    
-    function refreshQuestionUI() {
-        const container = document.getElementById('questionsContainer');
-        if (!container) return;
-        const questionDivs = container.querySelectorAll('.question');
-        questionDivs.forEach((div, idx) => {
-            if (idx >= currentQuestions.length) return;
-            const q = currentQuestions[idx];
-            const optionsDiv = div.querySelector('.options');
-            const feedbackSpan = div.querySelector('.feedback');
-            
-            // Mettre à jour les classes des boutons
-            const btns = optionsDiv.querySelectorAll('.option-btn');
-            btns.forEach(btn => {
-                const val = btn.getAttribute('data-value');
-                btn.classList.remove('correct-glow', 'wrong-glow');
-                if (userAnswers[idx] === val) {
-                    if (answerStatus[idx] === 'correct') {
-                        btn.classList.add('correct-glow');
-                    } else if (answerStatus[idx] === 'wrong') {
-                        btn.classList.add('wrong-glow');
-                    }
-                }
-            });
-            
-            // Mettre à jour feedback
-            if (answerStatus[idx] === 'correct') {
-                feedbackSpan.innerHTML = '✅ Bonne réponse !';
-                feedbackSpan.style.color = '#86efac';
-            } else if (answerStatus[idx] === 'wrong') {
-                feedbackSpan.innerHTML = `❌ Mauvais. La bonne réponse était : ${q.correct}.`;
-                feedbackSpan.style.color = '#fca5a5';
-            } else {
-                feedbackSpan.innerHTML = '🔍 Clique sur une réponse.';
-                feedbackSpan.style.color = '#94a3b8';
-            }
-        });
-        updateScoreDisplay();
-    }
-    
-    function updateScoreDisplay() {
-        const scoreSpan = document.getElementById('scoreValue');
-        if (scoreSpan) scoreSpan.innerText = score;
-    }
-    
-    function resetQuiz() {
-        // Réinitialiser complètement les réponses et le score
-        userAnswers = new Array(totalQ).fill(null);
-        answerStatus = new Array(totalQ).fill(null);
-        score = 0;
-        updateScoreDisplay();
-        // re-rendu (efface les selections)
-        refreshQuestionUI();
-        // Pour chaque question remettre à l'état initial (feedback neutre)
-        const container = document.getElementById('questionsContainer');
-        if (container) {
-            const questionDivs = container.querySelectorAll('.question');
-            questionDivs.forEach((div, idx) => {
-                const feedbackSpan = div.querySelector('.feedback');
-                if (feedbackSpan) {
-                    feedbackSpan.innerHTML = '🔍 Clique sur une réponse.';
-                    feedbackSpan.style.color = '#94a3b8';
-                }
-                const btns = div.querySelectorAll('.option-btn');
-                btns.forEach(btn => {
-                    btn.classList.remove('correct-glow', 'wrong-glow');
-                });
-            });
-        }
-        // reset userAnswers & answerStatus après rendu (déjà fait)
-        // On s'assure que le score reste bien 0
-        score = 0;
-        updateScoreDisplay();
-        // on force le refresh complet des états internes (pour éviter incohérence)
-        for(let i=0;i<totalQ;i++){
-            answerStatus[i] = null;
-            userAnswers[i] = null;
-        }
-        refreshQuestionUI(); // re-synchro
-    }
-    
-    // Transition : afficher l'écran d'attente 2 secondes puis montrer l'exercice
-    function startExerciseAfterDelay() {
-        const waitingDiv = document.getElementById('waitingScreen');
-        const exerciseDiv = document.getElementById('exerciseContainer');
-        if (waitingDiv && exerciseDiv) {
-            setTimeout(() => {
-                waitingDiv.style.opacity = '0';
-                setTimeout(() => {
-                    waitingDiv.style.display = 'none';
-                    exerciseDiv.style.display = 'block';
-                    // Initialiser l'exercice seulement maintenant
-                    initQuiz();
-                    const resetBtn = document.getElementById('resetQuizBtn');
-                    if (resetBtn) {
-                        // enlever les anciens listeners pour éviter doublons
-                        const newReset = resetBtn.cloneNode(true);
-                        resetBtn.parentNode.replaceChild(newReset, resetBtn);
-                        newReset.addEventListener('click', () => {
-                            resetQuiz();
-                        });
-                    }
-                }, 500);
-            }, 1800); // 1.8 secondes d'attente agréable (animation simple)
-        } else {
-            // fallback
-            if(exerciseDiv) exerciseDiv.style.display = 'block';
-            if(waitingDiv) waitingDiv.style.display = 'none';
-            initQuiz();
-        }
-    }
-    
-    // Lancer au chargement
-    window.addEventListener('DOMContentLoaded', () => {
-        startExerciseAfterDelay();
-    });
-</script>
 </body>
 </html>
