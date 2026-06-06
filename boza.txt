@@ -505,7 +505,7 @@
     const FICHIERS_A_VERIFIER = [
         { nom: "typelecon.txt", type: "lecon", dbName: "typelecon" },
         { nom: "pronlecon.txt", type: "lecon", dbName: "pronlecon" },
-{ nom: "moralecon.txt", type: "lecon", dbName: "moralecon" },
+        { nom: "moralecon.txt", type: "lecon", dbName: "moralecon" },
         { nom: "jerelecon.txt", type: "lecon", dbName: "jerelecon" },
         { nom: "condlecon.txt", type: "lecon", dbName: "condlecon" },
         { nom: "andrlecon.txt", type: "lecon", dbName: "andrlecon" },
@@ -517,9 +517,10 @@
         { nom: "pqplecon.txt", type: "lecon", dbName: "pqplecon" },
         { nom: "francma.txt", type: "dictionnaire", dbName: "francma" },
         { nom: "franseul.txt", type: "dialogue", dbName: "franseul" },
-{ nom: "typeqcm.txt", type: "qcm", dbName: "typeqcm" },
+        { nom: "typeqcm.txt", type: "qcm", dbName: "typeqcm" },
         { nom: "conjugai.txt", type: "conjugaison", dbName: "conjugai" },
         { nom: "mirelecon.txt", type: "hiresaka", dbName: "mirelecon" }
+        // ajout_fichier_ici
     ];
     
     // Cache des versions stockées localement
@@ -734,6 +735,7 @@
         { nom: "Vrai ou Faux", code: "vra", description: "Indiquer si une affirmation est correcte ou non." },
         { nom: "Texte à trous", code: "tex", description: "Compléter les mots manquants." },
         { nom: "Association", code: "ass", description: "Associer les éléments entre eux." }
+        // ajout_exercice_ici
     ];
     
     function get4Caracteres(titre) {
@@ -1183,31 +1185,37 @@ if (exoCards.length > 0) {
         { id: 4, titre: "andrana", fichier: "andrlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 5, titre: "JERENA FA LESONA", fichier: "jerelecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 8, titre: "MORANA", fichier: "moralecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." }
-    ];//eo aloha
+        // ajout_debutant_ici
+    ];
     
     const leconsIntermediaire = [
         { id: 1, titre: "Passé composé", fichier: "pcomlecon.txt", description: "Former le passé composé", defaut: "Auxiliaire avoir/être + participe passé." },
         { id: 2, titre: "Imparfait", fichier: "impllecon.txt", description: "Description au passé", defaut: "Radical nous présent + ais, ais, ait, ions, iez, aient." },
         { id: 3, titre: "Futur simple", fichier: "futslecon.txt", description: "Exprimer l'avenir", defaut: "Infinitif + ai, as, a, ons, ez, ont." }
+        // ajout_intermediaire_ici
     ];
     
     const leconsAvance = [
         { id: 1, titre: "Subjonctif présent", fichier: "subjlecon.txt", description: "Emploi et conjugaison", defaut: "Que je parle, que tu parles, qu'il parle..." },
         { id: 2, titre: "Conditionnel passé", fichier: "condplecon.txt", description: "Hypothèse non réalisée", defaut: "Aurais parlé, serais allé." },
         { id: 3, titre: "Plus-que-parfait", fichier: "pqplecon.txt", description: "Antériorité dans le passé", defaut: "Auxiliaire à l'imparfait + participe passé." }
+        // ajout_avance_ici
     ];
     
     const dictionnaireLecons = [
         { id: 1, titre: "📖 Dictionnaire Français ⇄ Malagasy", fichier: "francma.txt", description: "Dictionnaire bilingue complet", defaut: "Dictionnaire non disponible." }
+        // ajout_dictionnaire_ici
     ];
     
     const conjugaisonLecons = [
         { id: 1, titre: "📘 Conjugaison des verbes français", fichier: "conjugai.txt", description: "Conjugaison complète", defaut: "Conjugaison non disponible." }
+        // ajout_conjugaison_ici
     ];
     
     const dialoguerLecons = [
         { id: 1, titre: "💬 Dialogue Français & Malagasy", fichier: "francma.txt", description: "Dialogues bilingues", defaut: "Dialogue bilingue non disponible." },
         { id: 2, titre: "💬 Dialogue Français seulement", fichier: "franseul.txt", description: "Dialogues uniquement en français", defaut: "Dialogue français seul non disponible." }
+        // ajout_dialoguer_ici
     ];
     
     async function stockerImage(url, blob) {
@@ -1364,451 +1372,6 @@ if (exoCards.length > 0) {
     setTimeout(() => {
         verifierTousLesFichiers();
     }, 1000);
-
-// ======================= GESTION DU BOUTON RETOUR ANDROID (VERSION HISTORIQUE PARFAITE) =======================
-
-let navigationStack = []; // Pile d'historique complète
-let currentScreen = 'accueil';
-let isInBlobView = false;
-let blobType = null;
-let ignoreNextPop = false;
-
-// Sauvegarder l'écran actuel
-function getCurrentScreenId() {
-    const activeScreen = document.querySelector('.screen.active');
-    if (!activeScreen) return currentScreen;
-    
-    const id = activeScreen.id;
-    if (id === 'screenAccueil') return 'accueil';
-    if (id === 'screenDebutant') return 'debutant';
-    if (id === 'screenIntermediaire') return 'intermediaire';
-    if (id === 'screenAvance') return 'avance';
-    if (id === 'screenDictionnaire') return 'dictionnaire';
-    if (id === 'screenConjugaison') return 'conjugaison';
-    if (id === 'screenDialoguer') return 'dialoguer';
-    return currentScreen;
-}
-
-// Mettre à jour currentScreen
-function updateCurrentScreen() {
-    currentScreen = getCurrentScreenId();
-    return currentScreen;
-}
-
-// Ajouter un écran à l'historique (appelé à chaque navigation)
-function pushToHistory(screenName, context = {}) {
-    updateCurrentScreen();
-    
-    // Éviter les doublons consécutifs
-    if (navigationStack.length > 0 && navigationStack[navigationStack.length - 1].screen === screenName) {
-        return;
-    }
-    
-    navigationStack.push({
-        screen: screenName,
-        from: currentScreen,
-        timestamp: Date.now(),
-        context: context
-    });
-    
-    // Limiter la taille
-    if (navigationStack.length > 50) {
-        navigationStack.shift();
-    }
-    
-    // Push dans l'historique du navigateur
-    history.pushState({ stackIndex: navigationStack.length - 1, screen: screenName }, '', window.location.href);
-    
-    return navigationStack.length - 1;
-}
-
-// Revenir à un écran spécifique
-function popToScreen(screenName) {
-    // Trouver la dernière occurrence de cet écran dans la pile
-    let index = -1;
-    for (let i = navigationStack.length - 1; i >= 0; i--) {
-        if (navigationStack[i].screen === screenName) {
-            index = i;
-            break;
-        }
-    }
-    
-    if (index !== -1 && index < navigationStack.length - 1) {
-        // Supprimer l'historique après cet index
-        navigationStack = navigationStack.slice(0, index + 1);
-        return true;
-    }
-    return false;
-}
-
-// Gérer le blob
-function checkIfInBlob() {
-    isInBlobView = window.location.href.startsWith('blob:');
-    
-    if (isInBlobView) {
-        const exerciceInfo = sessionStorage.getItem('exerciceInfo');
-        const leconInfo = localStorage.getItem('dernierContexteLecon');
-        
-        if (exerciceInfo) {
-            blobType = 'exercice';
-        } else if (leconInfo) {
-            blobType = 'lecon';
-        } else {
-            blobType = 'unknown';
-        }
-    } else {
-        blobType = null;
-    }
-    return isInBlobView;
-}
-
-// Fermer blob et retourner
-function closeBlobAndReturn() {
-    const exerciceInfo = sessionStorage.getItem('exerciceInfo');
-    const leconInfo = localStorage.getItem('dernierContexteLecon');
-    
-    if (exerciceInfo && blobType === 'exercice') {
-        const info = JSON.parse(exerciceInfo);
-        sessionStorage.removeItem('exerciceInfo');
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        localStorage.setItem('retourExerciceLecon', info.leconTitre);
-        localStorage.setItem('retourExerciceNiveau', info.niveau || 'debutant');
-        window.location.href = mainUrl;
-        return true;
-    } else if (leconInfo && blobType === 'lecon') {
-        localStorage.removeItem('dernierContexteLecon');
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        window.location.href = mainUrl;
-        return true;
-    } else {
-        const mainUrl = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl;
-        window.location.href = mainUrl;
-        return true;
-    }
-}
-
-// Fonction principale retour
-function handleAndroidBack() {
-    console.log("🔙 Retour - Pile actuelle:", navigationStack.map(s => s.screen));
-    
-    // 1. Priorité: Blob
-    if (checkIfInBlob()) {
-        closeBlobAndReturn();
-        return true;
-    }
-    
-    // 2. Restaurer liste exercices
-    const retourExerciceLecon = localStorage.getItem('retourExerciceLecon');
-    if (retourExerciceLecon) {
-        const leconTitre = retourExerciceLecon;
-        const niveau = localStorage.getItem('retourExerciceNiveau') || 'debutant';
-        localStorage.removeItem('retourExerciceLecon');
-        localStorage.removeItem('retourExerciceNiveau');
-        
-        // Ajouter à l'historique
-        pushToHistory('exercices', { leconTitre, niveau });
-        
-        setTimeout(() => {
-            if (typeof afficherListeExercices === 'function') {
-                afficherListeExercices(leconTitre, niveau);
-            }
-        }, 100);
-        return true;
-    }
-    
-    // 3. Fermer modal
-    const modals = document.querySelectorAll('.modal-fullscreen');
-    if (modals.length > 0) {
-        const lastModal = modals[modals.length - 1];
-        lastModal.remove();
-        console.log("✅ Modal fermé");
-        return true;
-    }
-    
-    // 4. Navigation dans l'historique (le plus important!)
-    if (navigationStack.length > 1) {
-        // Retirer l'écran actuel
-        navigationStack.pop();
-        // Récupérer l'écran précédent
-        const previous = navigationStack[navigationStack.length - 1];
-        
-        if (previous && previous.screen !== currentScreen) {
-            console.log(`↩ Retour vers: ${previous.screen} (depuis ${currentScreen})`);
-            
-            if (typeof originalShowScreen === 'function') {
-                originalShowScreen(previous.screen);
-            } else if (typeof showScreen === 'function') {
-                showScreen(previous.screen);
-            }
-            
-            updateCurrentScreen();
-            return true;
-        }
-    }
-    
-    // 5. Retour à l'accueil si pas dans l'historique
-    const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen && activeScreen.id !== 'screenAccueil') {
-        console.log("🏠 Retour forcé à l'accueil");
-        
-        // Ajouter l'accueil à l'historique
-        pushToHistory('accueil');
-        
-        if (typeof originalShowScreen === 'function') {
-            originalShowScreen('accueil');
-        } else if (typeof showScreen === 'function') {
-            showScreen('accueil');
-        }
-        
-        updateCurrentScreen();
-        return true;
-   
-    } else {
-        window.lastBackTime = now;
-    }
-    
-    return false;
-}
-
-// Intercepter popstate
-window.addEventListener('popstate', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    
-    if (ignoreNextPop) {
-        ignoreNextPop = false;
-        return;
-    }
-    
-    handleAndroidBack();
-});
-
-// === INTERCEPTION DE TOUTES LES NAVIGATIONS ===
-
-// Sauvegarder la fonction showScreen originale
-const originalShowScreen = window.showScreen || showScreen;
-
-// Nouvelle fonction showScreen avec enregistrement auto
-window.showScreen = function(screenName, ...args) {
-    const currentId = getCurrentScreenId();
-    
-    // Ne pas enregistrer si c'est le même écran
-    if (currentId !== screenName) {
-        // Enregistrer dans l'historique
-        pushToHistory(screenName, { from: currentId, args: args });
-        console.log(`📜 Navigation enregistrée: ${currentId} → ${screenName}`);
-    }
-    
-    // Appeler la fonction originale
-    if (typeof originalShowScreen === 'function') {
-        return originalShowScreen(screenName, ...args);
-    }
-    
-    updateCurrentScreen();
-};
-
-// Intercepter chargerLecon
-const originalChargerLecon = window.chargerLecon || chargerLecon;
-window.chargerLecon = function(titre, nomFichier, urlComplet, contenuDefaut) {
-    pushToHistory('lecon', { leconTitre: titre });
-    console.log(`📖 Leçon enregistrée: ${titre}`);
-    
-    if (typeof originalChargerLecon === 'function') {
-        return originalChargerLecon(titre, nomFichier, urlComplet, contenuDefaut);
-    }
-};
-
-// Intercepter afficherListeExercices
-const originalAfficherListeExercices = window.afficherListeExercices || afficherListeExercices;
-window.afficherListeExercices = function(leconTitre, niveau) {
-    pushToHistory('exercices', { leconTitre, niveau });
-    console.log(`📝 Liste exercices enregistrée: ${leconTitre}`);
-    
-    if (typeof originalAfficherListeExercices === 'function') {
-        return originalAfficherListeExercices(leconTitre, niveau);
-    }
-};
-
-// Intercepter chargerHiresaka
-const originalChargerHiresaka = window.chargerHiresaka || chargerHiresaka;
-window.chargerHiresaka = function() {
-    pushToHistory('hiresaka');
-    console.log(`💬 Hiresaka enregistré`);
-    
-    if (typeof originalChargerHiresaka === 'function') {
-        return originalChargerHiresaka();
-    }
-};
-
-// Intercepter tous les clics sur les liens de navigation
-document.addEventListener('click', function(event) {
-    // Chercher les éléments de navigation
-    let target = event.target;
-    while (target && target !== document.body) {
-        // Boutons de navigation
-        if (target.matches && target.matches('[data-screen], .nav-btn, .screen-btn, [onclick*="showScreen"]')) {
-            const screenName = target.getAttribute('data-screen') || 
-                              target.getAttribute('data-target') ||
-                              (target.onclick && target.onclick.toString().match(/showScreen\(['"](.+)['"]\)/)?.[1]);
-            
-            if (screenName && screenName !== getCurrentScreenId()) {
-                pushToHistory(screenName, { source: 'click' });
-                console.log(`🖱️ Click enregistré: vers ${screenName}`);
-            }
-        }
-        target = target.parentElement;
-    }
-}, true);
-
-// Réinitialiser
-function resetNavigationHistory() {
-    const currentId = getCurrentScreenId();
-    navigationStack = [{ screen: currentId, from: null, timestamp: Date.now(), context: {} }];
-    currentScreen = currentId;
-    window.lastBackTime = 0;
-    localStorage.removeItem('retourExerciceLecon');
-    localStorage.removeItem('retourExerciceNiveau');
-    
-    // Nettoyer l'historique navigateur
-    ignoreNextPop = true;
-    history.pushState({ stackIndex: 0, screen: currentId }, '', window.location.href);
-    
-    console.log("🔄 Historique réinitialisé, écran actuel:", currentId);
-    console.log("📚 Pile:", navigationStack.map(s => s.screen));
-}
-
-// Initialisation
-if (!window.location.href.startsWith('blob:')) {
-    setTimeout(() => {
-        resetNavigationHistory();
-    }, 50);
-}
-
-// Écouter Capacitor
-if (window.Capacitor && window.Capacitor.isNative) {
-    document.addEventListener('backbutton', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        handleAndroidBack();
-    }, false);
-}
-
-// Écouter touches clavier (debug)
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' || event.key === 'Backspace' || event.keyCode === 27) {
-        event.preventDefault();
-        event.stopPropagation();
-        handleAndroidBack();
-    }
-});
-
-// Exporter
-window.handleAndroidBack = handleAndroidBack;
-window.resetNavigationHistory = resetNavigationHistory;
-window.getNavigationStack = () => navigationStack;
-
-console.log("✅ Gestion du bouton retour - Version historique parfaite");
-
-// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
-    (function() {
-        function showBlockOverlay() {
-            if (document.getElementById('securityOverlay')) return;
-            const overlay = document.createElement('div');
-            overlay.id = 'securityOverlay';
-            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
-            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
-            document.body.appendChild(overlay);
-            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
-        }
-
-        function hideBlockOverlay() {
-            const overlay = document.getElementById('securityOverlay');
-            if (overlay) overlay.remove();
-        }
-
-        window.addEventListener('keydown', function(e) {
-            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
-                e.preventDefault();
-                return false;
-            }
-if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
-                e.preventDefault();
-                return false;
-            }
-// Ajoutez ceci dans la liste des vérifications
-if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
-    e.preventDefault();
-    return false;
-}
-// Ctrl+P (Imprimer)
-if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+F (Rechercher)
-if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
-if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
-    e.preventDefault();
-    return false;
-}
-
-// F5 (Rafraîchir)
-if (e.key === "F5" || e.keyCode === 116) {
-    e.preventDefault();
-    return false;
-}
-            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
-                e.preventDefault();
-                return false;
-            }
-        }, true);
-
-        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
-
-        function detectDevTools() {
-            let devToolsOpen = false;
-            const threshold = 160;
-            setInterval(() => {
-                const widthDiff = window.outerWidth - window.innerWidth;
-                const heightDiff = window.outerHeight - window.innerHeight;
-                if (widthDiff > threshold || heightDiff > threshold) {
-                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
-                } else {
-                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
-                }
-            }, 1000);
-        }
-
-        setInterval(() => { debugger; }, 50);
-        
-        if (window.console) {
-            const noop = () => {};
-            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
-        }
-
-        detectDevTools();
-    })();
 </script>
 </body>
 </html>
