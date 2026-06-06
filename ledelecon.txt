@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Exercice : Les déterminants - Introduction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, sans-serif;
+            padding: 1.5rem;
+        }
+
+        /* Écran d'attente simple (sans compteur) */
+        .waiting-screen {
+            max-width: 500px;
+            width: 100%;
+            background: #1e293b;
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+            transition: opacity 0.6s ease;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem auto;
+            border: 4px solid #475569;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .dots-wait {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 1.2rem 0 1rem;
+        }
+
+        .dot-wait {
+            width: 8px;
+            height: 8px;
+            background: #60a5fa;
+            border-radius: 50%;
+            animation: pulseWait 1.2s infinite ease;
+        }
+
+        .dot-wait:nth-child(2) { animation-delay: 0.2s; background: #a78bfa; }
+        .dot-wait:nth-child(3) { animation-delay: 0.4s; background: #f472b6; }
+
+        @keyframes pulseWait {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .waiting-screen h2 {
+            color: #f1f5f9;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .waiting-screen p {
+            color: #94a3b8;
+        }
+
+        /* Carte principale de l'exercice (cachée au départ) */
+        .exercise-container {
+            max-width: 900px;
+            width: 100%;
+            background: #1e293b;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Section description des déterminants */
+        .intro-card {
+            background: #0f172a;
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .intro-card h3 {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .intro-card p {
+            color: #cbd5e6;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            background: #334155;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #a5f3fc;
+            font-family: monospace;
+        }
+
+        /* Tableau des déterminants */
+        .determinants-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .det-card {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+
+        .det-title {
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .det-list {
+            color: #e2e8f0;
+            font-size: 0.85rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .det-list span {
+            background: #1e293b;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        /* Zone QCM */
+        .quiz-area {
+            background: #0f172a;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .question {
+            background: #1e293b;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            margin-bottom: 1.2rem;
+            transition: 0.1s;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .option-btn {
+            background: #334155;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            background: #475569;
+            transform: scale(1.02);
+        }
+
+        .option-btn.correct-glow {
+            background: #10b981;
+            box-shadow: 0 0 8px #34d399;
+        }
+
+        .option-btn.wrong-glow {
+            background: #ef4444;
+            text-decoration: line-through;
+        }
+
+        .feedback {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            padding-left: 5px;
+        }
+
+        .score-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .score-text {
+            color: #cbd5e6;
+            font-weight: 600;
+            background: #0f172a;
+            padding: 6px 14px;
+            border-radius: 40px;
+        }
+
+        .reset-btn {
+            background: #3b82f6;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #2563eb;
+            transform: scale(0.97);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #5b6e8c;
+            margin-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .exercise-container { padding: 1.2rem; }
+            .option-btn { padding: 4px 12px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ÉCRAN D'ATTENTE SIMPLE -->
+<div id="waitingScreen" class="waiting-screen">
+    <div class="loader"></div>
+    <div class="dots-wait">
+        <span class="dot-wait"></span>
+        <span class="dot-wait"></span>
+        <span class="dot-wait"></span>
+    </div>
+    <h2>⚡ Miandry kely ⚡</h2>
+    <p>Mbola tsy vita ny exercice</p>
+</div>
+
+<!-- EXERCICE PRINCIPAL : LES DÉTERMINANTS -->
+<div id="exerciseContainer" class="exercise-container">
+    <h1>📚 Les déterminants</h1>
+    <div class="subtitle">Introduction + exercices interactifs</div>
+
+    <!-- Partie descriptive -->
+    <div class="intro-card">
+        <h3>📖 Qu'est-ce qu'un déterminant ?</h3>
+        <p>Un déterminant est un petit mot placé devant un nom pour préciser son genre, son nombre, ou pour l'introduire dans la phrase. <strong>Il ne s'utilise jamais seul</strong>. Exemple : <em>le chat, une idée, ma maison, ces livres.</em></p>
+        <div class="examples">
+            <span class="badge">le, la, l', les</span>
+            <span class="badge">un, une, des</span>
+            <span class="badge">mon, ma, mes, ton, ta, tes, son, sa, ses</span>
+            <span class="badge">ce, cet, cette, ces</span>
+            <span class="badge">quel, quelle, quels, quelles</span>
+        </div>
+    </div>
+
+    <!-- Tableau récapitulatif des types de déterminants -->
+    <div class="determinants-grid">
+        <div class="det-card">
+            <div class="det-title">🏷️ Articles définis</div>
+            <div class="det-list"><span>le</span><span>la</span><span>l'</span><span>les</span></div>
+        </div>
+        <div class="det-card">
+            <div class="det-title">✨ Articles indéfinis</div>
+            <div class="det-list"><span>un</span><span>une</span><span>des</span></div>
+        </div>
+        <div class="det-card">
+            <div class="det-title">💚 Possessifs</div>
+            <div class="det-list"><span>mon/ma/mes</span><span>ton/ta/tes</span><span>son/sa/ses</span><span>notre/nos</span><span>votre/vos</span><span>leur/leurs</span></div>
+        </div>
+        <div class="det-card">
+            <div class="det-title">👉 Démonstratifs</div>
+            <div class="det-list"><span>ce</span><span>cet</span><span>cette</span><span>ces</span></div>
+        </div>
+    </div>
+
+    <!-- Zone d'exercice QCM -->
+    <div class="quiz-area">
+        <div id="questionsContainer"></div>
+        <div class="score-area">
+            <span class="score-text">🏆 Score : <span id="scoreValue">0</span> / <span id="totalQuestions"></span></span>
+            <button class="reset-btn" id="resetQuizBtn">🔄 Recommencer l'exercice</button>
+        </div>
+    </div>
+    <footer>Choisis le déterminant qui convient pour compléter chaque phrase.</footer>
+</div>
+
+<script>
+    // Banque de questions : le déterminant manquant dans la phrase
+    const questionsBank = [
+        { text: "____ livre est intéressant.", correct: "Le", options: ["Le", "Un", "Ce", "Mon"] },
+        { text: "J'achète ____ pommes au marché.", correct: "des", options: ["des", "les", "ces", "mes"] },
+        { text: "____ fille s'appelle Sophie.", correct: "La", options: ["La", "Une", "Ma", "Cette"] },
+        { text: "____ stylo bleu est à moi.", correct: "Ce", options: ["Ce", "Un", "Le", "Mon"] },
+        { text: "____ amis viendront demain.", correct: "Mes", options: ["Mes", "Les", "Des", "Ces"] },
+        { text: "J'ai vu ____ oiseau rare.", correct: "un", options: ["un", "le", "ce", "mon"] },
+        { text: "____ voiture est très rapide.", correct: "Cette", options: ["Cette", "La", "Une", "Ma"] },
+        { text: "____ enfants jouent dans le jardin.", correct: "Les", options: ["Les", "Des", "Ces", "Mes"] },
+        { text: "____ idée est géniale !", correct: "Ton", options: ["Ton", "Un", "Ce", "Le"] },
+        { text: "____ professeur explique bien.", correct: "Le", options: ["Le", "Un", "Ce", "Notre"] },
+        { text: "____ fleurs sont magnifiques.", correct: "Ces", options: ["Ces", "Les", "Des", "Mes"] },
+        { text: "____ arbre centenaire est tombé.", correct: "L'", options: ["L'", "Un", "Cet", "Mon"] }
+    ];
+
+    let currentQuestions = [];      // 6 questions sélectionnées aléatoirement
+    let userAnswers = [];
+    let answerStatus = [];
+    let score = 0;
+    let totalQ = 0;
+
+    // Fonction utilitaire pour mélanger un tableau
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // Initialisation du quiz : pioche aléatoire de 6 questions
+    function initQuiz() {
+        const shuffledAll = shuffleArray([...questionsBank]);
+        currentQuestions = shuffledAll.slice(0, 6);
+        totalQ = currentQuestions.length;
+        document.getElementById('totalQuestions').innerText = totalQ;
+        userAnswers = new Array(totalQ).fill(null);
+        answerStatus = new Array(totalQ).fill(null);
+        score = 0;
+        updateScoreDisplay();
+        renderQuestions();
+    }
+
+    // Rendu des questions dans le DOM
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+
+        currentQuestions.forEach((q, idx) => {
+            // On utilise les options fournies, on les mélange pour plus de variété
+            let opts = [...q.options];
+            // S'assurer que la bonne réponse est bien incluse (c'est le cas dans notre banque mais sécurité)
+            if (!opts.includes(q.correct)) {
+                opts.push(q.correct);
+            }
+            opts = shuffleArray([...new Set(opts)]); // enlever doublons éventuels
+
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.setAttribute('data-qidx', idx);
+
+            const questionText = document.createElement('div');
+            questionText.className = 'question-text';
+            questionText.innerHTML = `<span style="color:#a5f3fc;">${idx+1}.</span> ${q.text}`;
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.setAttribute('data-value', opt);
+                if (userAnswers[idx] === opt) {
+                    if (answerStatus[idx] === 'correct') btn.classList.add('correct-glow');
+                    else if (answerStatus[idx] === 'wrong') btn.classList.add('wrong-glow');
+                }
+                btn.addEventListener('click', (e) => {
+                    handleAnswer(idx, opt, q.correct);
+                });
+                optionsDiv.appendChild(btn);
+            });
+
+            const feedbackSpan = document.createElement('div');
+            feedbackSpan.className = 'feedback';
+            if (answerStatus[idx] === 'correct') {
+                feedbackSpan.innerHTML = '✅ Exact ! Bon déterminant.';
+                feedbackSpan.style.color = '#86efac';
+            } else if (answerStatus[idx] === 'wrong') {
+                feedbackSpan.innerHTML = `❌ Oups ! La bonne réponse était : "${q.correct}". Relis la leçon.`;
+                feedbackSpan.style.color = '#fca5a5';
+            } else {
+                feedbackSpan.innerHTML = '🔍 Clique sur le bon déterminant.';
+                feedbackSpan.style.color = '#94a3b8';
+            }
+
+            questionDiv.appendChild(questionText);
+            questionDiv.appendChild(optionsDiv);
+            questionDiv.appendChild(feedbackSpan);
+            container.appendChild(questionDiv);
+        });
+    }
+
+    // Gestion de la réponse
+    function handleAnswer(qIdx, selected, correctAnswer) {
+        const wasCorrect = (answerStatus[qIdx] === 'correct');
+        const isNowCorrect = (selected === correctAnswer);
+
+        // Mise à jour de la réponse utilisateur
+        userAnswers[qIdx] = selected;
+
+        if (isNowCorrect) {
+            if (!wasCorrect) {
+                answerStatus[qIdx] = 'correct';
+                score++;
+            } else {
+                answerStatus[qIdx] = 'correct';
+            }
+        } else {
+            if (wasCorrect) {
+                answerStatus[qIdx] = 'wrong';
+                score--;
+            } else {
+                answerStatus[qIdx] = 'wrong';
+            }
+        }
+
+        if (score < 0) score = 0;
+        updateScoreDisplay();
+        refreshQuestionUI();
+    }
+
+    // Rafraîchir l'affichage des couleurs et feedback sans reconstruire tout le DOM
+    function refreshQuestionUI() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+        const questionDivs = container.querySelectorAll('.question');
+        questionDivs.forEach((div, idx) => {
+            if (idx >= currentQuestions.length) return;
+            const q = currentQuestions[idx];
+            const optionsDiv = div.querySelector('.options');
+            const feedbackSpan = div.querySelector('.feedback');
+
+            // Mettre à jour l'apparence des boutons
+            const btns = optionsDiv.querySelectorAll('.option-btn');
+            btns.forEach(btn => {
+                const val = btn.getAttribute('data-value');
+                btn.classList.remove('correct-glow', 'wrong-glow');
+                if (userAnswers[idx] === val) {
+                    if (answerStatus[idx] === 'correct') {
+                        btn.classList.add('correct-glow');
+                    } else if (answerStatus[idx] === 'wrong') {
+                        btn.classList.add('wrong-glow');
+                    }
+                }
+            });
+
+            // Mettre à jour le feedback
+            if (answerStatus[idx] === 'correct') {
+                feedbackSpan.innerHTML = '✅ Exact ! Bon déterminant.';
+                feedbackSpan.style.color = '#86efac';
+            } else if (answerStatus[idx] === 'wrong') {
+                feedbackSpan.innerHTML = `❌ Oups ! La bonne réponse était : "${q.correct}". Relis la leçon.`;
+                feedbackSpan.style.color = '#fca5a5';
+            } else {
+                feedbackSpan.innerHTML = '🔍 Clique sur le bon déterminant.';
+                feedbackSpan.style.color = '#94a3b8';
+            }
+        });
+    }
+
+    function updateScoreDisplay() {
+        const scoreSpan = document.getElementById('scoreValue');
+        if (scoreSpan) scoreSpan.innerText = score;
+    }
+
+    function resetQuiz() {
+        // Réinitialisation complète
+        userAnswers = new Array(totalQ).fill(null);
+        answerStatus = new Array(totalQ).fill(null);
+        score = 0;
+        updateScoreDisplay();
+        // Efface les styles sur les boutons et remet feedback neutre
+        const container = document.getElementById('questionsContainer');
+        if (container) {
+            const questionDivs = container.querySelectorAll('.question');
+            questionDivs.forEach((div, idx) => {
+                const feedbackSpan = div.querySelector('.feedback');
+                if (feedbackSpan) {
+                    feedbackSpan.innerHTML = '🔍 Clique sur le bon déterminant.';
+                    feedbackSpan.style.color = '#94a3b8';
+                }
+                const btns = div.querySelectorAll('.option-btn');
+                btns.forEach(btn => {
+                    btn.classList.remove('correct-glow', 'wrong-glow');
+                });
+            });
+        }
+        // Réinitialiser les tableaux internes
+        for (let i = 0; i < totalQ; i++) {
+            answerStatus[i] = null;
+            userAnswers[i] = null;
+        }
+        refreshQuestionUI();
+    }
+
+    // Transition : 2 secondes d'écran d'attente puis affichage de l'exercice
+    function startExerciseAfterDelay() {
+        const waitingDiv = document.getElementById('waitingScreen');
+        const exerciseDiv = document.getElementById('exerciseContainer');
+        if (waitingDiv && exerciseDiv) {
+            setTimeout(() => {
+                waitingDiv.style.opacity = '0';
+                setTimeout(() => {
+                    waitingDiv.style.display = 'none';
+                    exerciseDiv.style.display = 'block';
+                    initQuiz();
+                    const resetBtn = document.getElementById('resetQuizBtn');
+                    if (resetBtn) {
+                        // Remplacer pour éviter les doublons d'écouteurs
+                        const newReset = resetBtn.cloneNode(true);
+                        resetBtn.parentNode.replaceChild(newReset, resetBtn);
+                        newReset.addEventListener('click', () => {
+                            resetQuiz();
+                        });
+                    }
+                }, 500);
+            }, 1800);
+        } else {
+            if (exerciseDiv) exerciseDiv.style.display = 'block';
+            if (waitingDiv) waitingDiv.style.display = 'none';
+            initQuiz();
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        startExerciseAfterDelay();
+    });
+</script>
+</body>
+</html>
