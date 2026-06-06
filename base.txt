@@ -1185,6 +1185,7 @@ if (exoCards.length > 0) {
         { id: 4, titre: "andrana", fichier: "andrlecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 5, titre: "JERENA FA LESONA", fichier: "jerelecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." },
         { id: 8, titre: "MORANA", fichier: "moralecon.txt", description: "Exprimer une hypothèse", defaut: "Conditionnel présent: radical du futur + terminaisons imparfait." }
+    ,{ id: 36, titre: "Coucocu tsara", fichier: "couclecon.txt", description: "hita ka", defaut: "Contenu à définir" }
     // ajout_debutant_ici
  ,        { id: 86, titre: "Coucou enao", fichier: "couclecon.txt", description: "testa kely", defaut: "Contenu à définir" }];
     
