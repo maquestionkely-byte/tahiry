@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Les types de phrases – Famaritana amin'ny teny malagasy</title>
+  <title>Verbe AVOIR et ÊTRE – Conjugaison débutant</title>
   <style>
     * {
       margin: 0;
@@ -24,7 +24,6 @@
       margin: 0 auto;
     }
 
-    /* header avec le modèle 7 - bleu pastel - très resserré */
     .title-main {
       background: #bfdbfe;
       color: #1e3a8a;
@@ -42,7 +41,6 @@
       margin: 0;
     }
 
-    /* cartes */
     .card {
       background: white;
       border-radius: 32px;
@@ -52,7 +50,6 @@
       border: 1px solid #e2e6cf;
     }
 
-    /* Sous-titres en bleu pâle */
     .card h2 {
       font-size: 1.35rem;
       font-weight: 700;
@@ -72,7 +69,6 @@
       line-height: 1.5;
     }
 
-    /* Style épuré et aéré pour les exemples */
     .exemple-modern {
       background: #fff9ef;
       padding: 18px;
@@ -132,12 +128,43 @@
       font-size: 0.85rem;
     }
 
-    .icone {
-      font-size: 1.2rem;
-      margin-right: 6px;
+    .conjug-table {
+      background: #f8f4e8;
+      border-radius: 24px;
+      padding: 12px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 0.9rem;
     }
 
-    /* Bouton Facebook */
+    .conjug-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-bottom: 1px dashed #cbd5a0;
+    }
+
+    .conjug-row:last-child {
+      border-bottom: none;
+    }
+
+    .pronom {
+      font-weight: 700;
+      color: #1e3a8a;
+      width: 80px;
+    }
+
+    .verbe {
+      font-weight: 600;
+      color: #b45309;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
     .fb-button-small {
       background: #1877f2;
       color: white;
@@ -153,20 +180,9 @@
       transition: transform 0.1s, background 0.2s;
       margin-top: 8px;
       text-decoration: none;
-      width: auto;
-      max-width: 100%;
-      line-height: 1.4;
-      text-align: center;
     }
-    
-    .fb-button-small:hover {
-      background: #0d65d9;
-    }
-    
-    .fb-button-small:active { 
-      transform: scale(0.97); 
-    }
-    
+
+    .fb-button-small:hover { background: #0d65d9; }
     .fb-icon-small {
       background: white;
       color: #1877f2;
@@ -179,361 +195,159 @@
       width: 24px;
       height: 24px;
       border-radius: 5px;
-      flex-shrink: 0;
-    }
-
-    .contact-info {
-      margin-top: 12px;
-      padding-top: 8px;
-      border-top: 1px solid #e2e6cf;
-    }
-
-    .small-note {
-      font-size: 0.7rem;
-      color: #6f8f7d;
-      margin-top: 10px;
-    }
-
-    .liste-avec-lignes-vides {
-      list-style: none;
-      margin-top: 6px;
-    }
-    .liste-avec-lignes-vides li {
-      font-size: 0.88rem;
-      margin-bottom: 18px;
-      padding-left: 22px;
-      position: relative;
-      color: #1f3d34;
-      line-height: 1.5;
-    }
-    .liste-avec-lignes-vides li::before {
-      content: "✨";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 0.85rem;
-    }
-    .liste-avec-lignes-vides li:last-child {
-      margin-bottom: 0;
-    }
-
-    .definition-mg p {
-      margin-bottom: 12px;
-    }
-    .definition-mg p:last-child {
-      margin-bottom: 0;
-    }
-    
-    @media (max-width: 550px) {
-      .exemple-modern .exo-ligne {
-        flex-direction: column;
-        gap: 6px;
-      }
-      .exemple-modern .fr {
-        align-self: flex-start;
-      }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Titre : LES TYPES DE PHRASE - Modèle 7 (bleu pastel) très resserré -->
   <div class="title-main">
-    <h1>LES TYPES DE PHRASE</h1>
+    <h1>🇫🇷 AVOIR et ÊTRE – Les verbes essentiels</h1>
   </div>
 
-  <!-- Première carte : Inona ny "types de phrases" ? -->
+  <!-- Carte introductive -->
   <div class="card">
-    <h2>🏷️ Inona ny "types de phrases" ?</h2>
+    <h2>🎯 Pourquoi AVOIR et ÊTRE ?</h2>
     <div class="definition-mg">
-      🔹 Ny <strong>types de phrases</strong> dia ny endriky ny fehezanteny araka ny tanjon'ny mpandahateny.<br><br>
-      🔹 Amin'ny frantsay dia misy karazany telo lehibe ho an'ny mpianatra vao manomboka :<br><br>
-      <span class="icone">✅</span> <strong>Phrase affirmative</strong><br><br>
-      <span class="icone">❗</span> <strong>Phrase exclamative</strong><br><br>
-      <span class="icone">❓</span> <strong>Phrase interrogative</strong><br><br>
-      Ny tsirairay dia manana marika (soratra) sy filaharana manokana.
+      🔹 <strong>Avoir</strong> → "manana" amin'ny teny malagasy.<br>
+      🔹 <strong>Être</strong> → "manao/misy/ho" (mamaritra ny toetra na ny maha-izy).<br><br>
+      💡 Izy roa ireo no fototra indrindra amin'ny teny frantsay. Ampiasaina isan'andro izy ireo ary mba mamorona fehezanteny maro hafa koa.
     </div>
   </div>
 
-  <!-- 1. Phrase affirmative -->
+  <!-- ===================== VERBE AVOIR ===================== -->
   <div class="card">
-    <h2>1️⃣ Phrase affirmative</h2>
+    <h2>📦 Verbe AVOIR (manana)</h2>
     <div class="definition-mg">
-      <strong>📖 Famaritana malagasy :</strong><br>
-      Ny <strong>phrase affirmative</strong> dia fehezanteny milaza zavatra tsotra, milaza fa marina na misy zavatra iray. Tsy misy fandavana, tsy misy fanontaniana. Matetika izy no ampiasaina indrindra.
+      <strong>Conjugaison présent (fotoana ankehitriny) :</strong>
     </div>
-    
+    <div class="conjug-table">
+      <div class="conjug-row"><span class="pronom">J'</span><span class="verbe">ai</span><span class="mg">(Manana aho)</span></div>
+      <div class="conjug-row"><span class="pronom">Tu</span><span class="verbe">as</span><span class="mg">(Manana ianao)</span></div>
+      <div class="conjug-row"><span class="pronom">Il / Elle / On</span><span class="verbe">a</span><span class="mg">(Manana izy / Isika)</span></div>
+      <div class="conjug-row"><span class="pronom">Nous</span><span class="verbe">avons</span><span class="mg">(Manana izahay)</span></div>
+      <div class="conjug-row"><span class="pronom">Vous</span><span class="verbe">avez</span><span class="mg">(Manana ianareo / fanajana)</span></div>
+      <div class="conjug-row"><span class="pronom">Ils / Elles</span><span class="verbe">ont</span><span class="mg">(Manana izy ireo)</span></div>
+    </div>
+
     <div class="exemple-modern">
-      <div class="exo-titre">
-        <span>✨</span> Ohatra amin'ny teny frantsay
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Je suis content. (Faly aho.)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Il mange une pomme. (Mihinana paoma izy.)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Nous allons à l'école. (Mandeha any an-tsekoly izahay.)</span>
-      </div>
+      <div class="exo-titre">✨ Ohatra amin'ny sehatra andavanandro</div>
+      <div class="exo-ligne"><span class="fr">J'ai un frère.</span><span class="mg">Manana rahalahy aho.</span></div>
+      <div class="exo-ligne"><span class="fr">Tu as soif ?</span><span class="mg">Mangetaheta ve ianao ?</span></div>
+      <div class="exo-ligne"><span class="fr">Elle a une voiture rouge.</span><span class="mg">Manana fiara mena izy.</span></div>
+      <div class="exo-ligne"><span class="fr">Nous avons faim.</span><span class="mg">Noana izahay.</span></div>
+      <div class="exo-ligne"><span class="fr">Ils ont 20 ans.</span><span class="mg">20 taona izy ireo.</span></div>
     </div>
-    
     <div class="highlight">
-      💡 <strong>Tsarovy :</strong> Tsy misy tsipelina fanontaniana na marika "!". Milaza zava-misy fotsiny.
+      💡 <strong>Tsarovy :</strong> Mampiasa ny "avoir" koa rehefa milaza ny taona (j'ai 10 ans) na ny hanoanana, hetaheta, etc.
     </div>
   </div>
 
-  <!-- 2. Phrase exclamative -->
+  <!-- ===================== VERBE ÊTRE ===================== -->
   <div class="card">
-    <h2>2️⃣ Phrase exclamative</h2>
+    <h2>🌿 Verbe ÊTRE (misy / maha- / toetra)</h2>
     <div class="definition-mg">
-      <strong>😲 Famaritana malagasy :</strong><br>
-      Ny <strong>phrase exclamative</strong> dia fehezanteny maneho fihetseham-po mahery : fahagagana, fifaliana, hatezerana, tahotra, na fanaitra. Mamarana amin'ny <strong>!</strong> (marika fanantsoantso) izy.
+      <strong>Conjugaison présent (fotoana ankehitriny) :</strong>
     </div>
-    
+    <div class="conjug-table">
+      <div class="conjug-row"><span class="pronom">Je</span><span class="verbe">suis</span><span class="mg">(Izaho dia / Izaho misy)</span></div>
+      <div class="conjug-row"><span class="pronom">Tu</span><span class="verbe">es</span><span class="mg">(Ianao dia)</span></div>
+      <div class="conjug-row"><span class="pronom">Il / Elle / On</span><span class="verbe">est</span><span class="mg">(Izy dia)</span></div>
+      <div class="conjug-row"><span class="pronom">Nous</span><span class="verbe">sommes</span><span class="mg">(Izahay dia)</span></div>
+      <div class="conjug-row"><span class="pronom">Vous</span><span class="verbe">êtes</span><span class="mg">(Izanareo dia)</span></div>
+      <div class="conjug-row"><span class="pronom">Ils / Elles</span><span class="verbe">sont</span><span class="mg">(Izy ireo dia)</span></div>
+    </div>
+
     <div class="exemple-modern">
-      <div class="exo-titre">
-        <span>✨</span> Ohatra amin'ny teny frantsay
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Quelle belle journée ! (Tontsara be ity andro ity !)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Comme il est grand ! (Lehibe be izy !)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Arrêtez ! (Mijanòna !)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Quel dommage ! (Indrisy anie !)</span>
-      </div>
+      <div class="exo-titre">✨ Ohatra fampiasa amin'ny toetra sy fanjakana</div>
+      <div class="exo-ligne"><span class="fr">Je suis étudiant.</span><span class="mg">Mpianatra aho.</span></div>
+      <div class="exo-ligne"><span class="fr">Tu es gentil.</span><span class="mg">Tsoa fanahy ianao.</span></div>
+      <div class="exo-ligne"><span class="fr">Elle est à Madagascar.</span><span class="mg">Eto Madagasikara izy.</span></div>
+      <div class="exo-ligne"><span class="fr">Nous sommes fatigués.</span><span class="mg">Vizana izahay.</span></div>
+      <div class="exo-ligne"><span class="fr">Ils sont heureux.</span><span class="mg">Faly izy ireo.</span></div>
     </div>
-    
     <div class="highlight">
-      🔔 <strong>Marihina :</strong> Mety manomboka amin'ny "Quel/Quelle", "Comme", "Que" na tsotra fotsiny nefa miova ny feony.
+      🌟 <strong>Marihina :</strong> Ampiasaina hilaza ny toerana misy, ny toetra, ny asa aman-draharaha.
     </div>
   </div>
 
-  <!-- 3. Phrase interrogative -->
+  <!-- ===================== COMPARAISON AVOIR / ÊTRE ===================== -->
   <div class="card">
-    <h2>3️⃣ Phrase interrogative</h2>
+    <h2>⚖️ Avoir vs Être – fampitahana mazava</h2>
     <div class="definition-mg">
-      <strong>❓ Famaritana malagasy :</strong><br>
-      Ny <strong>phrase interrogative</strong> dia fehezanteny ampiasaina hanontaniana, hahazoana valiny. Amin'ny soratra dia mamarana amin'ny <strong>?</strong> (marika fanontaniana) izy.
+      <strong>Fehezanteny mitovy hevitra fa tsy mitovy matoanteny:</strong>
     </div>
-    <div class="definition-mg" style="background:#e5f2e8; margin-top: 8px;">
-      🧠 Misy endrika telo matetika ho an'ny débutant :<br><br>
-      <ul style="margin-left: 20px; margin-top: 8px; margin-bottom: 4px;">
-        <li>1) <strong>Est-ce que ... ?</strong> → mora indrindra</li><br>
-        <li>2) <strong>Inversion (verbe + sujet)</strong> → somary ara-dalàna</li><br>
-        <li>3) <strong>Intonation fotsiny</strong> (fiakaran'ny feo) → fiteny andavanandro</li>
+    <div class="exemple-modern">
+      <div class="exo-ligne"><span class="fr">J'ai faim.</span><span class="mg">Noana aho. (avy amin'ny avoir)</span></div>
+      <div class="exo-ligne"><span class="fr">Je suis content.</span><span class="mg">Faly aho. (avy amin'ny être)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle a une maison.</span><span class="mg">Manana trano izy. (fananana)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle est ici.</span><span class="mg">Eto izy. (toerana)</span></div>
+    </div>
+    <div class="highlight">
+      🧠 <strong>Fomba tsarovana:</strong> AVOIR → "manana" zavatra (na hanoanana, taona). ÊTRE → mamaritra ny maha-izy azy na ny toerana.
+    </div>
+  </div>
+
+  <!-- ===================== PETITE ASTUCHE ET EXERCICES ===================== -->
+  <div class="card">
+    <h2>📝 Fampiharana sy toro-hevitra</h2>
+    <div class="definition-mg">
+      <strong>✅ Andramo soraty amin'ny bokinao ireto fehezanteny ireto :</strong>
+      <ul style="margin-top: 12px; margin-left: 24px;">
+        <li>1. (Avoir) Nous ________ un chat noir. (Manana saka mainty izahay)</li>
+        <li>2. (Être) Tu ________ très sympa. (Tena tsara fanahy ianao)</li>
+        <li>3. (Avoir) Elles ________ quinze ans. (Dimy ambin'ny folo taona izy ireo)</li>
+        <li>4. (Être) Je ________ à l'école. (Any am-sekoly aho)</li>
       </ul>
+      <p style="margin-top: 12px;"><strong>💬 Valiny :</strong> 1. avons &nbsp; 2. es &nbsp; 3. ont &nbsp; 4. suis</p>
     </div>
-    
-    <div class="exemple-modern">
-      <div class="exo-titre">
-        <span>📢</span> Ohatra amin'ny teny frantsay
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Est-ce que tu aimes le café ? (Tia kafe ve ianao ?)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Parles-tu français ? (Miteny frantsay ve ianao ?)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Tu viens demain ? (Ho avy ianao rahampitso ?) → intonation</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Quelle heure est-il ? (Amin'ny ora firy izao ?)</span>
-      </div>
-    </div>
-    
-    <div class="highlight">
-      ⚠️ Aza adino : Raha misy teny fanontaniana (ohatra : pourquoi, quand, où, comment, quel) dia mijanona ho interrogative ihany.
+
+    <div class="highlight" style="margin-top: 12px;">
+      🗣️ <strong>Fomba fianarana tsara :</strong> Vakio mafy isan'andro ny conjugaison (je suis, tu es, il est...). Ampiasao amin'ny fiainana andavanandro : "J'ai soif", "Tu es fatigué ?"
     </div>
   </div>
 
-  <!-- Comparaison rapide en malagasy -->
+  <!-- ===================== CONTACT & SOUTIEN ===================== -->
   <div class="card">
-    <h2>📌 Famintinana (résumé)</h2>
+    <h2>📬 Fanampiana sy fifandraisana</h2>
     <div class="definition-mg">
-      ✅ <strong>Affirmative</strong> → milaza zavatra tsotra. Ohatra : <em>Il fait beau</em> (Tsara ny andro).<br><br>
-      ❗ <strong>Exclamative</strong> → maneho fihetseham-po. Ohatra : <em>Qu'il fait beau !</em> (Tena tsara ny andro tokoa !)<br><br>
-      ❓ <strong>Interrogative</strong> → manontany. Ohatra : <em>Fait-il beau ?</em> (Tsara ve ny andro ?)
+      Raha manana fanontaniana momba ny "avoir" sy "être", na raha mila fanazavana fanampiny ianao, dia azonao atao ny miresaka aminay.
     </div>
-    <div class="exemple-modern" style="margin-top: 12px;">
-      <div class="exo-titre">
-        <span>🧪</span> Fehezanteny iray ihany, karazany samy hafa
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Tu écoutes la musique. (Mihaino mozika ianao.)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Est-ce que tu écoutes la musique ? (Mihaino mozika ve ianao ?)</span>
-      </div>
-      <div class="exo-ligne">
-        <span class="fr">Comme tu écoutes bien la musique ! (Tena mihaino mozika tsara ianao tokoa !)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Carte TOROHEVITRA (conseils pédagogiques) -->
-  <div class="card">
-    <h2>🎯 Torohevitra mahasoa</h2>
-    <div class="definition-mg" style="margin-bottom: 6px;">
-      <ul class="liste-avec-lignes-vides">
-        <li>Soraty ny ohatra telo isaky ny karazany (affirmative, exclamative, interrogative).</li>
-        <li>Vakio matetika, amin'ny maraina 3 minitra eo. Avereno tsikelikely.</li>
-        <li>Mamoròna fehezanteny 2 hafa isaky ny karazana, ezaho mba ny fehezanteny amin'ny fiainana andavanandro.</li>
-        <li>Manao exercice : Efa misy exercice isika fa ataovy retour avy eo de exercice no kitihina, azo atao ihany koa : ovay ho interrogative na exclamative ny fehezanteny tsotra.</li>
-
-        <li>Raha afaka 1 herinandro, avereno jerena ny lesona.</li>
-      </ul>
-    </div>
-    <div class="highlight" style="margin-top: 8px;">
-      🌱 <strong>Tsarovy :</strong> Tsotra nefa mahomby ny fanaovana fampiharana (pratique) isan'andro. Mianara tsikelikely ! 
-    </div>
-  </div>
-
-  <!-- Carte Fanampiana & Fifandraisana avec bouton Facebook -->
-  <div class="card">
-    <h2>📬 Fanamarihana sy Fifandraisana</h2>
-    <div class="definition-mg" style="margin-bottom: 8px;">
-      <p>Raha misy ny fanamarihana avy aminao : </p>
-   <p>➡️ Ohatra misy fanatsarana ny lesona.</p> <p>➡️ Na maniry hianatra ianao.</p>   <p> Dia azonao atao ny miresaka aminay mivantana.</p>
-    </div>
-    
     <button class="fb-button-small" id="fbContactBtn">
-  <span class="fb-icon-small">f</span>
-  Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
-</button>
-    
-    <div class="contact-info">
-      <div class="small-note">
-      </div>
-      <div class="small-note" style="margin-top: 6px;">
-      </div>
-<div class="contact-info">
-      <div class="small-note">
-      </div>Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽
-      <div class="small-note" style="margin-top: 6px;">
-      </div>
+      <span class="fb-icon-small">f</span>
+      Hiresaka amin'ny Facebook
+    </button>
+    <div class="small-note" style="margin-top: 14px;">
+      Mirary fandrosoana amin'ny fianarana frantsay! 🌟
     </div>
+  </div>
 </div>
 
 <script>
   const FB_PAGE_ID = "61555313604553";
   const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
-  
   const fbButton = document.getElementById('fbContactBtn');
   if (fbButton) {
-    fbButton.addEventListener('click', function(e) {
+    fbButton.addEventListener('click', (e) => {
       e.preventDefault();
       window.open(FB_URL, '_blank');
     });
   }
 
-
-// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
-    (function() {
-        function showBlockOverlay() {
-            if (document.getElementById('securityOverlay')) return;
-            const overlay = document.createElement('div');
-            overlay.id = 'securityOverlay';
-            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
-            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
-            document.body.appendChild(overlay);
-            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
-        }
-
-        function hideBlockOverlay() {
-            const overlay = document.getElementById('securityOverlay');
-            if (overlay) overlay.remove();
-        }
-
-        window.addEventListener('keydown', function(e) {
-            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
-                e.preventDefault();
-                return false;
-            }
-if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
-                e.preventDefault();
-                return false;
-            }
-// Ajoutez ceci dans la liste des vérifications
-if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
-    e.preventDefault();
-    return false;
-}
-// Ctrl+P (Imprimer)
-if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+F (Rechercher)
-if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
-if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
-    e.preventDefault();
-    return false;
-}
-
-// F5 (Rafraîchir)
-if (e.key === "F5" || e.keyCode === 116) {
-    e.preventDefault();
-    return false;
-}
-            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
-                e.preventDefault();
-                return false;
-            }
-        }, true);
-
-        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
-
-        function detectDevTools() {
-            let devToolsOpen = false;
-            const threshold = 160;
-            setInterval(() => {
-                const widthDiff = window.outerWidth - window.innerWidth;
-                const heightDiff = window.outerHeight - window.innerHeight;
-                if (widthDiff > threshold || heightDiff > threshold) {
-                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
-                } else {
-                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
-                }
-            }, 1000);
-        }
-
-        setInterval(() => { debugger; }, 50);
-        
-        if (window.console) {
-            const noop = () => {};
-            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
-        }
-
-        detectDevTools();
-    })();
+  // Simple security snippet (same as your original model but lightweight)
+  (function() {
+    function blockShortcuts(e) {
+      if (e.key === "F12" || e.code === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) ||
+          (e.ctrlKey && (e.key === "U" || e.key === "u")) || (e.ctrlKey && (e.key === "s" || e.key === "S")) ||
+          (e.ctrlKey && (e.key === "p" || e.key === "P")) || (e.ctrlKey && (e.key === "f" || e.key === "F")) ||
+          (e.ctrlKey && (e.key === "r" || e.key === "R")) || e.key === "F5") {
+        e.preventDefault();
+        return false;
+      }
+    }
+    window.addEventListener('keydown', blockShortcuts, true);
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('copy', (e) => e.preventDefault());
+  })();
 </script>
 </body>
 </html>
