@@ -15,45 +15,90 @@
       align-items: center;
       padding: 20px;
     }
-    .container {
-      max-width: 500px;
-      width: 100%;
-      background: white;
-      border-radius: 32px;
-      padding: 30px 25px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    h1 { color: #1f5442; margin-bottom: 20px; font-size: 1.8rem; }
-    p { color: #5a6e7c; margin-bottom: 30px; line-height: 1.5; }
     .btn-exercice {
       background: linear-gradient(135deg, #2c7a5a, #1f5442);
       color: white;
       border: none;
-      padding: 16px 28px;
-      border-radius: 50px;
-      font-size: 1.1rem;
+      padding: 18px 32px;
+      border-radius: 60px;
+      font-size: 1.3rem;
       font-weight: bold;
       cursor: pointer;
-      width: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       transition: transform 0.2s;
     }
-    .btn-exercice:hover { transform: translateY(-2px); }
-    .info { margin-top: 20px; font-size: 0.75rem; color: #94a3b8; }
-    .error { color: #ef4444; margin-top: 15px; font-size: 0.85rem; display: none; }
+    .btn-exercice:hover {
+      transform: scale(1.05);
+    }
+    .modal-exercices {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 20000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-exercices-content {
+      background: white;
+      border-radius: 32px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      background: #1f5442;
+      color: white;
+      padding: 16px 20px;
+      border-radius: 32px 32px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .close-modal {
+      background: #ef4444;
+      color: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .modal-body { padding: 20px; }
+    .exo-card {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      border-left: 5px solid #2c7a5a;
+      transition: all 0.2s;
+    }
+    .exo-card:hover {
+      background: #fef3e2;
+      transform: translateX(5px);
+    }
+    .exo-card h4 { color: #1f5442; margin-bottom: 5px; }
+    .exo-card p { font-size: 0.85rem; color: #5a6e7c; }
+    .error {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>📝 TYPES DE PHRASES</h1>
-  <p>Cliquez ci-dessous pour commencer les exercices.</p>
-  <button class="btn-exercice" id="btnExercice">✏️ EXERCICES</button>
-  <div class="info">QCM | Vrai/Faux | Texte à trous | Association</div>
-  <div class="error" id="errorMsg">⚠️ Fichier non trouvé dans la base de données</div>
-</div>
+<button class="btn-exercice" id="btnExercice">✏️ EXERCICES</button>
 
 <script>
-  // Configuration (même base que le HTML principal)
   const DB_NAME = 'lebea_storage';
   const STORE_NAME = 'lebe_content';
   const DB_VERSION = 18;
@@ -71,38 +116,116 @@
     });
   }
 
-  // Lire lebe.txt depuis la DB (stocké par le HTML principal)
-  async function lireLebeTxtDepuisDB() {
+  async function lireFichierDB(nomFichier) {
     try {
       const db = await ouvrirDB();
       return new Promise((resolve) => {
         const tx = db.transaction([STORE_NAME], 'readonly');
         const store = tx.objectStore(STORE_NAME);
-        const request = store.get('htmlContent');  // Clé utilisée par le principal
+        const request = store.get(nomFichier);
         request.onsuccess = () => resolve(request.result);
         request.onerror = () => resolve(null);
       });
-    } catch (error) {
-      console.error("Erreur DB:", error);
-      return null;
-    }
+    } catch { return null; }
   }
 
-  document.getElementById('btnExercice').onclick = async () => {
-    const errorDiv = document.getElementById('errorMsg');
-    errorDiv.style.display = 'none';
-    
-    const contenuLebe = await lireLebeTxtDepuisDB();
-    
-    if (contenuLebe) {
-      // Ouvrir lebe.txt dans un nouvel onglet
-      const blob = new Blob([contenuLebe], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-    } else {
-      errorDiv.style.display = 'block';
+  function getCodeLecon(titre) {
+    let nettoye = titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    nettoye = nettoye.replace(/[^a-zA-Z0-9\s]/g, "");
+    let mots = nettoye.toLowerCase().split(/\s+/);
+    if (mots.length >= 2) {
+      return mots[0].substring(0, 2) + mots[1].substring(0, 2);
+    } else if (mots.length === 1) {
+      return mots[0].substring(0, 4);
     }
-  };
+    return "typh";
+  }
+
+  const TITRE_LECON = "Types de phrases";
+  const CODE_LECON = getCodeLecon(TITRE_LECON);
+
+  function extraireTypesExercices(contenuLebe) {
+    const types = [];
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(contenuLebe, 'text/html');
+    
+    const exoCards = doc.querySelectorAll('.exo-card');
+    exoCards.forEach(card => {
+      const titre = card.querySelector('h4')?.textContent || '';
+      const desc = card.querySelector('p')?.textContent || '';
+      let code = '';
+      const matchCode = (desc + titre).match(/\b(qcm|mal|vra|tex|ass)\b/i);
+      if (matchCode) code = matchCode[1].toLowerCase();
+      
+      if (titre) {
+        types.push({
+          code: code,
+          nom: titre.replace(/[📝]/g, '').trim(),
+          description: desc
+        });
+      }
+    });
+    
+    return types;
+  }
+
+  async function afficherModalExercices() {
+    const contenuLebe = await lireFichierDB('htmlContent');
+    
+    if (!contenuLebe) {
+      alert('Aucune donnée trouvée. Veuillez ouvrir l\'application principale d\'abord.');
+      return;
+    }
+    
+    const typesExercices = extraireTypesExercices(contenuLebe);
+    
+    if (typesExercices.length === 0) {
+      alert('Aucun exercice trouvé dans le cours.');
+      return;
+    }
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal-exercices';
+    modal.innerHTML = `
+      <div class="modal-exercices-content">
+        <div class="modal-header">
+          <h3>✏️ Exercices disponibles</h3>
+          <button class="close-modal">✕</button>
+        </div>
+        <div class="modal-body" id="modalExercicesList"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    const listContainer = modal.querySelector('#modalExercicesList');
+    listContainer.innerHTML = '';
+    
+    for (const exo of typesExercices) {
+      const nomFichier = exo.code ? `${CODE_LECON}${exo.code}.txt` : '';
+      const card = document.createElement('div');
+      card.className = 'exo-card';
+      card.innerHTML = `<h4>📝 ${exo.nom}</h4><p>${exo.description || 'Cliquez pour commencer'}</p>`;
+      
+      card.onclick = async () => {
+        let contenuExo = null;
+        if (nomFichier) contenuExo = await lireFichierDB(nomFichier);
+        
+        if (contenuExo) {
+          const blob = new Blob([contenuExo], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          window.open(url, '_blank');
+        } else {
+          alert(`Exercice non disponible: ${exo.nom}`);
+        }
+      };
+      listContainer.appendChild(card);
+    }
+    
+    modal.querySelector('.close-modal').onclick = () => modal.remove();
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+  }
+
+  document.getElementById('btnExercice').onclick = afficherModalExercices;
 </script>
 </body>
 </html>
