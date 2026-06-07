@@ -2,230 +2,79 @@
 <html lang="mg">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Exercices - Types de phrases</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug - Vérification DB</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, #1a3f5c 0%, #0f2b3d 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .btn-exercice {
-      background: linear-gradient(135deg, #2c7a5a, #1f5442);
-      color: white;
-      border: none;
-      padding: 18px 32px;
-      border-radius: 60px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-    }
-    .btn-exercice:hover {
-      transform: scale(1.05);
-    }
-    .modal-exercices {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(4px);
-      z-index: 20000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-exercices-content {
-      background: white;
-      border-radius: 32px;
-      max-width: 500px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .modal-header {
-      background: #1f5442;
-      color: white;
-      padding: 16px 20px;
-      border-radius: 32px 32px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .close-modal {
-      background: #ef4444;
-      color: white;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    .modal-body { padding: 20px; }
-    .exo-card {
-      background: #f8fafc;
-      border-radius: 20px;
-      padding: 16px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      border-left: 5px solid #2c7a5a;
-      transition: all 0.2s;
-    }
-    .exo-card:hover {
-      background: #fef3e2;
-      transform: translateX(5px);
-    }
-    .exo-card h4 { color: #1f5442; margin-bottom: 5px; }
-    .exo-card p { font-size: 0.85rem; color: #5a6e7c; }
-    .error {
-      background: #fee2e2;
-      color: #dc2626;
-      padding: 20px;
-      border-radius: 20px;
-      text-align: center;
-    }
+    body { font-family: monospace; padding: 20px; background: #1a1a2e; color: white; }
+    pre { background: #0f0f1a; padding: 15px; border-radius: 10px; overflow-x: auto; white-space: pre-wrap; }
+    .success { color: #4ade80; }
+    .error { color: #f87171; }
   </style>
 </head>
 <body>
-<button class="btn-exercice" id="btnExercice">✏️ EXERCICES</button>
+<h2>🔍 Vérification de la base de données</h2>
+<div id="result">Chargement...</div>
 
 <script>
   const DB_NAME = 'lebea_storage';
   const STORE_NAME = 'lebe_content';
   const DB_VERSION = 18;
 
-  function ouvrirDB() {
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, DB_VERSION);
-      request.onerror = () => reject(request.error);
-      request.onsuccess = (e) => resolve(e.target.result);
-      request.onupgradeneeded = (e) => {
-        if (!e.target.result.objectStoreNames.contains(STORE_NAME)) {
-          e.target.result.createObjectStore(STORE_NAME);
-        }
-      };
-    });
-  }
-
-  async function lireFichierDB(nomFichier) {
+  async function debugDB() {
+    const resultDiv = document.getElementById('result');
+    
     try {
-      const db = await ouvrirDB();
-      return new Promise((resolve) => {
-        const tx = db.transaction([STORE_NAME], 'readonly');
-        const store = tx.objectStore(STORE_NAME);
-        const request = store.get(nomFichier);
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => resolve(null);
-      });
-    } catch { return null; }
-  }
-
-  function getCodeLecon(titre) {
-    let nettoye = titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    nettoye = nettoye.replace(/[^a-zA-Z0-9\s]/g, "");
-    let mots = nettoye.toLowerCase().split(/\s+/);
-    if (mots.length >= 2) {
-      return mots[0].substring(0, 2) + mots[1].substring(0, 2);
-    } else if (mots.length === 1) {
-      return mots[0].substring(0, 4);
-    }
-    return "typh";
-  }
-
-  const TITRE_LECON = "Types de phrases";
-  const CODE_LECON = getCodeLecon(TITRE_LECON);
-
-  function extraireTypesExercices(contenuLebe) {
-    const types = [];
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(contenuLebe, 'text/html');
-    
-    const exoCards = doc.querySelectorAll('.exo-card');
-    exoCards.forEach(card => {
-      const titre = card.querySelector('h4')?.textContent || '';
-      const desc = card.querySelector('p')?.textContent || '';
-      let code = '';
-      const matchCode = (desc + titre).match(/\b(qcm|mal|vra|tex|ass)\b/i);
-      if (matchCode) code = matchCode[1].toLowerCase();
+      const request = indexedDB.open(DB_NAME, DB_VERSION);
       
-      if (titre) {
-        types.push({
-          code: code,
-          nom: titre.replace(/[📝]/g, '').trim(),
-          description: desc
-        });
-      }
-    });
-    
-    return types;
-  }
-
-  async function afficherModalExercices() {
-    const contenuLebe = await lireFichierDB('htmlContent');
-    
-    if (!contenuLebe) {
-      alert('Aucune donnée trouvée. Veuillez ouvrir l\'application principale d\'abord.');
-      return;
-    }
-    
-    const typesExercices = extraireTypesExercices(contenuLebe);
-    
-    if (typesExercices.length === 0) {
-      alert('Aucun exercice trouvé dans le cours.');
-      return;
-    }
-    
-    const modal = document.createElement('div');
-    modal.className = 'modal-exercices';
-    modal.innerHTML = `
-      <div class="modal-exercices-content">
-        <div class="modal-header">
-          <h3>✏️ Exercices disponibles</h3>
-          <button class="close-modal">✕</button>
-        </div>
-        <div class="modal-body" id="modalExercicesList"></div>
-      </div>
-    `;
-    document.body.appendChild(modal);
-    
-    const listContainer = modal.querySelector('#modalExercicesList');
-    listContainer.innerHTML = '';
-    
-    for (const exo of typesExercices) {
-      const nomFichier = exo.code ? `${CODE_LECON}${exo.code}.txt` : '';
-      const card = document.createElement('div');
-      card.className = 'exo-card';
-      card.innerHTML = `<h4>📝 ${exo.nom}</h4><p>${exo.description || 'Cliquez pour commencer'}</p>`;
-      
-      card.onclick = async () => {
-        let contenuExo = null;
-        if (nomFichier) contenuExo = await lireFichierDB(nomFichier);
-        
-        if (contenuExo) {
-          const blob = new Blob([contenuExo], { type: 'text/html' });
-          const url = URL.createObjectURL(blob);
-          window.open(url, '_blank');
-        } else {
-          alert(`Exercice non disponible: ${exo.nom}`);
-        }
+      request.onerror = () => {
+        resultDiv.innerHTML = `<p class="error">❌ Erreur ouverture DB: ${request.error?.message}</p>`;
       };
-      listContainer.appendChild(card);
+      
+      request.onsuccess = (e) => {
+        const db = e.target.result;
+        const transaction = db.transaction([STORE_NAME], 'readonly');
+        const store = transaction.objectStore(STORE_NAME);
+        
+        // Lire toutes les clés
+        const getAllKeys = store.getAllKeys();
+        getAllKeys.onsuccess = () => {
+          const keys = getAllKeys.result;
+          resultDiv.innerHTML = `<p class="success">✅ Base ouverte avec succès</p>`;
+          resultDiv.innerHTML += `<p><strong>📋 Clés trouvées dans la DB :</strong> ${keys.length > 0 ? keys.join(', ') : 'AUCUNE'}</p>`;
+          
+          if (keys.length === 0) {
+            resultDiv.innerHTML += `<p class="error">⚠️ La base de données est VIDE !</p>`;
+            resultDiv.innerHTML += `<p>Le HTML principal n'a pas encore stocké le contenu.</p>`;
+            resultDiv.innerHTML += `<p>👉 Ouvrez d'abord le HTML principal pour qu'il télécharge et stocke lebe.txt</p>`;
+            return;
+          }
+          
+          // Lire chaque clé
+          keys.forEach(async (key) => {
+            const getValue = store.get(key);
+            getValue.onsuccess = () => {
+              const value = getValue.result;
+              const taille = value ? value.length : 0;
+              resultDiv.innerHTML += `<p><strong>🔑 Clé "${key}"</strong> : ${taille > 0 ? `${taille} caractères ✅` : 'VIDE ❌'}</p>`;
+              if (key === 'htmlContent' && value) {
+                resultDiv.innerHTML += `<p class="success">✅ La clé "htmlContent" existe et contient ${taille} caractères</p>`;
+                resultDiv.innerHTML += `<details><summary>Aperçu (100 premiers caractères)</summary><pre>${value.substring(0, 500)}...</pre></details>`;
+              }
+            };
+          });
+        };
+        
+        getAllKeys.onerror = () => {
+          resultDiv.innerHTML += `<p class="error">❌ Impossible de lire les clés</p>`;
+        };
+      };
+      
+    } catch (err) {
+      resultDiv.innerHTML = `<p class="error">❌ Erreur: ${err.message}</p>`;
     }
-    
-    modal.querySelector('.close-modal').onclick = () => modal.remove();
-    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
   }
-
-  document.getElementById('btnExercice').onclick = afficherModalExercices;
+  
+  debugDB();
 </script>
 </body>
 </html>
