@@ -27,3 +27,9 @@ DERNIÈRE MISE À JOUR
 ⏰ 10:45:44
 📆 07/06/2026 10:45:44
 📁 Fichier: ledelecon.txt
+
+DERNIÈRE MISE À JOUR
+📅 07/06/2026
+⏰ 10:52:38
+📆 07/06/2026 10:52:38
+📁 Fichier: ledeqcm.txt
