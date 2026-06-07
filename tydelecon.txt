@@ -3,226 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Les types de phrases – Famaritana amin'ny teny malagasy</title>
+  <title>Exercices - Types de phrases</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: #f4f9f4;
-      color: #1a2e2a;
-      padding: 18px;
-      line-height: 1.55;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #1a3f5c 0%, #0f2b3d 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-
     .container {
-      max-width: 750px;
-      margin: 0 auto;
-    }
-
-    /* header minimal */
-    .title-main {
-      background: #1f5442;
-      color: white;
-      padding: 28px 20px;
-      border-radius: 42px;
-      margin-bottom: 24px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
-
-    .title-main h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    /* cartes */
-    .card {
+      max-width: 500px;
+      width: 100%;
       background: white;
       border-radius: 32px;
-      margin-bottom: 24px;
-      padding: 20px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e2e6cf;
-    }
-
-    .card h2 {
-      font-size: 1.65rem;
-      font-weight: 650;
-      color: #2c7a5a;
-      border-left: 7px solid #f9c74f;
-      padding-left: 16px;
-      margin-bottom: 18px;
-    }
-
-    .definition-mg {
-      background: #eef4ea;
-      padding: 18px;
-      border-radius: 24px;
-      margin-bottom: 16px;
-      font-size: 1rem;
-      color: #1f3d34;
-      line-height: 1.5;
-    }
-
-    .exemple-fr {
-      background: #fff6e5;
-      padding: 16px;
-      border-radius: 24px;
-      margin: 16px 0 10px 0;
-      font-family: 'SF Mono', 'Courier New', monospace;
-      border-left: 5px solid #f9c74f;
-    }
-
-    .exemple-fr strong {
-      color: #c45c1a;
-      font-weight: 700;
-    }
-
-    .highlight {
-      background: #fef1cf;
-      padding: 10px 14px;
-      border-radius: 28px;
-      margin-top: 12px;
-      font-size: 0.9rem;
-    }
-
-    footer {
+      padding: 30px 25px;
       text-align: center;
-      margin-top: 30px;
-      padding: 22px;
-      font-size: 0.8rem;
-      color: #5f7a6b;
-      border-top: 1px solid #d4e0ca;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
-
-    .icone {
-      font-size: 1.3rem;
-      margin-right: 8px;
+    h1 { color: #1f5442; margin-bottom: 20px; font-size: 1.8rem; }
+    p { color: #5a6e7c; margin-bottom: 30px; line-height: 1.5; }
+    .btn-exercice {
+      background: linear-gradient(135deg, #2c7a5a, #1f5442);
+      color: white;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s;
     }
+    .btn-exercice:hover { transform: translateY(-2px); }
+    .info { margin-top: 20px; font-size: 0.75rem; color: #94a3b8; }
+    .error { color: #ef4444; margin-top: 15px; font-size: 0.85rem; display: none; }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Titre unique : LES TYPES DE PHRASE -->
-  <div class="title-main">
-    <h1>LES TYPES DE PHRASE</h1>
-  </div>
-
-  <!-- Première carte : Inona ny “types de phrases” ? -->
-  <div class="card">
-    <h2>🏷️ Inona ny “types de phrases” ?</h2>
-    <div class="definition-mg">
-      🔹 Ny <strong>types de phrases</strong> dia ny endriky ny fehezanteny araka ny tanjon’ny mpandahateny.<br>
-      🔹 Amin’ny frantsay dia misy karazany telo lehibe ho an’ny mpianatra vao manomboka :<br>
-      <span class="icone">✅</span> <strong>Phrase affirmative</strong><br>
-      <span class="icone">❗</span> <strong>Phrase exclamative</strong><br>
-      <span class="icone">❓</span> <strong>Phrase interrogative</strong><br>
-      Ny tsirairay dia manana marika (soratra) sy filaharana manokana.
-    </div>
-  </div>
-
-  <!-- 1. Phrase affirmative -->
-  <div class="card">
-    <h2>1️⃣ Phrase affirmative</h2>
-    <div class="definition-mg">
-      <strong>📖 Famaritana malagasy :</strong><br>
-      Ny <strong>phrase affirmative</strong> dia fehezanteny milaza zavatra tsotra, milaza fa marina na misy zavatra iray. Tsy misy fandavana, tsy misy fanontaniana. Matetika izy no ampiasaina indrindra.
-    </div>
-    <div class="exemple-fr">
-      <strong>✨ Ohatra amin’ny teny frantsay :</strong><br>
-      • Je suis content. (Faly aho.)<br>
-      • Il mange une pomme. (Mihinana paoma izy.)<br>
-      • Nous allons à l’école. (Mandeha any an-tsekoly izahay.)
-    </div>
-    <div class="highlight">
-      💡 <strong>Tsarovy :</strong> Tsy misy tsipelina fanontaniana na marika “!”. Milaza zava-misy fotsiny.
-    </div>
-  </div>
-
-  <!-- 2. Phrase exclamative -->
-  <div class="card">
-    <h2>2️⃣ Phrase exclamative</h2>
-    <div class="definition-mg">
-      <strong>😲 Famaritana malagasy :</strong><br>
-      Ny <strong>phrase exclamative</strong> dia fehezanteny maneho fihetseham-po mahery : fahagagana, fifaliana, hatezerana, tahotra, na fanaitra. Mamarana amin’ny <strong>!</strong> (marika fanantsoantso) izy.
-    </div>
-    <div class="exemple-fr">
-      <strong>✨ Ohatra amin’ny teny frantsay :</strong><br>
-      • Quelle belle journée ! (Tontsara be ity andro ity !)<br>
-      • Comme il est grand ! (Lehibe be izy !)<br>
-      • Arrêtez ! (Mijanòna !)<br>
-      • Quel dommage ! (Indrisy anie !)
-    </div>
-    <div class="highlight">
-      🔔 <strong>Marihina :</strong> Mety manomboka amin’ny “Quel/Quelle”, “Comme”, “Que” na tsotra fotsiny nefa miova ny feony.
-    </div>
-  </div>
-
-  <!-- 3. Phrase interrogative -->
-  <div class="card">
-    <h2>3️⃣ Phrase interrogative</h2>
-    <div class="definition-mg">
-      <strong>❓ Famaritana malagasy :</strong><br>
-      Ny <strong>phrase interrogative</strong> dia fehezanteny ampiasaina hanontaniana, hahazoana valiny. Amin’ny soratra dia mamarana amin’ny <strong>?</strong> (marika fanontaniana) izy.
-    </div>
-    <div class="definition-mg" style="background:#e5f2e8; margin-top: 8px;">
-      🧠 Misy endrika telo matetika ho an’ny débutant :
-      <ul style="margin-left: 20px; margin-top: 8px;">
-        <li>1) <strong>Est-ce que ... ?</strong> → mora indrindra</li>
-        <li>2) <strong>Inversion (verbe + sujet)</strong> → somary ara-dalàna</li>
-        <li>3) <strong>Intonation fotsiny</strong> (fiakaran’ny feo) → fiteny andavanandro</li>
-      </ul>
-    </div>
-    <div class="exemple-fr">
-      <strong>📢 Ohatra amin’ny teny frantsay :</strong><br>
-      • Est-ce que tu aimes le café ? (Tia kafe ve ianao ?)<br>
-      • Parles-tu français ? (Miteny frantsay ve ianao ?)<br>
-      • Tu viens demain ? (Ho avy ianao rahampitso ?) → intonation<br>
-      • Quelle heure est-il ? (Amin’ny ora firy izao ?)
-    </div>
-    <div class="highlight">
-      ⚠️ Aza adino : Raha misy teny fanontaniana (ohatra : pourquoi, quand, où, comment, quel) dia mijanona ho interrogative ihany.
-    </div>
-  </div>
-
-  <!-- Comparaison rapide en malagasy -->
-  <div class="card">
-    <h2>📌 Famintinana ho anao (résumé)</h2>
-    <div class="definition-mg">
-      ✅ <strong>Affirmative</strong> → milaza zavatra tsotra. Ohatra : <em>Il fait beau</em> (Tsara ny andro).<br>
-      ❗ <strong>Exclamative</strong> → maneho fihetseham-po. Ohatra : <em>Qu’il fait beau !</em> (Tena tsara ny andro tokoa !)<br>
-      ❓ <strong>Interrogative</strong> → manontany. Ohatra : <em>Fait-il beau ?</em> (Tsara ve ny andro ?)
-    </div>
-    <div class="exemple-fr" style="margin-top: 12px;">
-      🧪 <strong>Fehezanteny iray ihany, karazany samy hafa :</strong><br>
-      • Tu écoutes la musique. (affirmative)<br>
-      • Est-ce que tu écoutes la musique ? (interrogative)<br>
-      • Comme tu écoutes bien la musique ! (exclamative)
-    </div>
-  </div>
-
-  <!-- Petit conseil "garder la forme comme mobile" -->
-  <div class="card" style="background: #fef3e2; border-left: 8px solid #f1b24a;">
-    <h2 style="color: #b6520f;">📱💪 « Garder la forme comme un mobile »</h2>
-    <div class="definition-mg" style="background: #fff1e0;">
-      🔋 <strong>Fampiharana ho an’ny fianarana :</strong><br>
-      Tahaka ny finday mila averina ampandoavina hery isan’andro, ny fahaizana mamantatra ireo karazan-teny (affirmative, exclamative, interrogative) dia mila famerenana matetika. Vakio fehezanteny kely isan’andro, fantaro ny marika ( ! ? . ) ary dia ho “voalamina tsara” ny fiteny frantsay anananao. Tazomy ho mavitrika ny sainao toy ny batterie 100% !
-    </div>
-    <div class="highlight" style="background: #ffefcf;">
-      🎯 Torohevitra : Soraty ny ohatra telo isaky ny karazany. Ataovy am-peo. Avereno 3 mn isan’andro. Tsotra nefa mahomby.
-    </div>
-  </div>
-
-  <footer>
-    🌟 Mianara tsikelikely — A1 → A2. Fanazavana tsotra amin’ny teny malagasy, ho an’ny mpianatra rehetra.<br>
-    © Les types de phrase — Affirmative ❘ Exclamative ❘ Interrogative
-  </footer>
+  <h1>📝 TYPES DE PHRASES</h1>
+  <p>Cliquez ci-dessous pour commencer les exercices.</p>
+  <button class="btn-exercice" id="btnExercice">✏️ EXERCICES</button>
+  <div class="info">QCM | Vrai/Faux | Texte à trous | Association</div>
+  <div class="error" id="errorMsg">⚠️ Fichier non trouvé dans la base de données</div>
 </div>
+
+<script>
+  // Configuration (même base que le HTML principal)
+  const DB_NAME = 'lebea_storage';
+  const STORE_NAME = 'lebe_content';
+  const DB_VERSION = 18;
+
+  function ouvrirDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, DB_VERSION);
+      request.onerror = () => reject(request.error);
+      request.onsuccess = (e) => resolve(e.target.result);
+      request.onupgradeneeded = (e) => {
+        if (!e.target.result.objectStoreNames.contains(STORE_NAME)) {
+          e.target.result.createObjectStore(STORE_NAME);
+        }
+      };
+    });
+  }
+
+  // Lire lebe.txt depuis la DB (stocké par le HTML principal)
+  async function lireLebeTxtDepuisDB() {
+    try {
+      const db = await ouvrirDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction([STORE_NAME], 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const request = store.get('htmlContent');  // Clé utilisée par le principal
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => resolve(null);
+      });
+    } catch (error) {
+      console.error("Erreur DB:", error);
+      return null;
+    }
+  }
+
+  document.getElementById('btnExercice').onclick = async () => {
+    const errorDiv = document.getElementById('errorMsg');
+    errorDiv.style.display = 'none';
+    
+    const contenuLebe = await lireLebeTxtDepuisDB();
+    
+    if (contenuLebe) {
+      // Ouvrir lebe.txt dans un nouvel onglet
+      const blob = new Blob([contenuLebe], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    } else {
+      errorDiv.style.display = 'block';
+    }
+  };
+</script>
 </body>
 </html>
