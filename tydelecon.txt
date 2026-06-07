@@ -2,79 +2,123 @@
 <html lang="mg">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debug - Vérification DB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Exercices - Types de phrases</title>
   <style>
-    body { font-family: monospace; padding: 20px; background: #1a1a2e; color: white; }
-    pre { background: #0f0f1a; padding: 15px; border-radius: 10px; overflow-x: auto; white-space: pre-wrap; }
-    .success { color: #4ade80; }
-    .error { color: #f87171; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #1a3f5c 0%, #0f2b3d 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .btn-exercice {
+      background: linear-gradient(135deg, #2c7a5a, #1f5442);
+      color: white;
+      border: none;
+      padding: 18px 32px;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-exercice:hover {
+      transform: scale(1.05);
+    }
+    .error {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      display: none;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-<h2>🔍 Vérification de la base de données</h2>
-<div id="result">Chargement...</div>
+<div style="text-align: center;">
+  <button class="btn-exercice" id="btnExercice">✏️ EXERCICES</button>
+  <div class="error" id="errorMsg">⚠️ Aucune donnée trouvée. Veuillez d'abord ouvrir l'application principale.</div>
+</div>
 
 <script>
   const DB_NAME = 'lebea_storage';
   const STORE_NAME = 'lebe_content';
   const DB_VERSION = 18;
 
-  async function debugDB() {
-    const resultDiv = document.getElementById('result');
-    
-    try {
+  function ouvrirDB() {
+    return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
-      
-      request.onerror = () => {
-        resultDiv.innerHTML = `<p class="error">❌ Erreur ouverture DB: ${request.error?.message}</p>`;
+      request.onerror = () => reject(request.error);
+      request.onsuccess = (e) => resolve(e.target.result);
+      request.onupgradeneeded = (e) => {
+        if (!e.target.result.objectStoreNames.contains(STORE_NAME)) {
+          e.target.result.createObjectStore(STORE_NAME);
+        }
       };
-      
-      request.onsuccess = (e) => {
-        const db = e.target.result;
-        const transaction = db.transaction([STORE_NAME], 'readonly');
-        const store = transaction.objectStore(STORE_NAME);
-        
-        // Lire toutes les clés
-        const getAllKeys = store.getAllKeys();
-        getAllKeys.onsuccess = () => {
-          const keys = getAllKeys.result;
-          resultDiv.innerHTML = `<p class="success">✅ Base ouverte avec succès</p>`;
-          resultDiv.innerHTML += `<p><strong>📋 Clés trouvées dans la DB :</strong> ${keys.length > 0 ? keys.join(', ') : 'AUCUNE'}</p>`;
-          
-          if (keys.length === 0) {
-            resultDiv.innerHTML += `<p class="error">⚠️ La base de données est VIDE !</p>`;
-            resultDiv.innerHTML += `<p>Le HTML principal n'a pas encore stocké le contenu.</p>`;
-            resultDiv.innerHTML += `<p>👉 Ouvrez d'abord le HTML principal pour qu'il télécharge et stocke lebe.txt</p>`;
-            return;
-          }
-          
-          // Lire chaque clé
-          keys.forEach(async (key) => {
-            const getValue = store.get(key);
-            getValue.onsuccess = () => {
-              const value = getValue.result;
-              const taille = value ? value.length : 0;
-              resultDiv.innerHTML += `<p><strong>🔑 Clé "${key}"</strong> : ${taille > 0 ? `${taille} caractères ✅` : 'VIDE ❌'}</p>`;
-              if (key === 'htmlContent' && value) {
-                resultDiv.innerHTML += `<p class="success">✅ La clé "htmlContent" existe et contient ${taille} caractères</p>`;
-                resultDiv.innerHTML += `<details><summary>Aperçu (100 premiers caractères)</summary><pre>${value.substring(0, 500)}...</pre></details>`;
-              }
-            };
-          });
-        };
-        
-        getAllKeys.onerror = () => {
-          resultDiv.innerHTML += `<p class="error">❌ Impossible de lire les clés</p>`;
-        };
-      };
-      
-    } catch (err) {
-      resultDiv.innerHTML = `<p class="error">❌ Erreur: ${err.message}</p>`;
-    }
+    });
   }
-  
-  debugDB();
+
+  async function lireLebeTxt() {
+    try {
+      const db = await ouvrirDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction([STORE_NAME], 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const request = store.get('htmlContent');
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => resolve(null);
+      });
+    } catch { return null; }
+  }
+
+  document.getElementById('btnExercice').onclick = async () => {
+    const errorDiv = document.getElementById('errorMsg');
+    errorDiv.style.display = 'none';
+    
+    const contenu = await lireLebeTxt();
+    
+    if (contenu) {
+      // Ajouter un script dans le contenu pour rediriger vers la leçon "Types de phrases"
+      const modifiedContent = contenu.replace('</body>', `
+        <script>
+          // Attendre que la page soit chargée
+          window.addEventListener('load', function() {
+            // Chercher la leçon "Types de phrases" dans la liste Débutant
+            setTimeout(function() {
+              // Aller à l'écran Débutant
+              if (typeof showScreen === 'function') {
+                showScreen('debutant');
+              }
+              // Attendre que les leçons soient chargées
+              setTimeout(function() {
+                // Chercher et cliquer sur la barre d'exercice de "Types de phrases"
+                const toutesLesBarres = document.querySelectorAll('.barre-exercice');
+                for (let barre of toutesLesBarres) {
+                  if (barre.getAttribute('data-lecon-titre') === 'Types de phrases') {
+                    barre.click();
+                    break;
+                  }
+                }
+              }, 500);
+            }, 500);
+          });
+        <\/script>
+      </body>`);
+      
+      const blob = new Blob([modifiedContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    } else {
+      errorDiv.style.display = 'block';
+    }
+  };
 </script>
 </body>
 </html>
