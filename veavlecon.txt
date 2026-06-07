@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Verbe AVOIR et ÊTRE – Conjugaison débutant</title>
+  <title>Verbe AVOIR et ÊTRE – Famaritana amin'ny teny malagasy</title>
   <style>
     * {
       margin: 0;
@@ -69,6 +69,20 @@
       line-height: 1.5;
     }
 
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
     .exemple-modern {
       background: #fff9ef;
       padding: 18px;
@@ -112,14 +126,6 @@
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     
-    .exemple-modern .mg {
-      color: #2c7a5a;
-      font-size: 0.85rem;
-      background: #fef7e8;
-      padding: 6px 14px;
-      border-radius: 24px;
-    }
-    
     .highlight {
       background: #fef1cf;
       padding: 10px 12px;
@@ -128,41 +134,9 @@
       font-size: 0.85rem;
     }
 
-    .conjug-table {
-      background: #f8f4e8;
-      border-radius: 24px;
-      padding: 12px;
-      margin: 16px 0;
-      font-family: monospace;
-      font-size: 0.9rem;
-    }
-
-    .conjug-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 12px;
-      border-bottom: 1px dashed #cbd5a0;
-    }
-
-    .conjug-row:last-child {
-      border-bottom: none;
-    }
-
-    .pronom {
-      font-weight: 700;
-      color: #1e3a8a;
-      width: 80px;
-    }
-
-    .verbe {
-      font-weight: 600;
-      color: #b45309;
-    }
-
-    .small-note {
-      font-size: 0.7rem;
-      color: #6f8f7d;
-      margin-top: 10px;
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
     }
 
     .fb-button-small {
@@ -180,9 +154,20 @@
       transition: transform 0.1s, background 0.2s;
       margin-top: 8px;
       text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
     }
-
-    .fb-button-small:hover { background: #0d65d9; }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
     .fb-icon-small {
       background: white;
       color: #1877f2;
@@ -195,129 +180,239 @@
       width: 24px;
       height: 24px;
       border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 550px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
   <div class="title-main">
-    <h1>🇫🇷 AVOIR et ÊTRE – Les verbes essentiels</h1>
+    <h1>VERBE AVOIR ET ÊTRE</h1>
   </div>
 
-  <!-- Carte introductive -->
-  <div class="card">
-    <h2>🎯 Pourquoi AVOIR et ÊTRE ?</h2>
-    <div class="definition-mg">
-      🔹 <strong>Avoir</strong> → "manana" amin'ny teny malagasy.<br>
-      🔹 <strong>Être</strong> → "manao/misy/ho" (mamaritra ny toetra na ny maha-izy).<br><br>
-      💡 Izy roa ireo no fototra indrindra amin'ny teny frantsay. Ampiasaina isan'andro izy ireo ary mba mamorona fehezanteny maro hafa koa.
-    </div>
-  </div>
-
-  <!-- ===================== VERBE AVOIR ===================== -->
+  <!-- ==================== VERBE AVOIR ==================== -->
   <div class="card">
     <h2>📦 Verbe AVOIR (manana)</h2>
-    <div class="definition-mg">
-      <strong>Conjugaison présent (fotoana ankehitriny) :</strong>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      <strong>J'</strong>ai<br>
+      <strong>Tu</strong> as<br>
+      <strong>Il/Elle/On</strong> a<br>
+      <strong>Nous</strong> avons<br>
+      <strong>Vous</strong> avez<br>
+      <strong>Ils/Elles</strong> ont
     </div>
-    <div class="conjug-table">
-      <div class="conjug-row"><span class="pronom">J'</span><span class="verbe">ai</span><span class="mg">(Manana aho)</span></div>
-      <div class="conjug-row"><span class="pronom">Tu</span><span class="verbe">as</span><span class="mg">(Manana ianao)</span></div>
-      <div class="conjug-row"><span class="pronom">Il / Elle / On</span><span class="verbe">a</span><span class="mg">(Manana izy / Isika)</span></div>
-      <div class="conjug-row"><span class="pronom">Nous</span><span class="verbe">avons</span><span class="mg">(Manana izahay)</span></div>
-      <div class="conjug-row"><span class="pronom">Vous</span><span class="verbe">avez</span><span class="mg">(Manana ianareo / fanajana)</span></div>
-      <div class="conjug-row"><span class="pronom">Ils / Elles</span><span class="verbe">ont</span><span class="mg">(Manana izy ireo)</span></div>
+    
+    <div class="exemple-modern">
+      <div class="exo-titre">✨ Pour exprimer la possession (entina ilazana fanana)</div>
+      <div class="exo-ligne"><span class="fr">Il a une voiture. (Manana fiara izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">J'ai un chat. (Manana piso aho.)</span></div>
+      <div class="exo-ligne"><span class="fr">Tu as une voiture. (Manana fiara ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Il a une belle maison. (Manana trano tsara izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Nous avons un jardin. (Manana jatidaina isika.)</span></div>
     </div>
 
     <div class="exemple-modern">
-      <div class="exo-titre">✨ Ohatra amin'ny sehatra andavanandro</div>
-      <div class="exo-ligne"><span class="fr">J'ai un frère.</span><span class="mg">Manana rahalahy aho.</span></div>
-      <div class="exo-ligne"><span class="fr">Tu as soif ?</span><span class="mg">Mangetaheta ve ianao ?</span></div>
-      <div class="exo-ligne"><span class="fr">Elle a une voiture rouge.</span><span class="mg">Manana fiara mena izy.</span></div>
-      <div class="exo-ligne"><span class="fr">Nous avons faim.</span><span class="mg">Noana izahay.</span></div>
-      <div class="exo-ligne"><span class="fr">Ils ont 20 ans.</span><span class="mg">20 taona izy ireo.</span></div>
-    </div>
-    <div class="highlight">
-      💡 <strong>Tsarovy :</strong> Mampiasa ny "avoir" koa rehefa milaza ny taona (j'ai 10 ans) na ny hanoanana, hetaheta, etc.
-    </div>
-  </div>
-
-  <!-- ===================== VERBE ÊTRE ===================== -->
-  <div class="card">
-    <h2>🌿 Verbe ÊTRE (misy / maha- / toetra)</h2>
-    <div class="definition-mg">
-      <strong>Conjugaison présent (fotoana ankehitriny) :</strong>
-    </div>
-    <div class="conjug-table">
-      <div class="conjug-row"><span class="pronom">Je</span><span class="verbe">suis</span><span class="mg">(Izaho dia / Izaho misy)</span></div>
-      <div class="conjug-row"><span class="pronom">Tu</span><span class="verbe">es</span><span class="mg">(Ianao dia)</span></div>
-      <div class="conjug-row"><span class="pronom">Il / Elle / On</span><span class="verbe">est</span><span class="mg">(Izy dia)</span></div>
-      <div class="conjug-row"><span class="pronom">Nous</span><span class="verbe">sommes</span><span class="mg">(Izahay dia)</span></div>
-      <div class="conjug-row"><span class="pronom">Vous</span><span class="verbe">êtes</span><span class="mg">(Izanareo dia)</span></div>
-      <div class="conjug-row"><span class="pronom">Ils / Elles</span><span class="verbe">sont</span><span class="mg">(Izy ireo dia)</span></div>
+      <div class="exo-titre">📅 Pour indiquer l'âge (mba hilazana ny taona)</div>
+      <div class="exo-ligne"><span class="fr">Elle a 25 ans. (25 taona izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Ils ont 30 ans. (30 taona izy ireo.)</span></div>
+      <div class="exo-ligne"><span class="fr">Tu as 18 ans. (18 taona ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Vous avez quel âge ? (Firy taona ianao ?)</span></div>
     </div>
 
     <div class="exemple-modern">
-      <div class="exo-titre">✨ Ohatra fampiasa amin'ny toetra sy fanjakana</div>
-      <div class="exo-ligne"><span class="fr">Je suis étudiant.</span><span class="mg">Mpianatra aho.</span></div>
-      <div class="exo-ligne"><span class="fr">Tu es gentil.</span><span class="mg">Tsoa fanahy ianao.</span></div>
-      <div class="exo-ligne"><span class="fr">Elle est à Madagascar.</span><span class="mg">Eto Madagasikara izy.</span></div>
-      <div class="exo-ligne"><span class="fr">Nous sommes fatigués.</span><span class="mg">Vizana izahay.</span></div>
-      <div class="exo-ligne"><span class="fr">Ils sont heureux.</span><span class="mg">Faly izy ireo.</span></div>
-    </div>
-    <div class="highlight">
-      🌟 <strong>Marihina :</strong> Ampiasaina hilaza ny toerana misy, ny toetra, ny asa aman-draharaha.
+      <div class="exo-titre">🏷️ Pour désigner un état (amin'ny anarana itambarana)</div>
+      <div class="exo-ligne"><span class="fr">J'ai le temps. (Manana fotoana aho.)</span></div>
+      <div class="exo-ligne"><span class="fr">Tu as une soeur. (Manana rahavavy / anambavy ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle a les yeux bleus. (Manana maso manga izy.)</span></div>
     </div>
   </div>
 
-  <!-- ===================== COMPARAISON AVOIR / ÊTRE ===================== -->
+  <!-- Carte Expressions avec AVOIR -->
   <div class="card">
-    <h2>⚖️ Avoir vs Être – fampitahana mazava</h2>
+    <h2>📗 EXPRESSIONS AVEC "AVOIR"</h2>
     <div class="definition-mg">
-      <strong>Fehezanteny mitovy hevitra fa tsy mitovy matoanteny:</strong>
-    </div>
-    <div class="exemple-modern">
-      <div class="exo-ligne"><span class="fr">J'ai faim.</span><span class="mg">Noana aho. (avy amin'ny avoir)</span></div>
-      <div class="exo-ligne"><span class="fr">Je suis content.</span><span class="mg">Faly aho. (avy amin'ny être)</span></div>
-      <div class="exo-ligne"><span class="fr">Elle a une maison.</span><span class="mg">Manana trano izy. (fananana)</span></div>
-      <div class="exo-ligne"><span class="fr">Elle est ici.</span><span class="mg">Eto izy. (toerana)</span></div>
-    </div>
-    <div class="highlight">
-      🧠 <strong>Fomba tsarovana:</strong> AVOIR → "manana" zavatra (na hanoanana, taona). ÊTRE → mamaritra ny maha-izy azy na ny toerana.
-    </div>
-  </div>
-
-  <!-- ===================== PETITE ASTUCHE ET EXERCICES ===================== -->
-  <div class="card">
-    <h2>📝 Fampiharana sy toro-hevitra</h2>
-    <div class="definition-mg">
-      <strong>✅ Andramo soraty amin'ny bokinao ireto fehezanteny ireto :</strong>
-      <ul style="margin-top: 12px; margin-left: 24px;">
-        <li>1. (Avoir) Nous ________ un chat noir. (Manana saka mainty izahay)</li>
-        <li>2. (Être) Tu ________ très sympa. (Tena tsara fanahy ianao)</li>
-        <li>3. (Avoir) Elles ________ quinze ans. (Dimy ambin'ny folo taona izy ireo)</li>
-        <li>4. (Être) Je ________ à l'école. (Any am-sekoly aho)</li>
+      <ul class="liste-avec-lignes-vides">
+        <li>Avoir hâte de : Tsy mahandry ny (maiky...)</li>
+        <li>Avoir envie de : Te (ta...)</li>
+        <li>Avoir foi en : Manana fanantenana</li>
+        <li>Avoir raison : Marina ny hevitra</li>
+        <li>Avoir tort : Diso hevitra (tsy marina)</li>
+        <li>Avoir de l'espoir : Manana fanantenana</li>
+        <li>Avoir besoin de : Mila</li>
+        <li>Avoir de la chance : Manana chance (sambatra)</li>
+        <li>Avoir l'air : Hoatrany (akora...)</li>
+        <li>Avoir de la patience : Mahandry (mahandigny)</li>
+        <li>Avoir le temps de : Manana fotoana ny</li>
+        <li>Avoir à faire : Manana zavatra atao</li>
+        <li>Avoir connaissance de : Manana fahalalana amin'ny</li>
+        <li>Avoir de la haine pour : Mankahala ny...</li>
+        <li>Avoir peine à : Manana fahasarotana amin'ny</li>
+        <li>Avoir du chagrin : Malahelo</li>
+        <li>Avoir du goût : Mankafy</li>
+        <li>Avoir du respect pour : Manana fanajana ny</li>
+        <li>Avoir faim : Mosaregny (noana)</li>
+        <li>Avoir honte : Menatra</li>
+        <li>Avoir froid : Manintsy (mangatseky)</li>
+        <li>Avoir soif : Mangetaheta</li>
+        <li>Avoir l'habitude de : Zatra ny</li>
+        <li>Avoir l'occasion : Manana occasion</li>
+        <li>Avoir peur : Matahotra</li>
+        <li>Avoir l'honneur : Manana voninahitra</li>
       </ul>
-      <p style="margin-top: 12px;"><strong>💬 Valiny :</strong> 1. avons &nbsp; 2. es &nbsp; 3. ont &nbsp; 4. suis</p>
     </div>
-
-    <div class="highlight" style="margin-top: 12px;">
-      🗣️ <strong>Fomba fianarana tsara :</strong> Vakio mafy isan'andro ny conjugaison (je suis, tu es, il est...). Ampiasao amin'ny fiainana andavanandro : "J'ai soif", "Tu es fatigué ?"
+    <div class="exemple-modern">
+      <div class="exo-titre">✨ Ohatra amin'ny expressions</div>
+      <div class="exo-ligne"><span class="fr">Vous avez l'air fatigué. (Hoatran'reraka ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">J'ai faim. (Noana aho.)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle a soif. (Mangetaheta izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Nous avons peur. (Matahotra izahay.)</span></div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Remarque :</strong> amin'ny ankamaroany dia miaraka amin'ny nom (anarana) ny verbe avoir.<br>
+      Exemple : Avoir la difficulté → Manana fahasarotana (difficulté = nom féminin)
     </div>
   </div>
 
-  <!-- ===================== CONTACT & SOUTIEN ===================== -->
+  <!-- ==================== VERBE ÊTRE ==================== -->
   <div class="card">
-    <h2>📬 Fanampiana sy fifandraisana</h2>
-    <div class="definition-mg">
-      Raha manana fanontaniana momba ny "avoir" sy "être", na raha mila fanazavana fanampiny ianao, dia azonao atao ny miresaka aminay.
+    <h2>🌿 Verbe ÊTRE (misy / toetra)</h2>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      <strong>Je</strong> suis<br>
+      <strong>Tu</strong> es<br>
+      <strong>Il/Elle/On</strong> est<br>
+      <strong>Nous</strong> sommes<br>
+      <strong>Vous</strong> êtes<br>
+      <strong>Ils/Elles</strong> sont
     </div>
+    
+    <div class="exemple-modern">
+      <div class="exo-titre">✨ En relation avec les adjectifs qualificatifs (mpamaritoe-javatra)</div>
+      <div class="exo-ligne"><span class="fr">Tu es sympa. (Sariaka ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Tu es cool. (Tsotra ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Vous êtes sérieux. (Matotra ianao.)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle est sérieuse. (Matotra izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Il est paresseux. (Kamo izy.)</span></div>
+    </div>
+
+    <div class="exemple-modern">
+      <div class="exo-titre">🏷️ Pour identifier quelqu'un (désignation, nationalité, métier)</div>
+      <div class="exo-ligne"><span class="fr">C'est Laura. (I Laura.)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle est malagasy. (Malagasy izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Elle est professeur. (Mpampianatra izy.)</span></div>
+      <div class="exo-ligne"><span class="fr">Il est grand. (Lehibe izy.)</span></div>
+    </div>
+
+    <div class="exemple-modern">
+      <div class="exo-titre">🕐 Pour indiquer la date et l'heure</div>
+      <div class="exo-ligne"><span class="fr">Aujourd'hui on est le 10 juillet. (Le 10 Jolay androany.)</span></div>
+      <div class="exo-ligne"><span class="fr">Il est 11 heures. (Amin'ny 11 ora izao.)</span></div>
+    </div>
+
+    <div class="exemple-modern">
+      <div class="exo-titre">🎨 Pour indiquer la couleur</div>
+      <div class="exo-ligne"><span class="fr">Le chat est noir. (Mainty ny piso.)</span></div>
+      <div class="exo-ligne"><span class="fr">Le ciel est bleu. (Manga ny lanitra.)</span></div>
+    </div>
+
+    <div class="exemple-modern">
+      <div class="exo-titre">📝 Cas particulier : Raha tsy misy verbe dia Être no miasa</div>
+      <div class="exo-ligne"><span class="fr">Je suis petit. (Kely aho.)</span></div>
+      <div class="exo-ligne"><span class="fr">L'examen est difficile. (Sarotra ny examen.)</span></div>
+    </div>
+    
+    <div class="highlight">
+      🔔 <strong>Remarque :</strong> Raha toa ka milaza zavatra ka tsy misy verbe dia Être no matetika miasa.<br>
+      Ohatra : Kely aho → Je suis petit. / Manga ny lanitra → Le ciel est bleu.
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Vakio isan'andro ny conjugaison : "J'ai, tu as, il a..." sy "Je suis, tu es, il est..."</li>
+        <li>Amporisòho ny tenanao hampiasa "j'ai faim", "j'ai soif", "je suis fatigué" amin'ny fiainana andavanandro.</li>
+        <li>Soraty ny ohatra telo na efatra isaky ny expression ao amin'ny boky fianaranao.</li>
+        <li>Ireo matoanteny roa ireo no fototry ny fiteny frantsay. Fehezo tsara izy ireo, dia ho mora ny manaraka.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Tsotra nefa mahomby ny fanaovana fampiharana isan'andro. Mianara tsikelikely !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
     <button class="fb-button-small" id="fbContactBtn">
       <span class="fb-icon-small">f</span>
-      Hiresaka amin'ny Facebook
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
     </button>
-    <div class="small-note" style="margin-top: 14px;">
-      Mirary fandrosoana amin'ny fianarana frantsay! 🌟
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
     </div>
   </div>
 </div>
@@ -325,28 +420,105 @@
 <script>
   const FB_PAGE_ID = "61555313604553";
   const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
   const fbButton = document.getElementById('fbContactBtn');
   if (fbButton) {
-    fbButton.addEventListener('click', (e) => {
+    fbButton.addEventListener('click', function(e) {
       e.preventDefault();
       window.open(FB_URL, '_blank');
     });
   }
 
-  // Simple security snippet (same as your original model but lightweight)
   (function() {
-    function blockShortcuts(e) {
-      if (e.key === "F12" || e.code === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) ||
-          (e.ctrlKey && (e.key === "U" || e.key === "u")) || (e.ctrlKey && (e.key === "s" || e.key === "S")) ||
-          (e.ctrlKey && (e.key === "p" || e.key === "P")) || (e.ctrlKey && (e.key === "f" || e.key === "F")) ||
-          (e.ctrlKey && (e.key === "r" || e.key === "R")) || e.key === "F5") {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
         e.preventDefault();
         return false;
       }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
     }
-    window.addEventListener('keydown', blockShortcuts, true);
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-    document.addEventListener('copy', (e) => e.preventDefault());
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
   })();
 </script>
 </body>
