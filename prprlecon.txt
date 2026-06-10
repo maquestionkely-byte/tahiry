@@ -3,885 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>📚 Gestionnaire de leçons</title>
+    <title>Conjugaison complète du verbe "Acheter" - Tableaux HTML</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0f2b36, #1a4a5f);
-            min-height: 100vh;
-            padding: 20px;
-            padding-bottom: 80px;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f5f7fc 0%, #e9eef4 100%);
+            padding: 2rem 1.5rem;
+            color: #1a2c3e;
         }
-        .main-container { max-width: 1400px; margin: 0 auto; }
-        
-        .home-screen {
-            background: white;
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.75);
             border-radius: 2rem;
-            padding: 2rem;
-            text-align: center;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            padding: 1.8rem 2rem 2.5rem;
+            transition: all 0.2s;
         }
-        .home-screen h1 { color: #0f2c3d; margin-bottom: 20px; }
-        
-        .home-buttons {
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e3c2c, #2b5a3a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.3px;
+        }
+
+        .verbe-header {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        .home-btn {
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-            color: white;
-        }
-        .home-btn:hover { transform: scale(1.05); }
-        .btn-debutant { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-        .btn-intermediaire { background: linear-gradient(135deg, #f39c12, #e67e22); }
-        .btn-avance { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        .btn-speciaux { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
-        
-        .level-screen, .category-screen {
-            background: white;
-            border-radius: 2rem;
-            padding: 1.5rem;
-            display: none;
-        }
-        .level-screen.active, .category-screen.active { display: block; }
-        
-        .header {
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: baseline;
+            border-bottom: 3px solid #2b7a4b;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
         }
-        .back-btn {
-            background: #2c3e50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+
+        .verbe-infinitif {
+            font-size: 1.2rem;
+            background: #eef3e8;
+            padding: 0.3rem 1rem;
             border-radius: 40px;
-            cursor: pointer;
+            font-weight: 500;
+            color: #1e5631;
         }
-        h2 { color: #0f2c3d; }
-        
-        .table-container {
-            overflow-x: auto;
-            max-height: 550px;
-            overflow-y: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px 8px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        th {
-            background: #f8f9fa;
-            color: #1e4a6e;
-            position: sticky;
-            top: 0;
-        }
-        .fichier-cell {
+
+        .verbe-infinitif span {
+            font-weight: 700;
             font-family: monospace;
-            font-size: 0.8rem;
-            color: #2b7a4b;
+            font-size: 1.25rem;
         }
-        .btn-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+
+        .sub {
+            color: #4f6f8f;
+            margin-top: 0.4rem;
+            font-style: italic;
         }
-        .btn-open, .btn-exercice, .btn-category, .btn-qcm-plus {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            font-weight: bold;
-            transition: transform 0.1s;
+
+        /* Grille responsive des tableaux */
+        .conjug-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
         }
-        .btn-open { background: #3498db; color: white; }
-        .btn-exercice { background: #9b59b6; color: white; }
-        .btn-category { background: #2ecc71; color: white; }
-        .btn-qcm-plus { background: #e67e22; color: white; }
-        .btn-open:hover, .btn-exercice:hover, .btn-category:hover, .btn-qcm-plus:hover { transform: scale(0.95); }
-        
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
+
+        .card {
             background: white;
             border-radius: 1.5rem;
-            padding: 1.5rem;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90%;
-            overflow-y: auto;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 30px -10px rgba(0,0,0,0.12);
         }
-        .modal-header h3 { color: #0f2c3d; }
-        .modal-close {
-            background: #e74c3c;
+
+        .card-header {
+            background: #2c5e3f;
             color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid #f4c542;
         }
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            margin: 1rem 0;
-            cursor: pointer;
-        }
-        .upload-area input { display: none; }
-        
-        .send-btn {
-            background: #ffb347;
-            border: none;
-            padding: 12px;
-            border-radius: 40px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .send-btn.loading {
-            background: #cbd5e1;
-            color: transparent;
-            pointer-events: none;
-        }
-        .send-btn.loading::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            margin-top: -10px;
-            margin-left: -10px;
-            border: 2px solid #fff;
-            border-top-color: #ffb347;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .send-btn.success { background: #27ae60; color: white; }
-        .preview {
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            margin: 10px 0;
-            word-break: break-all;
-            max-height: 150px;
-            overflow: auto;
-        }
-        .toast {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background: #27ae60;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 40px;
-            z-index: 1100;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .token-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1e2a3e;
-            padding: 12px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
-        .token-bar label { color: #ffd966; font-size: 0.8rem; font-weight: bold; }
-        .token-bar input {
-            padding: 8px 12px;
-            border-radius: 40px;
-            border: none;
-            width: 280px;
-            font-family: monospace;
-        }
-        .token-bar .save-token {
-            background: #ffb347;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-        }
-        .token-status { font-size: 0.7rem; color: #a5f3c3; }
-        
-        .qcm-levels {
-            margin: 15px 0;
-        }
-        .qcm-levels h4 {
-            color: #1e4a6e;
-            margin-bottom: 10px;
-        }
-        .qcm-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .qcm-level-btn {
-            background: #eef2f7;
-            border: 2px solid #cbd5e1;
-            padding: 8px 15px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .qcm-level-btn.selected {
-            background: #2ecc71;
-            border-color: #27ae60;
-            color: white;
-        }
-        .btn-add-all {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 15px;
-            width: 100%;
-        }
-        .btn-add-all:hover { background: #2ecc71; }
-        
-        .loading-indicator {
-            color: #ffb347;
-            text-align: center;
-            padding: 20px;
-        }
-        .badge-code {
-            font-family: monospace;
-            background: #eef2f7;
-            padding: 2px 6px;
-            border-radius: 12px;
+
+        .card-header small {
+            font-weight: normal;
             font-size: 0.75rem;
+            background: #1d3e2b;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.7rem;
+            vertical-align: middle;
+        }
+
+        .verb-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .verb-table th {
+            text-align: left;
+            padding: 0.85rem 1rem 0.5rem 1.2rem;
+            background-color: #f8faf6;
+            font-weight: 600;
+            color: #1e462e;
+            border-bottom: 1px solid #dde4dc;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .verb-table td {
+            padding: 0.6rem 1rem 0.6rem 1.2rem;
+            border-bottom: 1px solid #eef2ea;
+            font-weight: 500;
+            color: #1e2f3a;
+        }
+
+        .verb-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pronoun {
+            font-weight: 700;
+            color: #3a6b47;
+            width: 30%;
+            background-color: #fefef8;
+        }
+
+        .conj-value {
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            padding-left: 0.5rem;
+            border-left: 5px solid #f4c542;
+            color: #1e3c2c;
+        }
+
+        .temps-compound {
+            background: #fefaf0;
+        }
+
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5c6e7e;
+            border-top: 1px solid #cfdec9;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .card-header {
+                font-size: 1.1rem;
+            }
+            .verb-table td, .verb-table th {
+                padding: 0.5rem 0.7rem;
+            }
         }
     </style>
 </head>
 <body>
-<div class="main-container">
-    <div id="homeScreen" class="home-screen">
-        <h1>📚 Gestionnaire de leçons</h1>
-        <div class="home-buttons" id="homeButtons">
-            <button class="home-btn btn-debutant" onclick="showLevel('debutant')">🌱 Débutant (46)</button>
-            <button class="home-btn btn-intermediaire" onclick="showLevel('intermediaire')">🌿 Intermédiaire (34)</button>
-            <button class="home-btn btn-avance" onclick="showLevel('avance')">🌳 Avancé (25)</button>
-            <button class="home-btn btn-speciaux" onclick="showCategories()">📦 Fichiers spéciaux</button>
+<div class="container">
+    <div class="verbe-header">
+        <div>
+            <h1>📖 acheter</h1>
+            <div class="sub">verbe du 1<sup>er</sup> groupe · radical achete-/achèt- (accent e muet -> è)</div>
+        </div>
+        <div class="verbe-infinitif"><span>infinitif présent : acheter</span> · participe passé : acheté</div>
+    </div>
+
+    <!-- Grille temps simples + impératif -->
+    <div class="conjug-grid">
+        <!-- INDICATIF PRÉSENT -->
+        <div class="card">
+            <div class="card-header">🇫🇷 Indicatif Présent <small>achète / achetons</small></div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">je</td><td class="conj-value">j'<strong>achète</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value">tu <strong>achètes</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value">il <strong>achète</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value">nous <strong>achetons</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value">vous <strong>achetez</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value">ils <strong>achètent</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- INDICATIF IMPARFAIT -->
+        <div class="card">
+            <div class="card-header">📘 Indicatif Imparfait</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">je</td><td class="conj-value">j'<strong>achetais</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value">tu <strong>achetais</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value">il <strong>achetait</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value">nous <strong>achetions</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value">vous <strong>achetiez</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value">ils <strong>achetaient</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- PASSÉ SIMPLE -->
+        <div class="card">
+            <div class="card-header">⚜️ Passé Simple <small>(littéraire)</small></div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">je</td><td class="conj-value">j'<strong>achetai</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value">tu <strong>achetas</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value">il <strong>acheta</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value">nous <strong>achétâmes</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value">vous <strong>achétâtes</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value">ils <strong>achétèrent</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- FUTUR SIMPLE -->
+        <div class="card">
+            <div class="card-header">🔮 Futur Simple</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">je</td><td class="conj-value">j'<strong>achèterai</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value">tu <strong>achèteras</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value">il <strong>achètera</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value">nous <strong>achèterons</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value">vous <strong>achèterez</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value">ils <strong>achèteront</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- CONDITIONNEL PRÉSENT -->
+        <div class="card">
+            <div class="card-header">🎯 Conditionnel Présent</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">je</td><td class="conj-value">j'<strong>achèterais</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value">tu <strong>achèterais</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value">il <strong>achèterait</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value">nous <strong>achèterions</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value">vous <strong>achèteriez</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value">ils <strong>achèteraient</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- SUBJONCTIF PRÉSENT -->
+        <div class="card">
+            <div class="card-header">✨ Subjonctif Présent</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>CONJUGAISON</th></tr>
+                <tr><td class="pronoun">que je</td><td class="conj-value">j'<strong>achète</strong></td></tr>
+                <tr><td class="pronoun">que tu</td><td class="conj-value">tu <strong>achètes</strong></td></tr>
+                <tr><td class="pronoun">qu'il/elle/on</td><td class="conj-value">il <strong>achète</strong></td></tr>
+                <tr><td class="pronoun">que nous</td><td class="conj-value">nous <strong>achetions</strong></td></tr>
+                <tr><td class="pronoun">que vous</td><td class="conj-value">vous <strong>achetiez</strong></td></tr>
+                <tr><td class="pronoun">qu'ils/elles</td><td class="conj-value">ils <strong>achètent</strong></td></tr>
+            </table>
         </div>
     </div>
 
-    <div id="debutantScreen" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showHome()">← Retour</button><h2>🌱 Débutant A1-A2</h2><div></div></div>
-        <div class="table-container"><table id="debutantTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier Leçon</th><th>Actions</th></tr></thead><tbody id="debutantBody"></tbody></table></div>
-    </div>
-    <div id="intermediaireScreen" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showHome()">← Retour</button><h2>🌿 Intermédiaire B1-B2</h2><div></div></div>
-        <div class="table-container"><table id="intermediaireTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier Leçon</th><th>Actions</th></tr></thead><tbody id="intermediaireBody"></tbody></table></div>
-    </div>
-    <div id="avanceScreen" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showHome()">← Retour</button><h2>🌳 Avancé C1-C2</h2><div></div></div>
-        <div class="table-container"><table id="avanceTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier Leçon</th><th>Actions</th></tr></thead><tbody id="avanceBody"></tbody></table></div>
-    </div>
-
-    <div id="speciauxScreen" class="category-screen">
-        <div class="header"><button class="back-btn" onclick="showHome()">← Retour</button><h2>📦 Fichiers spéciaux</h2><div></div></div>
-        <div class="table-container"><table id="categoriesTable"><thead><tr><th>Catégorie</th><th>Nombre</th><th>Actions</th></tr></thead><tbody id="categoriesBody"></tbody></table></div>
+    <!-- SECTION IMPÉRATIF (format spécifique) -->
+    <div class="section-title">⚡ Impératif Présent</div>
+    <div class="conjug-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 0.4fr));">
+        <div class="card">
+            <div class="card-header">✔️ Formes affirmatives</div>
+            <table class="verb-table">
+                <tr><th>Personne</th><th>Conjugaison</th></tr>
+                <tr><td class="pronoun">(tu)</td><td class="conj-value"><strong>achète</strong></td></tr>
+                <tr><td class="pronoun">(nous)</td><td class="conj-value"><strong>achetons</strong></td></tr>
+                <tr><td class="pronoun">(vous)</td><td class="conj-value"><strong>achetez</strong></td></tr>
+            </table>
+            <div style="padding: 0.7rem 1.2rem 0.9rem; font-size:0.8rem; color:#4a6a3b;">⚠️ Sans pronom · "Achète ce livre !"</div>
+        </div>
     </div>
 
-    <div id="categorieDictionnaire" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showCategories()">← Retour</button><h2>📖 Dictionnaire</h2><div></div></div>
-        <div class="table-container"><table id="dictionnaireTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier</th><th>Actions</th></tr></thead><tbody id="dictionnaireBody"></tbody></table></div>
+    <!-- TEMPS COMPOSÉS : passé composé, plus-que-parfait, futur antérieur, conditionnel passé -->
+    <div class="section-title">⏳ Temps composés (auxiliaire AVOIR)</div>
+    <div class="conjug-grid">
+        <!-- PASSÉ COMPOSÉ -->
+        <div class="card temps-compound">
+            <div class="card-header">📅 Passé composé</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>auxiliaire + participe passé</th></tr>
+                <tr><td class="pronoun">j'</td><td class="conj-value"><strong>ai acheté</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value"><strong>as acheté</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value"><strong>a acheté</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value"><strong>avons acheté</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value"><strong>avez acheté</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value"><strong>ont acheté</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- PLUS-QUE-PARFAIT -->
+        <div class="card temps-compound">
+            <div class="card-header">🕰️ Plus-que-parfait</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>imparfait aux. + participe</th></tr>
+                <tr><td class="pronoun">j'</td><td class="conj-value"><strong>avais acheté</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value"><strong>avais acheté</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value"><strong>avait acheté</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value"><strong>avions acheté</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value"><strong>aviez acheté</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value"><strong>avaient acheté</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- FUTUR ANTÉRIEUR -->
+        <div class="card temps-compound">
+            <div class="card-header">🚀 Futur antérieur</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>futur simple aux. + participe</th></tr>
+                <tr><td class="pronoun">j'</td><td class="conj-value"><strong>aurai acheté</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value"><strong>auras acheté</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value"><strong>aura acheté</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value"><strong>aurons acheté</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value"><strong>aurez acheté</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value"><strong>auront acheté</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- CONDITIONNEL PASSÉ -->
+        <div class="card temps-compound">
+            <div class="card-header">🎭 Conditionnel passé</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>conditionnel aux. + participe</th></tr>
+                <tr><td class="pronoun">j'</td><td class="conj-value"><strong>aurais acheté</strong></td></tr>
+                <tr><td class="pronoun">tu</td><td class="conj-value"><strong>aurais acheté</strong></td></tr>
+                <tr><td class="pronoun">il/elle/on</td><td class="conj-value"><strong>aurait acheté</strong></td></tr>
+                <tr><td class="pronoun">nous</td><td class="conj-value"><strong>aurions acheté</strong></td></tr>
+                <tr><td class="pronoun">vous</td><td class="conj-value"><strong>auriez acheté</strong></td></tr>
+                <tr><td class="pronoun">ils/elles</td><td class="conj-value"><strong>auraient acheté</strong></td></tr>
+            </table>
+        </div>
     </div>
-    <div id="categorieConjugaison" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showCategories()">← Retour</button><h2>📘 Conjugaison</h2><div></div></div>
-        <div class="table-container"><table id="conjugaisonTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier</th><th>Actions</th></tr></thead><tbody id="conjugaisonBody"></tbody></table></div>
+
+    <!-- SUBJONCTIF PASSÉ / IMPARFAIT (optionnel mais enrichi) -->
+    <div class="section-title">📚 Subjonctif Passé & Imparfait (littéraire)</div>
+    <div class="conjug-grid">
+        <div class="card">
+            <div class="card-header">Subjonctif Passé</div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>aux subjonctif présent + participe</th></tr>
+                <tr><td class="pronoun">que j'</td><td class="conj-value"><strong>aie acheté</strong></td></tr>
+                <tr><td class="pronoun">que tu</td><td class="conj-value"><strong>aies acheté</strong></td></tr>
+                <tr><td class="pronoun">qu'il/elle</td><td class="conj-value"><strong>ait acheté</strong></td></tr>
+                <tr><td class="pronoun">que nous</td><td class="conj-value"><strong>ayons acheté</strong></td></tr>
+                <tr><td class="pronoun">que vous</td><td class="conj-value"><strong>ayez acheté</strong></td></tr>
+                <tr><td class="pronoun">qu'ils/elles</td><td class="conj-value"><strong>aient acheté</strong></td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-header">Subjonctif Imparfait <small>(littéraire)</small></div>
+            <table class="verb-table">
+                <tr><th>PRONOM</th><th>conjugaison spécifique</th></tr>
+                <tr><td class="pronoun">que je</td><td class="conj-value"><strong>achetasse</strong></td></tr>
+                <tr><td class="pronoun">que tu</td><td class="conj-value"><strong>achetasses</strong></td></tr>
+                <tr><td class="pronoun">qu'il/elle</td><td class="conj-value"><strong>achetât</strong></td></tr>
+                <tr><td class="pronoun">que nous</td><td class="conj-value"><strong>achetassions</strong></td></tr>
+                <tr><td class="pronoun">que vous</td><td class="conj-value"><strong>achetassiez</strong></td></tr>
+                <tr><td class="pronoun">qu'ils/elles</td><td class="conj-value"><strong>achetassent</strong></td></tr>
+            </table>
+        </div>
     </div>
-    <div id="categorieDialoguer" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showCategories()">← Retour</button><h2>💬 Dialoguer</h2><div></div></div>
-        <div class="table-container"><table id="dialoguerTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier</th><th>Actions</th></tr></thead><tbody id="dialoguerBody"></tbody></table></div>
+
+    <!-- FORME NÉGATIVE et PARTICIPES (EXTRA) -->
+    <div class="section-title">🧩 Formes complémentaires</div>
+    <div class="conjug-grid">
+        <div class="card">
+            <div class="card-header">📌 Participe présent / passé</div>
+            <table class="verb-table">
+                <tr><td class="pronoun">Participe présent</td><td class="conj-value"><strong>achetant</strong></td></tr>
+                <tr><td class="pronoun">Participe passé</td><td class="conj-value">acheté / achetée / achetés / achetées</td></tr>
+                <tr><td class="pronoun">Infinitif passé</td><td class="conj-value"><strong>avoir acheté</strong></td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-header">🚫 Exemple négation (présent)</div>
+            <table class="verb-table">
+                <tr><td class="pronoun">je n'achète pas</td><td class="conj-value">tu n'achètes pas</td></tr>
+                <tr><td class="pronoun">il n'achète pas</td><td class="conj-value">nous n'achetons pas</td></tr>
+                <tr><td class="pronoun">vous n'achetez pas</td><td class="conj-value">ils n'achètent pas</td></tr>
+            </table>
+            <div style="padding: 0.5rem 1rem; font-size:0.75rem;">Verbe transitif direct · Auxiliaire avoir · accord régulier</div>
+        </div>
     </div>
-    <div id="categorieHiresaka" class="level-screen">
-        <div class="header"><button class="back-btn" onclick="showCategories()">← Retour</button><h2>🗣️ Hiresaka</h2><div></div></div>
-        <div class="table-container"><table id="hiresakaTable"><thead><tr><th>#</th><th>Titre</th><th>Code</th><th>Fichier</th><th>Actions</th></tr></thead><tbody id="hiresakaBody"></tbody></table></div>
-    </div>
+
+    <footer>
+        ✨ Conjugaison complète du verbe <strong>ACHETER</strong> (1er groupe - modèle « acheter », doublement du e en è devant syllabe muette).<br>
+        Tous les temps principaux : indicatif (présent, imparfait, passé simple, futur), conditionnel, subjonctif, impératif, composés.
+    </footer>
 </div>
-
-<div class="token-bar">
-    <label>🔑 GitHub Token:</label>
-    <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxx">
-    <button class="save-token" id="saveTokenBtn">💾 Enregistrer</button>
-    <span id="tokenStatus" class="token-status"></span>
-</div>
-
-<script>
-    // ======================= CONFIGURATION =======================
-    const REPO = "maquestionkely-byte/tahiry";
-    const BRANCH = "main";
-    const DATE_FILE_PATH = "date_rehetra.txt";
-    
-    let GITHUB_TOKEN = localStorage.getItem('github_token') || '';
-    
-    // ======================= LISTE COMPLETE EN DUR =======================
-    const debutantLecons = [
-        { id:1, titre:"Types de phrases", code:"tyde" },
-        { id:2, titre:"Verbe avoir et être", code:"veav" },
-        { id:3, titre:"Le déterminant", code:"lede" },
-        { id:4, titre:"Articles définis et indéfinis", code:"arde" },
-        { id:5, titre:"Articles partitifs", code:"arpa" },
-        { id:6, titre:"Déterminants possessifs", code:"depo" },
-        { id:7, titre:"Déterminants démonstratifs", code:"dede" },
-        { id:8, titre:"Déterminants interrogatifs et exclamatifs", code:"dein" },
-        { id:9, titre:"Pronoms possessifs", code:"prpo" },
-        { id:10, titre:"Pronoms démonstratifs", code:"prde" },
-        { id:11, titre:"Pronoms démonstratifs neutres", code:"prdn" },
-        { id:12, titre:"Pronoms relatifs simples", code:"pelt" },
-        { id:13, titre:"Genre et nombre", code:"geet" },
-        { id:14, titre:"Pronoms personnels sujets", code:"prpe" },
-        { id:15, titre:"Les compléments d'objet", code:"leco" },
-        { id:16, titre:"Pronoms toniques", code:"prto" },
-        { id:17, titre:"Prépositions", code:"prep" },
-        { id:18, titre:"Verbes après prépositions", code:"veap" },
-        { id:19, titre:"Mots interrogatifs", code:"moin" },
-        { id:20, titre:"Pronoms interrogatifs", code:"prin" },
-        { id:21, titre:"Négation", code:"nega" },
-        { id:22, titre:"Pronoms réfléchis", code:"prrf" },
-        { id:23, titre:"Verbes pronominaux", code:"vepr" },
-        { id:24, titre:"Verbes impersonnels", code:"veim" },
-        { id:25, titre:"Verbes modaux", code:"vemo" },
-        { id:26, titre:"Expressions de quantité", code:"exde" },
-        { id:27, titre:"Adjectif", code:"adje" },
-        { id:28, titre:"Adjectif épithète et attribut", code:"adep" },
-        { id:29, titre:"Adjectif de couleur", code:"adco" },
-        { id:30, titre:"Adjectif de qualification", code:"adqu" },
-        { id:31, titre:"Adjectif numéral", code:"adnu" },
-        { id:32, titre:"Adverbes", code:"adve" },
-        { id:33, titre:"Place des adverbes", code:"plde" },
-        { id:34, titre:"Adjectif vs Adverbe", code:"advs" },
-        { id:35, titre:"Comparatif", code:"comp" },
-        { id:36, titre:"Superlatif", code:"supe" },
-        { id:37, titre:"Formation des mots", code:"fode" },
-        { id:38, titre:"Mots construits par dérivation", code:"moco" },
-        { id:39, titre:"Les préfixes", code:"lepr" },
-        { id:40, titre:"Les suffixes", code:"lesu" },
-        { id:41, titre:"Accord sujet-verbe", code:"acsu" },
-        { id:42, titre:"Accord de l'adjectif", code:"acde" },
-        { id:43, titre:"Majuscules et minuscules", code:"maet" },
-        { id:44, titre:"La ponctuation", code:"lapo" },
-        { id:45, titre:"Les signes orthographiques", code:"lesi" },
-        { id:46, titre:"Construction des phrases simples", code:"code" }
-    ];
-    
-    const intermediaireLecons = [
-        { id:47, titre:"Passé récent", code:"pare" },
-        { id:48, titre:"Présent progressif", code:"prpr" },
-        { id:49, titre:"Temps présent de l'indicatif", code:"tepr" },
-        { id:50, titre:"Futur proche", code:"fupr" },
-        { id:51, titre:"Futur simple", code:"fusi" },
-        { id:52, titre:"Impératif", code:"impe" },
-        { id:53, titre:"Chiffres", code:"chif" },
-        { id:54, titre:"Heure", code:"heur" },
-        { id:55, titre:"Mois", code:"mois" },
-        { id:56, titre:"Date", code:"date" },
-        { id:57, titre:"Conjonctions de coordination", code:"cood" },
-        { id:58, titre:"Passé composé", code:"paco" },
-        { id:59, titre:"Accord du participe passé", code:"acdu" },
-        { id:60, titre:"Participe présent", code:"papr" },
-        { id:61, titre:"Imparfait", code:"impa" },
-        { id:62, titre:"Gérondif", code:"gero" },
-        { id:63, titre:"Pronoms adverbiaux", code:"prad" },
-        { id:64, titre:"Double pronom", code:"dopr" },
-        { id:65, titre:"Conditionnel présent", code:"copr" },
-        { id:66, titre:"Subjonctif présent", code:"supr" },
-        { id:67, titre:"Imparfait VS Passé composé", code:"imvs" },
-        { id:68, titre:"Phrase complexe", code:"phco" },
-        { id:69, titre:"Proposition relative", code:"prre" },
-        { id:70, titre:"Subordonnées et coordonnées", code:"suet" },
-        { id:71, titre:"Conjonction subordonnée", code:"cosu" },
-        { id:72, titre:"Exprimer la cause", code:"exla" },
-        { id:73, titre:"Exprimer la conséquence", code:"laci" },
-        { id:74, titre:"Exprimer le but", code:"exle" },
-        { id:75, titre:"Exprimer la condition", code:"exdi" },
-        { id:76, titre:"Exprimer l'opposition et la concession", code:"exlo" },
-        { id:77, titre:"Discours direct et indirect", code:"didi" },
-        { id:78, titre:"Exprimer une opinion", code:"exun" },
-        { id:79, titre:"Exprimer l'accord et le désaccord", code:"elad" },
-        { id:80, titre:"Exprimer l'hypothèse", code:"exlh" }
-    ];
-    
-    const avanceLecons = [
-        { id:81, titre:"Passé simple", code:"pasi" },
-        { id:82, titre:"Plus-que-parfait", code:"plus" },
-        { id:83, titre:"Futur antérieur", code:"fuan" },
-        { id:84, titre:"Passé antérieur", code:"paan" },
-        { id:85, titre:"Conditionnel passé", code:"copa" },
-        { id:86, titre:"Subjonctif passé", code:"supa" },
-        { id:87, titre:"Subjonctif plus-que-parfait", code:"supl" },
-        { id:88, titre:"Concordance des temps", code:"cdte" },
-        { id:89, titre:"Mise en relief", code:"mien" },
-        { id:90, titre:"Inversion du sujet", code:"indu" },
-        { id:91, titre:"Ellipse et procédés de reprise", code:"elet" },
-        { id:92, titre:"Registres de langue", code:"rede" },
-        { id:93, titre:"Nuances lexicales et synonymie", code:"nule" },
-        { id:94, titre:"Faux amis", code:"faam" },
-        { id:95, titre:"Sens figuré et sens propre", code:"sefi" },
-        { id:96, titre:"Voix passive et voix active", code:"vopa" },
-        { id:97, titre:"Techniques argumentatives", code:"tear" },
-        { id:98, titre:"Modalisation", code:"moda" },
-        { id:99, titre:"Implicite et sous-entendu", code:"imet" },
-        { id:100, titre:"Ironie, satire, antiphrase", code:"irsa" },
-        { id:101, titre:"Champs lexicaux", code:"chle" },
-        { id:102, titre:"Figures de style", code:"fide" },
-        { id:103, titre:"Analyse du texte", code:"andu" },
-        { id:104, titre:"Discours indirect libre", code:"diin" },
-        { id:105, titre:"Synthèse du programme", code:"sydu" }
-    ];
-    
-    const categoriesSpeciales = [
-        { nom: "Dictionnaire", id: "dictionnaire", lecons: [
-            { id:1, titre:"Malagasy 👉 Français", code:"difr", fichier:"difrlecon.txt" },
-            { id:2, titre:"Français 👉 Malagasy", code:"dif2", fichier:"difrlecondeux.txt" },
-            { id:3, titre:"Français uniquement", code:"dif3", fichier:"difrunlecon.txt" }
-        ]},
-        { nom: "Conjugaison", id: "conjugaison", lecons: [
-            { id:1, titre:"Conjugaison des verbes", code:"conj", fichier:"conjlecon.txt" },
-            { id:2, titre:"Règles de conjugaison", code:"conr", fichier:"conjrelecon.txt" }
-        ]},
-        { nom: "Dialoguer", id: "dialoguer", lecons: [
-            { id:1, titre:"Dialogues Français et Malagasy", code:"dial", fichier:"diallecon.txt" },
-            { id:2, titre:"Dialogues audio + texte", code:"dia2", fichier:"diautecon.txt" },
-            { id:3, titre:"Dialogues Français uniquement", code:"dia3", fichier:"diunlecon.txt" },
-            { id:4, titre:"Dialogues audio uniquement", code:"dia4", fichier:"diaulecon.txt" },
-            { id:5, titre:"Dialogues audio + texte Français", code:"dia5", fichier:"ditelecon.txt" }
-        ]},
-        { nom: "Hiresaka", id: "hiresaka", lecons: [
-            { id:1, titre:"Hiresaka mivantana", code:"hire", fichier:"hirelecon.txt" }
-        ]}
-    ];
-    
-    // ======================= FONCTIONS API GITHUB =======================
-    async function githubRequest(method, path, token, body = null) {
-        const url = `https://api.github.com/repos/${REPO}/contents/${encodeURIComponent(path)}`;
-        const headers = { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' };
-        const options = { method, headers };
-        if (body) { options.body = JSON.stringify(body); headers['Content-Type'] = 'application/json'; }
-        const response = await fetch(url, options);
-        const data = await response.json();
-        return { ok: response.ok, status: response.status, data };
-    }
-    
-    async function getSha(path, token) {
-        const { ok, data } = await githubRequest('GET', path, token);
-        if (ok && data.sha) return data.sha;
-        return null;
-    }
-    
-    async function uploadToGithub(path, content, token, sha = null) {
-        const body = { message: `Mise à jour de ${path}`, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
-        if (sha) body.sha = sha;
-        const { ok, data } = await githubRequest('PUT', path, token, body);
-        if (!ok) return { success: false, error: data.message };
-        return { success: true, data };
-    }
-    
-    async function readFileContent(path, token) {
-        const { ok, data } = await githubRequest('GET', path, token);
-        if (!ok) return null;
-        return decodeURIComponent(escape(atob(data.content)));
-    }
-    
-    function generateDateLine(fileName) {
-        const now = new Date();
-        const day = now.getDate().toString().padStart(2,'0');
-        const month = (now.getMonth()+1).toString().padStart(2,'0');
-        const year = now.getFullYear();
-        const hours = now.getHours().toString().padStart(2,'0');
-        const minutes = now.getMinutes().toString().padStart(2,'0');
-        const seconds = now.getSeconds().toString().padStart(2,'0');
-        return `DERNIÈRE MISE À JOUR\n📅 ${day}/${month}/${year}\n⏰ ${hours}:${minutes}:${seconds}\n📁 Fichier: ${fileName}`;
-    }
-    
-    async function updateDateFile(fileName, token) {
-        try {
-            let currentContent = await readFileContent(DATE_FILE_PATH, token);
-            let newContent = "", found = false;
-            if (currentContent) {
-                const blocks = currentContent.split(/(?=DERNIÈRE MISE À JOUR)/);
-                for (let block of blocks) {
-                    if (block.includes(`📁 Fichier: ${fileName}`)) { newContent += generateDateLine(fileName) + "\n\n"; found = true; }
-                    else { newContent += block; if (!block.endsWith("\n\n") && !block.endsWith("\n")) newContent += "\n"; }
-                }
-            }
-            if (!found) { if (newContent && !newContent.endsWith("\n\n")) newContent += "\n"; newContent += generateDateLine(fileName) + "\n\n"; }
-            newContent = newContent.replace(/\n{3,}/g, "\n\n").trim() + "\n";
-            const existingSha = await getSha(DATE_FILE_PATH, token);
-            const result = await uploadToGithub(DATE_FILE_PATH, newContent, token, existingSha);
-            return result.success;
-        } catch(e) { return false; }
-    }
-    
-    // ======================= AFFICHAGE TABLEAUX =======================
-    function afficherLecons(tableBodyId, lecons) {
-        const tbody = document.getElementById(tableBodyId);
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        lecons.forEach(lecon => {
-            const row = tbody.insertRow();
-            row.insertCell(0).textContent = lecon.id;
-            row.insertCell(1).textContent = lecon.titre;
-            row.insertCell(2).innerHTML = `<span class="badge-code">${lecon.code}</span>`;
-            row.insertCell(3).className = 'fichier-cell';
-            row.insertCell(3).textContent = lecon.code + 'lecon.txt';
-            const actionsCell = row.insertCell(4);
-            actionsCell.className = 'btn-group';
-            const btnOpen = document.createElement('button');
-            btnOpen.textContent = '📂 Ouvrir';
-            btnOpen.className = 'btn-open';
-            btnOpen.onclick = () => ouvrirModalLecon(lecon.code + 'lecon.txt', lecon.titre);
-            const btnExo = document.createElement('button');
-            btnExo.textContent = '📝 QCM';
-            btnExo.className = 'btn-exercice';
-            btnExo.onclick = () => ouvrirModalQCM(lecon.code, lecon.titre);
-            actionsCell.appendChild(btnOpen);
-            actionsCell.appendChild(btnExo);
-        });
-    }
-    
-    function afficherCategories() {
-        const tbody = document.getElementById('categoriesBody');
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        categoriesSpeciales.forEach(cat => {
-            const row = tbody.insertRow();
-            row.insertCell(0).textContent = cat.nom;
-            row.insertCell(1).textContent = cat.lecons.length + ' titre(s)';
-            const actionsCell = row.insertCell(2);
-            const btn = document.createElement('button');
-            btn.textContent = '📂 Ouvrir';
-            btn.className = 'btn-category';
-            btn.onclick = () => showCategorie(cat.id);
-            actionsCell.appendChild(btn);
-        });
-    }
-    
-    function afficherCategoriesSpeciales() {
-        categoriesSpeciales.forEach(cat => {
-            const tbody = document.getElementById(cat.id + 'Body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            cat.lecons.forEach(lecon => {
-                const row = tbody.insertRow();
-                row.insertCell(0).textContent = lecon.id;
-                row.insertCell(1).textContent = lecon.titre;
-                row.insertCell(2).innerHTML = `<span class="badge-code">${lecon.code}</span>`;
-                row.insertCell(3).className = 'fichier-cell';
-                row.insertCell(3).textContent = lecon.fichier;
-                const actionsCell = row.insertCell(4);
-                actionsCell.className = 'btn-group';
-                const btnOpen = document.createElement('button');
-                btnOpen.textContent = '📂 Ouvrir';
-                btnOpen.className = 'btn-open';
-                btnOpen.onclick = () => ouvrirModalLecon(lecon.fichier, lecon.titre);
-                const btnExo = document.createElement('button');
-                btnExo.textContent = '📝 QCM';
-                btnExo.className = 'btn-exercice';
-                btnExo.onclick = () => ouvrirModalQCM(lecon.code, lecon.titre);
-                actionsCell.appendChild(btnOpen);
-                actionsCell.appendChild(btnExo);
-            });
-        });
-    }
-    
-    // ======================= NAVIGATION =======================
-    function showHome() {
-        document.querySelectorAll('.level-screen, .category-screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('homeScreen').style.display = 'block';
-    }
-    function showLevel(level) {
-        document.getElementById('homeScreen').style.display = 'none';
-        document.querySelectorAll('.level-screen, .category-screen').forEach(s => s.classList.remove('active'));
-        document.getElementById(level + 'Screen').classList.add('active');
-    }
-    function showCategories() {
-        document.getElementById('homeScreen').style.display = 'none';
-        document.querySelectorAll('.level-screen, .category-screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('speciauxScreen').classList.add('active');
-    }
-    function showCategorie(catId) {
-        document.getElementById('homeScreen').style.display = 'none';
-        document.querySelectorAll('.level-screen, .category-screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('categorie' + catId.charAt(0).toUpperCase() + catId.slice(1)).classList.add('active');
-    }
-    
-    // ======================= MODALS =======================
-    let currentModal = null;
-    let tempContents = {1:null,2:null,3:null,4:null,5:null};
-    let selectedLevel = 1;
-    let tempLeconContent = null;
-    
-    function ouvrirModalQCM(code, titre) {
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header"><h3>📝 QCM - ${titre}</h3><button class="modal-close" onclick="fermerModal()">✕</button></div>
-                <button class="btn-add-all" id="btnAddAll">➕ Ajouter les 5 niveaux QCM</button>
-                <div class="qcm-levels"><h4>Niveau QCM :</h4>
-                <div class="qcm-buttons" id="qcmLevelButtons">
-                    <button class="qcm-level-btn" data-level="1">Niveau 1</button>
-                    <button class="qcm-level-btn" data-level="2">Niveau 2</button>
-                    <button class="qcm-level-btn" data-level="3">Niveau 3</button>
-                    <button class="qcm-level-btn" data-level="4">Niveau 4</button>
-                    <button class="qcm-level-btn" data-level="5">Niveau 5</button>
-                </div></div>
-                <div class="upload-area" id="uploadArea"><p>📁 Glissez votre fichier QCM niveau <span id="currentLevel">1</span></p><input type="file" id="fileInput" accept=".txt,.html"></div>
-                <div id="preview" class="preview" style="display:none;"></div>
-                <div class="preview" style="background:#e8f5e9;">📄 Fichier: <strong id="fileNameDisplay">${code}qcm1.txt</strong></div>
-                <button class="send-btn" id="sendBtn">📤 Envoyer ce niveau</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        currentModal = modal;
-        tempContents = {1:null,2:null,3:null,4:null,5:null};
-        
-        modal.querySelectorAll('.qcm-level-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.querySelectorAll('.qcm-level-btn').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                selectedLevel = parseInt(btn.getAttribute('data-level'));
-                document.getElementById('currentLevel').textContent = selectedLevel;
-                document.getElementById('fileNameDisplay').textContent = `${code}qcm${selectedLevel}.txt`;
-                if (tempContents[selectedLevel]) {
-                    const previewDiv = document.getElementById('preview');
-                    previewDiv.style.display = 'block';
-                    previewDiv.innerHTML = `<strong>Aperçu niveau ${selectedLevel}:</strong><br>${tempContents[selectedLevel].substring(0,200)}${tempContents[selectedLevel].length>200?'...':''}`;
-                } else { document.getElementById('preview').style.display = 'none'; }
-            });
-        });
-        modal.querySelector('.qcm-level-btn').classList.add('selected');
-        document.getElementById('btnAddAll').onclick = () => ajouterTousQCM(code);
-        setupQCMUpload(modal, code);
-    }
-    
-    async function ajouterTousQCM(code) {
-        if (!GITHUB_TOKEN) { alert('❌ Entrez votre token GitHub'); return; }
-        const btn = document.getElementById('btnAddAll');
-        btn.textContent = '⏳ Envoi en cours...';
-        btn.disabled = true;
-        let successCount = 0, errorCount = 0;
-        for (let level = 1; level <= 5; level++) {
-            const fileName = `${code}qcm${level}.txt`;
-            const content = tempContents[level];
-            if (!content) { errorCount++; continue; }
-            try {
-                const existingSha = await getSha(fileName, GITHUB_TOKEN);
-                const result = await uploadToGithub(fileName, content, GITHUB_TOKEN, existingSha);
-                if (result.success) { await updateDateFile(fileName, GITHUB_TOKEN); successCount++; }
-                else errorCount++;
-            } catch(e) { errorCount++; }
-        }
-        btn.textContent = `✅ ${successCount}/5 envoyés (${errorCount} erreurs)`;
-        setTimeout(() => { btn.textContent = '➕ Ajouter les 5 niveaux QCM'; btn.disabled = false; }, 3000);
-        showToast(`QCM: ${successCount} fichiers enregistrés`);
-        if (successCount === 5) setTimeout(() => fermerModal(), 1500);
-    }
-    
-    function setupQCMUpload(modal, code) {
-        const uploadArea = modal.querySelector('#uploadArea');
-        const fileInput = modal.querySelector('#fileInput');
-        const preview = modal.querySelector('#preview');
-        uploadArea.onclick = () => fileInput.click();
-        uploadArea.ondragover = (e) => { e.preventDefault(); uploadArea.style.borderColor = '#ffb347'; };
-        uploadArea.ondragleave = () => { uploadArea.style.borderColor = '#cbd5e1'; };
-        uploadArea.ondrop = (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = '#cbd5e1';
-            if (e.dataTransfer.files[0]) handleQCMFile(e.dataTransfer.files[0], preview);
-        };
-        fileInput.onchange = (e) => { if (e.target.files[0]) handleQCMFile(e.target.files[0], preview); };
-        const sendBtn = modal.querySelector('#sendBtn');
-        sendBtn.onclick = () => uploadQCMFile(sendBtn, code + 'qcm' + selectedLevel + '.txt');
-    }
-    
-    function handleQCMFile(file, preview) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            tempContents[selectedLevel] = e.target.result;
-            preview.style.display = 'block';
-            preview.innerHTML = `<strong>Aperçu niveau ${selectedLevel}:</strong><br>${tempContents[selectedLevel].substring(0,200)}${tempContents[selectedLevel].length>200?'...':''}`;
-        };
-        reader.readAsText(file);
-    }
-    
-    async function uploadQCMFile(btn, nomFichier) {
-        if (!tempContents[selectedLevel]) { alert(`❌ Veuillez sélectionner un fichier pour le niveau ${selectedLevel}`); return; }
-        if (!GITHUB_TOKEN) { alert('❌ Entrez votre token GitHub'); return; }
-        btn.classList.add('loading');
-        btn.disabled = true;
-        try {
-            const existingSha = await getSha(nomFichier, GITHUB_TOKEN);
-            const result = await uploadToGithub(nomFichier, tempContents[selectedLevel], GITHUB_TOKEN, existingSha);
-            if (result.success) {
-                btn.classList.remove('loading');
-                btn.textContent = '✅ Effectué !';
-                btn.classList.add('success');
-                await updateDateFile(nomFichier, GITHUB_TOKEN);
-                showToast(`✅ ${nomFichier} enregistré !`);
-                setTimeout(() => fermerModal(), 1500);
-            } else throw new Error(result.error);
-        } catch(error) {
-            btn.classList.remove('loading');
-            btn.textContent = '❌ Erreur';
-            btn.style.background = '#e74c3c';
-            btn.disabled = false;
-            setTimeout(() => { btn.textContent = '📤 Envoyer ce niveau'; btn.style.background = '#ffb347'; }, 2000);
-            showToast(`❌ Erreur: ${error.message}`);
-        }
-    }
-    
-    function ouvrirModalLecon(fichier, titre) {
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header"><h3>📖 ${titre}</h3><button class="modal-close" onclick="fermerModal()">✕</button></div>
-                <div class="upload-area" id="uploadArea"><p>📁 Glissez votre fichier</p><input type="file" id="fileInput" accept=".txt,.html"></div>
-                <div id="preview" class="preview" style="display:none;"></div>
-                <div class="preview" style="background:#e8f5e9;">📄 Fichier: <strong>${fichier}</strong></div>
-                <button class="send-btn" id="sendBtn">📤 Envoyer</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        currentModal = modal;
-        const uploadArea = modal.querySelector('#uploadArea');
-        const fileInput = modal.querySelector('#fileInput');
-        const preview = modal.querySelector('#preview');
-        uploadArea.onclick = () => fileInput.click();
-        uploadArea.ondragover = (e) => { e.preventDefault(); uploadArea.style.borderColor = '#ffb347'; };
-        uploadArea.ondragleave = () => { uploadArea.style.borderColor = '#cbd5e1'; };
-        uploadArea.ondrop = (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = '#cbd5e1';
-            if (e.dataTransfer.files[0]) handleLeconFile(e.dataTransfer.files[0], preview);
-        };
-        fileInput.onchange = (e) => { if (e.target.files[0]) handleLeconFile(e.target.files[0], preview); };
-        const sendBtn = modal.querySelector('#sendBtn');
-        sendBtn.onclick = () => uploadLeconFile(sendBtn, fichier);
-    }
-    
-    function handleLeconFile(file, preview) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            tempLeconContent = e.target.result;
-            preview.style.display = 'block';
-            preview.innerHTML = `<strong>Aperçu:</strong><br>${tempLeconContent.substring(0,200)}${tempLeconContent.length>200?'...':''}`;
-        };
-        reader.readAsText(file);
-    }
-    
-    async function uploadLeconFile(btn, nomFichier) {
-        if (!tempLeconContent) { alert('❌ Veuillez sélectionner un fichier'); return; }
-        if (!GITHUB_TOKEN) { alert('❌ Entrez votre token GitHub'); return; }
-        btn.classList.add('loading');
-        btn.disabled = true;
-        try {
-            const existingSha = await getSha(nomFichier, GITHUB_TOKEN);
-            const result = await uploadToGithub(nomFichier, tempLeconContent, GITHUB_TOKEN, existingSha);
-            if (result.success) {
-                btn.classList.remove('loading');
-                btn.textContent = '✅ Effectué !';
-                btn.classList.add('success');
-                await updateDateFile(nomFichier, GITHUB_TOKEN);
-                showToast(`✅ ${nomFichier} enregistré !`);
-                setTimeout(() => fermerModal(), 1500);
-            } else throw new Error(result.error);
-        } catch(error) {
-            btn.classList.remove('loading');
-            btn.textContent = '❌ Erreur';
-            btn.style.background = '#e74c3c';
-            btn.disabled = false;
-            setTimeout(() => { btn.textContent = '📤 Envoyer'; btn.style.background = '#ffb347'; }, 2000);
-            showToast(`❌ Erreur: ${error.message}`);
-        }
-    }
-    
-    function fermerModal() {
-        if (currentModal) { currentModal.remove(); currentModal = null; }
-        tempLeconContent = null;
-        tempContents = {1:null,2:null,3:null,4:null,5:null};
-    }
-    
-    function showToast(message) {
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-    }
-    
-    // ======================= INITIALISATION =======================
-    document.getElementById('githubToken').value = GITHUB_TOKEN;
-    document.getElementById('saveTokenBtn').onclick = () => {
-        const token = document.getElementById('githubToken').value.trim();
-        if (token) { GITHUB_TOKEN = token; localStorage.setItem('github_token', token); document.getElementById('tokenStatus').textContent = '✅ Token enregistré'; setTimeout(() => document.getElementById('tokenStatus').textContent = '', 3000); }
-    };
-    
-    // Afficher toutes les leçons
-    afficherLecons('debutantBody', debutantLecons);
-    afficherLecons('intermediaireBody', intermediaireLecons);
-    afficherLecons('avanceBody', avanceLecons);
-    afficherCategories();
-    afficherCategoriesSpeciales();
-    
-    document.getElementById('homeScreen').style.display = 'block';
-</script>
 </body>
 </html>
