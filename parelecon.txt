@@ -139,7 +139,7 @@
     
     <script>
         // ==================== CONFIGURATION ====================
-        const FILE_URL = 'https://falytokoa.ahofaly62.workers.dev/parelecon.txt';
+        const FILE_URL = 'https://falytokoa.ahofaly62.workers.dev/prprlecon.txt';
         const DATE_INFO_URL = 'https://falytokoa.ahofaly62.workers.dev/date_rehetra.txt';
         const TARGET_FILE = 'parelecon.txt';
         const DB_NAME = 'parelecon_ok_cache';
