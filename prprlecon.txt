@@ -7,6 +7,6 @@
     </style>
 </head>
 <body>
-    <h1> mdoka ! 👋</h1>
+    <h1> lava ! 👋</h1>
 </body>
 </html>
