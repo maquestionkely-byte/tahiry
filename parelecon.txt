@@ -49,10 +49,10 @@
     const WORKER_URL = 'https://falytokoa.ahofaly62.workers.dev';
     const FILE_URL = WORKER_URL + '/prprlecon.txt';
     const DATE_INFO_URL = WORKER_URL + '/date_rehetra.txt';
-    const DB_NAME = 'heraa_storage';
-    const STORE_NAME = 'heraa_content';
+    const DB_NAME = 'prprlecon_storage';
+    const STORE_NAME = 'prprlecon_content';
     const DB_VERSION = 18;
-    const TARGET_FILE = 'heraa.txt';
+    const TARGET_FILE = 'prprlecon.txt';
 
     let currentHtmlContent = null;
     let currentVersionDate = null;
