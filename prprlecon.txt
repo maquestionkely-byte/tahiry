@@ -7,6 +7,6 @@
     </style>
 </head>
 <body>
-    <h1> 😍 KOZY 😍! 👋</h1>
+    <h1> 😍 VRAI 😍! 👋</h1>
 </body>
 </html>
