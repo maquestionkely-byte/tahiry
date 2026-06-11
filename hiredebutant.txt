@@ -1,0 +1,3894 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Mianatra Notre FRANÇAIS 🟢</title>
+	<!-- Manifeste PWA -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Couleurs -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        /* ========== SÉCURITÉS CSS ========== */
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        /* ========== STYLES EXISTANTS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body, .chat-container, .message-wrapper, .message, .header, .param-panel, .profile-detail, .context-menu, .popup-content, .level-screen, .start-card, .register-screen, .register-card {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            overflow: hidden;
+            position: fixed;
+        }
+
+        /* Ajustement pour l'écran d'inscription et de bienvenue */
+        .register-screen .btn-retour-home,
+        .welcome-screen .btn-retour-home,
+        .level-screen .btn-retour-home {
+            background: #0066CC;
+        }
+/* ========== INTERFACE D'INSCRIPTION ========== */
+.register-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #075e54, #054a3f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4500;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.register-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.register-card {
+    background: white;
+    border-radius: 48px;
+    padding: 40px 24px;
+    margin: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: calc(100% - 40px);
+    box-shadow: 0 30px 45px rgba(0,0,0,0.3);
+    position: relative; /* Ajouté pour positionner le bouton retour */
+}
+/* ========== BOUTON RETOUR - BARRE BLEUE ========== */
+.btn-retour-inscription {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #0066CC !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 8px 12px !important;        /* Réduit à droite (12px au lieu de 18px) */
+    font-size: 13px !important;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;                           /* Réduit l'espace entre icône et texte */
+    z-index: 10;
+    width: fit-content;
+    max-width: 100px;
+    white-space: nowrap;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-retour-inscription:hover {
+    background: #0055aa !important;
+}
+
+.btn-retour-inscription:active {
+    transform: scale(0.95);
+}
+/* ========== BOUTON MANOMBOKA - VERT PLEIN ========== */
+#registerBtn {
+    background: #00800;           /* Fond vert */
+    color: white;                  /* Texte blanc */
+    border: none;
+    padding: 14px 24px;
+    border-radius: 60px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s, background 0.2s;
+}
+
+#registerBtn:hover {
+    background: #0066CC !important;  /* BLEU au survol */
+}
+
+#registerBtn:active {
+    transform: scale(0.97);
+}
+
+#registerBtn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+.register-card .subtitle {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 30px;
+}
+
+.register-card input {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 60px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    transition: border-color 0.3s;
+}
+
+.register-card input:focus {
+    outline: none;
+    border-color: #075e54;
+}
+
+.gender-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.gender-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.gender-option.selected {
+    border-color: #075e54;
+    background: #e8f5e9;
+}
+
+.gender-option input {
+    display: none;
+}
+
+.gender-option span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.register-card button {
+    background: #075e54;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 60px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.register-card button:active { transform: scale(0.97); }
+.register-card button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+     
+/* ========== TOAST D'ERREUR CENTRÉ AVEC DISPARITION AUTO ========== */
+.error-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f5bfa4;
+    color: #000000;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+    min-width: 250px;
+    max-width: 80%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    border-left: 5px solid #8B0000;
+    border-right: 5px solid #8B0000;
+}
+
+.error-toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.error-toast .toast-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.error-toast .toast-message {
+    display: block;
+    line-height: 1.4;
+    color: #000000;
+    font-weight: bold;
+}
+        /* ÉCRAN D'ACCUEIL AVEC BOUTON COMMENCER */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0000 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .welcome-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .welcome-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 48px;
+            padding: 40px 28px;
+            margin: 20px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            backdrop-filter: blur(2px);
+            width: calc(100% - 40px);
+            max-width: 360px;
+        }
+
+        .welcome-card .avatar-preview {
+            width: 90px;
+            height: 90px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 58px;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .welcome-card .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .welcome-card h1 {
+            color: #075e54;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .welcome-card p {
+            color: #546e7a;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+
+        .welcome-card .user-name-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0000FF;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #e8f5e9;
+    border-radius: 40px;
+}
+
+      .btn-start {
+    background: #0044AA;
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+        .btn-start:active {
+            transform: scale(0.96);
+        }
+
+        /* POPUP MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            padding: 30px 24px;
+            max-width: 360px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #075e54;
+        }
+        
+        .modal-message {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .modal-btn.close {
+            background: #ccc;
+            color: #333;
+        }
+        
+        .modal-btn.resolve {
+            background: #075e54;
+            color: white;
+        }
+        
+        .modal-btn.facebook {
+            background: #1877f2;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .modal-btn.facebook:active {
+            transform: scale(0.96);
+        }
+        
+        .modal-btn.facebook::before {
+            content: "f";
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+/* Style UNIFORME pour TOUS les logos Facebook - Carré blanc avec f bleu */
+.fb-logo-uniform, 
+.modal-btn.facebook::before,
+.fb-mode-logo,
+.fb-button-icon {
+    background: white !important;
+    color: #1877f2 !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    font-family: 'Arial', sans-serif !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 6px !important;
+    margin-right: 8px !important;
+    border: 1px solid #1877f2 !important;
+}
+
+.modal-btn.facebook::before {
+    content: "f" !important;
+    margin-right: 0 !important;
+}
+
+.modal-btn.facebook {
+    gap: 10px !important;
+}
+
+.fb-mode-logo {
+    background: white !important;
+    color: #1877f2 !important;
+}
+	
+        /* ========== STYLES POUR MESSAGES DE SYSTÈME ========== */
+        .message-wrapper.system {
+            align-self: center !important;
+            max-width: 90% !important;
+        }
+
+        .message-wrapper.system .message {
+            background: #374151 !important;
+            color: #fbbf24 !important;
+            font-size: 12px !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            text-align: center !important;
+            border: 1px solid #fbbf24 !important;
+            font-weight: bold !important;
+        }
+
+        .message-wrapper.system .message-time {
+            text-align: center !important;
+            color: #9ca3af !important;
+        }
+
+        .message-wrapper.warning .message {
+            background: #451a03 !important;
+            color: #fbbf24 !important;
+            border-color: #f59e0b !important;
+        }
+
+        .message-wrapper.blocked .message {
+            background: #7f1d1d !important;
+            color: #ef4444 !important;
+            border-color: #ef4444 !important;
+        }
+
+        .message-wrapper.unblocked .message {
+            background: #064e3b !important;
+            color: #22c55e !important;
+            border-color: #22c55e !important;
+        }
+
+        .message-timer {
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+            background: #1f2937;
+            padding: 4px 8px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #075e54;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            background: #111827;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER */
+        .header {
+            padding: 15px;
+            background: #1f2937;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.0002s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            will-change: transform;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .profile-pic-header {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-name-header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .profile-status {
+            font-size: 12px;
+            opacity: 0.8;
+            display: block;
+        }
+
+        .profile-status.offline { color: #ef4444; }
+        .profile-status.online { color: #22c55e; }
+
+        .header.keyboard-visible {
+            transform: translateY(var(--keyboard-height, 0px));
+            background: #1f2937ee;
+            backdrop-filter: blur(10px);
+        }
+
+        .fullscreen-btn, .settings-btn {
+            background: #374151;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .settings-btn { margin-right: 10px; }
+
+        /* CHAT BOX */
+        .chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .date-separator {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .date-separator span {
+            background: #374151;
+            color: #e0e0e0;
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .message-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 80%;
+            animation: fade 0.2s ease;
+            position: relative;
+        }
+
+        .message-wrapper.bot { align-self: flex-start; }
+        .message-wrapper.user { align-self: flex-end; }
+
+        .message {
+            padding: 12px 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        .bot .message { background: #374151; color: white; border-bottom-left-radius: 5px; }
+        .user .message { background: #2563eb; color: white; border-bottom-right-radius: 5px; }
+        
+        .message-time {
+            font-size: 9px;
+            opacity: 0.6;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .typing-indicator-wrapper { align-self: flex-start; max-width: 80%; }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 18px;
+            background: #374151;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            width: fit-content;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: typingAnim 1.4s infinite ease-in-out;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingAnim {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* INPUT AREA */
+        .input-area {
+            display: flex;
+            align-items: flex-end;
+            padding: 10px;
+            gap: 10px;
+            background: #1f2937;
+            border-top: 1px solid #374151;
+            flex-shrink: 0;
+        }
+
+        textarea {
+            flex: 1;
+            resize: none;
+            border: none;
+            outline: none;
+            padding: 12px;
+            border-radius: 15px;
+            background: #374151;
+            color: white;
+            font-size: 16px;
+            min-height: 50px;
+            max-height: 120px;
+            overflow-y: auto;
+            font-family: Arial, sans-serif;
+            user-select: text;
+            -webkit-user-select: text;
+            line-height: 1.4;
+        }
+
+        textarea:focus { background: #4b5563; }
+
+        button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        button:hover { background: #1d4ed8; }
+        button:active { transform: scale(0.97); }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fs-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .fs-indicator.show { opacity: 1; }
+
+        .loading-indicator {
+            text-align: center;
+            padding: 10px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* PANEL PARAMÈTRES */
+        .param-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: #1f2937;
+            z-index: 1500;
+            transition: right 0.3s ease;
+            padding: 20px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+        .param-panel.open { right: 0; }
+        .param-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #374151;
+            color: white;
+            font-size: 18px;
+        }
+        .close-param {
+            background: transparent;
+            font-size: 24px;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+        .param-item {
+            padding: 15px 0;
+            color: white;
+            border-bottom: 1px solid #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+        .param-item:hover { background: #374151; padding-left: 10px; }
+        .delete-discussion { color: #ef4444; }
+
+        /* PROFIL DETAIL */
+        .profile-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 320px;
+            background: #1f2937;
+            border-radius: 20px;
+            z-index: 2500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .profile-detail.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .profile-detail-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .profile-detail-info { text-align: left; color: white; margin-top: 15px; }
+        .profile-detail-info p { margin: 10px 0; font-size: 14px; }
+        .close-profile { margin-top: 20px; background: #ef4444; width: 100%; }
+
+        /* POPUP */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+        .popup-overlay.open { opacity: 1; visibility: visible; }
+        .popup-content {
+            background: #1f2937;
+            border-radius: 20px;
+            padding: 25px;
+            width: 280px;
+            text-align: center;
+            color: white;
+        }
+        .popup-buttons { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
+        .popup-confirm { background: #ef4444; }
+        .popup-cancel { background: #4b5563; }
+
+        /* CONTEXT MENU */
+        .context-menu {
+            position: fixed;
+            background: #1f2937;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            z-index: 3500;
+            min-width: 160px;
+            overflow: hidden;
+            animation: fadeIn 0.1s ease;
+        }
+        .context-menu-item {
+            padding: 14px 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+        .context-menu-item:hover { background: #374151; }
+        .context-menu-item.delete { color: #ef4444; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* MODES */
+        body.dark-mode .chat-container { background: #0a0a0a; }
+        body.dark-mode .header { background: #0d0d0d; border-bottom-color: #1a1a1a; color: white; }
+        body.dark-mode .bot .message { background: #1e1e2a; color: white; }
+        body.dark-mode .user .message { background: #1a5bbf; color: white; }
+        body.dark-mode .input-area { background: #0d0d0d; border-top-color: #1a1a1a; }
+        body.dark-mode textarea { background: #1e1e2a; color: white; }
+        body.dark-mode .param-panel { background: #0d0d0d; }
+        body.dark-mode .param-item { color: white; border-bottom-color: #1a1a1a; }
+        body.dark-mode .date-separator span { background: #1e1e2a; color: #aaa; }
+
+        body.whatsapp-mode .chat-container {
+            background: url('https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/u.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        body.whatsapp-mode .header { background: #075e54; border-bottom-color: #054d44; color: white; }
+        body.whatsapp-mode .bot .message { background: #ffffff; color: #111111; }
+        body.whatsapp-mode .user .message { background: #dcf8c5; color: #111111; }
+        body.whatsapp-mode .input-area { background: #075e54; border-top-color: #054d44; }
+        body.whatsapp-mode textarea { background: #ffffff; color: #111111; }
+
+        body.facebook-mode .chat-container { background: #f0f2f5; }
+        body.facebook-mode .header { background: #ffffff; border-bottom-color: #e4e6eb; color: #050505; }
+        body.facebook-mode .bot .message { background: #e4e6eb; color: #050505; }
+        body.facebook-mode .user .message { background: #0084ff; color: white; }
+        body.facebook-mode .input-area { background: #ffffff; border-top-color: #e4e6eb; }
+        body.facebook-mode textarea { background: #f0f2f5; color: #050505; }
+        body.facebook-mode button { background: #0084ff; color: white; }
+    </style>
+</head>
+<body>
+
+<!-- ========== SCRIPT DE SÉCURITÉ (BLOQUAGE F12, CTRL+R, CLIC DROIT, ETC.) ========== -->
+<script>
+    (function() {
+        // Blocage du clic droit
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+        
+        // Blocage des raccourcis clavier
+        window.addEventListener('keydown', function(e) {
+            // Blocage F12
+            if (e.key === "F12" || e.code === "F12") {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+R, Ctrl+Shift+R, Cmd+R
+            if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+Shift+R (rafraîchissement forcé)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "R" || e.key === "r")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage F5
+            if (e.key === "F5" || e.code === "F5") {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+F5
+            if ((e.ctrlKey || e.metaKey) && e.key === "F5") {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+S (sauvegarde page)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+Shift+I (inspecteur)
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+Shift+J (console)
+            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+Shift+C (sélecteur)
+            if (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+U (code source)
+            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Blocage Ctrl+P (impression)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+        
+        // Bloquer la sélection de texte (sauf dans textarea)
+        document.addEventListener('selectstart', function(e) {
+            if (!e.target.closest('textarea')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Bloquer le drag & drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Bloquer la copie (sauf dans textarea)
+        document.addEventListener('copy', function(e) {
+            if (!e.target.closest('textarea')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Bloquer le cut
+        document.addEventListener('cut', function(e) {
+            if (!e.target.closest('textarea')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Détection de la console ouverte (via debugger)
+        function detectDevTools() {
+            const startTime = performance.now();
+            debugger;
+            const endTime = performance.now();
+            if (endTime - startTime > 100) {
+                // Console détectée - on peut forcer le rechargement ou afficher un message
+                document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:99999;"><h1>🔒 Accès bloqué</h1><p>Les outils de développement sont désactivés.</p></div>';
+            }
+        }
+        
+        // Vérification périodique
+        setInterval(detectDevTools, 1000);
+        
+        // Nettoyer la console
+        if (window.console) {
+            const noop = function() {};
+            console.log = noop;
+            console.info = noop;
+            console.warn = noop;
+            console.debug = noop;
+            console.table = noop;
+            console.dir = noop;
+            console.trace = noop;
+            console.group = noop;
+            console.groupEnd = noop;
+        }
+        
+        console.log("🔒 Sécurités activées : F12, Ctrl+R, clic droit, etc. bloqués");
+    })();
+</script>
+<!-- INTERFACE D'INSCRIPTION -->
+<div id="registerScreen" class="register-screen hide">
+    <div class="register-card">
+        
+        <!-- BOUTON RETOUR EN HAUT À GAUCHE DE LA CARTE -->
+        <button id="btnRetourHome" class="btn-retour-inscription">◀ Retour</button>
+        
+        <h1>💬 Nirina 💬</h1>
+          <div class="subtitle">Mba fenoana kely ireto azafady<br><br>Raha Madame/Monsieur ianao dia sorato hoe Madame...<br>Ex : Madama Vero</div>
+        <input type="text" id="usernameInput" placeholder="Anaranao (fiantso ex :Soa,Dera)" autocomplete="off">
+        
+        <div class="gender-group" id="genderGroup">
+            <div class="gender-option" data-gender="masculin">
+                <span>👨 Homme</span>
+                <input type="radio" name="gender" value="masculin">
+            </div>
+            <div class="gender-option" data-gender="feminin">
+                <span>👩 Femme</span>
+                <input type="radio" name="gender" value="feminin">
+            </div>
+        </div>
+        
+        <input type="text" id="lieuInput" placeholder="Toerana misy anao(ville)" autocomplete="off">
+        
+        <button id="registerBtn">Manomboka</button>
+        <!-- TOAST ERREUR -->
+<div id="errorToast" class="error-toast">
+    <span id="toastMessage" class="toast-message"></span>
+</div>
+        <div id="registerError" class="error-msg"></div>
+    </div>
+</div>
+
+
+<!-- ÉCRAN D'ACCUEIL AVEC BOUTON COMMENCER -->
+<div id="welcomeScreen" class="welcome-screen hide">
+    <div class="welcome-card">
+        <div class="avatar-preview">
+            <img src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg" alt="Nirina">
+        </div>
+       <div class="user-name-display" id="welcomeUserName"></div>
+<p style="color: #000000; font-weight: bold;">Vonona ny hanomboka ve ? kitiho ary ilay hanomboka</p>
+        <button class="btn-start" id="btnStartChat">✨ Hanomboka ✨</button>
+        
+        <!-- ===== NOUVEAU BOUTON TÉLÉCHARGER INDEX ===== -->
+        <button class="btn-start" id="" style="background: WHITE ; margin-top: 19px;"> <>
+        <!-- ===== FIN NOUVEAU BOUTON ===== -->
+        
+    </div>
+</div>
+<!-- POPUP MODAL -->
+<div class="modal-overlay" id="errorModal">
+    <div class="modal-content">
+        <div class="modal-icon" id="modalIcon">⚠️</div>
+        <div class="modal-title" id="modalTitle">Misy olana!</div>
+        <div class="modal-message" id="modalMessage">Tsy afaka mifandray amin'ny serveur</div>
+        <div class="modal-buttons" id="modalButtons">
+            <button class="modal-btn close" id="modalCloseBtn">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<!-- INDICATEUR -->
+<div class="fs-indicator" id="fsIndicator">plein écran</div>
+
+<!-- CHAT PRINCIPAL -->
+<div class="chat-container" id="chatContainer">
+    <div class="header" id="header">
+        <div class="header-left" id="headerProfileClick">
+            <img class="profile-pic-header" id="profilePic" src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg" alt="profil">
+            <div>
+                <div class="profile-name-header">Nirina</div>
+                <div class="profile-status online" id="statusText">en ligne</div>
+            </div>
+        </div>
+        <div>
+            <button class="settings-btn" id="settingsBtn" title="Paramètres">⚙️</button>
+            <button class="fullscreen-btn" id="fullscreenBtn" title="Plein écran">⛶</button>
+        </div>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        <div class="loading-indicator" id="loadingIndicator">Chargement des messages...</div>
+    </div>
+
+    <div class="input-area" id="inputArea">
+        <textarea id="messageInput" placeholder="Écrire un message..." rows="1"></textarea>
+        <button id="sendButton">Envoyer</button>
+    </div>
+</div>
+
+<!-- PANEL PARAMÈTRES -->
+<div class="param-panel" id="paramPanel">
+    <div class="param-header">
+        <span>Paramètres</span>
+        <button class="close-param" id="closeParamBtn">✕</button>
+    </div>
+    <div class="param-item" id="profilParamItem">👤 Profil</div>
+    <div class="param-item" id="increaseFontBtn">🔺 Agrandir la taille du texte</div>
+    <div class="param-item" id="decreaseFontBtn">🔻 Réduire la taille du texte</div>
+    <div class="param-item" id="darkModeItem">🌙 Mode sombre <span id="darkModeStatus">(désactivé)</span></div>
+    <div class="param-item" id="whatsappModeItem">💚 Mode WhatsApp <span id="whatsappModeStatus">(désactivé)</span></div>
+    <div class="param-item" id="facebookModeItem"><span class="fb-mode-logo">f</span> Mode Facebook <span id="facebookModeStatus">(désactivé)</span></div>
+    <div class="param-item delete-discussion" id="deleteDiscussionItem">🗑️ Supprimer la discussion</div>
+</div>
+
+<!-- DÉTAIL PROFIL -->
+<div class="profile-detail" id="profileDetail">
+    <img class="profile-detail-img" src="https://mkzycqybalkruacdtnew.supabase.co/storage/v1/object/public/Nahy/Niry.jpg" alt="profil">
+    <div class="profile-detail-info">
+        <p><strong>Nom :</strong> Nirina</p>
+        <p><strong>Habitation :</strong> Fianarantsoa</p>
+        <p><strong>Numéro :</strong> 034381276116</p>
+        <p><strong>Statut :</strong> en couple</p>
+    </div>
+    <button class="close-profile" id="closeProfileBtn">Fermer</button>
+</div>
+
+<!-- POPUP CONFIRMATION -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+        <p id="popupMessage">Supprimer ce message ?</p>
+        <div class="popup-buttons">
+            <button class="popup-confirm" id="popupConfirm">Confirmer</button>
+            <button class="popup-cancel" id="popupCancel">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== BOUTON RETOUR VERS LE LIEN ==========
+    const btnRetourHome = document.getElementById('btnRetourHome');
+    if (btnRetourHome) {
+        btnRetourHome.addEventListener('click', function() {
+            window.location.href = 'https://miresakaok.pages.dev';
+        });
+    }
+
+  // ========== FONCTION DE NETTOYAGE DES MESSAGES ==========
+function cleanBotMessage(text) {
+    if (!text) return "";
+    
+    // Supprimer les symboles
+    let cleaned = text.replace(/[*#\|\\$^&~`{}\[\]<>]/g, '');
+    
+    // Remplacement spécial : "ia" seul (mot isolé, pas à l'intérieur d'un autre mot)
+    cleaned = cleaned.replace(/\bia\b/gi, "mr");
+    
+    // Liste des remplacements de mots
+    const salutations = [
+        [/bonjour/gi, "Coucou"],
+        [/Intelligence Artificiel /gi, "kkkkkkk"],
+        [/bonsoir/gi, "Salut !"],
+        [/groq/gi, "Salut !"],
+        [/numako/gi, "0340058600"],
+        [/openai/gi, "!"],
+        [/chatgpt/gi, "oui !"],
+        [/assistant/gi, "amie"],
+        [/«/gi, "\""],
+        [/»/, "\""],
+        [/hello/gi, "Coucou"]
+    ];
+    
+    // Appliquer les remplacements
+    for (let i = 0; i < salutations.length; i++) {
+        cleaned = cleaned.replace(salutations[i][0], salutations[i][1]);
+    }
+    
+    return cleaned;
+}
+    // ========== CONFIGURATION ==========
+    const WORKER_URL = 'https://debutantemety.ahofaly62.workers.dev';
+
+// Par ceci :
+const PAGE_ID = "";
+const FACEBOOK_URL = `https://www.facebook.com/profile.php?id=${PAGE_ID}`;
+    let currentGender = null;
+    let deviceModel = null;
+    let userName = null;
+    let userLieu = null;
+    let userGender = null;
+
+    // ========== FONCTIONS DATE ==========
+    function getFormattedDate() {
+        const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+        const date = new Date();
+        const dayName = days[date.getDay()];
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        return `${dayName} ${day}/${month}/${year}, ${hours}h${minutes.toString().padStart(2, '0')}`;
+    }
+    
+    function getCurrentTime() {
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        return `${hours}h${minutes.toString().padStart(2, '0')}`;
+    }
+    // ========== FONCTIONS POUR LE TOAST D'ERREUR CENTRÉ ==========
+let toastTimeout = null;
+
+function showErrorToast(message) {
+    const toast = document.getElementById('errorToast');
+    const toastMessage = document.getElementById('toastMessage');
+    
+    // Annuler le timeout précédent si existant
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+    
+    // Changer le message
+    toastMessage.textContent = message;
+    
+    // Afficher le toast
+    toast.classList.add('show');
+    
+    // Cacher automatiquement après 5 secondes
+    toastTimeout = setTimeout(function() {
+        hideErrorToast();
+    }, 5000);
+}
+
+function hideErrorToast() {
+    const toast = document.getElementById('errorToast');
+    toast.classList.remove('show');
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+        toastTimeout = null;
+    }
+}
+
+// ========== EXEMPLE D'UTILISATION ==========
+// Au lieu d'utiliser alert() ou d'autres popups, utilisez :
+// showErrorToast("Votre message d'erreur ici");
+
+// Exemples d'utilisation dans votre code existant :
+// - Pour l'erreur d'inscription : showErrorToast("❌ Fenoy tsara ny anaranao azafady");
+// - Pour l'erreur de connexion : showErrorToast("⚠️ Tsy misy fifandraisana!");
+// - Pour l'erreur de modèle : showErrorToast("📱 Efa misy mitovy aminao ato");
+
+    function openFacebook() {
+    const PAGE_ID = "61555313604553";
+    const WEB_URL = `https://www.facebook.com/profile.php?id=${PAGE_ID}`;
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    
+    if (isAndroid) {
+        // MÊME CODE que dans showModelExistsModal
+        const intentUrl = `intent://profile/${PAGE_ID}#Intent;scheme=fb;package=com.facebook.lite;S.browser_fallback_url=${encodeURIComponent(WEB_URL)};end`;
+        window.location.href = intentUrl;
+        
+        setTimeout(() => {
+            const fbAppUrl = `fb://profile/${PAGE_ID}`;
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = fbAppUrl;
+            document.body.appendChild(iframe);
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+                if (document.hasFocus()) {
+                    window.location.href = WEB_URL;
+                }
+            }, 500);
+        }, 300);
+    } else {
+        window.open(WEB_URL, '_blank');
+    }
+}
+
+    function showModelExistsModal(deviceModel, existingUser) {
+    const modal = document.getElementById('errorModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalButtons = document.getElementById('modalButtons');
+    const PAGE_ID = "61555313604553";
+    const WEB_URL = `https://www.facebook.com/profile.php?id=${PAGE_ID}`;
+    
+    modalIcon.innerHTML = '⚠️';
+    modalTitle.innerHTML = 'Misy mitovy ianareo!';
+    modalMessage.innerHTML = `</strong><br><br>Efa misy mitovy aminao ato. Azafady,mandefasa MP amiko amin'ny Facebook fa misy roa mitovy nareo, kitiho ny facebook etsy ambany (na ny anaranao marina raha efa nisoratra anarana ianao)`;
+    
+    modalButtons.innerHTML = `
+    <button class="modal-btn facebook" id="modalFacebookBtn"> Facebook</button>
+    <button class="modal-btn close" id="modalCloseBtn">Fermer</button>
+`;
+    modal.classList.add('active');
+    
+    document.getElementById('modalFacebookBtn').addEventListener('click', () => {
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        
+        if (isAndroid) {
+            // Intent pour Facebook Lite (priorité)
+            const intentUrl = `intent://profile/${PAGE_ID}#Intent;scheme=fb;package=com.facebook.lite;S.browser_fallback_url=${encodeURIComponent(WEB_URL)};end`;
+            window.location.href = intentUrl;
+            
+            // Fallback: si Lite pas installé, essayer Facebook classique
+            setTimeout(() => {
+                const fbAppUrl = `fb://profile/${PAGE_ID}`;
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = fbAppUrl;
+                document.body.appendChild(iframe);
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                    // Si toujours sur la page, ouvrir version web
+                    if (document.hasFocus()) {
+                        window.location.href = WEB_URL;
+                    }
+                }, 500);
+            }, 300);
+        } else {
+            window.open(WEB_URL, '_blank');
+        }
+    });
+    
+    document.getElementById('modalCloseBtn').addEventListener('click', () => hideModal());
+}
+
+function showConnectionErrorModal(onResolve) {
+    const modal = document.getElementById('errorModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalButtons = document.getElementById('modalButtons');
+    
+        modalIcon.innerHTML = '⚠️📡';
+        modalTitle.innerHTML = 'Tsy misy fifandraisana!';
+        modalMessage.innerHTML = 'Tsy afaka mifandray fa misy olana connexion. Jereo ny connexion-nao aloha de andramo indray.';
+        
+        modalButtons.innerHTML = `
+            <button class="modal-btn close" id="modalCloseBtn">Fermer</button>
+            <button class="modal-btn resolve" id="modalResolveBtn">Andramo ndray</button>
+        `;
+        
+        modal.classList.add('active');
+        
+        document.getElementById('modalCloseBtn').addEventListener('click', () => hideModal());
+        if (onResolve) {
+            document.getElementById('modalResolveBtn').addEventListener('click', () => {
+                hideModal();
+                onResolve();
+            });
+        }
+    }
+    
+    function hideModal() {
+        const modal = document.getElementById('errorModal');
+        modal.classList.remove('active');
+    }
+    
+    // ========== DÉTECTION MODÈLE ==========
+    function extractTechnicalModel(ua) {
+        const patterns = [
+            /;\s([A-Za-z0-9\-\s]+?)\sBuild\//,
+            /;\s([A-Za-z0-9\-_]+?)\)/,
+            /;\s([A-Za-z0-9\-_]+?);/,
+            /\(([A-Za-z0-9\-_]+?);\sAndroid/
+        ];
+        for (let pattern of patterns) {
+            const match = ua.match(pattern);
+            if (match && match[1] && !match[1].match(/Android|AppleWebKit|Chrome|Mobile|Safari|Version|Gecko|Linux|arm|arm64|aarch64/i)) {
+                return match[1];
+            }
+        }
+        return "Unknown";
+    }
+    
+    async function getDeviceModel() {
+        const ua = navigator.userAgent;
+        let model = extractTechnicalModel(ua);
+        
+        if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+            try {
+                const hints = await navigator.userAgentData.getHighEntropyValues(['model']);
+                if (hints.model) model = hints.model;
+            } catch(e) {}
+        }
+        
+        deviceModel = model || "Unknown";
+        console.log("📱 Modèle détecté:", deviceModel);
+        return deviceModel;
+    }
+
+    // ========== APPELS API VERS LE WORKER ==========
+    async function fetchWithTimeout(url, options, timeout = 15000) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        try {
+            const response = await fetch(url, { ...options, signal: controller.signal });
+            clearTimeout(timeoutId);
+            return response;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            throw error;
+        }
+    }
+    
+    async function checkModelAndRegister(username, deviceModel, genre, lieu) {
+        const response = await fetchWithTimeout(`${WORKER_URL}?action=checkModel`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, deviceModel, genre, lieu })
+        });
+        return await response.json();
+    }
+    
+    async function sendMessageToWorker(userMessage, userName, userGender, userLieu) {
+        const fullMessage = `RÈGLES GÉNÉRALES (à suivre ABSOLUMENT) :
+
+1. Prénom : utilise le prénom ${userName} occasionnellement, pas à chaque message.
+
+2. Lieu : utilise le lieu ${userLieu} de façon naturelle :
+   - Pour météo, actualités → utilise le nom exact
+   - Pour parler du quotidien → "chez toi", "dans ton coin"
+   - Ne jamais utiliser le lieu comme appellation directe.
+
+3. CORRECTION DES ERREURS (TRÈS IMPORTANT) :
+   Tu es une fille, tu accordes tes réponses au féminin.
+   Le genre de l'utilisateur est : ${userGender}.
+   
+   Pour CHAQUE message de l'utilisateur, tu dois :
+   - Vérifier TOUTES les erreurs : conjugaison, orthographe, grammaire, accord de genre, accords en nombre.
+   - Pour chaque mot qui contient une erreur, tu écris sur une nouvelle ligne le symbole ° suivi du mot correctement écrit/accordé.
+   - Tu ne corriges PAS la phrase entière, seulement chaque mot erroné, un par ligne avec °.
+   - Si plusieurs erreurs dans le même message, tu écris chaque correction sur sa propre ligne.
+   
+   Petite phrase à écrire juste avant les corrections (choisis-en une) :
+  Règle à appliquer :
+
+    1 seule erreur → "Petite correction :"
+
+    Plusieurs erreurs → "Petites corrections :"
+
+   Tu ne dis JAMAIS "aucune erreur", "bravo", "parfait", "félicitations".
+   Si TOUT est correct : tu ne dis RIEN du tout, ni phrase ni corrections.
+   
+   Exemple :
+   Utilisateur homme dit : "je sius heureuse"
+   Ta réponse normale.
+   
+   Petite aide pour progresser :
+° suis
+° heureux
+
+4. Tu réponds normalement au message avant la petite phrase et les corrections.
+
+INFOS UTILISATEUR :
+- Prénom : ${userName}
+- Lieu : ${userLieu}
+- Genre : ${userGender}
+
+MESSAGE DE L'UTILISATEUR À TRAITER :
+${userMessage}`;
+        console.log("📤 Envoi au worker:", fullMessage);
+        
+        const response = await fetchWithTimeout(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                message: fullMessage,
+                username: userName,
+                genre: userGender,
+                lieu: userLieu
+            })
+        }, 30000);
+        return await response.json();
+    }
+    
+    async function checkWorkerStatus() {
+        try {
+            const response = await fetchWithTimeout(WORKER_URL, { method: 'GET' }, 5000);
+            return response.ok;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function setupGenderSelection() {
+        const options = document.querySelectorAll('.gender-option');
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+                currentGender = radio.value;
+            });
+        });
+    }
+    
+    function capitalizeFirstLetter(str) {
+        if (!str) return '';
+        str = str.trim().toLowerCase();
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    async function handleRegister() {
+        const usernameInput = document.getElementById('usernameInput');
+        const lieuInput = document.getElementById('lieuInput');
+        const errorDiv = document.getElementById('registerError');
+        const registerBtn = document.getElementById('registerBtn');
+        
+        let username = usernameInput.value.trim();
+        const lieu = lieuInput.value.trim();
+        
+        username = capitalizeFirstLetter(username);
+        
+        if (!username) {
+    showErrorToast('❌ Fenoy tsara ny anaranao azafady');
+    usernameInput.focus();
+    return;
+}
+
+if (!currentGender) {
+    showErrorToast('❌ Fidio hoe lelahy sa vevavy ianao, azafady! 🙏🏽');
+    return;
+}
+
+if (!lieu) {
+    showErrorToast('❌ Fenoy tsara ny toerana misy anao azafady');
+    lieuInput.focus();
+    return;
+}
+        
+        if (!deviceModel) {
+            errorDiv.innerText = '⏳ Détection du modèle en cours...';
+            await getDeviceModel();
+        }
+        
+        errorDiv.innerText = '';
+        registerBtn.disabled = true;
+        registerBtn.innerHTML = '<span class="loading-spinner"></span> Verification...';
+        
+        try {
+            const isWorkerOk = await checkWorkerStatus();
+            if (!isWorkerOk) {
+                throw new Error('Serveur indisponible');
+            }
+            
+            const registerResult = await checkModelAndRegister(username, deviceModel, currentGender, lieu);
+            
+            if (!registerResult.success) {
+    // 🔥 Afficher le popup Facebook pour TOUTE erreur d'inscription
+    showModelExistsModal(deviceModel, { username: username, deviceModel: deviceModel });
+    registerBtn.disabled = false;
+    registerBtn.innerHTML = 'Manomboka';
+    return;
+}
+            
+            userName = username;
+            userLieu = lieu;
+            userGender = currentGender === 'masculin' ? 'masculin ' : 'féminin ';
+            
+            await saveUserInfoToDB(userName, userLieu, userGender);
+            
+            // Afficher l'écran de bienvenue avec bouton Commencer
+            document.getElementById('registerScreen').classList.add('hide');
+            showWelcomeScreen();
+            
+        } catch (error) {
+            console.error("Erreur détaillée:", error);
+            showConnectionErrorModal(() => handleRegister());
+        } finally {
+            registerBtn.disabled = false;
+            registerBtn.innerHTML = 'Manomboka';
+        }
+    }
+    
+    function showWelcomeScreen() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const welcomeUserName = document.getElementById('welcomeUserName');
+        welcomeUserName.textContent = `Ndao hanomboka isika ry ${userName}`;
+        welcomeScreen.classList.remove('hide');
+        
+        // Synchronisation en arrière-plan : charger les messages depuis IndexedDB
+        loadChatHistoryInBackground();
+    }
+    
+    async function loadChatHistoryInBackground() {
+        try {
+            await openDB();
+            const messages = await loadMessagesFromDB();
+            console.log(`✅ ${messages.filter(m => m.type !== 'user_info').length} messages synchronisés en arrière-plan`);
+        } catch (error) {
+            console.error('Erreur synchronisation:', error);
+        }
+    }
+    
+    // ========== INDEXEDDB ==========
+    let db = null;
+    const DB_NAME = 'Discussion_Debitant';
+    const DB_VERSION = 3;
+    const STORE_NAME = 'messages';
+    
+    function openDB() {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(DB_NAME, DB_VERSION);
+            request.onerror = () => reject(request.error);
+            request.onsuccess = () => {
+                db = request.result;
+                resolve(db);
+            };
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                }
+            };
+        });
+    }
+    
+    async function saveMessageToDB(message) {
+        return new Promise((resolve, reject) => {
+            if (!db) { reject('DB non initialisée'); return; }
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            const request = objectStore.add({
+                text: message.text,
+                type: message.type,
+                timestamp: message.timestamp,
+                time: message.time,
+                date: message.date
+            });
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    }
+    
+    async function loadMessagesFromDB() {
+        return new Promise((resolve, reject) => {
+            if (!db) { reject('DB non initialisée'); return; }
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            const request = objectStore.getAll();
+            request.onsuccess = () => {
+                const messages = request.result;
+                messages.sort((a, b) => a.timestamp - b.timestamp);
+                resolve(messages);
+            };
+            request.onerror = () => reject(request.error);
+        });
+    }
+    
+    async function clearAllMessagesFromDB() {
+        return new Promise((resolve, reject) => {
+            if (!db) { reject('DB non initialisée'); return; }
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            const request = objectStore.clear();
+            request.onsuccess = () => resolve();
+            request.onerror = () => reject(request.error);
+        });
+    }
+    
+    async function saveUserInfoToDB(name, lieu, gender) {
+        return new Promise((resolve, reject) => {
+            if (!db) { reject('DB non initialisée'); return; }
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            // Supprimer anciennes infos
+            const getAllRequest = objectStore.getAll();
+            getAllRequest.onsuccess = () => {
+                const messages = getAllRequest.result;
+                const userInfoMessages = messages.filter(msg => msg.type === 'user_info');
+                userInfoMessages.forEach(msg => {
+                    objectStore.delete(msg.id);
+                });
+                const request = objectStore.add({
+                    type: 'user_info',
+                    name: name,
+                    lieu: lieu,
+                    gender: gender,
+                    timestamp: Date.now()
+                });
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            };
+            getAllRequest.onerror = () => reject(getAllRequest.error);
+        });
+    }
+    
+    async function loadUserInfoFromDB() {
+        return new Promise((resolve, reject) => {
+            if (!db) { reject('DB non initialisée'); return; }
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            const request = objectStore.getAll();
+            request.onsuccess = () => {
+                const messages = request.result;
+                const userInfo = messages.find(msg => msg.type === 'user_info');
+                if (userInfo) {
+                    resolve({ name: userInfo.name, lieu: userInfo.lieu, gender: userInfo.gender });
+                } else {
+                    resolve(null);
+                }
+            };
+            request.onerror = () => reject(request.error);
+        });
+    }
+    
+    // ========== ÉLÉMENTS DU CHAT ==========
+    const chatContainer = document.getElementById('chatContainer');
+    const chatBox = document.getElementById('chatBox');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const fsIndicator = document.getElementById('fsIndicator');
+    const inputArea = document.getElementById('inputArea');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const header = document.getElementById('header');
+    const settingsBtn = document.getElementById('settingsBtn');
+    const paramPanel = document.getElementById('paramPanel');
+    const closeParamBtn = document.getElementById('closeParamBtn');
+    const profilParamItem = document.getElementById('profilParamItem');
+    const profileDetail = document.getElementById('profileDetail');
+    const closeProfileBtn = document.getElementById('closeProfileBtn');
+    const increaseFontBtn = document.getElementById('increaseFontBtn');
+    const decreaseFontBtn = document.getElementById('decreaseFontBtn');
+    const darkModeItem = document.getElementById('darkModeItem');
+    const darkModeStatus = document.getElementById('darkModeStatus');
+    const whatsappModeItem = document.getElementById('whatsappModeItem');
+    const whatsappModeStatus = document.getElementById('whatsappModeStatus');
+    const facebookModeItem = document.getElementById('facebookModeItem');
+    const facebookModeStatus = document.getElementById('facebookModeStatus');
+    const deleteDiscussionItem = document.getElementById('deleteDiscussionItem');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupMessage = document.getElementById('popupMessage');
+    const popupConfirm = document.getElementById('popupConfirm');
+    const popupCancel = document.getElementById('popupCancel');
+    const headerProfileClick = document.getElementById('headerProfileClick');
+    const statusText = document.getElementById('statusText');
+    const btnStartChat = document.getElementById('btnStartChat');
+    
+    let isFullscreen = false;
+    let isKeyboardVisible = false;
+    let currentKeyboardHeight = 0;
+    let rafId = null;
+    let pressTimer = null;
+    let isOnline = true;
+    let currentTypingIndicator = null;
+    let currentFontSize = 14;
+    let isDarkMode = false;
+    let isWhatsAppMode = false;
+    let isFacebookMode = false;
+    let contextMenu = null;
+    let pendingCallback = null;
+    let lastDateSeparator = null;
+    // ========== VARIABLES POUR LE RATE LIMITING ==========
+    let messageTimestamps = [];
+    let isBlocked = false;
+    let blockEndTime = null;
+    let countdownInterval = null;
+    let currentCountdownMessage = null;
+	// limite message ho efatra
+    const MAX_MESSAGES = 20;
+    const TIME_WINDOW = 15 * 60 * 1000;
+    const BLOCK_DURATION = 1 * 60 * 1000;
+    const sendBlockedMsgDiv = document.getElementById('sendBlockedMsg');
+    
+    // ========== VARIABLES POUR CODES DE DÉBLOCAGE ==========
+    const UNLOCK_CODES = {
+        'LIBRA': 1 * 60 * 60 * 1000,  // LIBRA = débloque pour 1 heure
+        'LIBRB': 2 * 60 * 60 * 1000,  // LIBRB = débloque pour 2 heures
+        'LIBRC': 3 * 60 * 60 * 1000,  // LIBRC = débloque pour 3 heures
+        'LIBRD': 4 * 60 * 60 * 1000,  // LIBRD = débloque pour 4 heures
+        'LIBRE': 5 * 60 * 60 * 1000,  // LIBRE = débloque pour 5 heures
+        'LIBRF': 6 * 60 * 60 * 1000,  // LIBRF = débloque pour 6 heures
+        'LIBRG': 7 * 60 * 60 * 1000,  // LIBRG = débloque pour 7 heures
+        'LIBRH': 8 * 60 * 60 * 1000,  // LIBRH = débloque pour 8 heures
+        'LIBRI': 9 * 60 * 60 * 1000,  // LIBRI = débloque pour 9 heures
+        'LIBRJ': 10 * 60 * 60 * 1000, // LIBRJ = débloque pour 10 heures
+        'LIBRK': 11 * 60 * 60 * 1000, // LIBRK = débloque pour 11 heures
+        'LIBRL': 12 * 60 * 60 * 1000, // LIBRL = débloque pour 12 heures
+        'LIBRM': 13 * 60 * 60 * 1000, // LIBRM = débloque pour 13 heures
+        'LIBRN': 14 * 60 * 60 * 1000, // LIBRN = débloque pour 14 heures
+        'LIBRO': 15 * 60 * 60 * 1000, // LIBRO = débloque pour 15 heures
+        'LIBRP': 16 * 60 * 60 * 1000, // LIBRP = débloque pour 16 heures
+        'LIBRQ': 17 * 60 * 60 * 1000, // LIBRQ = débloque pour 17 heures
+        'LIBRR': 18 * 60 * 60 * 1000, // LIBRR = débloque pour 18 heures
+        'LIBRS': 19 * 60 * 60 * 1000, // LIBRS = débloque pour 19 heures
+        'LIBRT': 20 * 60 * 60 * 1000, // LIBRT = débloque pour 20 heures
+        'LIBRU': 21 * 60 * 60 * 1000, // LIBRU = débloque pour 21 heures
+        'LIBRV': 22 * 60 * 60 * 1000, // LIBRV = débloque pour 22 heures
+        'LIBRW': 23 * 60 * 60 * 1000, // LIBRW = débloque pour 23 heures
+        'LIBRX': 24 * 60 * 60 * 1000, // LIBRX = débloque pour 24 heures
+        'LIBRY': 25 * 60 * 60 * 1000, // LIBRY = débloque pour 25 heures
+        'LIBRZ': 26 * 60 * 60 * 1000  // LIBRZ = débloque pour 26 heures
+    };
+        // ========== VARIABLES POUR CODES LOSO (5 minutes par lettre, max 1h) ==========
+    const LOSO_CODES = {
+        'LOSOA': 5 * 60 * 1000,    // LOSOA = 5 minutes
+        'LOSOB': 10 * 60 * 1000,   // LOSOB = 10 minutes
+        'LOSOC': 15 * 60 * 1000,   // LOSOC = 15 minutes
+        'LOSOD': 20 * 60 * 1000,   // LOSOD = 20 minutes
+        'LOSOE': 25 * 60 * 1000,   // LOSOE = 25 minutes
+        'LOSOF': 30 * 60 * 1000,   // LOSOF = 30 minutes
+        'LOSOG': 35 * 60 * 1000,   // LOSOG = 35 minutes
+        'LOSOH': 40 * 60 * 1000,   // LOSOH = 40 minutes
+        'LOSOI': 45 * 60 * 1000,   // LOSOI = 45 minutes
+        'LOSOJ': 50 * 60 * 1000,   // LOSOJ = 50 minutes
+        'LOSOK': 55 * 60 * 1000,   // LOSOK = 55 minutes
+        'LOSOL': 60 * 60 * 1000    // LOSOL = 1 heure (60 minutes)
+    };
+    let unlockUntilTime = null;  // Temps jusqu'auquel l'utilisateur est débloqué
+
+
+          // ========== FONCTION POUR VÉRIFIER LES CODES ==========
+    function checkUnlockCode(message) {
+        // Nettoyer le message (enlever espaces, mettre en majuscules)
+        const cleanMessage = message.trim().toUpperCase();
+        
+        // Vérifier si le message correspond à LIBR + LETTRE (LIBRA, LIBRB, etc.)
+        const librMatch = cleanMessage.match(/^LIBR[A-Z]$/);
+        if (librMatch && UNLOCK_CODES[cleanMessage]) {
+            const duration = UNLOCK_CODES[cleanMessage];
+            const durationHours = duration / (60 * 60 * 1000);
+            const durationMinutes = duration / (60 * 1000);
+            
+            // Calculer la durée de déblocage
+            unlockUntilTime = Date.now() + duration;
+            
+            // Sauvegarder dans localStorage
+            localStorage.setItem('unlockUntilTime', unlockUntilTime.toString());
+            
+            // Réinitialiser les compteurs de blocage
+            if (isBlocked) {
+                // Arrêter le blocage en cours
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+                isBlocked = false;
+                blockEndTime = null;
+                localStorage.removeItem('blockEndTime');
+            }
+            
+            // Réinitialiser les timestamps
+            messageTimestamps = [];
+            
+            return {
+                valid: true,
+                duration: duration,
+                durationDisplay: `${durationHours} heure(s)`,
+                code: cleanMessage,
+                type: 'LIBR'
+            };
+        }
+        
+        // Vérifier si le message correspond à LOSO + LETTRE (LOSOA, LOSOB, etc.)
+        const losoMatch = cleanMessage.match(/^LOSO[A-Z]$/);
+        if (losoMatch && LOSO_CODES[cleanMessage]) {
+            const duration = LOSO_CODES[cleanMessage];
+            const durationMinutes = duration / (60 * 1000);
+            
+            let durationDisplay = '';
+            if (durationMinutes >= 60) {
+                const hours = Math.floor(durationMinutes / 60);
+                const mins = durationMinutes % 60;
+                if (mins > 0) {
+                    durationDisplay = `${hours}h ${mins}min`;
+                } else {
+                    durationDisplay = `${hours} heure(s)`;
+                }
+            } else {
+                durationDisplay = `${durationMinutes} minutes`;
+            }
+            
+            // Calculer la durée de déblocage
+            unlockUntilTime = Date.now() + duration;
+            
+            // Sauvegarder dans localStorage
+            localStorage.setItem('unlockUntilTime', unlockUntilTime.toString());
+            
+            // Réinitialiser les compteurs de blocage
+            if (isBlocked) {
+                // Arrêter le blocage en cours
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+                isBlocked = false;
+                blockEndTime = null;
+                localStorage.removeItem('blockEndTime');
+            }
+            
+            // Réinitialiser les timestamps
+            messageTimestamps = [];
+            
+            return {
+                valid: true,
+                duration: duration,
+                durationDisplay: durationDisplay,
+                code: cleanMessage,
+                type: 'LOSO'
+            };
+        }
+        
+        return { valid: false };
+    }
+    
+    // Vérifier si l'utilisateur est actuellement débloqué par code
+    function isUnlockedByCode() {
+        if (unlockUntilTime && unlockUntilTime > Date.now()) {
+            return true;
+        }
+        return false;
+    }
+    
+    // Récupérer le temps de déblocage restant
+    function getRemainingUnlockTime() {
+        if (unlockUntilTime && unlockUntilTime > Date.now()) {
+            const remaining = unlockUntilTime - Date.now();
+            const hours = Math.floor(remaining / (60 * 60 * 1000));
+            const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+            const seconds = Math.floor((remaining % (60 * 1000)) / 1000);
+            return { hours, minutes, seconds, remaining };
+        }
+        return null;
+    }
+// ========== FONCTIONS MODES ==========
+    function disableAllModes() {
+        document.body.classList.remove('dark-mode', 'whatsapp-mode', 'facebook-mode');
+        isDarkMode = false;
+        isWhatsAppMode = false;
+        isFacebookMode = false;
+    }
+    
+    function setDarkMode(enabled) {
+        if (enabled) {
+            disableAllModes();
+            document.body.classList.add('dark-mode');
+            isDarkMode = true;
+            darkModeStatus.textContent = '(activé)';
+            whatsappModeStatus.textContent = '(désactivé)';
+            facebookModeStatus.textContent = '(désactivé)';
+        } else {
+            document.body.classList.remove('dark-mode');
+            isDarkMode = false;
+            darkModeStatus.textContent = '(désactivé)';
+        }
+    }
+    
+    function setWhatsAppMode(enabled) {
+        if (enabled) {
+            disableAllModes();
+            document.body.classList.add('whatsapp-mode');
+            isWhatsAppMode = true;
+            whatsappModeStatus.textContent = '(activé)';
+            darkModeStatus.textContent = '(désactivé)';
+            facebookModeStatus.textContent = '(désactivé)';
+        } else {
+            document.body.classList.remove('whatsapp-mode');
+            isWhatsAppMode = false;
+            whatsappModeStatus.textContent = '(désactivé)';
+        }
+    }
+    
+    function setFacebookMode(enabled) {
+        if (enabled) {
+            disableAllModes();
+            document.body.classList.add('facebook-mode');
+            isFacebookMode = true;
+            facebookModeStatus.textContent = '(activé)';
+            darkModeStatus.textContent = '(désactivé)';
+            whatsappModeStatus.textContent = '(désactivé)';
+        } else {
+            document.body.classList.remove('facebook-mode');
+            isFacebookMode = false;
+            facebookModeStatus.textContent = '(désactivé)';
+        }
+    }
+    
+    async function checkConnection() {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+            await fetch(WORKER_URL, {
+                method: 'HEAD',
+                mode: 'no-cors',
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+            isOnline = true;
+            statusText.textContent = 'en ligne';
+            statusText.className = 'profile-status online';
+        } catch (error) {
+            isOnline = false;
+            statusText.innerHTML = 'hors ligne';
+            statusText.className = 'profile-status offline';
+        }
+    }
+    
+    function applyFontSize() {
+        const messages = document.querySelectorAll('.message');
+        messages.forEach(msg => {
+            msg.style.fontSize = currentFontSize + 'px';
+        });
+    }
+    
+    async function copyToClipboard(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (err) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            return true;
+        }
+    }
+    
+    async function deleteSingleMessage(wrapper, messageId) {
+        if (!db) return;
+        let idToDelete = messageId || wrapper.getAttribute('data-message-id');
+        if (!idToDelete) {
+            wrapper.remove();
+            return;
+        }
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const objectStore = transaction.objectStore(STORE_NAME);
+            const request = objectStore.delete(Number(idToDelete));
+            request.onsuccess = () => {
+                wrapper.remove();
+                resolve();
+            };
+            request.onerror = () => reject(request.error);
+        });
+    }
+    
+    function hideContextMenu() {
+        if (contextMenu) {
+            contextMenu.remove();
+            contextMenu = null;
+        }
+    }
+    
+    function showContextMenu(x, y, wrapper, messageText, messageId) {
+        hideContextMenu();
+        contextMenu = document.createElement('div');
+        contextMenu.className = 'context-menu';
+        
+        if (wrapper.classList.contains('user')) {
+            contextMenu.style.right = (window.innerWidth - x) + 'px';
+            contextMenu.style.left = 'auto';
+        } else {
+            contextMenu.style.left = x + 'px';
+            contextMenu.style.right = 'auto';
+        }
+        contextMenu.style.top = y + 'px';
+        
+        const copyItem = document.createElement('div');
+        copyItem.className = 'context-menu-item';
+        copyItem.innerHTML = '📋 Copier';
+        copyItem.onclick = async (e) => {
+            e.stopPropagation();
+            await copyToClipboard(messageText);
+            hideContextMenu();
+        };
+        
+        const deleteItem = document.createElement('div');
+        deleteItem.className = 'context-menu-item delete';
+        deleteItem.innerHTML = '🗑️ Supprimer';
+        deleteItem.onclick = (e) => {
+            e.stopPropagation();
+            hideContextMenu();
+            const finalId = messageId || wrapper.getAttribute('data-message-id');
+            showPopup('Supprimer ce message ?', async () => {
+                if (finalId) {
+                    await deleteSingleMessage(wrapper, finalId);
+                } else {
+                    wrapper.remove();
+                }
+                hidePopup();
+            });
+        };
+        
+        contextMenu.appendChild(copyItem);
+        contextMenu.appendChild(deleteItem);
+        document.body.appendChild(contextMenu);
+        
+        setTimeout(() => {
+            document.addEventListener('click', function removeMenu() {
+                hideContextMenu();
+                document.removeEventListener('click', removeMenu);
+            });
+        }, 10);
+    }
+    
+    function cancelPressTimer() {
+        if (pressTimer) {
+            clearTimeout(pressTimer);
+            pressTimer = null;
+        }
+    }
+    
+    function startPressTimerForMessage(wrapper, messageText, messageId, clientX, clientY) {
+        cancelPressTimer();
+        pressTimer = setTimeout(() => {
+            showContextMenu(clientX, clientY, wrapper, messageText, messageId);
+            if (navigator.vibrate) navigator.vibrate(50);
+            pressTimer = null;
+        }, 200);
+    }
+    
+    function showTypingIndicator() {
+        if (currentTypingIndicator) return;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'message-wrapper bot typing-indicator-wrapper';
+        const indicator = document.createElement('div');
+        indicator.className = 'typing-indicator';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
+        wrapper.appendChild(indicator);
+        chatBox.appendChild(wrapper);
+        currentTypingIndicator = wrapper;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    function hideTypingIndicator() {
+        if (currentTypingIndicator) {
+            currentTypingIndicator.remove();
+            currentTypingIndicator = null;
+        }
+    }
+    
+    function updateHeaderPosition(keyboardHeight) {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            if (keyboardHeight > 0) {
+                header.style.setProperty('--keyboard-height', keyboardHeight + 'px');
+                header.classList.add('keyboard-visible');
+            } else {
+                header.style.setProperty('--keyboard-height', '0px');
+                header.classList.remove('keyboard-visible');
+            }
+            rafId = null;
+        });
+    }
+    
+    function forceScrollToInput() {
+        inputArea.scrollIntoView({ behavior: 'auto', block: 'end' });
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    function addDateSeparatorIfNeeded(lastDate, currentDate) {
+        if (!lastDate || lastDate !== currentDate) {
+            const separatorDiv = document.createElement('div');
+            separatorDiv.className = 'date-separator';
+            separatorDiv.innerHTML = `<span>${currentDate}</span>`;
+            chatBox.appendChild(separatorDiv);
+            return currentDate;
+        }
+        return lastDate;
+    }
+    
+    async function callAPI(userMessage) {
+        if (!isOnline) return "⚠️ Tsy en ligne, jereo sao olana réseau na para-feu";
+        try {
+            const response = await sendMessageToWorker(userMessage, userName, userGender, userLieu);
+            let reply = response.reply || response.response || "Azafady fa tsy tonga ny message, mba avereno alefa azafady 🙏🏽";
+            reply = cleanBotMessage(reply);
+            return reply;
+        } catch (error) {
+            console.error('API error:', error);
+            return "⚠️ Olana réseau. Azafady hoe mba jereo tsara ny connexion internet na ny pare-feu.";
+        }
+    }
+    
+    function createMessageElement(messageText, type, messageTime, messageId = null) {
+        const wrapper = document.createElement('div');
+        wrapper.className = `message-wrapper ${type}`;
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        let displayText = messageText;
+        if (type === 'bot') {
+            displayText = cleanBotMessage(messageText);
+        }
+        messageDiv.innerHTML = displayText.replace(/\n/g, "<br>");
+        messageDiv.style.fontSize = currentFontSize + 'px';
+        
+        const timeSpan = document.createElement('div');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = messageTime;
+        
+        wrapper.appendChild(messageDiv);
+        wrapper.appendChild(timeSpan);
+        
+        let touchStartX = 0, touchStartY = 0;
+        wrapper.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            startPressTimerForMessage(wrapper, displayText, messageId, touchStartX, touchStartY);
+        });
+        wrapper.addEventListener('touchmove', (e) => {
+            if (pressTimer) {
+                const touch = e.touches[0];
+                if (Math.abs(touch.clientX - touchStartX) > 15 || Math.abs(touch.clientY - touchStartY) > 15) {
+                    cancelPressTimer();
+                }
+            }
+        });
+        wrapper.addEventListener('touchend', () => { cancelPressTimer(); });
+        wrapper.addEventListener('touchcancel', () => { cancelPressTimer(); });
+        wrapper.addEventListener('mousedown', (e) => {
+            startPressTimerForMessage(wrapper, displayText, messageId, e.clientX, e.clientY);
+        });
+        wrapper.addEventListener('mouseup', () => { cancelPressTimer(); });
+        wrapper.addEventListener('mouseleave', () => { cancelPressTimer(); });
+        
+        if (messageId) {
+            wrapper.setAttribute('data-message-id', messageId);
+        }
+        return wrapper;
+    }
+    
+    async function addMessage(text, type) {
+        let cleanText = text.replace(/<br>/g, '\n');
+        if (type === 'bot') {
+            cleanText = cleanBotMessage(cleanText);
+        }
+        const currentTime = getCurrentTime();
+        const currentDate = getFormattedDate();
+        
+        lastDateSeparator = addDateSeparatorIfNeeded(lastDateSeparator, currentDate);
+        
+        const messageElement = createMessageElement(cleanText, type, currentTime);
+        const messageData = { 
+            text: cleanText, 
+            type: type, 
+            timestamp: Date.now(),
+            time: currentTime,
+            date: currentDate
+        };
+        
+        try {
+            const id = await saveMessageToDB(messageData);
+            messageElement.setAttribute('data-message-id', id);
+        } catch (error) {
+            console.error('Erreur sauvegarde message:', error);
+        }
+        
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        forceScrollToInput();
+        return messageElement;
+    }
+        // Fonction pour ajouter un message avec bouton MP Facebook cliquable
+async function addFacebookButtonMessage() {
+    const currentTime = getCurrentTime();
+    const currentDate = getFormattedDate();
+    const PAGE_ID = "61555313604553";
+    
+    lastDateSeparator = addDateSeparatorIfNeeded(lastDateSeparator, currentDate);
+    
+    const wrapper = document.createElement('div');
+    wrapper.className = 'message-wrapper bot';
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message';
+    messageDiv.style.fontSize = currentFontSize + 'px';
+    messageDiv.style.padding = '12px 15px';
+    messageDiv.style.backgroundColor = '#374151';
+    messageDiv.style.color = 'white';
+    messageDiv.style.borderRadius = '18px';
+    messageDiv.style.borderBottomLeftRadius = '5px';
+    
+    // Texte d'introduction
+    const textIntro = document.createElement('div');
+    textIntro.innerHTML = '📱 Raha maniry hiresaka tsisy fiantoana ianao dia manasa anao hiresaka amiko amin\'ny MP !<br><br>Kitiho ilay MP Facebook etsy ambany<br><br>Sarany mirary fa tongava MP de miresaka tsara! 😁';
+    textIntro.style.marginBottom = '12px';
+    textIntro.style.fontSize = '14px';
+    textIntro.style.lineHeight = '1.5';
+    
+    const fbButton = document.createElement('button');
+    fbButton.style.background = '#1877f2';
+    fbButton.style.color = 'white';
+    fbButton.style.border = 'none';
+    fbButton.style.borderRadius = '30px';
+    fbButton.style.padding = '12px 16px';
+    fbButton.style.fontSize = '14px';
+    fbButton.style.fontWeight = 'bold';
+    fbButton.style.cursor = 'pointer';
+    fbButton.style.width = '100%';
+    fbButton.style.display = 'flex';
+    fbButton.style.alignItems = 'center';
+    fbButton.style.justifyContent = 'center';
+    fbButton.style.gap = '10px';
+    fbButton.style.transition = 'transform 0.1s, opacity 0.2s';
+    
+    const fbIcon = document.createElement('span');
+    fbIcon.innerHTML = 'f';
+    fbIcon.className = 'fb-button-icon';
+    fbIcon.style.cssText = 'background: white; color: #1877f2; font-weight: bold; font-size: 16px; font-family: Arial, sans-serif; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; border: 1px solid #1877f2; margin-right: 8px;';
+
+    const buttonText = document.createElement('span');
+    buttonText.innerHTML = '  MP Facebook';
+    buttonText.style.fontSize = '14px';
+    buttonText.style.fontWeight = 'bold';
+    
+    fbButton.appendChild(fbIcon);
+    fbButton.appendChild(buttonText);
+    
+    fbButton.addEventListener('mousedown', () => {
+        fbButton.style.transform = 'scale(0.97)';
+    });
+    fbButton.addEventListener('mouseup', () => {
+        fbButton.style.transform = 'scale(1)';
+    });
+    fbButton.addEventListener('mouseleave', () => {
+        fbButton.style.transform = 'scale(1)';
+    });
+    
+    // ⭐⭐⭐ UTILISE LA MÊME FONCTION openFacebook() ⭐⭐⭐
+    fbButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openFacebook();
+    });
+    
+    fbButton.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        openFacebook();
+    });
+    
+    const timeSpan = document.createElement('div');
+    timeSpan.className = 'message-time';
+    timeSpan.textContent = currentTime;
+    timeSpan.style.marginTop = '8px';
+    timeSpan.style.fontSize = '9px';
+    timeSpan.style.opacity = '0.6';
+    timeSpan.style.textAlign = 'right';
+    
+    messageDiv.appendChild(textIntro);
+    messageDiv.appendChild(fbButton);
+    wrapper.appendChild(messageDiv);
+    wrapper.appendChild(timeSpan);
+    
+    const messageData = { 
+        text: "[Message Facebook]",
+        type: 'bot',
+        timestamp: Date.now(),
+        time: currentTime,
+        date: currentDate
+    };
+    
+    try {
+        const id = await saveMessageToDB(messageData);
+        wrapper.setAttribute('data-message-id', id);
+    } catch (error) {
+        console.error('Erreur sauvegarde message Facebook:', error);
+    }
+    
+    chatBox.appendChild(wrapper);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    forceScrollToInput();
+    
+    return wrapper;
+}
+    // ========== FONCTIONS POUR MESSAGES SYSTÈME DANS LE CHAT ==========
+    async function addSystemMessage(text, type = 'system') {
+        const currentTime = getCurrentTime();
+        const currentDate = getFormattedDate();
+        
+        lastDateSeparator = addDateSeparatorIfNeeded(lastDateSeparator, currentDate);
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = `message-wrapper ${type}`;
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        messageDiv.innerHTML = text.replace(/\n/g, "<br>");
+        messageDiv.style.fontSize = currentFontSize + 'px';
+        
+        const timeSpan = document.createElement('div');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = currentTime;
+        
+        wrapper.appendChild(messageDiv);
+        wrapper.appendChild(timeSpan);
+        
+        const messageData = {
+            text: text,
+            type: type,
+            timestamp: Date.now(),
+            time: currentTime,
+            date: currentDate,
+            isSystem: true
+        };
+        
+        try {
+            const id = await saveMessageToDB(messageData);
+            wrapper.setAttribute('data-message-id', id);
+        } catch (error) {
+            console.error('Erreur sauvegarde message système:', error);
+        }
+        
+        chatBox.appendChild(wrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        forceScrollToInput();
+        
+        return wrapper;
+    }
+    
+    async function addCountdownMessage(remainingSeconds) {
+        if (currentCountdownMessage && currentCountdownMessage.parentNode) {
+            currentCountdownMessage.remove();
+        }
+        
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        const currentTime = getCurrentTime();
+        const currentDate = getFormattedDate();
+        
+        lastDateSeparator = addDateSeparatorIfNeeded(lastDateSeparator, currentDate);
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = 'message-wrapper system';
+        wrapper.id = 'countdownMessage';
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        messageDiv.innerHTML = `⏳ <strong>VOUS ÊTES BLOQUÉ</strong> ⏳<br>Temps restant : <span class="message-timer" id="liveTimer">${timeStr}</span><br>`;
+        messageDiv.style.fontSize = currentFontSize + 'px';
+        
+        const timeSpan = document.createElement('div');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = currentTime;
+        
+        wrapper.appendChild(messageDiv);
+        wrapper.appendChild(timeSpan);
+        
+        chatBox.appendChild(wrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        
+        currentCountdownMessage = wrapper;
+        return wrapper;
+    }
+    
+    function updateCountdownDisplay(remainingSeconds) {
+        const timerElement = document.getElementById('liveTimer');
+        if (timerElement) {
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+    }
+    
+    function removeCountdownMessage() {
+        if (currentCountdownMessage && currentCountdownMessage.parentNode) {
+            currentCountdownMessage.remove();
+            currentCountdownMessage = null;
+        }
+    }
+    
+    function cleanOldTimestamps() {
+        const now = Date.now();
+        messageTimestamps = messageTimestamps.filter(ts => now - ts < TIME_WINDOW);
+    }
+        function canSendMessage() {
+     
+   // Si débloqué par code, pas de blocage
+        if (isUnlockedByCode()) {
+            return true;
+        }
+        
+        if (isBlocked) return false;
+        
+        cleanOldTimestamps();
+        
+        if (messageTimestamps.length >= MAX_MESSAGES) {
+            startBlock();
+            return false;
+        }
+        return true;
+    }
+
+   
+        async function startBlock() {
+        if (isBlocked) return;
+        
+        isBlocked = true;
+        blockEndTime = Date.now() + BLOCK_DURATION;
+        
+        const remainingSeconds = BLOCK_DURATION / 1000;
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        const blockMessage = `⛔ **Nasiana fiantoana kely** ⛔\n\nVous avez envoyé trop de messages rapidement;\n\n⏰ Temps restant : ${timeStr} ⏰\n\n✋ Tsy misy message lasa mandrindra ny fiandrasana ✋`;
+        
+        await addMessage(blockMessage, 'bot');
+        
+        startCountdown();
+        
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    }
+           function startCountdown() {
+        if (countdownInterval) clearInterval(countdownInterval);
+        
+        countdownInterval = setInterval(async () => {
+            if (!isBlocked || !blockEndTime) {
+                if (countdownInterval) clearInterval(countdownInterval);
+                return;
+            }
+            
+            const now = Date.now();
+            const remaining = blockEndTime - now;
+            
+            if (remaining <= 0) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                await endBlock();
+            } else {
+                const remainingSeconds = Math.ceil(remaining / 1000);
+                const minutes = Math.floor(remainingSeconds / 60);
+                const seconds = remainingSeconds % 60;
+                const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Mettre à jour TOUS les messages de blocage
+                const botMessages = document.querySelectorAll('.message-wrapper.bot');
+                
+                for (let i = 0; i < botMessages.length; i++) {
+                    const messageDiv = botMessages[i].querySelector('.message');
+                    if (!messageDiv) continue;
+                    
+                    const htmlContent = messageDiv.innerHTML;
+                    
+                    // Vérifier si c'est un message de blocage (contenant du texte spécifique)
+                    if (htmlContent.includes('Nasiana fiantoana kely') || 
+                        htmlContent.includes('Message tsy lasa') ||
+                        htmlContent.includes('Mbola miandry kely ô')) {
+                        
+                        // Mettre à jour le temps restant
+                        let newContent = htmlContent.replace(/⏰ Temps restant : \d{2}:\d{2} ⏰/, `⏰ Temps restant : ${timeStr} ⏰`);
+                        newContent = newContent.replace(/⏰ Temps restant : \d{2}:\d{2} ⏰/, `⏰ Temps restant : ${timeStr} ⏰`);
+                        
+                        if (newContent !== htmlContent) {
+                            messageDiv.innerHTML = newContent;
+                            console.log("✅ Message mis à jour:", timeStr);
+                        }
+                    }
+                }
+            }
+        }, 1000);
+    }
+
+
+    async function endBlock() {
+        console.log("🔓 DÉBLOCAGE - Temps écoulé");
+        isBlocked = false;
+        blockEndTime = null;
+        
+        const botMessages = document.querySelectorAll('.message-wrapper.bot');
+        if (botMessages.length > 0) {
+            const lastBotMessage = botMessages[botMessages.length - 1];
+            if (lastBotMessage.querySelector('.message')?.innerHTML.includes('Nasiana fiantoana kely')) {
+                lastBotMessage.remove();
+            }
+        }
+        
+        messageTimestamps = [];
+        
+        // Message de déblocage (CELUI QUE VOUS VOULEZ GARDER)
+        const unblockMessage = `✅ Afaka mandefa message amin'zay ianao ✅\n\nAzafady an!`;
+        
+        await addMessage(unblockMessage, 'bot');
+        
+        await addFacebookButtonMessage();
+        
+        if (navigator.vibrate) navigator.vibrate(200);
+        
+        setTimeout(() => {
+            messageInput.focus();
+            forceScrollToInput();
+        }, 100);
+    }
+
+    function registerMessageSent() {
+        messageTimestamps.push(Date.now());
+        cleanOldTimestamps();
+        
+        const remaining = MAX_MESSAGES - messageTimestamps.length;
+        const timeSinceFirst = messageTimestamps.length > 0 ? Date.now() - messageTimestamps[0] : TIME_WINDOW;
+        const remainingTime = Math.max(0, TIME_WINDOW - timeSinceFirst);
+        
+        if (remaining === 1) {
+            const secondsLeft = Math.ceil(remainingTime / 1000);
+            const minutesLeft = Math.floor(secondsLeft / 60);
+            const secsLeft = secondsLeft % 60;
+            setTimeout(async () => {
+                await addSystemMessage(`⚠️ ATTENTION ⚠️\nIl vous reste ${remaining} message avant blocage !\nTemps restant avant réinitialisation : ${minutesLeft}m ${secsLeft}s`, 'warning');
+            }, 500);
+        } else if (remaining === 2 && messageTimestamps.length >= 3) {
+            setTimeout(async () => {
+                await addSystemMessage(`⚠️ ATTENTION ⚠️\nVous avez envoyé ${messageTimestamps.length} messages.\nPlus que ${remaining} message(s) avant blocage de 2 minutes !`, 'warning');
+            }, 500);
+        }
+    }
+    
+        function checkBlockedOnLoad() {
+        // Restaurer le déblocage par code
+        const savedUnlockTime = localStorage.getItem('unlockUntilTime');
+        if (savedUnlockTime && parseInt(savedUnlockTime) > Date.now()) {
+            unlockUntilTime = parseInt(savedUnlockTime);
+            console.log("🔓 Session débloquée par code jusqu'au:", new Date(unlockUntilTime));
+            
+            // Si débloqué, annuler tout blocage
+            if (isBlocked) {
+                isBlocked = false;
+                blockEndTime = null;
+                if (countdownInterval) clearInterval(countdownInterval);
+            }
+            return;
+        } else {
+            localStorage.removeItem('unlockUntilTime');
+        }
+        
+        // Vérification du blocage normal
+        const savedBlockEnd = localStorage.getItem('blockEndTime');
+        if (savedBlockEnd && parseInt(savedBlockEnd) > Date.now()) {
+            blockEndTime = parseInt(savedBlockEnd);
+            isBlocked = true;
+            startCountdown();
+            setTimeout(async () => {
+                const remaining = Math.ceil((blockEndTime - Date.now()) / 1000);
+                const minutes = Math.floor(remaining / 60);
+                const seconds = remaining % 60;
+                const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Message normal du bot, pas système
+                await addMessage(`😊 Afaka miresaka amin'izay! Azafady an!`, 'bot');
+                
+                if (sendBlockedMsgDiv) sendBlockedMsgDiv.style.display = 'block';
+            }, 1000);
+        } else {
+            localStorage.removeItem('blockEndTime');
+        }
+    }
+    
+    setInterval(() => {
+        if (isBlocked && blockEndTime) {
+            localStorage.setItem('blockEndTime', blockEndTime.toString());
+        } else {
+            localStorage.removeItem('blockEndTime');
+        }
+        // Sauvegarder aussi le temps de déblocage
+        if (unlockUntilTime && unlockUntilTime > Date.now()) {
+            localStorage.setItem('unlockUntilTime', unlockUntilTime.toString());
+        } else if (unlockUntilTime) {
+            localStorage.removeItem('unlockUntilTime');
+            unlockUntilTime = null;
+        }
+    }, 1000);
+
+    async function loadChatHistory() {
+        try {
+            const messages = await loadMessagesFromDB();
+            const chatMessages = messages.filter(msg => msg.type !== 'user_info');
+            while (chatBox.firstChild) {
+                chatBox.removeChild(chatBox.firstChild);
+            }
+            
+            lastDateSeparator = null;
+            
+            if (chatMessages.length === 0) {
+                return;
+            }
+            
+            for (const msg of chatMessages) {
+                if (msg.date) {
+                    lastDateSeparator = addDateSeparatorIfNeeded(lastDateSeparator, msg.date);
+                }
+                let displayText = msg.text;
+                if (msg.type === 'bot') {
+                    displayText = cleanBotMessage(msg.text);
+                }
+                const messageElement = createMessageElement(displayText, msg.type, msg.time || getCurrentTime(), msg.id);
+                messageElement.setAttribute('data-message-id', msg.id);
+                chatBox.appendChild(messageElement);
+            }
+            chatBox.scrollTop = chatBox.scrollHeight;
+        } catch (error) {
+            console.error('Erreur chargement historique:', error);
+        }
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'none';
+        }
+    }
+    
+    
+
+function autoResizeTextarea() {
+    messageInput.style.height = "auto";
+    const newHeight = Math.min(messageInput.scrollHeight, 120);
+    messageInput.style.height = newHeight + "px";
+}
+    async function sendMessage() {
+        let text = messageInput.value;
+        if (text.trim() === "") return;
+        
+        // VÉRIFIER SI C'EST UN CODE DE DÉBLOCAGE (LIBRA, LIBRB, etc.)
+        const codeResult = checkUnlockCode(text);
+        
+               if (codeResult.valid) {
+            // Code valide - débloquer l'utilisateur
+            let unlockMessage = '';
+            if (codeResult.type === 'LIBR') {
+                unlockMessage = `Tafiditra ny code.\n✅ Vous êtes débloqué pour ${codeResult.durationDisplay} !\n\n💬 Vous pouvez maintenant envoyer des messages normalement.`;
+            } else {
+                unlockMessage = `Tafiditra ny code\n✅ Vous êtes débloqué pour ${codeResult.durationDisplay} !\n\n💬 Vous pouvez maintenant envoyer des messages normalement.`;
+            }
+            
+            await addMessage(unlockMessage, 'bot');
+            await addMessage(text, "user");
+            
+            messageInput.value = "";
+            messageInput.focus();
+            return;
+        }
+        
+        // Si débloqué par code, on ignore les limites de blocage
+        if (isUnlockedByCode()) {
+            const remaining = getRemainingUnlockTime();
+            // Envoyer le message normalement
+            sendButton.disabled = true;
+            
+            await addMessage(text, "user");
+            messageInput.value = "";
+            messageInput.style.height = "50px";
+            
+            messageInput.focus();
+            forceScrollToInput();
+            
+            showTypingIndicator();
+            
+            setTimeout(async () => {
+                const reply = await callAPI(text);
+                hideTypingIndicator();
+                await addMessage(reply, "bot");
+                forceScrollToInput();
+                messageInput.focus();
+                sendButton.disabled = false;
+            }, 400);
+            return;
+        }
+        
+        // Vérification du blocage normal
+        if (isBlocked) {
+            const remaining = Math.ceil((blockEndTime - Date.now()) / 1000);
+            const minutes = Math.floor(remaining / 60);
+            const seconds = remaining % 60;
+            const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            const retryBlockMessage = `⛔ Message tsy lasa ⛔\n\nMbola miandry kely ô\n\n⏰ Temps restant : ${timeStr} ⏰\n\nKely sisa ka`;
+            
+            await addMessage(retryBlockMessage, 'bot');
+            
+            if (navigator.vibrate) navigator.vibrate(100);
+            messageInput.value = "";
+            messageInput.focus();
+            return;
+        }
+        
+        // Vérification de la limite normale (4 messages en 5 minutes)
+        if (!canSendMessage()) {
+            messageInput.value = "";
+            messageInput.focus();
+            return;
+        }
+        
+        sendButton.disabled = true;
+        registerMessageSent();
+        
+        await addMessage(text, "user");
+        messageInput.value = "";
+        messageInput.style.height = "50px";
+        
+        messageInput.focus();
+        forceScrollToInput();
+        
+        showTypingIndicator();
+        
+        setTimeout(() => {
+            if (document.activeElement !== messageInput) {
+                messageInput.focus();
+                forceScrollToInput();
+            }
+        }, 50);
+        
+        setTimeout(async () => {
+            const reply = await callAPI(text);
+            hideTypingIndicator();
+            await addMessage(reply, "bot");
+            forceScrollToInput();
+            messageInput.focus();
+            sendButton.disabled = false;
+            setTimeout(() => {
+                messageInput.focus();
+                forceScrollToInput();
+            }, 50);
+        }, 400);
+    }
+
+function enterFullscreen() {
+    const elem = document.documentElement;
+    const requestMethod = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.msRequestFullscreen;
+    if (requestMethod) {
+        requestMethod.call(elem).then(() => {
+            isFullscreen = true;
+            fsIndicator.classList.add('show');
+            setTimeout(() => fsIndicator.classList.remove('show'), 2000);
+            setTimeout(() => {
+                chatBox.scrollTop = chatBox.scrollHeight;
+                forceScrollToInput();
+                messageInput.focus();
+            }, 50);
+        }).catch(err => console.log("Erreur plein écran:", err));
+    }
+}
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().then(() => {
+                isFullscreen = false;
+            }).catch(err => console.log(err));
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            isFullscreen = false;
+        }
+    }
+    
+    function toggleFullscreen() {
+        if (!isFullscreen) enterFullscreen();
+        else exitFullscreen();
+    }
+    
+    function showPopup(message, onConfirm) {
+        popupMessage.textContent = message;
+        popupOverlay.classList.add('open');
+        pendingCallback = onConfirm;
+    }
+    
+    function hidePopup() {
+        popupOverlay.classList.remove('open');
+        pendingCallback = null;
+    }
+    
+    function openProfileDetail() {
+        profileDetail.classList.add('open');
+        paramPanel.classList.remove('open');
+    }
+    
+    // ========== DÉMARRAGE DU CHAT ==========
+    async function startChat() {
+        // Cacher l'écran de bienvenue
+        document.getElementById('welcomeScreen').classList.add('hide');
+        
+        // Afficher le chat
+        chatContainer.style.display = 'flex';
+        
+        // Activer le plein écran
+        enterFullscreen();
+        
+        // Charger l'historique
+        await loadChatHistory();
+        
+        // Vérifier la connexion
+        checkConnection();
+        setInterval(checkConnection, 15000);
+        
+        // Ajouter un message de bienvenue si aucun message
+        if (chatBox.children.length === 0) {
+            const genderWord = userGender === 'homme' ? 'un homme' : 'une femme';
+            let welcomeMsg = `\n\n\n\n\n\n\n\n\n\nSalut ${userName} !😊\n\nJe suis Nirina, ravie de te rencontrer ! `;
+            welcomeMsg = cleanBotMessage(welcomeMsg);
+            await addMessage(welcomeMsg, 'bot');
+        }
+        
+        // Focus sur l'input
+        setTimeout(() => {
+            messageInput.focus();
+            forceScrollToInput();
+        }, 300);
+    }
+    
+    // ========== VÉRIFICATION UTILISATEUR EXISTANT ==========
+    async function checkExistingUser() {
+        await openDB();
+        const userInfo = await loadUserInfoFromDB();
+        
+        if (userInfo && userInfo.name && userInfo.lieu && userInfo.gender) {
+            userName = userInfo.name;
+            userLieu = userInfo.lieu;
+            userGender = userInfo.gender;
+            
+            console.log("✅ Utilisateur trouvé localement:", userName, userGender, userLieu);
+            
+            // Afficher l'écran de bienvenue avec bouton Commencer
+            document.getElementById('registerScreen').classList.add('hide');
+            showWelcomeScreen();
+        } else {
+            console.log("👤 Nouvel utilisateur - affichage de la sélection de niveau");
+                    }
+    }
+    
+   // ========== CONFIGURATION DES ÉVÉNEMENTS ==========
+function setupChatEvents() {
+    // Empêcher le bouton de prendre le focus (cause de la fermeture du clavier)
+    sendButton.addEventListener('mousedown', (e) => {
+        e.preventDefault();  // Empêche le bouton de recevoir le focus
+    });
+    
+    sendButton.addEventListener('touchstart', (e) => {
+        e.preventDefault();  // Empêche le bouton de recevoir le focus sur mobile
+        sendMessage();
+        // Forcer le focus après l'envoi
+        setTimeout(() => {
+            messageInput.focus();
+            forceScrollToInput();
+        }, 10);
+    });
+    
+    sendButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        sendMessage();
+        // Forcer le focus après l'envoi
+        setTimeout(() => {
+            messageInput.focus();
+            forceScrollToInput();
+        }, 10);
+    });
+    
+    messageInput.addEventListener("input", function() {
+        autoResizeTextarea();
+        forceScrollToInput();
+    });
+    
+    // PAS DE GESTION DE LA TOUCHE ENTRÉE ICI - Seul le bouton Envoyer fonctionne
+    
+    fullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFullscreen();
+    });
+    
+    settingsBtn.addEventListener('click', () => {
+        paramPanel.classList.add('open');
+    });
+    
+    closeParamBtn.addEventListener('click', () => {
+        paramPanel.classList.remove('open');
+    });
+    
+    headerProfileClick.addEventListener('click', openProfileDetail);
+    profilParamItem.addEventListener('click', openProfileDetail);
+    closeProfileBtn.addEventListener('click', () => {
+        profileDetail.classList.remove('open');
+    });
+    
+    increaseFontBtn.addEventListener('click', () => {
+        if (currentFontSize < 22) {
+            currentFontSize += 2;
+            applyFontSize();
+        }
+    });
+    
+    decreaseFontBtn.addEventListener('click', () => {
+        if (currentFontSize > 10) {
+            currentFontSize -= 2;
+            applyFontSize();
+        }
+    });
+    
+    darkModeItem.addEventListener('click', () => {
+        setDarkMode(!isDarkMode);
+        paramPanel.classList.remove('open');
+    });
+    
+    whatsappModeItem.addEventListener('click', () => {
+        setWhatsAppMode(!isWhatsAppMode);
+        paramPanel.classList.remove('open');
+    });
+    
+    facebookModeItem.addEventListener('click', () => {
+        setFacebookMode(!isFacebookMode);
+        paramPanel.classList.remove('open');
+    });
+    
+    deleteDiscussionItem.addEventListener('click', () => {
+        paramPanel.classList.remove('open');
+        showPopup('Supprimer toute la discussion ?', async () => {
+            await clearAllMessagesFromDB();
+            while (chatBox.firstChild) {
+                chatBox.removeChild(chatBox.firstChild);
+            }
+            lastDateSeparator = null;
+            const genderWord = userGender === 'homme' ? 'un homme' : 'une femme';
+            let welcomeMessage = `\n\n\n\n\n\n\n\n\n\nCoucou ${userName} ! Je suis ravie de te revoir !`;
+            welcomeMessage = cleanBotMessage(welcomeMessage);
+            await addMessage(welcomeMessage, 'bot');
+            forceScrollToInput();
+        });
+    });
+    
+    popupConfirm.addEventListener('click', () => {
+        if (pendingCallback) {
+            pendingCallback();
+        }
+        hidePopup();
+    });
+    
+    popupCancel.addEventListener('click', () => {
+        hidePopup();
+    });
+    
+    // Gestion du clavier (visualViewport)
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            const currentHeight = window.visualViewport.height;
+            const windowHeight = window.innerHeight;
+            const keyboardHeight = windowHeight - currentHeight;
+            if (keyboardHeight > 60) {
+                isKeyboardVisible = true;
+                currentKeyboardHeight = keyboardHeight;
+                updateHeaderPosition(currentKeyboardHeight);
+                forceScrollToInput();
+            } else if (keyboardHeight < 50 && isKeyboardVisible) {
+                isKeyboardVisible = false;
+                currentKeyboardHeight = 0;
+                updateHeaderPosition(0);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+    }
+    
+    messageInput.addEventListener('focus', () => {
+        requestAnimationFrame(() => {
+            forceScrollToInput();
+        });
+    });
+    
+    document.addEventListener('click', (e) => {
+        if (contextMenu && !contextMenu.contains(e.target)) hideContextMenu();
+        if (paramPanel.classList.contains('open')) {
+            if (!paramPanel.contains(e.target) && e.target !== settingsBtn && !settingsBtn.contains(e.target)) {
+                paramPanel.classList.remove('open');
+            }
+        }
+    });
+    
+    document.addEventListener('selectstart', (e) => {
+        if (!e.target.closest('textarea')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+    
+    const observer = new MutationObserver(() => {
+        chatBox.scrollTop = chatBox.scrollHeight;
+        forceScrollToInput();
+    });
+    observer.observe(chatBox, { childList: true, subtree: true });
+}
+    
+            // ========== INITIALISATION ==========
+    async function init() {
+        await getDeviceModel();
+        await openDB();  // Ouvre la base de données
+        
+        checkBlockedOnLoad();  // Vérifie le blocage
+        
+        const usernameInput = document.getElementById('usernameInput');
+        const lieuInput = document.getElementById('lieuInput');
+        
+        function setupAutoCapitalize(inputElement) {
+            inputElement.addEventListener('input', function(e) {
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                const oldValue = this.value;
+                const capitalized = capitalizeFirstLetter(oldValue);
+                if (oldValue !== capitalized) {
+                    this.value = capitalized;
+                    this.setSelectionRange(start, end);
+                }
+            });
+        }
+        
+        setupAutoCapitalize(usernameInput);
+        setupAutoCapitalize(lieuInput);
+        setupGenderSelection();
+        
+        document.getElementById('registerBtn').addEventListener('click', handleRegister);
+        
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                lieuInput.focus();
+            }
+        });
+        lieuInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleRegister();
+        });
+        
+        document.getElementById('registerScreen').classList.remove('hide');
+        
+        // Bouton Commencer
+        btnStartChat.addEventListener('click', () => {
+            startChat();
+        });
+        
+        setupChatEvents();
+        setDarkMode(false);
+        
+        await checkExistingUser();
+    }
+    
+    init();
+// BOUTON TÉLÉCHARGER INDEX - Version corrigée en malgache
+const btnDownloadIndex = document.getElementById('btnDownloadIndex');
+if (btnDownloadIndex) {
+    btnDownloadIndex.addEventListener('click', function() {
+        // Utiliser une fonction pour générer le contenu sans les backticks problématiques
+        function getQuizHTML() {
+            return '<!DOCTYPE html>\n' +'<html lang="fr">\n' +
+'<head>\n' +
+'    <meta charset="UTF-8">\n' +
+'    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">\n' +
+'    <title>Mianatra anglais débutant</title>\n' +
+'    <style>\n' +
+'        * {\n' +
+'            margin: 0;\n' +
+'            padding: 0;\n' +
+'            box-sizing: border-box;\n' +
+'            user-select: none;\n' +
+'            -webkit-user-select: none;\n' +
+'            -moz-user-select: none;\n' +
+'            -ms-user-select: none;\n' +
+'        }\n' +
+'\n' +
+'        /* Écran de chargement */\n' +
+'        .loading-screen {\n' +
+'            position: fixed;\n' +
+'            top: 0;\n' +
+'            left: 0;\n' +
+'            width: 100%;\n' +
+'            height: 100%;\n' +
+'            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);\n' +
+'            display: flex;\n' +
+'            justify-content: center;\n' +
+'            align-items: center;\n' +
+'            flex-direction: column;\n' +
+'            z-index: 1000;\n' +
+'            transition: opacity 0.5s ease;\n' +
+'        }\n' +
+'\n' +
+'        .loader {\n' +
+'            width: 80px;\n' +
+'            height: 80px;\n' +
+'            border: 5px solid rgba(233, 69, 96, 0.3);\n' +
+'            border-top: 5px solid #e94560;\n' +
+'            border-radius: 50%;\n' +
+'            animation: spin 1s linear infinite;\n' +
+'            margin-bottom: 20px;\n' +
+'        }\n' +
+'\n' +
+'        @keyframes spin {\n' +
+'            0% { transform: rotate(0deg); }\n' +
+'            100% { transform: rotate(360deg); }\n' +
+'        }\n' +
+'\n' +
+'        .loading-text {\n' +
+'            color: white;\n' +
+'            font-size: 18px;\n' +
+'            font-family: \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif;\n' +
+'            text-align: center;\n' +
+'        }\n' +
+'\n' +
+'        .loading-subtext {\n' +
+'            color: #888;\n' +
+'            font-size: 14px;\n' +
+'            margin-top: 10px;\n' +
+'            font-family: monospace;\n' +
+'        }\n' +
+'\n' +
+'        .progress-bar {\n' +
+'            width: 300px;\n' +
+'            height: 4px;\n' +
+'            background: rgba(255,255,255,0.1);\n' +
+'            border-radius: 2px;\n' +
+'            margin-top: 20px;\n' +
+'            overflow: hidden;\n' +
+'        }\n' +
+'\n' +
+'        .progress-fill {\n' +
+'            height: 100%;\n' +
+'            background: #e94560;\n' +
+'            width: 0%;\n' +
+'            transition: width 0.3s ease;\n' +
+'            border-radius: 2px;\n' +
+'        }\n' +
+'\n' +
+'        /* Conteneur HTML2 (caché au début) */\n' +
+'        .html2-container {\n' +
+'            width: 100%;\n' +
+'            height: 100vh;\n' +
+'            display: none;\n' +
+'        }\n' +
+'\n' +
+'        iframe {\n' +
+'            width: 100%;\n' +
+'            height: 100%;\n' +
+'            border: none;\n' +
+'        }\n' +
+'\n' +
+'        /* Message d\'erreur - fond jaune nuit */\n' +
+'        .error-message {\n' +
+'            position: fixed;\n' +
+'            top: 50%;\n' +
+'            left: 50%;\n' +
+'            transform: translate(-50%, -50%);\n' +
+'            background: linear-gradient(135deg, #3d2b1a 0%, #2c1e12 100%);\n' +
+'            padding: 35px 30px;\n' +
+'            border-radius: 48px;\n' +
+'            text-align: center;\n' +
+'            z-index: 2000;\n' +
+'            display: none;\n' +
+'            border: 1px solid rgba(255,200,100,0.3);\n' +
+'            backdrop-filter: blur(10px);\n' +
+'            min-width: 320px;\n' +
+'            box-shadow: 0 25px 50px rgba(0,0,0,0.5);\n' +
+'        }\n' +
+'\n' +
+'        .error-message h3 {\n' +
+'            color: #ffcc66;\n' +
+'            margin-bottom: 20px;\n' +
+'            font-size: 24px;\n' +
+'            font-weight: bold;\n' +
+'        }\n' +
+'\n' +
+'        .error-message p {\n' +
+'            color: #ffe0b3;\n' +
+'            margin-bottom: 30px;\n' +
+'            font-size: 18px;\n' +
+'            line-height: 1.8;\n' +
+'            font-weight: 500;\n' +
+'        }\n' +
+'\n' +
+'        .error-message .error-detail {\n' +
+'            display: none;\n' +
+'        }\n' +
+'\n' +
+'        .retry-btn {\n' +
+'            background: linear-gradient(135deg, #ffcc66, #ffb347);\n' +
+'            color: #2c1e12;\n' +
+'            border: none;\n' +
+'            padding: 14px 35px;\n' +
+'            border-radius: 40px;\n' +
+'            cursor: pointer;\n' +
+'            font-size: 18px;\n' +
+'            font-weight: bold;\n' +
+'            transition: transform 0.2s;\n' +
+'            box-shadow: 0 4px 15px rgba(0,0,0,0.2);\n' +
+'        }\n' +
+'\n' +
+'        .retry-btn:active {\n' +
+'            transform: scale(0.96);\n' +
+'        }\n' +
+'\n' +
+'        /* Notification */\n' +
+'        .notification {\n' +
+'            position: fixed;\n' +
+'            bottom: 20px;\n' +
+'            right: 20px;\n' +
+'            background: rgba(0,0,0,0.9);\n' +
+'            color: #e94560;\n' +
+'            padding: 12px 20px;\n' +
+'            border-radius: 8px;\n' +
+'            font-family: monospace;\n' +
+'            font-size: 13px;\n' +
+'            z-index: 10001;\n' +
+'            animation: slideInOut 3s ease forwards;\n' +
+'            pointer-events: none;\n' +
+'            border-left: 3px solid #e94560;\n' +
+'        }\n' +
+'\n' +
+'        @keyframes slideInOut {\n' +
+'            0% { opacity: 0; transform: translateX(100px); }\n' +
+'            15% { opacity: 1; transform: translateX(0); }\n' +
+'            85% { opacity: 1; transform: translateX(0); }\n' +
+'            100% { opacity: 0; transform: translateX(100px); display: none; }\n' +
+'        }\n' +
+'\n' +
+'        /* Badge de statut */\n' +
+'        .security-badge {\n' +
+'            position: fixed;\n' +
+'            bottom: 10px;\n' +
+'            left: 10px;\n' +
+'            background: rgba(0,0,0,0.6);\n' +
+'            color: #4CAF50;\n' +
+'            padding: 4px 8px;\n' +
+'            border-radius: 5px;\n' +
+'            font-size: 10px;\n' +
+'            font-family: monospace;\n' +
+'            z-index: 1001;\n' +
+'            pointer-events: none;\n' +
+'        }\n' +
+'\n' +
+'        /* Anti-debug overlay */\n' +
+'        .debug-block {\n' +
+'            position: fixed;\n' +
+'            top: 0;\n' +
+'            left: 0;\n' +
+'            right: 0;\n' +
+'            bottom: 0;\n' +
+'            background: rgba(0,0,0,0.95);\n' +
+'            z-index: 20000;\n' +
+'            display: flex;\n' +
+'            justify-content: center;\n' +
+'            align-items: center;\n' +
+'            font-family: monospace;\n' +
+'        }\n' +
+'\n' +
+'        .debug-block .message-box {\n' +
+'            background: linear-gradient(135deg, #1a1a2e, #16213e);\n' +
+'            border: 2px solid #e94560;\n' +
+'            border-radius: 20px;\n' +
+'            padding: 40px;\n' +
+'            text-align: center;\n' +
+'            max-width: 400px;\n' +
+'            margin: 20px;\n' +
+'        }\n' +
+'\n' +
+'        .debug-block .message-box h3 {\n' +
+'            color: #e94560;\n' +
+'            font-size: 24px;\n' +
+'            margin-bottom: 15px;\n' +
+'        }\n' +
+'\n' +
+'        .debug-block .message-box p {\n' +
+'            color: white;\n' +
+'            margin-bottom: 20px;\n' +
+'            line-height: 1.5;\n' +
+'        }\n' +
+'    </style>\n' +
+'</head>\n' +
+'<body>\n' +
+'    <!-- Écran de chargement -->\n' +
+'    <div class="loading-screen" id="loadingScreen">\n' +
+'        <div class="loader"></div>\n' +
+'        <div class="loading-text" id="loadingText">Miandry kely</div>\n' +
+'        <div class="loading-subtext" id="loadingSubtext">Connexion</div>\n' +
+'        <div class="progress-bar">\n' +
+'            <div class="progress-fill" id="progressFill"></div>\n' +
+'        </div>\n' +
+'    </div>\n' +
+'\n' +
+'    <!-- Conteneur Quiz -->\n' +
+'    <div class="html2-container" id="html2Container"></div>\n' +
+'\n' +
+'    <!-- Message d\'erreur - uniquement en malgache -->\n' +
+'    <div class="error-message" id="errorMessage">\n' +
+'        <h3>⚠️ Tsy nety ny fametrahana azy</h3>\n' +
+'        <p>❌ Misy olana amin\'ny connexion internet<br>\n' +
+'        📱 Jereo ny reseau na pare-feu ary andramo indray</p>\n' +
+'        <button class="retry-btn" id="retryBtn">🔄 Andramo indray</button>\n' +
+'    </div>\n' +
+'    <script>\n' +
+'        // ============================================\n' +
+'        // BLOQUAGE IMMÉDIAT - DOIT ÊTRE AU TOUT DÉBUT\n' +
+'        // ============================================\n' +
+'        \n' +
+'        // Bloquer F12 et les outils de développement immédiatement\n' +
+'        (function() {\n' +
+'            function blockAndNotify(message) {\n' +
+'                const notification = document.createElement(\'div\');\n' +
+'                notification.className = \'notification\';\n' +
+'                notification.textContent = message;\n' +
+'                notification.style.color = \'#ff6b6b\';\n' +
+'                document.body.appendChild(notification);\n' +
+'                setTimeout(() => {\n' +
+'                    if (notification.parentNode) notification.parentNode.removeChild(notification);\n' +
+'                }, 2000);\n' +
+'            }\n' +
+'            \n' +
+'            window.addEventListener(\'keydown\', function(e) {\n' +
+'                if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {\n' +
+'                    e.preventDefault();\n' +
+'                    e.stopPropagation();\n' +
+'                    e.stopImmediatePropagation();\n' +
+'                    blockAndNotify("⚠️ Ho aiza enao zany?? Toriko an!");\n' +
+'                    return false;\n' +
+'                }\n' +
+'                if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i" || e.code === "KeyI")) {\n' +
+'                    e.preventDefault();\n' +
+'                    e.stopPropagation();\n' +
+'                    e.stopImmediatePropagation();\n' +
+'                    blockAndNotify("⚠️ Mitandrema fa toriko an!");\n' +
+'                    return false;\n' +
+'                }\n' +
+'                if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j" || e.code === "KeyJ")) {\n' +
+'                    e.preventDefault();\n' +
+'                    e.stopPropagation();\n' +
+'                    e.stopImmediatePropagation();\n' +
+'                    blockAndNotify("⚠️ Aza tia savasava fa ataoko tratra an!");\n' +
+'                    return false;\n' +
+'                }\n' +
+'                if (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c" || e.code === "KeyC")) {\n' +
+'                    e.preventDefault();\n' +
+'                    e.stopPropagation();\n' +
+'                    e.stopImmediatePropagation();\n' +
+'                    blockAndNotify("Tsy mety ka");\n' +
+'                    return false;\n' +
+'                }\n' +
+'                if (e.ctrlKey && (e.key === "U" || e.key === "u" || e.code === "KeyU")) {\n' +
+'                    e.preventDefault();\n' +
+'                    e.stopPropagation();\n' +
+'                    e.stopImmediatePropagation();\n' +
+'                    blockAndNotify("🔒 Lava maso enao ka");\n' +
+'                    return false;\n' +
+'                }\n' +
+'            }, true);\n' +
+'            \n' +
+'            document.addEventListener(\'contextmenu\', function(e) {\n' +
+'                e.preventDefault();\n' +
+'                e.stopPropagation();\n' +
+'                e.stopImmediatePropagation();\n' +
+'                blockAndNotify("⚠️ tsy mety re a!😂🤣");\n' +
+'                return false;\n' +
+'            }, true);\n' +
+'            \n' +
+'            document.addEventListener(\'selectstart\', function(e) {\n' +
+'                e.preventDefault();\n' +
+'                return false;\n' +
+'            }, true);\n' +
+'            \n' +
+'            document.addEventListener(\'dragstart\', function(e) {\n' +
+'                e.preventDefault();\n' +
+'                return false;\n' +
+'            }, true);\n' +
+'            \n' +
+'            document.addEventListener(\'copy\', function(e) {\n' +
+'                e.preventDefault();\n' +
+'                blockAndNotify("Vakio fotsiny moa");\n' +
+'                return false;\n' +
+'            }, true);\n' +
+'            \n' +
+'            document.addEventListener(\'cut\', function(e) {\n' +
+'                e.preventDefault();\n' +
+'                blockAndNotify("Mialatsiny!");\n' +
+'                return false;\n' +
+'            }, true);\n' +
+'            \n' +
+'            window.addEventListener(\'keydown\', function(e) {\n' +
+'                if (e.ctrlKey && (e.key === "s" || e.key === "S")) {\n' +
+'                    e.preventDefault();\n' +
+'                    blockAndNotify("Oka zao fa aza enregistrena");\n' +
+'                    return false;\n' +
+'                }\n' +
+'                if (e.ctrlKey && (e.key === "p" || e.key === "P")) {\n' +
+'                    e.preventDefault();\n' +
+'                    blockAndNotify("Toriko enao an! Hajao ny mpamorona");\n' +
+'                    return false;\n' +
+'                }\n' +
+'            }, true);\n' +
+'        })();\n' +
+'        \n' +
+'        (function detectDevTools() {\n' +
+'            let devToolsOpen = false;\n' +
+'            const threshold = 160;\n' +
+'            \n' +
+'            function checkDevTools() {\n' +
+'                const widthDiff = window.outerWidth - window.innerWidth;\n' +
+'                const heightDiff = window.outerHeight - window.innerHeight;\n' +
+'                \n' +
+'                if (widthDiff > threshold || heightDiff > threshold) {\n' +
+'                    if (!devToolsOpen) {\n' +
+'                        devToolsOpen = true;\n' +
+'                        const overlay = document.createElement(\'div\');\n' +
+'                        overlay.className = \'debug-block\';\n' +
+'                        overlay.innerHTML = `<div class="message-box"><h3>Mba aza tia savasava sao hahita ny tsy fahita</h3><p>Veuillez fermer pour continuer.</p><p>Fermez-les et actualisez la onglet.(Akatony aloha ity onglet ity)</p></div>`;\n' +
+'                        document.body.appendChild(overlay);\n' +
+'                    }\n' +
+'                } else {\n' +
+'                    if (devToolsOpen) {\n' +
+'                        devToolsOpen = false;\n' +
+'                        const existingOverlay = document.querySelector(\'.debug-block\');\n' +
+'                        if (existingOverlay) existingOverlay.remove();\n' +
+'                    }\n' +
+'                }\n' +
+'            }\n' +
+'            \n' +
+'            setInterval(checkDevTools, 1000);\n' +
+'        })();\n' +
+'        \n' +
+'        setInterval(function() { debugger; }, 50);\n' +
+'        \n' +
+'        const WORKER_URL = "https://tiakarokarabebaabdajdajakjdkjakjdakdgajdggdgjskd.jeananglais8.workers.dev/telecharger-html2";\n' +
+'        const SYMBOLES = [\'#\', \'*\', \'%\', \'&\', \'@\', \'$\', \'!\', \'?\', \'+\', \'=\', \'~\', \'^\', \'|\', \'<\', \'>\', \'[\', \']\', \'{\', \'}\'];\n' +
+'        \n' +
+'        const STOCKAGE_ANS = 10;\n' +
+'        const MS_PAR_JOUR = 24 * 60 * 60 * 1000;\n' +
+'        const MS_PAR_AN = 365.25 * MS_PAR_JOUR;\n' +
+'        const DUREE_VALIDITE_MS = STOCKAGE_ANS * MS_PAR_AN;\n' +
+'        const CACHE_VERSION = "v3_securise_10ans";\n' +
+'        const STOCKAGE_ID = "Debutantanglais";\n' +
+'        \n' +
+'        function showNotification(message, isError = false) {\n' +
+'            const notification = document.createElement(\'div\');\n' +
+'            notification.className = \'notification\';\n' +
+'            notification.textContent = message;\n' +
+'            notification.style.color = isError ? \'#ff6b6b\' : \'#e94560\';\n' +
+'            document.body.appendChild(notification);\n' +
+'            setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 3000);\n' +
+'        }\n' +
+'        \n' +
+'        function updateLoading(text, subtext, progress) {\n' +
+'            const loadingText = document.getElementById(\'loadingText\');\n' +
+'            const loadingSubtext = document.getElementById(\'loadingSubtext\');\n' +
+'            const progressFill = document.getElementById(\'progressFill\');\n' +
+'            if (loadingText) loadingText.textContent = text;\n' +
+'            if (loadingSubtext && subtext !== undefined) loadingSubtext.textContent = subtext;\n' +
+'            if (progressFill) progressFill.style.width = progress + \'%\';\n' +
+'        }\n' +
+'        \n' +
+'        function extractTechnicalModel(ua) {\n' +
+'            const patterns = [\n' +
+'                /;\\s([A-Za-z0-9\\-\\s]+?)\\sBuild\\//,\n' +
+'                /;\\s([A-Za-z0-9\\-_]+?)\\)/,\n' +
+'                /;\\s([A-Za-z0-9\\-_]+?);/,\n' +
+'                /\\(([A-Za-z0-9\\-_]+?);\\sAndroid/\n' +
+'            ];\n' +
+'            for (let pattern of patterns) {\n' +
+'                const match = ua.match(pattern);\n' +
+'                if (match && match[1] && !match[1].match(/Android|AppleWebKit|Chrome|Mobile|Safari|Version|Gecko|Linux|arm|arm64/i)) return match[1];\n' +
+'            }\n' +
+'            return "APPAREIL_SECURISE";\n' +
+'        }\n' +
+'        \n' +
+'        async function getDeviceModel() {\n' +
+'            const ua = navigator.userAgent;\n' +
+'            let model = extractTechnicalModel(ua);\n' +
+'            if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {\n' +
+'                try { const hints = await navigator.userAgentData.getHighEntropyValues([\'model\']); if (hints.model && hints.model !== \'\') model = hints.model; } catch(e) {}\n' +
+'            }\n' +
+'            return model;\n' +
+'        }\n' +
+'        \n' +
+'        function genererNomDossier(longueur = 20) { let nom = ""; for (let i = 0; i < longueur; i++) { nom += SYMBOLES[Math.floor(Math.random() * SYMBOLES.length)]; } return nom; }\n' +
+'        function estCacheValide(dateStockage) { if (!dateStockage) return false; const age = Date.now() - dateStockage; return age < DUREE_VALIDITE_MS; }\n' +
+'        \n' +
+'        let db = null, dbOpenPromise = null;\n' +
+'        const DB_NAME = "Debutant_anglais_dossier", STORE_NAME = "html_content";\n' +
+'        \n' +
+'        async function ouvrirDB() {\n' +
+'            if (dbOpenPromise) return dbOpenPromise;\n' +
+'            dbOpenPromise = new Promise((resolve, reject) => {\n' +
+'                if (db && db.name === DB_NAME) { resolve(db); return; }\n' +
+'                const request = indexedDB.open(DB_NAME, 2);\n' +
+'                request.onerror = () => { dbOpenPromise = null; reject(request.error); };\n' +
+'                request.onsuccess = () => { db = request.result; dbOpenPromise = null; resolve(db); };\n' +
+'                request.onupgradeneeded = (event) => { const db = event.target.result; if (!db.objectStoreNames.contains(STORE_NAME)) { const store = db.createObjectStore(STORE_NAME, { keyPath: \'id\' }); store.createIndex(\'date\', \'date\', { unique: false }); store.createIndex(\'version\', \'version\', { unique: false }); } };\n' +
+'            });\n' +
+'            return dbOpenPromise;\n' +
+'        }\n' +
+'        \n' +
+'        async function stockerHTML(id, contenu, metadata = {}) { const dbInstance = await ouvrirDB(); const tx = dbInstance.transaction(STORE_NAME, \'readwrite\'); const store = tx.objectStore(STORE_NAME); const objetStockage = { id: id, contenu: contenu, date: Date.now(), version: CACHE_VERSION, expiration: Date.now() + DUREE_VALIDITE_MS, taille: contenu.length, ...metadata }; await store.put(objetStockage); await tx.done; return objetStockage; }\n' +
+'        async function lireHTML(id) { const dbInstance = await ouvrirDB(); return new Promise((resolve) => { const tx = dbInstance.transaction(STORE_NAME, \'readonly\'); const request = tx.objectStore(STORE_NAME).get(id); request.onsuccess = () => resolve(request.result); request.onerror = () => resolve(null); }); }\n' +
+'        async function nettoyerAnciensCaches() { const dbInstance = await ouvrirDB(); const tx = dbInstance.transaction(STORE_NAME, \'readwrite\'); const store = tx.objectStore(STORE_NAME); const tousLesItems = await new Promise((resolve) => { const request = store.getAll(); request.onsuccess = () => resolve(request.result); request.onerror = () => resolve([]); }); for (const item of tousLesItems) { if (item.version !== CACHE_VERSION || item.expiration < Date.now()) { await store.delete(item.id); } } await tx.done; }\n' +
+'        \n' +
+'        function afficherQuiz(htmlContent) { const container = document.getElementById(\'html2Container\'); const loadingScreen = document.getElementById(\'loadingScreen\'); container.innerHTML = \'\'; const iframe = document.createElement(\'iframe\'); iframe.srcdoc = htmlContent; iframe.style.width = \'100%\'; iframe.style.height = \'100%\'; iframe.style.border = \'none\'; container.appendChild(iframe); container.style.display = \'block\'; loadingScreen.style.opacity = \'0\'; setTimeout(() => { loadingScreen.style.display = \'none\'; }, 300); }\n' +
+'        \n' +
+'        async function telechargerQuiz() {\n' +
+'            try {\n' +
+'                updateLoading("Vetivety", "Fandinihana...", 10);\n' +
+'                const modele = await getDeviceModel();\n' +
+'                updateLoading("Bonjour!", "Fanomanana...", 25);\n' +
+'                const nomDossier = genererNomDossier(20);\n' +
+'                updateLoading("🌐 Andraso vetivety an!", 40);\n' +
+'                const controller = new AbortController();\n' +
+'                const timeoutId = setTimeout(() => controller.abort(), 30000);\n' +
+'                const response = await fetch(WORKER_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ modele: modele, nomDossier: nomDossier }), signal: controller.signal });\n' +
+'                clearTimeout(timeoutId);\n' +
+'                updateLoading("😊 Kely sisa an!", "Efa manao azy malaky...", 60);\n' +
+'                if (!response.ok) throw new Error(`HTTP ${response.status}`);\n' +
+'                const data = await response.json();\n' +
+'                if (!data.succes || !data.html) throw new Error(data.erreur || "Données manquantes");\n' +
+'                updateLoading("💾 mety fa kely sisa", "Kely sisa de vita...", 85);\n' +
+'                await ouvrirDB();\n' +
+'                await stockerHTML(STOCKAGE_ID, data.html, { modele: modele, source: "telechargement", niveau: "debutant" });\n' +
+'                await nettoyerAnciensCaches();\n' +
+'                updateLoading("Mamarana azy tanteraka", "Vitako!...", 95);\n' +
+'                updateLoading("✅ Vita !", "Nalaky ihany", 100);\n' +
+'                afficherQuiz(data.html);\n' +
+'                return true;\n' +
+'            } catch (error) { throw new Error("Erreur de téléchargement"); }\n' +
+'        }\n' +
+'        \n' +
+'        async function chargerLocalOuTelecharger() {\n' +
+'            try {\n' +
+'                updateLoading("Vérification", "Recherche...", 5);\n' +
+'                await ouvrirDB();\n' +
+'                await nettoyerAnciensCaches();\n' +
+'                const data = await lireHTML(STOCKAGE_ID);\n' +
+'                if (data && data.contenu && estCacheValide(data.date) && data.version === CACHE_VERSION) {\n' +
+'                    updateLoading("Eo ampanaovana azy", "...", 80);\n' +
+'                    afficherQuiz(data.contenu);\n' +
+'                    return true;\n' +
+'                }\n' +
+'                updateLoading("Mandamina azy", "Tsy mbola misy cache...", 10);\n' +
+'                return await telechargerQuiz();\n' +
+'            } catch (error) { return await telechargerQuiz(); }\n' +
+'        }\n' +
+'        \n' +
+'        function afficherErreur() { const loadingScreen = document.getElementById(\'loadingScreen\'); const errorDiv = document.getElementById(\'errorMessage\'); errorDiv.style.display = \'block\'; loadingScreen.style.opacity = \'0\'; setTimeout(() => { loadingScreen.style.display = \'none\'; }, 500); }\n' +
+'        \n' +
+'        (async function init() {\n' +
+'            if (window.console) { const noop = function() {}; console.log = noop; console.info = noop; console.warn = noop; console.debug = noop; console.table = noop; console.dir = noop; console.trace = noop; console.group = noop; console.groupEnd = noop; }\n' +
+'            try { var s = await chargerLocalOuTelecharger(); if(!s) throw new Error(); } catch(e) { afficherErreur(); }\n' +
+'        })();\n' +
+'        \n' +
+'        document.getElementById(\'retryBtn\').addEventListener(\'click\', function() {\n' +
+'            const errorDiv = document.getElementById(\'errorMessage\');\n' +
+'            const loadingScreen = document.getElementById(\'loadingScreen\');\n' +
+'            errorDiv.style.display = \'none\';\n' +
+'            loadingScreen.style.display = \'flex\';\n' +
+'            loadingScreen.style.opacity = \'1\';\n' +
+'            updateLoading("Andramako indray...", "Manandrana...", 0);\n' +
+'            (async function() {\n' +
+'                if (window.console) { const noop = function() {}; console.log = noop; console.info = noop; console.warn = noop; console.debug = noop; console.table = noop; console.dir = noop; console.trace = noop; console.group = noop; console.groupEnd = noop; }\n' +
+'                try { var s = await chargerLocalOuTelecharger(); if(!s) throw new Error(); } catch(e) { afficherErreur(); }\n' +
+'            })();\n' +
+'        });\n' +
+'        \n' +
+'        window.addEventListener(\'online\', () => { showNotification("🌐 Milamina ny connexion ka Andramo indray", false); const errorDiv = document.getElementById(\'errorMessage\'); if (errorDiv.style.display === \'block\') { document.getElementById(\'retryBtn\').click(); } });\n' +
+'        window.showNotification = showNotification;\n' +
+'    <\/script>\n' +
+'</body>\n' +
+'</html>';
+        }
+        
+        const blob = new Blob([getQuizHTML()], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Miresaka Francais Débutant.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        const toast = document.createElement('div');
+        toast.textContent = '✅ Téléchargement terminé : ebutant_mianatra.html';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '100px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = '#25D366';
+        toast.style.color = 'white';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '40px';
+        toast.style.zIndex = '9999';
+        toast.style.fontWeight = 'bold';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    });
+}
+
+// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
+    (function() {
+        function showBlockOverlay() {
+            if (document.getElementById('securityOverlay')) return;
+            const overlay = document.createElement('div');
+            overlay.id = 'securityOverlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+            document.body.appendChild(overlay);
+            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+        }
+
+        function hideBlockOverlay() {
+            const overlay = document.getElementById('securityOverlay');
+            if (overlay) overlay.remove();
+        }
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                e.preventDefault();
+                return false;
+            }
+if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+                e.preventDefault();
+                return false;
+            }
+// Ajoutez ceci dans la liste des vérifications
+if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+    e.preventDefault();
+    return false;
+}
+// Ctrl+P (Imprimer)
+if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+    e.preventDefault();
+    return false;
+}
+
+// Ctrl+F (Rechercher)
+if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+    e.preventDefault();
+    return false;
+}
+
+// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
+if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+    e.preventDefault();
+    return false;
+}
+
+// F5 (Rafraîchir)
+if (e.key === "F5" || e.keyCode === 116) {
+    e.preventDefault();
+    return false;
+}
+            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                return false;
+            }
+        }, true);
+
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+        function detectDevTools() {
+            let devToolsOpen = false;
+            const threshold = 160;
+            setInterval(() => {
+                const widthDiff = window.outerWidth - window.innerWidth;
+                const heightDiff = window.outerHeight - window.innerHeight;
+                if (widthDiff > threshold || heightDiff > threshold) {
+                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+                } else {
+                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+                }
+            }, 1000);
+        }
+
+        setInterval(() => { debugger; }, 50);
+        
+        if (window.console) {
+            const noop = () => {};
+            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+        }
+
+        detectDevTools();
+    })();
+</script>
+</body>
+</html>
