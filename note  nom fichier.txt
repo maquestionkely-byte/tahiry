@@ -1,0 +1,5 @@
+Bouton	Fichier
+	
+DÉBUTANT :	hiredebutant.txt	
+
+INTERMÉDIAIRE	hireintermediaire.txt	
