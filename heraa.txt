@@ -400,8 +400,8 @@
             <div class="hero-section">
                 <h1 style="font-size: 0.9rem; background: #1e3a5f; color: white; padding: 6px 15px; border-radius: 40px; display: inline-block; text-align: center; margin: 10px auto;">🥰 Faly miarahaba anao! 😊</h1>
                 <div class="title-container">
-                    <img src="https://maquestionkely-byte.github.io/tahiry/profil.jpg" alt="Gauche" class="side-image" id="imgGauche">
-                    <img src="https://maquestionkely-byte.github.io/tahiry/Niry.jpg" alt="Droite" class="side-image" id="imgDroite">
+                    <img src="https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/profil.jpg" alt="Gauche" class="side-image" id="imgGauche">
+                    <img src="https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/Niry.jpg" alt="Droite" class="side-image" id="imgDroite">
                 </div>
                 <h1><span>Mianatra Français isika</span></h1>
                 <h1 style="font-size: 0.9rem; background: #1e3a5f; color: white; padding: 6px 15px; border-radius: 40px; display: inline-block; text-align: center; margin: 10px auto;">✨ Mirary soa amin'ny fianarana français izay ataonao. ✨</h1>
@@ -1995,8 +1995,8 @@ document.addEventListener('DOMContentLoaded', function() {
     genererListeLecons(leconsIntermediaire, 'intermediaireContent', 'rond-orange', WORKER_URL + '/', 'intermediaire');
     genererListeLecons(leconsAvance, 'avanceContent', 'rond-jaune', WORKER_URL + '/', 'avance');
     
-    chargerImage(document.getElementById('imgGauche'), 'https://maquestionkely-byte.github.io/tahiry/profil.jpg');
-    chargerImage(document.getElementById('imgDroite'), 'https://maquestionkely-byte.github.io/tahiry/Niry.jpg'); 
+    chargerImage(document.getElementById('imgGauche'), 'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/profil.jpg');
+    chargerImage(document.getElementById('imgDroite'), 'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/Niry.jpg'); 
     
     // Gestion du retour
     window.addEventListener('popstate', () => { if (historiqueNavigation.length > 1) historiqueNavigation.pop(); else showScreen('accueil'); });
