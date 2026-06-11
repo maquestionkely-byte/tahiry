@@ -1764,39 +1764,69 @@ document.addEventListener('DOMContentLoaded', function() {
         if (screenName === 'dialoguer') genererListeLecons(dialoguerLecons, 'dialoguerContent', 'rond-vert', WORKER_URL + '/', 'dialoguer');
     }
     
-    // ======================= IMAGES =======================
-    async function stockerImage(url, blob) {
-        return new Promise((resolve) => {
-            const request = indexedDB.open('image_cache', 7);
-            request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains('images')) e.target.result.createObjectStore('images'); };
-            request.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction('images', 'readwrite');
-                tx.objectStore('images').put(blob, url);
-                tx.oncomplete = () => { db.close(); resolve(); };
-            };
-        });
-    }
-    
-    async function chargerImage(element, url) {
-        const request = indexedDB.open('image_cache', 7);
-        request.onsuccess = async (e) => {
-            const db = e.target.result;
-            if (db.objectStoreNames.contains('images')) {
-                const tx = db.transaction('images', 'readonly');
-                const get = tx.objectStore('images').get(url);
-                get.onsuccess = () => {
-                    if (get.result) { element.src = URL.createObjectURL(get.result); db.close(); return; }
-                    db.close();
-                    fetch(url).then(res => res.blob()).then(blob => { stockerImage(url, blob); element.src = URL.createObjectURL(blob); }).catch(() => element.src = url);
-                };
-            } else {
-                db.close();
-                fetch(url).then(res => res.blob()).then(blob => { stockerImage(url, blob); element.src = URL.createObjectURL(blob); }).catch(() => element.src = url);
-            }
+   // ======================= IMAGES AVEC NOMS FIXES =======================
+const NOM_IMAGE_PROFIL = 'photo_profil';
+const NOM_IMAGE_NIRY = 'photo_niry';
+
+async function stockerImageAvecNomFix(nomFix, blob) {
+    return new Promise((resolve) => {
+        const request = indexedDB.open('image_cache', 8); // Version augmentée à 8
+        request.onupgradeneeded = (e) => { 
+            if (!e.target.result.objectStoreNames.contains('images')) 
+                e.target.result.createObjectStore('images'); 
         };
-    }
+        request.onsuccess = (e) => {
+            const db = e.target.result;
+            const tx = db.transaction('images', 'readwrite');
+            tx.objectStore('images').put(blob, nomFix); // ← Stocke avec nomFix comme clé
+            tx.oncomplete = () => { db.close(); resolve(); };
+        };
+    });
+}
+
+// Version modifiée de chargerImage avec nomFix
+async function chargerImageAvecNomFix(element, url, nomFix) {
+    const request = indexedDB.open('image_cache', 8);
     
+    request.onupgradeneeded = (e) => { 
+        if (!e.target.result.objectStoreNames.contains('images')) 
+            e.target.result.createObjectStore('images'); 
+    };
+    
+    request.onsuccess = async (e) => {
+        const db = e.target.result;
+        if (db.objectStoreNames.contains('images')) {
+            const tx = db.transaction('images', 'readonly');
+            const get = tx.objectStore('images').get(nomFix); // ← Recherche par nomFix
+            get.onsuccess = () => {
+                if (get.result) { 
+                    // ✅ Image trouvée avec le nom fixe
+                    element.src = URL.createObjectURL(get.result); 
+                    db.close(); 
+                    return; 
+                }
+                db.close();
+                // ❌ Image non trouvée → télécharger
+                fetch(url)
+                    .then(res => res.blob())
+                    .then(blob => { 
+                        stockerImageAvecNomFix(nomFix, blob); 
+                        element.src = URL.createObjectURL(blob); 
+                    })
+                    .catch(() => element.src = url);
+            };
+        } else {
+            db.close();
+            fetch(url)
+                .then(res => res.blob())
+                .then(blob => { 
+                    stockerImageAvecNomFix(nomFix, blob); 
+                    element.src = URL.createObjectURL(blob); 
+                })
+                .catch(() => element.src = url);
+        }
+    };
+}
     // ======================= INITIALISATION =======================
     const menuItems = [
         { id: 'debutant', icon: '🌱', title: 'Débutant', desc: 'A1 - A2' },
@@ -1825,7 +1855,7 @@ document.addEventListener('DOMContentLoaded', function() {
     btnVideo.style.background = '#0a2f6c';
     btnVideo.style.borderColor = '#c0392b';
     btnVideo.style.color = 'white';
-    btnVideo.innerHTML = `🎬 Vidéo`;
+    btnVideo.innerHTML = `🎬 Video`;
     btnVideo.addEventListener('click', async () => {
         const nomFichier = "videolecon.txt";
         const url = `${WORKER_URL}/${nomFichier}`;
@@ -1995,9 +2025,18 @@ document.addEventListener('DOMContentLoaded', function() {
     genererListeLecons(leconsIntermediaire, 'intermediaireContent', 'rond-orange', WORKER_URL + '/', 'intermediaire');
     genererListeLecons(leconsAvance, 'avanceContent', 'rond-jaune', WORKER_URL + '/', 'avance');
     
-    chargerImage(document.getElementById('imgGauche'), 'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/profil.jpg');
-    chargerImage(document.getElementById('imgDroite'), 'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/Niry.jpg'); 
     
+   chargerImageAvecNomFix(
+    document.getElementById('imgGauche'), 
+    'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/profil.jpg',
+    NOM_IMAGE_PROFIL  // 'photo_profil'
+);
+
+chargerImageAvecNomFix(
+    document.getElementById('imgDroite'), 
+    'https://maquestionkely-byte.github.io/1l1--.-I0O0o0O1l--.-1I0O0oO0metyhita-gmail.com....O0O0.--.--..--.--/Niry.jpg',
+    NOM_IMAGE_NIRY    // 'photo_niry'
+); 
     // Gestion du retour
     window.addEventListener('popstate', () => { if (historiqueNavigation.length > 1) historiqueNavigation.pop(); else showScreen('accueil'); });
     history.pushState({ page: "main" }, "Main", window.location.href);
