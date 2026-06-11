@@ -3788,23 +3788,9 @@ if (btnDownloadIndex) {
     });
 }
   
-// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
+// ======================= CODE DE SÉCURITÉ (Version silencieuse) =======================
     (function() {
-        function showBlockOverlay() {
-            if (document.getElementById('securityOverlay')) return;
-            const overlay = document.createElement('div');
-            overlay.id = 'securityOverlay';
-            overlay.style.cssText = '';
-            overlay.innerHTML = ``;
-            document.body.appendChild(overlay);
-            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
-        }
-
-        function hideBlockOverlay() {
-            const overlay = document.getElementById('securityOverlay');
-            if (overlay) overlay.remove();
-        }
-
+        // Bloquer les raccourcis clavier sans aucune notification
         window.addEventListener('keydown', function(e) {
             if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
                 e.preventDefault();
@@ -3818,38 +3804,34 @@ if (btnDownloadIndex) {
                 e.preventDefault();
                 return false;
             }
-if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+            if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
                 e.preventDefault();
                 return false;
             }
-// Ajoutez ceci dans la liste des vérifications
-if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
-    e.preventDefault();
-    return false;
-}
-// Ctrl+P (Imprimer)
-if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+F (Rechercher)
-if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
-if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
-    e.preventDefault();
-    return false;
-}
-
-// F5 (Rafraîchir)
-if (e.key === "F5" || e.keyCode === 116) {
-    e.preventDefault();
-    return false;
-}
+            if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+P (Imprimer)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+F (Rechercher)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+R (Rafraîchir)
+            if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+                e.preventDefault();
+                return false;
+            }
+            // F5 (Rafraîchir)
+            if (e.key === "F5" || e.keyCode === 116) {
+                e.preventDefault();
+                return false;
+            }
             if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
                 e.preventDefault();
                 return false;
@@ -3860,33 +3842,29 @@ if (e.key === "F5" || e.keyCode === 116) {
             }
         }, true);
 
+        // Bloquer le clic droit sans notification
         document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+        
+        // Bloquer la sélection de texte sans notification
         document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+        
+        // Bloquer copier/couper sans notification
         document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
         document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
 
-        function detectDevTools() {
-            let devToolsOpen = false;
-            const threshold = 160;
-            setInterval(() => {
-                const widthDiff = window.outerWidth - window.innerWidth;
-                const heightDiff = window.outerHeight - window.innerHeight;
-                if (widthDiff > threshold || heightDiff > threshold) {
-                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
-                } else {
-                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
-                }
-            }, 1000);
-        }
-
-        setInterval(() => { debugger; }, 50);
-        
+        // Bloquer silencieusement la console
         if (window.console) {
             const noop = () => {};
             console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
         }
-
-        detectDevTools();
+        
+        // Désactiver silencieusement l'inspection (sans overlay)
+        Object.defineProperty(document, 'hidden', { get: () => false });
+        
+        // Empêcher silencieusement l'ouverture des outils de développement
+        setInterval(() => {
+            debugger;
+        }, 50);
     })();
 </script>
 </body>
