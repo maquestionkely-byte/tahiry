@@ -180,6 +180,64 @@
             cursor: pointer;
         }
 
+/* Nouveau style pour la toolbar en grille */
+.niveau-toolbar {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 25px 0 30px;
+    border: 1px solid rgba(255,215,0,0.3);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.niveau-label {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #FFD966;
+    font-weight: 600;
+}
+
+.niveau-btn {
+    background: transparent;
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    padding: 10px 5px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Style spécial pour Hiresaka (grande barre) */
+.niveau-btn-hiresaka {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border: 2px solid #f39c12;
+    color: white;
+    padding: 12px 5px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.niveau-btn-hiresaka:hover {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    transform: scale(1.02);
+}
+
+.niveau-btn:hover {
+    background: rgba(255,215,0,0.2);
+    transform: scale(1.02);
+}
 
 /* Cacher le nom du fichier dans le chargement mais le garder dans le code */
 .hidden-filename {
@@ -1827,71 +1885,88 @@ async function chargerImageAvecNomFix(element, url, nomFix) {
         }
     };
 }
-    // ======================= INITIALISATION =======================
-    const menuItems = [
-        { id: 'debutant', icon: '🌱', title: 'Débutant', desc: 'A1 - A2' },
-        { id: 'intermediaire', icon: '🌿', title: 'Intermédiaire', desc: 'B1 - B2' },
-        { id: 'avance', icon: '🌳', title: 'Avancé', desc: 'C1 - C2' },
-        { id: 'dictionnaire', icon: '📖', title: 'Dictionnaire', desc: 'Français ⇄ Malagasy' },
-        { id: 'conjugaison', icon: '📘', title: 'Conjugaison', desc: 'Conjuguer les verbes' },
-        { id: 'dialoguer', icon: '💬', title: 'Dialoguer', desc: 'Conversations' }
-    ];
-    
-    const toolbar = document.getElementById('niveauToolbar');
-    const niveauList = document.getElementById('niveauList');
-    
-    menuItems.forEach(item => {
-        const btn = document.createElement('button');
-        btn.className = 'niveau-btn';
-        btn.innerHTML = `${item.icon} ${item.title}`;
-        btn.addEventListener('click', () => showScreen(item.id));
-        toolbar.appendChild(btn);
-    });
-    
-    
-        // ======================= BOUTON VIDÉO DANS LA TOOLBAR =======================
-    const btnVideo = document.createElement('button');
-    btnVideo.className = 'niveau-btn';
-    btnVideo.style.background = '#0a2f6c';
-    btnVideo.style.borderColor = '#c0392b';
-    btnVideo.style.color = 'white';
-    btnVideo.innerHTML = `🎬 Video`;
-    btnVideo.addEventListener('click', async () => {
-        const nomFichier = "videolecon.txt";
-        const url = `${WORKER_URL}/${nomFichier}`;
-        chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
-    });
-    toolbar.appendChild(btnVideo);
-    
-    // ======================= BOUTON AUDIO DANS LA TOOLBAR =======================
-    const btnAudio = document.createElement('button');
-    btnAudio.className = 'niveau-btn';
-    btnAudio.style.background = '#';
-    btnAudio.style.borderColor = '#27ae60';
-    btnAudio.style.color = 'white';
-    btnAudio.innerHTML = `🎵 Audio`;
-    btnAudio.addEventListener('click', async () => {
-        const nomFichier = "audiolecon.txt";
-        const url = `${WORKER_URL}/${nomFichier}`;
-        chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
-    });
-    toolbar.appendChild(btnAudio);
-    
-    // ======================= BOUTON HIRESAKA DANS LA TOOLBAR =======================
-    const btnHiresaka = document.createElement('button');
-    btnHiresaka.className = 'niveau-btn';
-    btnHiresaka.style.background = '#';
-    btnHiresaka.style.borderColor = '#e67e22';
-    btnHiresaka.style.color = 'white';
-    btnHiresaka.innerHTML = `🗣️ Hiresaka`;
-    btnHiresaka.addEventListener('click', async () => {
-        const nomFichier = "hirelecon.txt";
-        const url = `${WORKER_URL}/${nomFichier}`;
-        chargerLecon("Hiresaka mivantana", nomFichier, url, "Contenu Hiresaka");
-    });
-    toolbar.appendChild(btnHiresaka);
-    
-    // ======================= CARTES DANS LA LISTE D'ACCUEIL =======================
+   // ======================= CRÉATION DES BOUTONS EN GRILLE =======================
+const toolbar = document.getElementById('niveauToolbar');
+const niveauList = document.getElementById('niveauList');
+
+// Nettoyer le contenu existant
+toolbar.innerHTML = '<span class="niveau-label">🎯 Fidio eto :</span>';
+
+// Liste des boutons normaux avec progression de couleurs (débutant → avancé)
+const boutonsNormaux = [
+    { id: 'debutant', icon: '🌱', title: 'Débutant', bordure: '#2ecc71' },      // Vert (début)
+    { id: 'intermediaire', icon: '🌿', title: 'Intermédiaire', bordure: '#f39c12' }, // Orange (milieu)
+    { id: 'avance', icon: '🌳', title: 'Avancé', bordure: '#e74c3c' },            // Rouge (avancé)
+    { id: 'dictionnaire', icon: '📖', title: 'Dictionnaire', bordure: '#3498db' },   // Bleu
+    { id: 'conjugaison', icon: '📘', title: 'Conjugaison', bordure: '#9b59b6' },     // Violet
+    { id: 'dialoguer', icon: '💬', title: 'Dialoguer', bordure: '#1abc9c' }          // Turquoise
+];
+
+// Créer les boutons normaux
+boutonsNormaux.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'niveau-btn';
+    btn.style.background = 'transparent';
+    btn.style.border = `2px solid ${item.bordure}`;
+    btn.style.color = 'white';
+    btn.innerHTML = `${item.icon} ${item.title}`;
+    btn.addEventListener('click', () => showScreen(item.id));
+    toolbar.appendChild(btn);
+});
+
+// Bouton Vidéo (fond BLEU comme avant)
+const btnVideo = document.createElement('button');
+btnVideo.className = 'niveau-btn';
+btnVideo.style.background = '#0a2f6c';
+btnVideo.style.border = '2px solid #e74c3c';
+btnVideo.style.color = 'white';
+btnVideo.innerHTML = `🎬 Vidéo`;
+btnVideo.addEventListener('click', async () => {
+    const nomFichier = "videolecon.txt";
+    const url = `${WORKER_URL}/${nomFichier}`;
+    chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
+});
+toolbar.appendChild(btnVideo);
+
+// Bouton Audio (fond vert 10%)
+const btnAudio = document.createElement('button');
+btnAudio.className = 'niveau-btn';
+btnAudio.style.background = 'rgba(46, 204, 113, 0.1)';
+btnAudio.style.border = '2px solid #2ecc71';
+btnAudio.style.color = 'white';
+btnAudio.innerHTML = `🎵 Audio`;
+btnAudio.addEventListener('click', async () => {
+    const nomFichier = "audiolecon.txt";
+    const url = `${WORKER_URL}/${nomFichier}`;
+    chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
+});
+toolbar.appendChild(btnAudio);
+
+// Bouton Hiresaka (fond bleu nuit)
+const btnHiresaka = document.createElement('button');
+btnHiresaka.className = 'niveau-btn-hiresaka';
+btnHiresaka.style.background = '#0a192f';
+btnHiresaka.style.border = '2px solid #f39c12';
+btnHiresaka.style.color = 'white';
+btnHiresaka.innerHTML = `🗣️ HIRESAKA MIVANTANA 🗣️`;
+btnHiresaka.addEventListener('click', async () => {
+    const nomFichier = "hirelecon.txt";
+    const url = `${WORKER_URL}/${nomFichier}`;
+    chargerLecon("Hiresaka mivantana", nomFichier, url, "Contenu Hiresaka");
+});
+toolbar.appendChild(btnHiresaka);
+
+const menuItems = [
+    { id: 'debutant', icon: '🌱', title: 'Débutant', desc: 'A1 - A2', couleur: '#3498db' },
+    { id: 'intermediaire', icon: '🌿', title: 'Intermédiaire', desc: 'B1 - B2', couleur: '#2ecc71' },
+    { id: 'avance', icon: '🌳', title: 'Avancé', desc: 'C1 - C2', couleur: '#e74c3c' },
+    { id: 'dictionnaire', icon: '📖', title: 'Dictionnaire', desc: 'Français ⇄ Malagasy', couleur: '#9b59b6' },
+    { id: 'conjugaison', icon: '📘', title: 'Conjugaison', desc: 'Conjuguer les verbes', couleur: '#1abc9c' },
+    { id: 'dialoguer', icon: '💬', title: 'Dialoguer', desc: 'Conversations', couleur: '#f39c12' }
+];
+
+
+ // ======================= CARTES DANS LA LISTE D'ACCUEIL =======================
     menuItems.forEach(item => {
         const card = document.createElement('div');
         card.className = 'niveau-card';
