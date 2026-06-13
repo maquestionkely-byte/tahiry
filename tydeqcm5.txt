@@ -1,0 +1,144 @@
+Exercice : Types de phrases - Niveau 5 (très difficile)
+
+Consigne : Identifiez le type de chaque phrase.
+A) Déclarative / B) Interrogative / C) Impérative / D) Exclamative
+
+1. Peut-être conviendrait-il, dans les circonstances actuelles, de reconsidérer notre position.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Angamba mety, amin'ny toe-javatra misy ankehitriny, ny mandinika indray ny toerantsika.
+
+2. Allez-vous cesser enfin de vous plaindre pour des broutilles ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Hijanona ny fitarainana amin'ny zavatra madinika ve ianao farany?
+
+3. Qu'il fasse beau ou non, nous sortirons quoi qu'il arrive !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tsara na tsy tsara ny andro, hivoaka na inona na inona!
+
+4. Je vous serais infiniment reconnaissant de bien vouloir garder le silence sur cette affaire.
+A) Déclarative
+B) Interrogative
+*C) Impérative (atténuée)
+D) Exclamative
+TRADUCTION: Tena faly tokoa aho raha mba mangina momba ity raharaha ity.
+
+5. N'aurait-il pas mieux valu garder le silence plutôt que de proférer de telles absurdités ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy ho tsara kokoa ve ny nangina toy izay niteny zavatra tsy misy dikany toy izany?
+
+6. Comme il est doux et apaisant de sentir la brise marine caresser son visage au petit matin !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankarary ny fihetsehan'ny rivotra an-dranomasina mikitika ny tavany amin'ny maraina!
+
+7. Que personne ne bouge d'ici jusqu'à mon retour.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza misy mihetsika eto mandra-piveriko.
+
+8. Vous ne me ferez jamais croire que vous ignoriez totalement cette information capitale.
+A) Déclarative (ironique)
+*B) Interrogative (rhétorique)
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy hampino ahy mihitsy ianao fa tsy fantatrao tanteraka izany vaovao manan-danja izany.
+
+9. Puisse le destin vous être favorable dans cette entreprise hasardeuse !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative (souhait)
+TRADUCTION: Enga anie ka hanampy anao ny tsiny amin'ity raharaha itokisana ity!
+
+10. Si seulement j'avais su, toutes ces années de souffrance auraient pu être évitées.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Raha mba fantatro fotsiny, ireo taona fijaliana rehetra ireo dia mety ho voasoroka.
+
+11. Auriez-vous l'extrême bonté de m'indiquer l'heure, je vous serais très obligé ?
+A) Déclarative
+*B) Interrogative (polie)
+C) Impérative
+D) Exclamative
+TRADUCTION: Azonao atao ve ny milaza ny ora amiko, dia tena faly tokoa aho?
+
+12. Qu'il est difficile de rester digne face à tant d'injustices et de bassesses !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampahory ny mijanona ho mendrika eo anoloan'ny tsy rariny sy ny faharatsiana be dia be!
+
+13. Je ne te permets pas de me parler sur ce ton irrespectueux, jeune homme.
+*A) Déclarative
+B) Interrogative
+C) Impérative (implicite)
+D) Exclamative
+TRADUCTION: Tsy mamela anao hiteny amiko amin'io feo tsy fanajana io aho, tovolahy.
+
+14. Ne seriez-vous pas un tantinet fatigué de toujours porter le même discours ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy ho reraka kely ve ianao amin'ny fitenenana mitovy foana?
+
+15. Advienne que pourra, nous tiendrons bon jusqu'au bout !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Na inona na inona hitranga, hijoro hatrany hatramin'ny farany izahay!
+
+16. Eût-il été sage de nous aventurer plus loin sans aucune provision ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Ho fahendrena ve ny niditra an-tsehatra lavitra kokoa tsy nisy famatsiana?
+
+17. Veuillez trouver ci-joint les documents nécessaires au bon traitement de votre dossier.
+A) Déclarative
+B) Interrogative
+*C) Impérative (formule administrative)
+D) Exclamative
+TRADUCTION: Miangavy anao hahita ny antontan-taratasy ilaina amin'ny fanodinana ny rakitrao.
+
+18. Comme je regrette maintenant ces paroles précipitées prononcées dans l'emportement !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Malahelo aho izao noho ireo teny maika ireo nambara tamim-pahatezerana!
+
+19. Que nul n'ignore que la vérité finira toujours par éclater au grand jour.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aoka tsy hisy tsy hahalala fa ny marina dia hivoaka eo amin'ny mazava foana.
+
+20. Et si nous cessions là cette polémique stérile qui n'apporte absolument rien ?
+A) Déclarative
+*B) Interrogative (suggestive)
+C) Impérative
+D) Exclamative
+TRADUCTION: Ary raha tokony hampitsahatra ity resaka tsy misy dikany ity tsy mitondra na inona na inona?
