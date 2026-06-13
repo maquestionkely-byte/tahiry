@@ -22,9 +22,9 @@ Meva
 
 Titre : Fahatsiarovana mamy
 
-HERY : Je repensais à notre premier rendez-vous… Tu te souviens du petit café sous les jacarandas ? 🌿
+HERY : Je repensais à \n\nnotre premier rendez-vous… Tu te souviens du petit café sous les jacarandas ? 🌿
 
-Traduction : Nieritreritra ny fitsidihana voalohany nataontsika aho… Tsaroanao ve ilay kafe kely teo ambanin'ny jacaranda? 🌿
+Traduction : Nieritreritra ny fitsidihana voalohany nataontsika aho… Tsaroana<br><br>o ve ilay kafe kely teo ambanin'ny jacaranda? 🌿
 
 FANIRY : Tu avais apporté une rose et la pluie fine nous a surpris, on a ri comme des enfants ! ❤️
 
