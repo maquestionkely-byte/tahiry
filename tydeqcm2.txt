@@ -1,0 +1,144 @@
+Exercice : Types de phrases - Niveau 2 (facile)
+
+Consigne : Identifiez le type de chaque phrase.
+A) Déclarative / B) Interrogative / C) Impérative / D) Exclamative
+
+1. Je n'aime pas les épinards.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy tiako ny epinara.
+
+2. As-tu fini tes devoirs ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Vita ve ny entimodinao?
+
+3. Ne fais pas de bruit, s'il te plaît.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mamoaka tabataba, azafady.
+
+4. Quelle magnifique vue !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena mahafinaritra ny fahitana!
+
+5. Mon frère joue au football chaque samedi.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Milalao baolina kitra ny rahalahiko isaky ny sabotsy.
+
+6. Pourquoi n'es-tu pas venu à la fête ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no tsy tonga tany amin'ny fety ianao?
+
+7. Venez ici tout de suite !
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Avia eto izao!
+
+8. Comme il court vite !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena mihazakazaka haingana izy!
+
+9. Nous avons visité Paris l'été dernier.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nitsidika an'i Paris izahay tamin'ny fahavaratra lasa.
+
+10. Sais-tu où se trouve la gare ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Hainao ve ny misy ny gare?
+
+11. Regardez ce magnifique coucher de soleil.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Jereo ity filentehan'ny masoandro mahafinaritra ity.
+
+12. Que cette musique est douce !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampitony ity mozika ity!
+
+13. Elle lit un livre dans sa chambre.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mamaky boky ao amin'ny efitranony izy.
+
+14. Voulez-vous un peu de thé ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Te-dity kely ve ianareo?
+
+15. N'oublie pas ton parapluie.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza adino ny eloanao.
+
+16. Quelle incroyable aventure !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena zava-niainana mahatalanjona!
+
+17. Les oiseaux chantent dans le jardin.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mankalala ao an-jaridaina ny vorona.
+
+18. Où as-tu mis mes clés ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Aiza no nametrahanao ny lakileko?
+
+19. Attends-moi devant l'école.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miandry ahy eo anoloan'ny sekoly.
+
+20. Quel délicieux repas !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Sakafo matsiro tokoa!
