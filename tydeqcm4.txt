@@ -1,0 +1,144 @@
+Exercice : Types de phrases - Niveau 4 (difficile)
+
+Consigne : Identifiez le type de chaque phrase.
+A) Déclarative / B) Interrogative / C) Impérative / D) Exclamative
+
+1. Je me demande bien s'il viendra finalement à cette réunion demain matin.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Manontany tena aho raha ho tonga amin'ity fivoriana ity rahampitso maraina izy.
+
+2. Auriez-vous l'obligeance de bien vouloir m'indiquer le chemin qui mène à la gare ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mba azonao atao ve ny toro lalana ho ahy ny lalana mankany amin'ny gara?
+
+3. Qu'il est agréable de se promener dans cette forêt en automne !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankarary ny mandehandeha amin'ity ala ity amin'ny fararano!
+
+4. Si jamais tu changes d'avis, n'hésite surtout pas à me contacter.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Raha miova hevitra ianao, aza misalasala mifandray amiko.
+
+5. Nul ne sait véritablement ce qui se cache derrière ces murs épais.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy misy mahalala marina izay miafina any aorian'ireo rindrina matevina ireo.
+
+6. Pensez-vous vraiment qu'il soit encore possible de sauver cette situation désastreuse ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tena mieritreritra ve ianao fa mbola azo vonjena ity toe-javatra ity?
+
+7. Je vous ordonne de quitter les lieux immédiatement, sans poser de question.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Manome baiko anao hivoaka ny toerana avy hatrany aho, tsy mba mametraka fanontaniana.
+
+8. Dieu que ce silence pesant et interminable devient insupportable !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsy zaka io fahanginana mavesatra sy tsy manam-petra io!
+
+9. Peut-être serait-il préférable de reporter cette décision à plus tard.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Angamba tsara kokoa ny manemotra ity fanapahan-kevitra ity any aoriana.
+
+10. En avez-vous enfin terminé avec toutes ces excuses pitoyables ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Vita tamin'ireo fialantsiny mampalahelo ireo ve ianareo?
+
+11. Ne vous avisez jamais de mentir à votre mère, elle sait toujours tout.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mba sahy mody amin'ny reny, mahafantatra foana ny zava-drehetra izy.
+
+12. Quelles merveilleuses retrouvailles après toutes ces longues années de séparation !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena fihaonana mahafinaritra taorian'ireo taona maro nisaraka ireo!
+
+13. Il n'avait jamais imaginé que son frère puisse le trahir de cette manière.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy mba nieritreritra mihitsy izy fa ny rahalahiny dia afaka mamadika azy toy izao.
+
+14. Serait-ce vraiment la dernière fois que nous nous voyons ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tena ity ve no farany hahitantsika?
+
+15. Sachez que je ne tolérerai aucun écart de conduite pendant votre stage.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Fantaro fa tsy hanakana ny fitondran-tena ratsy aho mandritra ny fiofananao.
+
+16. Comme cette chanson me rappelle de merveilleux souvenirs d'enfance !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampahatsiahy ahy ny fahatsiarovana mahafinaritra tamin'ny fahazazako ity hira ity!
+
+17. Personne n'avait prévu que l'accident surviendrait à ce moment précis.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy nisy naminavina fa hitranga amin'izany fotoana izany ny loza.
+
+18. Ne pourriez-vous pas faire preuve d'un peu plus de discernement ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy afaka manao fahiratan-tsaina kely bebe kokoa ve ianao?
+
+19. Veuillez agréer, Madame, l'expression de mes salutations distinguées.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miangavy anao, Ramatoa, ny fanehoana ny fiarahabako.
+
+20. Quelle incroyable coïncidence de vous croiser ici, au bout du monde !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena fifandrifian-javatra mahatalanjona ny nifankahita anao eto, any amin'ny faran'izao tontolo izao!
