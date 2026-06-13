@@ -1,0 +1,144 @@
+Exercice : Types de phrases - Niveau 3 (moyen)
+
+Consigne : Identifiez le type de chaque phrase.
+A) Déclarative / B) Interrogative / C) Impérative / D) Exclamative
+
+1. Il est vraiment dommage que tu ne puisses pas assister à cette cérémonie.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tena mampalahelo fa tsy afaka manatrika io lanonana io ianao.
+
+2. Pourriez-vous me dire où se trouve la poste, s'il vous plaît ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Azonao atao ve ny milaza amiko hoe aiza no misy ny paositra?
+
+3. Veuillez patienter quelques instants, votre appel sera mis en relation avec un conseiller.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miangavy anao hiandry fotoana fohy, ny antso anao dia hifandray amin'ny mpanolo-tsaina.
+
+4. Comme le temps passe vite quand on s'amuse !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Hafaingana ny fotoana rehefa miala voly!
+
+5. Je n'avais jamais réalisé à quel point cette décision pouvait avoir des conséquences importantes.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy mbola nahatsikaritra mihitsy aho fa ity fanapahan-kevitra ity dia mety hisy vokany lehibe.
+
+6. Ne pourrais-tu pas essayer de comprendre mon point de vue pour une fois ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy afaka manandrana hahatakatra ny fomba fijeriko ve ianao indray mandeha?
+
+7. N'ouvrez surtout pas cette porte avant mon retour, quel que soit ce qu'il arrive.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza manokatra izany varavarana izany mihitsy alohan'ny hiverenako, na inona na inona mitranga.
+
+8. Quel spectacle grandiose et émouvant nous avons eu la chance d'admirer ce soir !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena fampisehoana lehibe sy nanohina fo no nahitana anay anio hariva!
+
+9. Chaque matin, il se lève à cinq heures pour aller courir avant de commencer sa journée de travail.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Isaky ny maraina, mifarana amin'ny dimy ora izy mba hihazakazaka alohan'ny hanombohany ny asany.
+
+10. As-tu déjà songé à toutes ces personnes qui n'ont même pas de quoi se nourrir chaque jour ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Efa nieritreritra ny olona rehetra izay tsy manan-kohanina isan'andro ve ianao?
+
+11. Veuillez éteindre votre téléphone portable avant l'entrée en salle.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miangavy anao hamono ny findainao alohan'ny hidirana ao amin'ny efitrano.
+
+12. Que cet enfant est adorable avec son petit sourire malicieux !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena mahafatifaty io zaza io miaraka amin'ny tsikiny kely!
+
+13. Malgré la pluie et le vent, nous avons décidé de maintenir la sortie prévue.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Na dia eo aza ny orana sy ny rivotra, dia nanapa-kevitra ny hitana ny fivoahana nokasaina izahay.
+
+14. Ne serait-il pas plus sage d'attendre encore quelques jours avant de prendre une décision définitive ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy ho hendry kokoa ve ny miandry andro vitsivitsy alohan'ny handraisana fanapahan-kevitra farany?
+
+15. Allez, dépêchez-vous, le train va partir dans cinq minutes !
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Hafaingana, hiala ny lamasinina ao anatin'ny dimy minitra!
+
+16. Quelle tristesse de voir ce magnifique bâtiment historique laissé à l'abandon !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampalahelo ny mahita ity trano manan-tantara tsara tarehy ity nilaozana!
+
+17. Cette explication ne me semble pas tout à fait convaincante.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Ity fanazavana ity dia tsy dia mandresy lahatra ahy.
+
+18. Pourquoi n'as-tu jamais osé lui avouer tes véritables sentiments ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no tsy nanana herim-po nilaza taminy ny tena fihetseham-ponao mihitsy ianao?
+
+19. Ne franchissez pas cette ligne jaune sous aucun prétexte.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza miampita ity tsipika mavo ity na inona na inona antony.
+
+20. Comme j'aimerais pouvoir revivre ces moments magifiques encore une fois !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankafaty ny ho afaka hiaina ireo fotoana mahafinaritra ireo indray mandeha indray!
