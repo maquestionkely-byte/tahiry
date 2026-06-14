@@ -44,6 +44,56 @@
             position: relative;
             z-index: 2;
         }
+
+/* Barre plus petite */
+.niveau-toolbar {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 8px 12px;  /* Réduit de 15px à 8px */
+    margin: 15px 0 20px;  /* Réduit les marges */
+    border: 1px solid rgba(255,215,0,0.3);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;  /* Réduit l'espace entre les boutons */
+}
+
+.niveau-label {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #FFD966;
+    font-weight: 600;
+    font-size: 0.8rem;  /* Texte plus petit */
+}
+
+.niveau-btn {
+    background: transparent;
+    border: 1.5px solid #FFD700;  /* Bordure plus fine */
+    color: #FFD700;
+    padding: 6px 4px;  /* Boutons plus petits */
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    font-size: 0.75rem;  /* Texte plus petit */
+}
+
+/* Style spécial pour Hiresaka */
+.niveau-btn-hiresaka {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border: 2px solid #f39c12;
+    color: white;
+    padding: 8px 5px;  /* Plus petit */
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    font-size: 0.85rem;
+}
         .side-image {
             width: 160px;
             height: 160px;
@@ -541,7 +591,31 @@ body:has(#screenLecteurQCM.active) .footer {
             <div id="intermediaireContent" class="conteneur-dynamique"></div>
         </div>
     </div>
+<div id="screenPhotos" class="screen">
+    <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+    <div class="page-niveau">
+        <div class="bandeau-haut">
+            <div>
+                <h1>📸 Photos</h1>
+                <p>Galerie d'images</p>
+            </div>
+        </div>
+        <div id="photosContent" class="conteneur-dynamique"></div>
+    </div>
+</div>
 
+<div id="screenSms" class="screen">
+    <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+    <div class="page-niveau">
+        <div class="bandeau-haut">
+            <div>
+                <h1>💌 SMS D'AMOUR</h1>
+                <p>Messages d'amour</p>
+            </div>
+        </div>
+        <div id="smsContent" class="conteneur-dynamique"></div>
+    </div>
+</div>
     <div id="screenAvance" class="screen">
         <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
         <div class="page-niveau">
@@ -986,21 +1060,25 @@ function genererTousLesFichiersAVerifier() {
     }
     
     // 5. Fichiers spéciaux
-    const speciaux = [
-        { nom: "videolecon.txt", type: "video", dbName: "videolecon" },
-        { nom: "audiolecon.txt", type: "audio", dbName: "audiolecon" },
-        { nom: "difrleconun.txt", type: "dictionnaire", dbName: "difrleconun" },
-        { nom: "difrlecondeux.txt", type: "dictionnaire", dbName: "difrlecondeux" },
-        { nom: "difrunlecon.txt", type: "dictionnaire", dbName: "difrunlecon" },
-        { nom: "conjlecon.txt", type: "conjugaison", dbName: "conjlecon" },
-        { nom: "conjrelecon.txt", type: "conjugaison", dbName: "conjrelecon" },
-        { nom: "diallecon.txt", type: "dialogue", dbName: "diallecon" },
-        { nom: "diautecon.txt", type: "dialogue", dbName: "diautecon" },
-        { nom: "diunlecon.txt", type: "dialogue", dbName: "diunlecon" },
-        { nom: "diaulecon.txt", type: "dialogue", dbName: "diaulecon" },
-        { nom: "ditelecon.txt", type: "dialogue", dbName: "ditelecon" },
-        { nom: "hirelecon.txt", type: "hiresaka", dbName: "hirelecon" }
-    ];
+    // 5. Fichiers spéciaux
+const speciaux = [
+    { nom: "videolecon.txt", type: "video", dbName: "videolecon" },
+    { nom: "audiolecon.txt", type: "audio", dbName: "audiolecon" },
+    { nom: "difrleconun.txt", type: "dictionnaire", dbName: "difrleconun" },
+    { nom: "difrlecondeux.txt", type: "dictionnaire", dbName: "difrlecondeux" },
+    { nom: "difrunlecon.txt", type: "dictionnaire", dbName: "difrunlecon" },
+    { nom: "conjlecon.txt", type: "conjugaison", dbName: "conjlecon" },
+    { nom: "conjrelecon.txt", type: "conjugaison", dbName: "conjrelecon" },
+    { nom: "diallecon.txt", type: "dialogue", dbName: "diallecon" },
+    { nom: "diautecon.txt", type: "dialogue", dbName: "diautecon" },
+    { nom: "diunlecon.txt", type: "dialogue", dbName: "diunlecon" },
+    { nom: "diaulecon.txt", type: "dialogue", dbName: "diaulecon" },
+    { nom: "ditelecon.txt", type: "dialogue", dbName: "ditelecon" },
+    { nom: "hirelecon.txt", type: "hiresaka", dbName: "hirelecon" },
+    // ⭐ AJOUTER CES DEUX LIGNES ⭐
+    { nom: "hirephoto.txt", type: "photos", dbName: "hirephoto" },
+    { nom: "hirefitia.txt", type: "sms", dbName: "hirefitia" }
+];
 
     for (const special of speciaux) {
         if (!fichiersExistants.has(special.nom)) {
@@ -1855,16 +1933,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ======================= NAVIGATION =======================
-    function showScreen(screenName) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        const screens = { accueil:'screenAccueil', debutant:'screenDebutant', intermediaire:'screenIntermediaire', avance:'screenAvance', dictionnaire:'screenDictionnaire', conjugaison:'screenConjugaison', dialoguer:'screenDialoguer' };
-        document.getElementById(screens[screenName])?.classList.add('active');
-        
-        if (screenName === 'dictionnaire') genererListeLecons(dictionnaireLecons, 'dictionnaireContent', 'rond-vert', WORKER_URL + '/', 'dictionnaire');
-        if (screenName === 'conjugaison') genererListeLecons(conjugaisonLecons, 'conjugaisonContent', 'rond-vert', WORKER_URL + '/', 'conjugaison');
-        if (screenName === 'dialoguer') genererListeLecons(dialoguerLecons, 'dialoguerContent', 'rond-vert', WORKER_URL + '/', 'dialoguer');
-    }
+ function showScreen(screenName) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const screens = { 
+        accueil:'screenAccueil', 
+        debutant:'screenDebutant', 
+        intermediaire:'screenIntermediaire', 
+        avance:'screenAvance', 
+        dictionnaire:'screenDictionnaire', 
+        conjugaison:'screenConjugaison', 
+        dialoguer:'screenDialoguer',
+        photos:'screenPhotos',
+        sms:'screenSms'
+    };
+    document.getElementById(screens[screenName])?.classList.add('active');
     
+    if (screenName === 'dictionnaire') genererListeLecons(dictionnaireLecons, 'dictionnaireContent', 'rond-vert', WORKER_URL + '/', 'dictionnaire');
+    if (screenName === 'conjugaison') genererListeLecons(conjugaisonLecons, 'conjugaisonContent', 'rond-vert', WORKER_URL + '/', 'conjugaison');
+    if (screenName === 'dialoguer') genererListeLecons(dialoguerLecons, 'dialoguerContent', 'rond-vert', WORKER_URL + '/', 'dialoguer');
+    if (screenName === 'photos') chargerLecon("📸 Photos", "hirephoto.txt", `${WORKER_URL}/hirephoto.txt`, "Contenu photos non disponible");
+    if (screenName === 'sms') chargerLecon("💌 SMS D'AMOUR", "hirefitia.txt", `${WORKER_URL}/hirefitia.txt`, "Contenu SMS non disponible");
+}   
    // ======================= IMAGES AVEC NOMS FIXES =======================
 const NOM_IMAGE_PROFIL = 'photo_profil';
 const NOM_IMAGE_NIRY = 'photo_niry';
@@ -1999,50 +2088,93 @@ btnHiresaka.addEventListener('click', async () => {
 });
 toolbar.appendChild(btnHiresaka);
 
-const menuItems = [
-    { id: 'debutant', icon: '🌱', title: 'Débutant', desc: 'A1 - A2', couleur: '#3498db' },
-    { id: 'intermediaire', icon: '🌿', title: 'Intermédiaire', desc: 'B1 - B2', couleur: '#2ecc71' },
-    { id: 'avance', icon: '🌳', title: 'Avancé', desc: 'C1 - C2', couleur: '#e74c3c' },
-    { id: 'dictionnaire', icon: '📖', title: 'Dictionnaire', desc: 'Français ⇄ Malagasy', couleur: '#9b59b6' },
-    { id: 'conjugaison', icon: '📘', title: 'Conjugaison', desc: 'Conjuguer les verbes', couleur: '#1abc9c' },
-    { id: 'dialoguer', icon: '💬', title: 'Dialoguer', desc: 'Conversations', couleur: '#f39c12' }
-];
+const menuItems = [];
 
 
- // ======================= CARTES DANS LA LISTE D'ACCUEIL =======================
-    menuItems.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'niveau-card';
-        card.innerHTML = `<div class="niveau-info"><span class="niveau-icon">${item.icon}</span><div><div class="niveau-title">${item.icon} ${item.title}</div><div class="niveau-desc">${item.desc}</div></div></div><span class="niveau-arrow">→</span>`;
-        card.addEventListener('click', () => showScreen(item.id));
-        niveauList.appendChild(card);
-    });
+ // ======================= CARTES DANS LA LISTE 
     
-    // Carte Vidéo
-    const cardVideo = document.createElement('div');
-    cardVideo.className = 'niveau-card';
-    cardVideo.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,235,230,0.95) 100%)';
-    cardVideo.style.borderLeft = '8px solid #e74c3c';
-    cardVideo.innerHTML = `<div class="niveau-info"><span class="niveau-icon">🎬</span><div><div class="niveau-title">🎬 Vidéo</div><div class="niveau-desc">Hijery horonantsary</div></div></div><span class="niveau-arrow">📹</span>`;
-    cardVideo.addEventListener('click', async () => {
-        const nomFichier = "videolecon.txt";
-        const url = `${WORKER_URL}/${nomFichier}`;
-        chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
-    });
-    niveauList.appendChild(cardVideo);
+   // ======================= CARTES DANS LA LISTE D'ACCUEIL =======================
+menuItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'niveau-card';
     
-    // Carte Audio
-    const cardAudio = document.createElement('div');
-    cardAudio.className = 'niveau-card';
-    cardAudio.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(230,255,235,0.95) 100%)';
-    cardAudio.style.borderLeft = '8px solid #2ecc71';
-    cardAudio.innerHTML = `<div class="niveau-info"><span class="niveau-icon">🎵</span><div><div class="niveau-title">🎵 Audio</div><div class="niveau-desc">Hihaino audio</div></div></div><span class="niveau-arrow">🎧</span>`;
-    cardAudio.addEventListener('click', async () => {
-        const nomFichier = "audiolecon.txt";
-        const url = `${WORKER_URL}/${nomFichier}`;
-        chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
-    });
-    niveauList.appendChild(cardAudio);
+    // 🌈 Dégradés de couleurs différents pour chaque carte
+    const gradients = {
+        'photos': 'linear-gradient(135deg, #ffe4ec, #fffff)',
+        'sms': 'linear-gradient(135deg, #ffe0f0, #fff0fa)' };
+    
+    // Bordures colorées
+    const borderColors = {
+        'photos': '#e84393',
+        'sms': '#fd79a8',
+        'debutant': '#3498db',
+        'intermediaire': '#2ecc71',
+        'avance': '#e74c3c',
+        'dictionnaire': '#9b59b6',
+        'conjugaison': '#1abc9c',
+        'dialoguer': '#f39c12'
+    };
+    
+    card.style.background = gradients[item.id] || 'linear-gradient(135deg, #f5f5f5, #fafafa)';
+    card.style.borderLeft = `6px solid ${borderColors[item.id] || '#0055A4'}`;
+    card.style.borderRadius = '20px';
+    card.style.transition = 'all 0.3s ease';
+    card.style.cursor = 'pointer';
+    card.style.marginBottom = '12px';
+    card.style.padding = '12px 16px';
+    card.style.display = 'flex';
+    card.style.alignItems = 'center';
+    card.style.justifyContent = 'space-between';
+    card.style.flexWrap = 'wrap';
+    card.style.gap = '8px';
+    card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
+    
+    card.innerHTML = `
+        <div class="niveau-info" style="display: flex; align-items: center; gap: 14px; flex: 2;">
+            <span class="niveau-icon" style="font-size: 1.8rem;">${item.icon}</span>
+            <div>
+                <div class="niveau-title" style="font-weight: bold; font-size: 1rem; color: #1a2a3a;">${item.title}</div>
+                <div class="niveau-desc" style="font-size: 0.7rem; color: #5a6a7a; margin-top: 2px;">${item.desc}</div>
+            </div>
+        </div>
+        <span class="niveau-arrow" style="font-size: 1.2rem; color: ${borderColors[item.id] || '#0055A4'};">→</span>
+    `;
+    
+    card.addEventListener('click', () => showScreen(item.id));
+    niveauList.appendChild(card);
+});
+
+
+ // Carte Vidéo
+    
+  // ======================= CARTES PHOTOS ET SMS (style comme Vidéo/Audio) =======================
+
+// Carte PHOTOS (comme Vidéo)
+const cardPhotos = document.createElement('div');
+cardPhotos.className = 'niveau-card';
+cardPhotos.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,240,245,0.95) 100%)';
+cardPhotos.style.borderLeft = '8px solid #e84393';
+cardPhotos.innerHTML = `<div class="niveau-info"><span class="niveau-icon">📸</span><div><div class="niveau-title">📸 Photos</div><div class="niveau-desc">Photos motivantes, etc.</div></div></div><span class="niveau-arrow">→</span>`;
+cardPhotos.addEventListener('click', async () => {
+    const nomFichier = "hirephoto.txt";
+    const url = `${WORKER_URL}/${nomFichier}`;
+    chargerLecon("📸 Photos", nomFichier, url, "Contenu photos non disponible");
+});
+niveauList.appendChild(cardPhotos);
+
+// Carte SMS D'AMOUR (comme Audio)
+const cardSms = document.createElement('div');
+cardSms.className = 'niveau-card';
+cardSms.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,235,245,0.95) 100%)';
+cardSms.style.borderLeft = '8px solid #fd79a8';
+cardSms.innerHTML = `<div class="niveau-info"><span class="niveau-icon">💌</span><div><div class="niveau-title">💌 SMS D'AMOUR</div><div class="niveau-desc">Messages d'amour</div></div></div><span class="niveau-arrow">→</span>`;
+cardSms.addEventListener('click', async () => {
+    const nomFichier = "hirefitia.txt";
+    const url = `${WORKER_URL}/${nomFichier}`;
+    chargerLecon("💌 SMS D'AMOUR", nomFichier, url, "Contenu SMS non disponible");
+});
+niveauList.appendChild(cardSms);  
+
     
     // Carte Hiresaka
     const cardHiresaka = document.createElement('div');

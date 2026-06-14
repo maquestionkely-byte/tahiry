@@ -142,3 +142,213 @@ B) Interrogative
 C) Impérative
 *D) Exclamative
 TRADUCTION: Sakafo matsiro tokoa!
+
+21. Elle ne veut pas venir avec nous.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy te hiaraka aminay izy.
+
+22. Peux-tu m'aider à porter ce sac ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Afaka manampy ahy hitondra ity kitapo ity ve ianao?
+
+23. Ne marchez pas sur la pelouse.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mandeha eo amin'ny bozaka.
+
+24. Comme j'ai hâte de te revoir !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena manantena ny hahita anao indray aho!
+
+25. Il pleut souvent en automne.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Matetika ny orana amin'ny fararano.
+
+26. Est-ce que tu aimes les fraises ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tia voankazo ve ianao?
+
+27. Asseyez-vous et écoutez.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Mipetraha ary henoy.
+
+28. Quelle journée magnifique !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Andro mahafinaritra tokoa!
+
+29. Le bébé dort paisiblement.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Matory am-pilaminana ny zazakely.
+
+30. Pourquoi as-tu menti ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no nandainga ianao?
+
+31. Fermez la fenêtre, il fait froid.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Akatony ny varavarankely, mangatsiaka.
+
+32. Que cette histoire est triste !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampalahelo ity tantara ity!
+
+33. Mon père travaille dans un bureau.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Miasa ao amin'ny birao ny raiko.
+
+34. Viendras-tu à mon anniversaire ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Ho tonga amin'ny fitsingerenan'ny andro nahaterahako ve ianao?
+
+35. Ne touchez pas à ce bouton rouge.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mikasika io bokotra mena io.
+
+36. Comme elle danse bien !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena mahay mandihy izy!
+
+37. Nous avons faim.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Noana izahay.
+
+38. Où allez-vous cet été ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Aiza no alehanao amin'ny fahavaratra?
+
+39. Prenez soin de vous.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Karakarao tsara ny tenanao.
+
+40. Quel talent extraordinaire !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena talenta miavaka!
+
+41. Le train part dans cinq minutes.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Hiala ao anatin'ny dimy minitra ny lamasinina.
+
+42. Sais-tu parler espagnol ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mahay miteny espaniola ve ianao?
+
+43. Ne mange pas trop de sucreries.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mihinana vatomamy be loatra.
+
+44. Que ce jardin est bien entretenu !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena voakarakara tsara ity zaridaina ity!
+
+45. Il habite à Lyon depuis dix ans.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nipetraka tany Lyon nandritra ny folo taona izy.
+
+46. À qui appartient cette voiture ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Iza no tompon'ity fiara ity?
+
+47. Soufflez les bougies et faites un vœu.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Tsofino ny labozia ary manaova voady.
+
+48. Comme il est gentil avec tout le monde !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsara fanahy amin'ny olona rehetra izy!
+
+49. Je n'ai jamais vu un film aussi ennuyeux.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy mbola nahita sarimihetsika mandreraka toy izany mihitsy aho.
+
+50. Voulez-vous du sucre dans votre café ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Te siramamy ao amin'ny kafe ve ianao?

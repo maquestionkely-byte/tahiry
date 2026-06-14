@@ -1,882 +1,353 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>QCM - Français par Niveaux</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: linear-gradient(135deg, #0f2b36, #1a4a5f, #2c3e50);
-            min-height: 100vh;
-            padding: 25px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
-        }
-        
-        /* Écran des niveaux */
-        .levels-container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 2rem;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
-            overflow: hidden;
-        }
-        
-        .levels-header {
-            background: #0f2c3d;
-            padding: 1.5rem 2rem;
-            text-align: center;
-        }
-        
-        .levels-header h1 {
-            color: #ffdd99;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .levels-header p {
-            color: #cbd5e6;
-            margin-top: 0.5rem;
-        }
-        
-        .levels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-        }
-        
-        .level-card {
-            background: #f8fafc;
-            border-radius: 1.5rem;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid #e2edf7;
-            position: relative;
-        }
-        
-        .level-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffb347;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        /* Bordure verte pour les niveaux en cache */
-        .level-card.cached {
-            border-color: #2b7a4b;
-            background: #f0fff4;
-        }
-        
-        .level-card.cached:hover {
-            border-color: #ffb347;
-        }
-        
-        .level-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #1d4e6e;
-        }
-        
-        .level-card.cached .level-number {
-            color: #2b7a4b;
-        }
-        
-        .level-badge {
-            background: #ffb347;
-            color: #1e2f3a;
-            padding: 5px 10px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            margin-top: 0.8rem;
-            display: inline-block;
-        }
-        
-        .cached-badge {
-            background: #2b7a4b;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 40px;
-            font-size: 0.6rem;
-            margin-top: 0.5rem;
-            display: inline-block;
-        }
-        
-        /* Quiz container (masqué par défaut) */
-        .quiz-container {
-            max-width: 1050px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 2rem;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.35);
-            overflow: hidden;
-        }
-        
-        .quiz-header {
-            background: #0f2c3d;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .quiz-header h1 {
-            color: #ffdd99;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .back-btn {
-            background: #6c757d;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 60px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        
-        .back-btn:hover { background: #5a6268; transform: scale(0.96); }
-        
-        .update-indicator {
-            background: #2b7a4b;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            cursor: pointer;
-        }
-        
-        .update-indicator.updating {
-            background: #f39c12;
-            animation: pulse 1s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-        
-        .progress-bar {
-            background: #eef2f7;
-            padding: 12px 28px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #cbdae9;
-            font-weight: 600;
-        }
-        
-        .badge {
-            background: #1d4e6e;
-            color: white;
-            padding: 5px 18px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-        }
-        
-        .score-badge { background: #2b7a4b; }
-        
-        .question-area { padding: 2rem 2rem 1rem 2rem; }
-        
-        .question-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .question-text {
-            font-size: 1.65rem;
-            font-weight: 700;
-            color: #0a2f44;
-            line-height: 1.4;
-            border-left: 6px solid #ffb347;
-            padding-left: 22px;
-            flex: 1;
-        }
-        
-        .mg-translate-btn {
-            background: #2c7a47;
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 60px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.2s;
-        }
-        
-        .mg-translate-btn:hover { background: #1f5e38; transform: scale(0.96); }
-        
-        .translation-popup {
-            background: #f0e6c5;
-            color: #2d4a22;
-            padding: 6px 12px;
-            border-radius: 24px;
-            font-size: 0.9rem;
-            margin-top: 8px;
-            margin-bottom: 12px;
-            border-left: 4px solid #ffb347;
-            display: inline-block;
-            width: 100%;
-        }
-        
-        .options-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 0.5rem; }
-        
-        .option-card {
-            background: #f8fafc;
-            border-radius: 80px;
-            padding: 12px 22px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid #e2edf7;
-        }
-        
-        .option-card:hover { background: #eef4ff; transform: translateX(6px); border-color: #ffb347; }
-        
-        .option-letter {
-            width: 36px;
-            height: 36px;
-            background: #cbdde9;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-right: 18px;
-        }
-        
-        .option-card.selected { background: #ffefd6; border: 2px solid #ffb347; }
-        .option-card.selected .option-letter { background: #ffb347; color: white; }
-        
-        .final-report {
-            background: #eef3fc;
-            margin: 1rem 2rem 2rem 2rem;
-            border-radius: 28px;
-            padding: 1.5rem;
-        }
-        
-        .final-header { font-size: 1.6rem; font-weight: bold; text-align: center; margin-bottom: 1rem; }
-        
-        .final-score {
-            background: #1d4e6e;
-            color: white;
-            display: inline-block;
-            padding: 8px 25px;
-            border-radius: 60px;
-            font-size: 1.3rem;
-        }
-        
-        .questions-list { max-height: 550px; overflow-y: auto; margin-top: 20px; padding-right: 8px; }
-        
-        .question-summary {
-            background: white;
-            border-radius: 20px;
-            padding: 12px 18px;
-            margin-bottom: 12px;
-            border-left: 5px solid;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .question-summary.correct { border-left-color: #2b7a4b; }
-        .question-summary.wrong { border-left-color: #c0392b; }
-        
-        .restart-btn {
-            background: #ffb347;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 60px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 20px;
-            display: block;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .restart-btn:hover { background: #ffa01e; transform: scale(0.97); }
-        
-        footer { font-size: 0.7rem; text-align: center; padding: 1rem; color: #6b8ba0; }
-        
-        .loading-container {
-            text-align: center;
-            padding: 3rem;
-            color: white;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid #ffdd99;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .hidden { display: none; }
-        .text-center { text-align: center; }
-        .refresh-btn {
-            background: #1d4e6e;
-            border: none;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 0.8rem;
-        }
-        .refresh-btn:hover { background: #0f3a52; }
-        
-        @media (max-width: 620px) {
-            .question-text { font-size: 1.2rem; }
-            .option-text { font-size: 0.85rem; }
-            .levels-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem; padding: 1.5rem; }
-            .level-number { font-size: 1.5rem; }
-        }
-    </style>
-</head>
-<body>
-<div id="appContainer"></div>
+Exercice : Articles partitifs - Niveau 1 (très facile) - Partitifs simples
 
-<script>
-    // ==================== CONFIGURATION ====================
-    const LEVELS = [
-        { id: 1, name: "Niveau 01", file: "fichierqcmun.txt", display: "Niveau 01" },
-        { id: 2, name: "Niveau 02", file: "fichierqcmdeux.txt", display: "Niveau 02" },
-        { id: 3, name: "Niveau 03", file: "fichierqcmtrois.txt", display: "Niveau 03" },
-        { id: 4, name: "Niveau 04", file: "fichierqcmquatre.txt", display: "Niveau 04" },
-        { id: 5, name: "Niveau 05", file: "fichierqcmcinq.txt", display: "Niveau 05" }
-    ];
-    
-    const BASE_URL = 'https://falytokoa.ahofaly62.workers.dev/';
-    const DATE_INFO_URL = BASE_URL + 'date_rehetra.txt';
-    const DB_NAME = 'qcm_niveaux_cache';
-    const STORE_NAME = 'qcm_contenus';
-    
-    let currentLevel = null;
-    let questions = [];
-    let quizTitle = "";
-    let currentIdx = 0;
-    let userSelections = [];
-    let isLocked = [];
-    let currentScore = 0;
-    let quizFinished = false;
-    let currentTranslationDiv = null;
-    let currentVersionDate = null;
-    
-    const appContainer = document.getElementById('appContainer');
-    
-    // ==================== INDEXEDDB ====================
-    function ouvrirDB() {
-        return new Promise((resolve, reject) => {
-            const request = indexedDB.open(DB_NAME, 2);
-            request.onerror = () => reject(request.error);
-            request.onsuccess = (event) => resolve(event.target.result);
-            request.onupgradeneeded = (event) => {
-                const db = event.target.result;
-                if (!db.objectStoreNames.contains(STORE_NAME)) {
-                    db.createObjectStore(STORE_NAME);
-                    console.log("✅ Base IndexedDB créée");
-                }
-            };
-        });
-    }
-    
-    async function sauvegarderDansCache(levelId, contenu, versionDate) {
-        try {
-            const db = await ouvrirDB();
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([STORE_NAME], 'readwrite');
-                const store = transaction.objectStore(STORE_NAME);
-                store.put(contenu, `content_${levelId}`);
-                store.put(versionDate, `version_${levelId}`);
-                transaction.oncomplete = () => {
-                    console.log(`💾 Niveau ${levelId} sauvegardé`);
-                    resolve();
-                };
-                transaction.onerror = () => reject(transaction.error);
-            });
-        } catch (error) {
-            console.error("Erreur sauvegarde:", error);
-            throw error;
-        }
-    }
-    
-    async function recupererDepuisCache(levelId) {
-        try {
-            const db = await ouvrirDB();
-            return new Promise((resolve) => {
-                const transaction = db.transaction([STORE_NAME], 'readonly');
-                const store = transaction.objectStore(STORE_NAME);
-                const requestContent = store.get(`content_${levelId}`);
-                const requestVersion = store.get(`version_${levelId}`);
-                
-                let content = null;
-                let version = null;
-                let completed = 0;
-                
-                function checkComplete() {
-                    completed++;
-                    if (completed === 2) {
-                        resolve({ content, version });
-                    }
-                }
-                
-                requestContent.onsuccess = () => { content = requestContent.result; checkComplete(); };
-                requestVersion.onsuccess = () => { version = requestVersion.result; checkComplete(); };
-                requestContent.onerror = () => checkComplete();
-                requestVersion.onerror = () => checkComplete();
-            });
-        } catch (error) {
-            console.error("Erreur lecture cache:", error);
-            return { content: null, version: null };
-        }
-    }
-    
-    async function verifierNiveauEnCache(levelId) {
-        try {
-            const db = await ouvrirDB();
-            return new Promise((resolve) => {
-                const transaction = db.transaction([STORE_NAME], 'readonly');
-                const store = transaction.objectStore(STORE_NAME);
-                const request = store.get(`content_${levelId}`);
-                request.onsuccess = () => {
-                    resolve(request.result !== undefined && request.result !== null);
-                };
-                request.onerror = () => resolve(false);
-            });
-        } catch {
-            return false;
-        }
-    }
-    
-    // ==================== EXTRAIRE LA DATE DE VERSION ====================
-    async function getRemoteVersionDate(fileName) {
-        try {
-            const response = await fetch(DATE_INFO_URL, { cache: 'no-cache' });
-            if (!response.ok) return null;
-            const content = await response.text();
-            const blocks = content.split(/DERNIÈRE MISE À JOUR/);
-            for (const block of blocks) {
-                const fileMatch = block.match(/📁 Fichier:\s*([^\n]+)/);
-                if (fileMatch && fileMatch[1].trim() === fileName) {
-                    const dateMatch = block.match(/📆\s*([\d\/]+\s+[\d:]+)/);
-                    if (dateMatch) return dateMatch[1].trim();
-                    const dayMatch = block.match(/📅\s*([\d\/]+)/);
-                    const timeMatch = block.match(/⏰\s*([\d:]+)/);
-                    if (dayMatch && timeMatch) return `${dayMatch[1]} ${timeMatch[1]}`;
-                }
-            }
-            return null;
-        } catch (error) {
-            console.warn("Impossible de récupérer la version distante:", error);
-            return null;
-        }
-    }
-    
-    // ==================== PARSEUR DU FICHIER TEXTE ====================
-    function parseTextFile(content) {
-        const lines = content.split('\n');
-        let title = "QCM - Français";
-        const questionsList = [];
-        let currentQuestion = null;
-        let currentOptions = [];
-        let currentCorrect = null;
-        let currentTranslation = null;
-        
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i].trim();
-            if (line === "") continue;
-            
-            if (line.startsWith('TITRE:')) {
-                title = line.replace('TITRE:', '').trim();
-                continue;
-            }
-            
-            const questionMatch = line.match(/^(\d+)\.\s+(.+)$/);
-            if (questionMatch) {
-                if (currentQuestion !== null && currentOptions.length > 0) {
-                    questionsList.push({
-                        q: currentQuestion,
-                        options: [...currentOptions],
-                        correct: currentCorrect,
-                        mg: currentTranslation || ""
-                    });
-                }
-                currentQuestion = questionMatch[2];
-                currentOptions = [];
-                currentCorrect = null;
-                currentTranslation = null;
-                continue;
-            }
-            
-            const starOptionMatch = line.match(/^\*([A-D])\)\s+(.+)$/);
-            if (starOptionMatch && currentQuestion !== null) {
-                currentCorrect = starOptionMatch[1];
-                currentOptions.push(starOptionMatch[2].trim());
-                continue;
-            }
-            
-            const normalOptionMatch = line.match(/^([A-D])\)\s+(.+)$/);
-            if (normalOptionMatch && currentQuestion !== null) {
-                currentOptions.push(normalOptionMatch[2].trim());
-                continue;
-            }
-            
-            if (line.startsWith('TRADUCTION:') && currentQuestion !== null) {
-                currentTranslation = line.replace('TRADUCTION:', '').trim();
-                continue;
-            }
-        }
-        
-        if (currentQuestion !== null && currentOptions.length > 0) {
-            questionsList.push({
-                q: currentQuestion,
-                options: [...currentOptions],
-                correct: currentCorrect,
-                mg: currentTranslation || ""
-            });
-        }
-        
-        return { title, questions: questionsList };
-    }
-    
-    // ==================== TÉLÉCHARGER LE FICHIER ====================
-    async function telechargerFichier(fileName) {
-        const url = BASE_URL + fileName;
-        const response = await fetch(url, { cache: 'no-cache' });
-        if (!response.ok) throw new Error(`HTTP ${response.status} - Fichier ${fileName} non trouvé`);
-        const content = await response.text();
-        if (!content || content.length < 50) throw new Error("Fichier vide ou trop court");
-        return content;
-    }
-    
-    // ==================== CHARGER UN NIVEAU ====================
-    async function loadLevel(level, forceDownload = false) {
-        appContainer.innerHTML = `
-            <div class="loading-container" id="loadingDiv">
-                <div class="spinner"></div>
-                <h2>Chargement du ${level.display}</h2>
-                <p id="loadingMessage">Vérification du cache...</p>
-            </div>
-        `;
-        
-        const loadingMessage = document.getElementById('loadingMessage');
-        
-        try {
-            const remoteVersion = await getRemoteVersionDate(level.file);
-            const cached = await recupererDepuisCache(level.id);
-            let content = null;
-            let needUpdate = forceDownload;
-            
-            if (cached.content && !forceDownload) {
-                content = cached.content;
-                currentVersionDate = cached.version;
-                
-                if (remoteVersion && cached.version !== remoteVersion) {
-                    needUpdate = true;
-                    if (loadingMessage) loadingMessage.innerText = 'Nouvelle version disponible...';
-                }
-            }
-            
-            if (needUpdate || !content) {
-                if (loadingMessage) loadingMessage.innerText = `Téléchargement...`;
-                content = await telechargerFichier(level.file);
-                const newVersion = remoteVersion || new Date().toLocaleString('fr-FR');
-                await sauvegarderDansCache(level.id, content, newVersion);
-                currentVersionDate = newVersion;
-            }
-            
-            if (loadingMessage) loadingMessage.innerText = 'Analyse du fichier...';
-            const parsed = parseTextFile(content);
-            questions = parsed.questions;
-            quizTitle = parsed.title;
-            
-            if (!questions || questions.length === 0) {
-                throw new Error("Aucune question trouvée");
-            }
-            
-            afficherQuiz(level);
-            
-        } catch (error) {
-            appContainer.innerHTML = `
-                <div class="quiz-container">
-                    <div class="quiz-header">
-                        <h1>❌ Erreur</h1>
-                        <button class="back-btn" onclick="location.reload()">🏠 Accueil</button>
-                    </div>
-                    <div class="question-area">
-                        <div class="text-center" style="padding: 2rem;">
-                            <p style="color: #c0392b; margin-bottom: 20px;">${error.message}</p>
-                            <button onclick="location.reload()" style="background: #ffb347; border: none; padding: 12px 25px; border-radius: 60px; cursor: pointer;">🔄 Réessayer</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-    }
-    
-    // ==================== AFFICHER LE QCM ====================
-    function afficherQuiz(level) {
-        currentIdx = 0;
-        userSelections = new Array(questions.length).fill(null);
-        isLocked = new Array(questions.length).fill(false);
-        currentScore = 0;
-        quizFinished = false;
-        
-        appContainer.innerHTML = `
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <h1 id="quizTitle">${quizTitle} - ${level.display}</h1>
-                    <div style="display: flex; gap: 10px;">
-                        <button class="back-btn" id="backToLevelsBtn">🏠 Niveaux</button>
-                        <div class="update-indicator" id="updateIndicator" title="Vérifier les mises à jour">🔄 Vérifier</div>
-                    </div>
-                </div>
-                <div id="quizContent"></div>
-                <footer>✅ Cliquez sur une réponse → passage automatique. 🇲🇬 Bouton vert pour traduction</footer>
-            </div>
-        `;
-        
-        document.getElementById('backToLevelsBtn').addEventListener('click', () => showLevelsScreen());
-        
-        const updateIndicator = document.getElementById('updateIndicator');
-        if (updateIndicator) {
-            updateIndicator.addEventListener('click', async () => {
-                updateIndicator.classList.add('updating');
-                updateIndicator.textContent = '⏳ Mise à jour...';
-                await loadLevel(level, true);
-                updateIndicator.classList.remove('updating');
-            });
-        }
-        
-        renderCurrent();
-    }
-    
-    function toggleTranslation() {
-        if (currentTranslationDiv) {
-            currentTranslationDiv.style.display = currentTranslationDiv.style.display === 'none' ? 'block' : 'none';
-        }
-    }
-    
-    function renderCurrent() {
-        if (quizFinished || !questions.length) return;
-        const q = questions[currentIdx];
-        const alreadyAnswered = (userSelections[currentIdx] !== null);
-        const letters = ['A', 'B', 'C', 'D'];
-        
-        let optsHtml = '';
-        q.options.forEach((opt, idx) => {
-            const letter = letters[idx];
-            const selectedClass = (alreadyAnswered && userSelections[currentIdx] === letter) ? 'selected' : '';
-            optsHtml += `
-                <div class="option-card ${selectedClass}" data-opt-letter="${letter}">
-                    <div class="option-letter">${letter}</div>
-                    <span class="option-text">${opt}</span>
-                </div>
-            `;
-        });
-        
-        const html = `
-            <div class="progress-bar">
-                <span class="badge" id="qCounter">Question ${currentIdx+1} / ${questions.length}</span>
-                <span class="badge score-badge" id="liveScore">🎯 Score : ${currentScore} / ${questions.length}</span>
-            </div>
-            <div class="question-area">
-                <div class="question-header">
-                    <div class="question-text">${currentIdx+1}. ${q.q}</div>
-                    <button class="mg-translate-btn" id="mgTranslateBtn">🇲🇬 MG</button>
-                </div>
-                <div id="translationPopup" class="translation-popup" style="display: none;">🇲🇬 ${q.mg || "Traduction non disponible"}</div>
-                <div class="options-list" id="optionsContainer">
-                    ${optsHtml}
-                </div>
-            </div>
-        `;
-        
-        const quizContent = document.getElementById('quizContent');
-        if (quizContent) quizContent.innerHTML = html;
-        
-        currentTranslationDiv = document.getElementById('translationPopup');
-        const mgBtn = document.getElementById('mgTranslateBtn');
-        if (mgBtn) {
-            mgBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleTranslation();
-            });
-        }
-        
-        if (!alreadyAnswered && !isLocked[currentIdx] && !quizFinished) {
-            document.querySelectorAll('.option-card').forEach(div => {
-                div.addEventListener('click', () => {
-                    if (isLocked[currentIdx] || quizFinished) return;
-                    const chosenLetter = div.getAttribute('data-opt-letter');
-                    if (chosenLetter) handleAnswer(chosenLetter);
-                });
-            });
-        } else if (alreadyAnswered) {
-            document.querySelectorAll('.option-card').forEach(div => {
-                div.style.cursor = "default";
-                div.style.opacity = "0.7";
-                div.style.pointerEvents = "none";
-            });
-        }
-        
-        const qCounter = document.getElementById('qCounter');
-        const liveScore = document.getElementById('liveScore');
-        if (qCounter) qCounter.innerText = `Question ${currentIdx+1} / ${questions.length}`;
-        if (liveScore) liveScore.innerText = `🎯 Score : ${currentScore} / ${questions.length}`;
-    }
-    
-    function handleAnswer(selectedLetter) {
-        if (isLocked[currentIdx] || quizFinished) return;
-        isLocked[currentIdx] = true;
-        const q = questions[currentIdx];
-        if (selectedLetter === q.correct) currentScore++;
-        userSelections[currentIdx] = selectedLetter;
-        renderCurrent();
-        setTimeout(() => {
-            if (currentIdx + 1 < questions.length) {
-                currentIdx++;
-                renderCurrent();
-            } else {
-                finishQuiz();
-            }
-        }, 380);
-    }
-    
-    function finishQuiz() {
-        quizFinished = true;
-        const totalCorrect = currentScore;
-        const percent = Math.round((totalCorrect / questions.length) * 100);
-        
-        let listHtml = `<div class="final-report">
-            <div class="final-header">📊 RÉSULTAT FINAL</div>
-            <div class="text-center"><span class="final-score">${totalCorrect} / ${questions.length} (${percent}%)</span></div>
-            ${currentVersionDate ? `<div class="text-center" style="font-size: 0.7rem; color: #888; margin-top: 5px;">📅 Version: ${currentVersionDate}</div>` : ''}
-            <div class="questions-list">
-                <h3>📋 Corrigé complet :</h3>`;
-        
-        for (let i = 0; i < questions.length; i++) {
-            const q = questions[i];
-            const userChoice = userSelections[i];
-            const lettersIndex = ['A','B','C','D'];
-            const isOk = (userChoice === q.correct);
-            const userText = userChoice ? q.options[lettersIndex.indexOf(userChoice)] : "(non répondue)";
-            const correctAnswerText = q.options[lettersIndex.indexOf(q.correct)];
-            const borderClass = isOk ? "correct" : "wrong";
-            listHtml += `
-                <div class="question-summary ${borderClass}">
-                    <strong>${isOk ? "✅" : "❌"} Q${i+1} : ${q.q}</strong><br>
-                    <span>✏️ Votre réponse : ${userChoice || "—"} → "${userText}"</span><br>
-                    <span>📌 Bonne réponse : ${q.correct} → "${correctAnswerText}"</span>
-                    ${q.mg ? `<br><span style="font-size:0.8rem;">🇲🇬 Malagasy: ${q.mg}</span>` : ''}
-                </div>
-            `;
-        }
-        listHtml += `<button class="restart-btn" id="restartQuizBtn">🔄 Recommencer le quiz</button>`;
-        listHtml += `</div></div>`;
-        
-        const quizContent = document.getElementById('quizContent');
-        if (quizContent) {
-            quizContent.innerHTML = `<div class="progress-bar"><span class="badge">Terminé !</span><span class="badge score-badge">🎯 Score final : ${totalCorrect} / ${questions.length}</span></div>${listHtml}`;
-        }
-        
-        const restartBtn = document.getElementById('restartQuizBtn');
-        if (restartBtn) restartBtn.addEventListener('click', () => resetQuiz());
-    }
-    
-    function resetQuiz() {
-        currentIdx = 0;
-        userSelections = new Array(questions.length).fill(null);
-        isLocked = new Array(questions.length).fill(false);
-        currentScore = 0;
-        quizFinished = false;
-        renderCurrent();
-    }
-    
-    // ==================== ÉCRAN DES NIVEAUX ====================
-    async function showLevelsScreen() {
-        // Vérifier quels niveaux sont en cache
-        const cacheStatus = {};
-        for (const level of LEVELS) {
-            cacheStatus[level.id] = await verifierNiveauEnCache(level.id);
-        }
-        
-        let levelsHtml = `
-            <div class="levels-container">
-                <div class="levels-header">
-                    <h1>📚 Choisissez votre niveau</h1>
-                    <p>Sélectionnez un niveau pour commencer le QCM</p>
-                    <button class="refresh-btn" id="refreshCacheBtn">🔄 Vérifier les niveaux téléchargés</button>
-                </div>
-                <div class="levels-grid">
-        `;
-        
-        LEVELS.forEach(level => {
-            const isCached = cacheStatus[level.id];
-            const cachedClass = isCached ? 'cached' : '';
-            const cachedBadge = isCached ? '<div class="cached-badge">✓ Téléchargé</div>' : '';
-            
-            levelsHtml += `
-                <div class="level-card ${cachedClass}" data-level-id="${level.id}" data-level-file="${level.file}" data-level-name="${level.display}">
-                    <div class="level-number">${level.display}</div>
-                    ${cachedBadge}
-                    <div class="level-badge">📖 Commencer</div>
-                </div>
-            `;
-        });
-        
-        levelsHtml += `
-                </div>
-                <footer>📁 Les niveaux avec bordure verte sont déjà téléchargés</footer>
-            </div>
-        `;
-        
-        appContainer.innerHTML = levelsHtml;
-        
-        // Ajouter les événements de clic
-        document.querySelectorAll('.level-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const levelId = parseInt(card.dataset.levelId);
-                const level = LEVELS.find(l => l.id === levelId);
-                if (level) {
-                    loadLevel(level);
-                }
-            });
-        });
-        
-        // Bouton rafraîchir
-        const refreshBtn = document.getElementById('refreshCacheBtn');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => showLevelsScreen());
-        }
-    }
-    
-    // ==================== LANCEMENT ====================
-    showLevelsScreen();
-</script>
-</body>
-</html>
+Consigne : Choisissez l'article partitif correct (du, de la, de l', des).
+
+1. Je bois ___ eau.
+A) du
+B) de la
+C) de l'
+*C) de l'
+TRADUCTION: Misotro rano aho.
+
+2. Il mange ___ pain.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mihinana mofo izy.
+
+3. Elle prend ___ confiture.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Maka confiture izy.
+
+4. Nous achetons ___ légumes.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Mividy legioma izahay.
+
+5. Tu veux ___ café ?
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Te kafe ve ianao?
+
+6. Il met ___ sel dans son assiette.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mametraka sira ao amin'ny loviny izy.
+
+7. Elle boit ___ limonade.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Misotro limonada izy.
+
+8. J'ai ___ amis en France.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Manana namana any Frantsa aho.
+
+9. Il mange ___ riz.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mihinana vary izy.
+
+10. Elle prend ___ soupe.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Maka lasopy izy.
+
+11. Nous avons ___ chance.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana vintana izahay.
+
+12. Tu achètes ___ fruits.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Mividy voankazo ianao.
+
+13. Il boit ___ vin.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Misotro divay izy.
+
+14. Elle met ___ beurre sur son pain.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mametraka dibera eo amin'ny mofony izy.
+
+15. Nous prenons ___ repos.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Maka fitsaharana izahay.
+
+16. Tu as ___ patience.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana faharetana ianao.
+
+17. Il cherche ___ travail.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mitady asa izy.
+
+18. Elle fait ___ sport.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manao fanatanjahan-tena izy.
+
+19. Nous avons ___ argent.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana vola izahay.
+
+20. Tu manges ___ poisson.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mihinana trondro ianao.
+
+21. Elle boit ___ tisane.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Misotro dite izy.
+
+22. Il a ___ courage.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana herim-po izy.
+
+23. Nous faisons ___ cuisine.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Mahandro izahay.
+
+24. Tu as ___ goût pour la musique.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana tsiro ho an'ny mozika ianao.
+
+25. Elle prend ___ vitamines.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Maka vitamina izy.
+
+26. Il boit ___ lait.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Misotro ronono izy.
+
+27. Nous avons ___ espoir.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana fanantenana izahay.
+
+28. Tu manges ___ fromage.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mihinana fromazy ianao.
+
+29. Elle fait ___ yoga.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manao yoga izy.
+
+30. Il cherche ___ informations.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Mitady fampahalalana izy.
+
+31. Nous prenons ___ vacances.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Maka vakansy izahay.
+
+32. Tu as ___ fièvre.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana tazo ianao.
+
+33. Elle boit ___ champagne.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Misotro champagne izy.
+
+34. Il a ___ chance incroyable.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana vintana mahatalanjona izy.
+
+35. Nous avons ___ problèmes.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Manana olana izahay.
+
+36. Tu manges ___ légumes verts.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Mihinana legioma maitso ianao.
+
+37. Elle prend ___ médicaments.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Maka fanafody izy.
+
+38. Il boit ___ jus d'orange.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Misotro ranom-boasary izy.
+
+39. Nous avons ___ temps libre.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana fotoana malalaka izahay.
+
+40. Tu as ___ belle énergie.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana angovo tsara ianao.
+
+41. Elle fait ___ natation.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Milomano izy.
+
+42. Il cherche ___ travail stable.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Mitady asa milamina izy.
+
+43. Nous avons ___ confiance en lui.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Manana finoana azy izahay.
+
+44. Tu manges ___ pâtes.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Mihinana paty ianao.
+
+45. Elle boit ___ bière.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Misotro labiera izy.
+
+46. Il a ___ talent.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Manana talenta izy.
+
+47. Nous prenons ___ air frais.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Maka rivotra madio izahay.
+
+48. Tu as ___ idées géniales.
+A) du
+B) de la
+C) des
+*C) des
+TRADUCTION: Manana hevitra tena tsara ianao.
+
+49. Elle fait ___ la cuisine tous les jours.
+A) du
+B) de la
+C) de l'
+*B) de la
+TRADUCTION: Mahandro isan'andro izy.
+
+50. Il boit ___ thé chaud.
+A) du
+B) de la
+C) de l'
+*A) du
+TRADUCTION: Misotro dite mafana izy.

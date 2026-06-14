@@ -50,7 +50,7 @@ A) Déclarative
 B) Interrogative
 *C) Impérative
 D) Exclamative
-TRADUCTION: Manome baiko anao hivoaka ny toerana avy hatrany aho, tsy mba mametraka fanontaniana.
+TRADUCTION: Manome baiko anao hivoaka ny toerana avy hatrany aho, tsy mametraka fanontaniana.
 
 8. Dieu que ce silence pesant et interminable devient insupportable !
 A) Déclarative
@@ -142,3 +142,213 @@ B) Interrogative
 C) Impérative
 *D) Exclamative
 TRADUCTION: Tena fifandrifian-javatra mahatalanjona ny nifankahita anao eto, any amin'ny faran'izao tontolo izao!
+
+21. Aurais-je pu agir autrement dans les circonstances que nous traversions ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Moa ve aho afaka nanao zavatra hafa tamin'ny toe-javatra niainantsika?
+
+22. Je vous serais infiniment reconnaissant de garder le silence sur cette affaire.
+A) Déclarative
+B) Interrogative
+*C) Impérative (atténuée)
+D) Exclamative
+TRADUCTION: Tena faly tokoa aho raha tony momba ity raharaha ity.
+
+23. Qu'il est doux de rentrer chez soi après une longue journée de travail !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankarary ny miverina an-trano aorian'ny andro fiasana lava!
+
+24. N'allez pas croire que je vais vous pardonner aussi facilement.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mino fa hamela anao mora toy izany aho.
+
+25. Il était une fois un roi qui vivait heureux dans son château.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nisy indray andro mpanjaka iray izay niambina tamim-pifaliana tao an-dapany.
+
+26. Ne devriez-vous pas consulter un médecin vu votre état préoccupant ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy tokony hijery dokotera ve ianao raha jerena ny toe-pahasalamanao?
+
+27. Faites entrer le prochain candidat, je suis prête à le recevoir.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Atefa hiditra ny kandidà manaraka, vonona ny handray azy aho.
+
+28. Que cette aventure aura été palpitante du début jusqu'à la fin !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena nampientanentana ity traikefa ity hatramin'ny voalohany ka hatramin'ny farany!
+
+29. J'ignore totalement pourquoi il a pris une telle décision.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy fantatro mihitsy ny antony nanapahany hevitra toy izany.
+
+30. Serait-il possible que vous ayez égaré les documents que je vous avais confiés ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mety ve ianao nandao ny antontan-taratasy izay natolotro anao?
+
+31. Cessez immédiatement ces bruits intolérables, je n'en peux plus !
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Atsaharo izany tabataba tsy zaka izany, tsy zakako intsony!
+
+32. Quels merveilleux instants avons-nous partagés ensemble !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena fotoana mahafinaritra niarahanay!
+
+33. On raconte que ce château serait hanté depuis des siècles.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Lazaina fa ity lapa ity dia misy fanahy nandritra ny taonjato maro.
+
+34. N'auriez-vous pas plutôt envie de rester tranquillement à la maison ce soir ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy te hijanona tsara amin'ny tranokely ve ianao anio hariva?
+
+35. Ne touchez à rien, laissez les experts faire leur travail.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza mikasoka na inona na inona, avelao ny manam-pahaizana hanao ny asany.
+
+36. Comme j'aimerais que le temps s'arrête un instant pour profiter de ce bonheur !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankafaty ny ho mijanona ny fotoana kely mba hahafahako mankafizana an'io fahasambarana io!
+
+37. Il aurait suffi d'un rien pour que tout bascule ce jour-là.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nisy zavatra kely mety nahatonga ny zava-drehetra ho niova tamin'io andro io.
+
+38. Pourquoi diable n'as-tu pas prévenu plus tôt au lieu d'attendre le drame ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no tsy nampitandrina mialoha fa nandry ny loza ianao?
+
+39. Veuillez trouver ci-joint les documents nécessaires au bon traitement de votre dossier.
+A) Déclarative
+B) Interrogative
+*C) Impérative (formule administrative)
+D) Exclamative
+TRADUCTION: Miangavy anao hahita ny antontan-taratasy ilaina amin'ny fanodinana ny rakitrao.
+
+40. Que la vie est imprévisible et belle à la fois !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsy ampoizina sy mahafinaritra ny fiainana!
+
+41. Je ne supporte plus qu'on me mente aussi ouvertement sans aucune honte.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy zakako intsony ny olona mody amiko misokatra tsy misy henatra.
+
+42. Ne pourrait-on pas trouver un terrain d'entente pour éviter ce conflit stérile ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy afaka mahita toerana ifanarahana ve isika mba hisorohana io fifandonana io?
+
+43. Asseyez-vous, taisez-vous et écoutez ce que j'ai à vous dire.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Mipetraha, mangina ary henoy izay holazaiko aminao.
+
+44. Qu'il était beau ce paysage avant que la ville ne l'ait défiguré !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsara tarehy io tontolo io talohan'ny nanimbàn'ny tanàna azy!
+
+45. Je pense donc je suis, disait le philosophe Descartes.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mieritreritra aho, no izany dia misy aho, hoy ilay filozofa Descartes.
+
+46. Ne seriez-vous pas un tantinet las de toujours entendre les mêmes promesses non tenues ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy ho reraka kely ve ianao mandre foana ireo fampanantenana mitovy nefa tsy tanterahina?
+
+47. Croyez-moi, cette expérience vous sera extrêmement profitable un jour.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Minoa ahy, ity traikefa ity dia hahasoa anao indray andro any.
+
+48. Que n'avais-je écouté les conseils avisés de mon père avant de me lancer !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Enga anie ka mba nihaino ny torohevitra hendry nomen'ny raiko talohan'ny nidirako!
+
+49. Rien ne sera plus jamais comme avant, c'est désormais certain.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Tsy hisy ho toy ny taloha intsony, izao dia azo antoka.
+
+50. Pourquoi faire simple quand on peut faire compliqué, n'est-ce pas votre devise ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no manao tsotra raha afaka manao sarotra, sa tsy izany no fomba amam-panao?

@@ -142,3 +142,213 @@ B) Interrogative
 C) Impérative
 *D) Exclamative
 TRADUCTION: Tena vintana!
+
+21. Le chat dort sur le canapé.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Matory eo ambony seza ny saka.
+
+22. Où est mon livre ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Aiza ny bokiko?
+
+23. Finis ton assiette.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Farano ny lovinao.
+
+24. Quel beau chien !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Alika tsara tarehy tokoa!
+
+25. La neige est blanche.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Fotsy ny oram-panala.
+
+26. À quelle heure commences-tu ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Amin'ny firy ianao no manomboka?
+
+27. Reste tranquille.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miaosa tsara.
+
+28. Comme il est grand !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena lehibe izy!
+
+29. Marie a une robe rouge.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mena ny akanjon'i Marie.
+
+30. Veux-tu de l'eau ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Te rano ve ianao?
+
+31. Lavez vos mains.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Sasao ny tananao.
+
+32. Quelle bonne idée !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Hevitra tsara tokoa!
+
+33. Le ciel est bleu.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Manga ny lanitra.
+
+34. Sais-tu nager ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mahay milomano ve ianao?
+
+35. Ne tombe pas.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Aza latsaka.
+
+36. Que tu es belle !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsara tarehy ianao!
+
+37. Je suis fatigué.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Vizoka aho.
+
+38. Combien coûte ce stylo ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Ohatrinona io penina io?
+
+39. Prends ton manteau.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Alao ny palitao.
+
+40. Quel magnifique paysage !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena mahafinaritra ny tontolo iainana!
+
+41. La terre est ronde.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Boribory ny tany.
+
+42. Qui est cet homme ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Iza io lehilahy io?
+
+43. Attends-moi.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Miandry ahy.
+
+44. Comme c'est triste !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mampalahelo tokoa!
+
+45. Les poissons nagent dans l'eau.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Milomano anaty rano ny trondro.
+
+46. As-tu faim ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Noana ve ianao?
+
+47. Range ta chambre.
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Diovy ny efitranonao.
+
+48. Quelle délicieuse tarte !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Mankarary ity mofomamy ity!
+
+49. Les oiseaux volent dans le ciel.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Manidina eny amin'ny lanitra ny vorona.
+
+50. Pourquoi ris-tu ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Nahoana no mihomehy ianao?
