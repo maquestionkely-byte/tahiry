@@ -136,3 +136,239 @@ Traduction : Tiako ianao.
 
 SAFIDY : Allez, on court maintenant.
 Traduction : Andeha, mihazakazaha izao isika.
+
+
+Titre : test maeeeeemy
+Description : discution d'amour
+
+HERY : Je repensais à nnotre premier rendez-vous… Tu te souviens
+
+
+du petit café sous les jacarandas ? 🌿
+
+Traduction : Nieritreritra ny fitsidihana voalohany nataontsika aho.
+Tsaroanao ve ilay kafe kely teo ambanin'ny jacaranda? 🌿
+
+FANIRY : Tu avais apporté une rose et la pluie fine.
+
+nous a surpris, on a ri comme des enfants ! ❤️
+
+Traduction : Nitondra raozy ianao ary nahagaga antsika ny orana madinika, nihomehy toy ny ankizy isika! ❤️
+
+HERY : Ce jour-là, j’ai su que tu étais une étincelle dans ma vie. Même la pluie était magique avec toi ✨
+
+Traduction : Tamin'io andro io, dia fantatro fa ianao no tselatra kely namelona ny fiainako.
+
+Na ny orana aza dia nahagaga raha niaraka taminao ✨
+
+FANIRY : (｡♡‿♡｡) Chaque instant avec toi est un souvenir que je garde au chaud. Merci d’être mon bonheur, Hery.
+
+Traduction : Ny fotoana rehetra niarahanay dia fahatsiarovana tiako ho voatahiry mafana. Misaotra anao fa ianao no fahasambarako, Hery.
+
+HERY : Et ce parfum de pluie et de café mélangé à ton rire… Je n’oublierai jamais.
+Mon coeur était déjà à toi. Et je me souviens aussi de la façon dont tu as éclaté de rire quand la goutte d'eau est tombée sur ton nez. Merveilleux.
+
+Traduction : Ary io fofon'ny orana sy ny kafe mifangaro amin'ny fihomehezanao… Tsy hohadinoiko mihitsy. 
+
+Efa anao ny foko. Ary tsaroko ihany koa ny fomba nihomehezanao mafy rehefa nilatsaka teo amin'ny oronao ny rano indray mitete. Mahafinaritra.
+
+FANIRY : Hery… cette journée a changé ma vie. Avec toi, chaque souvenir est une étoile dans mon ciel. Je t’aime. 🌟
+
+Traduction : Hery… nanova ny fiainako io andro io. Raha miaraka aminao, ny fahatsiarovana rehetra dia kintana eny amin'ny lanitro. Tiako ianao. 🌟
+
+
+titre : Au marché
+
+HERY : Je repensais à notre premier rendez-vous sous les jacarandas.
+
+Traduction : Nieritreritra ny fitsidihana voalohany nataontsika teo ambanin'ny jacaranda aho.
+
+FANIRY : Tu avais apporté une rose et la pluie nous a surpris.
+
+Traduction : Nitondra raozy ianao ary nahagaga antsika ny orana.
+
+HERY : Ce jour-là, tu es devenue une étincelle dans ma vie.
+
+Traduction : Tamin'io andro io, dia lasa tselatra kely namelona ny fiainako ianao.
+
+FANIRY : Chaque instant avec toi est un souvenir précieux.
+
+Traduction : Ny fotoana rehetra niarahanay dia fahatsiarovana sarobidy.
+
+HERY : Je n'oublierai jamais ton rire mêlé au parfum de la pluie.
+
+Traduction : Tsy hohadinoiko mihitsy ny fihomehezanao mifangaro amin'ny fofon'ny orana.
+
+FANIRY : Avec toi, chaque souvenir est une étoile dans mon ciel. Je t'aime.
+
+Traduction : Raha miaraka aminao, ny fahatsiarovana rehetra dia kintana eny amin'ny lanitro. Tiako ianao.
+
+
+
+Titre : Sport
+
+SAFIDY : Vous allez où ?
+Traduction : Hianareo ho aiza ?
+
+HERY : On va s'entraîner au stade.
+Traduction : Handeha hanao fanazaran-tena any amin'ny kianja izahay.
+
+SAFIDY : Je peux venir avec vous ?
+Traduction : Afaka miaraka aminareo ve aho ?
+
+FANIRY : Bien sûr, viens.
+Traduction : Mazava ho azy, miaraha.
+
+HERY : Je repensais à notre premier match ensemble.
+Traduction : Nieritreritra ny lalao voalohany nataontsika niaraka aho.
+
+FANIRY : Tu avais apporté ton maillot préféré.
+Traduction : Nitondra ny akanjom-pilalaovanao tianao indrindra ianao.
+
+SAFIDY : Racontez-moi.
+Traduction : Lazao amiko.
+
+HERY : La pluie nous a surpris sur le terrain.
+Traduction : Nahagaga antsika ny orana teo amin'ny kianja.
+
+FANIRY : Ce jour-là, tu es devenue ma coéquipière préférée.
+Traduction : Tamin'io andro io, dia lasa mpiara-milalao tiako indrindra ianao.
+
+SAFIDY : C'est beau.
+Traduction : Mahafinaritra izany.
+
+HERY : Chaque entraînement avec toi est précieux.
+Traduction : Ny fampiofanana rehetra niarahanay dia sarobidy.
+
+FANIRY : Je n'oublierai jamais ton sourire après la victoire.
+Traduction : Tsy hohadinoiko mihitsy ny tsikinao taorian'ny fandresena.
+
+SAFIDY : Vous êtes heureux ensemble.
+Traduction : Sambatra miaraka ianareo.
+
+HERY : Avec toi, chaque match est une aventure.
+Traduction : Raha miaraka aminao, ny lalao rehetra dia traikefa mahafinaritra.
+
+FANIRY : Je t'aime.
+Traduction : Tiako ianao.
+
+SAFIDY : Allez, on court maintenant.
+Traduction : Andeha, mihazakazaha izao isika.
+
+
+Titre : test maeeeeemy
+Description : discution d'amour
+
+HERY : Je repensais à nnotre premier rendez-vous… Tu te souviens
+
+
+du petit café sous les jacarandas ? 🌿
+
+Traduction : Nieritreritra ny fitsidihana voalohany nataontsika aho.
+Tsaroanao ve ilay kafe kely teo ambanin'ny jacaranda? 🌿
+
+FANIRY : Tu avais apporté une rose et la pluie fine.
+
+nous a surpris, on a ri comme des enfants ! ❤️
+
+Traduction : Nitondra raozy ianao ary nahagaga antsika ny orana madinika, nihomehy toy ny ankizy isika! ❤️
+
+HERY : Ce jour-là, j’ai su que tu étais une étincelle dans ma vie. Même la pluie était magique avec toi ✨
+
+Traduction : Tamin'io andro io, dia fantatro fa ianao no tselatra kely namelona ny fiainako.
+
+Na ny orana aza dia nahagaga raha niaraka taminao ✨
+
+FANIRY : (｡♡‿♡｡) Chaque instant avec toi est un souvenir que je garde au chaud. Merci d’être mon bonheur, Hery.
+
+Traduction : Ny fotoana rehetra niarahanay dia fahatsiarovana tiako ho voatahiry mafana. Misaotra anao fa ianao no fahasambarako, Hery.
+
+HERY : Et ce parfum de pluie et de café mélangé à ton rire… Je n’oublierai jamais.
+Mon coeur était déjà à toi. Et je me souviens aussi de la façon dont tu as éclaté de rire quand la goutte d'eau est tombée sur ton nez. Merveilleux.
+
+Traduction : Ary io fofon'ny orana sy ny kafe mifangaro amin'ny fihomehezanao… Tsy hohadinoiko mihitsy. 
+
+Efa anao ny foko. Ary tsaroko ihany koa ny fomba nihomehezanao mafy rehefa nilatsaka teo amin'ny oronao ny rano indray mitete. Mahafinaritra.
+
+FANIRY : Hery… cette journée a changé ma vie. Avec toi, chaque souvenir est une étoile dans mon ciel. Je t’aime. 🌟
+
+Traduction : Hery… nanova ny fiainako io andro io. Raha miaraka aminao, ny fahatsiarovana rehetra dia kintana eny amin'ny lanitro. Tiako ianao. 🌟
+
+
+titre : Au marché
+
+HERY : Je repensais à notre premier rendez-vous sous les jacarandas.
+
+Traduction : Nieritreritra ny fitsidihana voalohany nataontsika teo ambanin'ny jacaranda aho.
+
+FANIRY : Tu avais apporté une rose et la pluie nous a surpris.
+
+Traduction : Nitondra raozy ianao ary nahagaga antsika ny orana.
+
+HERY : Ce jour-là, tu es devenue une étincelle dans ma vie.
+
+Traduction : Tamin'io andro io, dia lasa tselatra kely namelona ny fiainako ianao.
+
+FANIRY : Chaque instant avec toi est un souvenir précieux.
+
+Traduction : Ny fotoana rehetra niarahanay dia fahatsiarovana sarobidy.
+
+HERY : Je n'oublierai jamais ton rire mêlé au parfum de la pluie.
+
+Traduction : Tsy hohadinoiko mihitsy ny fihomehezanao mifangaro amin'ny fofon'ny orana.
+
+FANIRY : Avec toi, chaque souvenir est une étoile dans mon ciel. Je t'aime.
+
+Traduction : Raha miaraka aminao, ny fahatsiarovana rehetra dia kintana eny amin'ny lanitro. Tiako ianao.
+
+
+
+Titre : Sport
+
+SAFIDY : Vous allez où ?
+Traduction : Hianareo ho aiza ?
+
+HERY : On va s'entraîner au stade.
+Traduction : Handeha hanao fanazaran-tena any amin'ny kianja izahay.
+
+SAFIDY : Je peux venir avec vous ?
+Traduction : Afaka miaraka aminareo ve aho ?
+
+FANIRY : Bien sûr, viens.
+Traduction : Mazava ho azy, miaraha.
+
+HERY : Je repensais à notre premier match ensemble.
+Traduction : Nieritreritra ny lalao voalohany nataontsika niaraka aho.
+
+FANIRY : Tu avais apporté ton maillot préféré.
+Traduction : Nitondra ny akanjom-pilalaovanao tianao indrindra ianao.
+
+SAFIDY : Racontez-moi.
+Traduction : Lazao amiko.
+
+HERY : La pluie nous a surpris sur le terrain.
+Traduction : Nahagaga antsika ny orana teo amin'ny kianja.
+
+FANIRY : Ce jour-là, tu es devenue ma coéquipière préférée.
+Traduction : Tamin'io andro io, dia lasa mpiara-milalao tiako indrindra ianao.
+
+SAFIDY : C'est beau.
+Traduction : Mahafinaritra izany.
+
+HERY : Chaque entraînement avec toi est précieux.
+Traduction : Ny fampiofanana rehetra niarahanay dia sarobidy.
+
+FANIRY : Je n'oublierai jamais ton sourire après la victoire.
+Traduction : Tsy hohadinoiko mihitsy ny tsikinao taorian'ny fandresena.
+
+SAFIDY : Vous êtes heureux ensemble.
+Traduction : Sambatra miaraka ianareo.
+
+HERY : Avec toi, chaque match est une aventure.
+Traduction : Raha miaraka aminao, ny lalao rehetra dia traikefa mahafinaritra.
+
+FANIRY : Je t'aime.
+Traduction : Tiako ianao.
+
+SAFIDY : Allez, on court maintenant.
+Traduction : Andeha, mihazakazaha izao isika.
