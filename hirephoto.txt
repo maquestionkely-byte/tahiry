@@ -356,6 +356,16 @@
         screenTitle: '💪 😍 lover',
         screenSub: 'yes'
     }
+,
+    {
+        id: 'mety',
+        label: '😍 loove,be',
+        verification: 'metyka.txt',
+        prefix: 'photore',
+        title: 'mety tsara',
+        screenTitle: '😍 loove,be',
+        screenSub: 'vu de vu'
+    }
 //ataovy
     ];
 
