@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ð¸ Galeries</title>
+    <title>📸 Galeries</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -203,8 +203,8 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         .hidden { display: none !important; }
-        
-        /* Bouton retour - en haut Ã  gauche */
+
+        /* Bouton retour - en haut à gauche */
         .btn-back {
             position: fixed;
             top: 12px;
@@ -227,7 +227,7 @@
             color: #1f2d34;
             border-color: #FFB347;
         }
-        
+
         @media (max-width: 720px) {
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
             .btn-back {
@@ -241,10 +241,10 @@
 </head>
 <body>
 
-<!-- ÃCRAN DE SÃLECTION -->
+<!-- ÉCRAN DE SÉLECTION -->
 <div id="selectionScreen" class="selection-screen">
     <div class="selection-card">
-        <h2>ð¸ Galeries</h2>
+        <h2>📸 Galeries</h2>
         <p>choisissez votre univers visuel</p>
         <div id="buttonsContainer"></div>
     </div>
@@ -253,9 +253,9 @@
 <!-- CONTENEUR GALERIE -->
 <div id="galleryApp" class="hidden">
     <div class="hero" id="heroHeader">
-        <h1 id="galleryTitle">ð¸ Galerie</h1>
+        <h1 id="galleryTitle">📸 Galerie</h1>
         <div class="sub-header" id="gallerySub"></div>
-        <div class="stat-badge"><span>ð¸</span> <span id="photoCounter">--</span> <span>photos</span></div>
+        <div class="stat-badge"><span>📸</span> <span id="photoCounter">--</span> <span>photos</span></div>
     </div>
     <div id="galleryGrid" class="gallery-grid">
         <div class="loader-area"><div class="spinner"></div></div>
@@ -265,107 +265,87 @@
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox">
-    <button class="close-lb" id="closeLb">â</button>
-    <button class="nav-lb prev-lb" id="prevLb">â¹</button>
+    <button class="close-lb" id="closeLb">✕</button>
+    <button class="nav-lb prev-lb" id="prevLb">‹</button>
     <img id="lbImage" class="lb-image" alt="">
-    <button class="nav-lb next-lb" id="nextLb">âº</button>
+    <button class="nav-lb next-lb" id="nextLb">›</button>
     <div class="counter-lb" id="lbCounter"></div>
 </div>
 
 <script>
     // ============================================================
-    // ð¥ CONFIGURATIONS
+    // 🔥 CONFIGURATIONS
     // ============================================================
 
-    // CONFIG 1 : IMAGA (spÃ©cial)
+    // CONFIG 1 : IMAGA (spécial)
     const IMAGA = {
         manifest: 'https://imaga.ahofaly62.workers.dev/numeroimage.txt',
         worker: 'https://imaga.ahofaly62.workers.dev/'
     };
 
-    // CONFIG 2 : RESAKASARY (par dÃ©faut)
+    // CONFIG 2 : RESAKASARY (par défaut)
     const RESAKASARY = {
         worker: 'https://resakasary.ahofaly62.workers.dev/'
     };
 
     // ============================================================
-    // ð LISTE DES GALERIES - NOMS FICHIERS FLEXIBLES
+    // 📋 LISTE DES GALERIES - NOMS FICHIERS FLEXIBLES
     // ============================================================
     const GALLERIES = [
-        // -------- IMAGA (spÃ©cial) --------
+        // -------- IMAGA (spécial) --------
         {
             id: 'culture',
-            label: 'ð Culture & Connaissances',
+            label: '📖 Culture & Connaissances',
             ...IMAGA,
             prefix: 'imaga',
-            title: 'ð Connaissance {numero}',
-            screenTitle: 'ð Culture & Connaissances',
-            screenSub: 'savoir Â· partage Â· dÃ©couverte'
+            title: '📖 Connaissance {numero}',
+            screenTitle: '📖 Culture & Connaissances',
+            screenSub: 'savoir · partage · découverte'
         },
-        
+
         // -------- RESAKASARY --------
         {
             id: 'motiv',
-            label: 'ðª Photos motivantes',
+            label: '💪 Photos motivantes',
             verification: 'numerosary.txt',
             prefix: 'photo',
-            title: 'ð· Photo {numero}',
-            screenTitle: 'ðª Photos motivantes',
-            screenSub: 'force Â· persÃ©vÃ©rance Â· Ã©nergie'
+            title: '📷 Photo {numero}',
+            screenTitle: '💪 Photos motivantes',
+            screenSub: 'force · persévérance · énergie'
         },
-        
-        // ð FICHIER SANS "numero" au dÃ©but - mylife.txt
+
+        // 👇 FICHIER SANS "numero" au début - mylife.txt
         {
             id: 'mylife',
-            label: 'â¤ï¸ My Life',
-            verification: 'mylife.txt',  // â n'importe quel nom !
+            label: '❤️ My Life',
+            verification: 'mylife.txt',
             prefix: 'mylife',
-            title: 'â¤ï¸ Ma passion {numero}',
-            screenTitle: 'â¤ï¸ My Life',
+            title: '❤️ Ma passion {numero}',
+            screenTitle: '❤️ My Life',
             screenSub: 'Ma vie heureuse'
         },
-        
-        // ð FICHIER SANS "numero" au dÃ©but - voyages.txt
+
+        // 👇 FICHIER SANS "numero" au début - voyages.txt
         {
             id: 'voyage',
-            label: 'âï¸ Voyages',
-            verification: 'voyages.txt',  // â n'importe quel nom !
+            label: '✈️ Voyages',
+            verification: 'voyages.txt',
             prefix: 'voyage',
-            title: 'âï¸ Voyage {numero}',
-            screenTitle: 'âï¸ Voyages & DÃ©couvertes',
-            screenSub: 'exploration Â· aventures Â· horizons'
+            title: '✈️ Voyage {numero}',
+            screenTitle: '✈️ Voyages & Découvertes',
+            screenSub: 'exploration · aventures · horizons'
         },
-        
-        // ð AUTRE EXEMPLE - nature.txt
+
+        // 👇 AUTRE EXEMPLE - nature.txt
         {
             id: 'nature',
-            label: 'ð¿ Nature & Paysages',
-            verification: 'nature.txt',   // â n'importe quel nom !
+            label: '🌿 Nature & Paysages',
+            verification: 'nature.txt',
             prefix: 'nature',
-            title: 'ð¿ Paysage {numero}',
-            screenTitle: 'ð¿ Nature & Paysages',
-            screenSub: 'calme Â· sÃ©rÃ©nitÃ© Â· beautÃ©'
+            title: '🌿 Paysage {numero}',
+            screenTitle: '🌿 Nature & Paysages',
+            screenSub: 'calme · sérénité · beauté'
         }
-,
-    {
-        id: 'oe',
-        label: 'oeo hita',
-        verification: 'oefiche.txt',
-        prefix: 'oe',
-        title: 'oeaa',
-        screenTitle: 'oeo hita',
-        screenSub: 'ma belle oe'
-    }
-,
-    {
-        id: 'toi',
-        label: '🥰😁✅  voir',
-        verification: 'toafuchi.txt',
-        prefix: 'toa',
-        title: 'oui 🥲',
-        screenTitle: '🥰😁✅  voir',
-        screenSub: 'yes'
-    }
 //ataovy
     ];
 
@@ -373,12 +353,12 @@
     // TRAITEMENT AUTOMATIQUE
     // ============================================================
     GALLERIES.forEach(g => {
-        // Si verification est prÃ©sent, on construit l'URL avec RESAKASARY
+        // Si verification est présent, on construit l'URL avec RESAKASARY
         if (g.verification) {
             g.manifest = `https://resakasary.ahofaly62.workers.dev/${g.verification}`;
             g.worker = RESAKASARY.worker;
         }
-        // Si ni manifest ni verification, on met RESAKASARY par dÃ©faut
+        // Si ni manifest ni verification, on met RESAKASARY par défaut
         if (!g.manifest && !g.verification) {
             g.manifest = `https://resakasary.ahofaly62.workers.dev/numerosary.txt`;
             g.worker = RESAKASARY.worker;
@@ -409,7 +389,7 @@
     const btnBack = document.getElementById('btnBack');
     const heroHeader = document.getElementById('heroHeader');
 
-    // ---------- GÃNÃRER LES BOUTONS ----------
+    // ---------- GÉNÉRER LES BOUTONS ----------
     GALLERIES.forEach(gallery => {
         const btn = document.createElement('button');
         btn.className = 'btn-gallery';
@@ -419,7 +399,7 @@
         buttonsContainer.appendChild(btn);
     });
 
-    // ---------- RETOUR (en haut Ã  gauche) ----------
+    // ---------- RETOUR (en haut à gauche) ----------
     btnBack.addEventListener('click', () => {
         galleryApp.classList.add('hidden');
         selectionScreen.style.display = 'flex';
@@ -547,7 +527,7 @@
         const sorted = stored.sort((a,b) => b.numero - a.numero);
         currentPhotoList = sorted;
         photoCounterSpan.textContent = sorted.length;
-        
+
         let html = '';
         for (let i = 0; i < sorted.length; i++) {
             const item = sorted[i];
