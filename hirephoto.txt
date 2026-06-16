@@ -356,6 +356,16 @@
         screenTitle: 'oeo hita',
         screenSub: 'ma belle oe'
     }
+,
+    {
+        id: 'toi',
+        label: '🥰😁✅  voir',
+        verification: 'toafuchi.txt',
+        prefix: 'toa',
+        title: 'oui 🥲',
+        screenTitle: '🥰😁✅  voir',
+        screenSub: 'yes'
+    }
 //ataovy
     ];
 
