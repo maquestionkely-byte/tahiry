@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>📸 Galeries</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, sans-serif;
+            background: linear-gradient(145deg, #0f2027, #2c5364);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .selection-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, #0a1a22, #071217);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .selection-card {
+            background: rgba(20, 35, 45, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 48px;
+            padding: 2rem 1.8rem;
+            width: 85%;
+            max-width: 360px;
+            text-align: center;
+            border: 1px solid rgba(255, 180, 70, 0.5);
+        }
+        .selection-card h2 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #FFE6B0, #FFB347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .selection-card p {
+            color: #bbd9e5;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+        }
+        .btn-gallery {
+            display: block;
+            width: 100%;
+            background: rgba(255, 180, 70, 0.2);
+            border: 1.5px solid #FFB347;
+            padding: 14px 0;
+            margin: 12px 0;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #FFDEAD;
+        }
+        .btn-gallery:hover {
+            background: #FFB347;
+            color: #1f2d34;
+        }
+        .hero {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(10, 25, 30, 0.92);
+            backdrop-filter: blur(18px);
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 2px solid rgba(255, 180, 70, 0.3);
+            transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform: translateY(0);
+            will-change: transform;
+        }
+        .hero.hide-header {
+            transform: translateY(-100%);
+        }
+        .hero h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #FFE6B0, #FFB347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sub-header {
+            font-size: 0.7rem;
+            color: #cfe3e8;
+            margin-top: 4px;
+            -webkit-text-fill-color: #cfe3e8;
+        }
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.45);
+            border-radius: 60px;
+            padding: 0.2rem 0.9rem;
+            margin-top: 6px;
+            font-size: 0.7rem;
+            color: #FFE3A4;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            padding: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .photo-card {
+            background: rgba(20, 35, 40, 0.55);
+            border-radius: 32px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255,200,130,0.3);
+        }
+        .img-wrap {
+            aspect-ratio: 1 / 1;
+            background: #13242e;
+            overflow: hidden;
+        }
+        .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-title {
+            padding: 0.7rem 1rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #f7ecc7;
+            text-align: center;
+        }
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lb-image {
+            max-width: 92vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 28px;
+        }
+        .close-lb {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: #FFB347;
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        .nav-lb {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.55);
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #FFDA9E;
+        }
+        .prev-lb { left: 1rem; }
+        .next-lb { right: 1rem; }
+        .counter-lb {
+            position: absolute;
+            bottom: 1.2rem;
+            background: rgba(0,0,0,0.7);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            color: #FFDEAD;
+        }
+        .loader-area {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 55vh;
+        }
+        .spinner {
+            width: 42px;
+            height: 42px;
+            border: 3px solid rgba(255,200,100,0.3);
+            border-top: 3px solid #FFB347;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .hidden { display: none !important; }
+        
+        /* Bouton retour - en haut à gauche */
+        .btn-back {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 180, 70, 0.2);
+            border: 1.5px solid rgba(255, 180, 70, 0.5);
+            color: #FFDEAD;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+        }
+        .btn-back:hover {
+            background: #FFB347;
+            color: #1f2d34;
+            border-color: #FFB347;
+        }
+        
+        @media (max-width: 720px) {
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .btn-back {
+                padding: 5px 12px;
+                font-size: 0.7rem;
+                top: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ÉCRAN DE SÉLECTION -->
+<div id="selectionScreen" class="selection-screen">
+    <div class="selection-card">
+        <h2>📸 Galeries</h2>
+        <p>choisissez votre univers visuel</p>
+        <div id="buttonsContainer"></div>
+    </div>
+</div>
+
+<!-- CONTENEUR GALERIE -->
+<div id="galleryApp" class="hidden">
+    <div class="hero" id="heroHeader">
+        <h1 id="galleryTitle">📸 Galerie</h1>
+        <div class="sub-header" id="gallerySub"></div>
+        <div class="stat-badge"><span>📸</span> <span id="photoCounter">--</span> <span>photos</span></div>
+    </div>
+    <div id="galleryGrid" class="gallery-grid">
+        <div class="loader-area"><div class="spinner"></div></div>
+    </div>
+    <button class="btn-back" id="btnBack">Retour</button>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <button class="close-lb" id="closeLb">✕</button>
+    <button class="nav-lb prev-lb" id="prevLb">‹</button>
+    <img id="lbImage" class="lb-image" alt="">
+    <button class="nav-lb next-lb" id="nextLb">›</button>
+    <div class="counter-lb" id="lbCounter"></div>
+</div>
+
+<script>
+    // ============================================================
+    // 🔥 CONFIGURATIONS
+    // ============================================================
+
+    // CONFIG 1 : IMAGA (spécial)
+    const IMAGA = {
+        manifest: 'https://imaga.ahofaly62.workers.dev/numeroimage.txt',
+        worker: 'https://imaga.ahofaly62.workers.dev/'
+    };
+
+    // CONFIG 2 : RESAKASARY (par défaut)
+    const RESAKASARY = {
+        worker: 'https://resakasary.ahofaly62.workers.dev/'
+    };
+
+    // ============================================================
+    // 📋 LISTE DES GALERIES - NOMS FICHIERS FLEXIBLES
+    // ============================================================
+    const GALLERIES = [
+        // -------- IMAGA (spécial) --------
+        {
+            id: 'culture',
+            label: '📖 Culture & Connaissances',
+            ...IMAGA,
+            prefix: 'imaga',
+            title: '📖 Connaissance {numero}',
+            screenTitle: '📖 Culture & Connaissances',
+            screenSub: 'savoir · partage · découverte'
+        },
+        
+        // -------- RESAKASARY --------
+        {
+            id: 'motiv',
+            label: '💪 Photos motivantes',
+            verification: 'numerosary.txt',
+            prefix: 'photo',
+            title: '📷 Photo {numero}',
+            screenTitle: '💪 Photos motivantes',
+            screenSub: 'force · persévérance · énergie'
+        },
+        
+        // 👇 FICHIER SANS "numero" au début - mylife.txt
+        {
+            id: 'mylife',
+            label: '❤️ My Life',
+            verification: 'mylife.txt',  // ← n'importe quel nom !
+            prefix: 'mylife',
+            title: '❤️ Ma passion {numero}',
+            screenTitle: '❤️ My Life',
+            screenSub: 'Ma vie heureuse'
+        },
+        
+        // 👇 FICHIER SANS "numero" au début - voyages.txt
+        {
+            id: 'voyage',
+            label: '✈️ Voyages',
+            verification: 'voyages.txt',  // ← n'importe quel nom !
+            prefix: 'voyage',
+            title: '✈️ Voyage {numero}',
+            screenTitle: '✈️ Voyages & Découvertes',
+            screenSub: 'exploration · aventures · horizons'
+        },
+        
+        // 👇 AUTRE EXEMPLE - nature.txt
+        {
+            id: 'nature',
+            label: '🌿 Nature & Paysages',
+            verification: 'nature.txt',   // ← n'importe quel nom !
+            prefix: 'nature',
+            title: '🌿 Paysage {numero}',
+            screenTitle: '🌿 Nature & Paysages',
+            screenSub: 'calme · sérénité · beauté'
+        }
+//ataovy
+    ];
+
+    // ============================================================
+    // TRAITEMENT AUTOMATIQUE
+    // ============================================================
+    GALLERIES.forEach(g => {
+        // Si verification est présent, on construit l'URL avec RESAKASARY
+        if (g.verification) {
+            g.manifest = `https://resakasary.ahofaly62.workers.dev/${g.verification}`;
+            g.worker = RESAKASARY.worker;
+        }
+        // Si ni manifest ni verification, on met RESAKASARY par défaut
+        if (!g.manifest && !g.verification) {
+            g.manifest = `https://resakasary.ahofaly62.workers.dev/numerosary.txt`;
+            g.worker = RESAKASARY.worker;
+        }
+    });
+
+    // ============================================================
+    // LE RESTE EST AUTOMATIQUE
+    // ============================================================
+
+    let currentGallery = null;
+    let currentPhotoList = [];
+    let currentIndex = 0;
+
+    const selectionScreen = document.getElementById('selectionScreen');
+    const buttonsContainer = document.getElementById('buttonsContainer');
+    const galleryApp = document.getElementById('galleryApp');
+    const galleryTitle = document.getElementById('galleryTitle');
+    const gallerySub = document.getElementById('gallerySub');
+    const photoCounterSpan = document.getElementById('photoCounter');
+    const galleryContainer = document.getElementById('galleryGrid');
+    const lightboxDiv = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const closeLb = document.getElementById('closeLb');
+    const prevLb = document.getElementById('prevLb');
+    const nextLb = document.getElementById('nextLb');
+    const lbCounter = document.getElementById('lbCounter');
+    const btnBack = document.getElementById('btnBack');
+    const heroHeader = document.getElementById('heroHeader');
+
+    // ---------- GÉNÉRER LES BOUTONS ----------
+    GALLERIES.forEach(gallery => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-gallery';
+        btn.textContent = gallery.label;
+        btn.dataset.id = gallery.id;
+        btn.addEventListener('click', () => loadGallery(gallery.id));
+        buttonsContainer.appendChild(btn);
+    });
+
+    // ---------- RETOUR (en haut à gauche) ----------
+    btnBack.addEventListener('click', () => {
+        galleryApp.classList.add('hidden');
+        selectionScreen.style.display = 'flex';
+        selectionScreen.style.opacity = '1';
+    });
+
+    // ---------- HEADER DISPARITION AU SCROLL ----------
+    let lastScrollY = 0;
+    function handleHeaderScroll() {
+        if (!heroHeader) return;
+        if (window.scrollY > lastScrollY && window.scrollY > 50) {
+            heroHeader.classList.add('hide-header');
+        } else if (window.scrollY < lastScrollY || window.scrollY <= 30) {
+            heroHeader.classList.remove('hide-header');
+        }
+        lastScrollY = window.scrollY;
+    }
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+
+    // ---------- INDEXEDDB ----------
+    async function openDB(galleryId) {
+        return new Promise((resolve, reject) => {
+            const req = indexedDB.open(`Gallery_${galleryId}`, 3);
+            req.onerror = () => reject(req.error);
+            req.onsuccess = (e) => resolve(e.target.result);
+            req.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains('photos')) {
+                    db.createObjectStore('photos', { keyPath: 'filename' });
+                }
+                if (!db.objectStoreNames.contains('metadata')) {
+                    db.createObjectStore('metadata', { keyPath: 'key' });
+                }
+            };
+        });
+    }
+
+    async function savePhoto(galleryId, filename, blob, numero) {
+        const db = await openDB(galleryId);
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(['photos'], 'readwrite');
+            tx.objectStore('photos').put({ filename, blob, numero });
+            tx.oncomplete = resolve;
+            tx.onerror = () => reject(tx.error);
+        });
+    }
+
+    async function getAllPhotos(galleryId) {
+        const db = await openDB(galleryId);
+        return new Promise((resolve, reject) => {
+            const req = db.transaction(['photos'], 'readonly').objectStore('photos').getAll();
+            req.onsuccess = () => resolve(req.result || []);
+            req.onerror = () => reject(req.error);
+        });
+    }
+
+    async function getStoredNum(galleryId) {
+        const db = await openDB(galleryId);
+        return new Promise((resolve) => {
+            const req = db.transaction(['metadata'], 'readonly').objectStore('metadata').get('numerook');
+            req.onsuccess = () => resolve(req.result ? req.result.value : 0);
+        });
+    }
+
+    async function setStoredNum(galleryId, value) {
+        const db = await openDB(galleryId);
+        return new Promise((resolve) => {
+            const tx = db.transaction(['metadata'], 'readwrite');
+            tx.objectStore('metadata').put({ key: 'numerook', value: value });
+            tx.oncomplete = resolve;
+        });
+    }
+
+    // ---------- MANIFEST ----------
+    async function fetchManifest(gallery) {
+        try {
+            const resp = await fetch(gallery.manifest, { cache: 'no-cache' });
+            if (!resp.ok) return [];
+            const text = await resp.text();
+            const lines = text.split(/\r?\n/).filter(l => l.trim());
+            const map = new Map();
+            const regex = new RegExp(`^${gallery.prefix}(\\d+)\\.([a-zA-Z0-9]+)$`);
+            for (const line of lines) {
+                const match = line.match(regex);
+                if (match) {
+                    const num = parseInt(match[1]);
+                    if (!map.has(num)) map.set(num, { filename: line, numero: num });
+                }
+            }
+            return Array.from(map.values()).sort((a,b) => a.numero - b.numero);
+        } catch(e) { return []; }
+    }
+
+    // ---------- SYNC ----------
+    async function syncPhotos(galleryId, manifest, localNum) {
+        const gallery = GALLERIES.find(g => g.id === galleryId);
+        if (!manifest.length) return 0;
+        const maxRemote = manifest[manifest.length-1].numero;
+        if (maxRemote <= localNum) return 0;
+        const toDownload = manifest.filter(p => p.numero > localNum);
+        let downloaded = 0;
+        for (const photo of toDownload) {
+            const url = `${gallery.worker}${photo.filename}`;
+            try {
+                const res = await fetch(url);
+                if (res.ok) {
+                    await savePhoto(galleryId, photo.filename, await res.blob(), photo.numero);
+                    downloaded++;
+                }
+            } catch(e) {}
+        }
+        if (downloaded > 0) await setStoredNum(galleryId, maxRemote);
+        return downloaded;
+    }
+
+    // ---------- RENDER ----------
+    async function renderGallery(galleryId) {
+        const gallery = GALLERIES.find(g => g.id === galleryId);
+        const stored = await getAllPhotos(galleryId);
+        if (!stored.length) {
+            galleryContainer.innerHTML = `<div class="loader-area"><div class="spinner"></div></div>`;
+            photoCounterSpan.textContent = '0';
+            return;
+        }
+        const sorted = stored.sort((a,b) => b.numero - a.numero);
+        currentPhotoList = sorted;
+        photoCounterSpan.textContent = sorted.length;
+        
+        let html = '';
+        for (let i = 0; i < sorted.length; i++) {
+            const item = sorted[i];
+            const url = URL.createObjectURL(item.blob);
+            const title = gallery.title.replace('{numero}', item.numero);
+            html += `
+                <div class="photo-card" data-index="${i}">
+                    <div class="img-wrap"><img src="${url}" loading="lazy"></div>
+                    <div class="photo-title">${title}</div>
+                </div>
+            `;
+        }
+        galleryContainer.innerHTML = html;
+        document.querySelectorAll('.photo-card').forEach(card => {
+            card.addEventListener('click', () => openLightbox(parseInt(card.dataset.index)));
+        });
+    }
+
+    // ---------- LOAD ----------
+    async function loadGallery(galleryId) {
+        const gallery = GALLERIES.find(g => g.id === galleryId);
+        currentGallery = galleryId;
+        galleryTitle.textContent = gallery.screenTitle || gallery.label;
+        gallerySub.textContent = gallery.screenSub || '';
+        selectionScreen.style.opacity = '0';
+        setTimeout(async () => {
+            selectionScreen.style.display = 'none';
+            galleryApp.classList.remove('hidden');
+            await renderGallery(galleryId);
+            const manifest = await fetchManifest(gallery);
+            if (manifest.length) {
+                const localNum = await getStoredNum(galleryId);
+                const maxRemote = manifest[manifest.length-1].numero;
+                if (maxRemote > localNum) {
+                    await syncPhotos(galleryId, manifest, localNum);
+                    await renderGallery(galleryId);
+                }
+            }
+        }, 300);
+    }
+
+    // ---------- LIGHTBOX ----------
+    function openLightbox(index) {
+        if (!currentPhotoList.length) return;
+        currentIndex = index;
+        const url = URL.createObjectURL(currentPhotoList[index].blob);
+        lbImage.src = url;
+        lightboxDiv.classList.add('active');
+        lbCounter.textContent = `${index+1} / ${currentPhotoList.length}`;
+    }
+    function closeLightbox() { lightboxDiv.classList.remove('active'); }
+    function nextPhoto() {
+        if (currentIndex < currentPhotoList.length - 1) {
+            currentIndex++;
+            lbImage.src = URL.createObjectURL(currentPhotoList[currentIndex].blob);
+            lbCounter.textContent = `${currentIndex+1} / ${currentPhotoList.length}`;
+        }
+    }
+    function prevPhoto() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            lbImage.src = URL.createObjectURL(currentPhotoList[currentIndex].blob);
+            lbCounter.textContent = `${currentIndex+1} / ${currentPhotoList.length}`;
+        }
+    }
+    closeLb.addEventListener('click', closeLightbox);
+    prevLb.addEventListener('click', prevPhoto);
+    nextLb.addEventListener('click', nextPhoto);
+    lightboxDiv.addEventListener('click', (e) => { if (e.target === lightboxDiv) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (!lightboxDiv.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextPhoto();
+        if (e.key === 'ArrowLeft') prevPhoto();
+    });
+</script>
+</body>
+</html>
