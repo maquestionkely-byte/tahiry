@@ -611,27 +611,7 @@
     };
 
     // ============================================================
-    // 📋 LISTE DES GALERIES - AJOUTER ICI (,
-    {
-        id: 'audioe',
-        label: 'dddddd 😍',
-        verification: 'audikely.txt',
-        prefix: 'audio',
-        title: '🎵 {titre}',
-        screenTitle: 'dddddd 😍',
-        screenSub: 'aa'
-    }
-,
-    {
-        id: 'h',
-        label: 'audiotsara 🍎',
-        verification: 'nder.txt',
-        prefix: 'audio',
-        title: '🎵 {titre}',
-        screenTitle: 'audiotsara 🍎',
-        screenSub: 'g'
-    }
-//ataovy)
+    // 📋 LISTE DES GALERIES
     // ============================================================
     const GALLERIES = [
         {
@@ -643,9 +623,13 @@
             screenTitle: '🎵 Audios motivants',
             screenSub: 'écoute · inspiration · énergie',
             type: 'audio'
-        }  
+        }
+        
 //ataovy 
     ];
+
+
+
 
     // ============================================================
     // TRAITEMENT AUTOMATIQUE
