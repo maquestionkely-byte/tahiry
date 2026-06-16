@@ -591,6 +591,16 @@
         screenTitle: '😂 rire 😍',
         screenSub: 'jko'
     }
+,
+    {
+        id: 'kou',
+        label: 'hoho 😍',
+        verification: 'tre.txt',
+        prefix: 'videoko',
+        title: '🎬 {titre}',
+        screenTitle: 'hoho 😍',
+        screenSub: 'trder'
+    }
 //ataovy
     ];
 
