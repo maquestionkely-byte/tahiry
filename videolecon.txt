@@ -569,17 +569,7 @@
     };
 
     // ============================================================
-    // 📋 LISTE DES GALERIES - AJOUTER ICI (,
-    {
-        id: 'andrana',
-        label: 'look 💏 me',
-        verification: 'videokely.txt',
-        prefix: 'video',
-        title: '🎬 {titre}',
-        screenTitle: 'look 💏 me',
-        screenSub: 'yesdjak'
-    }
-//ataovy)
+    // 📋 LISTE DES GALERIES 
     // ============================================================
     const GALLERIES = [
         {
@@ -591,7 +581,7 @@
             screenTitle: '💪 Vidéos motivantes',
             screenSub: 'force · persévérance · énergie'
         }
-        //ataovy
+//ataovy
     ];
 
     // ============================================================
