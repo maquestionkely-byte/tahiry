@@ -376,6 +376,16 @@
         screenTitle: 'my good',
         screenSub: 'nnnnnnnnn'
     }
+,
+    {
+        id: 'op',
+        label: '🍿 ok ⛽',
+        verification: 'pom.txt',
+        prefix: 'okm',
+        title: 'ok',
+        screenTitle: '🍿 ok ⛽',
+        screenSub: 'ya'
+    }
 //ataovy
     ];
 
