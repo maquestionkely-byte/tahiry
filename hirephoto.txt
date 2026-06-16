@@ -386,6 +386,16 @@
         screenTitle: '🍿 ok ⛽',
         screenSub: 'ya'
     }
+,
+    {
+        id: 'okt',
+        label: 'mokoko',
+        verification: 'pioj.txt',
+        prefix: 'photor',
+        title: 'nn',
+        screenTitle: 'mokoko',
+        screenSub: 'v'
+    }
 //ataovy
     ];
 
