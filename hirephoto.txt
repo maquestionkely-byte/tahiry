@@ -376,6 +376,16 @@
         screenTitle: 'oooooooooo 😂 ooooooooo',
         screenSub: 'kk'
     }
+,
+    {
+        id: 'ddddd',
+        label: 'daaaaaaaaad 🥰🥰🥰🥰🥰🥰🥰🥰',
+        verification: 'photoge.txt',
+        prefix: 'photoge',
+        title: 'koahy {numero}',
+        screenTitle: 'daaaaaaaaad 🥰🥰🥰🥰🥰🥰🥰🥰',
+        screenSub: 'sss'
+    }
 //ataovy
     ];
 
