@@ -569,7 +569,17 @@
     };
 
     // ============================================================
-    // 📋 LISTE DES GALERIES - AJOUTER ICI (//ataovy)
+    // 📋 LISTE DES GALERIES - AJOUTER ICI (,
+    {
+        id: 'andrana',
+        label: 'look 💏 me',
+        verification: 'videokely.txt',
+        prefix: 'video',
+        title: '🎬 {titre}',
+        screenTitle: 'look 💏 me',
+        screenSub: 'yesdjak'
+    }
+//ataovy)
     // ============================================================
     const GALLERIES = [
         {
