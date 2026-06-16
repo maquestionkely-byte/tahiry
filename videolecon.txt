@@ -581,6 +581,16 @@
             screenTitle: '💪 Vidéos motivantes',
             screenSub: 'force · persévérance · énergie'
         }
+,
+    {
+        id: 'hou',
+        label: '😂 rire 😍',
+        verification: 'videozany.txt',
+        prefix: 'video',
+        title: '🎬 {titre}',
+        screenTitle: '😂 rire 😍',
+        screenSub: 'jko'
+    }
 //ataovy
     ];
 
