@@ -348,56 +348,6 @@
         }
 ,
     {
-        id: 'oita',
-        label: '💪 😍 lover',
-        verification: 'okay.txt',
-        prefix: 'ot',
-        title: 'oui',
-        screenTitle: '💪 😍 lover',
-        screenSub: 'yes'
-    }
-,
-    {
-        id: 'mety',
-        label: '😍 loove,be',
-        verification: 'metyka.txt',
-        prefix: 'photore',
-        title: 'mety tsara',
-        screenTitle: '😍 loove,be',
-        screenSub: 'vu de vu'
-    }
-,
-    {
-        id: 'mp',
-        label: 'my good',
-        verification: 'mok.txt',
-        prefix: 'phototsara',
-        title: 'yes',
-        screenTitle: 'my good',
-        screenSub: 'nnnnnnnnn'
-    }
-,
-    {
-        id: 'op',
-        label: '🍿 ok ⛽',
-        verification: 'pom.txt',
-        prefix: 'okm',
-        title: 'ok',
-        screenTitle: '🍿 ok ⛽',
-        screenSub: 'ya'
-    }
-,
-    {
-        id: 'okt',
-        label: 'mokoko',
-        verification: 'pioj.txt',
-        prefix: 'photor',
-        title: 'nn',
-        screenTitle: 'mokoko',
-        screenSub: 'v'
-    }
-,
-    {
         id: 'oku',
         label: '✌ oui 💏',
         verification: 'bv.txt',
