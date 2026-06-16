@@ -396,6 +396,16 @@
         screenTitle: 'mokoko',
         screenSub: 'v'
     }
+,
+    {
+        id: 'oku',
+        label: '✌ oui 💏',
+        verification: 'bv.txt',
+        prefix: 'photop',
+        title: 'ouiui',
+        screenTitle: '✌ oui 💏',
+        screenSub: 'ggg'
+    }
 //ataovy
     ];
 
