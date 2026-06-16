@@ -611,7 +611,17 @@
     };
 
     // ============================================================
-    // 📋 LISTE DES GALERIES - AJOUTER ICI (//ataovy)
+    // 📋 LISTE DES GALERIES - AJOUTER ICI (,
+    {
+        id: 'audioe',
+        label: 'dddddd 😍',
+        verification: 'audikely.txt',
+        prefix: 'audio',
+        title: '🎵 {titre}',
+        screenTitle: 'dddddd 😍',
+        screenSub: 'aa'
+    }
+//ataovy)
     // ============================================================
     const GALLERIES = [
         {
