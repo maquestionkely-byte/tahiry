@@ -623,13 +623,9 @@
             screenTitle: '🎵 Audios motivants',
             screenSub: 'écoute · inspiration · énergie',
             type: 'audio'
-        }
-        
+        }  
 //ataovy 
     ];
-
-
-
 
     // ============================================================
     // TRAITEMENT AUTOMATIQUE
