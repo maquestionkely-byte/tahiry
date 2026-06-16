@@ -356,6 +356,16 @@
         screenTitle: '✌ oui 💏',
         screenSub: 'ggg'
     }
+,
+    {
+        id: 'phto',
+        label: 'photooook😁✅🥰',
+        verification: 'photod.txt',
+        prefix: 'photoko',
+        title: 'Hita♥️',
+        screenTitle: 'photooook😁✅🥰',
+        screenSub: 'belle vision'
+    }
 //ataovy
     ];
 
