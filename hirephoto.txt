@@ -346,6 +346,16 @@
             screenTitle: '🌿 Nature & Paysages',
             screenSub: 'calme · sérénité · beauté'
         }
+,
+    {
+        id: 'oita',
+        label: '💪 😍 lover',
+        verification: 'okay.txt',
+        prefix: 'ot',
+        title: 'oui',
+        screenTitle: '💪 😍 lover',
+        screenSub: 'yes'
+    }
 //ataovy
     ];
 
