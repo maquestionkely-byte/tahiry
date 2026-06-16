@@ -366,6 +366,16 @@
         screenTitle: '😍 loove,be',
         screenSub: 'vu de vu'
     }
+,
+    {
+        id: 'mp',
+        label: 'my good',
+        verification: 'mok.txt',
+        prefix: 'phototsara',
+        title: 'yes',
+        screenTitle: 'my good',
+        screenSub: 'nnnnnnnnn'
+    }
 //ataovy
     ];
 
