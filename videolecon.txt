@@ -611,6 +611,16 @@
         screenTitle: 'voir 😍',
         screenSub: 'oui'
     }
+,
+    {
+        id: 'ok',
+        label: 'video lesona 😁',
+        verification: 'numerovi.txt',
+        prefix: 'videolesona',
+        title: '🎬 {titre}',
+        screenTitle: 'video lesona 😁',
+        screenSub: 'vu vu'
+    }
 //ataovy
     ];
 
