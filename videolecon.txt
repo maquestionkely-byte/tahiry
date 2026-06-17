@@ -601,6 +601,16 @@
         screenTitle: 'hoho 😍',
         screenSub: 'trder'
     }
+,
+    {
+        id: 'numer',
+        label: 'voir 😍',
+        verification: 'numerovideo.txt',
+        prefix: 'videoke',
+        title: '🎬 {titre}',
+        screenTitle: 'voir 😍',
+        screenSub: 'oui'
+    }
 //ataovy
     ];
 
