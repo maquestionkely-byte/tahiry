@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pronoms possessifs – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les pronoms possessifs */
+    .color-masculin-sg {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin-sg {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-masculin-pl {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin-pl {
+      background-color: #a7f3d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PRONOMS POSSESSIFS</h1>
+  </div>
+
+  <!-- Carte : Inona ny pronom possessif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "pronom possessif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>pronom possessif</strong> dia teny <strong>misolo anarana (nom)</strong> mba hilazana hoe <strong>an'iza</strong> ny zavatra iray, fa <strong>tsy averina intsony</strong> ny anarana.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"...ko", "...nao", "...ny", "...nay", "...nareo", "...ny ireo"</strong> amin'ny teny malagasy, fa <strong>tsy mila averina</strong> ny anarana.<br><br>
+      🔹 <strong>Fahasamihafana amin'ny déterminant possessif :</strong><br>
+      • <strong>Déterminant possessif</strong> = mon, ma, mes (misy anarana aoriany)<br>
+      • <strong>Pronom possessif</strong> = le mien, la mienne, les miens (tsisy anarana aoriany)<br><br>
+      🔹 Miankina amin'ny <strong>tompony</strong> sy ny <strong>maha-lahy na maha-vavy (genre)</strong> ary ny <strong>tokana na maro (nombre)</strong> ny zavatra nananana ny endriny.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tompony (Sujet)</th>
+            <th>Masculin Singulier</th>
+            <th>Féminin Singulier</th>
+            <th>Masculin Pluriel</th>
+            <th>Féminin Pluriel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>JE (izaho)</td>
+            <td><span class="color-masculin-sg">le mien</span></td>
+            <td><span class="color-feminin-sg">la mienne</span></td>
+            <td><span class="color-masculin-pl">les miens</span></td>
+            <td><span class="color-feminin-pl">les miennes</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>TU (ianao)</td>
+            <td><span class="color-masculin-sg">le tien</span></td>
+            <td><span class="color-feminin-sg">la tienne</span></td>
+            <td><span class="color-masculin-pl">les tiens</span></td>
+            <td><span class="color-feminin-pl">les tiennes</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>IL / ELLE / ON (izy)</td>
+            <td><span class="color-masculin-sg">le sien</span></td>
+            <td><span class="color-feminin-sg">la sienne</span></td>
+            <td><span class="color-masculin-pl">les siens</span></td>
+            <td><span class="color-feminin-pl">les siennes</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>NOUS (izahay/isika)</td>
+            <td><span class="color-masculin-sg">le nôtre</span></td>
+            <td><span class="color-feminin-sg">la nôtre</span></td>
+            <td colspan="2"><span class="color-masculin-pl">les nôtres</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>VOUS (ianareo)</td>
+            <td><span class="color-masculin-sg">le vôtre</span></td>
+            <td><span class="color-feminin-sg">la vôtre</span></td>
+            <td colspan="2"><span class="color-masculin-pl">les vôtres</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>ILS / ELLES (izy ireo)</td>
+            <td><span class="color-masculin-sg">le leur</span></td>
+            <td><span class="color-feminin-sg">la leur</span></td>
+            <td colspan="2"><span class="color-masculin-pl">les leurs</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 NOTE IMPORTANTE :</strong><br><br>
+      Ny <strong>pronom possessif</strong> dia <strong>misolo ny anarana + déterminant possessif</strong>.<br><br>
+      Ohatra :<br>
+      • C'est <strong>mon livre</strong> → C'est <strong>le mien</strong>. (Ity ny bokiko → Ity ny ahy.)<br>
+      • C'est <strong>ma maison</strong> → C'est <strong>la mienne</strong>. (Ity ny tranoko → Ity ny ahy.)<br>
+      • Ce sont <strong>mes livres</strong> → Ce sont <strong>les miens</strong>. (Ireto ny bokiko → Ireto ny ahy.)<br>
+      • Ce sont <strong>mes maisons</strong> → Ce sont <strong>les miennes</strong>. (Ireto ny tranoko → Ireto ny ahy.)
+    </div>
+  </div>
+
+  <!-- 1. JE : le mien, la mienne, les miens, les miennes -->
+  <div class="card">
+    <h2>1️⃣ JE (izaho) → le mien, la mienne, les miens, les miennes</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le mien", "la mienne", "les miens", "les miennes"</strong> dia midika hoe <strong>"ny ahy"</strong> (an'iza? ny ahy). Ampiasaina rehefa ny tena no tompony ary tsy averina intsony ny anarana.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce livre est le mien. (Ity boky ity dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette maison est la mienne. (Ity trano ity dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces livres sont les miens. (Ireto boky ireto dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces maisons sont les miennes. (Ireto trano ireto dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ton stylo est rouge, le mien est bleu. (Ny peninao dia mena, ny ahy dia manga.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TU : le tien, la tienne, les tiens, les tiennes -->
+  <div class="card">
+    <h2>2️⃣ TU (ianao) → le tien, la tienne, les tiens, les tiennes</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le tien", "la tienne", "les tiens", "les tiennes"</strong> dia midika hoe <strong>"ny anao"</strong> (an'iza? ny anao). Ampiasaina rehefa ny olona iresahana no tompony.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce cahier est le tien. (Ity kahie ity dia anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette voiture est la tienne. (Ity fiara ity dia anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces stylos sont les tiens. (Ireto penina ireto dia anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces chaussures sont les tiennes. (Ireto kiraro ireto dia anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon sac est grand, le tien est petit. (Ny kitapoko dia lehibe, ny anao dia kely.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. IL/ELLE/ON : le sien, la sienne, les siens, les siennes -->
+  <div class="card">
+    <h2>3️⃣ IL / ELLE / ON (izy) → le sien, la sienne, les siens, les siennes</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le sien", "la sienne", "les siens", "les siennes"</strong> dia midika hoe <strong>"ny any"</strong> na <strong>"ny azy"</strong> (an'iza? ny any / ny azy). Ampiasaina rehefa ny olona iresahana (izy) no tompony.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce téléphone est le sien. (Ity telefaona ity dia any.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette chaise est la sienne. (Ity seza ity dia any.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces livres sont les siens. (Ireto boky ireto dia any.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces affaires sont les siennes. (Ireto entana ireto dia any.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ma voiture est rouge, la sienne est bleue. (Ny fiarako dia mena, ny any dia manga.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. NOUS : le nôtre, la nôtre, les nôtres -->
+  <div class="card">
+    <h2>4️⃣ NOUS (izahay / isika) → le nôtre, la nôtre, les nôtres</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le nôtre", "la nôtre", "les nôtres"</strong> dia midika hoe <strong>"ny anay"</strong> na <strong>"ny antsika"</strong> (an'iza? ny anay / ny antsika). Ampiasaina rehefa ny vondrona misy antsika no tompony.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce jardin est le nôtre. (Ity zaridaina ity dia anay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette école est la nôtre. (Ity sekoly ity dia anay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces livres sont les nôtres. (Ireto boky ireto dia anay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Leur maison est grande, la nôtre est petite. (Ny tranony dia lehibe, ny anay dia kely.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. VOUS : le vôtre, la vôtre, les vôtres -->
+  <div class="card">
+    <h2>5️⃣ VOUS (ianareo) → le vôtre, la vôtre, les vôtres</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le vôtre", "la vôtre", "les vôtres"</strong> dia midika hoe <strong>"ny anareo"</strong> (an'iza? ny anareo). Ampiasaina rehefa ny olona iresahana maro no tompony, na ho fanajana ny olona iray.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce bureau est le vôtre. (Ity birao ity dia anareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette idée est la vôtre. (Ity hevitra ity dia anareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces stylos sont les vôtres. (Ireto penina ireto dia anareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le mien est noir, le vôtre est blanc. (Ny ahy dia mainty, ny anareo dia fotsy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. ILS/ELLES : le leur, la leur, les leurs -->
+  <div class="card">
+    <h2>6️⃣ ILS / ELLES (izy ireo) → le leur, la leur, les leurs</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le leur", "la leur", "les leurs"</strong> dia midika hoe <strong>"ny any ireo"</strong> na <strong>"ny azy ireo"</strong> (an'iza? ny azy ireo). Ampiasaina rehefa ny olona iresahana maro (izy ireo) no tompony.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce terrain est le leur. (Ity tany ity dia azy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette voiture est la leur. (Ity fiara ity dia azy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ces maisons sont les leurs. (Ireto trano ireto dia azy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le nôtre est petit, le leur est grand. (Ny anay dia kely, ny azy ireo dia lehibe.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DÉTERMINANT VS PRONOM ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny déterminant possessif sy pronom possessif</h2>
+    <div class="definition-mg">
+      <strong>Déterminant possessif :</strong><br>
+      • Misy <strong>anarana (nom)</strong> aoriany<br>
+      • Tsy azo afangaro amin'ny anarana<br>
+      Ohatra : mon livre, ma maison, mes amis<br><br>
+      <strong>Pronom possessif :</strong><br>
+      • <strong>Tsy misy anarana</strong> aoriany (misolo ny anarana)<br>
+      • Azo afangaro irery<br>
+      Ohatra : le mien, la mienne, les miens
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est mon livre. → C'est le mien. (Ity ny bokiko → Ity ny ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est ta maison. → C'est la tienne. (Ity ny tranonao → Ity ny anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont ses stylos. → Ce sont les siens. (Ireto ny peniny → Ireto ny any.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est notre école. → C'est la nôtre. (Ity ny sekolinay → Ity ny anay.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <strong>déterminant possessif</strong> dia miaraka amin'ny anarana (mon livre). Ny <strong>pronom possessif</strong> dia misolo ny anarana (le mien).
+    </div>
+  </div>
+
+  <!-- ==================== ACCORD DES PRONOMS POSSESSIFS ==================== -->
+  <div class="card">
+    <h2>📌 Règle d'accord (Fifanarahana)</h2>
+    <div class="definition-mg">
+      ✅ Ny pronom possessif dia <strong>miova arakaraka ny maha-lahy na maha-vavy (genre)</strong> sy ny <strong>tokana na maro (nombre)</strong> ny <strong>zavatra nananana</strong>, fa <strong>tsy miankina amin'ny tompony</strong>.<br><br>
+      
+      ✅ Raha <strong>masculin singulier</strong> ny zavatra → ampiasao ny <strong>le mien, le tien, le sien, le nôtre, le vôtre, le leur</strong><br><br>
+      
+      ✅ Raha <strong>féminin singulier</strong> ny zavatra → ampiasao ny <strong>la mienne, la tienne, la sienne, la nôtre, la vôtre, la leur</strong><br><br>
+      
+      ✅ Raha <strong>masculin pluriel</strong> ny zavatra → ampiasao ny <strong>les miens, les tiens, les siens, les nôtres, les vôtres, les leurs</strong><br><br>
+      
+      ✅ Raha <strong>féminin pluriel</strong> ny zavatra → ampiasao ny <strong>les miennes, les tiennes, les siennes, les nôtres, les vôtres, les leurs</strong>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>pronom possessif</strong> dia ampiasaina rehefa <strong>tsy mila averina intsony</strong> ny anarana (nom).</li>
+        <li>Alohan'ny hampiasana pronom possessif dia jereo aloha ny <strong>genre (masculin ou féminin)</strong> sy ny <strong>nombre (singulier ou pluriel)</strong> ny zavatra nananana.</li>
+        <li>Raha <strong>masculin singulier</strong> → le mien, le tien, le sien, le nôtre, le vôtre, le leur</li>
+        <li>Raha <strong>féminin singulier</strong> → la mienne, la tienne, la sienne, la nôtre, la vôtre, la leur</li>
+        <li>Raha <strong>masculin pluriel</strong> → les miens, les tiens, les siens, les nôtres, les vôtres, les leurs</li>
+        <li>Raha <strong>féminin pluriel</strong> → les miennes, les tiennes, les siennes, les nôtres, les vôtres, les leurs</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny feon'ny pronom possessif tsirairay.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny pronom possessif dia tena ilaina mba <strong>hialana amin'ny famerimberenan'ny anarana</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny pronoms possessifs.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>
