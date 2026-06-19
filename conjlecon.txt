@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Conjugaison - Tous les verbes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #c9d6e5, #b0bec5);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .verb-list-screen {
+            background: white;
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .verb-list-screen h2 {
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .verb-list-screen h2.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .search-sticky {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 12px 0;
+            margin: 0 -30px;
+            width: calc(100% + 60px);
+            padding-left: 30px;
+            padding-right: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-sticky input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #cfb284;
+            border-radius: 40px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            background: #fffef7;
+        }
+
+        .search-sticky input:focus {
+            border-color: #ffb347;
+            box-shadow: 0 0 0 2px rgba(255,180,71,0.2);
+        }
+
+        .verb-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .verb-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fef9e6;
+            border: 2px solid #cfb284;
+            border-radius: 60px;
+            padding: 12px 20px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .verb-item:hover {
+            background: #fff1df;
+            transform: translateX(5px);
+        }
+
+        .verb-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e4e;
+        }
+
+        .verb-group-badge {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .groupe-1 { background: #4caf50; color: white; }
+        .groupe-2 { background: #ff9800; color: white; }
+        .groupe-3 { background: #f44336; color: white; }
+
+        .empty-message {
+            text-align: center;
+            color: #888;
+            padding: 30px;
+            font-style: normal;
+        }
+
+        .loading-message {
+            text-align: center;
+            color: #1e3a5f;
+            padding: 30px;
+            font-style: normal;
+        }
+
+        .results-count {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .conj-screen {
+            display: none;
+        }
+
+        .conj-screen.active {
+            display: block;
+        }
+
+        .back-btn {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: #2c5282;
+        }
+
+        .conj-header {
+            background: linear-gradient(135deg, #1e3a5f, #2c5282);
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .header-left .verb-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            margin: 0;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+        }
+
+        .header-left .verb-group {
+            margin-top: 8px;
+            color: #ffd966;
+            font-size: 0.9rem;
+        }
+
+        .header-left .verb-group span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .btn-see-all {
+            background: #ffb347;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #1e3a5f;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-see-all:hover {
+            background: #ff9f1a;
+            transform: translateY(-2px);
+        }
+
+        .titre-section {
+            background: #4aa3e8;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 16px 16px 0 0;
+            margin-top: 16px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 8px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #ffd966;
+        }
+
+        .grille {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #fef9e6;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            border: 1px solid #c0a86a;
+            border-top: none;
+        }
+
+        .temps-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            background: white;
+            border: 2px solid #cfb284;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 5px 0 #d4b48c;
+            gap: 14px;
+        }
+
+        .temps-btn h3 {
+            color: #2c3e4e;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .temps-btn:hover {
+            background: #fff1df;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #c9a56e;
+        }
+
+        .temps-btn:hover .fleche {
+            transform: translateX(3px);
+        }
+
+        .temps-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #c9a56e;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal {
+            background: #fffef7;
+            width: 92%;
+            max-width: 550px;
+            max-height: 99vh;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            animation: fadeSlide 0.2s ease;
+            position: relative;
+        }
+ .modal-body {
+            padding: 22px;
+            overflow-y: auto;
+            max-height: 88vh;
+        }
+
+        @keyframes fadeSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: #1e3a5f;
+            color: white;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .btn-modal-close {
+            background: #ffb347;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+       
+
+        .modal-close-floating {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .btn-round {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-round:hover {
+            background: #dc2626;
+        }
+
+        .conj-area {
+            display: none;
+            padding: 15px;
+            background: #fff8ed;
+            border-top: 2px solid #e0d5c0;
+            width: 100%;
+            grid-column: span 2;
+        }
+
+        .conj-area.visible {
+            display: block;
+        }
+
+        .conj-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .conj-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f0e5d2;
+            font-size: 1rem;
+        }
+
+        .pronoun-cell {
+            font-weight: 700;
+            color: #0f67b3;
+            width: 110px;
+        }
+
+        .verb-cell {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-weight: 5500;
+}
+        .green-aux {
+            color: #15803d;
+            font-weight: bold;
+            background: #ffffff;
+            padding: 2px 6px;
+            border-radius: 14px;
+            display: inline-block;
+        }
+
+        .red-ending {
+            color: #dc2626;
+            font-weight: bold;
+            background: #fffff;
+            padding: 1px 4px;
+            border-radius: 8px;
+        }
+
+        .explanation {
+            background: #f9f2e3;
+            padding: 14px 16px;
+            border-radius: 20px;
+            border-left: 6px solid #ffb347;
+            font-size: 0.9rem;
+            color: #2d3e50;
+            margin-top: 12px;
+        }
+
+        .futur-note {
+            background: #eef2ff;
+            padding: 8px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            font-size: 0.7rem;
+            color: #2c3e2f;
+            background: #e9e0cf;
+            padding: 8px 12px;
+            border-radius: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 550px) {
+            .grille {
+                grid-template-columns: 1fr 1fr;
+            }
+            .temps-btn {
+                padding: 12px 14px;
+            }
+            .conj-area {
+                grid-column: span 2;
+            }
+            .verb-list-screen {
+                margin: 20px;
+                padding: 20px;
+            }
+            .search-sticky {
+                margin: 0 -20px;
+                width: calc(100% + 40px);
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="verbListScreen" class="verb-list-screen">
+        <h2 id="mainTitle">📚 Les verbes</h2>
+        <div class="search-sticky">
+            <input type="text" id="searchInput" placeholder="🔍 Rechercher un verbe..." autocomplete="off">
+        </div>
+        <div id="verbButtonsContainer" class="verb-buttons">
+            <div class="loading-message">⏳ Chargement des verbes...</div>
+        </div>
+        <div id="resultsCount" class="results-count"></div>
+    </div>
+
+    <div id="conjScreen" class="conj-screen">
+        <button id="backToListBtn" class="back-btn">← Retour à la liste</button>
+        <div class="conj-header">
+            <div class="header-left">
+                <h1 id="currentVerbTitle" class="verb-title">verbe : </h1>
+                <div class="verb-group">
+                    <span id="currentVerbGroupBadge">📚 groupe : </span>
+                </div>
+            </div>
+            <button id="btnVoirTous" class="btn-see-all">📖 voir la liste</button>
+        </div>
+
+        <div class="titre-section">INDICATIF</div>
+        <div class="grille" id="indicatif-grille"></div>
+        <div class="titre-section">SUBJONCTIF</div>
+        <div class="grille" id="subjonctif-grille"></div>
+        <div class="titre-section">CONDITIONNEL</div>
+        <div class="grille" id="conditionnel-grille"></div>
+        <div class="titre-section">IMPÉRATIF</div>
+        <div class="grille" id="imperatif-grille"></div>
+        <div class="titre-section">INFINITIF</div>
+        <div class="grille" id="infinitif-grille"></div>
+        <div class="titre-section">PARTICIPE</div>
+        <div class="grille" id="participe-grille"></div>
+        <div class="titre-section">GÉRONDIF</div>
+        <div class="grille" id="gerondif-grille"></div>
+        <div class="titre-section">TOURNURES VERBALES</div>
+        <div class="grille" id="tournures-grille"></div>
+        <footer>Pronoms <span style="color:#0f67b3">■ bleu</span> · Auxiliaire <span style="color:#15803d">■ vert</span> · Terminaisons <span style="color:#dc2626">■ rouge</span></footer>
+    </div>
+</div>
+
+<div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="modalTitre">Présent</h2>
+            <button id="modalCloseBtn" class="btn-modal-close">✕ FERMER</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-close-floating">
+            <button id="modalRoundClose" class="btn-round">✕</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ========== VARIABLES GLOBALES ==========
+let verbesOriginaux = [];
+let verbesFiltres = [];
+let currentVerb = "";
+let tempsData = {};
+let isListVisible = false;
+
+// ========== CONFIGURATION ==========
+const FILE_URL = 'https://passage.ahofaly62.workers.dev/hireverbes.txt';
+const DB_NAME = 'verbes_cache';
+const STORE_NAME = 'verbes_contenus';
+const CACHE_KEY = 'verbes_content';
+
+// ========== FONCTIONS CACHE ==========
+function ouvrirDB() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, 1);
+        request.onerror = () => reject(request.error);
+        request.onsuccess = (event) => resolve(event.target.result);
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME);
+                console.log("✅ Base IndexedDB créée");
+            }
+        };
+    });
+}
+
+async function sauvegarderDansCache(contenu) {
+    try {
+        const db = await ouvrirDB();
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.put(contenu, CACHE_KEY);
+            request.onsuccess = () => { console.log("💾 Sauvegardé"); resolve(); };
+            request.onerror = () => reject(request.error);
+        });
+    } catch (error) {
+        console.error("Erreur sauvegarde:", error);
+    }
+}
+
+async function recupererDepuisCache() {
+    try {
+        const db = await ouvrirDB();
+        return new Promise((resolve) => {
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.get(CACHE_KEY);
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => resolve(null);
+        });
+    } catch (error) {
+        console.error("Erreur lecture cache:", error);
+        return null;
+    }
+}
+
+// ========== DÉTECTION GROUPE ==========
+function detecterGroupe(verbe) {
+    const v = verbe.toLowerCase();
+    const verbesIrreguliers = ["être", "avoir", "aller", "faire", "dire", "prendre", "venir", "voir", "vouloir", "pouvoir", "devoir", "savoir", "connaître", "mettre", "croire", "tenir", "suivre", "partir", "sortir", "dormir", "servir", "sentir", "mentir", "courir", "mourir", "battre", "rompre", "conduire", "produire", "traduire", "craindre", "peindre", "joindre"];
+    if (verbesIrreguliers.includes(v)) return 3;
+    if (v === "aller") return 3;
+    if (v.endsWith("er")) return 1;
+    if (v.endsWith("ir")) {
+        const radical = v.slice(0, -2);
+        const verbes2eGroupe = ["fin", "chois", "grand", "réuss", "bât", "rempl", "pâl", "jaun", "roug", "nourr", "agir", "réfléchir", "obéir", "définir", "punir"];
+        if (verbes2eGroupe.some(g => radical === g || radical.endsWith(g))) return 2;
+        return 3;
+    }
+    return 3;
+}
+
+function getGroupeText(groupe) {
+    if (groupe === 1) return "📚 1er groupe (-er)";
+    if (groupe === 2) return "📚 2ème groupe (-ir)";
+    return "📚 3ème groupe (irrégulier)";
+}
+
+// ========== CHARGEMENT DES VERBES ==========
+async function chargerVerbes() {
+    const container = document.getElementById('verbButtonsContainer');
+    container.innerHTML = '<div class="loading-message">⏳ Chargement des verbes...</div>';
+    
+    try {
+        let cached = await recupererDepuisCache();
+        
+        if (cached && cached.length > 100) {
+            console.log("✅ Utilisation du cache");
+            const verbes = traiterContenuVerbes(cached);
+            verbesOriginaux = verbes;
+            verbesFiltres = [...verbes];
+            renderVerbList();
+            return;
+        }
+        
+        console.log("🌐 Chargement depuis le réseau...");
+        const response = await fetch(FILE_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const text = await response.text();
+        
+        if (text && text.length > 100) {
+            await sauvegarderDansCache(text);
+            const verbes = traiterContenuVerbes(text);
+            verbesOriginaux = verbes;
+            verbesFiltres = [...verbes];
+            renderVerbList();
+        } else {
+            throw new Error("Fichier vide ou invalide");
+        }
+        
+    } catch (error) {
+        console.error("Erreur:", error);
+        container.innerHTML = `<div class="empty-message">❌ Erreur: ${error.message}</div>`;
+    }
+}
+
+function traiterContenuVerbes(text) {
+    const lines = text.split('\n');
+    const verbes = [];
+    for (let line of lines) {
+        line = line.trim().toLowerCase();
+        if (line && !line.includes('titre') && !line.includes(':') && line.length > 2) {
+            verbes.push({ name: line, groupe: detecterGroupe(line) });
+        }
+    }
+    console.log(`📚 ${verbes.length} verbes chargés`);
+    return verbes;
+}
+
+function renderVerbList() {
+    const container = document.getElementById('verbButtonsContainer');
+    const resultsCount = document.getElementById('resultsCount');
+    
+    if (verbesFiltres.length === 0) {
+        container.innerHTML = '<div class="empty-message">🔍 Aucun verbe trouvé.</div>';
+        resultsCount.textContent = '';
+        return;
+    }
+    
+    resultsCount.textContent = `${verbesFiltres.length} verbe${verbesFiltres.length > 1 ? 's' : ''}`;
+    container.innerHTML = '';
+    
+    for (const verbe of verbesFiltres) {
+        const div = document.createElement('div');
+        div.className = 'verb-item';
+        const groupeClass = `groupe-${verbe.groupe}`;
+        const groupeText = verbe.groupe === 1 ? "1er Grp" : (verbe.groupe === 2 ? "2ème Grp" : "3ème Grp");
+        div.innerHTML = `<span class="verb-name">${verbe.name}</span><span class="verb-group-badge ${groupeClass}">${groupeText}</span>`;
+        div.addEventListener('click', () => openConjugationScreen(verbe.name));
+        container.appendChild(div);
+    }
+}
+
+function filterVerbes(searchTerm) {
+    const term = searchTerm.toLowerCase().trim();
+    verbesFiltres = term === '' ? [...verbesOriginaux] : verbesOriginaux.filter(verbe => verbe.name.includes(term));
+    renderVerbList();
+}
+
+// ========== SYSTÈME D'AUXILIAIRE INTELLIGENT ==========
+function conjuguerPasseCompose(verbe, sujet, contexte = {}) {
+    const v = verbe.toLowerCase().trim();
+    const pronom = sujet.pronom || sujet;
+    const genre = sujet.genre || (pronom === "elle" || pronom === "elles" ? "f" : "m");
+    const nombre = sujet.nombre || (pronom === "je" || pronom === "tu" || pronom === "il" || pronom === "elle" ? "s" : "p");
+    const { aCOD = false, codAvant = null, estPronominal = false, estImpersonnel = false } = contexte;
+    
+    const verbesEtre = new Set([
+        "aller", "venir", "arriver", "entrer", "rester", "tomber", "partir", "sortir",
+        "monter", "descendre", "retourner", "rentrer", "passer", "revenir", "devenir",
+        "parvenir", "naître", "mourir", "décéder", "apparaître", "disparaître",
+        "advenir", "circonvenir", "contrevenir", "convenir", "intervenir", "survenir"
+    ]);
+    
+    const verbesDoubleAux = new Set([
+        "monter", "descendre", "sortir", "rentrer", "retourner", "passer", "entrer"
+    ]);
+    
+    const participes = {
+        "être": "été", "avoir": "eu", "prendre": "pris", "mettre": "mis", "dire": "dit",
+        "écrire": "écrit", "faire": "fait", "voir": "vu", "vivre": "vécu", "naître": "né",
+        "mourir": "mort", "ouvrir": "ouvert", "offrir": "offert", "courir": "couru"
+    };
+    
+    let auxiliaire;
+    if (estImpersonnel || v === "pleuvoir" || v === "neiger" || v === "falloir") {
+        auxiliaire = "avoir";
+    } else if (estPronominal || v.startsWith("se ")) {
+        auxiliaire = "être";
+    } else if (verbesEtre.has(v)) {
+        auxiliaire = "être";
+    } else if (verbesDoubleAux.has(v)) {
+        auxiliaire = aCOD ? "avoir" : "être";
+    } else {
+        auxiliaire = "avoir";
+    }
+    
+    let participe = participes[v];
+    if (!participe) {
+        if (v.endsWith("er")) participe = v.slice(0, -2) + "é";
+        else if (v.endsWith("ir")) participe = v.slice(0, -2) + "i";
+        else if (v.endsWith("re")) participe = v.slice(0, -2) + "u";
+        else participe = v;
+    }
+    
+    if (v === "mourir" && genre === "f") participe = "morte";
+    if (v === "naître" && genre === "f") participe = "née";
+    
+    let participeAccorde = participe;
+    if (auxiliaire === "être") {
+        if (genre === "f" && nombre === "s") participeAccorde = participe + "e";
+        else if (genre === "f" && nombre === "p") participeAccorde = participe + "es";
+        else if (genre === "m" && nombre === "p") participeAccorde = participe + "s";
+    } else if (auxiliaire === "avoir" && codAvant && codAvant.nature === "COD") {
+        if (codAvant.genre === "f" && codAvant.nombre === "s") participeAccorde = participe + "e";
+        else if (codAvant.genre === "f" && codAvant.nombre === "p") participeAccorde = participe + "es";
+        else if (codAvant.genre === "m" && codAvant.nombre === "p") participeAccorde = participe + "s";
+    }
+    
+  const conjugaisons = {
+    avoir: { 
+        "je": "ai",    // ← déjà contracté !
+        "tu": "as", 
+        "il": "a", 
+        "elle": "a", 
+        "nous": "avons", 
+        "vous": "avez", 
+        "ils": "ont", 
+        "elles": "ont" 
+    },
+    être: { 
+        "je": "suis",
+        "tu": "es", 
+        "il": "est", 
+        "elle": "est", 
+        "nous": "sommes", 
+        "vous": "êtes", 
+        "ils": "sont", 
+        "elles": "sont" 
+    }
+};
+    
+    let auxConj = conjugaisons[auxiliaire][pronom];
+    if (!auxConj) auxConj = `${pronom} ${auxiliaire}`;
+    
+    return { conjugaison: `${auxConj} ${participeAccorde}`, auxiliaire, participe: participeAccorde };
+}
+
+function getPasseComposeConjugaison(verbeComplet) {
+    const sujets = [
+        { pronom: "je", displayPronom: "j'", genre: "m", nombre: "s" },
+        { pronom: "tu", displayPronom: "tu", genre: "m", nombre: "s" },
+        { pronom: "il", displayPronom: "il", genre: "m", nombre: "s" },
+        { pronom: "elle", displayPronom: "elle", genre: "f", nombre: "s" },
+        { pronom: "nous", displayPronom: "nous", genre: "m", nombre: "p" },
+        { pronom: "vous", displayPronom: "vous", genre: "m", nombre: "p" },
+        { pronom: "ils", displayPronom: "ils", genre: "m", nombre: "p" },
+        { pronom: "elles", displayPronom: "elles", genre: "f", nombre: "p" }
+    ];
+    
+    return sujets.map(sujet => {
+        const resultat = conjuguerPasseCompose(verbeComplet, sujet);
+        return {
+            p: sujet.displayPronom,
+            v: resultat.conjugaison,
+            participe: resultat.participe,
+            auxiliaire: resultat.auxiliaire,
+            genre: sujet.genre,
+            nombre: sujet.nombre
+        };
+    });
+}
+
+// ========== FONCTIONS DE CONJUGAISON ==========
+function getRadical(verbName) {
+    return verbName.endsWith('er') ? verbName.slice(0, -2) : verbName;
+}
+
+function updateTempsData(radical, verbeComplet) {
+    tempsData = {
+        indicatif: [
+            { id: "present", name: "Présent", conjugation: [{ p:"je", v:`${radical}e`},{ p:"tu", v:`${radical}es`},{ p:"il/elle/on", v:`${radical}e`},{ p:"nous", v:`${radical}ons`},{ p:"vous", v:`${radical}ez`},{ p:"ils/elles", v:`${radical}ent`}], expl: "Présent : action actuelle." },
+            { id: "passe_compose", name: "Passé composé", conjugation: getPasseComposeConjugaison(verbeComplet), expl: "Passé composé avec auxiliaire intelligent." },
+            { id: "imparfait", name: "Imparfait", conjugation: [{ p:"je", v:`${radical}ais`},{ p:"tu", v:`${radical}ais`},{ p:"il", v:`${radical}ait`},{ p:"nous", v:`${radical}ions`},{ p:"vous", v:`${radical}iez`},{ p:"ils", v:`${radical}aient`}], expl: "Habitude dans le passé." },
+            { id: "futur_simple", name: "Futur simple", conjugation: [{ p:"je", v:`${radical}erai`},{ p:"tu", v:`${radical}eras`},{ p:"il", v:`${radical}era`},{ p:"nous", v:`${radical}erons`},{ p:"vous", v:`${radical}erez`},{ p:"ils", v:`${radical}eront`}], expl: "Action future." }
+        ],
+        subjonctif: [],
+        conditionnel: [],
+        imperatif: [],
+        infinitif: [],
+        participe: [],
+        gerondif: [],
+        tournures: []
+    };
+}
+
+function buildGrille(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    
+    items.forEach((tense, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "temps-btn";
+        btn.innerHTML = `<h3>${tense.name}</h3><span class="fleche"></span>`;
+        
+        const conjArea = document.createElement("div");
+        conjArea.className = "conj-area";
+        conjArea.id = `conj-${containerId}-${idx}`;
+        
+        btn.addEventListener("click", () => openModal(tense));
+        container.appendChild(btn);
+        container.appendChild(conjArea);
+    });
+}
+
+function appliquerElision(pronom, verbe) {
+    if (pronom === "je" && verbe && /^[aeiouyâêîôûàèìòùéèëïü]/i.test(verbe)) {
+        return "j'";
+    }
+    if (pronom === "que je" && verbe && /^[aeiouyâêîôûàèìòùéèëïü]/i.test(verbe)) {
+        return "que j'";
+    }
+    return pronom;
+}
+
+
+
+// ========== FONCTIONS DE CONJUGAISON COMPLÈTES ==========
+
+function updateTempsData(radical, verbeComplet) {
+    tempsData = {
+        indicatif: [
+            { id: "present", name: "Présent", conjugation: [{ p:"je", v:`${radical}e`},{ p:"tu", v:`${radical}es`},{ p:"il/elle/on", v:`${radical}e`},{ p:"nous", v:`${radical}ons`},{ p:"vous", v:`${radical}ez`},{ p:"ils/elles", v:`${radical}ent`}], expl: "📘 Présent : ampiasaina ho an'ny zavatra mitranga izao, fanao mahazatra, na marina ankapobeny." },
+            { id: "passe_compose", name: "Passé composé", conjugation: getPasseComposeConjugaison(verbeComplet), expl: "📘 Passé composé : milaza zavatra efa vita tamin'ny lasa. Mampiasa auxiliaire être na avoir, ary mifanaraka (accord) ny participe passé." },
+            { id: "imparfait", name: "Imparfait", conjugation: [{ p:"je", v:`${radical}ais`},{ p:"tu", v:`${radical}ais`},{ p:"il", v:`${radical}ait`},{ p:"nous", v:`${radical}ions`},{ p:"vous", v:`${radical}iez`},{ p:"ils", v:`${radical}aient`}], expl: "📘 Imparfait : milaza fahazarana, famariparitana, na zavatra naharitra tamin'ny lasa." },
+            { id: "plus_que_parfait", name: "Plus-que-parfait", conjugation: [{ p:"j'", v:"avais " + radical + "é"},{ p:"tu", v:"avais " + radical + "é"},{ p:"il", v:"avait " + radical + "é"},{ p:"nous", v:"avions " + radical + "é"},{ p:"vous", v:"aviez " + radical + "é"},{ p:"ils", v:"avaient " + radical + "é"}], expl: "📘 Plus-que-parfait : milaza zavatra efa vita talohan'ny zavatra hafa tamin'ny lasa." },
+            { id: "passe_simple", name: "Passé simple", conjugation: [{ p:"je", v:`${radical}ai`},{ p:"tu", v:`${radical}as`},{ p:"il", v:`${radical}a`},{ p:"nous", v:`${radical}âmes`},{ p:"vous", v:`${radical}âtes`},{ p:"ils", v:`${radical}èrent`}], expl: "📘 Passé simple : ampiasaina amin'ny fanoratana tantara (littéraire), milaza zavatra efa vita tamin'ny lasa." },
+            { id: "passe_anterieur", name: "Passé antérieur", conjugation: [{ p:"j'", v:"eus " + radical + "é"},{ p:"tu", v:"eus " + radical + "é"},{ p:"il", v:"eut " + radical + "é"},{ p:"nous", v:"eûmes " + radical + "é"},{ p:"vous", v:"eûtes " + radical + "é"},{ p:"ils", v:"eurent " + radical + "é"}], expl: "📘 Passé antérieur : milaza zavatra efa vita aloha dia aloha (littéraire)." },
+            { id: "futur_simple", name: "Futur simple", conjugation: [{ p:"je", v:`${radical}erai`},{ p:"tu", v:`${radical}eras`},{ p:"il", v:`${radical}era`},{ p:"nous", v:`${radical}erons`},{ p:"vous", v:`${radical}erez`},{ p:"ils", v:`${radical}eront`}], expl: "📘 Futur simple : milaza zavatra mbola hitranga any ho any.", note: "Infinitif + terminaisons ai,as,a,ons,ez,ont" },
+            { id: "futur_anterieur", name: "Futur antérieur", conjugation: [{ p:"j'", v:"aurai " + radical + "é"},{ p:"tu", v:"auras " + radical + "é"},{ p:"il", v:"aura " + radical + "é"},{ p:"nous", v:"aurons " + radical + "é"},{ p:"vous", v:"aurez " + radical + "é"},{ p:"ils", v:"auront " + radical + "é"}], expl: "📘 Futur antérieur : milaza zavatra ho vita mialohan'ny zavatra hafa any ho any." }
+        ],
+        subjonctif: [
+            { id: "subjonctif_present", name: "Présent", conjugation: [{ p:"que je", v:`${radical}e`},{ p:"que tu", v:`${radical}es`},{ p:"qu'il", v:`${radical}e`},{ p:"que nous", v:`${radical}ions`},{ p:"que vous", v:`${radical}iez`},{ p:"qu'ils", v:`${radical}ent`}], expl: "📘 Subjonctif présent : ampiasaina aorian'ny fanehoana faniriana, fisalasalana, filàmana, na fihetseham-po." },
+            { id: "subjonctif_passe", name: "Passé", conjugation: [{ p:"que j'", v:"aie " + radical + "é"},{ p:"que tu", v:"aies " + radical + "é"},{ p:"qu'il", v:"ait " + radical + "é"},{ p:"que nous", v:"ayons " + radical + "é"},{ p:"que vous", v:"ayez " + radical + "é"},{ p:"qu'ils", v:"aient " + radical + "é"}], expl: "📘 Subjonctif passé : milaza zavatra efa vita tamin'ny lasa ao anatin'ny faniriana na fisalasalana." },
+            { id: "subjonctif_imparfait", name: "Imparfait", conjugation: [{ p:"que je", v:`${radical}asse`},{ p:"que tu", v:`${radical}asses`},{ p:"qu'il", v:`${radical}ât`},{ p:"que nous", v:`${radical}assions`},{ p:"que vous", v:`${radical}assiez`},{ p:"qu'ils", v:`${radical}assent`}], expl: "📘 Subjonctif imparfait : ampiasaina amin'ny soratra (littéraire) ihany." },
+            { id: "subjonctif_plus_que_parfait", name: "Plus-que-parfait", conjugation: [{ p:"que j'", v:"eusse " + radical + "é"},{ p:"que tu", v:"eusses " + radical + "é"},{ p:"qu'il", v:"eût " + radical + "é"},{ p:"que nous", v:"eussions " + radical + "é"},{ p:"que vous", v:"eussiez " + radical + "é"},{ p:"qu'ils", v:"eussent " + radical + "é"}], expl: "📘 Subjonctif plus-que-parfait : filazana hevitra tsy mitranga intsony (littéraire)." }
+        ],
+        conditionnel: [
+            { id: "conditionnel_present", name: "Présent", conjugation: [{ p:"je", v:`${radical}erais`},{ p:"tu", v:`${radical}erais`},{ p:"il", v:`${radical}erait`},{ p:"nous", v:`${radical}erions`},{ p:"vous", v:`${radical}eriez`},{ p:"ils", v:`${radical}eraient`}], expl: "📘 Conditionnel présent : milaza fepetra (raha... dia...), faniriana, na fomba fiteny feno fanajana." },
+            { id: "conditionnel_passe", name: "Passé", conjugation: [{ p:"j'", v:"aurais " + radical + "é"},{ p:"tu", v:"aurais " + radical + "é"},{ p:"il", v:"aurait " + radical + "é"},{ p:"nous", v:"aurions " + radical + "é"},{ p:"vous", v:"auriez " + radical + "é"},{ p:"ils", v:"auraient " + radical + "é"}], expl: "📘 Conditionnel passé : milaza zavatra tsy nitranga tamin'ny lasa (irréel du passé)." }
+        ],
+        imperatif: [
+            { id: "imperatif", name: "Présent", conjugation: [{ p:"(tu)", v:`${radical}e`},{ p:"(nous)", v:`${radical}ons`},{ p:"(vous)", v:`${radical}ez`}], expl: "📘 Impératif : ampiasaina hanome baiko, torohevitra, na fangatahana." },
+            { id: "imperatif_passe", name: "Passé", conjugation: [{ p:"(tu)", v:"aie " + radical + "é"},{ p:"(nous)", v:"ayons " + radical + "é"},{ p:"(vous)", v:"ayez " + radical + "é"}], expl: "📘 Impératif passé : baiko ho an'ny zavatra tokony ho vita mialoha." }
+        ],
+        infinitif: [
+            { id: "infinitif_present", name: "Présent", conjugation: [{ p:"", v:radical + "er"}], expl: "📘 Infinitif présent : endrika fototry ny matoanteny, tsy miova." },
+            { id: "infinitif_passe", name: "Passé", conjugation: [{ p:"", v:"avoir " + radical + "é"}], expl: "📘 Infinitif passé : milaza zavatra efa vita." }
+        ],
+        participe: [
+            { id: "participe_present", name: "Présent", conjugation: [{ p:"", v:radical + "ant"}], expl: "📘 Participe présent : miafara amin'ny -ant, ampiasaina ho an'ny fotoana mitambatra (temps composés) na ho adjectif." },
+            { id: "participe_passe", name: "Passé", conjugation: [{ p:"", v:radical + "é"}], expl: "📘 Participe passé : ampiasaina miaraka amin'ny auxiliaire être na avoir." }
+        ],
+        gerondif: [
+            { id: "gerondif", name: "Présent", conjugation: [{ p:"en", v:radical + "ant"}], expl: "📘 Gérondif : en + participe présent, milaza zavatra mitranga miaraka amin'ny hafa (simultanéité)." },
+            { id: "gerondif_passe", name: "Passé", conjugation: [{ p:"en", v:"ayant " + radical + "é"}], expl: "📘 Gérondif passé : en ayant + participe passé, milaza zavatra efa vita talohan'ny hafa." }
+        ],
+        tournures: [
+            { id: "passe_recent", name: "Passé récent", conjugation: [{ p:"je", v:"viens de " + radical + "er"},{ p:"tu", v:"viens de " + radical + "er"},{ p:"il", v:"vient de " + radical + "er"},{ p:"nous", v:"venons de " + radical + "er"},{ p:"vous", v:"venez de " + radical + "er"},{ p:"ils", v:"viennent de " + radical + "er"}], expl: "📘 Passé récent : venir de + infinitif → milaza zavatra vao haingana nitranga." },
+            { id: "present_progressif", name: "Présent progressif", conjugation: [{ p:"je", v:"suis en train de " + radical + "er"},{ p:"tu", v:"es en train de " + radical + "er"},{ p:"il", v:"est en train de " + radical + "er"},{ p:"nous", v:"sommes en train de " + radical + "er"},{ p:"vous", v:"êtes en train de " + radical + "er"},{ p:"ils", v:"sont en train de " + radical + "er"}], expl: "📘 Présent progressif : être en train de + infinitif → milaza zavatra mitranga amin'izao fotoana izao." },
+            { id: "futur_proche", name: "Futur proche", conjugation: [{ p:"je", v:"vais " + radical + "er"},{ p:"tu", v:"vas " + radical + "er"},{ p:"il", v:"va " + radical + "er"},{ p:"nous", v:"allons " + radical + "er"},{ p:"vous", v:"allez " + radical + "er"},{ p:"ils", v:"vont " + radical + "er"}], expl: "📘 Futur proche : aller + infinitif → milaza zavatra ho hitranga tsy ho ela.Ndeha hatao afak fotoana fohy" }
+        ]
+    };
+}
+
+// ========== FONCTIONS DE COLORATION ==========
+function colorEnding(verbForm, tenseId, genre = null, nombre = null) {
+    if (!verbForm) return verbForm;
+    
+    // 🟢 PASSÉ COMPOSÉ - Colorer les terminaisons du participe passé
+    if (tenseId === 'passe_compose') {
+        const isFeminine = (genre === 'f');
+        const isPlural = (nombre === 'p');
+        
+        // === PARTICIPE EN -é (manger, parler) ===
+        if (verbForm.endsWith('é')) {
+            let base = verbForm.slice(0, -1);
+            if (isFeminine && !isPlural) {
+                // elle → mangée : é(rouge) + e(bleu)
+                return base + `<span class="red-ending">é</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → mangées : é(rouge) + es(bleu)
+                return base + `<span class="red-ending">é</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → mangés : é(rouge) + s(rouge)
+                return base + `<span class="red-ending">é</span><span class="red-ending">s</span>`;
+            }
+            // il → mangé
+            return base + `<span class="red-ending">é</span>`;
+        }
+        
+        // === PARTICIPE EN -i (sortir, finir) ===
+        if (verbForm.endsWith('i') && !verbForm.endsWith('ie') && !verbForm.endsWith('is')) {
+            let base = verbForm.slice(0, -1);
+            if (isFeminine && !isPlural) {
+                // elle → sortie : i(rouge) + e(bleu)
+                return base + `<span class="red-ending">i</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → sorties : i(rouge) + es(bleu)
+                return base + `<span class="red-ending">i</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → sortis : i(rouge) + s(rouge)
+                return base + `<span class="red-ending">i</span><span class="red-ending">s</span>`;
+            }
+            // il → sorti
+            return base + `<span class="red-ending">i</span>`;
+        }
+        
+        // === PARTICIPE EN -u (voir, pouvoir, vouloir) ===
+        if (verbForm.endsWith('u') && !verbForm.endsWith('ue') && !verbForm.endsWith('us')) {
+            let base = verbForm.slice(0, -1);
+            if (isFeminine && !isPlural) {
+                // elle → vue : u(rouge) + e(bleu)
+                return base + `<span class="red-ending">u</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → vues : u(rouge) + es(bleu)
+                return base + `<span class="red-ending">u</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → vus : u(rouge) + s(rouge)
+                return base + `<span class="red-ending">u</span><span class="red-ending">s</span>`;
+            }
+            // il → vu
+            return base + `<span class="red-ending">u</span>`;
+        }
+        
+        // === PARTICIPE EN -is (prendre, mettre) ===
+        if (verbForm.endsWith('is') && !verbForm.endsWith('ise')) {
+            let base = verbForm.slice(0, -2);
+            if (isFeminine && !isPlural) {
+                // elle → prise : is(rouge) + e(bleu)
+                return base + `<span class="red-ending">is</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → prises : is(rouge) + es(bleu)
+                return base + `<span class="red-ending">is</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → pris : is(rouge) + s(rouge)
+                return base + `<span class="red-ending">is</span><span class="red-ending">s</span>`;
+            }
+            // il → pris
+            return base + `<span class="red-ending">is</span>`;
+        }
+        
+        // === PARTICIPE EN -it (dire, écrire) ===
+        if (verbForm.endsWith('it') && !verbForm.endsWith('ite')) {
+            let base = verbForm.slice(0, -2);
+            if (isFeminine && !isPlural) {
+                // elle → dite : it(rouge) + e(bleu)
+                return base + `<span class="red-ending">it</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → dites : it(rouge) + es(bleu)
+                return base + `<span class="red-ending">it</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → dits : it(rouge) + s(rouge)
+                return base + `<span class="red-ending">it</span><span class="red-ending">s</span>`;
+            }
+            // il → dit
+            return base + `<span class="red-ending">it</span>`;
+        }
+        
+        // === PARTICIPE EN -ert (ouvrir, couvrir) ===
+        if (verbForm.endsWith('ert')) {
+            let base = verbForm.slice(0, -3);
+            if (isFeminine && !isPlural) {
+                // elle → ouverte : ert(rouge) + e(bleu)
+                return base + `<span class="red-ending">ert</span><span style="color:#2563eb;">e</span>`;
+            }
+            if (isFeminine && isPlural) {
+                // elles → ouvertes : ert(rouge) + es(bleu)
+                return base + `<span class="red-ending">ert</span><span style="color:#2563eb;">es</span>`;
+            }
+            if (!isFeminine && isPlural) {
+                // ils → ouverts : ert(rouge) + s(rouge)
+                return base + `<span class="red-ending">ert</span><span class="red-ending">s</span>`;
+            }
+            // il → ouvert
+            return base + `<span class="red-ending">ert</span>`;
+        }
+        
+        return verbForm;
+    }
+    
+    // === FUTUR SIMPLE ===
+    if (tenseId === 'futur_simple') {
+        if (verbForm.endsWith('ai')) return verbForm.slice(0, -2) + `<span class="red-ending">ai</span>`;
+        if (verbForm.endsWith('as')) return verbForm.slice(0, -2) + `<span class="red-ending">as</span>`;
+        if (verbForm.endsWith('a')) return verbForm.slice(0, -1) + `<span class="red-ending">a</span>`;
+        if (verbForm.endsWith('ons')) return verbForm.slice(0, -3) + `<span class="red-ending">ons</span>`;
+        if (verbForm.endsWith('ez')) return verbForm.slice(0, -2) + `<span class="red-ending">ez</span>`;
+        if (verbForm.endsWith('ont')) return verbForm.slice(0, -3) + `<span class="red-ending">ont</span>`;
+    }
+    
+    // === CONDITIONNEL PRÉSENT ===
+    if (tenseId === 'conditionnel_present') {
+        if (verbForm.endsWith('ais')) return verbForm.slice(0, -3) + `<span class="red-ending">ais</span>`;
+        if (verbForm.endsWith('ait')) return verbForm.slice(0, -3) + `<span class="red-ending">ait</span>`;
+        if (verbForm.endsWith('ions')) return verbForm.slice(0, -4) + `<span class="red-ending">ions</span>`;
+        if (verbForm.endsWith('iez')) return verbForm.slice(0, -3) + `<span class="red-ending">iez</span>`;
+        if (verbForm.endsWith('aient')) return verbForm.slice(0, -5) + `<span class="red-ending">aient</span>`;
+    }
+    
+    // === SUBJONCTIF PRÉSENT ===
+    if (tenseId === 'subjonctif_present') {
+        if (verbForm.endsWith('ions')) return verbForm.slice(0, -4) + `<span class="red-ending">ions</span>`;
+        if (verbForm.endsWith('iez')) return verbForm.slice(0, -3) + `<span class="red-ending">iez</span>`;
+        if (verbForm.endsWith('e')) return verbForm.slice(0, -1) + `<span class="red-ending">e</span>`;
+        if (verbForm.endsWith('es')) return verbForm.slice(0, -2) + `<span class="red-ending">es</span>`;
+        if (verbForm.endsWith('ent')) return verbForm.slice(0, -3) + `<span class="red-ending">ent</span>`;
+    }
+    
+    // === IMPARFAIT ===
+    if (tenseId === 'imparfait') {
+        if (verbForm.endsWith('ais')) return verbForm.slice(0, -3) + `<span class="red-ending">ais</span>`;
+        if (verbForm.endsWith('ait')) return verbForm.slice(0, -3) + `<span class="red-ending">ait</span>`;
+        if (verbForm.endsWith('ions')) return verbForm.slice(0, -4) + `<span class="red-ending">ions</span>`;
+        if (verbForm.endsWith('iez')) return verbForm.slice(0, -3) + `<span class="red-ending">iez</span>`;
+        if (verbForm.endsWith('aient')) return verbForm.slice(0, -5) + `<span class="red-ending">aient</span>`;
+    }
+    
+    // === PRÉSENT / IMPÉRATIF ===
+    if (tenseId === 'present' || tenseId === 'imperatif') {
+        if (verbForm.endsWith('e')) return verbForm.slice(0, -1) + `<span class="red-ending">e</span>`;
+        if (verbForm.endsWith('es')) return verbForm.slice(0, -2) + `<span class="red-ending">es</span>`;
+        if (verbForm.endsWith('ons')) return verbForm.slice(0, -3) + `<span class="red-ending">ons</span>`;
+        if (verbForm.endsWith('ez')) return verbForm.slice(0, -2) + `<span class="red-ending">ez</span>`;
+        if (verbForm.endsWith('ent')) return verbForm.slice(0, -3) + `<span class="red-ending">ent</span>`;
+    }
+    
+    return verbForm;
+}
+
+
+function colorComposed(verbForm, tenseId) {
+    let parts = verbForm.split(' ');
+    if (parts.length >= 2) {
+        // L'auxiliaire en vert
+        let aux = `<span class="green-aux">${parts[0]}</span>`;
+        
+        // Le participe passé
+        let participe = parts[1];
+        
+        // Enlever d'éventuelles balises HTML existantes
+        participe = participe.replace(/<[^>]*>/g, '');
+        
+        // Colorer la terminaison du participe
+        let coloredParticipe = colorEnding(participe, 'passe_compose');
+        
+        return `${aux} ${coloredParticipe}`;
+    }
+    return verbForm;
+}
+
+function isCompound(tenseId) {
+    return ['passe_compose', 'plus_que_parfait', 'futur_anterieur', 'conditionnel_passe', 'subjonctif_passe', 'imperatif_passe', 'infinitif_passe', 'gerondif_passe'].includes(tenseId);
+}
+
+function colorVerb(verbForm, tenseId) {
+    if (isCompound(tenseId)) return colorComposed(verbForm);
+    return colorEnding(verbForm, tenseId);
+}
+
+function buildTable(tense) {
+    let html = `<table class="conj-table">`;
+    
+    // 🔍 DÉTECTION : Est-ce que c'est le passé composé ?
+    let estPasseCompose = (tense.id === 'passe_compose');
+    
+    // 🔍 Vérifier si l'auxiliaire "être" est utilisé (regarder la première ligne)
+    let utiliseEtre = false;
+    if (estPasseCompose && tense.conjugation && tense.conjugation.length > 0) {
+        // Vérifier si le verbe contient "suis", "es", "est", "sommes", "êtes", "sont"
+        const premierVerbe = tense.conjugation[0].v || "";
+        utiliseEtre = premierVerbe.includes("suis") || 
+                       premierVerbe.includes("es ") || 
+                       premierVerbe.includes("est ") ||
+                       premierVerbe.includes("sommes") ||
+                       premierVerbe.includes("êtes") ||
+                       premierVerbe.includes("sont");
+    }
+    
+    for (let row of tense.conjugation) {
+        let colored = colorVerb(row.v, tense.id);
+        let pronom = row.p;
+        
+        // Gestion de l'élision pour "je"
+        if (pronom === "je" && colored && /^[aeiouyâêîôûàèìòùéèëïü]/i.test(colored)) {
+            pronom = "j'";
+        }
+        else if (pronom === "que je" && colored && /^[aeiouyâêîôûàèìòùéèëïü]/i.test(colored)) {
+            pronom = "que j'";
+        }
+        
+        html += `<tr><td class="pronoun-cell">${pronom}</td><td class="verb-cell">${colored}</td></tr>`;
+    }
+    html += `</table>`;
+    
+    // 📝 AFFICHER LA NOTE si c'est le passé composé avec l'auxiliaire "être"
+    if (estPasseCompose && utiliseEtre) {
+        html += `<div class="futur-note" style="background:#fef3c7; border-left:4px solid #f59e0b; padding:15px; border-radius:8px; margin:20px 0;">
+    ⚠️ <strong>Règle importante :</strong> Avec l'auxiliaire <strong>être</strong>, 
+    le participe passé s'accorde en genre et en nombre avec le sujet.<br>
+    <span style="font-size:0.8rem;">Exemple : Elle est <strong>all<span style="color:red;">ée</span></strong> / Elles sont <strong>all<span style="color:red;">ées</span></strong></span>
+    
+    <p style="margin:0;">
+        <strong>1. Explication :</strong><br>
+        Amin'ny passé composé, ny matoanteny miaraka amin'ny auxiliaire <strong>"être"</strong> dia mifanaraka amin'ny lazaina (sujet).<br>
+        - Raha <strong>vavy</strong> ny lazaina → ampio <span style="color:red; font-weight:bold;">-e</span> farany<br>
+        - Raha <strong>vavy maro</strong> → ampio <span style="color:red; font-weight:bold;">-es</span> farany
+    </p>
+</div>
+
+<div class="futur-note" style="background:#fef3c7; border-left:4px solid #f59e0b; padding:15px; border-radius:8px; margin:20px 0;">
+    <strong>2. Un verbe conjugué (féminin) – tomber</strong>
+    <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+        <tr style="background:#fde68a;">
+            <th style="padding:8px; border:1px solid #d97706; text-align:left;">Pronom</th>
+            <th style="padding:8px; border:1px solid #d97706; text-align:left;">Conjugaison (vavy)</th>
+        </tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">je</td><td style="padding:8px; border:1px solid #d97706;">je suis tomb<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">tu</td><td style="padding:8px; border:1px solid #d97706;">tu es tomb<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">elle</td><td style="padding:8px; border:1px solid #d97706;">elle est tomb<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">nous</td><td style="padding:8px; border:1px solid #d97706;">nous sommes tomb<span style="color:red; font-weight:bold;">ées</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">vous</td><td style="padding:8px; border:1px solid #d97706;">vous êtes tomb<span style="color:red; font-weight:bold;">ées</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">elles</td><td style="padding:8px; border:1px solid #d97706;">elles sont tomb<span style="color:red; font-weight:bold;">ées</span></td></tr>
+    </table>
+</div>
+
+<div class="futur-note" style="background:#fef3c7; border-left:4px solid #f59e0b; padding:15px; border-radius:8px; margin:20px 0;">
+    <strong>3. Liste des verbes avec être (séparés par virgule)</strong><br>
+    <span style="color:#00000;">aller, arriver, descendre, devenir, entrer, monter, mourir, naître, partir, rentrer, rester, retourner, revenir, sortir, tomber, venir, accourir, décéder, intervenir, parvenir</span>
+</div>
+
+<div class="futur-note" style="background:#fef3c7; border-left:4px solid #f59e0b; padding:15px; border-radius:8px; margin:20px 0;">
+    <strong>4. Un verbe pronominal conjugué (féminin) – se lever</strong>
+    <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+        <tr style="background:#fde68a;">
+            <th style="padding:8px; border:1px solid #d97706; text-align:left;">Pronom</th>
+            <th style="padding:8px; border:1px solid #d97706; text-align:left;">Conjugaison (vavy)</th>
+        </tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">je</td><td style="padding:8px; border:1px solid #d97706;">je me suis lev<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">tu</td><td style="padding:8px; border:1px solid #d97706;">tu t'es lev<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">elle</td><td style="padding:8px; border:1px solid #d97706;">elle s'est lev<span style="color:red; font-weight:bold;">ée</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">nous</td><td style="padding:8px; border:1px solid #d97706;">nous nous sommes lev<span style="color:red; font-weight:bold;">ées</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">vous</td><td style="padding:8px; border:1px solid #d97706;">vous vous êtes lev<span style="color:red; font-weight:bold;">ées</span></td></tr>
+        <tr><td style="padding:8px; border:1px solid #d97706;">elles</td><td style="padding:8px; border:1px solid #d97706;">elles se sont lev<span style="color:red; font-weight:bold;">ées</span></td></tr>
+    </table>
+</div>
+
+<div class="futur-note" style="background:#fef3c7; border-left:4px solid #f59e0b; padding:15px; border-radius:8px; margin:20px 0;">
+    <strong>5. Liste des 10 verbes pronominaux (séparés par virgule)</strong><br>
+    <span style="color:#00000;">se lever, se laver, se coucher, se réveiller, s'habiller, se dépêcher, se promener, se tromper, se fâcher, se souvenir</span>
+</div>`;
+    }
+    // Note pour le passé composé avec "avoir" (optionnel)
+    else if (estPasseCompose && !utiliseEtre) {
+        html += `<div class="futur-note" style="background:#e0f2fe; border-left:4px solid #0ea5e9;">
+                    📘 <strong>Règle :</strong> Avec l'auxiliaire <strong>avoir</strong>, 
+                    le participe passé s'accorde uniquement avec le COD <strong>si celui-ci est placé avant</strong>.
+                 </div>`;
+    }
+    
+    if (tense.note) html += `<div class="futur-note">📘 ${tense.note}</div>`;
+    html += `<div class="explanation"><strong>📘 Explication :</strong><br>${tense.expl}</div>`;
+    return html;
+}
+
+function generateConjugations(verbName) {
+    const radical = getRadical(verbName);
+    updateTempsData(radical, verbName);
+    
+    buildGrille("indicatif-grille", tempsData.indicatif);
+    buildGrille("subjonctif-grille", tempsData.subjonctif);
+    buildGrille("conditionnel-grille", tempsData.conditionnel);
+    buildGrille("imperatif-grille", tempsData.imperatif);
+    buildGrille("infinitif-grille", tempsData.infinitif);
+    buildGrille("participe-grille", tempsData.participe);
+    buildGrille("gerondif-grille", tempsData.gerondif);
+    buildGrille("tournures-grille", tempsData.tournures);
+}
+
+function openConjugationScreen(verbName) {
+    currentVerb = verbName;
+    const groupe = detecterGroupe(verbName);
+    
+    document.getElementById('currentVerbTitle').textContent = `verbe : ${verbName}`;
+    document.getElementById('currentVerbGroupBadge').textContent = getGroupeText(groupe);
+    document.getElementById('verbListScreen').style.display = 'none';
+    document.getElementById('conjScreen').classList.add('active');
+    
+    generateConjugations(verbName);
+    hideAllConjugations();
+}
+
+function showAllConjugations() {
+    const allTenses = [...tempsData.indicatif, ...tempsData.subjonctif, ...tempsData.conditionnel, ...tempsData.imperatif, ...tempsData.infinitif, ...tempsData.participe, ...tempsData.gerondif, ...tempsData.tournures];
+    const allConjAreas = document.querySelectorAll('.conj-area');
+    allConjAreas.forEach((area, index) => {
+        if (index < allTenses.length) {
+            area.innerHTML = buildTable(allTenses[index]);
+            area.classList.add('visible');
+        }
+    });
+    isListVisible = true;
+    document.getElementById("btnVoirTous").innerHTML = "📖 fermer la liste";
+}
+
+function hideAllConjugations() {
+    document.querySelectorAll('.conj-area').forEach(area => area.classList.remove('visible'));
+    isListVisible = false;
+    document.getElementById("btnVoirTous").innerHTML = "📖 voir la liste";
+}
+
+function toggleAllConjugations() {
+    isListVisible ? hideAllConjugations() : showAllConjugations();
+}
+
+// ========== MODALE ==========
+const modalOverlay = document.getElementById("modalOverlay");
+const modalTitre = document.getElementById("modalTitre");
+const modalBodyDiv = document.getElementById("modalBody");
+
+
+function openModal(tense) {
+    modalTitre.textContent = tense.name;
+    modalBodyDiv.innerHTML = buildTable(tense);  // ← utilise buildTable()
+    modalOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+} 
+
+
+function closeModal() {
+    modalOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+// ========== INITIALISATION ==========
+document.getElementById("searchInput").addEventListener("input", (e) => filterVerbes(e.target.value));
+document.getElementById("backToListBtn").addEventListener("click", () => {
+    document.getElementById('verbListScreen').style.display = 'block';
+    document.getElementById('conjScreen').classList.remove('active');
+    hideAllConjugations();
+});
+document.getElementById("btnVoirTous").addEventListener("click", toggleAllConjugations);
+document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+document.getElementById("modalRoundClose").addEventListener("click", closeModal);
+modalOverlay.addEventListener("click", (e) => { if(e.target === modalOverlay) closeModal(); });
+document.addEventListener("keydown", (e) => { if(e.key === "Escape" && modalOverlay.classList.contains("active")) closeModal(); });
+
+// Lancement
+chargerVerbes();
+updateTempsData("parl", "parler");
+buildGrille("indicatif-grille", tempsData.indicatif);
+buildGrille("subjonctif-grille", tempsData.subjonctif);
+buildGrille("conditionnel-grille", tempsData.conditionnel);
+buildGrille("imperatif-grille", tempsData.imperatif);
+buildGrille("infinitif-grille", tempsData.infinitif);
+buildGrille("participe-grille", tempsData.participe);
+buildGrille("gerondif-grille", tempsData.gerondif);
+buildGrille("tournures-grille", tempsData.tournures);
+
+// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
+    (function() {
+        function showBlockOverlay() {
+            if (document.getElementById('securityOverlay')) return;
+            const overlay = document.createElement('div');
+            overlay.id = 'securityOverlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+            document.body.appendChild(overlay);
+            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+        }
+
+        function hideBlockOverlay() {
+            const overlay = document.getElementById('securityOverlay');
+            if (overlay) overlay.remove();
+        }
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                e.preventDefault();
+                return false;
+            }
+if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+                e.preventDefault();
+                return false;
+            }
+// Ajoutez ceci dans la liste des vérifications
+if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+    e.preventDefault();
+    return false;
+}
+// Ctrl+P (Imprimer)
+if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+    e.preventDefault();
+    return false;
+}
+
+// Ctrl+F (Rechercher)
+if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+    e.preventDefault();
+    return false;
+}
+
+// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
+if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+    e.preventDefault();
+    return false;
+}
+
+// F5 (Rafraîchir)
+if (e.key === "F5" || e.keyCode === 116) {
+    e.preventDefault();
+    return false;
+}
+            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                return false;
+            }
+        }, true);
+
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+        function detectDevTools() {
+            let devToolsOpen = false;
+            const threshold = 160;
+            setInterval(() => {
+                const widthDiff = window.outerWidth - window.innerWidth;
+                const heightDiff = window.outerHeight - window.innerHeight;
+                if (widthDiff > threshold || heightDiff > threshold) {
+                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+                } else {
+                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+                }
+            }, 1000);
+        }
+
+        setInterval(() => { debugger; }, 50);
+        
+        if (window.console) {
+            const noop = () => {};
+            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+        }
+
+        detectDevTools();
+    })();
+</script>
+</body>
+</html>

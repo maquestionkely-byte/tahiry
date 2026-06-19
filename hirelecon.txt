@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Mianatra FRANÇAIS 🟢</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f2b3d 0%, #1a3f5c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .course-btn {
+            width: 100%;
+            padding: 22px 20px;
+            border: none;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            box-shadow: 0 8px 0 0 rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.05s ease, box-shadow 0.1s ease;
+        }
+        
+        .course-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 0 rgba(0,0,0,0.3), 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .course-btn.debutant {
+            background: linear-gradient(135deg, #11998e, #0e7a6b);
+        }
+
+        .course-btn.intermediaire {
+            background: linear-gradient(135deg, #7f1d1d, #e855);
+        }
+
+        .course-btn.hiresaka {
+            background: linear-gradient(135deg, #1877f2, #0d5bb3);
+            color: white;
+        }
+        
+        .course-btn.hiresaka .small-text {
+            font-size: 12px;
+            opacity: 0.85;
+            display: block;
+            margin-top: 6px;
+            font-weight: normal;
+            color: #b3d4ff;
+        }
+
+        .course-btn:hover {
+            filter: brightness(1.05);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: #38ef7d;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .iframe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: white;
+            display: none;
+        }
+
+        .iframe-container.active {
+            display: block;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="buttons-container">
+    <button class="course-btn debutant" data-file="hiredebutant.txt" data-db="hiredebutant" data-name="Débutant">
+        📘 DÉBUTANT
+    </button>
+    <button class="course-btn intermediaire" data-file="hireintermediaire.txt" data-db="hireintermediaire" data-name="Intermédiaire">
+        📙 INTERMÉDIAIRE
+    </button>
+    <button class="course-btn hiresaka" id="hiresakaBtn">
+        👑 HIRESAKA
+        <span class="small-text">@ Tomponandraikitra</span>
+    </button>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingMessage">Chargement...</div>
+</div>
+
+<div class="iframe-container" id="iframeContainer">
+    <iframe id="contentFrame" srcdoc=""></iframe>
+</div>
+
+<script>
+    // ==================== CONFIGURATION ====================
+    const WORKER_URL = 'https://passage.ahofaly62.workers.dev';
+    const DATE_INFO_URL = WORKER_URL + '/date_rehetra.txt';
+    const DB_VERSION = 22;
+    
+    const FB_URL = 'https://www.facebook.com/profile.php?id=61555313604553';
+
+    const COURSES = {
+        'hiredebutant.txt': { db: 'hiredebutant', name: 'Débutant' },
+        'hireintermediaire.txt': { db: 'hireintermediaire', name: 'Intermédiaire' }
+    };
+
+    let currentDbName = null;
+    let isUpdating = false;
+
+    const iframeContainer = document.getElementById('iframeContainer');
+    const contentFrame = document.getElementById('contentFrame');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const loadingMessage = document.getElementById('loadingMessage');
+
+    // ======================= INDEXEDDB =======================
+    function ouvrirDB(dbName) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(dbName, DB_VERSION);
+            
+            request.onerror = () => reject(request.error);
+            
+            request.onsuccess = (event) => {
+                resolve(event.target.result);
+            };
+            
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains('content')) {
+                    db.createObjectStore('content');
+                }
+            };
+        });
+    }
+
+    async function stockerDansIndexedDB(dbName, contenuHTML, versionDate) {
+        try {
+            const db = await ouvrirDB(dbName);
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(['content'], 'readwrite');
+                const store = transaction.objectStore('content');
+                
+                store.put(contenuHTML, 'htmlContent');
+                store.put(versionDate, 'versionDate');
+                store.put(new Date().toISOString(), 'lastUpdate');
+                
+                transaction.oncomplete = () => resolve(true);
+                transaction.onerror = () => reject(transaction.error);
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async function recupererDepuisIndexedDB(dbName) {
+        try {
+            const db = await ouvrirDB(dbName);
+            
+            if (!db.objectStoreNames.contains('content')) {
+                return { htmlContent: null, versionDate: null };
+            }
+            
+            return new Promise((resolve) => {
+                const transaction = db.transaction(['content'], 'readonly');
+                const store = transaction.objectStore('content');
+                
+                const htmlRequest = store.get('htmlContent');
+                const dateRequest = store.get('versionDate');
+                
+                let htmlContent = null;
+                let versionDate = null;
+                let completed = 0;
+                
+                function checkComplete() {
+                    completed++;
+                    if (completed === 2) {
+                        resolve({ htmlContent, versionDate });
+                    }
+                }
+                
+                htmlRequest.onsuccess = () => { 
+                    htmlContent = htmlRequest.result; 
+                    checkComplete(); 
+                };
+                htmlRequest.onerror = () => { 
+                    checkComplete(); 
+                };
+                
+                dateRequest.onsuccess = () => { 
+                    versionDate = dateRequest.result; 
+                    checkComplete(); 
+                };
+                dateRequest.onerror = () => { 
+                    checkComplete(); 
+                };
+            });
+        } catch (error) {
+            return { htmlContent: null, versionDate: null };
+        }
+    }
+
+    // ======================= EXTRAIRE DATE VERSION =======================
+    async function getRemoteVersionDateForFile(fileName) {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+            
+            const response = await fetch(DATE_INFO_URL, { 
+                cache: 'no-cache',
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) return null;
+            
+            const content = await response.text();
+            const blocks = content.split(/DERNIÈRE MISE À JOUR/);
+            
+            for (const block of blocks) {
+                const fileMatch = block.match(/📁 Fichier:\s*([^\n]+)/);
+                if (fileMatch && fileMatch[1].trim() === fileName) {
+                    const dayMatch = block.match(/📅\s*([\d\/]+)/);
+                    const timeMatch = block.match(/⏰\s*([\d:]+)/);
+                    
+                    if (dayMatch && timeMatch) {
+                        return `${dayMatch[1]} ${timeMatch[1]}`;
+                    }
+                    
+                    const altDateMatch = block.match(/📆\s*([\d\/]+\s+[\d:]+)/);
+                    if (altDateMatch) {
+                        return altDateMatch[1].trim();
+                    }
+                }
+            }
+            return null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    // ======================= TÉLÉCHARGER CONTENU =======================
+    async function telechargerContenu(fileName) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        
+        const fileUrl = `${WORKER_URL}/${fileName}`;
+        const response = await fetch(fileUrl, { 
+            cache: 'no-cache',
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const content = await response.text();
+        if (!content || content.length < 50) throw new Error("Contenu invalide");
+        return content;
+    }
+
+    // ======================= AFFICHER CONTENU =======================
+    function afficherContenu(htmlContent) {
+        contentFrame.srcdoc = htmlContent;
+        iframeContainer.classList.add('active');
+    }
+
+    function fermerIframe() {
+        iframeContainer.classList.remove('active');
+        currentDbName = null;
+    }
+
+    // ======================= MISE À JOUR AUTOMATIQUE (silencieuse) =======================
+    async function miseAJourSilencieuse(fileName, dbName, courseName) {
+        try {
+            const remoteVersion = await getRemoteVersionDateForFile(fileName);
+            if (!remoteVersion) return;
+            
+            const cache = await recupererDepuisIndexedDB(dbName);
+            
+            // Si pas de cache OU version différente → mettre à jour
+            if (!cache.htmlContent || cache.versionDate !== remoteVersion) {
+                console.log(`🔄 Mise à jour ${courseName}...`);
+                const nouveauContenu = await telechargerContenu(fileName);
+                await stockerDansIndexedDB(dbName, nouveauContenu, remoteVersion);
+                console.log(`✅ ${courseName} mis à jour (${remoteVersion})`);
+            }
+        } catch (error) {
+            // Silencieux - pas d'erreur à l'écran
+            console.log(`Mise à jour ${courseName} ignorée`);
+        }
+    }
+
+    // ======================= CHARGER COURS (PRIORITÉ DB IMMÉDIATE) =======================
+    async function chargerCours(fileName, dbName, courseName) {
+        if (isUpdating) return;
+        isUpdating = true;
+        
+        try {
+            // Afficher le loading
+            loadingMessage.innerText = `Chargement ${courseName}...`;
+            loadingOverlay.classList.add('active');
+            
+            // 1. PRIORITÉ ABSOLUE: Lire IndexedDB IMMÉDIATEMENT
+            const cache = await recupererDepuisIndexedDB(dbName);
+            
+            // 2. Si cache existe → afficher INSTANTANÉMENT
+            if (cache.htmlContent) {
+                afficherContenu(cache.htmlContent);
+                loadingOverlay.classList.remove('active');
+                isUpdating = false;
+                
+                // 3. Vérifier mise à jour en ARRIÈRE-PLAN (ne bloque pas)
+                miseAJourSilencieuse(fileName, dbName, courseName);
+                return;
+            }
+            
+            // 4. Pas de cache → télécharger (première ouverture)
+            loadingMessage.innerText = `Téléchargement ${courseName}...`;
+            
+            const contenu = await telechargerContenu(fileName);
+            const remoteVersion = await getRemoteVersionDateForFile(fileName);
+            const versionToStore = remoteVersion || new Date().toLocaleString();
+            
+            await stockerDansIndexedDB(dbName, contenu, versionToStore);
+            afficherContenu(contenu);
+            loadingOverlay.classList.remove('active');
+            isUpdating = false;
+            
+        } catch (error) {
+            loadingOverlay.classList.remove('active');
+            isUpdating = false;
+            
+            // Vérifier si on a au moins un cache existant
+            const cache = await recupererDepuisIndexedDB(dbName);
+            if (!cache.htmlContent) {
+                alert(`❌ Impossible de charger "${courseName}". Vérifiez votre connexion.`);
+            }
+        }
+    }
+
+    // ======================= OUVRIR FACEBOOK =======================
+    function ouvrirFacebook() {
+        window.open(FB_URL, '_blank');
+    }
+
+    // ======================= GESTION RETOUR =======================
+    function handleBackNavigation() {
+        if (iframeContainer.classList.contains('active')) {
+            fermerIframe();
+            return true;
+        }
+        return false;
+    }
+
+    // ======================= INITIALISATION =======================
+    function initialiserBoutons() {
+        const debutantBtn = document.querySelector('.course-btn.debutant');
+        const intermediaireBtn = document.querySelector('.course-btn.intermediaire');
+        const hiresakaBtn = document.getElementById('hiresakaBtn');
+        
+        if (debutantBtn) {
+            debutantBtn.addEventListener('click', () => {
+                chargerCours('hiredebutant.txt', 'hiredebutant', 'Débutant');
+            });
+        }
+        
+        if (intermediaireBtn) {
+            intermediaireBtn.addEventListener('click', () => {
+                chargerCours('hireintermediaire.txt', 'hireintermediaire', 'Intermédiaire');
+            });
+        }
+        
+        if (hiresakaBtn) {
+            hiresakaBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                ouvrirFacebook();
+            });
+        }
+    }
+
+    // ======================= CHARGEMENT PAGE - VÉRIFIER TOUTES LES MISES À JOUR =======================
+    async function verifierToutesMisesAJour() {
+        console.log("🔍 Vérification des mises à jour au chargement...");
+        
+        for (const [fileName, config] of Object.entries(COURSES)) {
+            await miseAJourSilencieuse(fileName, config.db, config.name);
+        }
+        
+        console.log("✅ Vérification terminée");
+    }
+
+    // Gestion du bouton retour physique
+    window.addEventListener('popstate', function(event) {
+        if (handleBackNavigation()) {
+            event.preventDefault();
+            history.pushState(null, null, location.href);
+        }
+    });
+    
+    // Gestion du glissement (swipe) pour fermer
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+    });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!iframeContainer.classList.contains('active')) return;
+        
+        const touchEndX = e.touches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        
+        if (deltaX > 80) {
+            fermerIframe();
+        }
+    });
+    
+    // Gestion de la touche Echap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && iframeContainer.classList.contains('active')) {
+            fermerIframe();
+            e.preventDefault();
+        }
+    });
+    
+    // Démarrer
+    async function demarrer() {
+        initialiserBoutons();
+        history.pushState(null, null, location.href);
+        
+        // Vérifier les mises à jour au chargement de la page (silencieux)
+        await verifierToutesMisesAJour();
+    }
+    
+    demarrer();
+
+    // ======================= CODE DE SÉCURITÉ SIMPLIFIÉ (sans overlay visible) =======================
+    (function() {
+        // Désactiver les raccourcis clavier
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === "F5" || e.keyCode === 116) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                return false;
+            }
+        }, true);
+
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+        
+        // Désactiver console.log
+        if (window.console) {
+            const noop = () => {};
+            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+        }
+    })();
+</script>
+</body>
+</html>
