@@ -1,0 +1,2076 @@
+Titre : Au marché
+
+HERY : Bonjour, madame. Je voudrais deux kilos de pommes.
+Traduction : Salama, ramatoa. Te-hahazo paoma roa kilao aho.
+
+FANIRY : Bonjour, monsieur. Les pommes sont fraîches.
+Traduction : Salama, tompoko. Vaovao ny paoma.
+
+HERY : Combien coûtent-elles ?
+Traduction : Ohatrinona ny vidiny ?
+
+FANIRY : Elles coûtent deux euros le kilo.
+Traduction : Roa euro ny kilao.
+
+HERY : Je prends deux kilos. Merci.
+Traduction : Raiso roa kilao aho. Misaotra.
+
+FANIRY : Voilà, monsieur. Bonne journée !
+Traduction : Inty, tompoko. Tandremo tsara !
+
+Titre : À l'école
+
+HERY : Bonjour, professeur. J'ai une question.
+Traduction : Salama, mpampianatra. Manana fanontaniana aho.
+
+FANIRY : Bonjour, Hery. Je t'écoute.
+Traduction : Salama, Hery. Mihaino anao aho.
+
+HERY : Je ne comprends pas l'exercice numéro cinq.
+Traduction : Tsy azoko ilay fampiharana fahadimy.
+
+FANIRY : C'est facile. Regarde ton livre.
+Traduction : Mora izany. Jereo ny bokinao.
+
+HERY : Ah, maintenant je comprends. Merci.
+Traduction : Ah, azoko izao. Misaotra.
+
+FANIRY : Très bien. Continue comme ça.
+Traduction : Tsara. Tohizo izany.
+
+Titre : Au restaurant
+
+HERY : Bonsoir. Une table pour deux, s'il vous plaît.
+Traduction : Miarahaba. Latabatra ho an'ny roa, azafady.
+
+FANIRY : Voici votre table. Asseyez-vous.
+Traduction : Inty ny latabatrao. Mipetraha.
+
+HERY : Je voudrais un steak-frites.
+Traduction : Te-hahazo hena misy pataty aho.
+
+FANIRY : Oui, monsieur. Et comme boisson ?
+Traduction : Eny, tompoko. Ary zava-pisotro ?
+
+HERY : Un verre d'eau, s'il vous plaît.
+Traduction : Rano indray vera, azafady.
+
+FANIRY : Très bien. Je reviens tout de suite.
+Traduction : Tsara. Miverina aho.
+
+Titre : Chez le médecin
+
+HERY : Bonjour, docteur. J'ai mal à la tête.
+Traduction : Salama, dokotera. Marary ny lohako.
+
+FANIRY : Bonjour. Depuis quand ?
+Traduction : Salama. Hatramin'ny oviana ?
+
+HERY : Depuis ce matin.
+Traduction : Hatramin'ity maraina ity.
+
+FANIRY : Vous avez de la fièvre ?
+Traduction : Manana tazo ve ianao ?
+
+HERY : Oui, un peu. Et je suis fatigué.
+Traduction : Eny, kely. Ary reraka aho.
+
+FANIRY : Reposez-vous et prenez ce médicament.
+Traduction : Mialà sasatra ary makà ity fanafody ity.
+
+Titre : Au supermarché
+
+HERY : Excusez-moi. Où sont les pâtes ?
+Traduction : Azafady. Aiza ny paty ?
+
+FANIRY : Elles sont dans le rayon numéro trois.
+Traduction : Eo amin'ny tontonana fahatelo izy ireo.
+
+HERY : Merci. Et le pain ?
+Traduction : Misaotra. Ary ny mofo ?
+
+FANIRY : Le pain est à côté des fruits.
+Traduction : Eo akaikin'ny voankazo ny mofo.
+
+HERY : Je prends aussi des tomates.
+Traduction : Raiso ihany koa ny voatabia aho.
+
+FANIRY : Les tomates sont rouges et fraîches.
+Traduction : Mena sy vaovao ny voatabia.
+
+Titre : Dans la rue
+
+HERY : Pardon, madame. Où est la gare ?
+Traduction : Azafady, ramatoa. Aiza ny gara ?
+
+FANIRY : La gare est tout droit.
+Traduction : Mahitsy ny gara.
+
+HERY : À cent mètres ?
+Traduction : Zato metatra ?
+
+FANIRY : Oui, à cent mètres. Vous verrez le grand bâtiment.
+Traduction : Eny, zato metatra. Hahita ilay trano lehibe ianao.
+
+HERY : Merci beaucoup.
+Traduction : Misaotra betsaka.
+
+FANIRY : De rien. Bonne journée !
+Traduction : Tsy misy fisaorana. Tandremo tsara !
+
+Titre : À la bibliothèque
+
+HERY : Bonjour. Je cherche un livre.
+Traduction : Salama. Mitady boky aho.
+
+FANIRY : Quel livre cherchez-vous ?
+Traduction : Inona no boky tadiavinao ?
+
+HERY : Un livre de français.
+Traduction : Boky fahaizana miteny frantsay.
+
+FANIRY : Nous avons plusieurs. Venez par ici.
+Traduction : Manana maromaro izahay. Avia eto.
+
+HERY : Ce livre est intéressant.
+Traduction : Mahaliana ity boky ity.
+
+FANIRY : Oui, il est facile à lire.
+Traduction : Eny, mora vakina izy.
+
+Titre : À la poste
+
+HERY : Bonjour. Je voudrais un timbre.
+Traduction : Salama. Te-hahazo hajia aho.
+
+FANIRY : Pour la France ou pour l'étranger ?
+Traduction : Ho an'i Frantsa sa any ivelany ?
+
+HERY : Pour Madagascar.
+Traduction : Ho an'i Madagasikara.
+
+FANIRY : Il coûte un euro vingt.
+Traduction : Ny vidiny dia iray euro sy roapolo.
+
+HERY : Voilà. Merci.
+Traduction : Inty. Misaotra.
+
+FANIRY : Au revoir, monsieur.
+Traduction : Veloma, tompoko.
+
+Titre : À l'hôtel
+
+HERY : Bonsoir. J'ai réservé une chambre.
+Traduction : Miarahaba. Nanao famandrihana efitra aho.
+
+FANIRY : Bonsoir. Votre nom ?
+Traduction : Miarahaba. Ny anaranao ?
+
+HERY : Hery Rakoto.
+Traduction : Hery Rakoto.
+
+FANIRY : Oui, monsieur. La chambre numéro douze.
+Traduction : Eny, tompoko. Ny efitra faha-dimy ambin'ny folo.
+
+HERY : Où sont les escaliers ?
+Traduction : Aiza ny tohatra ?
+
+FANIRY : Au bout du couloir.
+Traduction : Faran'ny lalantsara.
+
+HERY : Merci. Bonne nuit.
+Traduction : Misaotra. Alina tsara.
+
+Titre : Au cinéma
+
+HERY : Deux billets pour le film de 20 heures.
+Traduction : Tapakila roa ho an'ny sarimihetsika amin'ny 20 ora.
+
+FANIRY : C'est douze euros.
+Traduction : Roa ambin'ny folo euro izany.
+
+HERY : Qu'est-ce qui est à l'affiche ?
+Traduction : Inona no aseho ?
+
+FANIRY : Un film d'aventure. C'est très bien.
+Traduction : Sarimihetsika fahaizana. Tena tsara izy.
+
+HERY : Parfait. Où est la salle ?
+Traduction : Tsara. Aiza ny efitrano ?
+
+FANIRY : Au premier étage.
+Traduction : Amin'ny rihana voalohany.
+
+Titre : Au zoo
+
+HERY : Regarde les lions. Ils sont beaux.
+Traduction : Jereo ny liona. Tarehy izy ireo.
+
+FANIRY : Oui, ils dorment maintenant.
+Traduction : Eny, matory izy izao.
+
+HERY : Les singes sont amusants.
+Traduction : Mahafinaritra ny gidro.
+
+FANIRY : Ils font des grimaces.
+Traduction : Manao tarehy mampihomehy izy.
+
+HERY : J'aime beaucoup les éléphants.
+Traduction : Tena tiako ny elefanta.
+
+FANIRY : Ils sont grands et gentils.
+Traduction : Lehibe sy mahafinaritra izy.
+
+Titre : Au parc
+
+HERY : Faisons une promenade.
+Traduction : Andao hanao fitsangantsanganana.
+
+FANIRY : Oui, il fait beau aujourd'hui.
+Traduction : Eny, tsara ny andro any.
+
+HERY : Les arbres sont verts.
+Traduction : Maitso ny hazo.
+
+FANIRY : Il y a des fleurs aussi.
+Traduction : Misy voninkazo ihany koa.
+
+HERY : La rivière est calme.
+Traduction : Tony ny ony.
+
+FANIRY : J'entends les oiseaux chanter.
+Traduction : Mandre ny vorona mihira aho.
+
+Titre : À la gare
+
+HERY : À quelle heure part le train ?
+Traduction : Amin'ny firy no mandeha ny fiaran-dalamby ?
+
+FANIRY : Il part à onze heures.
+Traduction : Mandeha amin'ny iraika ambin'ny folo izy.
+
+HERY : Quel est le quai ?
+Traduction : Inona ny lampihazo ?
+
+FANIRY : Le quai numéro quatre.
+Traduction : Ny lampihazo fahefatra.
+
+HERY : Le train est à l'heure ?
+Traduction : Tonga ara-potoana ve ny fiara ?
+
+FANIRY : Oui, il est à l'heure.
+Traduction : Eny, ara-potoana izy.
+
+Titre : Au musée
+
+HERY : Ce tableau est magnifique.
+Traduction : Tena tsara ity sary ity.
+
+FANIRY : C'est un tableau ancien.
+Traduction : Sary tranainy io.
+
+HERY : De quand date-t-il ?
+Traduction : Avy tamin'ny taona firy izy ?
+
+FANIRY : Il date de 1850.
+Traduction : Avy tamin'ny taona 1850 izy.
+
+HERY : L'art est vraiment intéressant.
+Traduction : Tena mahaliana ny zavakanto.
+
+FANIRY : Oui, j'adore visiter les musées.
+Traduction : Eny, tiako ny mitsidika tranombakoka.
+
+Titre : À la boulangerie
+
+HERY : Bonjour. Je voudrais une baguette.
+Traduction : Salama. Te-hahazo mofo lava aho.
+
+FANIRY : Oui, monsieur. Une baguette ?
+Traduction : Eny, tompoko. Mofo lava ?
+
+HERY : Oui, et deux croissants.
+Traduction : Eny, ary krosana roa.
+
+FANIRY : C'est trois euros.
+Traduction : Telo euro izany.
+
+HERY : Merci. Au revoir.
+Traduction : Misaotra. Veloma.
+
+FANIRY : Au revoir. Bonne journée !
+Traduction : Veloma. Tandremo tsara !
+
+Titre : À la piscine
+
+HERY : Il fait chaud. On va à la piscine ?
+Traduction : Mafana ny andro. Hanka amin'ny dobo filomanosana ve isika ?
+
+FANIRY : Bonne idée. Je prends mon maillot.
+Traduction : Hevitra tsara. Raiso ny akanjoko.
+
+HERY : Moi aussi. On nage combien de temps ?
+Traduction : Izaho koa. Mandritra ny firy isika hilomano ?
+
+FANIRY : Une heure, peut-être.
+Traduction : Adiny iray, angamba.
+
+HERY : L'eau est bonne aujourd'hui.
+Traduction : Tsara ny rano androany.
+
+FANIRY : Oui, elle est fraîche.
+Traduction : Eny, mangatsiaka izy.
+
+Titre : À la librairie
+
+HERY : Je cherche un cahier.
+Traduction : Mitady kahie aho.
+
+FANIRY : Les cahiers sont derrière vous.
+Traduction : Eo aorianao ny kahie.
+
+HERY : Merci. Celui-ci est bien ?
+Traduction : Misaotra. Tsara ve ity ?
+
+FANIRY : Oui, il est grand et propre.
+Traduction : Eny, lehibe sy madio izy.
+
+HERY : Je le prends. Quel est le prix ?
+Traduction : Raiso aho. Ohatrinona ny vidiny ?
+
+FANIRY : Deux euros cinquante.
+Traduction : Roa euro sy sasany.
+
+Titre : À la ferme
+
+HERY : Il y a des vaches dans le pré.
+Traduction : Misy omby eny amin'ny kijana.
+
+FANIRY : Les vaches sont blanches et noires.
+Traduction : Fotsy sy mainty ny omby.
+
+HERY : Les poules aussi sont jolies.
+Traduction : Tsara tarehy koa ny akoho.
+
+FANIRY : Elles cherchent des vers.
+Traduction : Mitady kankana izy.
+
+HERY : Le coq chante le matin.
+Traduction : Mihira ny akoholahy maraina.
+
+FANIRY : Oui, il est tôt.
+Traduction : Eny, maraina izy.
+
+Titre : Au bord de la mer
+
+HERY : Je regarde les vagues.
+Traduction : Mijery ny onjan-dranomasina aho.
+
+FANIRY : Les vagues sont grandes.
+Traduction : Lehibe ny onja.
+
+HERY : L'eau est bleue et claire.
+Traduction : Manga sy mazava ny rano.
+
+FANIRY : Il y a du sable fin.
+Traduction : Misy fasika malefaka.
+
+HERY : On peut nager ici ?
+Traduction : Afaka milomano eto ve isika ?
+
+FANIRY : Oui, c'est sûr.
+Traduction : Eny, azo antoka izany.
+
+Titre : En classe
+
+HERY : Le professeur écrit au tableau.
+Traduction : Manoratra eo amin'ny tabilao ny mpampianatra.
+
+FANIRY : Prenez des notes.
+Traduction : Makà naoty.
+
+HERY : J'écris dans mon cahier.
+Traduction : Manoratra ao amin'ny kahieko aho.
+
+FANIRY : Qu'est-ce que vous écrivez ?
+Traduction : Inona no soratanao ?
+
+HERY : La phrase du jour.
+Traduction : Ilay fehezanteny androany.
+
+FANIRY : Vous écrivez très bien.
+Traduction : Tena tsara ny soratrao.
+
+Titre : À la maison
+
+HERY : Je vais préparer le dîner.
+Traduction : Handry ny sakafo hariva aho.
+
+FANIRY : Je t'aide. Que cuisines-tu ?
+Traduction : Manampy anao aho. Inona no andrahoinao ?
+
+HERY : Une soupe de légumes.
+Traduction : Lasopy legioma.
+
+FANIRY : C'est bon pour la santé.
+Traduction : Tsara ho an'ny fahasalamana izany.
+
+HERY : Oui, et c'est facile.
+Traduction : Eny, ary mora izany.
+
+FANIRY : Coupe les carottes, s'il te plaît.
+Traduction : Tapatapaho ny karaoty, azafady.
+
+Titre : À la montagne
+
+HERY : La montagne est haute.
+Traduction : Avo ny tendrombohitra.
+
+FANIRY : Il y a de la neige au sommet.
+Traduction : Misy lanezy eo an-tampony.
+
+HERY : Nous allons monter à pied.
+Traduction : Hiakatra an-tongotra izahay.
+
+FANIRY : Il faut des bonnes chaussures.
+Traduction : Mila kiraro tsara.
+
+HERY : Oui, j'ai des chaussures de randonnée.
+Traduction : Eny, manana kiraro fitsangantsanganana aho.
+
+FANIRY : L'air est pur ici.
+Traduction : Madio ny rivotra eto.
+
+Titre : À l'église
+
+HERY : L'église est grande.
+Traduction : Lehibe ny fiangonana.
+
+FANIRY : C'est un bâtiment ancien.
+Traduction : Trano tranainy io.
+
+HERY : Les vitraux sont colorés.
+Traduction : Miloko ny varavarankely fitaratra.
+
+FANIRY : La paix règne ici.
+Traduction : Fiadanana eto.
+
+HERY : Nous pouvons entrer.
+Traduction : Afaka miditra isika.
+
+FANIRY : Oui, c'est ouvert.
+Traduction : Eny, misokatra izy.
+
+Titre : À la plage
+
+HERY : Je vais dans l'eau.
+Traduction : Handeha any anaty rano aho.
+
+FANIRY : L'eau est fraîche aujourd'hui.
+Traduction : Mangatsiaka ny rano androany.
+
+HERY : Je nage jusqu'au bateau.
+Traduction : Milomano mankany amin'ilay sambo aho.
+
+FANIRY : Il est loin.
+Traduction : Lavitra izy.
+
+HERY : Oui, mais je suis bon nageur.
+Traduction : Eny, fa mahay milomano aho.
+
+FANIRY : Fais attention !
+Traduction : Tandremo tsara !
+
+Titre : En ville
+
+HERY : Il y a beaucoup de monde.
+Traduction : Be olona.
+
+FANIRY : C'est une grande ville.
+Traduction : Tanàna lehibe ity.
+
+HERY : Il y a beaucoup de magasins.
+Traduction : Misy fivarotana maro.
+
+FANIRY : On peut acheter des cadeaux.
+Traduction : Afaka mividy fanomezana isika.
+
+HERY : Je cherche un souvenir.
+Traduction : Mitady fahatsiarovana aho.
+
+FANIRY : Regarde dans ce magasin.
+Traduction : Jereo ao amin'io fivarotana io.
+
+Titre : Au jardin
+
+HERY : Je plante des fleurs aujourd'hui.
+Traduction : Mamboly voninkazo aho androany.
+
+FANIRY : Quelles fleurs ?
+Traduction : Inona ny voninkazo ?
+
+HERY : Des roses et des tulipes.
+Traduction : Razy sy tulipa.
+
+FANIRY : Elles seront belles en été.
+Traduction : Tsara izy amin'ny fahavaratra.
+
+HERY : Il faut les arroser.
+Traduction : Mila rano izy.
+
+FANIRY : Je vais chercher l'eau.
+Traduction : Handeha hahazo rano aho.
+
+Titre : À la boucherie
+
+HERY : Je voudrais un morceau de viande.
+Traduction : Te-hahazo hena aho.
+
+FANIRY : Quel morceau voulez-vous ?
+Traduction : Inona ny hena tadiavinao ?
+
+HERY : Un morceau de poulet.
+Traduction : Hena akoho.
+
+FANIRY : Voici un bon morceau.
+Traduction : Inty ny hena tsara.
+
+HERY : Combien cela coûte ?
+Traduction : Ohatrinona ny vidiny ?
+
+FANIRY : Six euros le kilo.
+Traduction : Enina euro ny kilao.
+
+Titre : À la banque
+
+HERY : Je voudrais retirer de l'argent.
+Traduction : Te-hahazo vola aho.
+
+FANIRY : Cinquante euros ?
+Traduction : Dimampolo euro ?
+
+HERY : Oui, s'il vous plaît.
+Traduction : Eny, azafady.
+
+FANIRY : Votre carte, s'il vous plaît.
+Traduction : Ny karatrao, azafady.
+
+HERY : Voici ma carte.
+Traduction : Inty ny karatro.
+
+FANIRY : Merci. Voilà votre argent.
+Traduction : Misaotra. Inty ny volanao.
+
+Titre : À la pharmacie
+
+HERY : Avez-vous des pansements ?
+Traduction : Manana fanakomba fery ve ianao ?
+
+FANIRY : Oui, voici une boîte.
+Traduction : Eny, inty ny boaty iray.
+
+HERY : Combien coûte-t-elle ?
+Traduction : Ohatrinona ny vidiny ?
+
+FANIRY : Trois euros.
+Traduction : Telo euro.
+
+HERY : Je prends aussi du sirop.
+Traduction : Raiso ihany koa ny sirop aho.
+
+FANIRY : C'est pour la toux ?
+Traduction : Ho an'ny kohaka ve izany ?
+
+Titre : À la mairie
+
+HERY : J'ai un rendez-vous à la mairie.
+Traduction : Manana fotoana any amin'ny lapan'ny tanàna aho.
+
+FANIRY : Pour quoi faire ?
+Traduction : Inona no anaovana izany ?
+
+HERY : Pour une carte d'identité.
+Traduction : Ho an'ny karapanondrona.
+
+FANIRY : Vous avez vos papiers ?
+Traduction : Manana ny taratasinao ve ianao ?
+
+HERY : Oui, j'ai tout.
+Traduction : Eny, feno aho.
+
+FANIRY : Suivez-moi, s'il vous plaît.
+Traduction : Araho aho, azafady.
+
+Titre : À la fête
+
+HERY : La fête est magnifique.
+Traduction : Mahafinaritra ny fety.
+
+FANIRY : Il y a de la musique et des danses.
+Traduction : Misy mozika sy dihy.
+
+HERY : Je danse avec toi ?
+Traduction : Mandeha miaraka aminao ve aho ?
+
+FANIRY : Bien sûr, je danse volontiers.
+Traduction : Mazava, mahafaly ahy ny mandihy.
+
+HERY : La musique est rapide.
+Traduction : Malefaka ny mozika.
+
+FANIRY : J'aime cette chanson.
+Traduction : Tiako ity hira ity.
+
+Titre : À l'aéroport
+
+HERY : Où est le vol pour Paris ?
+Traduction : Aiza ny sidina ho any Paris ?
+
+FANIRY : Il est à la porte numéro cinq.
+Traduction : Eo amin'ny varavarana fahadimy izy.
+
+HERY : Est-ce que le vol est à l'heure ?
+Traduction : Tonga ara-potoana ve ny sidina ?
+
+FANIRY : Oui, il décolle à dix heures.
+Traduction : Eny, manidina amin'ny folo ora izy.
+
+HERY : J'ai mon passeport.
+Traduction : Manana ny pasipaoroko aho.
+
+FANIRY : Alors, tout va bien.
+Traduction : Dia tsara daholo.
+
+Titre : Au château
+
+HERY : Le château est très grand.
+Traduction : Tena lehibe ny lapa.
+
+FANIRY : Il a plus de dix pièces.
+Traduction : Manana efitra mihoatra ny folo izy.
+
+HERY : C'est un château ancien.
+Traduction : Lapa tranainy ity.
+
+FANIRY : Il a cinq cents ans.
+Traduction : Dimy hetsy taona izy.
+
+HERY : Il y a une tour.
+Traduction : Misy tilikambo.
+
+FANIRY : Du haut, on voit toute la ville.
+Traduction : Avy eo ambony, dia hitany ny tanàna rehetra.
+
+Titre : Au stade
+
+HERY : Nous allons au stade.
+Traduction : Handeha any amin'ny kianja izahay.
+
+FANIRY : Pour le match de football ?
+Traduction : Ho an'ny lalao baolina kitra ?
+
+HERY : Oui, France contre Brésil.
+Traduction : Eny, Frantsa mifaninana amin'i Brésil.
+
+FANIRY : C'est un grand match.
+Traduction : Lalao lehibe izany.
+
+HERY : Le stade est plein.
+Traduction : Feno ny kianja.
+
+FANIRY : L'équipe joue bien.
+Traduction : Mpitia ny ekipa.
+
+Titre : Au lac
+
+HERY : Regarde le lac. Il est calme.
+Traduction : Jereo ny farihy. Tony izy.
+
+FANIRY : Il y a des canards.
+Traduction : Misy ganagana.
+
+HERY : Ils nagent doucement.
+Traduction : Milomano moramora izy.
+
+FANIRY : L'eau est propre.
+Traduction : Madio ny rano.
+
+HERY : On peut pêcher ici ?
+Traduction : Afaka manjono eto ve isika ?
+
+FANIRY : Oui, il y a des poissons.
+Traduction : Eny, misy trondro.
+
+Titre : Au port
+
+HERY : Il y a beaucoup de bateaux ici.
+Traduction : Misy sambo maro eto.
+
+FANIRY : Les bateaux sont grands.
+Traduction : Lehibe ny sambo.
+
+HERY : Le port est animé.
+Traduction : Feno olona ny seranana.
+
+FANIRY : Les pêcheurs préparent leurs filets.
+Traduction : Manomana ny haratony ny mpanjono.
+
+HERY : Ils partent en mer.
+Traduction : Mandeha any an-dranomasina izy.
+
+FANIRY : Bonne pêche.
+Traduction : Jono tsara.
+
+Titre : Au village
+
+HERY : Ce village est tranquille.
+Traduction : Tonia ity tanàna ity.
+
+FANIRY : Il y a une petite église.
+Traduction : Misy fiangonana kely.
+
+HERY : Les maisons sont anciennes.
+Traduction : Trano tranainy.
+
+FANIRY : J'aime l'ambiance du village.
+Traduction : Tiako ny rivo-piainana ao ambanivohitra.
+
+HERY : C'est calme et paisible.
+Traduction : Tonia sy milamina.
+
+FANIRY : On revient le weekend prochain ?
+Traduction : Hiverina amin'ny faran'ny herinandro ho avy ve isika ?
+
+Titre : Dans la forêt
+
+HERY : La forêt est épaisse.
+Traduction : Matevina ny ala.
+
+FANIRY : Il y a des arbres partout.
+Traduction : Misy hazo eny rehetra eny.
+
+HERY : J'entends le vent dans les feuilles.
+Traduction : Mandre ny rivotra amin'ny ravina aho.
+
+FANIRY : Les oiseaux chantent.
+Traduction : Mihira ny vorona.
+
+HERY : C'est la nature.
+Traduction : Izany no natiora.
+
+FANIRY : Respire profondément.
+Traduction : Mifoka rivotra lalina.
+
+Titre : Au garage
+
+HERY : Ma voiture est en panne.
+Traduction : Simba ny fiarako.
+
+FANIRY : Que s'est-il passé ?
+Traduction : Inona no nitranga ?
+
+HERY : Le moteur ne démarre pas.
+Traduction : Tsy mihetsika ny motera.
+
+FANIRY : Je vais regarder sous le capot.
+Traduction : Hijery eo ambanin'ny satroka aho.
+
+HERY : Est-ce que c'est grave ?
+Traduction : Mafy ve izany ?
+
+FANIRY : Non, c'est juste une petite réparation.
+Traduction : Tsia, fanamboarana kely fotsiny.
+
+Titre : À la laverie
+
+HERY : Je viens laver mes vêtements.
+Traduction : Avy manasa lambako aho.
+
+FANIRY : Il y a une machine libre.
+Traduction : Misy milina tsy misy olona.
+
+HERY : Combien coûte une lessive ?
+Traduction : Ohatrinona ny vidin'ny fanasa ?
+
+FANIRY : C'est quatre euros.
+Traduction : Efatra euro izany.
+
+HERY : Je mets mon linge.
+Traduction : Apetrako ny lambako.
+
+FANIRY : Une heure et ce sera propre.
+Traduction : Adiny iray ary ho madio izy.
+
+Titre : À la patinoire
+
+HERY : Je veux patiner.
+Traduction : Te-hanao skating aho.
+
+FANIRY : Tu as tes patins ?
+Traduction : Manana ny skatinganao ve ianao ?
+
+HERY : Oui, je les apporte.
+Traduction : Eny, entiko izy.
+
+FANIRY : La glace est lisse.
+Traduction : Malama ny ranomandry.
+
+HERY : Je vais lentement au début.
+Traduction : Mandeha miadana aho amin'ny fiandohana.
+
+FANIRY : Fais attention !
+Traduction : Tandremo tsara !
+
+Titre : Au bureau
+
+HERY : Je travaille à mon bureau.
+Traduction : Miasa ao amin'ny biraoko aho.
+
+FANIRY : Tu as beaucoup de travail ?
+Traduction : Manana asa be ve ianao ?
+
+HERY : Oui, je termine un rapport.
+Traduction : Eny, mamita tatitra aho.
+
+FANIRY : C'est pour demain ?
+Traduction : Ho an'ny rahampitso ve izany ?
+
+HERY : Oui, je dois le finir.
+Traduction : Eny, mila mamita azy aho.
+
+FANIRY : Bon courage !
+Traduction : Hery !
+
+Titre : À l'hôpital
+
+HERY : Je suis malade.
+Traduction : Marary aho.
+
+FANIRY : Le médecin est là.
+Traduction : Eto ny dokotera.
+
+HERY : Il va m'examiner.
+Traduction : Hizaha ahy izy.
+
+FANIRY : Prends ce médicament.
+Traduction : Makà ity fanafody ity.
+
+HERY : Est-ce que je guérirai vite ?
+Traduction : Ho sitrana haingana ve aho ?
+
+FANIRY : Oui, avec du repos.
+Traduction : Eny, miaraka amin'ny fitsaharana.
+
+Titre : À la caisse
+
+HERY : Je voudrais payer, s'il vous plaît.
+Traduction : Te-handoa aho, azafady.
+
+FANIRY : Cela fait trente euros.
+Traduction : Telo-polo euro izany.
+
+HERY : Est-ce que je peux payer par carte ?
+Traduction : Afaka mandoa amin'ny karatra ve aho ?
+
+FANIRY : Oui, bien sûr.
+Traduction : Eny, mazava.
+
+HERY : Voici ma carte.
+Traduction : Inty ny karatro.
+
+FANIRY : Merci. Bonne journée !
+Traduction : Misaotra. Tandremo tsara !
+
+Titre : À la fête foraine
+
+HERY : La grande roue est immense.
+Traduction : Tena lehibe ny kodiaran-dàlana.
+
+FANIRY : Montons dedans ?
+Traduction : Hiakatra ve isika ?
+
+HERY : Oui, j'aime le vertige.
+Traduction : Eny, tiako ny hitsingevana.
+
+FANIRY : On voit la ville d'en haut.
+Traduction : Hitantsika ny tanàna avy any ambony.
+
+HERY : C'est magnifique.
+Traduction : Tena tsara.
+
+FANIRY : Je prends une photo.
+Traduction : Misary aho.
+
+Titre : À la bibliothèque municipale
+
+HERY : Cette bibliothèque est grande.
+Traduction : Lehibe ity tranomboky ity.
+
+FANIRY : Il y a beaucoup de livres.
+Traduction : Misy boky maro.
+
+HERY : Je cherche un roman.
+Traduction : Mitady tantara aho.
+
+FANIRY : Les romans sont là-bas.
+Traduction : Any ny tantara.
+
+HERY : J'en prends deux.
+Traduction : Raiso roa aho.
+
+FANIRY : Vous pouvez les emprunter.
+Traduction : Afaka mindrana izy ianao.
+
+Titre : À la pâtisserie
+
+HERY : J'aimerais un gâteau au chocolat.
+Traduction : Te-hahazo mofomamy misy sôkôla aho.
+
+FANIRY : Nous avons un bon gâteau.
+Traduction : Manana mofomamy tsara izahay.
+
+HERY : C'est pour un anniversaire.
+Traduction : Ho an'ny tsingerintaona izany.
+
+FANIRY : Avec des bougies ?
+Traduction : Misy labozia ve ?
+
+HERY : Oui, trente bougies.
+Traduction : Eny, telo-polo labozia.
+
+FANIRY : Parfait, je le prépare.
+Traduction : Tsara, omako izy.
+
+Titre : À la fête d'anniversaire
+
+HERY : Bon anniversaire !
+Traduction : Tratry ny tsingerintaona !
+
+FANIRY : Merci ! Tu es gentil.
+Traduction : Misaotra ! Tia namana ianao.
+
+HERY : J'ai un cadeau pour toi.
+Traduction : Manana fanomezana ho anao aho.
+
+FANIRY : Merci beaucoup.
+Traduction : Misaotra betsaka.
+
+HERY : Ouvre-le maintenant.
+Traduction : Sokafy izao.
+
+FANIRY : C'est une montre. Elle est belle !
+Traduction : Famantarana ora io. Tsara tarehy izy !
+
+Titre : À la salle de sport
+
+HERY : Je fais du sport tous les jours.
+Traduction : Manao fanatanjahan-tena isan'andro aho.
+
+FANIRY : C'est bon pour la santé.
+Traduction : Tsara ho an'ny fahasalamana izany.
+
+HERY : Je cours pendant trente minutes.
+Traduction : Mihazakazaka mandritra ny telo-polo minitra aho.
+
+FANIRY : Et toi, tu fais quel sport ?
+Traduction : Ary ianao, inona no fanatanjahan-tena ataonao ?
+
+FANIRY : Je fais de la natation.
+Traduction : Manao filomanosana aho.
+
+HERY : La natation, c'est excellent.
+Traduction : Ny filomanosana, dia tena tsara.
+
+Titre : Au restaurant universitaire
+
+HERY : Le déjeuner est à midi.
+Traduction : Sakafo atoandro amin'ny mitataovovonana.
+
+FANIRY : Qu'est-ce qu'on mange ?
+Traduction : Inona no hohanintsika ?
+
+HERY : Du poisson avec des légumes.
+Traduction : Trondro sy legioma.
+
+FANIRY : Et en dessert ?
+Traduction : Ary ny tsakitsaky ?
+
+HERY : Une compote de pommes.
+Traduction : Kômpotan'paoma.
+
+FANIRY : Le repas est complet.
+Traduction : Feno ny sakafo.
+
+Titre : À la jardinerie
+
+HERY : J'ai besoin de graines pour mon jardin.
+Traduction : Mila voa ho an'ny zaridainako aho.
+
+FANIRY : Quel type de graines ?
+Traduction : Karazana voa inona ?
+
+HERY : Des graines de fleurs.
+Traduction : Voa voninkazo.
+
+FANIRY : Voici des graines de tournesol.
+Traduction : Inty ny voa maniry masoandro.
+
+HERY : Merci, je vais les planter.
+Traduction : Misaotra, hamboly azy aho.
+
+FANIRY : Arrose-les bien.
+Traduction : Tondraho tsara izy.
+
+Titre : À la cathédrale
+
+HERY : La cathédrale est impressionnante.
+Traduction : Mahatalanjona ny katedraly.
+
+FANIRY : Les flèches sont très hautes.
+Traduction : Tena avo ny tilikambo.
+
+HERY : L'intérieur est magnifique.
+Traduction : Tena tsara ny ao anatiny.
+
+FANIRY : Les vitraux racontent des histoires.
+Traduction : Mitantara tantara ny varavarankely.
+
+HERY : C'est un lieu de paix.
+Traduction : Toerana fiadanana io.
+
+FANIRY : J'aime venir ici.
+Traduction : Tiako ny ho eto.
+
+Titre : À l'usine
+
+HERY : L'usine est grande.
+Traduction : Lehibe ny orinasa.
+
+FANIRY : Il y a beaucoup de machines.
+Traduction : Misy milina maro.
+
+HERY : Elles fabriquent des voitures.
+Traduction : Manamboatra fiara izy.
+
+FANIRY : Le travail est rapide.
+Traduction : Haingana ny asa.
+
+HERY : Les ouvriers sont nombreux.
+Traduction : Maro ny mpiasa.
+
+FANIRY : Tout est organisé.
+Traduction : Voalamina tsara ny zava-drehetra.
+
+Titre : À la ferme bio
+
+HERY : La ferme bio est belle.
+Traduction : Tsara ilay toeram-pambolena voajanahary.
+
+FANIRY : Les légumes sont cultivés sans produits chimiques.
+Traduction : Ny legioma dia ambolena tsy misy zavatra simika.
+
+HERY : Les tomates sont rouges.
+Traduction : Mena ny voatabia.
+
+FANIRY : Les carottes sont orange.
+Traduction : Volom-boasary ny karaoty.
+
+HERY : Les fruits sont mûrs.
+Traduction : Masaka ny voankazo.
+
+FANIRY : On peut acheter directement ici.
+Traduction : Afaka mividy mivantana eto isika.
+
+Titre : À la boulangerie
+
+HERY : Je voudrais deux baguettes, s'il vous plaît.
+Traduction : Te-hahazo mofo lava roa aho, azafady.
+
+ROJO : Voilà, monsieur. C'est deux euros.
+Traduction : Inty, tompoko. Roa euro izany.
+
+HERY : Merci. Bonne journée.
+Traduction : Misaotra. Tandremo tsara.
+
+ROJO : Merci, à vous aussi.
+Traduction : Misaotra, anao koa.
+
+Titre : À l'école
+
+SAFIDY : Bonjour, madame. J'ai un problème.
+Traduction : Salama, ramatoa. Manana olana aho.
+
+ROVA : Bonjour. Je t'écoute.
+Traduction : Salama. Mihaino anao aho.
+
+SAFIDY : Je n'ai pas compris la leçon.
+Traduction : Tsy azoko ilay lesona.
+
+ROVA : Je vais t'expliquer.
+Traduction : Hazavako anao.
+
+SAFIDY : Merci, madame.
+Traduction : Misaotra, ramatoa.
+
+ROVA : Viens après la classe.
+Traduction : Avia aorian'ny fianarana.
+
+Titre : Au supermarché
+
+ANDRY : Où sont les fruits ?
+Traduction : Aiza ny voankazo ?
+
+NOMENA : Les fruits sont au rayon numéro deux.
+Traduction : Eo amin'ny tontonana faharoa ny voankazo.
+
+ANDRY : Merci. Et le pain ?
+Traduction : Misaotra. Ary ny mofo ?
+
+NOMENA : Le pain est à côté du fromage.
+Traduction : Eo akaikin'ny fromazy ny mofo.
+
+ANDRY : Je prends aussi du lait.
+Traduction : Raiso ihany koa ny ronono aho.
+
+NOMENA : Très bien.
+Traduction : Tsara.
+
+Titre : Dans la rue
+
+AVOTRA : Excusez-moi, où est la gare ?
+Traduction : Azafady, aiza ny gara ?
+
+NIRINA : La gare est à droite.
+Traduction : Eo ankavanana ny gara.
+
+AVOTRA : À deux cents mètres ?
+Traduction : Roo metatra ?
+
+NIRINA : Oui, tout droit.
+Traduction : Eny, mahitsy.
+
+AVOTRA : Merci beaucoup.
+Traduction : Misaotra betsaka.
+
+NIRINA : De rien.
+Traduction : Tsy misy fisaorana.
+
+Titre : À la poste
+
+DERA : Bonjour, je voudrais un timbre.
+Traduction : Salama, te-hahazo hajia aho.
+
+MEVA : Pour la France ou pour l'étranger ?
+Traduction : Ho an'i Frantsa sa any ivelany ?
+
+DERA : Pour Madagascar.
+Traduction : Ho an'i Madagasikara.
+
+MEVA : Il coûte un euro.
+Traduction : Iray euro ny vidiny.
+
+DERA : Voilà. Merci.
+Traduction : Inty. Misaotra.
+
+MEVA : Au revoir, monsieur.
+Traduction : Veloma, tompoko.
+
+Titre : Au restaurant
+
+SAFIDY : Une table pour deux, s'il vous plaît.
+Traduction : Latabatra ho an'ny roa, azafady.
+
+ROJO : Voici votre table.
+Traduction : Inty ny latabatrao.
+
+SAFIDY : Je voudrais un steak-frites.
+Traduction : Te-hahazo hena misy pataty aho.
+
+ROJO : Oui, monsieur.
+Traduction : Eny, tompoko.
+
+SAFIDY : Et un verre d'eau.
+Traduction : Ary rano indray vera.
+
+ROJO : Tout de suite.
+Traduction : Avy hatrany.
+
+Titre : Chez le médecin
+
+ANDRY : Bonjour, docteur. J'ai mal à la tête.
+Traduction : Salama, dokotera. Marary ny lohako.
+
+NOMENA : Bonjour. Depuis quand ?
+Traduction : Salama. Hatramin'ny oviana ?
+
+ANDRY : Depuis hier soir.
+Traduction : Hatramin'ny omaly hariva.
+
+NOMENA : Vous avez de la fièvre ?
+Traduction : Manana tazo ve ianao ?
+
+ANDRY : Oui, un peu.
+Traduction : Eny, kely.
+
+NOMENA : Reposez-vous aujourd'hui.
+Traduction : Mialà sasatra androany.
+
+Titre : À la librairie
+
+HERY : Je cherche un cahier.
+Traduction : Mitady kahie aho.
+
+ROVA : Les cahiers sont derrière vous.
+Traduction : Eo aorianao ny kahie.
+
+HERY : Merci. Celui-ci est bien ?
+Traduction : Misaotra. Tsara ve ity ?
+
+ROVA : Oui, il est propre.
+Traduction : Eny, madio izy.
+
+HERY : Combien coûte-t-il ?
+Traduction : Ohatrinona ny vidiny ?
+
+ROVA : Deux euros cinquante.
+Traduction : Roa euro sy sasany.
+
+Titre : Au parc
+
+AVOTRA : Faisons une promenade.
+Traduction : Andao hanao fitsangantsanganana.
+
+NIRINA : Oui, il fait beau.
+Traduction : Eny, tsara ny andro.
+
+AVOTRA : Les fleurs sont jolies.
+Traduction : Tsara tarehy ny voninkazo.
+
+NIRINA : Il y a des oiseaux.
+Traduction : Misy vorona.
+
+AVOTRA : J'aime la nature.
+Traduction : Tiako ny zavaboary.
+
+NIRINA : Moi aussi.
+Traduction : Izaho koa.
+
+Titre : À la gare
+
+DERA : À quelle heure part le train ?
+Traduction : Amin'ny firy no mandeha ny fiaran-dalamby ?
+
+MEVA : Il part à onze heures.
+Traduction : Mandeha amin'ny iraika ambin'ny folo izy.
+
+DERA : Quel est le quai ?
+Traduction : Inona ny lampihazo ?
+
+MEVA : Le quai numéro quatre.
+Traduction : Ny lampihazo fahefatra.
+
+DERA : Merci, madame.
+Traduction : Misaotra, ramatoa.
+
+MEVA : Bon voyage !
+Traduction : Soava dia !
+
+Titre : À la piscine
+
+SAFIDY : Il fait chaud. On va à la piscine ?
+Traduction : Mafana ny andro. Hanka amin'ny dobo filomanosana ve isika ?
+
+ROJO : Bonne idée !
+Traduction : Hevitra tsara !
+
+SAFIDY : Je prends mon maillot.
+Traduction : Raiso ny akanjoko.
+
+ROJO : Moi aussi.
+Traduction : Izaho koa.
+
+SAFIDY : L'eau est bonne ?
+Traduction : Tsara ve ny rano ?
+
+ROJO : Oui, elle est fraîche.
+Traduction : Eny, mangatsiaka izy.
+
+Titre : À la plage
+
+ANDRY : Je vais dans l'eau.
+Traduction : Handeha any anaty rano aho.
+
+NOMENA : L'eau est froide.
+Traduction : Mangatsiaka ny rano.
+
+ANDRY : Mais je nage bien.
+Traduction : Fa mahay milomano aho.
+
+NOMENA : Attention aux vagues.
+Traduction : Tandremo ny onja.
+
+ANDRY : Je nage jusqu'au bateau.
+Traduction : Milomano mankany amin'ilay sambo aho.
+
+NOMENA : Reviens vite !
+Traduction : Miverina haingana !
+
+Titre : Au zoo
+
+HERY : Regarde les lions.
+Traduction : Jereo ny liona.
+
+ROVA : Ils dorment.
+Traduction : Matory izy.
+
+HERY : Et les singes sont amusants.
+Traduction : Ary mahafinaritra ny gidro.
+
+ROVA : Ils font des grimaces.
+Traduction : Manao tarehy mampihomehy izy.
+
+HERY : J'aime les éléphants.
+Traduction : Tiako ny elefanta.
+
+ROVA : Ils sont gentils.
+Traduction : Mahafinaritra izy.
+
+Titre : En classe
+
+AVOTRA : Le professeur écrit au tableau.
+Traduction : Manoratra eo amin'ny tabilao ny mpampianatra.
+
+NIRINA : Prenez des notes.
+Traduction : Makà naoty.
+
+AVOTRA : J'écris dans mon cahier.
+Traduction : Manoratra ao amin'ny kahieko aho.
+
+NIRINA : Vous écrivez bien.
+Traduction : Tena tsara ny soratrao.
+
+AVOTRA : Merci.
+Traduction : Misaotra.
+
+NIRINA : Continuez comme ça.
+Traduction : Tohizo izany.
+
+Titre : À la maison
+
+DERA : Je vais préparer le dîner.
+Traduction : Handry ny sakafo hariva aho.
+
+MEVA : Je t'aide.
+Traduction : Manampy anao aho.
+
+DERA : On fait une soupe.
+Traduction : Manao lasopy isika.
+
+MEVA : Avec des légumes ?
+Traduction : Misy legioma ?
+
+DERA : Oui, des carottes.
+Traduction : Eny, karaoty.
+
+MEVA : Parfait. J'aime la soupe.
+Traduction : Tsara. Tiako ny lasopy.
+
+Titre : À la ferme
+
+SAFIDY : Il y a des vaches.
+Traduction : Misy omby.
+
+ROJO : Les vaches sont blanches.
+Traduction : Fotsy ny omby.
+
+SAFIDY : Les poules aussi.
+Traduction : Ny akoho ihany koa.
+
+ROJO : Elles cherchent des vers.
+Traduction : Mitady kankana izy.
+
+SAFIDY : Le coq chante.
+Traduction : Mihira ny akoholahy.
+
+ROJO : Il est tôt.
+Traduction : Maraina izy.
+
+Titre : Au marché
+
+ANDRY : Je voudrais des pommes.
+Traduction : Te-hahazo paoma aho.
+
+NOMENA : Les pommes sont fraîches.
+Traduction : Vaovao ny paoma.
+
+ANDRY : Combien coûtent-elles ?
+Traduction : Ohatrinona ny vidiny ?
+
+NOMENA : Deux euros le kilo.
+Traduction : Roa euro ny kilao.
+
+ANDRY : Je prends deux kilos.
+Traduction : Raiso roa kilao aho.
+
+NOMENA : Voilà, monsieur.
+Traduction : Inty, tompoko.
+
+Titre : À la montagne
+
+HERY : La montagne est haute.
+Traduction : Avo ny tendrombohitra.
+
+ROVA : Il y a de la neige.
+Traduction : Misy lanezy.
+
+HERY : On va marcher ?
+Traduction : Handeha ve isika ?
+
+ROVA : Oui, j'aime la marche.
+Traduction : Eny, tiako ny mandeha an-tongotra.
+
+HERY : Prends tes chaussures.
+Traduction : Makà ny kiraronao.
+
+ROVA : D'accord.
+Traduction : Tsara.
+
+Titre : À la plage
+
+AVOTRA : La plage est belle.
+Traduction : Tsara ny tora-pasika.
+
+NIRINA : Le sable est fin.
+Traduction : Malefaka ny fasika.
+
+AVOTRA : Je construis un château.
+Traduction : Manamboatra lapa aho.
+
+NIRINA : Je t'aide.
+Traduction : Manampy anao aho.
+
+AVOTRA : Avec des coquillages.
+Traduction : Misy akorandriaka.
+
+NIRINA : C'est joli.
+Traduction : Tsara izany.
+
+Titre : À la bibliothèque
+
+DERA : Où sont les romans ?
+Traduction : Aiza ny tantara ?
+
+MEVA : Les romans sont au fond.
+Traduction : Any aoriana ny tantara.
+
+DERA : Je cherche un livre facile.
+Traduction : Mitady boky mora aho.
+
+MEVA : Celui-ci est bien.
+Traduction : Tsara ity.
+
+DERA : Je l'emprunte.
+Traduction : Mindrana azy aho.
+
+MEVA : Vous avez votre carte ?
+Traduction : Manana ny karatrao ve ianao ?
+
+Titre : Au cinéma
+
+SAFIDY : Deux billets pour le film.
+Traduction : Tapakila roa ho an'ny sarimihetsika.
+
+ROJO : C'est douze euros.
+Traduction : Roa ambin'ny folo euro izany.
+
+SAFIDY : Il commence à quelle heure ?
+Traduction : Amin'ny firy no manomboka ?
+
+ROJO : À vingt heures.
+Traduction : Amin'ny roapolo ora.
+
+SAFIDY : Où sont les places ?
+Traduction : Aiza ny toerana ?
+
+ROJO : Au milieu.
+Traduction : Any afovoany.
+
+Titre : À l'hôpital
+
+ANDRY : Je suis malade.
+Traduction : Marary aho.
+
+NOMENA : Le médecin arrive.
+Traduction : Tonga ny dokotera.
+
+ANDRY : J'ai mal au ventre.
+Traduction : Marary ny kiboko.
+
+NOMENA : Il va t'examiner.
+Traduction : Hizaha anao izy.
+
+ANDRY : Est-ce que c'est grave ?
+Traduction : Mafy ve izany ?
+
+NOMENA : Non, une grippe.
+Traduction : Tsia, gripa.
+
+Titre : Au musée
+
+HERY : Ce tableau est beau.
+Traduction : Tsara ity sary ity.
+
+ROVA : C'est un tableau ancien.
+Traduction : Sary tranainy io.
+
+HERY : De quand date-t-il ?
+Traduction : Avy tamin'ny taona firy izy ?
+
+ROVA : De mille huit cent cinquante.
+Traduction : Avy tamin'ny arivo valonjato dimampolo.
+
+HERY : L'art est intéressant.
+Traduction : Mahaliana ny zavakanto.
+
+ROVA : Oui, j'aime ça.
+Traduction : Eny, tiako izany.
+
+Titre : À la boulangerie
+
+AVOTRA : Une baguette, s'il vous plaît.
+Traduction : Mofo lava, azafady.
+
+NIRINA : Oui, monsieur.
+Traduction : Eny, tompoko.
+
+AVOTRA : Et deux croissants.
+Traduction : Ary krosana roa.
+
+NIRINA : C'est trois euros.
+Traduction : Telo euro izany.
+
+AVOTRA : Merci.
+Traduction : Misaotra.
+
+NIRINA : Bonne journée.
+Traduction : Tandremo tsara.
+
+Titre : Au parc
+
+DERA : Les arbres sont verts.
+Traduction : Maitso ny hazo.
+
+MEVA : Les fleurs sont colorées.
+Traduction : Miloko ny voninkazo.
+
+DERA : Il y a un étang.
+Traduction : Misy dobo.
+
+MEVA : Il y a des poissons rouges.
+Traduction : Misy trondro mena.
+
+DERA : J'aime me promener ici.
+Traduction : Tiako ny mandehandeha eto.
+
+MEVA : Moi aussi.
+Traduction : Izaho koa.
+
+Titre : À la pharmacie
+
+SAFIDY : Avez-vous du sirop ?
+Traduction : Manana sirop ve ianao ?
+
+ROJO : Oui, pour la toux ?
+Traduction : Eny, ho an'ny kohaka ?
+
+SAFIDY : Non, pour la gorge.
+Traduction : Tsia, ho an'ny tenda.
+
+ROJO : Voici ce sirop.
+Traduction : Inty ity sirop ity.
+
+SAFIDY : Combien coûte-t-il ?
+Traduction : Ohatrinona ny vidiny ?
+
+ROJO : Cinq euros.
+Traduction : Dimy euro.
+
+Titre : À la laverie
+
+ANDRY : Je lave mes vêtements.
+Traduction : Manasa ny lambako aho.
+
+NOMENA : Il y a une machine libre.
+Traduction : Misy milina tsy misy olona.
+
+ANDRY : Combien coûte une lessive ?
+Traduction : Ohatrinona ny vidin'ny fanasa ?
+
+NOMENA : Quatre euros.
+Traduction : Efatra euro.
+
+ANDRY : Je mets mon linge.
+Traduction : Apetrako ny lambako.
+
+NOMENA : Reviens dans une heure.
+Traduction : Miverena ao anatin'ny adiny iray.
+
+Titre : Au jardin
+
+HERY : Je plante des tulipes.
+Traduction : Mamboly tulipa aho.
+
+ROVA : Les tulipes sont rouges.
+Traduction : Mena ny tulipa.
+
+HERY : J'arrose les fleurs.
+Traduction : Manondraka ny voninkazo aho.
+
+ROVA : Le jardin est beau.
+Traduction : Tsara ny zaridaina.
+
+HERY : J'aime jardiner.
+Traduction : Tiako ny mamboly.
+
+ROVA : Moi aussi.
+Traduction : Izaho koa.
+
+Titre : À la boucherie
+
+AVOTRA : Je voudrais du poulet.
+Traduction : Te-hahazo hena akoho aho.
+
+NIRINA : Voici un bon morceau.
+Traduction : Inty ny hena tsara.
+
+AVOTRA : Combien ça coûte ?
+Traduction : Ohatrinona ny vidiny ?
+
+NIRINA : Six euros le kilo.
+Traduction : Enina euro ny kilao.
+
+AVOTRA : Je prends un kilo.
+Traduction : Raiso kilao iray aho.
+
+NIRINA : Voilà, monsieur.
+Traduction : Inty, tompoko.
+
+Titre : À la banque
+
+DERA : Je voudrais retirer de l'argent.
+Traduction : Te-hahazo vola aho.
+
+MEVA : Cinquante euros ?
+Traduction : Dimampolo euro ?
+
+DERA : Oui, s'il vous plaît.
+Traduction : Eny, azafady.
+
+MEVA : Votre carte, s'il vous plaît.
+Traduction : Ny karatrao, azafady.
+
+DERA : Voici.
+Traduction : Inty.
+
+MEVA : Merci. Voilà votre argent.
+Traduction : Misaotra. Inty ny volanao.
+
+Titre : À l'aéroport
+
+SAFIDY : Où est le vol pour Paris ?
+Traduction : Aiza ny sidina ho any Paris ?
+
+ROJO : Il est à la porte trois.
+Traduction : Eo amin'ny varavarana fahatelo izy.
+
+SAFIDY : Il est à l'heure ?
+Traduction : Tonga ara-potoana ve izy ?
+
+ROJO : Oui, à dix heures.
+Traduction : Eny, amin'ny folo ora.
+
+SAFIDY : J'ai mon passeport.
+Traduction : Manana ny pasipaoroko aho.
+
+ROJO : Alors, tout va bien.
+Traduction : Dia tsara daholo.
+
+Titre : Au marché couvert
+
+ANDRY : Je prends des tomates.
+Traduction : Raiso ny voatabia aho.
+
+NOMENA : Elles sont rouges et mûres.
+Traduction : Mena sy masaka izy.
+
+ANDRY : Et des oignons.
+Traduction : Ary tongolo.
+
+NOMENA : Combien en voulez-vous ?
+Traduction : Hoatrinona no tadiavinao ?
+
+ANDRY : Un kilo.
+Traduction : Kilao iray.
+
+NOMENA : Voilà.
+Traduction : Inty.
+
+Titre : À la patinoire
+
+HERY : Je patine bien.
+Traduction : Mahay skating aho.
+
+ROVA : Moi, je tombe parfois.
+Traduction : Izaho, dia latsaka indraindray.
+
+HERY : Tiens ma main.
+Traduction : Tazony ny tanako.
+
+ROVA : Merci. C'est mieux.
+Traduction : Misaotra. Tsara kokoa izao.
+
+HERY : Va doucement.
+Traduction : Mandeha moramora.
+
+ROVA : D'accord.
+Traduction : Tsara.
+
+Titre : Au stade
+
+AVOTRA : C'est un grand match.
+Traduction : Lalao lehibe izany.
+
+NIRINA : France contre Brésil.
+Traduction : Frantsa mifaninana amin'i Brésil.
+
+AVOTRA : Les joueurs courent vite.
+Traduction : Mihazakazaka haingana ny mpilalao.
+
+NIRINA : Le public applaudit.
+Traduction : Mitehaka ny mpijery.
+
+AVOTRA : L'équipe joue bien.
+Traduction : Mpitia ny ekipa.
+
+NIRINA : J'aime le football.
+Traduction : Tiako ny baolina kitra.
+
+Titre : À la fête foraine
+
+DERA : La grande roue est belle.
+Traduction : Tsara ny kodiaran-dàlana.
+
+MEVA : On monte dedans ?
+Traduction : Hiakatra ve isika ?
+
+DERA : Oui, j'adore.
+Traduction : Eny, tiako izany.
+
+MEVA : On voit la ville.
+Traduction : Hitantsika ny tanàna.
+
+DERA : C'est magnifique.
+Traduction : Tena tsara.
+
+MEVA : Je prends une photo.
+Traduction : Misary aho.
+
+Titre : À la pâtisserie
+
+SAFIDY : Je veux un gâteau au chocolat.
+Traduction : Te-hahazo mofomamy misy sôkôla aho.
+
+ROJO : Nous avons un bon gâteau.
+Traduction : Manana mofomamy tsara izahay.
+
+SAFIDY : C'est pour ce soir.
+Traduction : Ho an'ity hariva ity.
+
+ROJO : Avec des bougies ?
+Traduction : Misy labozia ve ?
+
+SAFIDY : Oui, trente bougies.
+Traduction : Eny, telo-polo labozia.
+
+ROJO : Parfait.
+Traduction : Tsara.
+
+Titre : À l'église
+
+ANDRY : L'église est grande.
+Traduction : Lehibe ny fiangonana.
+
+NOMENA : Les vitraux sont colorés.
+Traduction : Miloko ny varavarankely.
+
+ANDRY : C'est un lieu calme.
+Traduction : Toerana tony io.
+
+NOMENA : On peut prier ici.
+Traduction : Afaka mivavaka eto isika.
+
+ANDRY : J'aime venir ici.
+Traduction : Tiako ny ho eto.
+
+NOMENA : Moi aussi.
+Traduction : Izaho koa.
+
+Titre : À la ferme bio
+
+HERY : Les légumes sont beaux.
+Traduction : Tsara ny legioma.
+
+ROVA : Ils sont sans produits chimiques.
+Traduction : Tsy misy zavatra simika izy.
+
+HERY : Les tomates sont rouges.
+Traduction : Mena ny voatabia.
+
+ROVA : Les carottes sont orange.
+Traduction : Volom-boasary ny karaoty.
+
+HERY : On peut acheter ici.
+Traduction : Afaka mividy eto isika.
+
+ROVA : Oui, c'est direct.
+Traduction : Eny, mivantana izany.
+
+Titre : À la caisse
+
+AVOTRA : Je voudrais payer.
+Traduction : Te-handoa aho.
+
+NIRINA : Cela fait trente euros.
+Traduction : Telo-polo euro izany.
+
+AVOTRA : Je paie par carte.
+Traduction : Mandoa amin'ny karatra aho.
+
+NIRINA : Oui, bien sûr.
+Traduction : Eny, mazava.
+
+AVOTRA : Merci.
+Traduction : Misaotra.
+
+NIRINA : Bonne journée.
+Traduction : Tandremo tsara.
+
+Titre : À la garderie
+
+DERA : J'amène mon fils.
+Traduction : Mitondra ny zanako lahy aho.
+
+MEVA : Quel âge a-t-il ?
+Traduction : Firy taona izy ?
+
+DERA : Il a trois ans.
+Traduction : Telo taona izy.
+
+MEVA : Il est gentil.
+Traduction : Mahafinaritra izy.
+
+DERA : Je reviens à cinq heures.
+Traduction : Miverina amin'ny dimy ora aho.
+
+MEVA : D'accord.
+Traduction : Tsara.
+
+Titre : À la bibliothèque
+
+SAFIDY : J'emprunte un roman.
+Traduction : Mindrana tantara aho.
+
+ROJO : Vous avez votre carte ?
+Traduction : Manana ny karatrao ve ianao ?
+
+SAFIDY : Oui, la voici.
+Traduction : Eny, inty.
+
+ROJO : Vous pouvez le garder trois semaines.
+Traduction : Afaka mitazona azy telo herinandro ianao.
+
+SAFIDY : Merci.
+Traduction : Misaotra.
+
+ROJO : Bonne lecture !
+Traduction : Famakiana tsara !
+
+Titre : À la salle de sport
+
+ANDRY : Je fais du sport tous les jours.
+Traduction : Manao fanatanjahan-tena isan'andro aho.
+
+NOMENA : C'est bon pour la santé.
+Traduction : Tsara ho an'ny fahasalamana izany.
+
+ANDRY : Je cours vingt minutes.
+Traduction : Mihazakazaka roapolo minitra aho.
+
+NOMENA : Et toi, quel sport ?
+Traduction : Ary ianao, inona no fanatanjahan-tena ataonao ?
+
+NOMENA : Je fais de la natation.
+Traduction : Manao filomanosana aho.
+
+ANDRY : La natation, c'est bien.
+Traduction : Ny filomanosana, dia tsara.
+
+Titre : Au jardin
+
+HERY : Le jardin est vert.
+Traduction : Maitso ny zaridaina.
+
+ROVA : Les roses sont rouges.
+Traduction : Mena ny raozy.
+
+HERY : J'arrose les plantes.
+Traduction : Manondraka ny zavamaniry aho.
+
+ROVA : Il fait beau aujourd'hui.
+Traduction : Tsara ny andro androany.
+
+HERY : J'aime le jardinage.
+Traduction : Tiako ny fambolena.
+
+ROVA : Moi aussi.
+Traduction : Izaho koa.
+
+Titre : À la boutique de souvenirs
+
+AVOTRA : Je cherche un souvenir.
+Traduction : Mitady fahatsiarovana aho.
+
+NIRINA : Nous avons des bijoux.
+Traduction : Manana firavaka izahay.
+
+AVOTRA : Je prends ce bracelet.
+Traduction : Raiso ity fehin-tànana ity aho.
+
+NIRINA : Il coûte dix euros.
+Traduction : Folo euro ny vidiny.
+
+AVOTRA : C'est un bon prix.
+Traduction : Tsara ny vidiny.
+
+NIRINA : Merci, madame.
+Traduction : Misaotra, ramatoa.
+
+Titre : Au marché de Noël
+
+DERA : Le marché de Noël est joli.
+Traduction : Tsara ny tsenan'ny Noely.
+
+MEVA : Il y a des décorations.
+Traduction : Misy haingon-trano.
+
+DERA : J'achète un cadeau.
+Traduction : Mividy fanomezana aho.
+
+MEVA : C'est pour qui ?
+Traduction : Ho an'iza ?
+
+DERA : Pour ma sœur.
+Traduction : Ho an'ny rahavaviko.
+
+MEVA : Elle aimera ce mouchoir.
+Traduction : Ho tiany ity mosara ity.
+
+Titre : À la gare routière
+
+SAFIDY : Où est le bus pour Antananarivo ?
+Traduction : Aiza ny fiara fitateram-bahoaka ho any Antananarivo ?
+
+ROJO : Le bus part du quai deux.
+Traduction : Miala amin'ny lampihazo roa ny fiara.
+
+SAFIDY : À quelle heure ?
+Traduction : Amin'ny firy ?
+
+ROJO : À huit heures du matin.
+Traduction : Amin'ny valo ora maraina.
+
+SAFIDY : Merci, madame.
+Traduction : Misaotra, ramatoa.
+
+ROJO : Bon voyage !
+Traduction : Soava dia !
+
+Titre : À la poste
+
+ANDRY : J'envoie une lettre.
+Traduction : Mandefa taratasy aho.
+
+NOMENA : C'est pour Madagascar ?
+Traduction : Ho an'i Madagasikara ve izany ?
+
+ANDRY : Oui, pour ma famille.
+Traduction : Eny, ho an'ny fianakaviako.
+
+NOMENA : Il faut un timbre.
+Traduction : Mila hajia.
+
+ANDRY : Voici l'argent.
+Traduction : Inty ny vola.
+
+NOMENA : Merci. Au revoir.
+Traduction : Misaotra. Veloma.
+
+Titre : À l'école de musique
+
+HERY : Je veux apprendre le piano.
+Traduction : Te-hianatra piano aho.
+
+ROVA : C'est un bel instrument.
+Traduction : Fitaovana tsara izany.
+
+HERY : J'aime la musique.
+Traduction : Tiako ny mozika.
+
+ROVA : Viens tous les mercredis.
+Traduction : Avia isaky ny alarobia.
+
+HERY : Merci, professeur.
+Traduction : Misaotra, mpampianatra.
+
+ROVA : À mercredi !
+Traduction : Rahampitso alarobia !
+
+Titre : Au cinéma
+
+AVOTRA : On va au cinéma ce soir ?
+Traduction : Hanka amin'ny sinema ve isika hariva ?
+
+NIRINA : Oui, quel film ?
+Traduction : Eny, inona ny sarimihetsika ?
+
+AVOTRA : Un film d'aventure.
+Traduction : Sarimihetsika fahaizana.
+
+NIRINA : D'accord. J'aime ça.
+Traduction : Tsara. Tiako izany.
+
+AVOTRA : On se retrouve à vingt heures.
+Traduction : Mihaona amin'ny roapolo ora isika.
+
+NIRINA : Parfait.
+Traduction : Tsara.
+
+Titre : À la bibliothèque municipale
+
+DERA : Cette bibliothèque est calme.
+Traduction : Tonia ity tranomboky ity.
+
+MEVA : Il y a beaucoup de livres.
+Traduction : Misy boky maro.
+
+DERA : Je cherche un dictionnaire.
+Traduction : Mitady diksionera aho.
+
+MEVA : Les dictionnaires sont là-bas.
+Traduction : Any ny diksionera.
+
+DERA : Merci. Je trouve.
+Traduction : Misaotra. Mahita aho.
+
+MEVA : Bonne recherche !
+Traduction : Fikarohana tsara !
