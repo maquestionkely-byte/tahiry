@@ -1,7 +1,9 @@
-Exercice : Types de phrases - Niveau 1 (très facile)
+Consigne : Identsssssssssssssssssssifiez le 
 
-Consigne : Identifiez le type de chaque phrase.
-A) Déclarative / B) Interrogative / C) Impérative / D) Exclamative
+
+
+type de chaque phrase.
+
 
 1. Il fait beau.
 *A) Déclarative
@@ -9,7 +11,7 @@ B) Interrogative
 C) Impérative
 D) Exclamative
 TRADUCTION: Tsara ny andro anio.
-EXPLICATION : Ny fehezanteny eto dia milaza tsotra fotsiny.
+EXPLICATION: Ny fehezanteny eto dia milaza tsotra fotsiny.
 
 2. Quel âge as-tu ?
 A) Déclarative
@@ -17,4 +19,4 @@ A) Déclarative
 C) Impérative
 D) Exclamative
 TRADUCTION: Firy taona ianao?
-EXPLICATION : Ny fehezanteny eto dia manotany.
+EXPLICATION: Ny fehezanteny eto dia manotany.
