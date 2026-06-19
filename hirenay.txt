@@ -732,11 +732,11 @@ function getCodeLecon(titre) {
     const exceptions = {
         // Conflit prde (N°10 et N°11)
         "Pronoms démonstratifs": "prde",
-        "Pronoms démonstratifs neutres": "prdn",  // ajout du 'n' pour neutres
+        "Pronoms démonstratifs neutres": "prdn",  // ajout n11 du 'n' pour neutres
         
         // Conflit prre (N°12 et N°22)
         "Pronoms relatifs simples": "prre",
-        "Pronoms réfléchis": "prrf",  // ajout du 'f' pour réfléchis
+        "Pronoms réfléchis": "prrf",  // ajout n22 du 'f' pour réfléchis
 		// Conflit prre (N°12 et N°22)
         "Exprimer la condition": "exdi",//75 change
         "Exprimer l'accord et le désaccord": "elad",//79 change
