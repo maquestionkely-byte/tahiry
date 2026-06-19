@@ -1,9 +1,8 @@
-Consigne : Identsssssssssssssssssssifiez le 
+Consigne: Identif
 
 
 
-type de chaque phrase.
-
+iez le type de chaque phrase.
 
 1. Il fait beau.
 *A) Déclarative
@@ -20,3 +19,67 @@ C) Impérative
 D) Exclamative
 TRADUCTION: Firy taona ianao?
 EXPLICATION: Ny fehezanteny eto dia manotany.
+
+3. Ferme la porte !
+A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Akatony ny varavarana!
+EXPLICATION: Ny fehezanteny eto dia manome baiko.
+
+4. Quelle belle journée !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsara ny andro anio!
+EXPLICATION: Ny fehezanteny eto dia fanehoana fientanentanana.
+
+5. Je vais à l'école.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mandeha any am-pianarana aho.
+EXPLICATION: Ny fehezanteny eto dia milaza zava-misy.
+
+6. Pourquoi pleures-tu ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Fa maninona ianao no mitomany?
+EXPLICATION: Ny fehezanteny eto dia manontany.
+
+7. Écoutez-moi attentivement !
+A) Déclarative
+B) Interrogative
+*C) Impérative
+D) Exclamative
+TRADUCTION: Henoy aho tsara!
+EXPLICATION: Ny fehezanteny eto dia manome baiko.
+
+8. Comme elle est belle !
+A) Déclarative
+B) Interrogative
+C) Impérative
+*D) Exclamative
+TRADUCTION: Tena tsara tarehy izy!
+EXPLICATION: Ny fehezanteny eto dia fanehoana fientanentanana.
+
+9. Nous mangeons du riz.
+*A) Déclarative
+B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Mihinana vary izahay.
+EXPLICATION: Ny fehezanteny eto dia milaza zava-misy.
+
+10. Où vas-tu ?
+A) Déclarative
+*B) Interrogative
+C) Impérative
+D) Exclamative
+TRADUCTION: Hanaovana aiza ianao?
+EXPLICATION: Ny fehezanteny eto dia manontany.
