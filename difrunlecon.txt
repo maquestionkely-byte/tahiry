@@ -745,13 +745,13 @@
   }
 
   // ==================== CONFIGURATION ====================
-  const FILE_URL = 'https://passage.ahofaly62.workers.dev/dif3lecon.txt';
+  const FILE_URL = 'https://passage.ahofaly62.workers.dev/difr33.txt';
   const DATE_INFO_URL = 'https://passage.ahofaly62.workers.dev/date_rehetra.txt';
-  const TARGET_FILE = 'dif3lecon.txt';
-  const DB_NAME = 'dif3lecon_cache_db';
-  const STORE_NAME = 'dif3lecon_contenus';
-  const CACHE_KEY = 'dif3lecon_content';
-  const VERSION_KEY = 'dif3lecon_version';
+  const TARGET_FILE = 'difr33.txt';
+  const DB_NAME = 'difr33_cache_db';
+  const STORE_NAME = 'difr33_contenus';
+  const CACHE_KEY = 'difr33_content';
+  const VERSION_KEY = 'difr33_version';
 
   let verbsData = [];
   let currentFilteredData = [];
