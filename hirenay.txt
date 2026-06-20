@@ -2046,9 +2046,8 @@ boutonsNormaux.forEach(item => {
     toolbar.appendChild(btn);
 });
 
-
 // ============================================================
-// 🎬 BOUTON VIDÉO - Fenêtre sans barre d'adresse
+// 🎬 BOUTON VIDÉO - Plein écran
 // ============================================================
 const btnVideo = document.createElement('button');
 btnVideo.className = 'niveau-btn';
@@ -2071,11 +2070,11 @@ btnVideo.addEventListener('click', async () => {
             await stockerEnIndexedDB(nomFichier, contenu);
         }
         
-        // ✅ Ouvrir dans une nouvelle fenêtre SANS barre d'adresse
+        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
         const blob = new Blob([contenu], { type: 'text/html' });
         const blobUrl = URL.createObjectURL(blob);
         
-        const newWindow = window.open(blobUrl, '_blank', 'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes');
+        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
         
         // Si la fenêtre est bloquée, utiliser window.location.href en secours
         if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
@@ -2094,7 +2093,7 @@ btnVideo.addEventListener('click', async () => {
 toolbar.appendChild(btnVideo);
 
 // ============================================================
-// 🎵 BOUTON AUDIO - Fenêtre sans barre d'adresse
+// 🎵 BOUTON AUDIO - Plein écran
 // ============================================================
 const btnAudio = document.createElement('button');
 btnAudio.className = 'niveau-btn';
@@ -2117,11 +2116,11 @@ btnAudio.addEventListener('click', async () => {
             await stockerEnIndexedDB(nomFichier, contenu);
         }
         
-        // ✅ Ouvrir dans une nouvelle fenêtre SANS barre d'adresse
+        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
         const blob = new Blob([contenu], { type: 'text/html' });
         const blobUrl = URL.createObjectURL(blob);
         
-        const newWindow = window.open(blobUrl, '_blank', 'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes');
+        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
         
         // Si la fenêtre est bloquée, utiliser window.location.href en secours
         if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
@@ -2138,7 +2137,6 @@ btnAudio.addEventListener('click', async () => {
     }
 });
 toolbar.appendChild(btnAudio);
-
 
 // Bouton Hiresaka (fond bleu nuit)
 const btnHiresaka = document.createElement('button');
