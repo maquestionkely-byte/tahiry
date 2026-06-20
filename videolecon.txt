@@ -6,6 +6,7 @@
     <title>🎬 Vidéos</title>
     
     <style>
+        /* ===== STYLES COMPLETS ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: system-ui, -apple-system, sans-serif;
@@ -36,8 +37,8 @@
             max-height: 90vh;
             height: 90vh;
             text-align: center;
-            border: 1px solid #FFB7;
-            box-shadow: 0 2px 15px red;
+            border: 1px solid rgba(255, 187, 0, 0.7);
+            box-shadow: 0 2px 15px rgba(255, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -59,7 +60,6 @@
             font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
-        
         .device-info { display: none !important; }
         .device-model-display { display: none !important; }
         #modalFileName { display: none !important; }
@@ -145,14 +145,12 @@
             position: relative;
         }
         .hero.hide-header { transform: translateY(-100%); }
-        
         .hero-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
-        
         .hero h1 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -183,7 +181,6 @@
             color: #FFE3A4;
             backdrop-filter: blur(4px);
         }
-
         .btn-trash {
             position: absolute;
             top: 0.8rem;
@@ -214,7 +211,6 @@
             font-size: 0.7rem;
             font-weight: bold;
         }
-
         .search-bar-wrapper {
             position: sticky;
             top: 0;
@@ -306,7 +302,6 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.4);
         }
         .media-card.hidden-card { display: none; }
-        
         .media-card.verrouille { 
             cursor: pointer; 
             border-color: rgba(255, 50, 50, 0.3);
@@ -315,6 +310,75 @@
             border-color: rgba(255, 50, 50, 0.6); 
             box-shadow: 0 12px 40px rgba(255, 50, 50, 0.15);
             transform: translateY(-4px);
+        }
+        .video-wrap {
+            aspect-ratio: 16 / 9;
+            background: #0a1a22;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .video-wrap video::-webkit-media-controls {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-overlay-play-button {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-current-time-display {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-time-remaining-display {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-timeline {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-volume-slider {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-mute-button {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+        .video-wrap video::-webkit-media-controls-download-button {
+            display: none !important;
+        }
+        .video-wrap video::-internal-media-controls-download-button {
+            display: none !important;
+        }
+        .media-card:hover .video-wrap video { transform: scale(1.05); }
+        .video-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 0 30px rgba(0,0,0,0.9);
+            pointer-events: none;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        .media-card:hover .video-play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
         }
         .video-wrap.verrouille-bg {
             background: linear-gradient(145deg, #1a1a2e, #2d1b3d);
@@ -359,7 +423,6 @@
                 radial-gradient(circle at 70% 60%, rgba(255,50,50,0.05) 0%, transparent 50%);
             z-index: 0;
         }
-        
         .media-card.delete-mode .delete-btn {
             display: flex !important;
         }
@@ -390,83 +453,6 @@
         .delete-btn:active {
             transform: scale(0.9);
         }
-        
-        /* ============================================================
-           ÉCRAN 1 : MINIATURE - PAS DE BARRE DE LECTURE
-           ============================================================ */
-        .video-wrap {
-            aspect-ratio: 16 / 9;
-            background: #0a1a22;
-            overflow: hidden;
-            position: relative;
-        }
-        .video-wrap video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        /* ⭐ CACHER TOUS LES CONTROLES SUR LES MINIATURES ⭐ */
-        .video-wrap video::-webkit-media-controls {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-enclosure {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-panel {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-overlay-play-button {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-play-button {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-current-time-display {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-time-remaining-display {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-timeline {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-volume-slider {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-mute-button {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-fullscreen-button {
-            display: none !important;
-        }
-        .video-wrap video::-webkit-media-controls-download-button {
-            display: none !important;
-        }
-        .video-wrap video::-internal-media-controls-download-button {
-            display: none !important;
-        }
-        
-        .media-card:hover .video-wrap video { transform: scale(1.05); }
-        .video-play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            color: white;
-            text-shadow: 0 0 30px rgba(0,0,0,0.9);
-            pointer-events: none;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        .media-card:hover .video-play-icon {
-            transform: translate(-50%, -50%) scale(1.1);
-            opacity: 1;
-        }
-        
         .media-title {
             padding: 0.6rem 1rem 0.4rem;
             font-weight: 600;
@@ -490,7 +476,6 @@
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 0.3px;
         }
-
         .trash-modal {
             position: fixed;
             top: 0; left: 0;
@@ -582,9 +567,6 @@
             background: #27ae60;
             transform: scale(1.05);
         }
-        .trash-item .btn-redownload:active {
-            transform: scale(0.95);
-        }
         .trash-item .btn-redownload.loading {
             opacity: 0.6;
             pointer-events: none;
@@ -600,10 +582,6 @@
             display: block;
             margin-bottom: 16px;
         }
-
-        /* ============================================================
-           ÉCRAN 2 : LIGHTBOX - BARRE DE LECTURE COMPLÈTE
-           ============================================================ */
         .lightbox {
             position: fixed;
             top: 0; left: 0;
@@ -616,7 +594,6 @@
             backdrop-filter: blur(10px);
         }
         .lightbox.active { display: flex; }
-        
         .lb-container {
             position: relative;
             display: inline-block;
@@ -631,8 +608,6 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.8);
             display: block;
         }
-        
-        /* ⭐ BARRE DE LECTURE VISIBLE DANS LA LIGHTBOX ⭐ */
         .lb-video::-webkit-media-controls {
             display: flex !important;
         }
@@ -663,14 +638,12 @@
         .lb-video::-webkit-media-controls-play-button {
             display: flex !important;
         }
-        /* Cacher uniquement le bouton de téléchargement dans la lightbox */
         .lb-video::-webkit-media-controls-download-button {
             display: none !important;
         }
         .lb-video::-internal-media-controls-download-button {
             display: none !important;
         }
-        
         .close-lb {
             position: absolute;
             top: 1.5rem;
@@ -732,7 +705,6 @@
             border: 1px solid rgba(255, 180, 70, 0.2);
             backdrop-filter: blur(8px);
         }
-
         .loader-area {
             display: flex;
             flex-direction: column;
@@ -750,13 +722,12 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         .hidden { display: none !important; }
-
         .btn-back {
             position: fixed;
             top: 1rem;
             left: 1rem;
             background: rgba(255, 180, 70, 0.15);
-            border: 1.5px solid red;
+            border: 1.5px solid rgba(255, 0, 0, 0.5);
             color: white;
             padding: 6px 14px;
             border-radius: 30px;
@@ -787,7 +758,6 @@
             display: block;
             margin-bottom: 1rem;
         }
-
         .code-modal {
             position: fixed;
             top: 0; left: 0;
@@ -960,7 +930,6 @@
             font-weight: bold;
         }
         .code-error.visible { display: block; }
-
         @media (max-width: 720px) {
             .gallery-grid { 
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -1043,7 +1012,6 @@
         <div class="selection-card-header">
             <h2>🎬 Vidéos</h2>
             <p>Apprenons par la video</p>
-            
             <div class="device-info" id="deviceInfo">
                 📱 <span class="model-name" id="deviceDisplay">Chargement...</span>
             </div>
@@ -1110,7 +1078,6 @@
     <div class="code-modal-content">
         <h3>🔐 Code requis</h3>
         <p class="sub-title">Mila code ity vidéo ity, ampidiro ny code</p>
-        
         <div style="background: #f8f9fa; border-radius: 12px; padding: 8px; margin-bottom: 12px;">
             <p style="font-size:13px;color:#555;margin:0;">
                 Fichier: <strong id="modalFileName" style="color:#2c3e50;">---</strong>
@@ -1119,22 +1086,16 @@
                 Niveau: <strong id="modalNiveau" style="color:#e67e22;">---</strong>
             </p>
         </div>
-        
         <div class="device-model-display" id="modalDeviceDisplay">
             📱 Modèle: Chargement...
         </div>
-        
         <button id="btnHakaCodeModal" class="btn-haka-code">🔐 HAKA CODE</button>
-        
         <div id="fbMessageArea" class="fb-message-area">
             <p>⚠️ Andefaso MP, Andefaso message, kitiho 👇🏾 ⚠️</p>
             <button id="fbModalBtn" class="fb-modal-btn">📘 Facebook</button>
         </div>
-        
         <input type="text" id="modalCode" class="code-input" placeholder="Code" maxlength="10" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
-        
         <div id="codeError" class="code-error">❌ Code tsy mety!</div>
-        
         <div class="code-modal-buttons">
             <button class="btn-validate" id="btnValidateCode">✅ Voir vidéo</button>
             <button class="btn-cancel" onclick="closeCodeModal()">Annuler</button>
@@ -1144,15 +1105,16 @@
 
 <script>
 // ============================================================
-// 🔥 DEVICE MODEL
+// 🎯 SOLUTION ULTIME - PLUS DE PROBLÈME "blob:video"
 // ============================================================
 
+// ============================================================
+// DEVICE MODEL
+// ============================================================
 let deviceModel = localStorage.getItem('deviceModel');
-
 if (!deviceModel) {
     const ua = navigator.userAgent;
     let model = 'Win64';
-    
     if (ua.includes('iPhone')) model = 'iPhone';
     else if (ua.includes('iPad')) model = 'iPad';
     else if (ua.includes('Android')) {
@@ -1163,36 +1125,31 @@ if (!deviceModel) {
     else if (ua.includes('Windows')) model = 'Win64';
     else if (ua.includes('Mac')) model = 'Mac';
     else if (ua.includes('Linux')) model = 'Linux';
-    
     deviceModel = model.replace(/[^a-zA-Z0-9]/g, '');
     localStorage.setItem('deviceModel', deviceModel);
 }
-
 window.deviceModel = deviceModel;
 window.deviceDisplay = deviceModel;
 
-console.log('📱 DeviceModel:', deviceModel);
-
 const displayEl = document.getElementById('deviceDisplay');
 if (displayEl) displayEl.textContent = deviceModel;
-
 const modalDisplayEl = document.getElementById('modalDeviceDisplay');
 if (modalDisplayEl) modalDisplayEl.textContent = `📱 Modèle: ${deviceModel}`;
 
 // ============================================================
-// 🔥 CONFIGURATIONS
+// CONFIGURATIONS
 // ============================================================
 const WORKER_URL_API = 'https://videohonor.ahofaly62.workers.dev';
 const WORKER_URL_VIDEO = 'https://videohonor.ahofaly62.workers.dev';
 const WORKER_URL_MANIFEST = 'https://resakasary.ahofaly62.workers.dev';
 
 // ============================================================
-// 📋 LISTE DES GALERIES 
+// 📋 LISTE DES GALERIES - Bouton renommé en "teny malagasy"
 // ============================================================
 const GALLERIES = [
     {
         id: 'motiv',
-        label: '📖 Vidéos LESONA 📖 (teny gasy) ',
+        label: '📖 Vidéos LESONA 📖 (teny malagasy)',
         verification: 'numerovideolesona.txt',
         prefix: 'videolesona',
         title: '📼 {titre}',
@@ -1200,7 +1157,6 @@ const GALLERIES = [
         screenSub: 'Finiavana + Fahazotoa + fiezahana = Fahaombiazana',
         order: 'asc'
     }
-//ataovy
 ];
 
 GALLERIES.forEach(g => {
@@ -1225,10 +1181,7 @@ let searchTerm = '';
 let isDownloading = false;
 let codePending = null;
 let sessionChecked = false;
-
 let deletedVideos = JSON.parse(localStorage.getItem('deletedVideos') || '{}');
-
-console.log('🔑 Device Model utilisé:', deviceModel);
 
 // ============================================================
 // DOM ELEMENTS
@@ -1256,12 +1209,10 @@ const trashCount = document.getElementById('trashCount');
 const trashModal = document.getElementById('trashModal');
 const trashList = document.getElementById('trashList');
 const closeTrash = document.getElementById('closeTrash');
-
 const codeModal = document.getElementById('codeModal');
 const modalCode = document.getElementById('modalCode');
 const modalNiveau = document.getElementById('modalNiveau');
 const modalFileName = document.getElementById('modalFileName');
-const modalDeviceDisplay = document.getElementById('modalDeviceDisplay');
 const btnHakaCodeModal = document.getElementById('btnHakaCodeModal');
 const fbMessageArea = document.getElementById('fbMessageArea');
 const fbModalBtn = document.getElementById('fbModalBtn');
@@ -1269,24 +1220,179 @@ const btnValidateCode = document.getElementById('btnValidateCode');
 const codeError = document.getElementById('codeError');
 
 // ============================================================
+// 🎯 BLOB URL MANAGER - Gestion propre des URLs
+// ============================================================
+class BlobURLManager {
+    constructor() {
+        this.urls = new Map();
+        this.cleanupInterval = null;
+        this.startCleanup();
+    }
+
+    create(url, filename) {
+        if (this.urls.has(filename)) {
+            this.revoke(filename);
+        }
+        this.urls.set(filename, { url, timestamp: Date.now(), refCount: 0 });
+        return url;
+    }
+
+    revoke(filename) {
+        if (this.urls.has(filename)) {
+            const data = this.urls.get(filename);
+            try {
+                URL.revokeObjectURL(data.url);
+            } catch(e) {}
+            this.urls.delete(filename);
+        }
+    }
+
+    incrementRef(filename) {
+        if (this.urls.has(filename)) {
+            const data = this.urls.get(filename);
+            data.refCount++;
+            this.urls.set(filename, data);
+        }
+    }
+
+    decrementRef(filename) {
+        if (this.urls.has(filename)) {
+            const data = this.urls.get(filename);
+            data.refCount = Math.max(0, data.refCount - 1);
+            this.urls.set(filename, data);
+        }
+    }
+
+    cleanup() {
+        const now = Date.now();
+        const maxAge = 60000;
+        for (const [filename, data] of this.urls) {
+            if (data.refCount === 0 && (now - data.timestamp) > maxAge) {
+                this.revoke(filename);
+            }
+        }
+    }
+
+    startCleanup() {
+        if (this.cleanupInterval) clearInterval(this.cleanupInterval);
+        this.cleanupInterval = setInterval(() => this.cleanup(), 30000);
+    }
+
+    stopCleanup() {
+        if (this.cleanupInterval) {
+            clearInterval(this.cleanupInterval);
+            this.cleanupInterval = null;
+        }
+    }
+
+    destroy() {
+        this.stopCleanup();
+        for (const [filename] of this.urls) {
+            this.revoke(filename);
+        }
+        this.urls.clear();
+    }
+}
+
+const blobManager = new BlobURLManager();
+
+// ============================================================
+// 🖼️ GÉNÉRATEUR DE MINIATURES (POSTER)
+// ============================================================
+class ThumbnailGenerator {
+    constructor() {
+        this.cache = new Map();
+    }
+
+    async generate(videoBlob, filename) {
+        if (this.cache.has(filename)) {
+            return this.cache.get(filename);
+        }
+
+        return new Promise((resolve) => {
+            const url = URL.createObjectURL(videoBlob);
+            const video = document.createElement('video');
+            video.muted = true;
+            video.playsinline = true;
+            video.preload = 'metadata';
+            video.src = url;
+            
+            let resolved = false;
+            const timeoutId = setTimeout(() => {
+                if (!resolved) {
+                    resolved = true;
+                    URL.revokeObjectURL(url);
+                    this.cache.set(filename, null);
+                    resolve(null);
+                }
+            }, 3000);
+
+            video.addEventListener('loadedmetadata', () => {
+                if (resolved) return;
+                const time = Math.min(1, video.duration / 2);
+                video.currentTime = time;
+            });
+
+            video.addEventListener('seeked', () => {
+                if (resolved) return;
+                resolved = true;
+                clearTimeout(timeoutId);
+                try {
+                    const canvas = document.createElement('canvas');
+                    const maxW = 320, maxH = 180;
+                    let w = video.videoWidth || 320, h = video.videoHeight || 180;
+                    if (w > maxW) { h = (h * maxW) / w; w = maxW; }
+                    if (h > maxH) { w = (w * maxH) / h; h = maxH; }
+                    canvas.width = w;
+                    canvas.height = h;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(video, 0, 0, w, h);
+                    const poster = canvas.toDataURL('image/jpeg', 0.7);
+                    this.cache.set(filename, poster);
+                    URL.revokeObjectURL(url);
+                    video.pause();
+                    video.removeAttribute('src');
+                    video.load();
+                    resolve(poster);
+                } catch(e) {
+                    URL.revokeObjectURL(url);
+                    this.cache.set(filename, null);
+                    resolve(null);
+                }
+            });
+
+            video.addEventListener('error', () => {
+                if (!resolved) {
+                    resolved = true;
+                    clearTimeout(timeoutId);
+                    URL.revokeObjectURL(url);
+                    this.cache.set(filename, null);
+                    resolve(null);
+                }
+            });
+            video.load();
+        });
+    }
+
+    clear() { this.cache.clear(); }
+}
+
+const thumbnailGen = new ThumbnailGenerator();
+
+// ============================================================
 // FONCTIONS UTILES
 // ============================================================
 function extrairePrefixe(nomFichier) {
     const prefixes = ['videolesona', 'videoexercice', 'videogrammaire', 'audiolesona', 'audioexercice', 'audiogrammaire'];
     for (const prefix of prefixes) {
-        if (nomFichier.startsWith(prefix)) {
-            return prefix;
-        }
+        if (nomFichier.startsWith(prefix)) return prefix;
     }
     return 'video';
 }
 
 function extraireNumero(nomFichier) {
     const match = nomFichier.match(/\d+/);
-    if (match) {
-        return parseInt(match[0]);
-    }
-    return 0;
+    return match ? parseInt(match[0]) : 0;
 }
 
 function formatFileSize(bytes) {
@@ -1299,26 +1405,17 @@ function formatFileSize(bytes) {
 function afficherNotificationCentre(message, type) {
     const ancienne = document.getElementById('centreNotification');
     if (ancienne) ancienne.remove();
-    
     const notif = document.createElement('div');
     notif.id = 'centreNotification';
     notif.textContent = message;
     notif.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
+        position: fixed; top: 50%; left: 50%;
         transform: translate(-50%, -50%);
         background: ${type === 'error' ? '#c0392b' : '#2ecc71'};
-        color: white;
-        padding: 18px 32px;
-        border-radius: 16px;
-        z-index: 30001;
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-align: center;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-        max-width: 90vw;
-        animation: notifIn 0.3s ease;
+        color: white; padding: 18px 32px; border-radius: 16px;
+        z-index: 30001; font-size: 1.1rem; font-weight: bold;
+        text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        max-width: 90vw; animation: notifIn 0.3s ease;
     `;
     document.body.appendChild(notif);
     setTimeout(() => notif.remove(), 4000);
@@ -1327,11 +1424,8 @@ function afficherNotificationCentre(message, type) {
 // ============================================================
 // GESTION DES VIDÉOS SUPPRIMÉES
 // ============================================================
-
 function ajouterVideoSupprimee(galleryId, filename, titre, numero) {
-    if (!deletedVideos[galleryId]) {
-        deletedVideos[galleryId] = [];
-    }
+    if (!deletedVideos[galleryId]) deletedVideos[galleryId] = [];
     if (!deletedVideos[galleryId].find(v => v.filename === filename)) {
         deletedVideos[galleryId].push({ filename, titre, numero });
         localStorage.setItem('deletedVideos', JSON.stringify(deletedVideos));
@@ -1342,9 +1436,7 @@ function ajouterVideoSupprimee(galleryId, filename, titre, numero) {
 function supprimerVideoSupprimee(galleryId, filename) {
     if (deletedVideos[galleryId]) {
         deletedVideos[galleryId] = deletedVideos[galleryId].filter(v => v.filename !== filename);
-        if (deletedVideos[galleryId].length === 0) {
-            delete deletedVideos[galleryId];
-        }
+        if (deletedVideos[galleryId].length === 0) delete deletedVideos[galleryId];
         localStorage.setItem('deletedVideos', JSON.stringify(deletedVideos));
     }
     mettreAJourCorbeille();
@@ -1356,420 +1448,13 @@ function getVideosSupprimees(galleryId) {
 
 function mettreAJourCorbeille() {
     let total = 0;
-    for (const key in deletedVideos) {
-        total += deletedVideos[key].length;
-    }
+    for (const key in deletedVideos) total += deletedVideos[key].length;
     trashCount.textContent = total;
-    if (total > 0) {
-        btnTrash.style.display = 'flex';
-    } else {
-        btnTrash.style.display = 'none';
-    }
+    btnTrash.style.display = total > 0 ? 'flex' : 'none';
 }
 
 // ============================================================
-// SUPPRIMER UNE VIDÉO DE LA DB
-// ============================================================
-
-async function supprimerVideoDB(galleryId, filename, titre, numero) {
-    try {
-        const db = await openDB(galleryId);
-        return new Promise((resolve, reject) => {
-            const tx = db.transaction(['medias'], 'readwrite');
-            const req = tx.objectStore('medias').delete(filename);
-            req.onsuccess = () => {
-                console.log(`🗑️ Vidéo supprimée: ${filename}`);
-                ajouterVideoSupprimee(galleryId, filename, titre, numero);
-                resolve();
-            };
-            req.onerror = () => reject(req.error);
-        });
-    } catch(e) {
-        console.error('Erreur suppression:', e);
-        throw e;
-    }
-}
-
-// ============================================================
-// RETÉLÉCHARGER UNE VIDÉO SUPPRIMÉE
-// ============================================================
-
-async function retelechargerVideo(galleryId, filename, titre, numero) {
-    const btn = document.querySelector(`.trash-item[data-filename="${filename}"] .btn-redownload`);
-    if (btn) {
-        btn.textContent = '⏳...';
-        btn.classList.add('loading');
-    }
-    
-    try {
-        const result = await telechargerVideoIndividuelle(galleryId, filename, titre, numero);
-        
-        if (result.status === 'ok') {
-            supprimerVideoSupprimee(galleryId, filename);
-            afficherNotificationCentre(`✅ ${titre} retéléchargée`, 'success');
-            await renderGallery(galleryId);
-            afficherCorbeille();
-        } else if (result.status === 'verrouille') {
-            afficherNotificationCentre('🔒 Code requis pour cette vidéo', 'error');
-            codePending = {
-                galleryId: galleryId,
-                filename: filename,
-                titre: titre,
-                numero: numero,
-                fromTrash: true
-            };
-            ouvrirModalCode(filename, titre, numero);
-        } else {
-            afficherNotificationCentre('❌ Erreur lors du téléchargement', 'error');
-        }
-    } catch(e) {
-        console.error('Erreur retéléchargement:', e);
-        afficherNotificationCentre('❌ Erreur lors du téléchargement', 'error');
-    }
-    
-    if (btn) {
-        btn.textContent = '🔄 Retélécharger';
-        btn.classList.remove('loading');
-    }
-}
-
-// ============================================================
-// AFFICHER LA CORBEILLE
-// ============================================================
-
-function afficherCorbeille() {
-    const galleryId = currentGallery;
-    const videos = getVideosSupprimees(galleryId);
-    
-    trashList.innerHTML = '';
-    
-    if (videos.length === 0) {
-        trashList.innerHTML = `
-            <div class="trash-empty">
-                <span>🧹</span>
-                Aucune vidéo supprimée
-            </div>
-        `;
-        return;
-    }
-    
-    for (const video of videos) {
-        const div = document.createElement('div');
-        div.className = 'trash-item';
-        div.dataset.filename = video.filename;
-        div.innerHTML = `
-            <div class="info">
-                <div class="title">${video.titre || `Vidéo ${video.numero}`}</div>
-                <div class="detail">${video.filename} • N°${video.numero}</div>
-            </div>
-            <button class="btn-redownload" onclick="retelechargerVideo('${galleryId}', '${video.filename}', '${video.titre.replace(/'/g, "\\'")}', ${video.numero})">
-                🔄 Retélécharger
-            </button>
-        `;
-        trashList.appendChild(div);
-    }
-}
-
-// ============================================================
-// TÉLÉCHARGER UNE VIDÉO INDIVIDUELLE
-// ============================================================
-async function telechargerVideoIndividuelle(galleryId, filename, titre, numero) {
-    const url = `${WORKER_URL_VIDEO}/${filename}?deviceModel=${encodeURIComponent(deviceModel)}`;
-    console.log(`📥 Téléchargement: ${filename}`);
-    
-    try {
-        const res = await fetch(url);
-        
-        if (res.status === 403) {
-            const errorData = await res.json();
-            console.log(`🔒 ${filename} verrouillée:`, errorData);
-            
-            if (errorData.error === "access_denied") {
-                await saveMedia(galleryId, filename, null, numero, titre, 'verrouille');
-                return { status: 'verrouille', data: errorData };
-            }
-            return { status: 'error', data: errorData };
-        }
-        
-        if (res.ok) {
-            const blob = await res.blob();
-            await saveMedia(galleryId, filename, blob, numero, titre, 'ok');
-            console.log(`✅ ${filename} téléchargée`);
-            return { status: 'ok', data: null };
-        }
-        
-        return { status: 'error', data: { message: `HTTP ${res.status}` } };
-    } catch(e) {
-        console.error(`❌ Erreur ${filename}:`, e);
-        return { status: 'error', data: { message: e.message } };
-    }
-}
-
-// ============================================================
-// 🔥 TÉLÉCHARGER TOUTES LES VIDÉOS VERROUILLÉES D'AFFILÉE
-// ============================================================
-async function telechargerToutesVideosVerrouillees(galleryId, manifest) {
-    if (isDownloading) return;
-    isDownloading = true;
-    
-    let stored = await getAllMedias(galleryId);
-    const deleted = getVideosSupprimees(galleryId);
-    const deletedFilenames = deleted.map(v => v.filename);
-    stored = stored.filter(item => !deletedFilenames.includes(item.filename));
-    
-    stored = stored.sort((a,b) => a.numero - b.numero);
-    
-    let premiereVerrouillee = null;
-    let indexPremiere = -1;
-    
-    for (let i = 0; i < stored.length; i++) {
-        if (stored[i].status === 'verrouille') {
-            premiereVerrouillee = stored[i];
-            indexPremiere = i;
-            break;
-        }
-    }
-    
-    if (!premiereVerrouillee) {
-        console.log('✅ Aucune vidéo verrouillée trouvée');
-        isDownloading = false;
-        return;
-    }
-    
-    const numeroDepart = premiereVerrouillee.numero;
-    const videosATelecharger = manifest.filter(m => m.numero >= numeroDepart);
-    
-    console.log(`📥 ${videosATelecharger.length} vidéo(s) à télécharger à partir de ${numeroDepart}`);
-    
-    let compteTelechargees = 0;
-    let premiereVideo = true;
-    
-    for (const media of videosATelecharger) {
-        const existeDeja = stored.find(item => item.filename === media.filename && item.status === 'ok');
-        if (existeDeja) {
-            console.log(`⏭️ ${media.filename} déjà téléchargée, skip`);
-            continue;
-        }
-        
-        const result = await telechargerVideoIndividuelle(galleryId, media.filename, media.titre, media.numero);
-        
-        if (result.status === 'ok') {
-            compteTelechargees++;
-            await setStoredNum(galleryId, media.numero);
-            
-            const indexInList = currentMediaList.findIndex(item => item.filename === media.filename);
-            if (indexInList !== -1) {
-                const allMedias = await getAllMedias(galleryId);
-                const mediaUpdated = allMedias.find(item => item.filename === media.filename);
-                if (mediaUpdated && mediaUpdated.blob) {
-                    currentMediaList[indexInList] = mediaUpdated;
-                    console.log(`✅ Liste locale mise à jour: ${media.filename}`);
-                }
-            }
-            
-            if (premiereVideo) {
-                premiereVideo = false;
-                await renderGallery(galleryId);
-            }
-        } else if (result.status === 'verrouille') {
-            console.log(`🔒 ${media.filename} toujours verrouillée, arrêt du téléchargement en masse`);
-            break;
-        } else {
-            console.log(`❌ Erreur ${media.filename}, arrêt`);
-            break;
-        }
-    }
-    
-    console.log(`✅ ${compteTelechargees} vidéo(s) téléchargée(s)`);
-    isDownloading = false;
-    
-    if (compteTelechargees > 0) {
-        await renderGallery(galleryId);
-        afficherNotificationCentre(`✅ ${compteTelechargees} vidéo(s) déverrouillée(s) !`, 'success');
-    }
-}
-
-// ============================================================
-// 🔐 OUVRIRE LA MODAL CODE
-// ============================================================
-function ouvrirModalCode(filename, titre, numero) {
-    const niveau = extrairePrefixe(filename);
-    modalNiveau.textContent = niveau;
-    modalFileName.textContent = filename;
-    if (modalDeviceDisplay) {
-        modalDeviceDisplay.textContent = `📱 Modèle: ${deviceModel}`;
-    }
-    modalCode.value = '';
-    codeError.classList.remove('visible');
-    fbMessageArea.style.display = 'none';
-    codeModal.classList.add('active');
-    setTimeout(() => modalCode.focus(), 300);
-}
-
-// ============================================================
-// 🔐 SUBMIT MODAL CODE
-// ============================================================
-async function submitModalCode() {
-    const code = modalCode.value.trim().toUpperCase();
-    
-    codeError.classList.remove('visible');
-    
-    if (!code) {
-        codeError.textContent = '⚠️ Ampidiro ny code';
-        codeError.classList.add('visible');
-        return;
-    }
-    
-    if (!codePending) {
-        codeError.textContent = '⚠️ Tsy misy vidéo voafidy';
-        codeError.classList.add('visible');
-        return;
-    }
-    
-    const { galleryId, filename, titre, numero, fromTrash } = codePending;
-    
-    btnValidateCode.disabled = true;
-    btnValidateCode.textContent = '⏳ Vérification...';
-    
-    try {
-        const niveau = extrairePrefixe(filename);
-        
-        console.log('🔑 Activation code avec deviceModel:', deviceModel);
-        console.log('📂 Niveau:', niveau);
-        console.log('🔐 Code:', code);
-        
-        const authResponse = await fetch(`${WORKER_URL_API}/api/authorize`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                code, 
-                deviceModel: deviceModel,
-                niveau: niveau
-            })
-        });
-        
-        const authData = await authResponse.json();
-        
-        if (!authData.success) {
-            codeError.textContent = '❌ Code tsy mety!';
-            codeError.classList.add('visible');
-            btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir vidéo';
-            return;
-        }
-        
-        closeCodeModal();
-        afficherNotificationCentre('✅ Code valide ! Téléchargement des vidéos...', 'success');
-        
-        const gallery = GALLERIES.find(g => g.id === galleryId);
-        if (!gallery) {
-            afficherNotificationCentre('❌ Galerie non trouvée', 'error');
-            btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir vidéo';
-            return;
-        }
-        
-        const manifest = await fetchManifest(gallery);
-        if (!manifest.length) {
-            afficherNotificationCentre('❌ Aucune vidéo trouvée', 'error');
-            btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir vidéo';
-            return;
-        }
-        
-        await telechargerToutesVideosVerrouillees(galleryId, manifest);
-        
-        if (fromTrash) {
-            supprimerVideoSupprimee(galleryId, filename);
-        }
-        
-    } catch (error) {
-        console.error('❌ Erreur activation:', error);
-        afficherNotificationCentre('❌ Erreur lors de l\'activation', 'error');
-    } finally {
-        btnValidateCode.disabled = false;
-        btnValidateCode.textContent = '✅ Voir vidéo';
-        codePending = null;
-    }
-}
-
-// ============================================================
-// FERMER LA MODAL CODE
-// ============================================================
-function closeCodeModal() {
-    codeModal.classList.remove('active');
-    modalCode.value = '';
-    codeError.classList.remove('visible');
-    fbMessageArea.style.display = 'none';
-    codePending = null;
-    btnValidateCode.disabled = false;
-    btnValidateCode.textContent = '✅ Voir vidéo';
-}
-
-// ============================================================
-// TÉLÉCHARGER LES VIDÉOS MANQUANTES (NOUVELLES VIDÉOS)
-// ============================================================
-async function telechargerVideosManquantes(galleryId, manifest, dernierNumOk) {
-    if (isDownloading) return;
-    isDownloading = true;
-    
-    let maxNumManifest = 0;
-    for (const media of manifest) {
-        if (media.numero > maxNumManifest) {
-            maxNumManifest = media.numero;
-        }
-    }
-    
-    if (maxNumManifest <= dernierNumOk) {
-        console.log(`✅ Aucune nouvelle vidéo (${dernierNumOk} >= ${maxNumManifest})`);
-        isDownloading = false;
-        return;
-    }
-    
-    const debut = dernierNumOk + 1;
-    const fin = maxNumManifest;
-    const videosManquantes = manifest.filter(m => m.numero >= debut && m.numero <= fin);
-    
-    console.log(`📥 ${videosManquantes.length} vidéo(s) à traiter (${debut} à ${fin})`);
-    
-    let dernierNum = dernierNumOk;
-    let aTelecharge = false;
-    
-    for (const media of videosManquantes) {
-        const db = await openDB(galleryId);
-        const existing = await new Promise((resolve) => {
-            const req = db.transaction(['medias'], 'readonly').objectStore('medias').get(media.filename);
-            req.onsuccess = () => resolve(req.result);
-            req.onerror = () => resolve(null);
-        });
-        
-        if (!existing) {
-            await saveMedia(galleryId, media.filename, null, media.numero, media.titre, 'verrouille');
-            console.log(`📝 ${media.filename} créée avec statut verrouille`);
-        }
-        
-        const result = await telechargerVideoIndividuelle(galleryId, media.filename, media.titre, media.numero);
-        
-        if (result.status === 'ok') {
-            if (media.numero > dernierNum) {
-                dernierNum = media.numero;
-                await setStoredNum(galleryId, dernierNum);
-            }
-            aTelecharge = true;
-            console.log(`✅ ${media.filename} téléchargée`);
-        } else if (result.status === 'verrouille') {
-            console.log(`🔒 ${media.filename} verrouillée (affichée avec cadenas)`);
-        }
-    }
-    
-    console.log(`✅ Traitement terminé, dernier numéro: ${dernierNum}`);
-    isDownloading = false;
-    
-    await renderGallery(galleryId);
-}
-
-// ============================================================
-// FONCTIONS INDEXEDDB
+// INDEXEDDB FONCTIONS
 // ============================================================
 async function openDB(galleryId) {
     return new Promise((resolve, reject) => {
@@ -1834,42 +1519,26 @@ async function fetchManifest(gallery) {
         if (!resp.ok) return [];
         const text = await resp.text();
         const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
-        
         const map = new Map();
-        let currentNum = null;
-        let currentFilename = null;
-        let currentTitre = '';
+        let currentNum = null, currentFilename = null, currentTitre = '';
         const regex = new RegExp(`^${gallery.prefix}(\\d+)\\.([a-zA-Z0-9]+)$`);
-
         for (const line of lines) {
             const match = line.match(regex);
             if (match) {
                 if (currentNum !== null && currentFilename !== null) {
-                    map.set(currentNum, { 
-                        filename: currentFilename, 
-                        numero: currentNum,
-                        titre: currentTitre || `Vidéo ${currentNum}`
-                    });
+                    map.set(currentNum, { filename: currentFilename, numero: currentNum, titre: currentTitre || `Vidéo ${currentNum}` });
                 }
                 currentNum = parseInt(match[1]);
                 currentFilename = line;
                 currentTitre = '';
             } else if (currentNum !== null) {
                 const titreMatch = line.match(/^Titre\s*:\s*(.+)$/i);
-                if (titreMatch) {
-                    currentTitre = titreMatch[1].trim();
-                }
+                if (titreMatch) currentTitre = titreMatch[1].trim();
             }
         }
-
         if (currentNum !== null && currentFilename !== null) {
-            map.set(currentNum, { 
-                filename: currentFilename, 
-                numero: currentNum,
-                titre: currentTitre || `Vidéo ${currentNum}`
-            });
+            map.set(currentNum, { filename: currentFilename, numero: currentNum, titre: currentTitre || `Vidéo ${currentNum}` });
         }
-
         return Array.from(map.values()).sort((a,b) => a.numero - b.numero);
     } catch(e) { 
         console.error('Erreur fetchManifest:', e);
@@ -1878,84 +1547,294 @@ async function fetchManifest(gallery) {
 }
 
 // ============================================================
-// RENDER GALLERY - ÉCRAN 1 : MINIATURES SANS BARRE DE LECTURE
+// TÉLÉCHARGER UNE VIDÉO INDIVIDUELLE
 // ============================================================
+async function telechargerVideoIndividuelle(galleryId, filename, titre, numero) {
+    const url = `${WORKER_URL_VIDEO}/${filename}?deviceModel=${encodeURIComponent(deviceModel)}`;
+    console.log(`📥 Téléchargement: ${filename}`);
+    try {
+        const res = await fetch(url);
+        if (res.status === 403) {
+            const errorData = await res.json();
+            if (errorData.error === "access_denied") {
+                await saveMedia(galleryId, filename, null, numero, titre, 'verrouille');
+                return { status: 'verrouille', data: errorData };
+            }
+            return { status: 'error', data: errorData };
+        }
+        if (res.ok) {
+            const blob = await res.blob();
+            await saveMedia(galleryId, filename, blob, numero, titre, 'ok');
+            console.log(`✅ ${filename} téléchargée`);
+            return { status: 'ok', data: null };
+        }
+        return { status: 'error', data: { message: `HTTP ${res.status}` } };
+    } catch(e) {
+        console.error(`❌ Erreur ${filename}:`, e);
+        return { status: 'error', data: { message: e.message } };
+    }
+}
+
 // ============================================================
-// RENDER GALLERY - AVEC POSTER (IMAGE MINIATURE)
+// 🔐 MODAL CODE
 // ============================================================
-async function renderGallery(galleryId) {
-    const gallery = GALLERIES.find(g => g.id === galleryId);
-    
+function ouvrirModalCode(filename, titre, numero) {
+    const niveau = extrairePrefixe(filename);
+    modalNiveau.textContent = niveau;
+    modalFileName.textContent = filename;
+    if (modalDeviceDisplay) modalDeviceDisplay.textContent = `📱 Modèle: ${deviceModel}`;
+    modalCode.value = '';
+    codeError.classList.remove('visible');
+    fbMessageArea.style.display = 'none';
+    codeModal.classList.add('active');
+    setTimeout(() => modalCode.focus(), 300);
+}
+
+function closeCodeModal() {
+    codeModal.classList.remove('active');
+    modalCode.value = '';
+    codeError.classList.remove('visible');
+    fbMessageArea.style.display = 'none';
+    codePending = null;
+    btnValidateCode.disabled = false;
+    btnValidateCode.textContent = '✅ Voir vidéo';
+}
+
+async function submitModalCode() {
+    const code = modalCode.value.trim().toUpperCase();
+    codeError.classList.remove('visible');
+    if (!code) {
+        codeError.textContent = '⚠️ Ampidiro ny code';
+        codeError.classList.add('visible');
+        return;
+    }
+    if (!codePending) {
+        codeError.textContent = '⚠️ Tsy misy vidéo voafidy';
+        codeError.classList.add('visible');
+        return;
+    }
+    const { galleryId, filename, titre, numero, fromTrash } = codePending;
+    btnValidateCode.disabled = true;
+    btnValidateCode.textContent = '⏳ Vérification...';
+    try {
+        const niveau = extrairePrefixe(filename);
+        const authResponse = await fetch(`${WORKER_URL_API}/api/authorize`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code, deviceModel: deviceModel, niveau: niveau })
+        });
+        const authData = await authResponse.json();
+        if (!authData.success) {
+            codeError.textContent = '❌ Code tsy mety!';
+            codeError.classList.add('visible');
+            btnValidateCode.disabled = false;
+            btnValidateCode.textContent = '✅ Voir vidéo';
+            return;
+        }
+        closeCodeModal();
+        afficherNotificationCentre('✅ Code valide ! Téléchargement...', 'success');
+        const gallery = GALLERIES.find(g => g.id === galleryId);
+        if (!gallery) {
+            afficherNotificationCentre('❌ Galerie non trouvée', 'error');
+            btnValidateCode.disabled = false;
+            btnValidateCode.textContent = '✅ Voir vidéo';
+            return;
+        }
+        const manifest = await fetchManifest(gallery);
+        if (!manifest.length) {
+            afficherNotificationCentre('❌ Aucune vidéo trouvée', 'error');
+            btnValidateCode.disabled = false;
+            btnValidateCode.textContent = '✅ Voir vidéo';
+            return;
+        }
+        await telechargerToutesVideosVerrouillees(galleryId, manifest);
+        if (fromTrash) supprimerVideoSupprimee(galleryId, filename);
+    } catch (error) {
+        console.error('❌ Erreur activation:', error);
+        afficherNotificationCentre('❌ Erreur lors de l\'activation', 'error');
+    } finally {
+        btnValidateCode.disabled = false;
+        btnValidateCode.textContent = '✅ Voir vidéo';
+        codePending = null;
+    }
+}
+
+async function telechargerToutesVideosVerrouillees(galleryId, manifest) {
+    if (isDownloading) return;
+    isDownloading = true;
     let stored = await getAllMedias(galleryId);
-    
     const deleted = getVideosSupprimees(galleryId);
     const deletedFilenames = deleted.map(v => v.filename);
     stored = stored.filter(item => !deletedFilenames.includes(item.filename));
-    
+    stored = stored.sort((a,b) => a.numero - b.numero);
+    let premiereVerrouillee = null;
+    for (let i = 0; i < stored.length; i++) {
+        if (stored[i].status === 'verrouille') {
+            premiereVerrouillee = stored[i];
+            break;
+        }
+    }
+    if (!premiereVerrouillee) {
+        console.log('✅ Aucune vidéo verrouillée trouvée');
+        isDownloading = false;
+        return;
+    }
+    const numeroDepart = premiereVerrouillee.numero;
+    const videosATelecharger = manifest.filter(m => m.numero >= numeroDepart);
+    console.log(`📥 ${videosATelecharger.length} vidéo(s) à télécharger à partir de ${numeroDepart}`);
+    let compteTelechargees = 0, premiereVideo = true;
+    for (const media of videosATelecharger) {
+        const existeDeja = stored.find(item => item.filename === media.filename && item.status === 'ok');
+        if (existeDeja) {
+            console.log(`⏭️ ${media.filename} déjà téléchargée, skip`);
+            continue;
+        }
+        const result = await telechargerVideoIndividuelle(galleryId, media.filename, media.titre, media.numero);
+        if (result.status === 'ok') {
+            compteTelechargees++;
+            await setStoredNum(galleryId, media.numero);
+            const indexInList = currentMediaList.findIndex(item => item.filename === media.filename);
+            if (indexInList !== -1) {
+                const allMedias = await getAllMedias(galleryId);
+                const mediaUpdated = allMedias.find(item => item.filename === media.filename);
+                if (mediaUpdated && mediaUpdated.blob) {
+                    currentMediaList[indexInList] = mediaUpdated;
+                }
+            }
+            if (premiereVideo) { premiereVideo = false; await renderGallery(galleryId); }
+        } else if (result.status === 'verrouille') {
+            console.log(`🔒 ${media.filename} toujours verrouillée, arrêt`);
+            break;
+        } else {
+            console.log(`❌ Erreur ${media.filename}, arrêt`);
+            break;
+        }
+    }
+    console.log(`✅ ${compteTelechargees} vidéo(s) téléchargée(s)`);
+    isDownloading = false;
+    if (compteTelechargees > 0) {
+        await renderGallery(galleryId);
+        afficherNotificationCentre(`✅ ${compteTelechargees} vidéo(s) déverrouillée(s) !`, 'success');
+    }
+}
+
+async function telechargerVideosManquantes(galleryId, manifest, dernierNumOk) {
+    if (isDownloading) return;
+    isDownloading = true;
+    let maxNumManifest = 0;
+    for (const media of manifest) {
+        if (media.numero > maxNumManifest) maxNumManifest = media.numero;
+    }
+    if (maxNumManifest <= dernierNumOk) {
+        console.log(`✅ Aucune nouvelle vidéo (${dernierNumOk} >= ${maxNumManifest})`);
+        isDownloading = false;
+        return;
+    }
+    const debut = dernierNumOk + 1;
+    const fin = maxNumManifest;
+    const videosManquantes = manifest.filter(m => m.numero >= debut && m.numero <= fin);
+    console.log(`📥 ${videosManquantes.length} vidéo(s) à traiter (${debut} à ${fin})`);
+    let dernierNum = dernierNumOk;
+    for (const media of videosManquantes) {
+        const db = await openDB(galleryId);
+        const existing = await new Promise((resolve) => {
+            const req = db.transaction(['medias'], 'readonly').objectStore('medias').get(media.filename);
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => resolve(null);
+        });
+        if (!existing) {
+            await saveMedia(galleryId, media.filename, null, media.numero, media.titre, 'verrouille');
+        }
+        const result = await telechargerVideoIndividuelle(galleryId, media.filename, media.titre, media.numero);
+        if (result.status === 'ok') {
+            if (media.numero > dernierNum) {
+                dernierNum = media.numero;
+                await setStoredNum(galleryId, dernierNum);
+            }
+            console.log(`✅ ${media.filename} téléchargée`);
+        } else if (result.status === 'verrouille') {
+            console.log(`🔒 ${media.filename} verrouillée`);
+        }
+    }
+    console.log(`✅ Traitement terminé, dernier numéro: ${dernierNum}`);
+    isDownloading = false;
+    await renderGallery(galleryId);
+}
+
+// ============================================================
+// 🎯 RENDER GALLERY - VERSION SANS PROBLÈME blob:video
+// ============================================================
+async function renderGallery(galleryId) {
+    const gallery = GALLERIES.find(g => g.id === galleryId);
+    if (!gallery) return;
+
+    let stored = await getAllMedias(galleryId);
+    const deleted = getVideosSupprimees(galleryId);
+    const deletedFilenames = deleted.map(v => v.filename);
+    stored = stored.filter(item => !deletedFilenames.includes(item.filename));
+
     if (!stored.length) {
         galleryContainer.innerHTML = `<div class="loader-area"><div class="spinner"></div></div>`;
         mediaCounterSpan.textContent = '0';
         return;
     }
-    
-    if (gallery.order === 'asc') {
-        stored = stored.sort((a,b) => a.numero - b.numero);
-    } else {
-        stored = stored.sort((a,b) => b.numero - a.numero);
-    }
-    
+
+    stored = stored.sort((a,b) => a.numero - b.numero);
     currentMediaList = stored;
     currentFilteredList = stored;
     mediaCounterSpan.textContent = stored.length;
-    
+
     let html = '';
+    const videoData = [];
+
     for (let i = 0; i < stored.length; i++) {
         const item = stored[i];
         const title = item.titre || `Vidéo ${item.numero}`;
         const isVerrouille = item.status === 'verrouille';
         const isOk = item.status === 'ok' && item.blob && item.blob.size > 0;
-        
-        // Dans renderGallery(), remplacer cette partie :
-if (isOk) {
-    const url = URL.createObjectURL(item.blob);
-    const fileSize = item.blob ? formatFileSize(item.blob.size) : '';
-    
-    // 👇 NE PAS ATTENDRE, laisser la génération en arrière-plan
-    let posterUrl = '';
-    // On lance la génération mais on ne bloque pas l'affichage
-    generateVideoPoster(item.blob).then(poster => {
-        if (poster) {
-            // Mettre à jour le poster si la carte existe encore
-            const card = document.querySelector(`.media-card[data-filename="${item.filename}"]`);
-            if (card) {
-                const video = card.querySelector('video');
-                if (video) {
-                    video.poster = poster;
-                }
-            }
-        }
-    });
-    
-    html += `
-        <div class="media-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">
-            <div class="video-wrap">
-                <video muted playsinline preload="metadata" src="${url}" poster="${posterUrl}"></video>
-                <div class="video-play-icon">▶</div>
-            </div>
-            <button class="delete-btn" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">✕</button>
-            <div class="media-title">
-                <span class="title">${title}</span>
-                ${fileSize ? `<span class="size">📦 ${fileSize}</span>` : ''}
-            </div>
-        </div>
-    `;
-} else if (isVerrouille) {
+
+        if (isOk) {
+            const fileSize = item.blob ? formatFileSize(item.blob.size) : '';
+            // Générer le poster en arrière-plan
+            const poster = await thumbnailGen.generate(item.blob, item.filename);
+            
+            // Créer une URL blob mais avec gestion propre
+            const blobUrl = blobManager.create(URL.createObjectURL(item.blob), item.filename);
+            
+            videoData.push({
+                index: i,
+                filename: item.filename,
+                blobUrl: blobUrl,
+                poster: poster
+            });
+
+            html += `
+                <div class="media-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">
+                    <div class="video-wrap" style="position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;border-radius:12px;">
+                        <video 
+                            muted 
+                            playsinline 
+                            preload="none"
+                            ${poster ? `poster="${poster}"` : ''}
+                            style="width:100%;height:100%;object-fit:cover;cursor:pointer;"
+                            controlslist="nodownload"
+                        ></video>
+                        <div class="video-play-icon" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:4rem;color:white;text-shadow:0 0 30px rgba(0,0,0,0.9);pointer-events:none;opacity:0.9;z-index:2;">▶</div>
+                    </div>
+                    <button class="delete-btn" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" style="position:absolute;top:10px;right:10px;background:rgba(255,50,50,0.95);color:white;border:none;border-radius:50%;width:40px;height:40px;font-size:1.4rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:50;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(255,0,0,0.4);">✕</button>
+                    <div class="media-title">
+                        <span class="title">${title}</span>
+                        ${fileSize ? `<span class="size">📦 ${fileSize}</span>` : ''}
+                    </div>
+                </div>
+            `;
+        } else if (isVerrouille) {
             html += `
                 <div class="media-card verrouille" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" data-verrouille="true">
-                    <div class="video-wrap verrouille-bg">
-                        <div class="lock-bg-pattern"></div>
-                        <div class="lock-overlay">🔒</div>
-                        <div class="lock-sub">● verrouillé ●</div>
+                    <div class="video-wrap verrouille-bg" style="aspect-ratio:16/9;background:linear-gradient(145deg,#1a1a2e,#2d1b3d);display:flex;align-items:center;justify-content:center;position:relative;border-radius:12px;">
+                        <div class="lock-bg-pattern" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 40%,rgba(255,50,50,0.05) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(255,50,50,0.05) 0%,transparent 50%);z-index:0;"></div>
+                        <div class="lock-overlay" style="font-size:5rem;color:#ff6b6b;text-shadow:0 0 40px rgba(255,50,50,0.4);animation:pulse-lock 2s ease-in-out infinite;position:relative;z-index:2;">🔒</div>
+                        <div class="lock-sub" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.12);font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;z-index:1;font-weight:300;">● verrouillé ●</div>
                     </div>
                     <div class="media-title">
                         <span class="title">${title}</span>
@@ -1965,9 +1844,9 @@ if (isOk) {
             `;
         } else {
             html += `
-                <div class="media-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">
-                    <div class="video-wrap verrouille-bg">
-                        <div class="lock-overlay">⚠️</div>
+                <div class="media-card" data-index="${i}" style="cursor:default;">
+                    <div class="video-wrap" style="aspect-ratio:16/9;background:#1a1a2e;display:flex;align-items:center;justify-content:center;border-radius:12px;">
+                        <span style="color:#666;font-size:3rem;">⚠️</span>
                     </div>
                     <div class="media-title">
                         <span class="title">${title}</span>
@@ -1977,154 +1856,99 @@ if (isOk) {
             `;
         }
     }
+
     galleryContainer.innerHTML = html;
-    
-    // ============================================================
-    // ATTACHER LES ÉVÉNEMENTS
-    // ============================================================
-    document.querySelectorAll('.media-card').forEach(card => {
-        const index = parseInt(card.dataset.index);
-        const isVerrouille = card.dataset.verrouille === 'true';
-        const filename = card.dataset.filename;
-        const numero = parseInt(card.dataset.numero);
-        const titre = card.dataset.titre;
-        
-        // ⭐ Gérer le clic sur la carte pour ouvrir la lightbox
-        card.addEventListener('click', function(e) {
-            if (isVerrouille) {
-                handleCardClick(card, index, isVerrouille, filename, numero, titre);
-                return;
+
+    // ⭐ CHARGER LES VIDÉOS EN DIFFÉRÉ (LAZY LOAD)
+    setTimeout(() => {
+        for (const data of videoData) {
+            const card = document.querySelector(`.media-card[data-filename="${data.filename}"]`);
+            if (card) {
+                const video = card.querySelector('video');
+                if (video) {
+                    video.src = data.blobUrl;
+                    if (data.poster) video.poster = data.poster;
+                    blobManager.decrementRef(data.filename);
+                }
             }
-            
-            // Empêcher le clic sur le bouton de suppression
+        }
+    }, 100);
+
+    attachCardEvents(galleryId);
+    mettreAJourCorbeille();
+    applyScrollProtection();
+}
+
+// ============================================================
+// ATTACHER LES ÉVÉNEMENTS
+// ============================================================
+function attachCardEvents(galleryId) {
+    document.querySelectorAll('.media-card:not(.verrouille)').forEach(card => {
+        card.addEventListener('click', function(e) {
             if (e.target.classList.contains('delete-btn')) return;
-            
-            // Ouvrir la lightbox
+            const index = parseInt(this.dataset.index);
+            if (isNaN(index)) return;
             const item = currentMediaList[index];
             if (!item || !item.blob) {
                 afficherNotificationCentre('⚠️ Vidéo non disponible', 'error');
                 return;
             }
-            
             const filteredIndex = currentFilteredList.findIndex(
                 f => f.filename === currentMediaList[index].filename
             );
             openLightbox(filteredIndex >= 0 ? filteredIndex : 0);
         });
-        
-        const deleteBtn = card.querySelector('.delete-btn');
-        if (deleteBtn) {
-            deleteBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                const fn = this.dataset.filename;
-                const num = parseInt(this.dataset.numero);
-                const tit = this.dataset.titre;
-                supprimerVideo(galleryId, fn, tit, num);
+    });
+
+    document.querySelectorAll('.media-card.verrouille').forEach(card => {
+        card.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            if (isNaN(index)) return;
+            const item = currentMediaList[index];
+            if (!item) return;
+            codePending = {
+                galleryId: galleryId,
+                filename: item.filename,
+                titre: item.titre || `Vidéo ${item.numero}`,
+                numero: item.numero,
+                fromTrash: false
+            };
+            ouvrirModalCode(item.filename, item.titre, item.numero);
+        });
+    });
+
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            const filename = this.dataset.filename;
+            const titre = this.dataset.titre;
+            const numero = parseInt(this.dataset.numero);
+            supprimerVideo(galleryId, filename, titre, numero);
+        });
+    });
+
+    let deleteMode = false;
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Delete' || e.key === 'Suppr') {
+            deleteMode = !deleteMode;
+            document.querySelectorAll('.media-card').forEach(card => {
+                if (deleteMode) {
+                    card.classList.add('delete-mode');
+                    const btn = card.querySelector('.delete-btn');
+                    if (btn) btn.style.display = 'flex';
+                } else {
+                    card.classList.remove('delete-mode');
+                    const btn = card.querySelector('.delete-btn');
+                    if (btn) btn.style.display = 'none';
+                }
             });
+            afficherNotificationCentre(
+                deleteMode ? '🗑️ Mode suppression activé' : '✅ Mode suppression désactivé',
+                deleteMode ? 'error' : 'success'
+            );
         }
     });
-    
-    mettreAJourCorbeille();
-    
-    // ✅ APPLIQUER LA PROTECTION SCROLL
-    applyScrollProtection();
-}
-function generateVideoPoster(videoBlob) {
-    return new Promise((resolve) => {
-        const url = URL.createObjectURL(videoBlob);
-        const video = document.createElement('video');
-        video.muted = true;
-        video.playsinline = true;
-        video.preload = 'metadata';
-        video.crossOrigin = 'anonymous';
-        video.src = url;
-        
-        let resolved = false;
-        
-        // Timeout après 3 secondes
-        const timeoutId = setTimeout(() => {
-            if (!resolved) {
-                resolved = true;
-                URL.revokeObjectURL(url);
-                resolve(null);
-            }
-        }, 3000);
-        
-        video.addEventListener('loadedmetadata', function() {
-            if (resolved) return;
-            // Aller à 0.5 seconde ou au milieu de la vidéo
-            const time = Math.min(0.5, video.duration / 2);
-            video.currentTime = time;
-        });
-        
-        video.addEventListener('seeked', function() {
-            if (resolved) return;
-            resolved = true;
-            clearTimeout(timeoutId);
-            
-            try {
-                const canvas = document.createElement('canvas');
-                const w = Math.min(video.videoWidth || 320, 640);
-                const h = Math.min(video.videoHeight || 180, 360);
-                canvas.width = w;
-                canvas.height = h;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(video, 0, 0, w, h);
-                const posterDataUrl = canvas.toDataURL('image/jpeg', 0.7);
-                
-                URL.revokeObjectURL(url);
-                video.pause();
-                video.removeAttribute('src');
-                video.load();
-                resolve(posterDataUrl);
-            } catch(e) {
-                URL.revokeObjectURL(url);
-                resolve(null);
-            }
-        });
-        
-        video.addEventListener('error', function() {
-            if (!resolved) {
-                resolved = true;
-                clearTimeout(timeoutId);
-                URL.revokeObjectURL(url);
-                resolve(null);
-            }
-        });
-        
-        // Démarrer le chargement
-        video.load();
-    });
-}
-
-// ============================================================
-// GESTION DES CLICS SUR LES CARTES
-// ============================================================
-function handleCardClick(card, index, isVerrouille, filename, numero, titre) {
-    if (isVerrouille) {
-        const item = currentMediaList[index];
-        codePending = {
-            galleryId: currentGallery,
-            filename: filename,
-            titre: titre || item.titre,
-            numero: numero || item.numero,
-            fromTrash: false
-        };
-        ouvrirModalCode(filename, titre, numero);
-        return;
-    }
-    
-    const item = currentMediaList[index];
-    if (!item || !item.blob) {
-        afficherNotificationCentre('⚠️ Vidéo non disponible', 'error');
-        return;
-    }
-    
-    const filteredIndex = currentFilteredList.findIndex(
-        f => f.filename === currentMediaList[index].filename
-    );
-    openLightbox(filteredIndex >= 0 ? filteredIndex : 0);
 }
 
 // ============================================================
@@ -2132,9 +1956,17 @@ function handleCardClick(card, index, isVerrouille, filename, numero, titre) {
 // ============================================================
 async function supprimerVideo(galleryId, filename, titre, numero) {
     if (!confirm(`Supprimer "${titre}" de la bibliothèque ?`)) return;
-    
     try {
-        await supprimerVideoDB(galleryId, filename, titre, numero);
+        const db = await openDB(galleryId);
+        await new Promise((resolve, reject) => {
+            const tx = db.transaction(['medias'], 'readwrite');
+            const req = tx.objectStore('medias').delete(filename);
+            req.onsuccess = () => {
+                ajouterVideoSupprimee(galleryId, filename, titre, numero);
+                resolve();
+            };
+            req.onerror = () => reject(req.error);
+        });
         afficherNotificationCentre(`🗑️ "${titre}" supprimée`, 'success');
         await renderGallery(galleryId);
     } catch(e) {
@@ -2144,102 +1976,7 @@ async function supprimerVideo(galleryId, filename, titre, numero) {
 }
 
 // ============================================================
-// LOAD GALLERY
-// ============================================================
-async function loadGallery(galleryId) {
-    const gallery = GALLERIES.find(g => g.id === galleryId);
-    currentGallery = galleryId;
-    galleryTitle.textContent = gallery.screenTitle || gallery.label;
-    gallerySub.textContent = gallery.screenSub || '';
-    selectionScreen.style.opacity = '0';
-    
-    mettreAJourCorbeille();
-    
-    setTimeout(async () => {
-        selectionScreen.style.display = 'none';
-        galleryApp.classList.remove('hidden');
-        
-        await renderGallery(galleryId);
-        
-        if (!sessionChecked) {
-            sessionChecked = true;
-            
-            const manifest = await fetchManifest(gallery);
-            if (manifest.length) {
-                const dernierNumOk = await getStoredNum(galleryId);
-                
-                let maxNumManifest = 0;
-                for (const media of manifest) {
-                    if (media.numero > maxNumManifest) {
-                        maxNumManifest = media.numero;
-                    }
-                }
-                
-                console.log(`📊 DB dernierNumOk: ${dernierNumOk}, Manifest max: ${maxNumManifest}`);
-                
-                if (maxNumManifest > dernierNumOk) {
-                    console.log(`📥 Nouvelles vidéos détectées, téléchargement en arrière-plan`);
-                    await telechargerVideosManquantes(galleryId, manifest, dernierNumOk);
-                } else {
-                    console.log(`✅ Aucune nouvelle vidéo`);
-                }
-            }
-        } else {
-            console.log(`⏳ Session déjà vérifiée, pas de re-vérification`);
-        }
-        
-    }, 300);
-}
-
-// ============================================================
-// FILTRE RECHERCHE
-// ============================================================
-function filterVideos(query) {
-    searchTerm = query.toLowerCase().trim();
-    const cards = document.querySelectorAll('.media-card');
-    let hasVisible = false;
-
-    cards.forEach((card, index) => {
-        if (index >= currentMediaList.length) return;
-        const item = currentMediaList[index];
-        const title = (item.titre || '').toLowerCase();
-        const filename = (item.filename || '').toLowerCase();
-        
-        const match = !searchTerm || 
-                     title.includes(searchTerm) || 
-                     filename.includes(searchTerm);
-        
-        if (match) {
-            card.classList.remove('hidden-card');
-            hasVisible = true;
-        } else {
-            card.classList.add('hidden-card');
-        }
-    });
-
-    let noResult = document.querySelector('.no-result');
-    if (!hasVisible && searchTerm && cards.length > 0) {
-        if (!noResult) {
-            noResult = document.createElement('div');
-            noResult.className = 'no-result';
-            noResult.innerHTML = `<span>🔍</span>Aucune vidéo trouvée pour "<strong>${searchTerm}</strong>"`;
-            galleryContainer.appendChild(noResult);
-        } else {
-            noResult.innerHTML = `<span>🔍</span>Aucune vidéo trouvée pour "<strong>${searchTerm}</strong>"`;
-            noResult.style.display = 'block';
-        }
-    } else if (noResult) {
-        noResult.style.display = 'none';
-    }
-
-    currentFilteredList = currentMediaList.filter((item, index) => {
-        const card = cards[index];
-        return card && !card.classList.contains('hidden-card');
-    });
-}
-
-// ============================================================
-// LIGHTBOX - ÉCRAN 2 : BARRE DE LECTURE COMPLÈTE + AUTOPLAY
+// LIGHTBOX
 // ============================================================
 function openLightbox(index) {
     if (!currentFilteredList.length) return;
@@ -2249,7 +1986,7 @@ function openLightbox(index) {
         afficherNotificationCentre('⚠️ Vidéo non disponible', 'error');
         return;
     }
-    const url = URL.createObjectURL(item.blob);
+    const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
     lbContent.innerHTML = `
         <div class="lb-container">
             <video class="lb-video" src="${url}" controls autoplay controlslist="nodownload" disablePictureInPicture playsinline></video>
@@ -2257,9 +1994,10 @@ function openLightbox(index) {
     `;
     lightboxDiv.classList.add('active');
     lbCounter.textContent = `${index+1} / ${currentFilteredList.length}`;
+    setTimeout(() => blobManager.revoke(`lb_${item.filename}`), 60000);
 }
 
-function closeLightbox() { 
+function closeLightbox() {
     lightboxDiv.classList.remove('active');
     const video = lbContent.querySelector('video');
     if (video) video.pause();
@@ -2275,13 +2013,14 @@ function nextMedia() {
             afficherNotificationCentre('⚠️ Vidéo non disponible', 'error');
             return;
         }
-        const url = URL.createObjectURL(item.blob);
+        const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
         lbContent.innerHTML = `
             <div class="lb-container">
                 <video class="lb-video" src="${url}" controls autoplay controlslist="nodownload" disablePictureInPicture playsinline></video>
             </div>
         `;
         lbCounter.textContent = `${currentIndex+1} / ${currentFilteredList.length}`;
+        setTimeout(() => blobManager.revoke(`lb_${item.filename}`), 60000);
     }
 }
 
@@ -2295,15 +2034,206 @@ function prevMedia() {
             afficherNotificationCentre('⚠️ Vidéo non disponible', 'error');
             return;
         }
-        const url = URL.createObjectURL(item.blob);
+        const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
         lbContent.innerHTML = `
             <div class="lb-container">
                 <video class="lb-video" src="${url}" controls autoplay controlslist="nodownload" disablePictureInPicture playsinline></video>
             </div>
         `;
         lbCounter.textContent = `${currentIndex+1} / ${currentFilteredList.length}`;
+        setTimeout(() => blobManager.revoke(`lb_${item.filename}`), 60000);
     }
 }
+
+// ============================================================
+// LOAD GALLERY
+// ============================================================
+async function loadGallery(galleryId) {
+    const gallery = GALLERIES.find(g => g.id === galleryId);
+    currentGallery = galleryId;
+    galleryTitle.textContent = gallery.screenTitle || gallery.label;
+    gallerySub.textContent = gallery.screenSub || '';
+    selectionScreen.style.opacity = '0';
+    mettreAJourCorbeille();
+    setTimeout(async () => {
+        selectionScreen.style.display = 'none';
+        galleryApp.classList.remove('hidden');
+        await renderGallery(galleryId);
+        if (!sessionChecked) {
+            sessionChecked = true;
+            const manifest = await fetchManifest(gallery);
+            if (manifest.length) {
+                const dernierNumOk = await getStoredNum(galleryId);
+                let maxNumManifest = 0;
+                for (const media of manifest) {
+                    if (media.numero > maxNumManifest) maxNumManifest = media.numero;
+                }
+                if (maxNumManifest > dernierNumOk) {
+                    await telechargerVideosManquantes(galleryId, manifest, dernierNumOk);
+                }
+            }
+        }
+    }, 300);
+}
+
+// ============================================================
+// FILTRE RECHERCHE
+// ============================================================
+function filterVideos(query) {
+    searchTerm = query.toLowerCase().trim();
+    const cards = document.querySelectorAll('.media-card');
+    let hasVisible = false;
+    cards.forEach((card, index) => {
+        if (index >= currentMediaList.length) return;
+        const item = currentMediaList[index];
+        const title = (item.titre || '').toLowerCase();
+        const filename = (item.filename || '').toLowerCase();
+        const match = !searchTerm || title.includes(searchTerm) || filename.includes(searchTerm);
+        if (match) {
+            card.classList.remove('hidden-card');
+            hasVisible = true;
+        } else {
+            card.classList.add('hidden-card');
+        }
+    });
+    let noResult = document.querySelector('.no-result');
+    if (!hasVisible && searchTerm && cards.length > 0) {
+        if (!noResult) {
+            noResult = document.createElement('div');
+            noResult.className = 'no-result';
+            noResult.innerHTML = `<span>🔍</span>Aucune vidéo trouvée pour "<strong>${searchTerm}</strong>"`;
+            galleryContainer.appendChild(noResult);
+        } else {
+            noResult.innerHTML = `<span>🔍</span>Aucune vidéo trouvée pour "<strong>${searchTerm}</strong>"`;
+            noResult.style.display = 'block';
+        }
+    } else if (noResult) {
+        noResult.style.display = 'none';
+    }
+    currentFilteredList = currentMediaList.filter((item, index) => {
+        const card = cards[index];
+        return card && !card.classList.contains('hidden-card');
+    });
+}
+
+// ============================================================
+// AFFICHER LA CORBEILLE
+// ============================================================
+function afficherCorbeille() {
+    const galleryId = currentGallery;
+    const videos = getVideosSupprimees(galleryId);
+    trashList.innerHTML = '';
+    if (videos.length === 0) {
+        trashList.innerHTML = `<div class="trash-empty"><span>🧹</span>Aucune vidéo supprimée</div>`;
+        return;
+    }
+    for (const video of videos) {
+        const div = document.createElement('div');
+        div.className = 'trash-item';
+        div.dataset.filename = video.filename;
+        div.innerHTML = `
+            <div class="info">
+                <div class="title">${video.titre || `Vidéo ${video.numero}`}</div>
+                <div class="detail">${video.filename} • N°${video.numero}</div>
+            </div>
+            <button class="btn-redownload" onclick="retelechargerVideo('${galleryId}', '${video.filename}', '${video.titre.replace(/'/g, "\\'")}', ${video.numero})">
+                🔄 Retélécharger
+            </button>
+        `;
+        trashList.appendChild(div);
+    }
+}
+
+async function retelechargerVideo(galleryId, filename, titre, numero) {
+    const btn = document.querySelector(`.trash-item[data-filename="${filename}"] .btn-redownload`);
+    if (btn) { btn.textContent = '⏳...'; btn.classList.add('loading'); }
+    try {
+        const result = await telechargerVideoIndividuelle(galleryId, filename, titre, numero);
+        if (result.status === 'ok') {
+            supprimerVideoSupprimee(galleryId, filename);
+            afficherNotificationCentre(`✅ ${titre} retéléchargée`, 'success');
+            await renderGallery(galleryId);
+            afficherCorbeille();
+        } else if (result.status === 'verrouille') {
+            afficherNotificationCentre('🔒 Code requis pour cette vidéo', 'error');
+            codePending = { galleryId, filename, titre, numero, fromTrash: true };
+            ouvrirModalCode(filename, titre, numero);
+        } else {
+            afficherNotificationCentre('❌ Erreur lors du téléchargement', 'error');
+        }
+    } catch(e) {
+        console.error('Erreur retéléchargement:', e);
+        afficherNotificationCentre('❌ Erreur lors du téléchargement', 'error');
+    }
+    if (btn) { btn.textContent = '🔄 Retélécharger'; btn.classList.remove('loading'); }
+}
+
+// ============================================================
+// 🚫 BLOQUER LA LECTURE AU SCROLL
+// ============================================================
+let scrollTimer = null;
+let isScrolling = false;
+
+function pauseAllVideos() {
+    document.querySelectorAll('.video-wrap video').forEach(video => {
+        try { video.pause(); video.currentTime = 0; } catch(e) {}
+    });
+}
+
+function blockVideoOnScroll() {
+    isScrolling = true;
+    pauseAllVideos();
+    if (scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => { isScrolling = false; pauseAllVideos(); }, 500);
+}
+
+window.addEventListener('scroll', blockVideoOnScroll, { passive: true });
+window.addEventListener('touchmove', blockVideoOnScroll, { passive: true });
+window.addEventListener('touchend', () => { setTimeout(pauseAllVideos, 300); }, { passive: true });
+
+function setupVideoObservers() {
+    document.querySelectorAll('.video-wrap video').forEach(video => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                try {
+                    if (entry.isIntersecting && !isScrolling) {
+                        entry.target.pause();
+                        entry.target.currentTime = 0;
+                    } else if (entry.isIntersecting && isScrolling) {
+                        entry.target.pause();
+                        entry.target.currentTime = 0;
+                    } else {
+                        entry.target.pause();
+                        entry.target.currentTime = 0;
+                    }
+                } catch(e) {}
+            });
+        }, { threshold: 0.1 });
+        observer.observe(video);
+    });
+}
+
+function applyScrollProtection() {
+    pauseAllVideos();
+    setupVideoObservers();
+}
+
+const scrollObserver = new MutationObserver(() => { applyScrollProtection(); });
+scrollObserver.observe(document.body, { childList: true, subtree: true });
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(applyScrollProtection, 500);
+    document.querySelectorAll('.video-wrap video').forEach(video => {
+        video.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            this.pause(); this.currentTime = 0;
+        });
+        video.addEventListener('dblclick', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            this.pause(); this.currentTime = 0;
+        });
+    });
+});
 
 // ============================================================
 // EVENTS
@@ -2332,11 +2262,7 @@ btnBack.addEventListener('click', () => {
 
 searchInput.addEventListener('input', (e) => {
     const value = e.target.value;
-    if (value.length > 0) {
-        searchClear.classList.add('visible');
-    } else {
-        searchClear.classList.remove('visible');
-    }
+    searchClear.classList.toggle('visible', value.length > 0);
     filterVideos(value);
 });
 
@@ -2363,37 +2289,22 @@ btnTrash.addEventListener('click', () => {
     trashModal.classList.add('active');
 });
 
-closeTrash.addEventListener('click', () => {
-    trashModal.classList.remove('active');
-});
-
-trashModal.addEventListener('click', (e) => {
-    if (e.target === trashModal) {
-        trashModal.classList.remove('active');
-    }
-});
+closeTrash.addEventListener('click', () => { trashModal.classList.remove('active'); });
+trashModal.addEventListener('click', (e) => { if (e.target === trashModal) trashModal.classList.remove('active'); });
 
 // Scroll header
-let lastScrollY = 0;
-let ticking = false;
+let lastScrollY = 0, ticking = false;
 function handleScroll() {
     if (!ticking) {
         window.requestAnimationFrame(() => {
             const currentScrollY = window.scrollY;
             const isScrollingDown = currentScrollY > lastScrollY;
-            
             if (isScrollingDown && currentScrollY > 60) {
                 heroHeader.classList.add('hide-header');
             } else if (!isScrollingDown || currentScrollY <= 30) {
                 heroHeader.classList.remove('hide-header');
             }
-
-            if (currentScrollY > 60) {
-                searchWrapper.classList.add('scrolled');
-            } else {
-                searchWrapper.classList.remove('scrolled');
-            }
-
+            searchWrapper.classList.toggle('scrolled', currentScrollY > 60);
             lastScrollY = currentScrollY;
             ticking = false;
         });
@@ -2402,450 +2313,73 @@ function handleScroll() {
 }
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-// ============================================================
-// ÉVÉNEMENTS DE LA MODAL CODE
-// ============================================================
-
-btnHakaCodeModal.addEventListener('click', function() {
-    fbMessageArea.style.display = 'block';
-});
-
-fbModalBtn.addEventListener('click', function(e) {
+// ÉVÉNEMENTS MODAL CODE
+btnHakaCodeModal.addEventListener('click', () => { fbMessageArea.style.display = 'block'; });
+fbModalBtn.addEventListener('click', (e) => {
     e.preventDefault();
     window.open('https://www.facebook.com/profile.php?id=61555313604553', '_blank');
 });
+btnValidateCode.addEventListener('click', (e) => { e.preventDefault(); submitModalCode(); });
+modalCode.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submitModalCode(); } });
+codeModal.addEventListener('click', (e) => { if (e.target === codeModal) closeCodeModal(); });
+modalCode.addEventListener('input', () => { codeError.classList.remove('visible'); });
 
-btnValidateCode.addEventListener('click', function(e) {
-    e.preventDefault();
-    submitModalCode();
-});
-
-modalCode.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        submitModalCode();
-    }
-});
-
-codeModal.addEventListener('click', function(e) {
-    if (e.target === codeModal) {
-        closeCodeModal();
-    }
-});
-
-modalCode.addEventListener('input', function() {
-    codeError.classList.remove('visible');
-});
-
-console.log('🎬 Vidéos chargé');
-console.log('📡 WORKER_URL_API:', WORKER_URL_API);
-console.log('📡 WORKER_URL_VIDEO:', WORKER_URL_VIDEO);
-console.log('📡 WORKER_URL_MANIFEST:', WORKER_URL_MANIFEST);
-console.log('📱 Device Model utilisé:', deviceModel);
+console.log('🎬 Vidéos chargé - Solution ultime sans blob:video');
+console.log('📱 Device Model:', deviceModel);
 
 // ============================================================
-// CODE DE SÉCURITÉ (Version complète)
+// CODE DE SÉCURITÉ
 // ============================================================
 (function() {
-    "use strict";
-
-    let devToolsOpen = false;
-    const threshold = 160;
-
     function showBlockOverlay() {
         if (document.getElementById('securityOverlay')) return;
         const overlay = document.createElement('div');
         overlay.id = 'securityOverlay';
         overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
-        overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;">
-            <div style="font-size:60px;">🔒</div>
-            <h3 style="color:#e94560;font-family:Georgia,serif;">Ny henjana ihany no tonga aty an!</h3>
-            <p style="color:white;font-family:Segoe UI,sans-serif;margin:15px 0;">Akatony ary avereno ity pejy ity.</p>
-            <button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;font-size:16px;">🔄 Akatony & Avereno</button>
-        </div>`;
+        overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
         document.body.appendChild(overlay);
         document.getElementById('closeSecurityBtn').onclick = () => location.reload();
     }
-
     function hideBlockOverlay() {
         const overlay = document.getElementById('securityOverlay');
         if (overlay) overlay.remove();
     }
-
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        return false;
-    }, true);
-
-    document.addEventListener('selectstart', (e) => {
-        if (e.target.tagName === 'VIDEO') {
-            e.preventDefault();
-            return false;
-        }
-    }, true);
-
-    document.addEventListener('copy', (e) => {
-        e.preventDefault();
-        return false;
-    }, true);
-    
-    document.addEventListener('cut', (e) => {
-        e.preventDefault();
-        return false;
-    }, true);
-
     window.addEventListener('keydown', function(e) {
-        if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c")) {
-            e.preventDefault();
-            return false;
-        }
-        if ((e.ctrlKey || e.metaKey) && (e.key === "U" || e.key === "u")) {
-            e.preventDefault();
-            return false;
-        }
-        if ((e.ctrlKey || e.metaKey) && (e.key === "S" || e.key === "s")) {
-            e.preventDefault();
-            return false;
-        }
-        if ((e.ctrlKey || e.metaKey) && (e.key === "P" || e.key === "p")) {
-            e.preventDefault();
-            return false;
-        }
-        if ((e.ctrlKey || e.metaKey) && (e.key === "R" || e.key === "r")) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.key === "F5" || e.keyCode === 116) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.key === 'PrintScreen' || e.key === 'Print') {
-            e.preventDefault();
-            return false;
-        }
-        if (e.shiftKey && (e.key === 'F10' || e.keyCode === 121)) {
-            e.preventDefault();
-            return false;
-        }
-        if (e.key === 'ContextMenu' || e.keyCode === 93) {
-            e.preventDefault();
-            return false;
-        }
+        if (e.key === "F12" || e.code === "F12") { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && (e.key === "U" || e.key === "u")) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && (e.key === "S" || e.key === "s")) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && (e.key === "P" || e.key === "p")) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && (e.key === "R" || e.key === "r")) { e.preventDefault(); return false; }
+        if (e.key === "F5" || e.keyCode === 116) { e.preventDefault(); return false; }
+        if (e.key === 'PrintScreen' || e.key === 'Print') { e.preventDefault(); return false; }
+        if (e.key === 'ContextMenu' || e.keyCode === 93) { e.preventDefault(); return false; }
     }, true);
-
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
     function detectDevTools() {
+        let devToolsOpen = false;
+        const threshold = 160;
         setInterval(() => {
             const widthDiff = window.outerWidth - window.innerWidth;
             const heightDiff = window.outerHeight - window.innerHeight;
-            
             if (widthDiff > threshold || heightDiff > threshold) {
-                if (!devToolsOpen) {
-                    devToolsOpen = true;
-                    showBlockOverlay();
-                }
+                if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
             } else {
-                if (devToolsOpen) {
-                    devToolsOpen = false;
-                    hideBlockOverlay();
-                }
+                if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
             }
         }, 1000);
     }
-
-    setInterval(() => { 
-        try { debugger; } catch(e) {} 
-    }, 50);
-    
+    setInterval(() => { try { debugger; } catch(e) {} }, 50);
     if (window.console) {
         const noop = () => {};
         console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
     }
-
-    window.addEventListener('resize', () => {
-        const widthDiff = window.outerWidth - window.innerWidth;
-        const heightDiff = window.outerHeight - window.innerHeight;
-        if (widthDiff > threshold || heightDiff > threshold) {
-            if (!devToolsOpen) {
-                devToolsOpen = true;
-                showBlockOverlay();
-            }
-        }
-    });
-
-    window.addEventListener('popstate', (e) => {
-        history.pushState(null, '', location.href);
-    });
-
-    document.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-        return false;
-    }, true);
-
-    if (window.top !== window.self) {
-        window.top.location = window.self.location;
-    }
-
-    document.addEventListener('fullscreenchange', () => {
-        if (document.fullscreenElement) {
-            document.exitFullscreen();
-        }
-    });
-
     detectDevTools();
-
-    history.pushState(null, '', location.href);
-    window.addEventListener('popstate', function() {
-        history.pushState(null, '', location.href);
-    });
-
-    console.log('🔒 Protection active - Version complète');
 })();
-
-// ============================================================
-// 🚫 BLOQUER LA LECTURE AUTOMATIQUE AU SCROLL (Android)
-// ============================================================
-
-// 1. Variables
-let scrollTimer = null;
-let isScrolling = false;
-
-// 2. Fonction pour mettre toutes les vidéos en pause
-function pauseAllVideos() {
-    document.querySelectorAll('.video-wrap video').forEach(video => {
-        try {
-            video.pause();
-            video.currentTime = 0;
-        } catch(e) {}
-    });
-}
-
-// 3. Bloquer la lecture pendant le scroll
-function blockVideoOnScroll() {
-    // Marquer qu'on est en train de scroller
-    isScrolling = true;
-    
-    // Mettre en pause immédiatement
-    pauseAllVideos();
-    
-    // Réinitialiser le timer
-    if (scrollTimer) {
-        clearTimeout(scrollTimer);
-    }
-    
-    // Après 500ms d'arrêt du scroll, réautoriser
-    scrollTimer = setTimeout(() => {
-        isScrolling = false;
-        // Une dernière pause pour être sûr
-        pauseAllVideos();
-    }, 500);
-}
-
-// 4. Écouter les événements de scroll
-window.addEventListener('scroll', blockVideoOnScroll, { passive: true });
-
-// 5. Écouter les événements tactiles (Android)
-window.addEventListener('touchmove', blockVideoOnScroll, { passive: true });
-
-// 6. Écouter la fin du toucher
-window.addEventListener('touchend', function() {
-    // Attendre 300ms après la fin du toucher
-    setTimeout(() => {
-        pauseAllVideos();
-    }, 300);
-}, { passive: true });
-
-// 7. Observer la visibilité des vidéos
-function setupVideoObservers() {
-    const videos = document.querySelectorAll('.video-wrap video');
-    
-    videos.forEach(video => {
-        // Créer un observer pour chaque vidéo
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Si la vidéo devient visible ET qu'on ne scroll pas
-                if (entry.isIntersecting && !isScrolling) {
-                    // On la met en pause (pas de lecture automatique)
-                    try {
-                        entry.target.pause();
-                        entry.target.currentTime = 0;
-                    } catch(e) {}
-                } else if (entry.isIntersecting && isScrolling) {
-                    // Pendant le scroll, on force la pause
-                    try {
-                        entry.target.pause();
-                        entry.target.currentTime = 0;
-                    } catch(e) {}
-                } else {
-                    // Vidéo hors viewport, on la met en pause
-                    try {
-                        entry.target.pause();
-                        entry.target.currentTime = 0;
-                    } catch(e) {}
-                }
-            });
-        }, {
-            threshold: 0.1 // 10% visible
-        });
-        
-        observer.observe(video);
-    });
-}
-
-// 8. Appliquer au chargement et après chaque rendu
-function applyScrollProtection() {
-    pauseAllVideos();
-    setupVideoObservers();
-}
-
-// 9. Observer les changements dans le DOM pour les nouvelles vidéos
-const scrollObserver = new MutationObserver(() => {
-    applyScrollProtection();
-});
-
-scrollObserver.observe(document.body, {
-    childList: true,
-    subtree: true
-});
-
-// 10. Application initiale
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(applyScrollProtection, 500);
-});
-
-// 11. Protection supplémentaire : bloquer le clic sur la vidéo en miniature
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.video-wrap video').forEach(video => {
-        // Empêcher le clic de jouer la vidéo en miniature
-        video.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.pause();
-            this.currentTime = 0;
-        });
-        
-        // Empêcher le double-clic
-        video.addEventListener('dblclick', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.pause();
-            this.currentTime = 0;
-        });
-    });
-});
-
-console.log('🛡️ Protection scrolling Android activée');
-// ======================= CODE DE SÉCURITÉ (Version allégée) =======================
-    (function() {
-        function showBlockOverlay() {
-            if (document.getElementById('securityOverlay')) return;
-            const overlay = document.createElement('div');
-            overlay.id = 'securityOverlay';
-            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
-            overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
-            document.body.appendChild(overlay);
-            document.getElementById('closeSecurityBtn').onclick = () => location.reload();
-        }
-
-        function hideBlockOverlay() {
-            const overlay = document.getElementById('securityOverlay');
-            if (overlay) overlay.remove();
-        }
-
-        window.addEventListener('keydown', function(e) {
-            if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
-                e.preventDefault();
-                return false;
-            }
-if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
-                e.preventDefault();
-                return false;
-            }
-// Ajoutez ceci dans la liste des vérifications
-if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
-    e.preventDefault();
-    return false;
-}
-// Ctrl+P (Imprimer)
-if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+F (Rechercher)
-if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
-    e.preventDefault();
-    return false;
-}
-
-// Ctrl+R (Rafraîchir) - Attention, peut être agaçant pour l'utilisateur
-if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
-    e.preventDefault();
-    return false;
-}
-
-// F5 (Rafraîchir)
-if (e.key === "F5" || e.keyCode === 116) {
-    e.preventDefault();
-    return false;
-}
-            if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
-                e.preventDefault();
-                return false;
-            }
-        }, true);
-
-        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
-        document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
-
-        function detectDevTools() {
-            let devToolsOpen = false;
-            const threshold = 160;
-            setInterval(() => {
-                const widthDiff = window.outerWidth - window.innerWidth;
-                const heightDiff = window.outerHeight - window.innerHeight;
-                if (widthDiff > threshold || heightDiff > threshold) {
-                    if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
-                } else {
-                    if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
-                }
-            }, 1000);
-        }
-
-        setInterval(() => { debugger; }, 50);
-        
-        if (window.console) {
-            const noop = () => {};
-            console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
-        }
-
-        detectDevTools();
-    })();
 </script>
 </body>
 </html>
