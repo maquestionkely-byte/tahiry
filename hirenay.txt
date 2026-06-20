@@ -2045,8 +2045,9 @@ boutonsNormaux.forEach(item => {
     btn.addEventListener('click', () => showScreen(item.id));
     toolbar.appendChild(btn);
 });
-
-// Bouton Vidéo (fond BLEU comme avant)
+// ============================================================
+// 🎬 BOUTON VIDÉO - Code UNI (window.open + cache + code)
+// ============================================================
 const btnVideo = document.createElement('button');
 btnVideo.className = 'niveau-btn';
 btnVideo.style.background = '#0a2f6c';
@@ -2056,11 +2057,40 @@ btnVideo.innerHTML = `🎬 Vidéo`;
 btnVideo.addEventListener('click', async () => {
     const nomFichier = "videolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
+    
+    try {
+        // ✅ Vérifier si le fichier est en cache
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = await recupererContenu(dbName);
+        
+        if (!contenu) {
+            // ❌ Pas en cache → télécharger
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Fichier non trouvé');
+            contenu = await response.text();
+            await stockerEnIndexedDB(nomFichier, contenu);
+        }
+        
+        // ✅ Ouvrir le fichier avec window.open (direct)
+        // Créer un blob pour l'ouvrir
+        const blob = new Blob([contenu], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, '_blank');
+        
+    } catch (error) {
+        const notif = document.createElement('div');
+        notif.className = 'update-notification error';
+        notif.style.background = '#c0392b';
+        notif.innerHTML = `⚠️ Tsy hita ny fichier vidéo`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
+    }
 });
 toolbar.appendChild(btnVideo);
 
-// Bouton Audio (fond vert 10%)
+// ============================================================
+// 🎵 BOUTON AUDIO - Code UNI (window.open + cache + code)
+// ============================================================
 const btnAudio = document.createElement('button');
 btnAudio.className = 'niveau-btn';
 btnAudio.style.background = 'rgba(46, 204, 113, 0.1)';
@@ -2070,7 +2100,33 @@ btnAudio.innerHTML = `🎵 Audio`;
 btnAudio.addEventListener('click', async () => {
     const nomFichier = "audiolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
+    
+    try {
+        // ✅ Vérifier si le fichier est en cache
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = await recupererContenu(dbName);
+        
+        if (!contenu) {
+            // ❌ Pas en cache → télécharger
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Fichier non trouvé');
+            contenu = await response.text();
+            await stockerEnIndexedDB(nomFichier, contenu);
+        }
+        
+        // ✅ Ouvrir le fichier avec window.open (direct)
+        const blob = new Blob([contenu], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, '_blank');
+        
+    } catch (error) {
+        const notif = document.createElement('div');
+        notif.className = 'update-notification error';
+        notif.style.background = '#c0392b';
+        notif.innerHTML = `⚠️ Tsy hita ny fichier audio`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
+    }
 });
 toolbar.appendChild(btnAudio);
 
