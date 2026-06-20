@@ -2045,8 +2045,10 @@ boutonsNormaux.forEach(item => {
     btn.addEventListener('click', () => showScreen(item.id));
     toolbar.appendChild(btn);
 });
+
+
 // ============================================================
-// 🎬 BOUTON VIDÉO - Code UNI (window.open + cache + code)
+// 🎬 BOUTON VIDÉO - Fenêtre sans barre d'adresse
 // ============================================================
 const btnVideo = document.createElement('button');
 btnVideo.className = 'niveau-btn';
@@ -2059,23 +2061,26 @@ btnVideo.addEventListener('click', async () => {
     const url = `${WORKER_URL}/${nomFichier}`;
     
     try {
-        // ✅ Vérifier si le fichier est en cache
         const dbName = nomFichier.replace('.txt', '');
         let contenu = await recupererContenu(dbName);
         
         if (!contenu) {
-            // ❌ Pas en cache → télécharger
             const response = await fetch(url);
             if (!response.ok) throw new Error('Fichier non trouvé');
             contenu = await response.text();
             await stockerEnIndexedDB(nomFichier, contenu);
         }
         
-        // ✅ Ouvrir le fichier avec window.open (direct)
-        // Créer un blob pour l'ouvrir
+        // ✅ Ouvrir dans une nouvelle fenêtre SANS barre d'adresse
         const blob = new Blob([contenu], { type: 'text/html' });
         const blobUrl = URL.createObjectURL(blob);
-        window.open(blobUrl, '_blank');
+        
+        const newWindow = window.open(blobUrl, '_blank', 'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes');
+        
+        // Si la fenêtre est bloquée, utiliser window.location.href en secours
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = blobUrl;
+        }
         
     } catch (error) {
         const notif = document.createElement('div');
@@ -2089,7 +2094,7 @@ btnVideo.addEventListener('click', async () => {
 toolbar.appendChild(btnVideo);
 
 // ============================================================
-// 🎵 BOUTON AUDIO - Code UNI (window.open + cache + code)
+// 🎵 BOUTON AUDIO - Fenêtre sans barre d'adresse
 // ============================================================
 const btnAudio = document.createElement('button');
 btnAudio.className = 'niveau-btn';
@@ -2102,22 +2107,26 @@ btnAudio.addEventListener('click', async () => {
     const url = `${WORKER_URL}/${nomFichier}`;
     
     try {
-        // ✅ Vérifier si le fichier est en cache
         const dbName = nomFichier.replace('.txt', '');
         let contenu = await recupererContenu(dbName);
         
         if (!contenu) {
-            // ❌ Pas en cache → télécharger
             const response = await fetch(url);
             if (!response.ok) throw new Error('Fichier non trouvé');
             contenu = await response.text();
             await stockerEnIndexedDB(nomFichier, contenu);
         }
         
-        // ✅ Ouvrir le fichier avec window.open (direct)
+        // ✅ Ouvrir dans une nouvelle fenêtre SANS barre d'adresse
         const blob = new Blob([contenu], { type: 'text/html' });
         const blobUrl = URL.createObjectURL(blob);
-        window.open(blobUrl, '_blank');
+        
+        const newWindow = window.open(blobUrl, '_blank', 'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes');
+        
+        // Si la fenêtre est bloquée, utiliser window.location.href en secours
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = blobUrl;
+        }
         
     } catch (error) {
         const notif = document.createElement('div');
@@ -2129,6 +2138,7 @@ btnAudio.addEventListener('click', async () => {
     }
 });
 toolbar.appendChild(btnAudio);
+
 
 // Bouton Hiresaka (fond bleu nuit)
 const btnHiresaka = document.createElement('button');
