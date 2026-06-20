@@ -1,0 +1,455 @@
+3. akoho
+poulet
+emoji : 🐔
+Explication : Ny akoho dia biby fiompy izay omena hena sy atody. Amin'ny teny frantsay dia "poulet".
+Exemples :
+- Je mange du poulet. → Mihinana akoho aho.
+- Le poulet chante. → Mihira ny akoho.
+
+4. alika
+chien
+emoji : 🐕
+Explication : Ny alika dia biby fiompy mahatoky izay miambina trano. Amin'ny teny frantsay dia "chien".
+Exemples :
+- J'ai un chien. → Manana alika aho.
+- Le chien aboie. → Mihoraka ny alika.
+
+5. ambany
+en bas
+emoji : ⬇️
+Explication : Ny ambany dia toerana tsy avo, eo ambaniny. Amin'ny teny frantsay dia "en bas".
+Exemples :
+- Il est en bas. → Ambany izy.
+- Mets-le en bas. → Apetraho ambany.
+
+6. ambony
+en haut
+emoji : ⬆️
+Explication : Ny ambony dia toerana avo na eo an-tampony. Amin'ny teny frantsay dia "en haut".
+Exemples :
+- Il est en haut. → Ambony izy.
+- Regarde en haut. → Jereo ambony.
+
+7. ankizy
+enfant
+emoji : 👶
+Explication : Ny ankizy dia olona kely mbola tsy lehibe. Amin'ny teny frantsay dia "enfant".
+Exemples :
+- Les enfants jouent. → Milalao ny ankizy.
+- J'aime les enfants. → Tiako ny ankizy.
+
+8. anoratra
+écrire
+emoji : ✍️
+Explication : Ny anoratra dia mametraka soratra eo amin'ny taratasy. Amin'ny teny frantsay dia "écrire".
+Exemples :
+- J'écris une lettre. → Manoratra taratasy aho.
+- Elle écrit un livre. → Manoratra boky izy.
+
+9. antitra
+vieux / vieille
+emoji : 👴
+Explication : Ny antitra dia olona efa be taona na zavatra efa ela. Amin'ny teny frantsay dia "vieux" raha lehilahy ary "vieille" raha vevavy.
+Exemples :
+- Il est vieux. → Antitra izy.
+- Une vieille maison. → Trano antitra.
+
+10. araka
+selon
+emoji : ➡️
+Explication : Ny araka dia fanehoana fampifanarahana zavatra iray. Amin'ny teny frantsay dia "selon".
+Exemples :
+- Selon moi. → Araka ny hevitro.
+- Fais selon les règles. → Araho ny lalàna.
+
+11. ary
+et
+emoji : 🔗
+Explication : Ny ary dia teny mampifandray zavatra roa. Amin'ny teny frantsay dia "et".
+Exemples :
+- Moi et toi. → Izaho ary ianao.
+- Il lit et écrit. → Mamaky ary manoratra izy.
+
+12. asa
+travail
+emoji : 💼
+Explication : Ny asa dia zavatra atao mba hahazoana vola. Amin'ny teny frantsay dia "travail".
+Exemples :
+- J'ai du travail. → Manana asa aho.
+- Le travail est dur. → Mafy ny asa.
+
+13. avotra
+délivrance / salut
+emoji : 🆘
+Explication : Ny avotra dia famonjena na fanafahana amin'ny loza. Amin'ny teny frantsay dia "délivrance" na "salut".
+Exemples :
+- Chercher la délivrance. → Mitady avotra.
+- Il a trouvé le salut. → Nahita avotra izy.
+
+14. babo
+capturé / pris
+emoji : 🏆
+Explication : Ny babo dia zavatra na olona tratra na voasambotra. Amin'ny teny frantsay dia "capturé" na "pris".
+Exemples :
+- Le prisonnier est capturé. → Babo ilay gadra.
+- Il a pris la balle. → Babony ilay baolina.
+
+15. bahiny
+étranger
+emoji : 🌍
+Explication : Ny bahiny dia olona avy any amin'ny tany hafa. Amin'ny teny frantsay dia "étranger".
+Exemples :
+- C'est un étranger. → Bahiny izy.
+- Les étrangers viennent ici. → Mankaty ny bahiny.
+
+16. bakoly
+chou
+emoji : 🥬
+Explication : Ny bakoly dia legioma boribory misy ravina. Amin'ny teny frantsay dia "chou".
+Exemples :
+- Je cuisine du chou. → Mahandro bakoly aho.
+- Le chou est vert. → Maintso ny bakoly.
+
+17. beboka
+poussin
+emoji : 🐣
+Explication : Ny beboka dia zana-koholahy vao teraka. Amin'ny teny frantsay dia "poussin".
+Exemples :
+- Les poussins courent. → Mihazakazaka ny beboka.
+- J'ai un poussin. → Manana beboka aho.
+
+18. befana
+balai
+emoji : 🧹
+Explication : Ny befana dia fitaovana hanadiovana tany. Amin'ny teny frantsay dia "balai".
+Exemples :
+- Prends le balai. → Raiso ny befana.
+- Elle balaie avec un balai. → Mibefana izy.
+
+19. behivavy
+femme
+emoji : 👩
+Explication : Ny behivavy dia olona vavy efa lehibe. Amin'ny teny frantsay dia "femme".
+Exemples :
+- Une femme arrive. → Tonga ny behivavy.
+- La femme chante. → Mihira ny behivavy.
+
+20. be loatra
+trop
+emoji : 📈
+Explication : Ny be loatra dia mihoatra noho izay ilaina. Amin'ny teny frantsay dia "trop".
+Exemples :
+- Trop de sucre. → Siramamy be loatra.
+- Il mange trop. → Mihinana be loatra izy.
+
+21. biby
+animal
+emoji : 🐾
+Explication : Ny biby dia zavamananaina afaka mihetsika. Amin'ny teny frantsay dia "animal".
+Exemples :
+- Les animaux dorment. → Matory ny biby.
+- J'aime les animaux. → Tiako ny biby.
+
+22. boky
+livre
+emoji : 📖
+Explication : Ny boky dia zavatra vita taratasy misy soratra. Amin'ny teny frantsay dia "livre".
+Exemples :
+- Je lis un livre. → Mamaky boky aho.
+- Elle ferme le livre. → Manidy ny boky izy.
+
+23. bola
+balle / ballon
+emoji : ⚽
+Explication : Ny bola dia zavatra boribory ampiasaina amin'ny lalao. Amin'ny teny frantsay dia "balle" na "ballon".
+Exemples :
+- Lance la balle. → Atsipy ny bola.
+- Le ballon est rond. → Boribory ny bola.
+
+24. daboky
+pain
+emoji : 🍞
+Explication : Ny daboky dia sakafo vita amin'ny lafarinina. Amin'ny teny frantsay dia "pain".
+Exemples :
+- J'achète du pain. → Mividy daboky aho.
+- Le pain est chaud. → Mafana ny daboky.
+
+25. dada
+papa
+emoji : 👨
+Explication : Ny dada dia rain'ny olona iray. Amin'ny teny frantsay dia "papa".
+Exemples :
+- Mon papa est gentil. → Tsara fanahy ny dadako.
+- Papa dort. → Matory i dada.
+
+26. dahy
+frère / monsieur
+emoji : 👨
+Explication : Ny dahy dia zokiny lahy na lehilahy iray. Amin'ny teny frantsay dia "frère" na "monsieur".
+Exemples :
+- Mon frère vient. → Tonga ny dahy.
+- Bonjour monsieur. → Salama dahy.
+
+27. daka
+coup de pied
+emoji : 🦵
+Explication : Ny daka dia kapoka atao amin'ny tongotra. Amin'ny teny frantsay dia "coup de pied".
+Exemples :
+- Il donne un coup de pied. → Manao daka izy.
+- Reçois un coup. → Mahazo daka.
+
+28. damba
+vêtement / tissu
+emoji : 👕
+Explication : Ny damba dia zavatra entina manarona ny vatana. Amin'ny teny frantsay dia "vêtement" na "tissu".
+Exemples :
+- Elle lave les vêtements. → Manasa damba izy.
+- J'achète du tissu. → Mividy damba aho.
+
+29. dantelina
+dentelle
+emoji : 🧵
+Explication : Ny dantelina dia lamba vita kofehy misy endrika tsara. Amin'ny teny frantsay dia "dentelle".
+Exemples :
+- La robe a de la dentelle. → Manana dantelina ny akanjo.
+- Elle coud de la dentelle. → Manjaitra dantelina izy.
+
+30. dihy
+danse / danser
+emoji : 💃
+Explication : Ny dihy dia hetsika atao amin'ny mozika. Amin'ny teny frantsay dia "danse" na "danser".
+Exemples :
+- Elle danse bien. → Mahay dihy izy.
+- La danse est belle. → Tsara ny dihy.
+
+31. dokotera
+médecin
+emoji : 👨‍⚕️
+Explication : Ny dokotera dia olona manasitrana marary. Amin'ny teny frantsay dia "médecin".
+Exemples :
+- Le médecin soigne. → Manasitrana ny dokotera.
+- Je vais chez le médecin. → Mankany amin'ny dokotera aho.
+
+32. dongo
+régime de bananes
+emoji : 🍌
+Explication : Ny dongo dia andiany bananes mifamatotra. Amin'ny teny frantsay dia "régime de bananes".
+Exemples :
+- Il porte un régime. → Mitondra dongo izy.
+- Les bananes sont mûres. → Masaka ny dongo.
+
+33. ela
+long / longtemps
+emoji : ⏳
+Explication : Ny ela dia zavatra lava na fotoana lava. Amin'ny teny frantsay dia "long" na "longtemps".
+Exemples :
+- Il est long. → Ela izy.
+- J'attends longtemps. → Miandry ela aho.
+
+34. erana
+île
+emoji : 🏝️
+Explication : Ny erana dia tany voahodidin'ny rano. Amin'ny teny frantsay dia "île".
+Exemples :
+- Madagascar est une île. → Madagasikara dia erana.
+- Nous vivons sur une île. → Mipetraka amin'ny erana izahay.
+
+35. etsy
+ici / voici
+emoji : 📍
+Explication : Ny etsy dia toerana misy azy na zavatra iray. Amin'ny teny frantsay dia "ici" na "voici".
+Exemples :
+- Il est ici. → Etsy izy.
+- Voici mon livre. → Etsy ny bokiko.
+
+36. fahiny
+autrefois / ancien
+emoji : 🕰️
+Explication : Ny fahiny dia fotoana ela be lasa izay. Amin'ny teny frantsay dia "autrefois" na "ancien".
+Exemples :
+- Autrefois, c'était différent. → Fahiny dia hafa.
+- Une coutume ancienne. → Fomba fahiny.
+
+37. faly
+content / heureux
+emoji : 😊
+Explication : Ny faly dia olona tsy manana alahelo. Amin'ny teny frantsay dia "content" na "heureux".
+Exemples :
+- Je suis content. → Faly aho.
+- Elle est heureuse. → Faly izy.
+
+38. fary
+canne à sucre
+emoji : 🎋
+Explication : Ny fary dia zavamaniry misy ranomamy. Amin'ny teny frantsay dia "canne à sucre".
+Exemples :
+- Je mâche de la canne. → Mifikitra fary aho.
+- La canne est douce. → Mamy ny fary.
+
+39. fety
+fête
+emoji : 🎉
+Explication : Ny fety dia fotoana iaraha-mifaly sy misakafo. Amin'ny teny frantsay dia "fête".
+Exemples :
+- Il y a une fête. → Misy fety.
+- Nous allons à la fête. → Mankany amin'ny fety izahay.
+
+40. fihinana
+nourriture
+emoji : 🍽️
+Explication : Ny fihinana dia zavatra hanina na sakafo. Amin'ny teny frantsay dia "nourriture".
+Exemples :
+- La nourriture est prête. → Vonona ny fihinana.
+- Aimer manger. → Tia fihinana.
+
+41. fo
+cœur
+emoji : ❤️
+Explication : Ny fo dia taova ao anaty vatana na famantarana fitiavana. Amin'ny teny frantsay dia "cœur".
+Exemples :
+- Mon cœur bat. → Mihetsika ny foko.
+- Elle a un bon cœur. → Tsara fo izy.
+
+42. fotsy
+blanc
+emoji : ⚪
+Explication : Ny fotsy dia loko toy ny ronono. Amin'ny teny frantsay dia "blanc".
+Exemples :
+- Une robe blanche. → Akanjo fotsy.
+- Le papier est blanc. → Fotsy ny taratasy.
+
+43. gazety
+journal
+emoji : 📰
+Explication : Ny gazety dia taratasy misy vaovao isan'andro. Amin'ny teny frantsay dia "journal".
+Exemples :
+- Je lis le journal. → Mamaky gazety aho.
+- Le journal est neuf. → Vaovao ny gazety.
+
+44. gejy
+colère / fâché
+emoji : 😡
+Explication : Ny gejy dia olona tezitra na tsy afa-po. Amin'ny teny frantsay dia "colère" na "fâché".
+Exemples :
+- Il est fâché. → Gejy izy.
+- Ne te fâche pas. → Aza gejy.
+
+45. gisa
+oie
+emoji : 🦢
+Explication : Ny gisa dia biby vorona lehibe mahay milomano. Amin'ny teny frantsay dia "oie".
+Exemples :
+- L'oie nage. → Milomano ny gisa.
+- Une grosse oie. → Gisa lehibe.
+
+46. gitara
+guitare
+emoji : 🎸
+Explication : Ny gitara dia fitaovana mozika misy tady. Amin'ny teny frantsay dia "guitare".
+Exemples :
+- Je joue de la guitare. → Milalao gitara aho.
+- La guitare sonne. → Mamoaka feo ny gitara.
+
+47. hafa
+autre / différent
+emoji : 🔀
+Explication : Ny hafa dia zavatra tsy mitovy amin'izany. Amin'ny teny frantsay dia "autre" na "différent".
+Exemples :
+- Un autre livre. → Boky hafa.
+- C'est différent. → Hafa izany.
+
+48. hafatra
+message
+emoji : 📩
+Explication : Ny hafatra dia teny na soratra alefa amin'olona. Amin'ny teny frantsay dia "message".
+Exemples :
+- J'envoie un message. → Mandefa hafatra aho.
+- Reçois mon message. → Raiso ny hafatro.
+
+49. haino
+demain
+emoji : 🌅
+Explication : Ny haino dia ny ampitso. Amin'ny teny frantsay dia "demain".
+Exemples :
+- À demain ! → Rahampitso haino !
+- Il vient demain. → Tonga rahampitso izy.
+
+50. hajaina
+respecté / vénéré
+emoji : 🙏
+Explication : Ny hajaina dia olona omena fanajana. Amin'ny teny frantsay dia "respecté" na "vénéré".
+Exemples :
+- Il est respecté. → Hajaina izy.
+- Respectez vos aînés. → Hajao ny zokiolona.
+
+51. hambo
+dignité / honneur
+emoji : 👑
+Explication : Ny hambo dia voninahitra na haja. Amin'ny teny frantsay dia "dignité" na "honneur".
+Exemples :
+- Il a de la dignité. → Manana hambo izy.
+- L'honneur est important. → Zava-dehibe ny hambo.
+
+52. hamoka
+vague
+emoji : 🌊
+Explication : Ny hamoka dia rano miakatra sy midina any an-dranomasina. Amin'ny teny frantsay dia "vague".
+Exemples :
+- La vague est grande. → Lehibe ny hamoka.
+- Les vagues viennent. → Tonga ny hamoka.
+
+53. hamy
+douceur / sucré
+emoji : 🍯
+Explication : Ny hamy dia toetra mamy na maha-sucré. Amin'ny teny frantsay dia "douceur" na "sucré".
+Exemples :
+- Le miel est doux. → Mamy ny tantely.
+- Ce fruit est sucré. → Mamy ity voankazo ity.
+
+54. hanoanana
+faim
+emoji : 🍞
+Explication : Ny hanoanana dia faniriana hihinana. Amin'ny teny frantsay dia "faim".
+Exemples :
+- J'ai faim. → Noana aho.
+- La faim le tourmente. → Mijaly amin'ny hanoanana izy.
+
+55. havana
+parent / famille
+emoji : 👪
+Explication : Ny havana dia olona ao amin'ny fianakaviana. Amin'ny teny frantsay dia "parent" na "famille".
+Exemples :
+- Ma famille vient. → Tonga ny havako.
+- J'aime mes parents. → Tiako ny havako.
+
+56. henatra
+honte
+emoji : 😳
+Explication : Ny henatra dia fahamenarana na fahatahorana. Amin'ny teny frantsay dia "honte".
+Exemples :
+- J'ai honte. → Menatra aho.
+- Quelle honte ! → Tena henatra !
+
+57. hery
+force
+emoji : 💪
+Explication : Ny hery dia fahafaha-manao zavatra mavesatra. Amin'ny teny frantsay dia "force".
+Exemples :
+- Il a de la force. → Manana hery izy.
+- Force et courage. → Hery sy herim-po.
+
+58. hetsika
+mouvement / action
+emoji : 🏃
+Explication : Ny hetsika dia fihetsika na zavatra atao. Amin'ny teny frantsay dia "mouvement" na "action".
+Exemples :
+- Un mouvement rapide. → Hetsika haingana.
+- L'action commence. → Manomboka ny hetsika.
+
+59. hira
+chanson
+emoji : 🎵
+Explication : Ny hira dia feo mamoaka tononkira. Amin'ny teny frantsay dia "chanson".
+Exemples :
+- Elle chante une chanson. → Mihira hira izy.
+- La chanson est belle. → Tsara ny hira.
