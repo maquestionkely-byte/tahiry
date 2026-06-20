@@ -552,7 +552,7 @@ body:has(#screenLecteurQCM.active) .footer {
                 <h1 style="font-size: 0.9rem; background: #1e3a5f; color: white; padding: 6px 15px; border-radius: 40px; display: inline-block; text-align: center; margin: 10px auto;">✨ Mirary soa amin'ny fianarana français izay ataonao. ✨</h1>
                 <div style="width: 100%; margin-top: 15px; margin-bottom: 10px;">
                     <div style="background: #1e3a5f; border-radius: 60px; padding: 12px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                        <span style="font-size: 0.85rem; color: white; font-weight: 500;">📞 Tél: 038 12 761 16 ou</span>
+                        <span style="font-size: 0.85rem; color: white; font-weight: 500;">📞 Tél: 038 12 76116 ou</span>
                         <button class="fb-button-small" id="fbHomeBtn" style="margin: 0; background: white; color: #1877f2;">
                             <span class="fb-icon-small" style="background: #1877f2; color: white;">f</span>
                             Facebook
@@ -2046,7 +2046,9 @@ boutonsNormaux.forEach(item => {
     toolbar.appendChild(btn);
 });
 
-// Bouton Vidéo (fond BLEU comme avant)
+// ============================================================
+// 🎬 BOUTON VIDÉO - Plein écran
+// ============================================================
 const btnVideo = document.createElement('button');
 btnVideo.className = 'niveau-btn';
 btnVideo.style.background = '#0a2f6c';
@@ -2056,11 +2058,43 @@ btnVideo.innerHTML = `🎬 Vidéo`;
 btnVideo.addEventListener('click', async () => {
     const nomFichier = "videolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
+    
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = await recupererContenu(dbName);
+        
+        if (!contenu) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Fichier non trouvé');
+            contenu = await response.text();
+            await stockerEnIndexedDB(nomFichier, contenu);
+        }
+        
+        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
+        const blob = new Blob([contenu], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
+        
+        // Si la fenêtre est bloquée, utiliser window.location.href en secours
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = blobUrl;
+        }
+        
+    } catch (error) {
+        const notif = document.createElement('div');
+        notif.className = 'update-notification error';
+        notif.style.background = '#c0392b';
+        notif.innerHTML = `⚠️ Tsy hita ny fichier vidéo`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
+    }
 });
 toolbar.appendChild(btnVideo);
 
-// Bouton Audio (fond vert 10%)
+// ============================================================
+// 🎵 BOUTON AUDIO - Plein écran
+// ============================================================
 const btnAudio = document.createElement('button');
 btnAudio.className = 'niveau-btn';
 btnAudio.style.background = 'rgba(46, 204, 113, 0.1)';
@@ -2070,7 +2104,37 @@ btnAudio.innerHTML = `🎵 Audio`;
 btnAudio.addEventListener('click', async () => {
     const nomFichier = "audiolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
+    
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = await recupererContenu(dbName);
+        
+        if (!contenu) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Fichier non trouvé');
+            contenu = await response.text();
+            await stockerEnIndexedDB(nomFichier, contenu);
+        }
+        
+        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
+        const blob = new Blob([contenu], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
+        
+        // Si la fenêtre est bloquée, utiliser window.location.href en secours
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = blobUrl;
+        }
+        
+    } catch (error) {
+        const notif = document.createElement('div');
+        notif.className = 'update-notification error';
+        notif.style.background = '#c0392b';
+        notif.innerHTML = `⚠️ Tsy hita ny fichier audio`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
+    }
 });
 toolbar.appendChild(btnAudio);
 
