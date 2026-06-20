@@ -2046,9 +2046,7 @@ boutonsNormaux.forEach(item => {
     toolbar.appendChild(btn);
 });
 
-// ============================================================
-// 🎬 BOUTON VIDÉO - Plein écran
-// ============================================================
+// Bouton Vidéo (fond BLEU comme avant)
 const btnVideo = document.createElement('button');
 btnVideo.className = 'niveau-btn';
 btnVideo.style.background = '#0a2f6c';
@@ -2058,43 +2056,11 @@ btnVideo.innerHTML = `🎬 Vidéo`;
 btnVideo.addEventListener('click', async () => {
     const nomFichier = "videolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    
-    try {
-        const dbName = nomFichier.replace('.txt', '');
-        let contenu = await recupererContenu(dbName);
-        
-        if (!contenu) {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Fichier non trouvé');
-            contenu = await response.text();
-            await stockerEnIndexedDB(nomFichier, contenu);
-        }
-        
-        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
-        const blob = new Blob([contenu], { type: 'text/html' });
-        const blobUrl = URL.createObjectURL(blob);
-        
-        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
-        
-        // Si la fenêtre est bloquée, utiliser window.location.href en secours
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-            window.location.href = blobUrl;
-        }
-        
-    } catch (error) {
-        const notif = document.createElement('div');
-        notif.className = 'update-notification error';
-        notif.style.background = '#c0392b';
-        notif.innerHTML = `⚠️ Tsy hita ny fichier vidéo`;
-        document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 5000);
-    }
+    chargerLecon("Vidéo", nomFichier, url, "Contenu vidéo non disponible");
 });
 toolbar.appendChild(btnVideo);
 
-// ============================================================
-// 🎵 BOUTON AUDIO - Plein écran
-// ============================================================
+// Bouton Audio (fond vert 10%)
 const btnAudio = document.createElement('button');
 btnAudio.className = 'niveau-btn';
 btnAudio.style.background = 'rgba(46, 204, 113, 0.1)';
@@ -2104,37 +2070,7 @@ btnAudio.innerHTML = `🎵 Audio`;
 btnAudio.addEventListener('click', async () => {
     const nomFichier = "audiolecon.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
-    
-    try {
-        const dbName = nomFichier.replace('.txt', '');
-        let contenu = await recupererContenu(dbName);
-        
-        if (!contenu) {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Fichier non trouvé');
-            contenu = await response.text();
-            await stockerEnIndexedDB(nomFichier, contenu);
-        }
-        
-        // ✅ Ouvrir en PLEIN ÉCRAN (fullscreen)
-        const blob = new Blob([contenu], { type: 'text/html' });
-        const blobUrl = URL.createObjectURL(blob);
-        
-        const newWindow = window.open(blobUrl, '_blank', 'fullscreen=yes,width=' + screen.width + ',height=' + screen.height);
-        
-        // Si la fenêtre est bloquée, utiliser window.location.href en secours
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-            window.location.href = blobUrl;
-        }
-        
-    } catch (error) {
-        const notif = document.createElement('div');
-        notif.className = 'update-notification error';
-        notif.style.background = '#c0392b';
-        notif.innerHTML = `⚠️ Tsy hita ny fichier audio`;
-        document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 5000);
-    }
+    chargerLecon("Audio", nomFichier, url, "Contenu audio non disponible");
 });
 toolbar.appendChild(btnAudio);
 
