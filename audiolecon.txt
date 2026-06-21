@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>🎵 Audios</title>
+    <title>🎵 Audios ANG</title>
     
     <style>
+        /* ===== STYLES COMPLETS ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: system-ui, -apple-system, sans-serif;
@@ -36,8 +37,8 @@
             max-height: 90vh;
             height: 90vh;
             text-align: center;
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            box-shadow: 0 2px 12px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 187, 0, 0.7);
+            box-shadow: 0 2px 15px rgba(255, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -46,6 +47,19 @@
             flex-shrink: 0;
             margin-bottom: 0.5rem;
         }
+
+@keyframes spinIcon {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(10deg) scale(1.1); }
+    50% { transform: rotate(0deg) scale(1); }
+    75% { transform: rotate(-10deg) scale(1.1); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+#lbIcon {
+    transition: all 0.3s ease;
+}
+
         .selection-card-header h2 {
             font-size: 2rem;
             font-weight: 700;
@@ -89,7 +103,7 @@
         .btn-gallery {
             display: block;
             width: 100%;
-            background: linear-gradient(15deg, rgba(255, 180, 70, 0.15), rgba(255, 140, 50, 0.10));
+            background: linear-gradient(135deg, rgba(255, 180, 70, 0.15), rgba(255, 140, 50, 0.10));
             border: 2px solid #FFB347;
             padding: 14px 0;
             margin: 8px 0;
@@ -210,7 +224,6 @@
             font-size: 0.7rem;
             font-weight: bold;
         }
-
         .search-bar-wrapper {
             position: sticky;
             top: 0;
@@ -341,123 +354,6 @@
         .delete-btn:active {
             transform: scale(0.9);
         }
-
-        /* ============================================================
-           AUDIO WRAP
-           ============================================================ */
-        .audio-wrap {
-            aspect-ratio: 16 / 9;
-            background: linear-gradient(145deg, #0f1a24, #1a2a33);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 200px;
-        }
-        .audio-wrap .audio-icon {
-            font-size: 5rem;
-            color: #FFB347;
-            text-shadow: 0 0 40px rgba(255, 180, 70, 0.3);
-            animation: pulse-audio 2s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-        }
-        @keyframes pulse-audio {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-        .audio-wrap .audio-sub {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            z-index: 1;
-            font-weight: 300;
-        }
-        .audio-wrap .audio-bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(255,180,70,0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(255,180,70,0.05) 0%, transparent 50%);
-            z-index: 0;
-        }
-        .audio-wrap.verrouille-bg {
-            background: linear-gradient(145deg, #1a1a2e, #2d1b3d);
-        }
-        .audio-wrap.verrouille-bg .audio-icon {
-            color: #ff6b6b;
-            text-shadow: 0 0 40px rgba(255, 50, 50, 0.4);
-            animation: pulse-lock 2s ease-in-out infinite;
-        }
-        @keyframes pulse-lock {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        .audio-wrap.verrouille-bg .lock-sub {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.12);
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            z-index: 1;
-            font-weight: 300;
-        }
-        .audio-wrap.verrouille-bg .lock-bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(255,50,50,0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(255,50,50,0.05) 0%, transparent 50%);
-            z-index: 0;
-        }
-        .audio-play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 0 30px rgba(0,0,0,0.9);
-            pointer-events: none;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        .media-card:hover .audio-play-icon {
-            transform: translate(-50%, -50%) scale(1.1);
-            opacity: 1;
-        }
-        .audio-wrap audio {
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        /* Cacher les contrôles sur les miniatures */
-        .audio-wrap audio::-webkit-media-controls { display: none !important; }
-        .audio-wrap audio::-webkit-media-controls-enclosure { display: none !important; }
-        .audio-wrap audio::-webkit-media-controls-panel { display: none !important; }
-        .audio-wrap audio::-webkit-media-controls-timeline { display: none !important; }
-        .audio-wrap audio::-webkit-media-controls-play-button { display: none !important; }
-        
         .media-title {
             padding: 0.6rem 1rem 0.4rem;
             font-weight: 600;
@@ -481,7 +377,6 @@
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 0.3px;
         }
-
         .trash-modal {
             position: fixed;
             top: 0; left: 0;
@@ -573,9 +468,6 @@
             background: #27ae60;
             transform: scale(1.05);
         }
-        .trash-item .btn-redownload:active {
-            transform: scale(0.95);
-        }
         .trash-item .btn-redownload.loading {
             opacity: 0.6;
             pointer-events: none;
@@ -591,10 +483,6 @@
             display: block;
             margin-bottom: 16px;
         }
-
-        /* ============================================================
-           LIGHTBOX AUDIO
-           ============================================================ */
         .lightbox {
             position: fixed;
             top: 0; left: 0;
@@ -613,68 +501,50 @@
             max-width: 92vw;
             max-height: 85vh;
         }
-        .lb-audio-player {
-            background: linear-gradient(145deg, #1a2a33, #0f1a24);
+        .lb-audio {
+            max-width: 92vw;
+            max-height: 85vh;
+            width: 90vw;
             border-radius: 28px;
-            padding: 40px 35px 35px;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid rgba(255, 180, 70, 0.2);
             box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-        }
-        .lb-audio-player .lb-audio-icon {
-            font-size: 6rem;
-            color: #FFB347;
-            margin-bottom: 16px;
             display: block;
-            animation: pulse-audio 2s ease-in-out infinite;
         }
-        .lb-audio-player h3 {
-            color: #f7ecc7;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .lb-audio-player audio {
-            width: 100%;
-            border-radius: 12px;
-            background: #0a1a22;
-        }
-        .lb-audio-player audio::-webkit-media-controls {
+        .lb-audio::-webkit-media-controls {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-enclosure {
+        .lb-audio::-webkit-media-controls-enclosure {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-panel {
+        .lb-audio::-webkit-media-controls-panel {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-timeline {
+        .lb-audio::-webkit-media-controls-timeline {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-current-time-display {
+        .lb-audio::-webkit-media-controls-current-time-display {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-time-remaining-display {
+        .lb-audio::-webkit-media-controls-time-remaining-display {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-volume-slider {
+        .lb-audio::-webkit-media-controls-volume-slider {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-mute-button {
+        .lb-audio::-webkit-media-controls-mute-button {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-play-button {
+        .lb-audio::-webkit-media-controls-fullscreen-button {
             display: flex !important;
         }
-        .lb-audio-player audio::-webkit-media-controls-download-button {
+        .lb-audio::-webkit-media-controls-play-button {
+            display: flex !important;
+        }
+        .lb-audio::-webkit-media-controls-download-button {
             display: none !important;
         }
-        .lb-audio-player audio::-internal-media-controls-download-button {
+        .lb-audio::-internal-media-controls-download-button {
             display: none !important;
         }
-
         .close-lb {
             position: absolute;
             top: 1.5rem;
@@ -736,7 +606,6 @@
             border: 1px solid rgba(255, 180, 70, 0.2);
             backdrop-filter: blur(8px);
         }
-
         .loader-area {
             display: flex;
             flex-direction: column;
@@ -754,7 +623,6 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         .hidden { display: none !important; }
-
         .btn-back {
             position: fixed;
             top: 1rem;
@@ -791,7 +659,6 @@
             display: block;
             margin-bottom: 1rem;
         }
-
         .code-modal {
             position: fixed;
             top: 0; left: 0;
@@ -965,6 +832,80 @@
         }
         .code-error.visible { display: block; }
 
+        /* ===== STYLES POUR AUDIO ===== */
+        @keyframes pulse-audio {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        @keyframes pulse-lock {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .audio-wrap {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .audio-wrap .audio-icon {
+            font-size: 5rem;
+            color: #FFB347;
+            text-shadow: 0 0 40px rgba(255, 180, 70, 0.3);
+            animation: pulse-audio 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+        .audio-wrap .audio-sub {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 1;
+            font-weight: 300;
+        }
+        .audio-wrap .audio-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .audio-wrap .lock-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .audio-wrap .lock-overlay {
+            font-size: 5rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 40px rgba(255, 50, 50, 0.4);
+            animation: pulse-lock 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+        .audio-wrap .lock-sub {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 1;
+            font-weight: 300;
+        }
+
         @media (max-width: 720px) {
             .gallery-grid { 
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -1033,11 +974,11 @@
             .audio-wrap .audio-icon {
                 font-size: 3.5rem;
             }
-            .lb-audio-player {
-                padding: 30px 20px 25px;
+            .audio-wrap .lock-overlay {
+                font-size: 3.5rem;
             }
-            .lb-audio-player .lb-audio-icon {
-                font-size: 4rem;
+            .media-title .size {
+                font-size: 0.55rem;
             }
         }
     </style>
@@ -1049,7 +990,7 @@
     <div class="selection-card">
         <div class="selection-card-header">
             <h2>🎵 Audios</h2>
-            <p>Apprenons par l'audio</p>
+            <p>Mihainoa ary mianara</p>
             <div class="device-info" id="deviceInfo">
                 📱 <span class="model-name" id="deviceDisplay">Chargement...</span>
             </div>
@@ -1062,7 +1003,7 @@
 <div id="galleryApp" class="hidden">
     <div class="hero" id="heroHeader">
         <div class="hero-content">
-            <h1 id="galleryTitle">🎵 Galerie Audio</h1>
+            <h1 id="galleryTitle">🎵 Galerie</h1>
             <div class="sub-header" id="gallerySub"></div>
             <div class="stat-badge">
                 <span>🎵</span> <span id="mediaCounter">--</span> <span>audios</span>
@@ -1135,7 +1076,7 @@
         <input type="text" id="modalCode" class="code-input" placeholder="Code" maxlength="10" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
         <div id="codeError" class="code-error">❌ Code tsy mety!</div>
         <div class="code-modal-buttons">
-            <button class="btn-validate" id="btnValidateCode">✅ Voir audio</button>
+            <button class="btn-validate" id="btnValidateCode">✅ Écouter audio</button>
             <button class="btn-cancel" onclick="closeCodeModal()">Annuler</button>
         </div>
     </div>
@@ -1143,7 +1084,7 @@
 
 <script>
 // ============================================================
-// 🎵 APPLICATION AUDIO - ULTIME
+// 🎵 AUDIO COMPLET - CORRECTION TOTALE
 // ============================================================
 
 // ============================================================
@@ -1178,33 +1119,46 @@ if (modalDisplayEl) modalDisplayEl.textContent = `📱 Modèle: ${deviceModel}`;
 // CONFIGURATIONS
 // ============================================================
 const WORKER_URL_API = 'https://videohonor.ahofaly62.workers.dev';
-const WORKER_URL_VIDEO = 'https://videohonor.ahofaly62.workers.dev';
+const WORKER_URL_AUDIO = 'https://videohonor.ahofaly62.workers.dev';
 const WORKER_URL_MANIFEST = 'https://resakasary.ahofaly62.workers.dev';
 
 // ============================================================
-// 📋 LISTE DES GALERIES AUDIO
+// 📋 LISTE DES GALERIES - Audio
 // ============================================================
 const GALLERIES = [
     {
-        id: 'audios_motiv',
-        label: '🎵 Audios LESONA (teny malagasy)',
+        id: 'lesona',
+        label: '📖 Audios LESONA 📖 (teny gasy)',
         verification: 'numeroaudiolesona.txt',
         prefix: 'audiolesona',
         title: '🎵 {titre}',
-        screenTitle: '🎵 Audios lesona',
-        screenSub: 'écoute · motivation · connaissance',
+        screenTitle: 'Audio lesona, mazotoa mianatra ô',
+        screenSub: 'Finiavana + Fahazotoa + fiezahana = Fahaombiazana',
         order: 'asc'
     }
+
+ //{id: 'lesocna',
+   //     label: '📖 Audios LESONA 📖 (teny gasy)',
+     //   verification: 'numeroaudiolesona.txt',
+       // prefix: 'audiolesona',
+        //title: '🎵 {titre}',
+        //screenTitle: 'Audio lesona, mazotoa mianatra ô',
+        //screenSub: 'Finiavana + Fahazotoa + fiezahana = Fahaombiazana',
+        //order: 'desc'
+   // }
+
+//ataovy
+
 ];
 
 GALLERIES.forEach(g => {
     if (g.verification) {
         g.manifest = `${WORKER_URL_MANIFEST}/${g.verification}`;
-        g.worker = WORKER_URL_VIDEO;
+        g.worker = WORKER_URL_AUDIO;
     }
     if (!g.manifest && !g.verification) {
         g.manifest = `${WORKER_URL_MANIFEST}/numeroaudio.txt`;
-        g.worker = WORKER_URL_VIDEO;
+        g.worker = WORKER_URL_AUDIO;
     }
 });
 
@@ -1219,7 +1173,7 @@ let searchTerm = '';
 let isDownloading = false;
 let codePending = null;
 let sessionChecked = false;
-let deletedAudios = JSON.parse(localStorage.getItem('deletedAudios') || '{}');
+let deletedItems = JSON.parse(localStorage.getItem('deletedItems') || '{}');
 
 // ============================================================
 // DOM ELEMENTS
@@ -1278,7 +1232,9 @@ class BlobURLManager {
     revoke(filename) {
         if (this.urls.has(filename)) {
             const data = this.urls.get(filename);
-            try { URL.revokeObjectURL(data.url); } catch(e) {}
+            try {
+                URL.revokeObjectURL(data.url);
+            } catch(e) {}
             this.urls.delete(filename);
         }
     }
@@ -1333,10 +1289,80 @@ class BlobURLManager {
 const blobManager = new BlobURLManager();
 
 // ============================================================
+// 🎵 GÉNÉRATEUR DE MINIATURES AUDIO
+// ============================================================
+class AudioThumbnailGenerator {
+    constructor() {
+        this.cache = new Map();
+    }
+
+    async generate(audioBlob, filename) {
+        if (this.cache.has(filename)) {
+            return this.cache.get(filename);
+        }
+
+        return new Promise((resolve) => {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = 320;
+                canvas.height = 180;
+                const ctx = canvas.getContext('2d');
+                
+                // Fond avec dégradé
+                const gradient = ctx.createLinearGradient(0, 0, 320, 180);
+                gradient.addColorStop(0, '#1a1a2e');
+                gradient.addColorStop(0.5, '#2d1b3d');
+                gradient.addColorStop(1, '#1a1a2e');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 320, 180);
+
+                // Effet de vagues sonores
+                for (let i = 0; i < 12; i++) {
+                    const x = 40 + i * 22;
+                    const height = 15 + Math.random() * 45;
+                    const alpha = 0.05 + Math.random() * 0.25;
+                    ctx.fillStyle = `rgba(255, 180, 70, ${alpha})`;
+                    ctx.fillRect(x, 140 - height, 3, height);
+                }
+
+                // Icône audio
+                const text = '🎵';
+                ctx.font = '70px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.shadowColor = 'rgba(255, 180, 70, 0.4)';
+                ctx.shadowBlur = 30;
+                ctx.fillStyle = '#FFB347';
+                ctx.fillText(text, 160, 95);
+
+                // Texte "AUDIO"
+                ctx.shadowBlur = 0;
+                ctx.font = '12px Arial';
+                ctx.fillStyle = 'rgba(255,255,255,0.12)';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText('🎵 AUDIO', 160, 170);
+
+                const poster = canvas.toDataURL('image/jpeg', 0.8);
+                this.cache.set(filename, poster);
+                resolve(poster);
+            } catch(e) {
+                this.cache.set(filename, null);
+                resolve(null);
+            }
+        });
+    }
+
+    clear() { this.cache.clear(); }
+}
+
+const audioThumbnailGen = new AudioThumbnailGenerator();
+
+// ============================================================
 // FONCTIONS UTILES
 // ============================================================
 function extrairePrefixe(nomFichier) {
-    const prefixes = ['videolesona', 'videoexercice', 'videogrammaire', 'audiolesona', 'audioexercice', 'audiogrammaire'];
+    const prefixes = ['audiolesona', 'audioexercice', 'audiogrammaire', 'videolesona', 'videoexercice', 'videogrammaire'];
     for (const prefix of prefixes) {
         if (nomFichier.startsWith(prefix)) return prefix;
     }
@@ -1353,10 +1379,6 @@ function formatFileSize(bytes) {
     const sizes = ['o', 'Ko', 'Mo', 'Go'];
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-}
-
-function estAudio(nomFichier) {
-    return nomFichier.startsWith('audio') || nomFichier.match(/\.(mp3|wav|ogg|m4a|aac)$/i) !== null;
 }
 
 function afficherNotificationCentre(message, type) {
@@ -1381,31 +1403,31 @@ function afficherNotificationCentre(message, type) {
 // ============================================================
 // GESTION DES AUDIOS SUPPRIMÉS
 // ============================================================
-function ajouterAudioSupprime(galleryId, filename, titre, numero) {
-    if (!deletedAudios[galleryId]) deletedAudios[galleryId] = [];
-    if (!deletedAudios[galleryId].find(v => v.filename === filename)) {
-        deletedAudios[galleryId].push({ filename, titre, numero });
-        localStorage.setItem('deletedAudios', JSON.stringify(deletedAudios));
+function ajouterItemSupprime(galleryId, filename, titre, numero) {
+    if (!deletedItems[galleryId]) deletedItems[galleryId] = [];
+    if (!deletedItems[galleryId].find(v => v.filename === filename)) {
+        deletedItems[galleryId].push({ filename, titre, numero });
+        localStorage.setItem('deletedItems', JSON.stringify(deletedItems));
     }
     mettreAJourCorbeille();
 }
 
-function supprimerAudioSupprime(galleryId, filename) {
-    if (deletedAudios[galleryId]) {
-        deletedAudios[galleryId] = deletedAudios[galleryId].filter(v => v.filename !== filename);
-        if (deletedAudios[galleryId].length === 0) delete deletedAudios[galleryId];
-        localStorage.setItem('deletedAudios', JSON.stringify(deletedAudios));
+function supprimerItemSupprime(galleryId, filename) {
+    if (deletedItems[galleryId]) {
+        deletedItems[galleryId] = deletedItems[galleryId].filter(v => v.filename !== filename);
+        if (deletedItems[galleryId].length === 0) delete deletedItems[galleryId];
+        localStorage.setItem('deletedItems', JSON.stringify(deletedItems));
     }
     mettreAJourCorbeille();
 }
 
-function getAudiosSupprimes(galleryId) {
-    return deletedAudios[galleryId] || [];
+function getItemsSupprimes(galleryId) {
+    return deletedItems[galleryId] || [];
 }
 
 function mettreAJourCorbeille() {
     let total = 0;
-    for (const key in deletedAudios) total += deletedAudios[key].length;
+    for (const key in deletedItems) total += deletedItems[key].length;
     trashCount.textContent = total;
     btnTrash.style.display = total > 0 ? 'flex' : 'none';
 }
@@ -1504,34 +1526,60 @@ async function fetchManifest(gallery) {
 }
 
 // ============================================================
-// TÉLÉCHARGER UN AUDIO INDIVIDUEL
+// 📥 TÉLÉCHARGER UN AUDIO - VERSION CORRIGÉE
 // ============================================================
+
 async function telechargerAudioIndividuel(galleryId, filename, titre, numero) {
-    const url = `${WORKER_URL_VIDEO}/${filename}?deviceModel=${encodeURIComponent(deviceModel)}`;
+    const url = `${WORKER_URL_AUDIO}/${filename}?deviceModel=${encodeURIComponent(deviceModel)}`;
     console.log(`📥 Téléchargement: ${filename}`);
+    
     try {
         const res = await fetch(url);
+        
+        // ✅ CAS 1 : Le Worker répond 403 (code requis)
         if (res.status === 403) {
             const errorData = await res.json();
             if (errorData.error === "access_denied") {
+                // 🔒 Statut = "verrouille"
                 await saveMedia(galleryId, filename, null, numero, titre, 'verrouille');
+                console.log(`🔒 ${filename} → VERROUILLÉ (code requis)`);
                 return { status: 'verrouille', data: errorData };
             }
             return { status: 'error', data: errorData };
         }
+        
+        // ✅ CAS 2 : Le Worker répond OK (téléchargement réussi)
         if (res.ok) {
             const blob = await res.blob();
+            // ✅ Statut = "ok" (déverrouillé)
             await saveMedia(galleryId, filename, blob, numero, titre, 'ok');
-            console.log(`✅ ${filename} téléchargé`);
+            console.log(`✅ ${filename} → OK (téléchargé)`);
+            
+            // 🔥 Forcer la mise à jour de currentMediaList
+            const indexInList = currentMediaList.findIndex(item => item.filename === filename);
+            if (indexInList !== -1) {
+                const db = await openDB(galleryId);
+                const updated = await new Promise((resolve) => {
+                    const req = db.transaction(['medias'], 'readonly').objectStore('medias').get(filename);
+                    req.onsuccess = () => resolve(req.result);
+                });
+                if (updated) {
+                    currentMediaList[indexInList] = updated;
+                }
+            }
+            
             return { status: 'ok', data: null };
         }
+        
+        // ✅ CAS 3 : Autre erreur (pas de statut particulier)
+        console.log(`⚠️ ${filename} → ERREUR (${res.status})`);
         return { status: 'error', data: { message: `HTTP ${res.status}` } };
+        
     } catch(e) {
         console.error(`❌ Erreur ${filename}:`, e);
         return { status: 'error', data: { message: e.message } };
     }
 }
-
 // ============================================================
 // 🔐 MODAL CODE
 // ============================================================
@@ -1554,7 +1602,7 @@ function closeCodeModal() {
     fbMessageArea.style.display = 'none';
     codePending = null;
     btnValidateCode.disabled = false;
-    btnValidateCode.textContent = '✅ Voir audio';
+    btnValidateCode.textContent = '✅ Écouter audio';
 }
 
 async function submitModalCode() {
@@ -1585,7 +1633,7 @@ async function submitModalCode() {
             codeError.textContent = '❌ Code tsy mety!';
             codeError.classList.add('visible');
             btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir audio';
+            btnValidateCode.textContent = '✅ Écouter audio';
             return;
         }
         closeCodeModal();
@@ -1594,24 +1642,24 @@ async function submitModalCode() {
         if (!gallery) {
             afficherNotificationCentre('❌ Galerie non trouvée', 'error');
             btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir audio';
+            btnValidateCode.textContent = '✅ Écouter audio';
             return;
         }
         const manifest = await fetchManifest(gallery);
         if (!manifest.length) {
             afficherNotificationCentre('❌ Aucun audio trouvé', 'error');
             btnValidateCode.disabled = false;
-            btnValidateCode.textContent = '✅ Voir audio';
+            btnValidateCode.textContent = '✅ Écouter audio';
             return;
         }
         await telechargerTousAudiosVerrouilles(galleryId, manifest);
-        if (fromTrash) supprimerAudioSupprime(galleryId, filename);
+        if (fromTrash) supprimerItemSupprime(galleryId, filename);
     } catch (error) {
         console.error('❌ Erreur activation:', error);
         afficherNotificationCentre('❌ Erreur lors de l\'activation', 'error');
     } finally {
         btnValidateCode.disabled = false;
-        btnValidateCode.textContent = '✅ Voir audio';
+        btnValidateCode.textContent = '✅ Écouter audio';
         codePending = null;
     }
 }
@@ -1619,11 +1667,15 @@ async function submitModalCode() {
 async function telechargerTousAudiosVerrouilles(galleryId, manifest) {
     if (isDownloading) return;
     isDownloading = true;
+    
     let stored = await getAllMedias(galleryId);
-    const deleted = getAudiosSupprimes(galleryId);
+    const deleted = getItemsSupprimes(galleryId);
     const deletedFilenames = deleted.map(v => v.filename);
     stored = stored.filter(item => !deletedFilenames.includes(item.filename));
-    stored = stored.sort((a,b) => a.numero - b.numero);
+   // Décroissant (nouveaux en premier)
+stored = stored.sort((a,b) => b.numero - a.numero);
+    
+    // 🔍 Trouver la première vidéo verrouillée
     let premiereVerrouillee = null;
     for (let i = 0; i < stored.length; i++) {
         if (stored[i].status === 'verrouille') {
@@ -1631,53 +1683,73 @@ async function telechargerTousAudiosVerrouilles(galleryId, manifest) {
             break;
         }
     }
+    
     if (!premiereVerrouillee) {
         console.log('✅ Aucun audio verrouillé trouvé');
         isDownloading = false;
         return;
     }
+    
     const numeroDepart = premiereVerrouillee.numero;
     const audiosATelecharger = manifest.filter(m => m.numero >= numeroDepart);
-    console.log(`📥 ${audiosATelecharger.length} audio(s) à télécharger à partir de ${numeroDepart}`);
-    let compteTelecharges = 0, premiereAudio = true;
+    console.log(`📥 ${audiosATelecharger.length} audio(s) à vérifier à partir de ${numeroDepart}`);
+    
+    let compteTelechargees = 0;
+    
     for (const media of audiosATelecharger) {
+        // Vérifier si déjà OK
         const existeDeja = stored.find(item => item.filename === media.filename && item.status === 'ok');
         if (existeDeja) {
-            console.log(`⏭️ ${media.filename} déjà téléchargé, skip`);
+            console.log(`⏭️ ${media.filename} déjà OK, skip`);
             continue;
         }
+        
+        // 🔥 Télécharger et laisser le Worker décider du statut
         const result = await telechargerAudioIndividuel(galleryId, media.filename, media.titre, media.numero);
+        
         if (result.status === 'ok') {
-            compteTelecharges++;
+            compteTelechargees++;
             await setStoredNum(galleryId, media.numero);
+            
+            // Mettre à jour currentMediaList
             const indexInList = currentMediaList.findIndex(item => item.filename === media.filename);
             if (indexInList !== -1) {
                 const allMedias = await getAllMedias(galleryId);
                 const mediaUpdated = allMedias.find(item => item.filename === media.filename);
-                if (mediaUpdated && mediaUpdated.blob) {
+                if (mediaUpdated) {
                     currentMediaList[indexInList] = mediaUpdated;
                 }
             }
-            if (premiereAudio) { premiereAudio = false; await renderGallery(galleryId); }
+            
+            await renderGallery(galleryId);
+            
         } else if (result.status === 'verrouille') {
-            console.log(`🔒 ${media.filename} toujours verrouillé, arrêt`);
+            // 🔒 Le Worker dit que c'est verrouillé → on arrête
+            console.log(`🔒 ${media.filename} → VERROUILLÉ (arrêt)`);
+            // 🔥 Mettre à jour l'affichage pour montrer le verrou
+            await renderGallery(galleryId);
             break;
+            
         } else {
+            // ❌ Erreur
             console.log(`❌ Erreur ${media.filename}, arrêt`);
             break;
         }
     }
-    console.log(`✅ ${compteTelecharges} audio(s) téléchargé(s)`);
+    
+    console.log(`✅ ${compteTelechargees} audio(s) téléchargé(s) avec succès`);
     isDownloading = false;
-    if (compteTelecharges > 0) {
-        await renderGallery(galleryId);
-        afficherNotificationCentre(`✅ ${compteTelecharges} audio(s) déverrouillé(s) !`, 'success');
+    await renderGallery(galleryId);
+    
+    if (compteTelechargees > 0) {
+        afficherNotificationCentre(`✅ ${compteTelechargees} audio(s) déverrouillé(s) !`, 'success');
     }
 }
 
 async function telechargerAudiosManquants(galleryId, manifest, dernierNumOk) {
     if (isDownloading) return;
     isDownloading = true;
+    
     let maxNumManifest = 0;
     for (const media of manifest) {
         if (media.numero > maxNumManifest) maxNumManifest = media.numero;
@@ -1687,10 +1759,12 @@ async function telechargerAudiosManquants(galleryId, manifest, dernierNumOk) {
         isDownloading = false;
         return;
     }
+    
     const debut = dernierNumOk + 1;
     const fin = maxNumManifest;
     const audiosManquants = manifest.filter(m => m.numero >= debut && m.numero <= fin);
     console.log(`📥 ${audiosManquants.length} audio(s) à traiter (${debut} à ${fin})`);
+    
     let dernierNum = dernierNumOk;
     for (const media of audiosManquants) {
         const db = await openDB(galleryId);
@@ -1699,34 +1773,42 @@ async function telechargerAudiosManquants(galleryId, manifest, dernierNumOk) {
             req.onsuccess = () => resolve(req.result);
             req.onerror = () => resolve(null);
         });
+        
         if (!existing) {
             await saveMedia(galleryId, media.filename, null, media.numero, media.titre, 'verrouille');
         }
+        
         const result = await telechargerAudioIndividuel(galleryId, media.filename, media.titre, media.numero);
+        
         if (result.status === 'ok') {
             if (media.numero > dernierNum) {
                 dernierNum = media.numero;
                 await setStoredNum(galleryId, dernierNum);
             }
             console.log(`✅ ${media.filename} téléchargé`);
+            await renderGallery(galleryId);
         } else if (result.status === 'verrouille') {
             console.log(`🔒 ${media.filename} verrouillé`);
         }
     }
+    
     console.log(`✅ Traitement terminé, dernier numéro: ${dernierNum}`);
     isDownloading = false;
     await renderGallery(galleryId);
 }
 
-// ============================================================
-// 🎯 RENDER GALLERY - AUDIO
-// ============================================================
+
+
+//render
+
+
+
 async function renderGallery(galleryId) {
     const gallery = GALLERIES.find(g => g.id === galleryId);
     if (!gallery) return;
 
     let stored = await getAllMedias(galleryId);
-    const deleted = getAudiosSupprimes(galleryId);
+    const deleted = getItemsSupprimes(galleryId);
     const deletedFilenames = deleted.map(v => v.filename);
     stored = stored.filter(item => !deletedFilenames.includes(item.filename));
 
@@ -1736,7 +1818,21 @@ async function renderGallery(galleryId) {
         return;
     }
 
-    stored = stored.sort((a,b) => a.numero - b.numero);
+    // ✅ Trier selon l'ordre défini dans la galerie
+    if (gallery.order === 'desc') {
+        stored = stored.sort((a, b) => {
+            const numA = parseInt(a.numero) || 0;
+            const numB = parseInt(b.numero) || 0;
+            return numB - numA;  // Décroissant (nouveaux en premier)
+        });
+    } else {
+        stored = stored.sort((a, b) => {
+            const numA = parseInt(a.numero) || 0;
+            const numB = parseInt(b.numero) || 0;
+            return numA - numB;  // Croissant (anciens en premier)
+        });
+    }
+    
     currentMediaList = stored;
     currentFilteredList = stored;
     mediaCounterSpan.textContent = stored.length;
@@ -1747,25 +1843,31 @@ async function renderGallery(galleryId) {
     for (let i = 0; i < stored.length; i++) {
         const item = stored[i];
         const title = item.titre || `Audio ${item.numero}`;
+        
         const isVerrouille = item.status === 'verrouille';
         const isOk = item.status === 'ok' && item.blob && item.blob.size > 0;
 
         if (isOk) {
             const fileSize = item.blob ? formatFileSize(item.blob.size) : '';
+            const poster = await audioThumbnailGen.generate(item.blob, item.filename);
             const blobUrl = blobManager.create(URL.createObjectURL(item.blob), item.filename);
             
-            audioData.push({ index: i, filename: item.filename, blobUrl: blobUrl });
+            audioData.push({
+                index: i,
+                filename: item.filename,
+                blobUrl: blobUrl,
+                poster: poster
+            });
 
             html += `
-                <div class="media-card audio-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" data-isaudio="true">
-                    <div class="audio-wrap">
-                        <div class="audio-bg-pattern"></div>
-                        <div class="audio-icon">🎵</div>
-                        <div class="audio-sub">● audio ●</div>
-                        <audio src="${blobUrl}" preload="none"></audio>
-                        <div class="audio-play-icon">▶</div>
+                <div class="media-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">
+                    <div class="audio-wrap" style="aspect-ratio:16/9;background:linear-gradient(145deg,#1a1a2e,#2d1b3d);display:flex;align-items:center;justify-content:center;position:relative;border-radius:12px;overflow:hidden;">
+                        ${poster ? `<img src="${poster}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.8;z-index:1;" alt="${title}">` : ''}
+                        <div class="audio-bg-pattern" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 40%,rgba(255,180,70,0.05) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(255,180,70,0.05) 0%,transparent 50%);z-index:2;"></div>
+                        <div class="audio-icon" style="font-size:5rem;color:#FFB347;text-shadow:0 0 40px rgba(255,180,70,0.3);animation:pulse-audio 2s ease-in-out infinite;position:relative;z-index:3;">🎵</div>
+                        <div class="audio-sub" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.15);font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;z-index:4;font-weight:300;">● audio ●</div>
                     </div>
-                    <button class="delete-btn" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}">✕</button>
+                    <button class="delete-btn" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" style="position:absolute;top:10px;right:10px;background:rgba(255,50,50,0.95);color:white;border:none;border-radius:50%;width:40px;height:40px;font-size:1.4rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:50;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(255,0,0,0.4);">✕</button>
                     <div class="media-title">
                         <span class="title">${title}</span>
                         ${fileSize ? `<span class="size">📦 ${fileSize}</span>` : ''}
@@ -1774,11 +1876,11 @@ async function renderGallery(galleryId) {
             `;
         } else if (isVerrouille) {
             html += `
-                <div class="media-card verrouille audio-card" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" data-verrouille="true" data-isaudio="true">
-                    <div class="audio-wrap verrouille-bg">
-                        <div class="lock-bg-pattern"></div>
-                        <div class="audio-icon">🔒</div>
-                        <div class="lock-sub">● verrouillé ●</div>
+                <div class="media-card verrouille" data-index="${i}" data-filename="${item.filename}" data-numero="${item.numero}" data-titre="${title.replace(/"/g, '&quot;')}" data-verrouille="true">
+                    <div class="audio-wrap" style="aspect-ratio:16/9;background:linear-gradient(145deg,#1a1a2e,#2d1b3d);display:flex;align-items:center;justify-content:center;position:relative;border-radius:12px;overflow:hidden;">
+                        <div class="lock-bg-pattern" style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 40%,rgba(255,50,50,0.05) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(255,50,50,0.05) 0%,transparent 50%);z-index:1;"></div>
+                        <div class="lock-overlay" style="font-size:5rem;color:#ff6b6b;text-shadow:0 0 40px rgba(255,50,50,0.4);animation:pulse-lock 2s ease-in-out infinite;position:relative;z-index:2;">🔒</div>
+                        <div class="lock-sub" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.12);font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;z-index:3;font-weight:300;">● verrouillé ●</div>
                     </div>
                     <div class="media-title">
                         <span class="title">${title}</span>
@@ -1788,9 +1890,9 @@ async function renderGallery(galleryId) {
             `;
         } else {
             html += `
-                <div class="media-card audio-card" data-index="${i}" style="cursor:default;">
-                    <div class="audio-wrap verrouille-bg">
-                        <div style="font-size:3rem;color:#666;">⚠️</div>
+                <div class="media-card" data-index="${i}" style="cursor:default;">
+                    <div class="audio-wrap" style="aspect-ratio:16/9;background:#1a1a2e;display:flex;align-items:center;justify-content:center;border-radius:12px;">
+                        <span style="color:#666;font-size:3rem;">⚠️</span>
                     </div>
                     <div class="media-title">
                         <span class="title">${title}</span>
@@ -1803,16 +1905,12 @@ async function renderGallery(galleryId) {
 
     galleryContainer.innerHTML = html;
 
-    // Charger les audios en différé
     setTimeout(() => {
         for (const data of audioData) {
             const card = document.querySelector(`.media-card[data-filename="${data.filename}"]`);
             if (card) {
-                const audio = card.querySelector('audio');
-                if (audio) {
-                    audio.src = data.blobUrl;
-                    blobManager.decrementRef(data.filename);
-                }
+                card.dataset.blobUrl = data.blobUrl;
+                blobManager.decrementRef(data.filename);
             }
         }
     }, 100);
@@ -1905,7 +2003,7 @@ async function supprimerAudio(galleryId, filename, titre, numero) {
             const tx = db.transaction(['medias'], 'readwrite');
             const req = tx.objectStore('medias').delete(filename);
             req.onsuccess = () => {
-                ajouterAudioSupprime(galleryId, filename, titre, numero);
+                ajouterItemSupprime(galleryId, filename, titre, numero);
                 resolve();
             };
             req.onerror = () => reject(req.error);
@@ -1919,7 +2017,7 @@ async function supprimerAudio(galleryId, filename, titre, numero) {
 }
 
 // ============================================================
-// LIGHTBOX - AUDIO
+// LIGHTBOX - Version audio AMÉLIORÉE
 // ============================================================
 function openLightbox(index) {
     if (!currentFilteredList.length) return;
@@ -1929,22 +2027,94 @@ function openLightbox(index) {
         afficherNotificationCentre('⚠️ Audio non disponible', 'error');
         return;
     }
+    
     const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
-    const title = item.titre || `Audio ${item.numero}`;
     
     lbContent.innerHTML = `
-        <div class="lb-container">
-            <div class="lb-audio-player">
-                <span class="lb-audio-icon">🎵</span>
-                <h3>${title}</h3>
-                <audio src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#0a1a22;"></audio>
-                <div style="margin-top:12px;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:1px;">${item.filename}</div>
+        <div class="lb-container" style="display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.9);border-radius:28px;padding:2rem;max-width:600px;width:95%;">
+            <div style="width:100%;text-align:center;margin-bottom:1.5rem;">
+                <div id="lbIconContainer" style="position:relative;display:inline-block;margin-bottom:0.5rem;">
+                    <div id="lbIcon" style="font-size:5rem;display:inline-block;transition:all 0.3s ease;position:relative;z-index:2;">🎵</div>
+                    <div id="lbWaves" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1;">
+                        <div id="wave1" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:2px solid rgba(255,180,70,0.2);width:80px;height:80px;opacity:0;"></div>
+                        <div id="wave2" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:2px solid rgba(255,180,70,0.15);width:100px;height:100px;opacity:0;"></div>
+                        <div id="wave3" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:2px solid rgba(255,180,70,0.1);width:120px;height:120px;opacity:0;"></div>
+                    </div>
+                </div>
+                <h3 style="color:#FFDEAD;font-size:1.3rem;margin:0;">${item.titre || `Audio ${item.numero}`}</h3>
             </div>
+            <audio id="lbAudio" class="lb-audio" src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#1a1a2e;"></audio>
+            <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:1rem;letter-spacing:2px;">● ${item.numero} ●</div>
         </div>
     `;
+    
     lightboxDiv.classList.add('active');
     lbCounter.textContent = `${index+1} / ${currentFilteredList.length}`;
     setTimeout(() => blobManager.revoke(`lb_${item.filename}`), 60000);
+    
+    // ==== ANIMATION DE L'ICÔNE EN LECTURE ====
+    const audio = document.getElementById('lbAudio');
+    const icon = document.getElementById('lbIcon');
+    const wave1 = document.getElementById('wave1');
+    const wave2 = document.getElementById('wave2');
+    const wave3 = document.getElementById('wave3');
+    
+    let animationInterval = null;
+    let waveInterval = null;
+    
+    function startAnimation() {
+        icon.style.animation = 'spinIcon 2s ease-in-out infinite';
+        icon.style.textShadow = '0 0 60px rgba(255, 180, 70, 0.8), 0 0 100px rgba(255, 180, 70, 0.4)';
+        
+        // Animer les vagues
+        let phase = 0;
+        waveInterval = setInterval(() => {
+            phase += 0.03;
+            const scale1 = 0.8 + Math.sin(phase) * 0.2;
+            const scale2 = 1.0 + Math.sin(phase + 0.5) * 0.25;
+            const scale3 = 1.2 + Math.sin(phase + 1) * 0.3;
+            
+            wave1.style.transform = `translate(-50%,-50%) scale(${scale1})`;
+            wave1.style.opacity = 0.6 + Math.sin(phase) * 0.2;
+            wave1.style.borderWidth = `${2 + Math.sin(phase) * 1}px`;
+            
+            wave2.style.transform = `translate(-50%,-50%) scale(${scale2})`;
+            wave2.style.opacity = 0.4 + Math.sin(phase + 0.5) * 0.2;
+            wave2.style.borderWidth = `${2 + Math.sin(phase + 0.5) * 1}px`;
+            
+            wave3.style.transform = `translate(-50%,-50%) scale(${scale3})`;
+            wave3.style.opacity = 0.2 + Math.sin(phase + 1) * 0.15;
+            wave3.style.borderWidth = `${2 + Math.sin(phase + 1) * 1}px`;
+        }, 50);
+    }
+    
+    function stopAnimation() {
+        icon.style.animation = 'none';
+        icon.style.textShadow = '0 0 20px rgba(255, 180, 70, 0.2)';
+        
+        if (waveInterval) {
+            clearInterval(waveInterval);
+            waveInterval = null;
+        }
+        
+        wave1.style.transform = 'translate(-50%,-50%) scale(1)';
+        wave1.style.opacity = '0';
+        wave2.style.transform = 'translate(-50%,-50%) scale(1)';
+        wave2.style.opacity = '0';
+        wave3.style.transform = 'translate(-50%,-50%) scale(1)';
+        wave3.style.opacity = '0';
+    }
+    
+    if (audio) {
+        audio.addEventListener('play', startAnimation);
+        audio.addEventListener('pause', stopAnimation);
+        audio.addEventListener('ended', stopAnimation);
+        
+        // Si déjà en lecture, démarrer l'animation
+        if (!audio.paused) {
+            startAnimation();
+        }
+    }
 }
 
 function closeLightbox() {
@@ -1964,15 +2134,15 @@ function nextMedia() {
             return;
         }
         const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
-        const title = item.titre || `Audio ${item.numero}`;
         lbContent.innerHTML = `
-            <div class="lb-container">
-                <div class="lb-audio-player">
-                    <span class="lb-audio-icon">🎵</span>
-                    <h3>${title}</h3>
-                    <audio src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#0a1a22;"></audio>
-                    <div style="margin-top:12px;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:1px;">${item.filename}</div>
+            <div class="lb-container" style="display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.9);border-radius:28px;padding:2rem;max-width:600px;width:95%;">
+                <div style="width:100%;text-align:center;margin-bottom:1.5rem;">
+                    <div style="font-size:5rem;margin-bottom:0.5rem;display:block;">🎵</div>
+                    <h3 style="color:#FFDEAD;font-size:1.3rem;margin:0;">${item.titre || `Audio ${item.numero}`}</h3>
+                    
                 </div>
+                <audio class="lb-audio" src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#1a1a2e;"></audio>
+                <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:1rem;letter-spacing:2px;">● ${item.numero} ●</div>
             </div>
         `;
         lbCounter.textContent = `${currentIndex+1} / ${currentFilteredList.length}`;
@@ -1991,15 +2161,15 @@ function prevMedia() {
             return;
         }
         const url = blobManager.create(URL.createObjectURL(item.blob), `lb_${item.filename}`);
-        const title = item.titre || `Audio ${item.numero}`;
         lbContent.innerHTML = `
-            <div class="lb-container">
-                <div class="lb-audio-player">
-                    <span class="lb-audio-icon">🎵</span>
-                    <h3>${title}</h3>
-                    <audio src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#0a1a22;"></audio>
-                    <div style="margin-top:12px;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:1px;">${item.filename}</div>
+            <div class="lb-container" style="display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.9);border-radius:28px;padding:2rem;max-width:600px;width:95%;">
+                <div style="width:100%;text-align:center;margin-bottom:1.5rem;">
+                    <div style="font-size:5rem;margin-bottom:0.5rem;display:block;">🎵</div>
+                    <h3 style="color:#FFDEAD;font-size:1.3rem;margin:0;">${item.titre || `Audio ${item.numero}`}</h3>
+                   
                 </div>
+                <audio class="lb-audio" src="${url}" controls autoplay controlslist="nodownload" style="width:100%;border-radius:12px;background:#1a1a2e;"></audio>
+                <div style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:1rem;letter-spacing:2px;">● ${item.numero} ●</div>
             </div>
         `;
         lbCounter.textContent = `${currentIndex+1} / ${currentFilteredList.length}`;
@@ -2041,7 +2211,7 @@ async function loadGallery(galleryId) {
 // ============================================================
 // FILTRE RECHERCHE
 // ============================================================
-function filterAudios(query) {
+function filterVideos(query) {
     searchTerm = query.toLowerCase().trim();
     const cards = document.querySelectorAll('.media-card');
     let hasVisible = false;
@@ -2083,22 +2253,22 @@ function filterAudios(query) {
 // ============================================================
 function afficherCorbeille() {
     const galleryId = currentGallery;
-    const audios = getAudiosSupprimes(galleryId);
+    const items = getItemsSupprimes(galleryId);
     trashList.innerHTML = '';
-    if (audios.length === 0) {
+    if (items.length === 0) {
         trashList.innerHTML = `<div class="trash-empty"><span>🧹</span>Aucun audio supprimé</div>`;
         return;
     }
-    for (const audio of audios) {
+    for (const item of items) {
         const div = document.createElement('div');
         div.className = 'trash-item';
-        div.dataset.filename = audio.filename;
+        div.dataset.filename = item.filename;
         div.innerHTML = `
             <div class="info">
-                <div class="title">${audio.titre || `Audio ${audio.numero}`}</div>
-                <div class="detail">${audio.filename} • N°${audio.numero} 🎵</div>
+                <div class="title">${item.titre || `Audio ${item.numero}`}</div>
+                <div class="detail">${item.filename} • N°${item.numero}</div>
             </div>
-            <button class="btn-redownload" onclick="retelechargerAudio('${galleryId}', '${audio.filename}', '${audio.titre.replace(/'/g, "\\'")}', ${audio.numero})">
+            <button class="btn-redownload" onclick="retelechargerAudio('${galleryId}', '${item.filename}', '${item.titre.replace(/'/g, "\\'")}', ${item.numero})">
                 🔄 Retélécharger
             </button>
         `;
@@ -2112,7 +2282,7 @@ async function retelechargerAudio(galleryId, filename, titre, numero) {
     try {
         const result = await telechargerAudioIndividuel(galleryId, filename, titre, numero);
         if (result.status === 'ok') {
-            supprimerAudioSupprime(galleryId, filename);
+            supprimerItemSupprime(galleryId, filename);
             afficherNotificationCentre(`✅ ${titre} retéléchargé`, 'success');
             await renderGallery(galleryId);
             afficherCorbeille();
@@ -2137,7 +2307,7 @@ let scrollTimer = null;
 let isScrolling = false;
 
 function pauseAllAudios() {
-    document.querySelectorAll('.audio-wrap audio').forEach(audio => {
+    document.querySelectorAll('.lb-audio, .audio-wrap audio').forEach(audio => {
         try { audio.pause(); audio.currentTime = 0; } catch(e) {}
     });
 }
@@ -2154,17 +2324,11 @@ window.addEventListener('touchmove', blockAudioOnScroll, { passive: true });
 window.addEventListener('touchend', () => { setTimeout(pauseAllAudios, 300); }, { passive: true });
 
 function setupAudioObservers() {
-    document.querySelectorAll('.audio-wrap audio').forEach(audio => {
+    document.querySelectorAll('.audio-wrap audio, .lb-audio').forEach(audio => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 try {
-                    if (entry.isIntersecting && !isScrolling) {
-                        entry.target.pause();
-                        entry.target.currentTime = 0;
-                    } else if (entry.isIntersecting && isScrolling) {
-                        entry.target.pause();
-                        entry.target.currentTime = 0;
-                    } else {
+                    if (!entry.isIntersecting) {
                         entry.target.pause();
                         entry.target.currentTime = 0;
                     }
@@ -2185,7 +2349,7 @@ scrollObserver.observe(document.body, { childList: true, subtree: true });
 
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(applyScrollProtection, 500);
-    document.querySelectorAll('.audio-wrap audio').forEach(audio => {
+    document.querySelectorAll('.audio-wrap audio, .lb-audio').forEach(audio => {
         audio.addEventListener('click', function(e) {
             e.preventDefault(); e.stopPropagation();
             this.pause(); this.currentTime = 0;
@@ -2225,13 +2389,13 @@ btnBack.addEventListener('click', () => {
 searchInput.addEventListener('input', (e) => {
     const value = e.target.value;
     searchClear.classList.toggle('visible', value.length > 0);
-    filterAudios(value);
+    filterVideos(value);
 });
 
 searchClear.addEventListener('click', () => {
     searchInput.value = '';
     searchClear.classList.remove('visible');
-    filterAudios('');
+    filterVideos('');
     searchInput.focus();
 });
 
@@ -2286,7 +2450,7 @@ modalCode.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preven
 codeModal.addEventListener('click', (e) => { if (e.target === codeModal) closeCodeModal(); });
 modalCode.addEventListener('input', () => { codeError.classList.remove('visible'); });
 
-console.log('🎵 Application Audio chargée - Sans problème blob:audio');
+console.log('🎵 AUDIO COMPLET - Correction totale appliquée !');
 console.log('📱 Device Model:', deviceModel);
 
 // ============================================================
