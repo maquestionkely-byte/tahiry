@@ -1073,7 +1073,7 @@
             <p>⚠️ Andefaso MP, Andefaso message, kitiho 👇🏾 ⚠️</p>
             <button id="fbModalBtn" class="fb-modal-btn">📘 Facebook</button>
         </div>
-        <input type="text" id="modalCode" class="code-input" placeholder="Code" maxlength="10" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
+        <input type="text" id="modalCode" class="code-input" placeholder="Code" maxlength="10" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase()">
         <div id="codeError" class="code-error">❌ Code tsy mety!</div>
         <div class="code-modal-buttons">
             <button class="btn-validate" id="btnValidateCode">✅ Écouter audio</button>
@@ -1606,7 +1606,7 @@ function closeCodeModal() {
 }
 
 async function submitModalCode() {
-    const code = modalCode.value.trim().toUpperCase();
+    const code = modalCode.value.trim();
     codeError.classList.remove('visible');
     if (!code) {
         codeError.textContent = '⚠️ Ampidiro ny code';
