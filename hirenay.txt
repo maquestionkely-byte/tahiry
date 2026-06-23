@@ -552,7 +552,7 @@ body:has(#screenLecteurQCM.active) .footer {
                 <h1 style="font-size: 0.9rem; background: #1e3a5f; color: white; padding: 6px 15px; border-radius: 40px; display: inline-block; text-align: center; margin: 10px auto;">✨ Mirary soa amin'ny fianarana français izay ataonao. ✨</h1>
                 <div style="width: 100%; margin-top: 15px; margin-bottom: 10px;">
                     <div style="background: #1e3a5f; border-radius: 60px; padding: 12px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                        <span style="font-size: 0.85rem; color: white; font-weight: 500;">📞 Tél: 038 12 761 16 ou</span>
+                        <span style="font-size: 0.85rem; color: white; font-weight: 500;">📞 Tél: 038 12  ou</span>
                         <button class="fb-button-small" id="fbHomeBtn" style="margin: 0; background: white; color: #1877f2;">
                             <span class="fb-icon-small" style="background: #1877f2; color: white;">f</span>
                             Facebook
@@ -699,7 +699,7 @@ body:has(#screenLecteurQCM.active) .footer {
             </button>
         </div>
         
-        <input type="text" id="modalCode" class="code-input" placeholder="Entrez le code" autocomplete="off">
+      <input type="text" id="modalCode" class="code-input" placeholder="Entrez le code" autocomplete="off" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase()">
         
         <div class="code-modal-buttons">
             <button class="btn-validate" onclick="submitModalCode()">Voir leçon</button>
@@ -927,10 +927,7 @@ const conjugaisonLecons = [
 
 const dialoguerLecons = [
     { id: 1, titre: "Dialogues Français et Malagasy", fichier: "diallecon.txt", description: "Dialogues bilingues français et malagasy avec texte", defaut: "Dialogue non disponible." },
-    { id: 2, titre: "Dialogues audio + texte", fichier: "diautecon.txt", description: "Dialogues avec audio et texte en français et malagasy", defaut: "Dialogue non disponible." },
-    { id: 3, titre: "Dialogues Français uniquement", fichier: "diunlecon.txt", description: "Dialogues uniquement en français, sans traduction", defaut: "Dialogue non disponible." },
-    { id: 4, titre: "Dialogues audio uniquement", fichier: "diaulecon.txt", description: "Dialogues seulement en audio, sans texte écrit", defaut: "Dialogue non disponible." },
-{ id: 5, titre: "Dialogues audio + texte Français", fichier: "ditelecon.txt", description: "Dialogues audio avec texte écrit en français uniquement", defaut: "Dialogue non disponible." }
+    { id: 2, titre: "Dialogues Français uniquement", fichier: "diunlecon.txt", description: "Dialogues uniquement en français, sans traduction", defaut: "Dialogue non disponible." }
 ];
     // ======================= FONCTIONS INDEXEDDB =======================
     function ouvrirDB(nomDB) {
@@ -1423,7 +1420,7 @@ function afficherNotificationCentre(message, type = 'error') {
 
 // MODIFIER submitModalCode
 async function submitModalCode() {
-    const code = document.getElementById('modalCode').value.trim().toUpperCase();
+    const code = document.getElementById('modalCode').value.trim();
     if (!code) {
         afficherNotificationCentre('⚠️ Ampidiro ny code', 'error');
         return;
@@ -1897,33 +1894,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
 // ======================= GÉNÉRATION DE LA LISTE DES LEÇONS =======================
-    function genererListeLecons(lecons, containerId, rondClass, urlPrefix = WORKER_URL + '/', niveau = '') {
-        let html = `<div class="liste-matiere">`;
-        lecons.forEach(lecon => {
-            const urlComplet = urlPrefix + lecon.fichier;
-            const codeLecon = getCodeLecon(lecon.titre);
-            html += `
-                <div class="bloc-theme">
-                    <div class="lecon-click" data-fichier="${lecon.fichier}" data-titre="${lecon.titre}" data-url="${urlComplet}" data-defaut="${lecon.defaut.replace(/"/g, '&quot;')}">
-                        <div class="titre-rond"><span class="${rondClass}">${lecon.id}</span><span class="nom-theme">${lecon.titre}</span></div>
-                        <div class="sous-accroche">${lecon.description}</div>
-                    </div>
-                    <div class="barre-exercice" data-lecon-titre="${lecon.titre}" data-lecon-code="${codeLecon}" data-niveau="${niveau}">
-                        <span class="texte-exo">✏️ EXERCICES — ${lecon.titre}</span>
-                    </div>
+function genererListeLecons(lecons, containerId, rondClass, urlPrefix = WORKER_URL + '/', niveau = '') {
+    let html = `<div class="liste-matiere">`;
+    lecons.forEach(lecon => {
+        const urlComplet = urlPrefix + lecon.fichier;
+        const codeLecon = getCodeLecon(lecon.titre);
+        
+        // ✅ AJOUTER CETTE CONDITION POUR CONJUGAISON DES VERBES
+        const isConjugaisonVerbes = (lecon.titre === "Conjugaison des verbes");
+        
+        // ✅ AJOUT : Cacher la barre EXERCICES pour les dialogues
+        const cacherExercices = (niveau === 'dialoguer');
+        
+        html += `
+            <div class="bloc-theme">
+                <div class="lecon-click" data-fichier="${lecon.fichier}" data-titre="${lecon.titre}" data-url="${urlComplet}" data-defaut="${lecon.defaut.replace(/"/g, '&quot;')}" data-special="${isConjugaisonVerbes ? 'true' : 'false'}">
+                    <div class="titre-rond"><span class="${rondClass}">${lecon.id}</span><span class="nom-theme">${lecon.titre}</span></div>
+                    <div class="sous-accroche">${lecon.description}</div>
                 </div>
-            `;
-        });
-        html += `</div><div class="footer-info">📘 Ny fianarana no lova tsara indrindra| ✏️ Mirary anao hahay ♥️</div>`;
-        document.getElementById(containerId).innerHTML = html;
-        
-        document.querySelectorAll(`#${containerId} .lecon-click`).forEach(el => {
-            el.addEventListener('click', () => {
+                ${!cacherExercices ? `
+                <div class="barre-exercice" data-lecon-titre="${lecon.titre}" data-lecon-code="${codeLecon}" data-niveau="${niveau}">
+                    <span class="texte-exo">✏️ EXERCICES — ${lecon.titre}</span>
+                </div>
+                ` : ''}
+            </div>
+        `;
+    });
+    html += `</div><div class="footer-info">📘 Ny fianarana no lova tsara indrindra| ✏️ Mirary anao hahay ♥️</div>`;
+    document.getElementById(containerId).innerHTML = html;
+    
+    // ✅ MODIFIER L'ÉVÉNEMENT CLICK
+    document.querySelectorAll(`#${containerId} .lecon-click`).forEach(el => {
+        el.addEventListener('click', () => {
+            const isSpecial = el.getAttribute('data-special') === 'true';
+            if (isSpecial) {
+                // Afficher le message avec bouton fermer
+                afficherNotificationAvecFermer(
+                    '📘 <strong>Miala tsiny fa tsy misy amin\'ity application ity ny Conjugaison.</strong><br><br>🔍 Azonao atao maka ao amin\'ny <strong>Play Store</strong> , ataovy recherche hoe <strong>"Le Conjugueur"</strong>.<br><br>✅ Ny <strong>règles de conjugaison</strong> misy amitsika.<br>✅ Ny <strong>exercice</strong> koa dia <strong>misy</strong> ka azo atao tsara mihitsy ny exercice.<br><br>🙏 <strong>Mankasitraka tompoko !🙏</strong>',
+                    'info'
+                );
+            } else {
                 chargerLecon(el.getAttribute('data-titre'), el.getAttribute('data-fichier'), el.getAttribute('data-url'), el.getAttribute('data-defaut'));
-            });
+            }
         });
-        
+    });
+    
+    // ✅ MODIFICATION : N'ajouter les événements EXERCICES que si ce n'est pas dialoguer
+    if (niveau !== 'dialoguer') {
         document.querySelectorAll(`#${containerId} .barre-exercice`).forEach(el => {
             el.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1931,7 +1950,99 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+}
+
+// ✅ FONCTION : Notification avec bouton fermer - Version colorée
+function afficherNotificationAvecFermer(message, type = 'info') {
+    // Supprimer l'ancienne notification si elle existe
+    const ancienne = document.getElementById('centreNotification');
+    if (ancienne) ancienne.remove();
     
+    // Choix des couleurs selon le type
+    const colors = {
+        'info': {
+            background: 'linear-gradient(145deg, #2c3e50, #34495e)',
+            boxShadow: '0 20px 60px rgba(44, 62, 80, 0.4)',
+            buttonColor: '#2c3e50',
+            border: '2px solid rgba(255, 215, 0, 0.3)'
+        },
+        'success': {
+            background: 'linear-gradient(145deg, #27ae60, #2ecc71)',
+            boxShadow: '0 20px 60px rgba(46, 204, 113, 0.4)',
+            buttonColor: '#27ae60',
+            border: '2px solid rgba(255, 255, 255, 0.2)'
+        },
+        'warning': {
+            background: 'linear-gradient(145deg, #f39c12, #e67e22)',
+            boxShadow: '0 20px 60px rgba(243, 156, 18, 0.4)',
+            buttonColor: '#e67e22',
+            border: '2px solid rgba(255, 255, 255, 0.2)'
+        },
+        'error': {
+            background: 'linear-gradient(145deg, #c0392b, #e74c3c)',
+            boxShadow: '0 20px 60px rgba(192, 57, 43, 0.4)',
+            buttonColor: '#c0392b',
+            border: '2px solid rgba(255, 255, 255, 0.2)'
+        }
+    };
+    
+    const color = colors[type] || colors['info'];
+    
+    const notif = document.createElement('div');
+    notif.id = 'centreNotification';
+    notif.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: ${color.background};
+        color: white;
+        padding: 35px 45px;
+        border-radius: 24px;
+        z-index: 30001;
+        font-size: 1.1rem;
+        text-align: center;
+        box-shadow: ${color.boxShadow};
+        max-width: 500px;
+        width: 90%;
+        animation: fadeIn 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        border: ${color.border};
+    `;
+    
+    notif.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;">
+            <span style="font-size: 2.5rem;">📘</span>
+            <span style="font-size: 1.6rem; font-weight: 700; color: #FFD700;">ℹ️ Information</span>
+            <span style="font-size: 2.5rem;">📘</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 20px 25px; border-radius: 16px; width: 100%; line-height: 1.8; font-size: 1rem; text-align: left; backdrop-filter: blur(4px);">
+            ${message}
+        </div>
+        <button onclick="this.parentElement.remove()" style="
+            background: white;
+            color: ${color.buttonColor};
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 5px;
+        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 25px rgba(0,0,0,0.3)';" 
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';">
+            ✕ <strong>Fermer</strong>
+        </button>
+    `;
+    
+    document.body.appendChild(notif);
+}
+
     // ======================= NAVIGATION =======================
  function showScreen(screenName) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -2846,7 +2957,6 @@ async function chargerQCMIntegreDirect(nomFichier, leconTitre, forceUpdate = fal
             await stockerContenuEtVersion(dbName, contenu, versionToStore);
             lecteurCurrentVersion = versionToStore;
             
-            afficherNotificationCentre('✅ Mise à jour effectuée !', 'success');
         } else {
             lecteurCurrentVersion = localVersion;
         }
@@ -2929,7 +3039,7 @@ function afficherQCMIntegre(contenu, nomFichier) {
         document.getElementById('lecteurQCMContent').innerHTML = `
             <div style="text-align: center; padding: 50px; color: white;">
                 <div style="font-size: 3rem;">⚠️</div>
-                <p style="margin-top: 20px;">Aucune question trouvée dans ce fichier.</p>
+                <p style="margin-top: 20px;"> Mbola tsy vita ny exercice ato fa miandry kely dia ho vita ilay izy, ataovy aloha ireo efa misy exercice</p>
             </div>
         `;
         return;
