@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>La ponctuation – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour la ponctuation */
+    .color-point {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-interro {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-exclam {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-virgule {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-autres {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>LA PONCTUATION</h1>
+  </div>
+
+  <!-- Carte : Inona ny ponctuation ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "ponctuation" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>ponctuation</strong> dia ireo <strong>marika</strong> ampiasaina amin'ny fanoratana mba <strong>hizarana</strong> ny fehezanteny, <strong>hanomezana heviny</strong>, ary <strong>hanehoana fihetseham-po</strong>.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"teboka", "savily", "marika fanontaniana"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ireto ny marika ponctuation fototra :<br><br>
+      <span class="icone">📌</span> <span class="color-point">.</span> Le point (teboka)<br><br>
+      <span class="icone">📌</span> <span class="color-interro">?</span> Le point d'interrogation (marika fanontaniana)<br><br>
+      <span class="icone">📌</span> <span class="color-exclam">!</span> Le point d'exclamation (marika fanantsoantso)<br><br>
+      <span class="icone">📌</span> <span class="color-virgule">;</span> Le point-virgule (savily)<br><br>
+      <span class="icone">📌</span> <span class="color-virgule">:</span> Les deux points (tsindroa)<br><br>
+      <span class="icone">📌</span> <span class="color-virgule">...</span> Les points de suspension (teboka telo)<br><br>
+      <span class="icone">📌</span> <span class="color-autres">« »</span> Les guillemets (fonaka)<br><br>
+      <span class="icone">📌</span> <span class="color-autres">( )</span> Les parenthèses (trano kely)<br><br>
+      <span class="icone">📌</span> <span class="color-autres">-</span> Le tiret (tsipika)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Signe</th>
+            <th>Nom français</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-point">.</span></td>
+            <td>Le point</td>
+            <td>teboka</td>
+            <td>Il dort.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-interro">?</span></td>
+            <td>Le point d'interrogation</td>
+            <td>marika fanontaniana</td>
+            <td>Où vas-tu ?</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-exclam">!</span></td>
+            <td>Le point d'exclamation</td>
+            <td>marika fanantsoantso</td>
+            <td>Quelle belle journée !</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-virgule">;</span></td>
+            <td>Le point-virgule</td>
+            <td>savily</td>
+            <td>Il vient ; il reste.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-virgule">:</span></td>
+            <td>Les deux points</td>
+            <td>tsindroa</td>
+            <td>J'aime : le café.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-virgule">...</span></td>
+            <td>Les points de suspension</td>
+            <td>teboka telo</td>
+            <td>Je ne sais pas...</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-autres">« »</span></td>
+            <td>Les guillemets</td>
+            <td>fonaka</td>
+            <td>Il dit : « Bonjour ».</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-autres">( )</span></td>
+            <td>Les parenthèses</td>
+            <td>trano kely</td>
+            <td>Il est (très) grand.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-autres">-</span></td>
+            <td>Le tiret</td>
+            <td>tsipika</td>
+            <td>Pierre - mon ami - est là.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-point">point</span> (.) dia mamarana fehezanteny <strong>milaza</strong>.<br>
+      • Ny <span class="color-interro">point d'interrogation</span> (?) dia mamarana fehezanteny <strong>fanontaniana</strong>.<br>
+      • Ny <span class="color-exclam">point d'exclamation</span> (!) dia mamarana fehezanteny <strong>mihetseham-po</strong>.<br>
+      • Ny <span class="color-virgule">point-virgule</span> (;) dia manasaraka ny <strong>fehezanteny</strong> ao anaty fehezanteny lava.<br>
+      • Ny <span class="color-virgule">deux points</span> (:) dia ampiasaina alohan'ny <strong>fanolavana</strong>.<br>
+      • Ny <span class="color-virgule">points de suspension</span> (...) dia ampiasaina hanehoana <strong>fiatoana</strong> na <strong>fisalasalana</strong>.<br>
+      • Ny <span class="color-autres">guillemets</span> (« ») dia ampiasaina amin'ny <strong>teny notsongaina</strong>.<br>
+      • Ny <span class="color-autres">parenthèses</span> ( ) dia ampiasaina hanampiana <strong>fanazavana fanampiny</strong>.<br>
+      • Ny <span class="color-autres">tiret</span> (-) dia ampiasaina hanasaraka ny <strong>fanazavana</strong>.
+    </div>
+  </div>
+
+  <!-- 1. LE POINT (.) - Le point -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-point">.</span> LE POINT (teboka)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-point">point</span> (.) dia ampiasaina <strong>hamarana</strong> fehezanteny milaza zavatra tsotra.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka amin'ny <strong>farany</strong> ny fehezanteny.<br>
+      • Aorian'ny point dia misy <strong>majuscule</strong> foana.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat dort<span class="color-point">.</span> (Matoky ny saka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon ami est gentil<span class="color-point">.</span> (Tsara fanahy ny sakaizako.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il fait beau aujourd'hui<span class="color-point">.</span> (Tsara ny andro androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais à l'école<span class="color-point">.</span> (Mandeha any an-tsekoly aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-point">point</span> (.) dia ampiasaina hamarana fehezanteny milaza.
+    </div>
+  </div>
+
+  <!-- 2. LE POINT D'INTERROGATION (?) - Le point d'interrogation -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-interro">?</span> LE POINT D'INTERROGATION (marika fanontaniana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-interro">point d'interrogation</span> (?) dia ampiasaina <strong>hamarana</strong> fehezanteny fanontaniana.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka amin'ny <strong>farany</strong> ny fehezanteny fanontaniana.<br>
+      • Mitaky <strong>valiny</strong> ny fehezanteny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Où vas-tu <span class="color-interro">?</span> (Ho aiza ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Comment ça va <span class="color-interro">?</span> (Manao ahoana ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Quelle heure est-il <span class="color-interro">?</span> (Amin'ny ora firy izao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu aimes le café <span class="color-interro">?</span> (Tia kafe ve ianao?)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-interro">point d'interrogation</span> (?) dia ampiasaina hamarana fehezanteny fanontaniana.
+    </div>
+  </div>
+
+  <!-- 3. LE POINT D'EXCLAMATION (!) - Le point d'exclamation -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-exclam">!</span> LE POINT D'EXCLAMATION (marika fanantsoantso)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-exclam">point d'exclamation</span> (!) dia ampiasaina <strong>hamarana</strong> fehezanteny maneho fihetseham-po mahery (fifaliana, fahagagana, hatezerana, tahotra).<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka amin'ny <strong>farany</strong> ny fehezanteny.<br>
+      • Maneho <strong>fihetseham-po</strong> mahery.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Quelle belle journée <span class="color-exclam">!</span> (Andro tsara be !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Arrêtez <span class="color-exclam">!</span> (Atsaharo !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Comme il est grand <span class="color-exclam">!</span> (Lehibe be izy !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Quel dommage <span class="color-exclam">!</span> (Indrisy !)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-exclam">point d'exclamation</span> (!) dia ampiasaina hanehoana fihetseham-po mahery.
+    </div>
+  </div>
+
+  <!-- 4. LE POINT-VIRGULE (;) - Le point-virgule -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-virgule">;</span> LE POINT-VIRGULE (savily)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-virgule">point-virgule</span> (;) dia ampiasaina <strong>hanasaraka</strong> fehezanteny roa mitovy hevitra ao anaty fehezanteny lava.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka eo anelanelan'ny <strong>fehezanteny roa</strong>.<br>
+      • Ny fehezanteny roa dia <strong>mifandray</strong> amin'ny heviny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il vient <span class="color-virgule">;</span> il reste longtemps. (Tonga izy <span class="color-virgule">;</span> mijanona ela izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'aime le café <span class="color-virgule">;</span> je le bois tous les matins. (Tia kafe aho <span class="color-virgule">;</span> misotro azy isa-maraina aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est gentil <span class="color-virgule">;</span> il aide tout le monde. (Tsara fanahy izy <span class="color-virgule">;</span> manampy ny olona rehetra izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-virgule">point-virgule</span> (;) dia manasaraka fehezanteny roa mifandray hevitra.
+    </div>
+  </div>
+
+  <!-- 5. LES DEUX POINTS (:) - Les deux points -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-virgule">:</span> LES DEUX POINTS (tsindroa)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-virgule">deux points</span> (:) dia ampiasaina <strong>alohan'ny fanazavana</strong> na <strong>fanolavana</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka alohan'ny <strong>fanolavana</strong>.<br>
+      • Apetraka alohan'ny <strong>lisitra</strong> (listes).<br>
+      • Ampiasaina amin'ny <strong>teny notsongaina</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'aime <span class="color-virgule">:</span> le café et le thé. (Tia <span class="color-virgule">:</span> kafe sy dite aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a dit <span class="color-virgule">:</span> « Bonjour ». (Nanao hoe <span class="color-virgule">:</span> « Bonjour » izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai besoin de <span class="color-virgule">:</span> pain, lait et œufs. (Mila <span class="color-virgule">:</span> mofo, ronono ary atody aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-virgule">deux points</span> (:) dia ampiasaina alohan'ny fanazavana na fanolavana.
+    </div>
+  </div>
+
+  <!-- 6. LES POINTS DE SUSPENSION (...) - Les points de suspension -->
+  <div class="card">
+    <h2>6️⃣ <span class="color-virgule">...</span> LES POINTS DE SUSPENSION (teboka telo)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-virgule">points de suspension</span> (...) dia ampiasaina hanehoana <strong>fiatoana</strong>, <strong>fisalasalana</strong>, na <strong>tsy fahavitan'ny</strong> zavatra.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka amin'ny <strong>farany</strong> na <strong>afovoany</strong> ny fehezanteny.<br>
+      • Maneho <strong>fisalasalana</strong> na <strong>tsy fahavita</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne sais pas <span class="color-virgule">...</span> (Tsy fantatro <span class="color-virgule">...</span>)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est parti <span class="color-virgule">...</span> je pense. (Lasa izy <span class="color-virgule">...</span> mieritreritra aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je voudrais <span class="color-virgule">...</span> un café. (Te-hisotro <span class="color-virgule">...</span> kafe aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-virgule">points de suspension</span> (...) dia ampiasaina hanehoana fiatoana na fisalasalana.
+    </div>
+  </div>
+
+  <!-- 7. LES GUILLEMETS (« ») - Les guillemets -->
+  <div class="card">
+    <h2>7️⃣ <span class="color-autres">« »</span> LES GUILLEMETS (fonaka)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-autres">guillemets</span> (« ») dia ampiasaina <strong>hitondrana ny tenin'olona</strong> na <strong>hanondroana</strong> teny notsongaina.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka <strong>manodidina</strong> ny teny notsongaina.<br>
+      • Ampiasaina amin'ny <strong>dialogue</strong> sy ny <strong>citation</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a dit : <span class="color-autres">«</span> Bonjour <span class="color-autres">»</span>. (Nanao hoe <span class="color-autres">«</span> Bonjour <span class="color-autres">»</span> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a répondu : <span class="color-autres">«</span> Je viens <span class="color-autres">»</span>. (Namaly hoe <span class="color-autres">«</span> Mbola ho avy aho <span class="color-autres">»</span> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a écrit : <span class="color-autres">«</span> La vie est belle <span class="color-autres">»</span>. (Nanoratra hoe <span class="color-autres">«</span> Tsara ny fiainana <span class="color-autres">»</span> izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-autres">guillemets</span> (« ») dia ampiasaina hitondrana ny tenin'olona.
+    </div>
+  </div>
+
+  <!-- 8. LES PARENTHÈSES ( ) - Les parenthèses -->
+  <div class="card">
+    <h2>8️⃣ <span class="color-autres">( )</span> LES PARENTHÈSES (trano kely)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-autres">parenthèses</span> ( ) dia ampiasaina <strong>hanampiana fanazavana fanampiny</strong> tsy tena ilaina amin'ny fehezanteny.<br><br>
+      <strong>Règle :</strong><br>
+      • Apetraka <strong>manodidina</strong> ny fanazavana fanampiny.<br>
+      • Azo esorina ny ao anatiny raha tsy miova ny hevitry ny fehezanteny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-autres">(</span>très<span class="color-autres">)</span> grand. (<span class="color-autres">(</span>tena<span class="color-autres">)</span> lehibe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais à Paris <span class="color-autres">(</span>la capitale<span class="color-autres">)</span>. (Mandeha any Paris <span class="color-autres">(</span>ny renivohitra<span class="color-autres">)</span> aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est née en 1990 <span class="color-autres">(</span>le 15 juin<span class="color-autres">)</span>. (Teraka tamin'ny 1990 <span class="color-autres">(</span>ny 15 Jona<span class="color-autres">)</span> izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-autres">parenthèses</span> ( ) dia ampiasaina hanampiana fanazavana fanampiny.
+    </div>
+  </div>
+
+  <!-- 9. LE TIRET (-) - Le tiret -->
+  <div class="card">
+    <h2>9️⃣ <span class="color-autres">-</span> LE TIRET (tsipika)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-autres">tiret</span> (-) dia ampiasaina <strong>hanasaraka</strong> fanazavana fanampiny na <strong>hanondroana</strong> fifanakalozan-kevitra.<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina amin'ny <strong>dialogue</strong>.<br>
+      • Ampiasaina hanasaraka <strong>fanazavana</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre <span class="color-autres">-</span> mon ami <span class="color-autres">-</span> est là. (Pierre <span class="color-autres">-</span> sakaizako <span class="color-autres">-</span> dia eo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-autres">-</span> Bonjour ! <span class="color-autres">-</span> Bonjour ! (<span class="color-autres">-</span> Salama ! <span class="color-autres">-</span> Salama !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a dit <span class="color-autres">-</span> en riant <span class="color-autres">-</span> qu'il viendrait. (Nanao <span class="color-autres">-</span> raha nihomehy <span class="color-autres">-</span> izy fa ho avy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-autres">tiret</span> (-) dia ampiasaina hanasaraka fanazavana fanampiny.
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles de ponctuation</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-point">.</span> Point</strong> → mamarana fehezanteny milaza.<br><br>
+      <strong>2. <span class="color-interro">?</span> Point d'interrogation</strong> → mamarana fehezanteny fanontaniana.<br><br>
+      <strong>3. <span class="color-exclam">!</span> Point d'exclamation</strong> → mamarana fehezanteny mihetseham-po.<br><br>
+      <strong>4. <span class="color-virgule">;</span> Point-virgule</strong> → manasaraka fehezanteny roa mifandray.<br><br>
+      <strong>5. <span class="color-virgule">:</span> Deux points</strong> → alohan'ny fanazavana na fanolavana.<br><br>
+      <strong>6. <span class="color-virgule">...</span> Points de suspension</strong> → hanehoana fiatoana na fisalasalana.<br><br>
+      <strong>7. <span class="color-autres">« »</span> Guillemets</strong> → hitondrana ny tenin'olona.<br><br>
+      <strong>8. <span class="color-autres">( )</span> Parenthèses</strong> → hanampiana fanazavana fanampiny.<br><br>
+      <strong>9. <span class="color-autres">-</span> Tiret</strong> → hanasaraka fanazavana na hanondroana dialogue.
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-point">point</span> (.) dia ampiasaina amin'ny fehezanteny <strong>milaza</strong>.</li>
+        <li>Ny <span class="color-interro">point d'interrogation</span> (?) dia ampiasaina amin'ny fehezanteny <strong>fanontaniana</strong>.</li>
+        <li>Ny <span class="color-exclam">point d'exclamation</span> (!) dia ampiasaina amin'ny fehezanteny <strong>mihetseham-po</strong>.</li>
+        <li>Ny <span class="color-virgule">point-virgule</span> (;) sy ny <span class="color-virgule">deux points</span> (:) dia ampiasaina amin'ny fehezanteny <strong>lava</strong>.</li>
+        <li>Ny <span class="color-virgule">points de suspension</span> (...) dia ampiasaina hanehoana <strong>fisalasalana</strong>.</li>
+        <li>Ny <span class="color-autres">guillemets</span> (« ») dia ampiasaina hitondrana ny <strong>tenin'olona</strong>.</li>
+        <li>Ny <span class="color-autres">parenthèses</span> ( ) dia ampiasaina hanampiana <strong>fanazavana fanampiny</strong>.</li>
+        <li>Ny <span class="color-autres">tiret</span> (-) dia ampiasaina hanasaraka <strong>fanazavana</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny ponctuation dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny ponctuation.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Voix passive et voix active – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les voix */
+    .color-active {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-passive {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-transformation {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>VOIX PASSIVE ET VOIX ACTIVE</h1>
+  </div>
+
+  <!-- Carte : Inona ny voix active et passive ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "voix active" sy "voix passive" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <span class="color-active">voix active</span> dia rehefa ny <strong>sujet</strong> (mpanao) no <strong>manao</strong> ny hetsika.<br>
+      Ohatra : <em><span class="color-active">Le chat</span> mange la souris.</em> (Ilay saka no mihinana ilay totozy.)<br><br>
+      🔹 Ny <span class="color-passive">voix passive</span> dia rehefa ny <strong>sujet</strong> no <strong>iharan'ny</strong> hetsika.<br>
+      Ohatra : <em><span class="color-passive">La souris</span> est mangée par le chat.</em> (Ilay totozy no hanin'ilay saka.)<br><br>
+      🔹 Misy fahasamihafana lehibe eo amin'ny roa :<br><br>
+      <span class="icone">📌</span> <span class="color-active">ACTIVE</span> → <strong>sujet</strong> (mpanao) + <strong>verbe</strong> + <strong>COD</strong> (zavatra atao)<br>
+      Ohatra : <em>Pierre <span class="color-active">lit</span> un livre.</em><br><br>
+      <span class="icone">📌</span> <span class="color-passive">PASSIVE</span> → <strong>sujet</strong> (iharan'ny hetsika) + <strong>être</strong> + <strong>participe passé</strong> + <strong>par</strong> + <strong>agent</strong> (mpanao)<br>
+      Ohatra : <em>Un livre <span class="color-passive">est lu</span> par Pierre.</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="color-active">VOIX ACTIVE</span></th>
+            <th><span class="color-passive">VOIX PASSIVE</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Sujet = <strong>mpanao</strong></td>
+            <td>Sujet = <strong>iharan'ny hetsika</strong></td>
+          </tr>
+          <tr class="categorie">
+            <td>Verbe = <strong>actif</strong> (manger, lire...)</td>
+            <td>Verbe = <strong>être + participe passé</strong></td>
+          </tr>
+          <tr class="categorie">
+            <td>COD = <strong>zavatra atao</strong></td>
+            <td>Agent = <strong>mpanao (par + nom)</strong></td>
+          </tr>
+          <tr class="categorie">
+            <td>Le chat mange la souris.</td>
+            <td>La souris est mangée par le chat.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-active">voix active</span> dia ampiasaina rehefa <strong>mazava</strong> ny mpanao.<br>
+      Ohatra : <em>Pierre <span class="color-active">mange</span> une pomme.</em><br><br>
+      • Ny <span class="color-passive">voix passive</span> dia ampiasaina rehefa <strong>tsy zava-dehibe</strong> ny mpanao, na rehefa <strong>te-hamisongadina</strong> ny iharan'ny hetsika.<br>
+      Ohatra : <em>Une pomme <span class="color-passive">est mangée</span> par Pierre.</em><br><br>
+      • Ny <span class="color-passive">voix passive</span> dia miforona amin'ny alalan'ny : <strong>être (conjugué)</strong> + <strong>participe passé</strong> + <strong>par</strong> + <strong>agent</strong>.<br>
+      • Ny <span class="color-transformation">participe passé</span> dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (genre et nombre).<br>
+      Ohatra : <em>La souris est mangée</em> (manampy "e" satria sujet féminin).
+    </div>
+  </div>
+
+  <!-- 1. VOIX ACTIVE - Le sujet fait l'action -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-active">VOIX ACTIVE</span> (sujet = mpanao)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-active">voix active</span> dia rehefa ny <strong>sujet</strong> (mpanao) no <strong>manao</strong> ny hetsika.<br><br>
+      <strong>Structure :</strong><br>
+      <em><span class="color-active">Sujet</span> (mpanao) + <span class="color-active">Verbe</span> (hetsika) + <span class="color-active">COD</span> (zavatra atao)</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-active">Pierre</span> <span class="color-active">mange</span> une pomme. (Pierre no mihinana paoma.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-active">Le chat</span> <span class="color-active">mange</span> la souris. (Ilay saka no mihinana ilay totozy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-active">Marie</span> <span class="color-active">écrit</span> une lettre. (Marie no manoratra taratasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-active">Les enfants</span> <span class="color-active">regardent</span> la télévision. (Ireo ankizy no mijery fahitalavitra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-active">Le boulanger</span> <span class="color-active">fait</span> du pain. (Ilay mpanefy mofo no manao mofo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-active">voix active</span> dia ampiasaina rehefa <strong>mazava</strong> ny mpanao.<br>
+      Ohatra : <em>Pierre mange une pomme.</em> (Pierre no mpanao.)
+    </div>
+  </div>
+
+  <!-- 2. VOIX PASSIVE - Le sujet subit l'action -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-passive">VOIX PASSIVE</span> (sujet = iharan'ny hetsika)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-passive">voix passive</span> dia rehefa ny <strong>sujet</strong> (iharan'ny hetsika) no <strong>iharan'ny</strong> hetsika ataon'ny hafa.<br><br>
+      <strong>Structure :</strong><br>
+      <em><span class="color-passive">Sujet</span> (iharan'ny hetsika) + <span class="color-passive">être</span> (conjugué) + <span class="color-passive">participe passé</span> + <span class="color-passive">par</span> + <span class="color-passive">agent</span> (mpanao)</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une pomme <span class="color-passive">est mangée</span> par Pierre. (Paoma no hanin'i Pierre.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La souris <span class="color-passive">est mangée</span> par le chat. (Ilay totozy no hanin'ilay saka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une lettre <span class="color-passive">est écrite</span> par Marie. (Taratarasy no soratan'i Marie.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La télévision <span class="color-passive">est regardée</span> par les enfants. (Fahitalavitra no jerin'ireo ankizy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le pain <span class="color-passive">est fait</span> par le boulanger. (Mofo no ataon'ilay mpanefy mofo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-passive">voix passive</span> dia ampiasaina rehefa <strong>tsy zava-dehibe</strong> ny mpanao, na rehefa <strong>te-hamisongadina</strong> ny iharan'ny hetsika.<br>
+      Ohatra : <em>Une pomme est mangée par Pierre.</em> (Asongadina ny paoma.)
+    </div>
+  </div>
+
+  <!-- 3. TRANSFORMATION ACTIF → PASSIF -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-transformation">TRANSFORMATION ACTIF → PASSIF</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanovana ny <span class="color-active">voix active</span> ho <span class="color-passive">voix passive</span>, dia :<br><br>
+      <strong>1.</strong> Ny <span class="color-active">COD</span> (zavatra atao) dia lasa <span class="color-passive">sujet</span> (iharan'ny hetsika).<br>
+      <strong>2.</strong> Ny <span class="color-active">verbe</span> dia lasa <span class="color-passive">être + participe passé</span>.<br>
+      <strong>3.</strong> Ny <span class="color-active">sujet</span> (mpanao) dia lasa <span class="color-passive">agent</span> (mpanao) aorian'ny <strong>"par"</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-active">Sujet</span> + <span class="color-active">verbe</span> + <span class="color-active">COD</span> → <span class="color-passive">COD</span> + <span class="color-passive">être + participe passé</span> + <span class="color-passive">par</span> + <span class="color-passive">sujet</span></em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACTIF : <span class="color-active">Pierre</span> <span class="color-active">mange</span> <span class="color-active">une pomme</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSIF : <span class="color-passive">Une pomme</span> <span class="color-passive">est mangée</span> <span class="color-passive">par</span> <span class="color-passive">Pierre</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACTIF : <span class="color-active">Le chat</span> <span class="color-active">mange</span> <span class="color-active">la souris</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSIF : <span class="color-passive">La souris</span> <span class="color-passive">est mangée</span> <span class="color-passive">par</span> <span class="color-passive">le chat</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACTIF : <span class="color-active">Marie</span> <span class="color-active">écrit</span> <span class="color-active">une lettre</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSIF : <span class="color-passive">Une lettre</span> <span class="color-passive">est écrite</span> <span class="color-passive">par</span> <span class="color-passive">Marie</span>.</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa manova ny <span class="color-active">actif</span> ho <span class="color-passive">passif</span>, dia :<br>
+      1. Ny <span class="color-active">COD</span> → <span class="color-passive">sujet</span><br>
+      2. Ny <span class="color-active">verbe</span> → <span class="color-passive">être + participe passé</span><br>
+      3. Ny <span class="color-active">sujet</span> → <span class="color-passive">agent (par)</span>
+    </div>
+  </div>
+
+  <!-- 4. CONJUGAISON DU PASSIF À DIFFÉRENTS TEMPS -->
+  <div class="card">
+    <h2>4️⃣ Conjugaison du passif à différents temps</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-passive">voix passive</span> dia azo ampiasaina amin'ny <strong>fotoana rehetra</strong> (temps). Ny <strong>"être"</strong> ihany no miova arakaraka ny fotoana.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Présent :</strong> La souris <strong>est</strong> mangée par le chat.<br>
+      <strong>Passé composé :</strong> La souris <strong>a été</strong> mangée par le chat.<br>
+      <strong>Imparfait :</strong> La souris <strong>était</strong> mangée par le chat.<br>
+      <strong>Futur simple :</strong> La souris <strong>sera</strong> mangée par le chat.<br>
+      <strong>Conditionnel présent :</strong> La souris <strong>serait</strong> mangée par le chat.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PRÉSENT : La souris <span class="color-passive">est</span> mangée par le chat.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSÉ COMPOSÉ : La souris <span class="color-passive">a été</span> mangée par le chat.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">IMPARFAIT : La souris <span class="color-passive">était</span> mangée par le chat.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">FUTUR SIMPLE : La souris <span class="color-passive">sera</span> mangée par le chat.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">CONDITIONNEL : La souris <span class="color-passive">serait</span> mangée par le chat.</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-passive">"être"</span> ihany no miova amin'ny fotoana samy hafa. Ny <span class="color-passive">participe passé</span> dia <strong>tsy miova</strong> (mijanona mitovy) fa mifanaraka amin'ny sujet.
+    </div>
+  </div>
+
+  <!-- 5. ACCORD DU PARTICIPE PASSÉ AU PASSIF -->
+  <div class="card">
+    <h2>5️⃣ Accord du participe passé au passif</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-passive">participe passé</span> amin'ny voix passive dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (iharan'ny hetsika) amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      <strong>Règle :</strong><br>
+      • Masculin singulier → tsy misy fanampiny (mangé)<br>
+      • Féminin singulier → manampy <strong>"e"</strong> (mangée)<br>
+      • Masculin pluriel → manampy <strong>"s"</strong> (mangés)<br>
+      • Féminin pluriel → manampy <strong>"es"</strong> (mangées)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le pain est <span class="color-passive">mangé</span>. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La pomme est <span class="color-passive">mangée</span>. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les pains sont <span class="color-passive">mangés</span>. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les pommes sont <span class="color-passive">mangées</span>. (Féminin pluriel.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-passive">participe passé</span> amin'ny voix passive dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (e, s, es).<br>
+      Ohatra : <em>La lettre est <span class="color-passive">écrite</span>.</em> (manampy "e" satria "lettre" dia féminin.)
+    </div>
+  </div>
+
+  <!-- 6. QUAND UTILISER LA VOIX PASSIVE ? -->
+  <div class="card">
+    <h2>6️⃣ Quand utiliser la voix passive ?</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-passive">voix passive</span> dia ampiasaina amin'ny toe-javatra <strong>telu</strong> :<br><br>
+      
+      <strong>1. Inconnu du sujet (tsy fantatra ny mpanao) :</strong><br>
+      Ohatra : <em>Mon vélo <span class="color-passive">a été volé</span>.</em> (Nangalarina ny bisikiletako - tsy fantatra izay nangalatra.)<br><br>
+      
+      <strong>2. Mettre en valeur le résultat (hanasongadina ny vokany) :</strong><br>
+      Ohatra : <em>La Tour Eiffel <span class="color-passive">a été construite</span> en 1889.</em> (Namboarina tamin'ny 1889 ny Tour Eiffel - asongadina ny Tour Eiffel.)<br><br>
+      
+      <strong>3. Style formel (fomba fiteny ara-dalàna) :</strong><br>
+      Ohatra : <em>Les décisions <span class="color-passive">seront prises</span> par le directeur.</em> (Ny fanapahan-kevitra dia horaisin'ny talenà.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">INCONNU : Mon vélo <span class="color-passive">a été volé</span>. (Nangalarina ny bisikiletako - tsy fantatra izay nangalatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">RÉSULTAT : La Tour Eiffel <span class="color-passive">a été construite</span> en 1889. (Namboarina tamin'ny 1889 ny Tour Eiffel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">FORMEL : Les décisions <span class="color-passive">seront prises</span> par le directeur. (Ny fanapahan-kevitra dia horaisin'ny talenà.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-passive">voix passive</span> dia ampiasaina rehefa <strong>tsy fantatra</strong> ny mpanao, rehefa <strong>te-hamisongadina</strong> ny vokany, na amin'ny fomba <strong>ara-dalàna</strong>.
+    </div>
+  </div>
+
+  <!-- 7. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-active">VOIX ACTIVE</span></strong> → sujet = mpanao<br>
+      Ohatra : <em>Pierre mange une pomme.</em><br><br>
+      
+      <strong>2. <span class="color-passive">VOIX PASSIVE</span></strong> → sujet = iharan'ny hetsika<br>
+      Ohatra : <em>Une pomme est mangée par Pierre.</em><br><br>
+      
+      <strong>3. TRANSFORMATION ACTIF → PASSIF</strong><br>
+      • <span class="color-active">COD</span> → <span class="color-passive">sujet</span><br>
+      • <span class="color-active">Verbe</span> → <span class="color-passive">être + participe passé</span><br>
+      • <span class="color-active">Sujet</span> → <span class="color-passive">agent (par)</span><br><br>
+      
+      <strong>4. ACCORD DU PARTICIPE PASSÉ</strong><br>
+      • Mifanaraka amin'ny <strong>sujet</strong> (e, s, es)<br><br>
+      
+      <strong>5. QUAND UTILISER LE PASSIF ?</strong><br>
+      • Sujet inconnu<br>
+      • Mettre en valeur le résultat<br>
+      • Style formel
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-active">voix active</span> dia ampiasaina rehefa <strong>mazava</strong> ny mpanao.</li>
+        <li>Ny <span class="color-passive">voix passive</span> dia ampiasaina rehefa <strong>tsy zava-dehibe</strong> ny mpanao, na rehefa <strong>te-hamisongadina</strong> ny iharan'ny hetsika.</li>
+        <li>Mba hanovana ny <span class="color-active">actif</span> ho <span class="color-passive">passif</span>, dia : <span class="color-active">COD</span> → <span class="color-passive">sujet</span>, <span class="color-active">verbe</span> → <span class="color-passive">être + participe passé</span>, <span class="color-active">sujet</span> → <span class="color-passive">agent (par)</span>.</li>
+        <li>Ny <span class="color-passive">participe passé</span> dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (e, s, es).</li>
+        <li>Ny <span class="color-passive">voix passive</span> dia ampiasaina rehefa <strong>tsy fantatra</strong> ny mpanao, na rehefa <strong>te-hamisongadina</strong> ny vokany.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny voix passive sy active dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fampiasana ny teny frantsay. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny voix passive et active.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

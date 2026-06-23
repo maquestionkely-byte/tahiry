@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sens figuré et sens propre – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les sens */
+    .color-propre {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-figure {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-exemple {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>SENS FIGURÉ ET SENS PROPRE</h1>
+  </div>
+
+  <!-- Carte : Inona ny sens propre et sens figuré ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "sens propre" sy "sens figuré" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <span class="color-propre">sens propre</span> dia ny <strong>hevitra tena</strong> (concret) amin'ny teny iray, izay ampiasaina amin'ny fomba <strong>ara-bakiteny</strong> (littéral).<br>
+      Ohatra : <em>Il a <span class="color-propre">froid</span>.</em> (Mangatsiaka izy - tena mangatsiaka.)<br><br>
+      🔹 Ny <span class="color-figure">sens figuré</span> dia ny <strong>hevitra an'ohatra</strong> (imagé) amin'ny teny iray, izay ampiasaina amin'ny fomba <strong>fanoharana</strong> (figuratif).<br>
+      Ohatra : <em>Il a <span class="color-figure">un cœur de pierre</span>.</em> (Tsy miantra fo izy - fanoharana.)<br><br>
+      🔹 Misy karazany <strong>maro</strong> ny sens figuré :<br><br>
+      <span class="icone">📌</span> <strong>Métaphore</strong> → fampitahana tsy misy "comme"<br>
+      Ohatra : <em>Il est un <span class="color-figure">lion</span> au combat.</em><br><br>
+      <span class="icone">📌</span> <strong>Comparaison</strong> → fampitahana misy "comme"<br>
+      Ohatra : <em>Il est <span class="color-figure">fort comme un lion</span>.</em><br><br>
+      <span class="icone">📌</span> <strong>Personnification</strong> → fanomezana toetra maha-olona<br>
+      Ohatra : <em>Le vent <span class="color-figure">chante</span>.</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sens</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-propre">SENS PROPRE</span></td>
+            <td>hevitra tena (littéral)</td>
+            <td>Il a froid.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-figure">SENS FIGURÉ</span></td>
+            <td>hevitra an'ohatra (figuratif)</td>
+            <td>Il a un cœur de pierre.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-exemple">MÉTAPHORE</span></td>
+            <td>fampitahana tsy misy "comme"</td>
+            <td>Il est un lion au combat.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-exemple">COMPARAISON</span></td>
+            <td>fampitahana misy "comme"</td>
+            <td>Il est fort comme un lion.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-exemple">PERSONNIFICATION</span></td>
+            <td>fanomezana toetra maha-olona</td>
+            <td>Le vent chante.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-propre">sens propre</span> dia ampiasaina amin'ny fomba <strong>ara-bakiteny</strong> (concret).<br>
+      Ohatra : <em>Il <span class="color-propre">mange</span> une pomme.</em><br><br>
+      • Ny <span class="color-figure">sens figuré</span> dia ampiasaina amin'ny fomba <strong>an'ohatra</strong> (imagé).<br>
+      Ohatra : <em>Il <span class="color-figure">dévore</span> un livre.</em> (Mamaky haingana be.)<br><br>
+      • Ny <span class="color-exemple">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>.<br>
+      • Ny <span class="color-exemple">comparaison</span> dia fampitahana <strong>misy "comme"</strong>.<br>
+      • Ny <span class="color-exemple">personnification</span> dia fanomezana <strong>toetra maha-olona</strong> amin'ny zavatra tsy olona.
+    </div>
+  </div>
+
+  <!-- 1. SENS PROPRE - Hevitra tena -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-propre">SENS PROPRE</span> (hevitra tena / littéral)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-propre">sens propre</span> dia ny <strong>hevitra tena</strong> (concret) amin'ny teny iray. Ampiasaina amin'ny fomba <strong>ara-bakiteny</strong> (littéral), tsy misy fanoharana.<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina amin'ny <strong>fanoritsoritana</strong> (description) ara-batana.<br>
+      • Tsy misy <strong>sary an-tsaina</strong> (image).<br>
+      • Mitovy amin'ny <strong>dikan-teny</strong> (définition) ao amin'ny dictionnaire.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-propre">mange</span> une pomme. (Mihinana paoma izy - tena mihinana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-propre">court</span> vite. (Mihazakazaka haingana izy - tena mihazakazaka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai <span class="color-propre">faim</span>. (Noana aho - tena noana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il fait <span class="color-propre">froid</span>. (Mangatsiaka - tena mangatsiaka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-propre">dort</span> dans son lit. (Matoky ao an-dranony izy - tena matory.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-propre">sens propre</span> dia ny <strong>hevitra tena</strong> (concret) amin'ny teny iray. Tsy misy fanoharana.
+    </div>
+  </div>
+
+  <!-- 2. SENS FIGURÉ - Hevitra an'ohatra -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-figure">SENS FIGURÉ</span> (hevitra an'ohatra / figuratif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-figure">sens figuré</span> dia ny <strong>hevitra an'ohatra</strong> (imagé) amin'ny teny iray. Ampiasaina amin'ny fomba <strong>fanoharana</strong> (figuratif), mba hanehoana zavatra amin'ny fomba <strong>tsara kokoa</strong> na <strong>mahery kokoa</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Mampiasa <strong>sary an-tsaina</strong> (image).<br>
+      • Ampiasaina amin'ny <strong>literatiora</strong> (littérature) sy ny <strong>resaka andavanandro</strong>.<br>
+      • Mampitombo ny <strong>hambaraka</strong> (expressivité) ny fehezanteny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-figure">dévore</span> un livre. (Mamaky haingana be izy - tsy tena mihinana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-figure">vole</span> comme un oiseau. (Mandihy malama izy - tsy tena manidina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a le <span class="color-figure">cœur</span> en or. (Tsara fanahy izy - tsy tena volamena.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est une <span class="color-figure">rose</span> au milieu des épines. (Tsara tarehy sy malefaka izy - fanoharana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a <span class="color-figure">avalé</span> sa colère. (Nezaka izy - tsy tena nisotro.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-figure">sens figuré</span> dia ny <strong>hevitra an'ohatra</strong> (imagé) amin'ny teny iray. Mampiasa sary an-tsaina.
+    </div>
+  </div>
+
+  <!-- 3. MÉTAPHORE - Comparaison sans "comme" -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-exemple">MÉTAPHORE</span> (fampitahana tsy misy "comme")</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-exemple">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>. Izy io dia mampitaha zavatra roa <strong>mivantana</strong>, tsy mampiasa teny fampitahana.<br><br>
+      <strong>Règle :</strong><br>
+      • Tsy misy <strong>"comme"</strong> na <strong>"tel que"</strong>.<br>
+      • Mampitaha zavatra roa <strong>mivantana</strong>.<br>
+      • Matetika ampiasaina amin'ny <strong>poésie</strong> (poésie) sy ny <strong>literatiora</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est un <span class="color-exemple">lion</span> au combat. (Izy no liona amin'ny ady - tsy tena liona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette femme est une <span class="color-exemple">rose</span>. (Ity vehivavy ity dia voninkazo - tsy tena voninkazo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le temps est un <span class="color-exemple">voleur</span>. (Ny fotoana dia mpangalatra - tsy tena olona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ses yeux sont des <span class="color-exemple">étoiles</span>. (Ny masony dia kintana - tsy tena kintana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La vie est un <span class="color-exemple">voyage</span>. (Ny fiainana dia dia - tsy tena dia.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-exemple">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>. Mampitaha zavatra roa mivantana.
+    </div>
+  </div>
+
+  <!-- 4. COMPARAISON - Comparaison avec "comme" -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-exemple">COMPARAISON</span> (fampitahana misy "comme")</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-exemple">comparaison</span> dia fampitahana <strong>misy "comme"</strong> na <strong>"tel que"</strong>. Izy io dia mampitaha zavatra roa amin'ny alalan'ny <strong>teny fampitahana</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Misy <strong>"comme"</strong> na <strong>"tel que"</strong>.<br>
+      • Mampitaha zavatra roa amin'ny alalan'ny <strong>teny fampitahana</strong>.<br>
+      • Matetika ampiasaina amin'ny <strong>resaka andavanandro</strong> sy ny <strong>literatiora</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-exemple">fort comme un lion</span>. (Mahery toy ny liona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <span class="color-exemple">belle comme une rose</span>. (Tsara tarehy toy ny voninkazo izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il court <span class="color-exemple">comme le vent</span>. (Mihazakazaka toy ny rivotra izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle chante <span class="color-exemple">comme un oiseau</span>. (Mihira toy ny vorona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-exemple">doux comme un agneau</span>. (Malemy toy ny zanak'ondry izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-exemple">comparaison</span> dia fampitahana <strong>misy "comme"</strong> na <strong>"tel que"</strong>.
+    </div>
+  </div>
+
+  <!-- 5. PERSONNIFICATION - Toetra maha-olona -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-exemple">PERSONNIFICATION</span> (fanomezana toetra maha-olona)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-exemple">personnification</span> dia fomba <strong>manome toetra maha-olona</strong> (humain) amin'ny zavatra tsy olona (zavatra, biby, hevitra).<br><br>
+      <strong>Règle :</strong><br>
+      • Manome <strong>toetra maha-olona</strong> amin'ny zavatra tsy olona.<br>
+      • Matetika ampiasaina amin'ny <strong>poésie</strong> (poésie) sy ny <strong>littérature</strong> (littérature).<br>
+      • Mampitombo ny <strong>hambaraka</strong> (expressivité) ny fehezanteny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le vent <span class="color-exemple">chante</span>. (Ny rivotra mihira - tsy tena mihira.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La lune <span class="color-exemple">sourit</span>. (Ny volana mitsiky - tsy tena mitsiky.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le soleil <span class="color-exemple">se couche</span>. (Ny masoandro mandry - tsy tena olona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La mer <span class="color-exemple">pleure</span>. (Ny ranomasina mitomany - tsy tena mitomany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le temps <span class="color-exemple">s'arrête</span>. (Ny fotoana mijanona - tsy tena mijanona.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-exemple">personnification</span> dia <strong>manome toetra maha-olona</strong> amin'ny zavatra tsy olona.
+    </div>
+  </div>
+
+  <!-- 6. COMPARAISON DES TROIS FIGURES -->
+  <div class="card">
+    <h2>6️⃣ Comparaison des trois figures</h2>
+    <div class="definition-mg">
+      <strong><span class="color-exemple">MÉTAPHORE</span></strong> → fampitahana <strong>tsy misy "comme"</strong><br>
+      Ohatra : <em>Il est un <span class="color-exemple">lion</span>.</em><br><br>
+      
+      <strong><span class="color-exemple">COMPARAISON</span></strong> → fampitahana <strong>misy "comme"</strong><br>
+      Ohatra : <em>Il est <span class="color-exemple">fort comme un lion</span>.</em><br><br>
+      
+      <strong><span class="color-exemple">PERSONNIFICATION</span></strong> → manome <strong>toetra maha-olona</strong><br>
+      Ohatra : <em>Le vent <span class="color-exemple">chante</span>.</em>
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MÉTAPHORE : Il est un <span class="color-exemple">lion</span>. (Tsy misy "comme".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">COMPARAISON : Il est <span class="color-exemple">fort comme un lion</span>. (Misy "comme".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PERSONNIFICATION : Le vent <span class="color-exemple">chante</span>. (Manome toetra maha-olona.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-propre">SENS PROPRE</span></strong> → hevitra tena (littéral)<br>
+      Ohatra : <em>Il mange une pomme.</em><br><br>
+      
+      <strong>2. <span class="color-figure">SENS FIGURÉ</span></strong> → hevitra an'ohatra (figuratif)<br>
+      Ohatra : <em>Il dévore un livre.</em><br><br>
+      
+      <strong>3. <span class="color-exemple">MÉTAPHORE</span></strong> → tsy misy "comme"<br>
+      Ohatra : <em>Il est un lion.</em><br><br>
+      
+      <strong>4. <span class="color-exemple">COMPARAISON</span></strong> → misy "comme"<br>
+      Ohatra : <em>Il est fort comme un lion.</em><br><br>
+      
+      <strong>5. <span class="color-exemple">PERSONNIFICATION</span></strong> → manome toetra maha-olona<br>
+      Ohatra : <em>Le vent chante.</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-propre">sens propre</span> dia ny <strong>hevitra tena</strong> (concret) amin'ny teny iray.</li>
+        <li>Ny <span class="color-figure">sens figuré</span> dia ny <strong>hevitra an'ohatra</strong> (imagé) amin'ny teny iray.</li>
+        <li>Ny <span class="color-exemple">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>.</li>
+        <li>Ny <span class="color-exemple">comparaison</span> dia fampitahana <strong>misy "comme"</strong>.</li>
+        <li>Ny <span class="color-exemple">personnification</span> dia <strong>manome toetra maha-olona</strong> amin'ny zavatra tsy olona.</li>
+        <li>Zava-dehibe ny mahafantatra ny <strong>fahasamihafana</strong> eo amin'ny sens propre sy sens figuré.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny sens propre sy sens figuré dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fampiasana ny teny frantsay. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny sens propre sy sens figuré.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

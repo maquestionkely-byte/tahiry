@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Négation – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les négations */
+    .color-pas {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-plus {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-jamais {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-ni {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-personne {
+      background-color: #6ee7b7;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-rien {
+      background-color: #c084fc;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>NÉGATION</h1>
+  </div>
+
+  <!-- Carte : Inona ny négation ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "négation" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>négation</strong> dia ampiasaina <strong>handavana</strong> na <strong>hamaritana tsy fisian'ny zavatra</strong> iray. Mitovy amin'ny hoe <strong>"tsy"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Amin'ny teny frantsay, ny négation dia matetika misy <strong>roa sosona</strong> :<br><br>
+      <span class="icone">🚫</span> <strong>ne...pas</strong> → tsy (négation simple)<br><br>
+      <span class="icone">🚫</span> <strong>ne...plus</strong> → tsy... intsony (négation de continuation)<br><br>
+      <span class="icone">🚫</span> <strong>ne...jamais</strong> → tsy... mihitsy (négation de temps)<br><br>
+      <span class="icone">🚫</span> <strong>ne...ni...ni</strong> → tsy... na... na (négation de deux éléments)<br><br>
+      <span class="icone">🚫</span> <strong>ne...personne</strong> → tsy misy olona (négation de personne)<br><br>
+      <span class="icone">🚫</span> <strong>ne...rien</strong> → tsy misy zavatra (négation de chose)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Négation</th>
+            <th>Famaritana malagasy</th>
+            <th>Fampiasana</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-pas">NE...PAS</span></td>
+            <td>tsy</td>
+            <td>Négation simple</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-plus">NE...PLUS</span></td>
+            <td>tsy... intsony</td>
+            <td>Négation de continuation</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jamais">NE...JAMAIS</span></td>
+            <td>tsy... mihitsy</td>
+            <td>Négation de temps (jamais)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-ni">NE...NI...NI</span></td>
+            <td>tsy... na... na</td>
+            <td>Négation de deux éléments</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-personne">NE...PERSONNE</span></td>
+            <td>tsy misy olona</td>
+            <td>Négation de personne</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-rien">NE...RIEN</span></td>
+            <td>tsy misy zavatra</td>
+            <td>Négation de chose</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLE IMPORTANTE :</strong><br><br>
+      • Ny <strong>ne</strong> dia apetraka <strong>alohan'ny verbe</strong>.<br>
+      • Ny <strong>deuxième partie</strong> (pas, plus, jamais, rien, personne, ni...ni) dia apetraka <strong>aorian'ny verbe</strong>.<br>
+      • Ny <strong>ne</strong> dia miova ho <strong>n'</strong> alohan'ny zanatsoratra.<br>
+      • Amin'ny fomba andavanandro (langage familier), matetika ny <strong>"ne"</strong> dia <strong>tsy voatonona</strong> intsony, fa ny deuxième partie ihany no ampiasaina.<br>
+      Ohatra : <em>Je sais pas</em> (fa tsy <em>Je ne sais pas</em>).
+    </div>
+  </div>
+
+  <!-- 1. NE...PAS - Négation simple -->
+  <div class="card">
+    <h2>1️⃣ NE...PAS (tsy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...pas"</strong> dia négation <strong>tsotra indrindra</strong> ampiasaina handavana zavatra. Mitovy amin'ny hoe <strong>"tsy"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + pas + complément</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne parle pas français. (Tsy miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle ne mange pas de viande. (Tsy mihinana hena izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous ne sommes pas fatigués. (Tsy vizana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il n'a pas de voiture. (Tsy manana fiara izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. NE...PLUS - Négation de continuation -->
+  <div class="card">
+    <h2>2️⃣ NE...PLUS (tsy... intsony)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...plus"</strong> dia ampiasaina hilazana fa <strong>tsy mitohy intsony</strong> ny zavatra iray. Mitovy amin'ny hoe <strong>"tsy... intsony"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + plus + complément</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne fume plus. (Tsy mifoka intsony aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle ne travaille plus ici. (Tsy miasa intsony eto izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous ne mangeons plus de chocolat. (Tsy mihinana sôkôla intsony izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il n'a plus d'argent. (Tsy manana vola intsony izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. NE...JAMAIS - Négation de temps -->
+  <div class="card">
+    <h2>3️⃣ NE...JAMAIS (tsy... mihitsy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...jamais"</strong> dia ampiasaina hilazana fa <strong>tsy mbola nisy na tsy hisy mihitsy</strong> ny zavatra iray. Mitovy amin'ny hoe <strong>"tsy... mihitsy"</strong> na <strong>"tsy... velively"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + jamais + complément</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne voyage jamais. (Tsy mandehandeha mihitsy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle n'a jamais menti. (Tsy nandainga mihitsy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous ne mangeons jamais de viande. (Tsy mihinana hena mihitsy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il n'est jamais en retard. (Tsy tara mihitsy izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. NE...NI...NI - Négation de deux éléments -->
+  <div class="card">
+    <h2>4️⃣ NE...NI...NI (tsy... na... na)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...ni...ni"</strong> dia ampiasaina handavana <strong>zavatra roa</strong> na <strong>olona roa</strong>. Mitovy amin'ny hoe <strong>"tsy... na... na"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + ni + élément1 + ni + élément2</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je n'aime ni le café ni le thé. (Tsy tia kafe na dite aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle ne mange ni viande ni poisson. (Tsy mihinana hena na trondro izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous n'avons ni frère ni sœur. (Tsy manana rahalahy na rahavavy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il ne boit ni eau ni jus. (Tsy misotro rano na ranom-boankazo izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. NE...PERSONNE - Négation de personne -->
+  <div class="card">
+    <h2>5️⃣ NE...PERSONNE (tsy misy olona)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...personne"</strong> dia ampiasaina hilazana fa <strong>tsy misy olona</strong> manao zavatra. Mitovy amin'ny hoe <strong>"tsy misy olona"</strong> na <strong>"tsy misy"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + personne</em><br>
+      (Rehefa "personne" no sujet, dia : <em>Personne + ne + verbe + ...</em>)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne vois personne. (Tsy mahita olona aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Personne n'est venu. (Tsy nisy olona tonga.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle n'aime personne. (Tsy tia olona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Personne ne parle. (Tsy misy miteny.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa "personne" no <strong>sujet</strong> (mpanao), dia apetraka eo am-piandohana izy ary arahin'ny <strong>ne</strong> + verbe.<br>
+      Ohatra : <em>Personne ne sait.</em> (Tsy misy mahalala.)
+    </div>
+  </div>
+
+  <!-- 6. NE...RIEN - Négation de chose -->
+  <div class="card">
+    <h2>6️⃣ NE...RIEN (tsy misy zavatra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ne...rien"</strong> dia ampiasaina hilazana fa <strong>tsy misy zavatra</strong> na <strong>tsy manao na inona na inona</strong>. Mitovy amin'ny hoe <strong>"tsy misy"</strong> na <strong>"tsy... na inona na inona"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>Sujet + ne + verbe + rien</em><br>
+      (Rehefa "rien" no sujet, dia : <em>Rien + ne + verbe + ...</em>)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne vois rien. (Tsy mahita na inona na inona aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Rien n'est impossible. (Tsy misy tsy azo atao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle n'a rien mangé. (Tsy nihinana na inona na inona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il ne dit rien. (Tsy miteny na inona na inona izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa "rien" no <strong>sujet</strong> (mpanao), dia apetraka eo am-piandohana izy ary arahin'ny <strong>ne</strong> + verbe.<br>
+      Ohatra : <em>Rien ne change.</em> (Tsy misy miova.)
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES NÉGATIONS ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny négations</h2>
+    <div class="definition-mg">
+      <strong><span class="color-pas">NE...PAS</span></strong> → tsy (négation simple)<br>
+      Ohatra : Je ne mange pas. (Tsy mihinana aho.)<br><br>
+      
+      <strong><span class="color-plus">NE...PLUS</span></strong> → tsy... intsony (négation de continuation)<br>
+      Ohatra : Je ne mange plus. (Tsy mihinana intsony aho.)<br><br>
+      
+      <strong><span class="color-jamais">NE...JAMAIS</span></strong> → tsy... mihitsy (négation de temps)<br>
+      Ohatra : Je ne mange jamais. (Tsy mihinana mihitsy aho.)<br><br>
+      
+      <strong><span class="color-ni">NE...NI...NI</span></strong> → tsy... na... na (négation de deux éléments)<br>
+      Ohatra : Je ne mange ni viande ni poisson. (Tsy mihinana hena na trondro aho.)<br><br>
+      
+      <strong><span class="color-personne">NE...PERSONNE</span></strong> → tsy misy olona (négation de personne)<br>
+      Ohatra : Je ne vois personne. (Tsy mahita olona aho.)<br><br>
+      
+      <strong><span class="color-rien">NE...RIEN</span></strong> → tsy misy zavatra (négation de chose)<br>
+      Ohatra : Je ne vois rien. (Tsy mahita na inona na inona aho.)
+    </div>
+  </div>
+
+  <!-- ==================== POSITION DES NÉGATIONS ==================== -->
+  <div class="card">
+    <h2>📌 Position des négations dans la phrase</h2>
+    <div class="definition-mg">
+      <strong>Règles de position :</strong><br><br>
+      
+      <strong>1. Avec un temps simple (présent, imparfait, futur) :</strong><br>
+      <em>ne + verbe + pas/plus/jamais/rien/personne</em><br>
+      Ohatra : Je <strong>ne</strong> mange <strong>pas</strong>.<br><br>
+      
+      <strong>2. Avec un temps composé (passé composé) :</strong><br>
+      <em>ne + auxiliaire + pas/plus/jamais/rien/personne + participe passé</em><br>
+      Ohatra : Je <strong>n'</strong>ai <strong>pas</strong> mangé.<br><br>
+      
+      <strong>3. Avec "ni...ni" :</strong><br>
+      <em>ne + verbe + ni + élément1 + ni + élément2</em><br>
+      Ohatra : Je <strong>ne</strong> mange <strong>ni</strong> viande <strong>ni</strong> poisson.<br><br>
+      
+      <strong>4. Avec "personne" ou "rien" comme sujet :</strong><br>
+      <em>Personne/Rien + ne + verbe + ...</em><br>
+      Ohatra : <strong>Personne</strong> n'est venu. / <strong>Rien</strong> n'est impossible.
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny négation amin'ny teny frantsay dia matetika <strong>roa sosona</strong> (ne...pas, ne...plus, etc.).</li>
+        <li>Apetraka <strong>alohan'ny verbe</strong> ny "ne" ary <strong>aorian'ny verbe</strong> ny deuxième partie.</li>
+        <li>Miova ho <strong>n'</strong> ny "ne" alohan'ny zanatsoratra.</li>
+        <li>Rehefa <strong>passé composé</strong> dia apetraka eo anelanelan'ny auxiliaire sy ny participe passé ny négation.</li>
+        <li>Rehefa <strong>"personne"</strong> na <strong>"rien"</strong> no sujet (mpanao), dia apetraka eo am-piandohana izy ireo.</li>
+        <li>Amin'ny fomba andavanandro (familier), ny "ne" dia matetika <strong>tsy voatonona</strong> (Je sais pas, J'ai pas mangé).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny feon'ny négations tsirairay.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny négation dia tena ilaina amin'ny resaka andavanandro rehefa <strong>mandà</strong> zavatra. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny négation.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

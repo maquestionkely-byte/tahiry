@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Adjectif vs Adverbe – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs */
+    .color-adjectif {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-adverbe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ADJECTIF vs ADVERBE</h1>
+  </div>
+
+  <!-- Carte : Inona ny adjectif sy adverbe ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "adjectif" sy "adverbe" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>adjectif</strong> sy ny <strong>adverbe</strong> dia samy <strong>mamaritra</strong> zavatra, fa <strong>tsy mitovy</strong> ny zavatra iadidiany.<br><br>
+      🔹 <span class="color-adjectif">ADJECTIF</span> → mamaritra ny <strong>anarana (nom)</strong> na ny <strong>pronom</strong>.<br>
+      Ohatra : <em>un <strong>grand</strong> arbre</em> (hazo <strong>lehibe</strong>)<br><br>
+      🔹 <span class="color-adverbe">ADVERBE</span> → mamaritra ny <strong>verbe</strong>, ny <strong>adjectif</strong>, na ny <strong>adverbe hafa</strong>.<br>
+      Ohatra : <em>Il court <strong>vite</strong></em> (Mihazakazaka <strong>haingana</strong> izy)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Catégorie</th>
+            <th><span class="color-adjectif">ADJECTIF</span></th>
+            <th><span class="color-adverbe">ADVERBE</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Inona no iadidiany?</td>
+            <td>Anarana (nom) / Pronom</td>
+            <td>Verbe / Adjectif / Adverbe</td>
+          </tr>
+          <tr class="categorie">
+            <td>Miova ve izy?</td>
+            <td>Oui (s'accorde en genre et nombre)</td>
+            <td>Non (invariable)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Toerana (position)</td>
+            <td>Eo akaikin'ny anarana (aloha na aoriany)</td>
+            <td>Aorian'ny verbe na alohan'ny adjectif</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ohatra</td>
+            <td>un <strong>grand</strong> arbre</td>
+            <td>Il court <strong>vite</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 DIFFERENCE ESSENTIELLE :</strong><br><br>
+      • <span class="color-adjectif">ADJECTIF</span> → mamaritra ny <strong>anarana</strong>.<br>
+      Ohatra : <em>une <strong>belle</strong> maison</em> (trano <strong>tsara</strong>)<br><br>
+      • <span class="color-adverbe">ADVERBE</span> → mamaritra ny <strong>verbe</strong>.<br>
+      Ohatra : <em>Elle chante <strong>bien</strong></em> (Mihira <strong>tsara</strong> izy)<br><br>
+      🔔 <strong>Tsarovy :</strong> Ny adjectif dia <strong>miova</strong> arakaraka ny anarana (genre et nombre), fa ny adverbe dia <strong>tsy miova</strong> (invariable).
+    </div>
+  </div>
+
+  <!-- 1. ADJECTIF - Mamaritra ny anarana -->
+  <div class="card">
+    <h2>1️⃣ ADJECTIF (mamaritra ny anarana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>adjectif</strong> dia mamaritra ny <strong>anarana (nom)</strong> na ny <strong>pronom</strong>. Izy io dia <strong>mifanaraka</strong> amin'ny anarana amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      <strong>Position :</strong> Eo akaikin'ny anarana (aloha na aoriany).<br><br>
+      <strong>Question :</strong> Quel ? Quelle ? Quels ? Quelles ? (Inona ny toetrany?)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>grand</strong> arbre. (Hazo <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>belle</strong> maison. (Trano <strong>tsara</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un garçon <strong>gentil</strong>. (Zazalahy <strong>tsara fanahy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une fille <strong>intelligente</strong>. (Zazavavy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des enfants <strong>heureux</strong>. (Ankizy <strong>faly</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des fleurs <strong>rouges</strong>. (Voninkazo <strong>mena</strong>.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif dia <strong>miova</strong> (grand, grande, grands, grandes) fa ny adverbe dia <strong>tsy miova</strong>.
+    </div>
+  </div>
+
+  <!-- 2. ADVERBE - Mamaritra ny verbe -->
+  <div class="card">
+    <h2>2️⃣ ADVERBE (mamaritra ny verbe)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>adverbe</strong> dia mamaritra ny <strong>verbe</strong>, ny <strong>adjectif</strong>, na ny <strong>adverbe hafa</strong>. Izy io dia <strong>tsy miova</strong> (invariable) na oviana na oviana.<br><br>
+      <strong>Position :</strong> Matetika aorian'ny verbe (maniére, lieu) na alohan'ny adjectif (quantité).<br><br>
+      <strong>Question :</strong> Comment ? Quand ? Où ? Combien ? (Ahoana? Oviana? Aiza? Firy?)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il court <strong>vite</strong>. (Mihazakazaka <strong>haingana</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle chante <strong>bien</strong>. (Mihira <strong>tsara</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il parle <strong>doucement</strong>. (Miteny <strong>mora</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle arrive <strong>demain</strong>. (Tonga <strong>rahampitso</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>ici</strong>. (Eto izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il mange <strong>beaucoup</strong>. (Mihinana <strong>be dia be</strong> izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adverbe dia <strong>tsy miova</strong> (vite, bien, doucement, demain, ici, beaucoup) — tsy misy "e" na "s" ampiana azy.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON ADJECTIF vs ADVERBE ==================== -->
+  <div class="card">
+    <h2>📌 Comparaison ADJECTIF vs ADVERBE</h2>
+    <div class="definition-mg">
+      <strong><span class="color-adjectif">ADJECTIF</span></strong> → mamaritra ny <strong>anarana</strong><br>
+      Ohatra : <em>C'est un <strong>bon</strong> élève.</em> (Mpianatra <strong>tsara</strong> izy.)<br><br>
+      
+      <strong><span class="color-adverbe">ADVERBE</span></strong> → mamaritra ny <strong>verbe</strong><br>
+      Ohatra : <em>Il chante <strong>bien</strong>.</em> (Mihira <strong>tsara</strong> izy.)<br><br>
+      
+      🔔 <strong>Marihina :</strong> Ny teny "bien" dia adverbe (tsy miova), fa "bon" dia adjectif (miova : bon, bonne, bons, bonnes).
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est un <strong>bon</strong> élève. (ADJECTIF - mamaritra ny anarana "élève".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il chante <strong>bien</strong>. (ADVERBE - mamaritra ny verbe "chante".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>grande</strong>. (ADJECTIF - mamaritra ny pronom "elle".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle grandit <strong>vite</strong>. (ADVERBE - mamaritra ny verbe "grandit".)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMMENT RECONNAÎTRE L'UN DE L'AUTRE ==================== -->
+  <div class="card">
+    <h2>📌 Comment reconnaître l'adjectif et l'adverbe ?</h2>
+    <div class="definition-mg">
+      <strong>Pour reconnaître un ADJECTIF :</strong><br>
+      • Il est <strong>à côté d'un nom</strong> (ou d'un pronom).<br>
+      • Il <strong>s'accorde</strong> en genre et en nombre avec le nom.<br>
+      • On peut le remplacer par un autre adjectif.<br>
+      Ohatra : <em>une <strong>belle</strong> maison</em> → "belle" mamaritra "maison"<br><br>
+      
+      <strong>Pour reconnaître un ADVERBE :</strong><br>
+      • Il est <strong>à côté d'un verbe</strong>, d'un adjectif ou d'un autre adverbe.<br>
+      • Il est <strong>invariable</strong> (tsy miova).<br>
+      • On peut le remplacer par un autre adverbe.<br>
+      Ohatra : <em>Il parle <strong>doucement</strong></em> → "doucement" mamaritra "parle"
+    </div>
+  </div>
+
+  <!-- ==================== ERREURS COURANTES ==================== -->
+  <div class="card">
+    <h2>📌 Erreurs courantes à éviter</h2>
+    <div class="definition-mg">
+      <strong>❌ Erreur 1 :</strong> Mampiasa adjectif fa tsy adverbe<br>
+      <em>✗ Il chante <strong>bon</strong>.</em> → <em>✓ Il chante <strong>bien</strong>.</em><br>
+      (Satria "chante" dia verbe, ilay adverbe "bien" no ilaina.)<br><br>
+      
+      <strong>❌ Erreur 2 :</strong> Mampiasa adverbe fa tsy adjectif<br>
+      <em>✗ C'est un <strong>bien</strong> élève.</em> → <em>✓ C'est un <strong>bon</strong> élève.</em><br>
+      (Satria "élève" dia anarana, ilay adjectif "bon" no ilaina.)<br><br>
+      
+      <strong>❌ Erreur 3 :</strong> Mampiasa adverbe fa tsy adjectif avec "être"<br>
+      <em>✗ Elle est <strong>bien</strong>.</em> → <em>✓ Elle est <strong>belle</strong>.</em><br>
+      (Satria "est" dia verbe d'état, ary "elle" dia pronom, ka ilay adjectif no ilaina.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Correction des erreurs
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il chante <strong>bien</strong>. (ADVERBE - mamaritra ny verbe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est un <strong>bon</strong> élève. (ADJECTIF - mamaritra ny anarana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>belle</strong>. (ADJECTIF - mamaritra ny pronom.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ADJECTIFS ET ADVERBES COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Adjectifs et adverbes courants</h2>
+    <div class="definition-mg">
+      <strong>ADJECTIF → ADVERBE :</strong><br>
+      • <strong>bon</strong> (tsara) → <strong>bien</strong> (tsara - mamaritra ny verbe)<br>
+      • <strong>mauvais</strong> (ratsy) → <strong>mal</strong> (ratsy - mamaritra ny verbe)<br>
+      • <strong>rapide</strong> (haingana) → <strong>vite</strong> (haingana - mamaritra ny verbe)<br>
+      • <strong>facile</strong> (mora) → <strong>facilement</strong> (mora - mamaritra ny verbe)<br>
+      • <strong>lent</strong> (mora) → <strong>lentement</strong> (mora - mamaritra ny verbe)<br><br>
+      
+      <strong>Ohatra amin'ny fehezanteny :</strong><br>
+      • <em>Un <strong>bon</strong> repas.</em> (Sakafo <strong>tsara</strong> - ADJECTIF)<br>
+      • <em>Il mange <strong>bien</strong>.</em> (Mihinana <strong>tsara</strong> izy - ADVERBE)<br>
+      • <em>Une <strong>rapide</strong> réponse.</em> (Valiny <strong>haingana</strong> - ADJECTIF)<br>
+      • <em>Il répond <strong>vite</strong>.</em> (Mamaly <strong>haingana</strong> izy - ADVERBE)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>adjectif</strong> dia mamaritra ny <strong>anarana</strong> (nom) na ny <strong>pronom</strong>.</li>
+        <li>Ny <strong>adverbe</strong> dia mamaritra ny <strong>verbe</strong>, ny <strong>adjectif</strong>, na ny <strong>adverbe hafa</strong>.</li>
+        <li>Ny adjectif dia <strong>miova</strong> (s'accorde) fa ny adverbe dia <strong>tsy miova</strong> (invariable).</li>
+        <li>Raha <strong>anarana</strong> no iadidiany → <strong>adjectif</strong>.</li>
+        <li>Raha <strong>verbe</strong> no iadidiany → <strong>adverbe</strong>.</li>
+        <li>Amin'ny <strong>"être"</strong> dia adjectif no ilaina (tsy adverbe).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny fahasamihafana eo amin'ny adjectif sy adverbe dia tena ilaina mba ho <strong>mazava</strong> ny fehezanteny. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny adjectif sy adverbe.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

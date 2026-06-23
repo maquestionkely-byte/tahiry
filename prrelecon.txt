@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Proposition relative – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les pronoms relatifs */
+    .color-qui {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-que {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-ou {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-dont {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PROPOSITION RELATIVE</h1>
+  </div>
+
+  <!-- Carte : Inona ny proposition relative ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "proposition relative" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>proposition relative</strong> dia fehezanteny (proposition) izay <strong>mamaritra</strong> ny anarana (nom) na ny pronom teo alohany.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"izay"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Misy <strong>pronom relatif</strong> (mpamari-toetra) izay manomboka azy :<br><br>
+      <span class="icone">📌</span> <span class="color-qui">QUI</span> → misolo ny <strong>sujet</strong> (mpanao)<br>
+      Ohatra : <em>L'homme <span class="color-qui">qui</span> parle est mon père.</em> (Ilay lehilahy <span class="color-qui">izay</span> miteny dia raiko.)<br><br>
+      <span class="icone">📌</span> <span class="color-que">QUE</span> → misolo ny <strong>COD</strong> (Complément d'Objet Direct)<br>
+      Ohatra : <em>Le livre <span class="color-que">que</span> je lis est intéressant.</em> (Ilay boky <span class="color-que">izay</span> vakiko dia mahaliana.)<br><br>
+      <span class="icone">📌</span> <span class="color-ou">OÙ</span> → misolo ny <strong>lieu</strong> (toerana) na le <strong>temps</strong> (fotoana)<br>
+      Ohatra : <em>La maison <span class="color-ou">où</span> j'habite est grande.</em> (Ilay trano <span class="color-ou">izay</span> ipetrahako dia lehibe.)<br><br>
+      <span class="icone">📌</span> <span class="color-dont">DONT</span> → misolo ny <strong>de + nom</strong> (COI - Complément d'Objet Indirect)<br>
+      Ohatra : <em>Le livre <span class="color-dont">dont</span> je parle est intéressant.</em> (Ilay boky <span class="color-dont">izay</span> resahiko dia mahaliana.)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Pronom relatif</th>
+            <th>Fonction</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-qui">QUI</span></td>
+            <td>Sujet (mpanao)</td>
+            <td>izay (mpanao)</td>
+            <td>L'homme qui parle.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-que">QUE</span></td>
+            <td>COD</td>
+            <td>izay (mpamari-toetra)</td>
+            <td>Le livre que je lis.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-ou">OÙ</span></td>
+            <td>Lieu / Temps</td>
+            <td>izay (toerana/fotoana)</td>
+            <td>La maison où j'habite.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dont">DONT</span></td>
+            <td>de + nom (COI)</td>
+            <td>izay (de + nom)</td>
+            <td>Le livre dont je parle.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-qui">QUI</span> dia misolo ny <strong>sujet</strong> (mpanao). Aoriany dia misy <strong>verbe</strong>.<br>
+      Ohatra : <em>L'homme <span class="color-qui">qui</span> <strong>parle</strong>.</em><br><br>
+      • Ny <span class="color-que">QUE</span> dia misolo ny <strong>COD</strong>. Aoriany dia misy <strong>sujet + verbe</strong>.<br>
+      Ohatra : <em>Le livre <span class="color-que">que</span> <strong>je lis</strong>.</em><br><br>
+      • Ny <span class="color-ou">OÙ</span> dia misolo ny <strong>lieu</strong> (toerana) na <strong>temps</strong> (fotoana).<br>
+      Ohatra : <em>La maison <span class="color-ou">où</span> <strong>j'habite</strong>.</em><br><br>
+      • Ny <span class="color-dont">DONT</span> dia misolo ny <strong>de + nom</strong>. Manolo ny <strong>COI</strong> (Complément d'Objet Indirect).<br>
+      Ohatra : <em>Le livre <span class="color-dont">dont</span> <strong>je parle</strong>.</em>
+    </div>
+  </div>
+
+  <!-- 1. QUI - Sujet -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-qui">QUI</span> (sujet - mpanao)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-qui">QUI</span> dia ampiasaina hisolo ny <strong>sujet</strong> (mpanao) ao amin'ny proposition relative.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-qui">QUI</span> + <strong>verbe</strong> (miaraka amin'ny sujet)<br>
+      • Manondro olona na zavatra<br>
+      Ohatra : <em>L'homme <span class="color-qui">qui</span> parle.</em> (Ilay lehilahy <span class="color-qui">izay</span> miteny.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'homme <span class="color-qui">qui</span> parle est mon père. (Ilay lehilahy <span class="color-qui">izay</span> miteny dia raiko.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La femme <span class="color-qui">qui</span> chante est chanteuse. (Ilay vehivavy <span class="color-qui">izay</span> mihira dia mpihira.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat <span class="color-qui">qui</span> dort est noir. (Ilay saka <span class="color-qui">izay</span> matory dia mainty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La voiture <span class="color-qui">qui</span> est rouge est à moi. (Ilay fiara <span class="color-qui">izay</span> mena dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les enfants <span class="color-qui">qui</span> jouent sont heureux. (Ireo ankizy <span class="color-qui">izay</span> milalao dia faly.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> <span class="color-qui">QUI</span> + <strong>verbe</strong>. <span class="color-qui">QUI</span> dia misolo ny <strong>sujet</strong> (mpanao).
+    </div>
+  </div>
+
+  <!-- 2. QUE - COD -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-que">QUE</span> (COD)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-que">QUE</span> dia ampiasaina hisolo ny <strong>COD</strong> (Complément d'Objet Direct) ao amin'ny proposition relative.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-que">QUE</span> + <strong>sujet + verbe</strong><br>
+      • Manondro olona na zavatra<br>
+      • Miova ho <span class="color-que">QU'</span> alohan'ny zanatsoratra<br>
+      Ohatra : <em>Le livre <span class="color-que">que</span> je lis.</em> (Ilay boky <span class="color-que">izay</span> vakiko.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre <span class="color-que">que</span> je lis est intéressant. (Ilay boky <span class="color-que">izay</span> vakiko dia mahaliana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La chanson <span class="color-que">qu'</span>elle chante est belle. (Ilay hira <span class="color-que">izay</span> hihirany dia tsara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le film <span class="color-que">que</span> nous avons vu est bon. (Ilay sarimihetsika <span class="color-que">izay</span> hitanay dia tsara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La pomme <span class="color-que">que</span> tu manges est rouge. (Ilay paoma <span class="color-que">izay</span> haninao dia mena.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les amis <span class="color-que">que</span> j'ai sont gentils. (Ireo namana <span class="color-que">izay</span> ananako dia tsara fanahy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> <span class="color-que">QUE</span> + <strong>sujet + verbe</strong>. <span class="color-que">QUE</span> dia misolo ny <strong>COD</strong>.
+    </div>
+  </div>
+
+  <!-- 3. OÙ - Lieu / Temps -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-ou">OÙ</span> (lieu / temps)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-ou">OÙ</span> dia ampiasaina hisolo ny <strong>lieu</strong> (toerana) na ny <strong>temps</strong> (fotoana) ao amin'ny proposition relative.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-ou">OÙ</span> + <strong>sujet + verbe</strong><br>
+      • Manondro toerana na fotoana<br>
+      Ohatra : <em>La maison <span class="color-ou">où</span> j'habite.</em> (Ilay trano <span class="color-ou">izay</span> ipetrahako.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (lieu)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La maison <span class="color-ou">où</span> j'habite est grande. (Ilay trano <span class="color-ou">izay</span> ipetrahako dia lehibe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le village <span class="color-ou">où</span> je suis né est petit. (Ilay tanàna <span class="color-ou">izay</span> nahaterahako dia kely.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'école <span class="color-ou">où</span> elle travaille est moderne. (Ilay sekoly <span class="color-ou">izay</span> iasany dia maoderina.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (temps)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le jour <span class="color-ou">où</span> je suis arrivé était beau. (Ilay andro <span class="color-ou">izay</span> nahatongavako dia tsara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'année <span class="color-ou">où</span> je suis né est 1990. (Ilay taona <span class="color-ou">izay</span> nahaterahako dia 1990.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le moment <span class="color-ou">où</span> il est parti était triste. (Ilay fotoana <span class="color-ou">izay</span> nialany dia mampalahelo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> <span class="color-ou">OÙ</span> dia misolo ny <strong>lieu</strong> (toerana) na <strong>temps</strong> (fotoana).
+    </div>
+  </div>
+
+  <!-- 4. DONT - De + nom (COI) -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-dont">DONT</span> (de + nom - COI)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-dont">DONT</span> dia ampiasaina hisolo ny <strong>de + nom</strong> (COI - Complément d'Objet Indirect) ao amin'ny proposition relative.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-dont">DONT</span> + <strong>sujet + verbe</strong><br>
+      • Manondro ny zavatra resahina (parler de), ilaina (avoir besoin de), etc.<br>
+      Ohatra : <em>Le livre <span class="color-dont">dont</span> je parle.</em> (Ilay boky <span class="color-dont">izay</span> resahiko.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre <span class="color-dont">dont</span> je parle est intéressant. (Ilay boky <span class="color-dont">izay</span> resahiko dia mahaliana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La personne <span class="color-dont">dont</span> tu as besoin est là. (Ilay olona <span class="color-dont">izay</span> ilainao dia eo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le projet <span class="color-dont">dont</span> nous parlons est important. (Ilay tetikasa <span class="color-dont">izay</span> resahintsika dia zava-dehibe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La chose <span class="color-dont">dont</span> j'ai peur est le bruit. (Ilay zavatra <span class="color-dont">izay</span> ahatahorako dia ny tabataba.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le cadeau <span class="color-dont">dont</span> elle a rêvé est magnifique. (Ilay fanomezana <span class="color-dont">izay</span> nofinofisiny dia tena tsara.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> <span class="color-dont">DONT</span> dia misolo ny <strong>de + nom</strong> (parler de, avoir besoin de, avoir peur de, rêver de, etc.).
+    </div>
+  </div>
+
+  <!-- 5. COMPARAISON DES PRONOMS RELATIFS -->
+  <div class="card">
+    <h2>5️⃣ Comparaison des pronoms relatifs</h2>
+    <div class="definition-mg">
+      <strong><span class="color-qui">QUI</span></strong> → sujet (mpanao)<br>
+      Ohatra : <em>L'homme <span class="color-qui">qui</span> parle.</em><br><br>
+      
+      <strong><span class="color-que">QUE</span></strong> → COD<br>
+      Ohatra : <em>Le livre <span class="color-que">que</span> je lis.</em><br><br>
+      
+      <strong><span class="color-ou">OÙ</span></strong> → lieu / temps<br>
+      Ohatra : <em>La maison <span class="color-ou">où</span> j'habite.</em><br><br>
+      
+      <strong><span class="color-dont">DONT</span></strong> → de + nom (COI)<br>
+      Ohatra : <em>Le livre <span class="color-dont">dont</span> je parle.</em>
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-qui">QUI</span> : La femme <span class="color-qui">qui</span> chante est ma mère. (Ilay vehivavy <span class="color-qui">izay</span> mihira dia reniko.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-que">QUE</span> : La chanson <span class="color-que">qu'</span>elle chante est belle. (Ilay hira <span class="color-que">izay</span> hihirany dia tsara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-ou">OÙ</span> : La salle <span class="color-ou">où</span> elle chante est grande. (Ilay efitrano <span class="color-ou">izay</span> ihirany dia lehibe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-dont">DONT</span> : La chanson <span class="color-dont">dont</span> elle parle est nouvelle. (Ilay hira <span class="color-dont">izay</span> resahiny dia vaovao.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. RÉSUMÉ DES RÈGLES -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-qui">QUI</span></strong> → sujet (mpanao)<br>
+      • Structure : <em>nom + <span class="color-qui">QUI</span> + verbe</em><br>
+      Ohatra : <em>L'homme qui parle.</em><br><br>
+      
+      <strong>2. <span class="color-que">QUE</span></strong> → COD<br>
+      • Structure : <em>nom + <span class="color-que">QUE</span> + sujet + verbe</em><br>
+      Ohatra : <em>Le livre que je lis.</em><br><br>
+      
+      <strong>3. <span class="color-ou">OÙ</span></strong> → lieu / temps<br>
+      • Structure : <em>nom + <span class="color-ou">OÙ</span> + sujet + verbe</em><br>
+      Ohatra : <em>La maison où j'habite.</em><br><br>
+      
+      <strong>4. <span class="color-dont">DONT</span></strong> → de + nom (COI)<br>
+      • Structure : <em>nom + <span class="color-dont">DONT</span> + sujet + verbe</em><br>
+      Ohatra : <em>Le livre dont je parle.</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-qui">QUI</span> dia misolo ny <strong>sujet</strong> (mpanao).</li>
+        <li>Ny <span class="color-que">QUE</span> dia misolo ny <strong>COD</strong>.</li>
+        <li>Ny <span class="color-ou">OÙ</span> dia misolo ny <strong>lieu</strong> (toerana) na <strong>temps</strong> (fotoana).</li>
+        <li>Ny <span class="color-dont">DONT</span> dia misolo ny <strong>de + nom</strong> (COI).</li>
+        <li>Raha misy <strong>verbe</strong> aorian'ny pronom relatif → <span class="color-qui">QUI</span>.</li>
+        <li>Raha misy <strong>sujet + verbe</strong> aorian'ny pronom relatif → <span class="color-que">QUE</span>, <span class="color-ou">OÙ</span>, na <span class="color-dont">DONT</span>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny pronoms relatifs dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fehezanteny. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny proposition relative.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

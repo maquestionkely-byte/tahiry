@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Les prépositions – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les prépositions */
+    .color-prep {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>LES PRÉPOSITIONS</h1>
+  </div>
+
+  <!-- Carte : Inona ny préposition ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "préposition" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>préposition</strong> dia teny tsy miova izay <strong>mampifandray</strong> ny anarana (nom) na ny pronom amin'ny teny hafa ao amin'ny fehezanteny.<br><br>
+      🔹 Mampiseho ny <strong>fifandraisan'ny</strong> zavatra amin'ny toerana, fotoana, fomba, tanjona, sns.<br><br>
+      🔹 Ireto ny prépositions tena ilaina :<br><br>
+      <span class="color-prep">à</span> → amin'ny, ho any<br><br>
+      <span class="color-prep">chez</span> → ao aminy, any amin'ny<br><br>
+      <span class="color-prep">de</span> → avy any, an'ny, momba<br><br>
+      <span class="color-prep">pour</span> → ho an'ny, mba<br><br>
+      <span class="color-prep">sur</span> → eo ambony<br><br>
+      <span class="color-prep">sous</span> → eo ambany<br><br>
+      <span class="color-prep">dans</span> → ao anaty<br><br>
+      <span class="color-prep">avec</span> → miaraka amin'ny<br><br>
+      <span class="color-prep">sans</span> → tsy misy
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Préposition</th>
+            <th>Famaritana malagasy</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-prep">à</span></td>
+            <td>amin'ny, ho any, ao</td>
+            <td>Je vais à l'école.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">chez</span></td>
+            <td>ao aminy, any amin'ny</td>
+            <td>Je vais chez Paul.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">de</span></td>
+            <td>avy any, an'ny, momba</td>
+            <td>Je viens de France.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">pour</span></td>
+            <td>ho an'ny, mba</td>
+            <td>C'est pour toi.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">sur</span></td>
+            <td>eo ambony</td>
+            <td>Le livre est sur la table.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">sous</span></td>
+            <td>eo ambany</td>
+            <td>Le chat est sous la chaise.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">dans</span></td>
+            <td>ao anaty</td>
+            <td>Il est dans la maison.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">avec</span></td>
+            <td>miaraka amin'ny</td>
+            <td>Je viens avec toi.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prep">sans</span></td>
+            <td>tsy misy</td>
+            <td>Il sort sans moi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== 1. LA PRÉPOSITION "À" ==================== -->
+  <div class="card">
+    <h2>1️⃣ La préposition "À"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"à"</strong> dia ampiasaina hilazana :<br>
+      • <strong>Toerana</strong> (any amin'ny) : Je vais <strong>à</strong> la plage.<br>
+      • <strong>Fotoana</strong> (amin'ny) : Je me lève <strong>à</strong> 7 heures.<br>
+      • <strong>Fomba</strong> : Il écrit <strong>à</strong> la main.<br>
+      • <strong>Fanomezana</strong> : Je donne un cadeau <strong>à</strong> Marie.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais à l'école. (Mandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est à la maison. (Ao an-trano izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me lève à 7 heures. (Mifoha amin'ny 7 ora aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je donne un livre à Marie. (Manome boky ho an'i Marie aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il écrit à la main. (Manoratra amin'ny tanana izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "à" + "le" → "au" / "à" + "les" → "aux"<br>
+      Ohatra : Je vais <strong>au</strong> marché. / Je parle <strong>aux</strong> enfants.
+    </div>
+  </div>
+
+  <!-- ==================== 2. LA PRÉPOSITION "CHEZ" ==================== -->
+  <div class="card">
+    <h2>2️⃣ La préposition "CHEZ"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"chez"</strong> dia ampiasaina hilazana :<br>
+      • <strong>Toerana misy olona</strong> (ao aminy, any amin'ny) : Je vais <strong>chez</strong> Paul.<br>
+      • <strong>Toerana iasana</strong> : Elle travaille <strong>chez</strong> un médecin.<br>
+      • <strong>Firenena na foko</strong> : <strong>Chez</strong> les Malgaches.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais chez Pierre. (Mandeha any amin'i Pierre aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est chez le médecin. (Ao amin'ny dokotera izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous dînons chez des amis. (Misakafo hariva any amin'ny namana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Chez les Malgaches, on est accueillant. (Amin'ny Malagasy, dia faly mandray vahiny.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "chez" dia tsy arahin'ny "à" na "de". Ampiasaina irery ihany.
+    </div>
+  </div>
+
+  <!-- ==================== 3. LA PRÉPOSITION "DE" ==================== -->
+  <div class="card">
+    <h2>3️⃣ La préposition "DE"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"de"</strong> dia ampiasaina hilazana :<br>
+      • <strong>Ny niaviana</strong> (avy any) : Je viens <strong>de</strong> France.<br>
+      • <strong>Ny fananana</strong> (an'ny) : Le livre <strong>de</strong> Pierre.<br>
+      • <strong>Ny fomba</strong> : Il parle <strong>de</strong> son voyage.<br>
+      • <strong>Ny habetsahana</strong> : Un verre <strong>de</strong> lait.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens de Madagascar. (Avy any Madagasikara aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est la voiture de Marie. (Ity ny fiarani Marie.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il parle de son travail. (Miresaka ny asany izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je bois un verre de lait. (Misotro vera ronono aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre de Paul est sur la table. (Ny bokin'i Paul dia eo ambonin'ny latabatra.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "de" + "le" → "du" / "de" + "les" → "des"<br>
+      Ohatra : Je viens <strong>du</strong> marché. / Les livres <strong>des</strong> enfants.
+    </div>
+  </div>
+
+  <!-- ==================== 4. LA PRÉPOSITION "POUR" ==================== -->
+  <div class="card">
+    <h2>4️⃣ La préposition "POUR"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"pour"</strong> dia ampiasaina hilazana :<br>
+      • <strong>Ny tanjona</strong> (ho an'ny, mba) : C'est <strong>pour</strong> toi.<br>
+      • <strong>Ny fotoana</strong> : Je pars <strong>pour</strong> deux jours.<br>
+      • <strong>Ny fanehoana hevitra</strong> : Je vote <strong>pour</strong> lui.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce cadeau est pour toi. (Ity fanomezana ity dia ho anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je pars pour deux semaines. (Mandeha mandritra ny herinandro roa aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il travaille pour gagner de l'argent. (Miasa izy mba hahazoana vola.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je suis pour cette idée. (Manaiky ity hevitra ity aho.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. LA PRÉPOSITION "SUR" ==================== -->
+  <div class="card">
+    <h2>5️⃣ La préposition "SUR"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"sur"</strong> dia ampiasaina hilazana <strong>toerana eo ambony</strong> zavatra iray. Mitovy amin'ny hoe <strong>"eo ambony"</strong> amin'ny teny malagasy.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre est sur la table. (Ny boky dia eo ambonin'ny latabatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat dort sur le canapé. (Ny saka dia matory eo ambonin'ny seza lava.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a une photo sur le mur. (Misy sary eo ambonin'ny rindrina.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 6. LA PRÉPOSITION "SOUS" ==================== -->
+  <div class="card">
+    <h2>6️⃣ La préposition "SOUS"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"sous"</strong> dia ampiasaina hilazana <strong>toerana eo ambany</strong> zavatra iray. Mitovy amin'ny hoe <strong>"eo ambany"</strong> amin'ny teny malagasy.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat est sous la chaise. (Ny saka dia eo ambany ny seza.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre est sous la table. (Ny boky dia eo ambany ny latabatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il dort sous un arbre. (Matory eo ambany hazo izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 7. LA PRÉPOSITION "DANS" ==================== -->
+  <div class="card">
+    <h2>7️⃣ La préposition "DANS"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"dans"</strong> dia ampiasaina hilazana <strong>toerana ao anaty</strong> zavatra iray. Mitovy amin'ny hoe <strong>"ao anaty"</strong> amin'ny teny malagasy.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est dans la maison. (Ao anaty trano izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les livres sont dans le sac. (Ny boky dia ao anaty kitapo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais dans la chambre. (Mandeha any anaty efitrano aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "dans" dia ampiasaina ho an'ny toerana <strong>voafetra</strong> (ao anaty zavatra). "à" dia ampiasaina ho an'ny toerana <strong>malalaka</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== 8. LA PRÉPOSITION "AVEC" ==================== -->
+  <div class="card">
+    <h2>8️⃣ La préposition "AVEC"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"avec"</strong> dia ampiasaina hilazana <strong>fiarahana</strong> na <strong>fitaovana</strong>. Mitovy amin'ny hoe <strong>"miaraka amin'ny"</strong> amin'ny teny malagasy.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais au cinéma avec mes amis. (Mandeha any amin'ny sinema miaraka amin'ny sakaizako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle mange avec une fourchette. (Mihinana amin'ny forosety izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il parle avec son père. (Miresaka amin'ny rainy izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 9. LA PRÉPOSITION "SANS" ==================== -->
+  <div class="card">
+    <h2>9️⃣ La préposition "SANS"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"sans"</strong> dia ampiasaina hilazana <strong>tsy misy</strong> zavatra iray. Mitovy amin'ny hoe <strong>"tsy misy"</strong> amin'ny teny malagasy.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il sort sans son téléphone. (Mivoaka tsy misy findainy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je bois du café sans sucre. (Misotro kafe tsy misy siramamy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle part sans moi. (Mandeha tsy misy ahy izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉCAPITULATIF DES PRÉPOSITIONS AVEC LES PAYS ==================== -->
+  <div class="card">
+    <h2>📌 Prépositions avec les pays</h2>
+    <div class="definition-mg">
+      <strong>Règle importante :</strong><br><br>
+      🔹 <strong>À</strong> + pays <strong>féminin</strong> (terminé par -e) :<br>
+      Ohatra : Je vais <strong>en</strong> France. / Je vais <strong>en</strong> Italie.<br><br>
+      🔹 <strong>À</strong> + pays <strong>masculin</strong> (terminé par autre chose) :<br>
+      Ohatra : Je vais <strong>au</strong> Portugal. / Je vais <strong>au</strong> Brésil.<br><br>
+      🔹 <strong>À</strong> + pays <strong>pluriel</strong> :<br>
+      Ohatra : Je vais <strong>aux</strong> États-Unis.<br><br>
+      🔹 <strong>De</strong> + pays <strong>féminin</strong> :<br>
+      Ohatra : Je viens <strong>de</strong> France.<br><br>
+      🔹 <strong>De</strong> + pays <strong>masculin</strong> :<br>
+      Ohatra : Je viens <strong>du</strong> Portugal.<br><br>
+      🔹 <strong>De</strong> + pays <strong>pluriel</strong> :<br>
+      Ohatra : Je viens <strong>des</strong> États-Unis.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais en France. (Mandeha any Frantsa aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais au Portugal. (Mandeha any Pôrtogaly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais aux États-Unis. (Mandeha any Etazonia aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens de France. (Avy any Frantsa aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens du Portugal. (Avy any Pôrtogaly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens des États-Unis. (Avy any Etazonia aho.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PRÉPOSITIONS ET VILLES ==================== -->
+  <div class="card">
+    <h2>📌 Prépositions avec les villes</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br><br>
+      🔹 <strong>À</strong> + ville pour indiquer où l'on va :<br>
+      Ohatra : Je vais <strong>à</strong> Paris.<br><br>
+      🔹 <strong>De</strong> + ville pour indiquer d'où l'on vient :<br>
+      Ohatra : Je viens <strong>de</strong> Paris.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais à Antananarivo. (Mandeha any Antananarivo aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens de Toamasina. (Avy any Toamasina aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il habite à Fianarantsoa. (Mipetraka any Fianarantsoa izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny préposition dia <strong>teny tsy miova</strong> (tsy miova endrika).</li>
+        <li>Ny préposition dia mampifandray ny <strong>anarana (nom)</strong> na <strong>pronom</strong> amin'ny teny hafa.</li>
+        <li>Mba hahalalanao hoe inona no préposition ampiasaina, dia jerenao ny <strong>fifandraisan'ny</strong> zavatra.</li>
+        <li>Raha misy <strong>"à" + "le"</strong> → <strong>"au"</strong></li>
+        <li>Raha misy <strong>"à" + "les"</strong> → <strong>"aux"</strong></li>
+        <li>Raha misy <strong>"de" + "le"</strong> → <strong>"du"</strong></li>
+        <li>Raha misy <strong>"de" + "les"</strong> → <strong>"des"</strong></li>
+        <li>Mianara tsianjery ny préposition sy ny fampiasana azy isaky ny mandeha.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny préposition dia tena ilaina amin'ny resaka andavanandro mba <strong>hampifandraisana</strong> ny teny. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny prépositions.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

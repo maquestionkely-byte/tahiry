@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Passé récent – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le passé récent */
+    .color-sujet {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PASSÉ RÉCENT</h1>
+  </div>
+
+  <!-- Carte : Inona ny passé récent ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "passé récent" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>passé récent</strong> dia ampiasaina hilazana zavatra <strong>vao vita</strong> na <strong>vao natao</strong> tato ho ato.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"vao"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ny passé récent dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Venir de</strong> (vavy) + <strong>infinitif</strong> (endrika tsy miova)<br><br>
+      🔹 Ohatra :<br>
+      • <em>Je <strong>viens de</strong> manger.</em> (Vao nihinana aho.)<br>
+      • <em>Il <strong>vient de</strong> partir.</em> (Vao lasa izy.)<br><br>
+      🔹 <strong>Règle :</strong> Mampiasa ny <span class="color-sujet">sujet</span> + <strong>venir</strong> (conjugué au présent) + <strong>de</strong> + <strong>infinitif</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th>Venir (présent)</th>
+            <th>de</th>
+            <th>Infinitif</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-sujet">Je</span></td>
+            <td><strong>viens</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Je viens de manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Tu</span></td>
+            <td><strong>viens</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Tu viens de manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Il/Elle/On</span></td>
+            <td><strong>vient</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Il vient de manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Nous</span></td>
+            <td><strong>venons</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Nous venons de manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Vous</span></td>
+            <td><strong>venez</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Vous venez de manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Ils/Elles</span></td>
+            <td><strong>viennent</strong></td>
+            <td>de</td>
+            <td>manger</td>
+            <td>Ils viennent de manger.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>passé récent</strong> dia ampiasaina hilazana zavatra <strong>vao vita</strong>.<br>
+      • Mampiasa ny <strong>venir</strong> (vavy) amin'ny <strong>présent</strong> + <strong>de</strong> + <strong>infinitif</strong>.<br>
+      • Ny <strong>infinitif</strong> dia tsy miova na oviana na oviana.<br>
+      • Ohatra : <em>Je viens de <strong>finir</strong>.</em> (Vao vita aho.)<br>
+      • Ohatra : <em>Elle vient de <strong>partir</strong>.</em> (Vao lasa izy.)<br>
+      • Ohatra : <em>Nous venons de <strong>commencer</strong>.</em> (Vao nanomboka izahay.)
+    </div>
+  </div>
+
+  <!-- 1. CONJUGAISON DE "VENIR" AU PRÉSENT -->
+  <div class="card">
+    <h2>1️⃣ Conjugaison de "VENIR" au présent</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"venir"</strong> dia midika hoe <strong>"ho avy"</strong> na <strong>"vavy"</strong>. Amin'ny passé récent, dia ampiasaina amin'ny <strong>présent</strong> izy.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> viens<br>
+      <strong>Tu</strong> viens<br>
+      <strong>Il/Elle/On</strong> vient<br>
+      <strong>Nous</strong> venons<br>
+      <strong>Vous</strong> venez<br>
+      <strong>Ils/Elles</strong> viennent
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>viens</strong> de Madagascar. (Avy any Madagasikara aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>viens</strong> avec moi ? (Ho avy miaraka amiko ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>vient</strong> demain. (Ho avy rahampitso izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>venons</strong> à l'école. (Ho avy any an-tsekoly izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>venez</strong> ce soir ? (Ho avy anio hariva ve ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>viennent</strong> ensemble. (Ho avy miaraka izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PASSÉ RÉCENT AVEC "VENIR DE" -->
+  <div class="card">
+    <h2>2️⃣ Passé récent avec "VENIR DE"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"venir de + infinitif"</strong> dia ampiasaina hilazana zavatra <strong>vao natao</strong> na <strong>vao vita</strong> tato ho ato.<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + <span class="color-sujet">venir</span> (présent) + de + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>viens de</strong> manger. (Vao nihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>viens de</strong> finir. (Vao vita ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>vient de</strong> partir. (Vao lasa izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>vient de</strong> lire un livre. (Vao namaky boky izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>venons de</strong> commencer. (Vao nanomboka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>venez de</strong> arriver. (Vao tonga ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>viennent de</strong> sortir. (Vao nivoaka izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <strong>"venir de + infinitif"</strong> dia ampiasaina hilazana zavatra <strong>vao natao</strong>.
+    </div>
+  </div>
+
+  <!-- 3. PASSÉ RÉCENT - EXEMPLES AVEC DIFFÉRENTS VERBES -->
+  <div class="card">
+    <h2>3️⃣ Passé récent avec différents verbes</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny passé récent dia azo ampiasaina amin'ny <strong>verbe rehetra</strong> (mifindra, tsy mifindra).<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>viens de</strong> <strong>manger</strong>. (Vao nihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>vient de</strong> <strong>boire</strong> du café. (Vao nisotro kafe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>vient de</strong> <strong>dormir</strong>. (Vao natory izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>venons de</strong> <strong>finir</strong> nos devoirs. (Vao namita ny raharahanay izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>venez de</strong> <strong>partir</strong>. (Vao lasa ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>viennent de</strong> <strong>jouer</strong> au football. (Vao nilalao baolina kitra izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. NÉGATION AVEC LE PASSÉ RÉCENT -->
+  <div class="card">
+    <h2>4️⃣ Négation avec le passé récent</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana négation (fandavana) amin'ny passé récent, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe <strong>"venir"</strong>.<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + ne + venir (présent) + pas + de + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>ne</strong> viens <strong>pas</strong> de manger. (Tsy vao nihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>ne</strong> vient <strong>pas</strong> de partir. (Tsy vao lasa izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>ne</strong> vient <strong>pas</strong> de finir. (Tsy vao vita izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>ne</strong> venons <strong>pas</strong> de commencer. (Tsy vao nanomboka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>ne</strong> viennent <strong>pas</strong> de sortir. (Tsy vao nivoaka izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Amin'ny négation, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny <strong>"venir"</strong>, fa tsy manodidina ny infinitif.
+    </div>
+  </div>
+
+  <!-- 5. QUESTIONS AVEC LE PASSÉ RÉCENT -->
+  <div class="card">
+    <h2>5️⃣ Questions avec le passé récent</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana <strong>fanontaniana</strong> amin'ny passé récent, dia azo atao ny mampiasa :<br><br>
+      <strong>1. Inversion :</strong> <em>Viens-tu de manger ?</em><br>
+      <strong>2. Est-ce que :</strong> <em>Est-ce que tu viens de manger ?</em><br>
+      <strong>3. Intonation :</strong> <em>Tu viens de manger ?</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Viens-tu de manger ? (Vao nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu viens de manger ? (Vao nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu viens de manger ? (Vao nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vient-il de partir ? (Vao lasa ve izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce qu'il vient de partir ? (Vao lasa ve izy?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON AVEC LE PASSÉ COMPOSÉ ==================== -->
+  <div class="card">
+    <h2>📌 Passé récent vs Passé composé</h2>
+    <div class="definition-mg">
+      <strong>Passé récent (venir de + infinitif) :</strong><br>
+      • Hilazana zavatra <strong>vao</strong> natao (tato ho ato).<br>
+      Ohatra : <em>Je <strong>viens de</strong> manger.</em> (Vao nihinana aho.)<br><br>
+      
+      <strong>Passé composé (avoir/être + participe passé) :</strong><br>
+      • Hilazana zavatra <strong>efa</strong> natao (taloha kelikely).<br>
+      Ohatra : <em>J'<strong>ai</strong> mangé.</em> (Efa nihinana aho.)<br><br>
+      
+      <strong>Fahasamihafana :</strong><br>
+      • Passé récent → <strong>vao</strong> natao (eo ho eo).<br>
+      • Passé composé → <strong>efa</strong> natao (taloha kelikely).
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSÉ RÉCENT : Je <strong>viens de</strong> manger. (Vao nihinana aho - vao izao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSÉ COMPOSÉ : J'<strong>ai</strong> mangé. (Efa nihinana aho - taloha kelikely.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXPRESSIONS DE TEMPS AVEC LE PASSÉ RÉCENT ==================== -->
+  <div class="card">
+    <h2>📌 Expressions de temps avec le passé récent</h2>
+    <div class="definition-mg">
+      <strong>Expressions souvent utilisées :</strong><br><br>
+      • <strong>tout à l'heure</strong> (vato ho ato)<br>
+      • <strong>à l'instant</strong> (vato izao)<br>
+      • <strong>il y a quelques minutes</strong> (minitra vitsy lasa izay)<br>
+      • <strong>il y a un moment</strong> (kelikely lasa izay)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viens de manger <strong>tout à l'heure</strong>. (Vao nihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il vient de partir <strong>à l'instant</strong>. (Vao lasa izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle vient de finir <strong>il y a quelques minutes</strong>. (Vao vita izy minitra vitsy lasa izay.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>passé récent</strong> dia ampiasaina hilazana zavatra <strong>vao natao</strong>.</li>
+        <li>Miforona amin'ny alalan'ny : <strong>venir (présent) + de + infinitif</strong>.</li>
+        <li>Ny <strong>infinitif</strong> dia tsy miova na oviana na oviana.</li>
+        <li>Amin'ny <strong>négation</strong>, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny <strong>"venir"</strong>.</li>
+        <li>Amin'ny <strong>questions</strong>, dia azo atao ny <strong>inversion</strong>, <strong>"est-ce que"</strong>, na <strong>intonation</strong>.</li>
+        <li>Tsy mitovy amin'ny <strong>passé composé</strong> ny passé récent (vao vs efa).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny passé récent dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>vao natao</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny passé récent.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

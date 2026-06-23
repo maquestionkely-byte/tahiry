@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Futur proche – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le futur proche */
+    .color-sujet {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>FUTUR PROCHE</h1>
+  </div>
+
+  <!-- Carte : Inona ny futur proche ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "futur proche" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>futur proche</strong> dia ampiasaina hilazana zavatra <strong>ho avy akaiky</strong>, zavatra <strong>hotanterahina tsy ho ela</strong>.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"ho avy"</strong> na <strong>"handeha"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ny futur proche dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Aller</strong> (mandeha) + <strong>infinitif</strong> (endrika tsy miova)<br><br>
+      🔹 Ohatra :<br>
+      • <em>Je <strong>vais</strong> manger.</em> (Hihinana aho.)<br>
+      • <em>Il <strong>va</strong> partir.</em> (Handeha izy.)<br><br>
+      🔹 <strong>Règle :</strong> Mampiasa ny <span class="color-sujet">sujet</span> + <strong>aller</strong> (conjugué au présent) + <strong>infinitif</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th>Aller (présent)</th>
+            <th>Infinitif</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-sujet">Je</span></td>
+            <td><strong>vais</strong></td>
+            <td>manger</td>
+            <td>Je vais manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Tu</span></td>
+            <td><strong>vas</strong></td>
+            <td>manger</td>
+            <td>Tu vas manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Il/Elle/On</span></td>
+            <td><strong>va</strong></td>
+            <td>manger</td>
+            <td>Il va manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Nous</span></td>
+            <td><strong>allons</strong></td>
+            <td>manger</td>
+            <td>Nous allons manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Vous</span></td>
+            <td><strong>allez</strong></td>
+            <td>manger</td>
+            <td>Vous allez manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Ils/Elles</span></td>
+            <td><strong>vont</strong></td>
+            <td>manger</td>
+            <td>Ils vont manger.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>futur proche</strong> dia ampiasaina hilazana zavatra <strong>ho avy akaiky</strong>.<br>
+      • Mampiasa ny <strong>aller</strong> amin'ny <strong>présent</strong> + <strong>infinitif</strong>.<br>
+      • Ny <strong>infinitif</strong> dia tsy miova na oviana na oviana.<br>
+      • Ohatra : <em>Je vais <strong>travailler</strong>.</em> (Hiasa aho.)<br>
+      • Ohatra : <em>Elle va <strong>venir</strong>.</em> (Ho avy izy.)<br>
+      • Ohatra : <em>Nous allons <strong>partir</strong>.</em> (Handeha izahay.)
+    </div>
+  </div>
+
+  <!-- 1. CONJUGAISON DE "ALLER" AU PRÉSENT -->
+  <div class="card">
+    <h2>1️⃣ Conjugaison de "ALLER" au présent</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"aller"</strong> dia midika hoe <strong>"mandeha"</strong> na <strong>"ho avy"</strong>. Amin'ny futur proche, dia ampiasaina amin'ny <strong>présent</strong> izy.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> vais<br>
+      <strong>Tu</strong> vas<br>
+      <strong>Il/Elle/On</strong> va<br>
+      <strong>Nous</strong> allons<br>
+      <strong>Vous</strong> allez<br>
+      <strong>Ils/Elles</strong> vont
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>vais</strong> à l'école. (Mandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>vas</strong> bien ? (Manao ahoana ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>va</strong> au marché. (Mandeha any an-tsena izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>allons</strong> au cinéma. (Mandeha any amin'ny sinema izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>allez</strong> où ? (Ho aiza ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>vont</strong> ensemble. (Mandeha miaraka izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. FUTUR PROCHE AVEC "ALLER" -->
+  <div class="card">
+    <h2>2️⃣ Futur proche avec "ALLER"</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"aller + infinitif"</strong> dia ampiasaina hilazana zavatra <strong>ho avy akaiky</strong>.<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + <span class="color-sujet">aller</span> (présent) + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>vais</strong> manger. (Hihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>vas</strong> venir. (Ho avy ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>va</strong> partir. (Handeha izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>va</strong> lire un livre. (Hamaky boky izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>allons</strong> dormir. (Hatory izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>allez</strong> travailler. (Hiasa ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>vont</strong> jouer. (Hilalao izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <strong>"aller + infinitif"</strong> dia ampiasaina hilazana zavatra <strong>ho avy akaiky</strong>.
+    </div>
+  </div>
+
+  <!-- 3. FUTUR PROCHE - EXEMPLES AVEC DIFFÉRENTS VERBES -->
+  <div class="card">
+    <h2>3️⃣ Futur proche avec différents verbes</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny futur proche dia azo ampiasaina amin'ny <strong>verbe rehetra</strong> (mifindra, tsy mifindra).<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>vais</strong> <strong>manger</strong>. (Hihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>va</strong> <strong>boire</strong> du café. (Hisotro kafe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>va</strong> <strong>dormir</strong>. (Hatory izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>allons</strong> <strong>finir</strong> nos devoirs. (Hamita ny raharahanay izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>allez</strong> <strong>partir</strong>. (Handeha ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>vont</strong> <strong>jouer</strong> au football. (Hilalao baolina kitra izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. NÉGATION AVEC LE FUTUR PROCHE -->
+  <div class="card">
+    <h2>4️⃣ Négation avec le futur proche</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana négation (fandavana) amin'ny futur proche, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe <strong>"aller"</strong>.<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + ne + aller (présent) + pas + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>ne</strong> vais <strong>pas</strong> manger. (Tsy hihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>ne</strong> va <strong>pas</strong> venir. (Tsy ho avy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <strong>ne</strong> va <strong>pas</strong> dormir. (Tsy hatory izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>ne</strong> allons <strong>pas</strong> finir. (Tsy hamita izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>ne</strong> vont <strong>pas</strong> jouer. (Tsy hilalao izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Amin'ny négation, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny <strong>"aller"</strong>, fa tsy manodidina ny infinitif.
+    </div>
+  </div>
+
+  <!-- 5. QUESTIONS AVEC LE FUTUR PROCHE -->
+  <div class="card">
+    <h2>5️⃣ Questions avec le futur proche</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana <strong>fanontaniana</strong> amin'ny futur proche, dia azo atao ny mampiasa :<br><br>
+      <strong>1. Inversion :</strong> <em>Vas-tu manger ?</em><br>
+      <strong>2. Est-ce que :</strong> <em>Est-ce que tu vas manger ?</em><br>
+      <strong>3. Intonation :</strong> <em>Tu vas manger ?</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vas-tu manger ? (Hihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu vas manger ? (Hihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu vas manger ? (Hihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Va-t-il venir ? (Ho avy ve izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce qu'il va venir ? (Ho avy ve izy?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON AVEC LE FUTUR SIMPLE ==================== -->
+  <div class="card">
+    <h2>📌 Futur proche vs Futur simple</h2>
+    <div class="definition-mg">
+      <strong>Futur proche (aller + infinitif) :</strong><br>
+      • Hilazana zavatra <strong>ho avy akaiky</strong> (tsy ho ela).<br>
+      Ohatra : <em>Je <strong>vais</strong> manger.</em> (Hihinana aho - tsy ho ela.)<br><br>
+      
+      <strong>Futur simple :</strong><br>
+      • Hilazana zavatra <strong>ho avy lavitra</strong> (ho avy amin'ny hoavy).<br>
+      Ohatra : <em>Je <strong>mangerai</strong> demain.</em> (Hihinana rahampitso aho.)<br><br>
+      
+      <strong>Fahasamihafana :</strong><br>
+      • Futur proche → zavatra <strong>akaiky</strong> (ho avy tsy ho ela).<br>
+      • Futur simple → zavatra <strong>lavitra</strong> (ho avy amin'ny hoavy).
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">FUTUR PROCHE : Je <strong>vais</strong> manger. (Hihinana aho - akaiky.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">FUTUR SIMPLE : Je <strong>mangerai</strong> demain. (Hihinana rahampitso aho - lavitra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXPRESSIONS DE TEMPS AVEC LE FUTUR PROCHE ==================== -->
+  <div class="card">
+    <h2>📌 Expressions de temps avec le futur proche</h2>
+    <div class="definition-mg">
+      <strong>Expressions souvent utilisées :</strong><br><br>
+      • <strong>tout à l'heure</strong> (aty ho aty)<br>
+      • <strong>dans un moment</strong> (fotoana kely)<br>
+      • <strong>dans quelques minutes</strong> (minitra vitsy)<br>
+      • <strong>demain</strong> (rahampitso)<br>
+      • <strong>ce soir</strong> (anio hariva)<br>
+      • <strong>cette semaine</strong> (ity herinandro ity)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais manger <strong>tout à l'heure</strong>. (Hihinana aho aty ho aty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il va venir <strong>dans un moment</strong>. (Ho avy izy fotoana kely.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle va partir <strong>demain</strong>. (Handeha rahampitso izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>futur proche</strong> dia ampiasaina hilazana zavatra <strong>ho avy akaiky</strong>.</li>
+        <li>Miforona amin'ny alalan'ny : <strong>aller (présent) + infinitif</strong>.</li>
+        <li>Ny <strong>infinitif</strong> dia tsy miova na oviana na oviana.</li>
+        <li>Amin'ny <strong>négation</strong>, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny <strong>"aller"</strong>.</li>
+        <li>Amin'ny <strong>questions</strong>, dia azo atao ny <strong>inversion</strong>, <strong>"est-ce que"</strong>, na <strong>intonation</strong>.</li>
+        <li>Tsy mitovy amin'ny <strong>futur simple</strong> ny futur proche (akaiky vs lavitra).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny futur proche dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>ho avy akaiky</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny futur proche.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

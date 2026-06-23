@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Futur antérieur – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le futur antérieur */
+    .color-auxiliaire {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-participe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-avoir-futur {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-etre-futur {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>FUTUR ANTÉRIEUR</h1>
+  </div>
+
+  <!-- Carte : Inona ny futur antérieur ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "futur antérieur" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>futur antérieur</strong> dia ampiasaina hilazana zavatra <strong>ho vita</strong> na <strong>ho tanteraka</strong> amin'ny hoavy, alohan'ny zavatra hafa.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"ho efa"</strong> na <strong>"ho vita"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ny futur antérieur dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Auxiliaire</strong> (<span class="color-avoir-futur">avoir</span> ou <span class="color-etre-futur">être</span>) au <strong>futur simple</strong> + <span class="color-participe">participe passé</span><br><br>
+      🔹 Ohatra :<br>
+      • <em>J'<span class="color-avoir-futur">aurai</span> <span class="color-participe">mangé</span>.</em> (Ho efa nihinana aho.)<br>
+      • <em>Il <span class="color-etre-futur">sera</span> <span class="color-participe">parti</span>.</em> (Ho efa lasa izy.)<br><br>
+      🔹 <strong>Règle :</strong> Mampiasa ny <span class="color-avoir-futur">avoir</span> na <span class="color-etre-futur">être</span> (amin'ny <strong>futur simple</strong>) + <span class="color-participe">participe passé</span>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-avoir-futur">AVOIR (futur)</span></th>
+            <th><span class="color-etre-futur">ÊTRE (futur)</span></th>
+            <th>Participe passé</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je</td>
+            <td><span class="color-avoir-futur">aurai</span></td>
+            <td><span class="color-etre-futur">serai</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>J'aurai mangé.</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu</td>
+            <td><span class="color-avoir-futur">auras</span></td>
+            <td><span class="color-etre-futur">seras</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>Tu auras mangé.</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il/Elle/On</td>
+            <td><span class="color-avoir-futur">aura</span></td>
+            <td><span class="color-etre-futur">sera</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>Il aura mangé.</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous</td>
+            <td><span class="color-avoir-futur">aurons</span></td>
+            <td><span class="color-etre-futur">serons</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>Nous aurons mangé.</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous</td>
+            <td><span class="color-avoir-futur">aurez</span></td>
+            <td><span class="color-etre-futur">serez</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>Vous aurez mangé.</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils/Elles</td>
+            <td><span class="color-avoir-futur">auront</span></td>
+            <td><span class="color-etre-futur">seront</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>Ils auront mangé.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>futur antérieur</strong> dia ampiasaina hilazana zavatra <strong>ho vita</strong> alohan'ny zavatra hafa amin'ny hoavy.<br>
+      • Mampiasa ny <span class="color-avoir-futur">avoir</span> na <span class="color-etre-futur">être</span> amin'ny <strong>futur simple</strong> + <span class="color-participe">participe passé</span>.<br>
+      • Ny <span class="color-avoir-futur">avoir</span> dia ampiasaina amin'ny ankamaroan'ny verbes.<br>
+      • Ny <span class="color-etre-futur">être</span> dia ampiasaina amin'ny verbes <strong>mifindra</strong> (aller, venir, partir, etc.) sy ny verbes <strong>prénominaux</strong> (se laver, se réveiller...).<br>
+      • Ny <span class="color-participe">participe passé</span> dia <strong>mifanaraka</strong> amin'ny sujet rehefa mampiasa <span class="color-etre-futur">être</span>.
+    </div>
+  </div>
+
+  <!-- 1. FUTUR ANTÉRIEUR AVEC "AVOIR" -->
+  <div class="card">
+    <h2>1️⃣ Futur antérieur avec <span class="color-avoir-futur">AVOIR</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny ankamaroan'ny verbe dia mampiasa ny auxiliaire <span class="color-avoir-futur">avoir</span> amin'ny futur antérieur.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-avoir-futur">avoir</span> (futur simple) + <span class="color-participe">participe passé</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>aurai mang<span class="color-participe">é</span><br>
+      <strong>Tu</strong> auras mang<span class="color-participe">é</span><br>
+      <strong>Il/Elle/On</strong> aura mang<span class="color-participe">é</span><br>
+      <strong>Nous</strong> aurons mang<span class="color-participe">é</span><br>
+      <strong>Vous</strong> aurez mang<span class="color-participe">é</span><br>
+      <strong>Ils/Elles</strong> auront mang<span class="color-participe">é</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-avoir-futur">aurai</span> <span class="color-participe">mangé</span> une pomme. (Ho efa nihinana paoma aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-avoir-futur">auras</span> <span class="color-participe">fini</span> tes devoirs. (Ho efa namita ny raharahanao ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-avoir-futur">aura</span> <span class="color-participe">parlé</span> français. (Ho efa niteny frantsay izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-avoir-futur">aurons</span> <span class="color-participe">dansé</span> ensemble. (Ho efa nandihy miaraka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-avoir-futur">aurez</span> <span class="color-participe">travaillé</span> bien. (Ho efa niasa tsara ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-avoir-futur">auront</span> <span class="color-participe">chanté</span> une chanson. (Ho efa nihira hira izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny ankamaroan'ny verbe dia mampiasa <span class="color-avoir-futur">avoir</span>. Ny participe passé dia <strong>tsy mifanaraka</strong> amin'ny sujet rehefa mampiasa avoir.
+    </div>
+  </div>
+
+  <!-- 2. FUTUR ANTÉRIEUR AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>2️⃣ Futur antérieur avec <span class="color-etre-futur">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbes <strong>mifindra</strong> (aller, venir, partir, etc.) sy ny verbes <strong>prénominaux</strong> (se laver, se réveiller...) dia mampiasa ny auxiliaire <span class="color-etre-futur">être</span>.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-etre-futur">être</span> (futur simple) + <span class="color-participe">participe passé</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> serai all<span class="color-participe">é</span><br>
+      <strong>Tu</strong> seras all<span class="color-participe">é</span><br>
+      <strong>Il/Elle/On</strong> sera all<span class="color-participe">é</span><br>
+      <strong>Nous</strong> serons all<span class="color-participe">és</span><br>
+      <strong>Vous</strong> serez all<span class="color-participe">é(e)(s)</span><br>
+      <strong>Ils/Elles</strong> seront all<span class="color-participe">és</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-etre-futur">serai</span> <span class="color-participe">allé</span> à l'école. (Ho efa nandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-etre-futur">seras</span> <span class="color-participe">venu</span> avec moi. (Ho efa tonga niaraka taminy ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-etre-futur">sera</span> <span class="color-participe">partie</span> ce matin. (Ho efa lasa izy maraina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-etre-futur">serons</span> <span class="color-participe">sortis</span> ensemble. (Ho efa nivoaka miaraka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-etre-futur">serez</span> <span class="color-participe">arrivés</span> à l'heure. (Ho efa tonga ara-potoana ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-etre-futur">seront</span> <span class="color-participe">descendus</span> du train. (Ho efa nidina avy amin'ny lamasinina izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny verbes mifindra (aller, venir, partir, etc.) dia mampiasa <span class="color-etre-futur">être</span>. Ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet (sary, feminin, pluriel).
+    </div>
+  </div>
+
+  <!-- 3. LISTE DES VERBES AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>3️⃣ Verbes qui utilisent <span class="color-etre-futur">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny verbes <strong>mifindra</strong> izay mampiasa <span class="color-etre-futur">être</span> amin'ny futur antérieur.<br><br>
+      <strong>Liste des verbes (DR & MRS VANDERTRAMP) :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>D</strong>evenir (lasa / mivadika)<br>
+      <strong>R</strong>evenir (miverina)<br>
+      <strong>M</strong>ourir (maty)<br>
+      <strong>S</strong>ortir (mivoaka)<br>
+      <strong>V</strong>enir (ho avy)<br>
+      <strong>A</strong>ller (mandeha)<br>
+      <strong>N</strong>aître (teraka)<br>
+      <strong>D</strong>escendre (midina)<br>
+      <strong>E</strong>ntrer (miditra)<br>
+      <strong>R</strong>ester (mijanona)<br>
+      <strong>T</strong>omber (hianjera)<br>
+      <strong>R</strong>etourner (miverina)<br>
+      <strong>A</strong>rriver (tonga)<br>
+      <strong>M</strong>onter (miakatra)<br>
+      <strong>P</strong>artir (mivoaka / lasa)<br>
+      <strong>P</strong>asser (mandalo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-etre-futur">sera</span> <span class="color-participe">devenue</span> médecin. (Ho efa lasa dokotera izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-etre-futur">seront</span> <span class="color-participe">morts</span> jeunes. (Ho efa maty tanora izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-etre-futur">serons</span> <span class="color-participe">nés</span> à Madagascar. (Ho efa teraka teto Madagasikara izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-etre-futur">sera</span> <span class="color-participe">tombé</span> dans l'escalier. (Ho efa nianjera tany amin'ny tohatra izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ACCORD DU PARTICIPE PASSÉ AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>4️⃣ Accord du participe passé avec <span class="color-etre-futur">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa mampiasa <span class="color-etre-futur">être</span>, ny <span class="color-participe">participe passé</span> dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (genre et nombre).<br><br>
+      <strong>Règle :</strong><br>
+      • Masculin singulier → tsy misy fanampiny (allé)<br>
+      • Féminin singulier → manampy <strong>"e"</strong> (allée)<br>
+      • Masculin pluriel → manampy <strong>"s"</strong> (allés)<br>
+      • Féminin pluriel → manampy <strong>"es"</strong> (allées)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il sera <span class="color-participe">allé</span>. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle sera <span class="color-participe">allée</span>. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils seront <span class="color-participe">allés</span>. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles seront <span class="color-participe">allées</span>. (Féminin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous serons <span class="color-participe">allés</span> au cinéma. (Pluriel - si groupes mixtes, masculin l'emporte.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa mampiasa <span class="color-etre-futur">être</span>, ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet. Raha mampiasa <span class="color-avoir-futur">avoir</span>, dia <strong>tsy</strong> mifanaraka.
+    </div>
+  </div>
+
+  <!-- 5. EMPLOI DU FUTUR ANTÉRIEUR -->
+  <div class="card">
+    <h2>5️⃣ Emploi du futur antérieur</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>futur antérieur</strong> dia ampiasaina amin'ny toe-javatra <strong>roa</strong> :<br><br>
+      
+      <strong>1. Action antérieure dans le futur :</strong><br>
+      • Hilazana zavatra <strong>ho vita</strong> alohan'ny zavatra hafa amin'ny hoavy.<br>
+      Ohatra : <em>Quand tu arriveras, j'<span class="color-auxiliaire">aurai</span> déjà <span class="color-participe">fini</span>.</em> (Rehefa tonga ianao, dia ho efa vita aho.)<br><br>
+      
+      <strong>2. Supposition (hypothèse) :</strong><br>
+      • Hilazana zavatra <strong>mety ho</strong> nitranga (supposition).<br>
+      Ohatra : <em>Il <span class="color-auxiliaire">aura</span> <span class="color-participe">oublié</span> ses clés.</em> (Mety ho nanadino ny lakile izy.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Action antérieure dans le futur)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Quand tu arriveras, j'<span class="color-auxiliaire">aurai</span> déjà <span class="color-participe">fini</span>. (Rehefa tonga ianao, dia ho efa vita aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Demain, il <span class="color-auxiliaire">aura</span> <span class="color-participe">terminé</span> son travail. (Rahampitso, ho efa vita ny asany izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">D'ici ce soir, nous <span class="color-auxiliaire">aurons</span> <span class="color-participe">fini</span> nos devoirs. (Amin'ity hariva ity, ho efa vita ny raharahantsika.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Supposition)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-auxiliaire">aura</span> <span class="color-participe">oublié</span> ses clés. (Mety ho nanadino ny lakile izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle <span class="color-auxiliaire">sera</span> <span class="color-participe">partie</span> sans nous. (Mety ho lasa izy tsy niteny anay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-auxiliaire">auront</span> <span class="color-participe">gagné</span> le match. (Mety ho nandresy ny lalao izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-auxiliaire">futur antérieur</span> dia ampiasaina hilazana zavatra <strong>ho vita</strong> alohan'ny zavatra hafa amin'ny hoavy, na hilazana <strong>supposition</strong> (mety ho).
+    </div>
+  </div>
+
+  <!-- 6. NÉGATION AVEC LE FUTUR ANTÉRIEUR -->
+  <div class="card">
+    <h2>6️⃣ Négation avec le futur antérieur</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Amin'ny négation, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny auxiliaire (<span class="color-avoir-futur">avoir</span> ou <span class="color-etre-futur">être</span>).<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + ne + auxiliaire (futur) + pas + participe passé</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-auxiliaire">n'</span>aurai <span class="color-auxiliaire">pas</span> mangé. (Tsy ho efa nihinana aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-auxiliaire">n'</span>aura <span class="color-auxiliaire">pas</span> fini. (Tsy ho efa vita izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-auxiliaire">n'</span>aurons <span class="color-auxiliaire">pas</span> parlé. (Tsy ho efa niteny izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-auxiliaire">ne</span> seront <span class="color-auxiliaire">pas</span> partis. (Tsy ho efa lasa izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. QUESTIONS AVEC LE FUTUR ANTÉRIEUR -->
+  <div class="card">
+    <h2>7️⃣ Questions avec le futur antérieur</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana <strong>fanontaniana</strong> amin'ny futur antérieur, dia azo atao ny mampiasa :<br><br>
+      <strong>1. Inversion :</strong> <em>Auras-tu mangé ?</em><br>
+      <strong>2. Est-ce que :</strong> <em>Est-ce que tu auras mangé ?</em><br>
+      <strong>3. Intonation :</strong> <em>Tu auras mangé ?</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Auras-tu mangé ? (Ho efa nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu auras mangé ? (Ho efa nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu auras mangé ? (Ho efa nihinana ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Sera-t-il parti ? (Ho efa lasa ve izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce qu'il sera parti ? (Ho efa lasa ve izy?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. Formation :</strong><br>
+      • <span class="color-avoir-futur">Avoir</span> ou <span class="color-etre-futur">Être</span> (futur simple) + <span class="color-participe">participe passé</span><br><br>
+      
+      <strong>2. Auxiliaire "Avoir" :</strong><br>
+      • Ampiasaina amin'ny ankamaroan'ny verbe.<br>
+      • Ohatra : <em>j'aurai mangé, tu auras fini</em><br><br>
+      
+      <strong>3. Auxiliaire "Être" :</strong><br>
+      • Ampiasaina amin'ny verbes <strong>mifindra</strong> (aller, venir, partir...)<br>
+      • Ampiasaina amin'ny verbes <strong>prénominaux</strong> (se laver, se réveiller...)<br>
+      • Ohatra : <em>je serai allé, elle sera partie</em><br><br>
+      
+      <strong>4. Accord du participe passé :</strong><br>
+      • Avec <span class="color-avoir-futur">avoir</span> → <strong>tsy</strong> mifanaraka<br>
+      • Avec <span class="color-etre-futur">être</span> → <strong>mifanaraka</strong> amin'ny sujet (e, s, es)<br><br>
+      
+      <strong>5. Emploi :</strong><br>
+      • Action antérieure dans le futur (ho vita alohan'ny zavatra hafa)<br>
+      • Supposition (mety ho)<br><br>
+      
+      <strong>6. Négation :</strong><br>
+      • <em>ne + auxiliaire (futur) + pas + participe passé</em><br><br>
+      
+      <strong>7. Questions :</strong><br>
+      • Inversion, "est-ce que", ou intonation
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>futur antérieur</strong> dia ampiasaina hilazana zavatra <strong>ho vita</strong> alohan'ny zavatra hafa amin'ny hoavy.</li>
+        <li>Miforona amin'ny alalan'ny : <strong>auxiliaire (avoir/être au futur simple) + participe passé</strong>.</li>
+        <li>Ny ankamaroan'ny verbe dia mampiasa <span class="color-avoir-futur">avoir</span>.</li>
+        <li>Ny verbes <strong>mifindra</strong> (aller, venir, partir...) dia mampiasa <span class="color-etre-futur">être</span>.</li>
+        <li>Ny verbes <strong>prénominaux</strong> (se laver, se réveiller...) dia mampiasa <span class="color-etre-futur">être</span>.</li>
+        <li>Ny participe passé amin'ny <span class="color-etre-futur">être</span> dia <strong>mifanaraka</strong> amin'ny sujet.</li>
+        <li>Amin'ny <strong>négation</strong>, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny auxiliaire.</li>
+        <li>Amin'ny <strong>questions</strong>, dia azo atao ny <strong>inversion</strong>, <strong>"est-ce que"</strong>, na <strong>intonation</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny futur antérieur dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>ho vita</strong> alohan'ny zavatra hafa amin'ny hoavy. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny futur antérieur.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Accord du participe passé – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 280px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'accord du participe passé */
+    .color-avoir {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-etre {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-pronominal {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ACCORD DU PARTICIPE PASSÉ</h1>
+  </div>
+
+  <!-- Carte : Inona ny accord du participe passé ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "accord du participe passé" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>accord du participe passé</strong> dia ny <strong>fifanarahana</strong> eo amin'ny <strong>participe passé</strong> sy ny <strong>sujet</strong> na ny <strong>COD</strong> (Complément d'Objet Direct).<br><br>
+      🔹 Miankina amin'ny <strong>auxiliaire</strong> ampiasaina (<span class="color-avoir">avoir</span> ou <span class="color-etre">être</span>) ny fomba fifanarahana.<br><br>
+      🔹 Misy fitsipika (règles) telo lehibe :<br><br>
+      <span class="icone">📌</span> <strong>Avec "être"</strong> → le participe passé s'accorde <strong>en genre et en nombre</strong> avec le <strong>sujet</strong>.<br>
+      Ohatra : <em>Elle est <span class="color-etre">partie</span>.</em> (Efa lasa izy.)<br><br>
+      <span class="icone">📌</span> <strong>Avec "avoir"</strong> → le participe passé s'accorde <strong>en genre et en nombre</strong> avec le <strong>COD</strong> si celui-ci est <strong>placé avant</strong> le verbe.<br>
+      Ohatra : <em>Les pommes que j'ai <span class="color-avoir">mangées</span>.</em> (Ireo paoma izay nohaniko.)<br><br>
+      <span class="icone">📌</span> <strong>Verbes pronominaux</strong> → règles spécifiques.<br>
+      Ohatra : <em>Elle s'est <span class="color-pronominal">lavée</span>.</em> (Efa nanasa tena izy.)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Auxiliaire</th>
+            <th>Règle d'accord</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-etre">ÊTRE</span></td>
+            <td>S'accorde avec le <strong>sujet</strong> (genre + nombre)</td>
+            <td>Elle est <strong>partie</strong>.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-avoir">AVOIR</span></td>
+            <td>S'accorde avec le <strong>COD</strong> si placé <strong>avant</strong></td>
+            <td>Les pommes que j'ai <strong>mangées</strong>.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-pronominal">PRONOMINAL</span></td>
+            <td>S'accorde avec le <strong>sujet</strong> si le pronom est COD</td>
+            <td>Elle s'est <strong>lavée</strong>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • <span class="color-etre">Avec "être"</span> → le participe passé s'accorde <strong>toujours</strong> avec le sujet.<br>
+      Ohatra : <em>Marie est <strong>allée</strong>.</em> / <em>Ils sont <strong>allés</strong>.</em><br><br>
+      • <span class="color-avoir">Avec "avoir"</span> → le participe passé <strong>ne s'accorde pas</strong> avec le sujet, mais avec le <strong>COD</strong> si celui-ci est <strong>avant</strong> le verbe.<br>
+      Ohatra : <em>J'ai <strong>mangé</strong> des pommes.</em> (COD après, pas d'accord)<br>
+      Ohatra : <em>Les pommes que j'ai <strong>mangées</strong>.</em> (COD avant, accord)<br><br>
+      • <span class="color-pronominal">Verbes pronominaux</span> → l'accord dépend de la place du pronom réfléchi (COD ou COI).<br>
+      Ohatra : <em>Elle s'est <strong>lavée</strong>.</em> (se = COD, accord)<br>
+      Ohatra : <em>Elles se sont <strong>parlé</strong>.</em> (se = COI, pas d'accord)
+    </div>
+  </div>
+
+  <!-- 1. ACCORD AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>1️⃣ Accord avec <span class="color-etre">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa mampiasa ny auxiliaire <span class="color-etre">être</span>, ny <span class="color-participe">participe passé</span> dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (genre et nombre).<br><br>
+      <strong>Règle :</strong><br>
+      • Masculin singulier → tsy misy fanampiny (allé)<br>
+      • Féminin singulier → manampy <strong>"e"</strong> (allée)<br>
+      • Masculin pluriel → manampy <strong>"s"</strong> (allés)<br>
+      • Féminin pluriel → manampy <strong>"es"</strong> (allées)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-participe">allé</span>. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <span class="color-participe">allée</span>. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils sont <span class="color-participe">allés</span>. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles sont <span class="color-participe">allées</span>. (Féminin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes <span class="color-participe">allés</span> au cinéma. (Pluriel - masculin l'emporte si groupes mixtes.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Marie est <span class="color-participe">venue</span> avec nous. (Féminin singulier.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa mampiasa <span class="color-etre">être</span>, ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet.
+    </div>
+  </div>
+
+  <!-- 2. ACCORD AVEC "AVOIR" -->
+  <div class="card">
+    <h2>2️⃣ Accord avec <span class="color-avoir">AVOIR</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa mampiasa ny auxiliaire <span class="color-avoir">avoir</span>, ny <span class="color-participe">participe passé</span> dia <strong>tsy</strong> mifanaraka amin'ny sujet, fa <strong>mifanaraka</strong> amin'ny <strong>COD</strong> (Complément d'Objet Direct) raha <strong>eo alohan'ny</strong> verbe izy.<br><br>
+      <strong>Règle :</strong><br>
+      • Raha <strong>tsy misy COD</strong> na misy COD <strong>aorian'ny</strong> verbe → tsy misy accord.<br>
+      • Raha misy COD <strong>alohan'ny</strong> verbe → mifanaraka amin'ny COD (genre + nombre).
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Pas d'accord)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai <span class="color-participe">mangé</span> une pomme. (COD après → pas d'accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a <span class="color-participe">fini</span> ses devoirs. (COD après → pas d'accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons <span class="color-participe">chanté</span> une chanson. (COD après → pas d'accord.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Avec accord)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La pomme que j'ai <span class="color-participe">mangée</span>. (COD "la pomme" avant → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les devoirs qu'il a <span class="color-participe">finis</span>. (COD "les devoirs" avant → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les chansons que nous avons <span class="color-participe">chantées</span>. (COD "les chansons" avant → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je les ai <span class="color-participe">vues</span>. (COD "les" (féminin pluriel) avant → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il les a <span class="color-participe">invités</span>. (COD "les" (masculin pluriel) avant → accord.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa mampiasa <span class="color-avoir">avoir</span>, ny participe passé dia <strong>tsy mifanaraka</strong> amin'ny sujet, fa miaraka amin'ny <strong>COD alohan'ny</strong> verbe.
+    </div>
+  </div>
+
+  <!-- 3. ACCORD AVEC LES VERBES PRONOMINAUX -->
+  <div class="card">
+    <h2>3️⃣ Accord avec les verbes pronominaux</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbes pronominaux (se laver, se parler, etc.) dia mampiasa ny auxiliaire <span class="color-etre">être</span>. Ny participe passé dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> raha ny pronom réfléchi (se) no <strong>COD</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Raha <span class="color-pronominal">se</span> = COD → mifanaraka amin'ny sujet.<br>
+      • Raha <span class="color-pronominal">se</span> = COI (Complément d'Objet Indirect) → tsy mifanaraka.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (se = COD → accord)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle s'est <span class="color-participe">lavée</span>. (se = COD (elle a lavé qui? → elle-même) → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se sont <span class="color-participe">réveillés</span> tôt. (se = COD → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se sont <span class="color-participe">habillées</span> rapidement. (se = COD → accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me suis <span class="color-participe">brossé</span> les dents. (se = COI (brossé quoi? → les dents) → pas d'accord.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (se = COI → pas d'accord)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se sont <span class="color-participe">parlé</span>. (se = COI (parlé à qui? → à elles) → pas d'accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se sont <span class="color-participe">écrit</span> des lettres. (se = COI (écrit à qui? → à eux) → pas d'accord.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous sommes <span class="color-participe">plu</span>. (se = COI (plu à qui? → à nous) → pas d'accord.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Amin'ny verbes pronominaux, ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet raha ny pronom réfléchi (se) dia <strong>COD</strong>. Raha <strong>COI</strong> izy, dia <strong>tsy</strong> mifanaraka.
+    </div>
+  </div>
+
+  <!-- 4. LISTE DES VERBES PRONOMINAUX AVEC SE = COD -->
+  <div class="card">
+    <h2>4️⃣ Verbes pronominaux avec <span class="color-pronominal">se = COD</span> (accord)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny verbes pronominaux izay manana <span class="color-pronominal">se</span> = <strong>COD</strong>. Ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>se laver</strong> (manasa tena)<br>
+      <strong>se réveiller</strong> (mifoha)<br>
+      <strong>se coucher</strong> (mandry)<br>
+      <strong>se lever</strong> (mitsangana)<br>
+      <strong>s'habiller</strong> (manao akanjo)<br>
+      <strong>se maquiller</strong> (manao makiazy)<br>
+      <strong>se raser</strong> (manaratra)<br>
+      <strong>se brosser</strong> (miborosy)<br>
+      <strong>se promener</strong> (mandehandeha)<br>
+      <strong>se souvenir</strong> (mahatsiaro)<br>
+      <strong>s'ennuyer</strong> (mankaleo)<br>
+      <strong>se fâcher</strong> (tezitra)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle s'est <span class="color-participe">lavée</span>. (Efa nanasa tena izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se sont <span class="color-participe">réveillés</span>. (Efa nifoha izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se sont <span class="color-participe">habillées</span>. (Efa nanao akanjo izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. LISTE DES VERBES PRONOMINAUX AVEC SE = COI -->
+  <div class="card">
+    <h2>5️⃣ Verbes pronominaux avec <span class="color-pronominal">se = COI</span> (pas d'accord)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny verbes pronominaux izay manana <span class="color-pronominal">se</span> = <strong>COI</strong>. Ny participe passé dia <strong>tsy</strong> mifanaraka amin'ny sujet.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>se parler</strong> (mifampiteny)<br>
+      <strong>se dire</strong> (mifampilaza)<br>
+      <strong>se donner</strong> (mifampanome)<br>
+      <strong>se sourire</strong> (mifampitsiky)<br>
+      <strong>se nuire</strong> (mifampandika)<br>
+      <strong>se plaire</strong> (mifankatia)<br>
+      <strong>se téléphoner</strong> (mifampitendry)<br>
+      <strong>se mentir</strong> (mifampandainga)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se sont <span class="color-participe">parlé</span>. (Efa nifampiteny izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se sont <span class="color-participe">souri</span>. (Efa nifampitsiky izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous sommes <span class="color-participe">plu</span>. (Efa nifankatia izahay.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. RÉSUMÉ DES RÈGLES -->
+  <div class="card">
+    <h2>📌 Résumé des règles d'accord</h2>
+    <div class="definition-mg">
+      <strong>1. Avec "être" :</strong><br>
+      • Le participe passé s'accorde <strong>toujours</strong> avec le <strong>sujet</strong>.<br>
+      Ohatra : <em>Elle est <span class="color-etre">partie</span>.</em> / <em>Ils sont <span class="color-etre">partis</span>.</em><br><br>
+      
+      <strong>2. Avec "avoir" :</strong><br>
+      • Le participe passé <strong>ne s'accorde pas</strong> avec le sujet.<br>
+      • Le participe passé s'accorde avec le <strong>COD</strong> si celui-ci est <strong>placé avant</strong> le verbe.<br>
+      Ohatra : <em>J'ai <span class="color-avoir">mangé</span> des pommes.</em> (pas d'accord)<br>
+      Ohatra : <em>Les pommes que j'ai <span class="color-avoir">mangées</span>.</em> (accord)<br><br>
+      
+      <strong>3. Avec les verbes pronominaux :</strong><br>
+      • Si <span class="color-pronominal">se</span> = <strong>COD</strong> → accord avec le sujet.<br>
+      Ohatra : <em>Elle s'est <span class="color-pronominal">lavée</span>.</em><br>
+      • Si <span class="color-pronominal">se</span> = <strong>COI</strong> → pas d'accord.<br>
+      Ohatra : <em>Elles se sont <span class="color-pronominal">parlé</span>.</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>accord du participe passé</strong> dia miankina amin'ny <strong>auxiliaire</strong> ampiasaina.</li>
+        <li>Rehefa mampiasa <span class="color-etre">être</span> → <strong>mifanaraka</strong> amin'ny sujet.</li>
+        <li>Rehefa mampiasa <span class="color-avoir">avoir</span> → <strong>tsy</strong> mifanaraka amin'ny sujet, fa miaraka amin'ny <strong>COD alohan'ny</strong> verbe.</li>
+        <li>Raha <strong>tsy misy COD</strong> na misy COD <strong>aorian'ny</strong> verbe → <strong>tsy</strong> misy accord.</li>
+        <li>Raha misy COD <strong>alohan'ny</strong> verbe → <strong>mifanaraka</strong> amin'ny COD.</li>
+        <li>Amin'ny verbes pronominaux → jereo raha <span class="color-pronominal">se</span> = <strong>COD</strong> (accord) na <strong>COI</strong> (pas d'accord).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny accord du participe passé dia tena ilaina mba ho <strong>marina</strong> ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny accord du participe passé.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Expressions de quantité – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les expressions de quantité */
+    .color-beaucoup {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-peu {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-assez {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-trop {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>EXPRESSIONS DE QUANTITÉ</h1>
+  </div>
+
+  <!-- Carte : Inona ny expressions de quantité ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "expressions de quantité" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>expressions de quantité</strong> dia ampiasaina hilazana ny <strong>habetsahan'ny zavatra</strong> iray.<br><br>
+      🔹 Izy ireo dia apetraka <strong>eo alohan'ny anarana (nom)</strong> ary matetika arahin'ny <strong>"de"</strong> na <strong>"d'"</strong> (alohan'ny zanatsoratra).<br><br>
+      🔹 Ireto ny expressions de quantité fototra ho an'ny débutant :<br><br>
+      <span class="icone">📊</span> <strong>Beaucoup de</strong> → be dia be (habetsahana lehibe)<br><br>
+      <span class="icone">📊</span> <strong>Peu de</strong> → kely (habetsahana kely)<br><br>
+      <span class="icone">📊</span> <strong>Assez de</strong> → ampy (habetsahana ampy)<br><br>
+      <span class="icone">📊</strong> <strong>Trop de</strong> → be loatra (mihoatra noho ny ilaina)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Expression</th>
+            <th>Famaritana malagasy</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-beaucoup">BEAUCOUP DE</span></td>
+            <td>be dia be</td>
+            <td>J'ai beaucoup d'amis.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-peu">PEU DE</span></td>
+            <td>kely</td>
+            <td>J'ai peu de temps.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-assez">ASSEZ DE</span></td>
+            <td>ampy</td>
+            <td>J'ai assez d'argent.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-trop">TROP DE</span></td>
+            <td>be loatra</td>
+            <td>J'ai trop de travail.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Rehefa misy <strong>expression de quantité</strong>, dia arahin'ny <strong>"de"</strong> na <strong>"d'"</strong> (alohan'ny zanatsoratra) ny anarana (nom).<br>
+      Ohatra : <em>beaucoup <strong>d'</strong>amis</em>, <em>peu <strong>de</strong> temps</em><br><br>
+      • Rehefa misy <strong>article partitif</strong> (du, de la, de l', des) dia <strong>miova ho "de"</strong> na "d'" ihany koa.<br>
+      Ohatra : <em>J'ai <strong>beaucoup de</strong> pain.</em> (fa tsy "beaucoup du pain")<br><br>
+      • Rehefa misy <strong>article défini</strong> (le, la, l', les), dia <strong>tsy miova</strong> ary mijanona ho "de" + article.<br>
+      Ohatra : <em>Beaucoup <strong>des</strong> étudiants</em> (rehefa voafaritra ny mpianatra)
+    </div>
+  </div>
+
+  <!-- 1. BEAUCOUP DE - Be dia be -->
+  <div class="card">
+    <h2>1️⃣ BEAUCOUP DE (be dia be)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"beaucoup de"</strong> dia midika hoe <strong>"be dia be"</strong> na <strong>"maro"</strong>. Ampiasaina hilazana fa <strong>be</strong> ny zavatra iray.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai beaucoup d'amis. (Manana namana be dia be aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a beaucoup de monde ici. (Misy olona be dia be eto.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a beaucoup de livres. (Manana boky be dia be izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons beaucoup de travail. (Manana asa be dia be izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu as beaucoup d'argent ? (Manana vola be dia be ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils mangent beaucoup de pain. (Mihinana mofo be dia be izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PEU DE - Kely -->
+  <div class="card">
+    <h2>2️⃣ PEU DE (kely)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"peu de"</strong> dia midika hoe <strong>"kely"</strong> na <strong>"vitsy"</strong>. Ampiasaina hilazana fa <strong>kely</strong> ny zavatra iray.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai peu de temps. (Manana fotoana kely aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a peu de monde ici. (Misy olona vitsy eto.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a peu d'argent. (Manana vola kely izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons peu de chance. (Manana vintana kely izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu parles peu de français. (Miteny frantsay kely ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils mangent peu de viande. (Mihinana hena kely izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Peu de" dia midika hoe <strong>tsy dia be</strong> na <strong>kely</strong>. Tsy mitovy amin'ny "un peu de" (kely kely) izy.
+    </div>
+  </div>
+
+  <!-- 3. ASSEZ DE - Ampy -->
+  <div class="card">
+    <h2>3️⃣ ASSEZ DE (ampy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"assez de"</strong> dia midika hoe <strong>"ampy"</strong> na <strong>"sahala"</strong>. Ampiasaina hilazana fa <strong>ampy</strong> na <strong>tsy mihoatra</strong> ny zavatra iray.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai assez d'argent pour acheter ce livre. (Manana vola ampy hividianana ity boky ity aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a assez de place pour tout le monde. (Misy toerana ampy ho an'ny rehetra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a assez de temps pour finir. (Manana fotoana ampy hamitana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons assez de nourriture. (Manana sakafo ampy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu as assez d'eau ? (Manana rano ampy ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils ont assez de travail. (Manana asa ampy izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TROP DE - Be loatra -->
+  <div class="card">
+    <h2>4️⃣ TROP DE (be loatra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"trop de"</strong> dia midika hoe <strong>"be loatra"</strong> na <strong>"mihoatra"</strong>. Ampiasaina hilazana fa <strong>mihoatra noho ny ilaina</strong> ny zavatra iray.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai trop de travail. (Manana asa be loatra aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a trop de monde ici. (Misy olona be loatra eto.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a trop d'argent. (Manana vola be loatra izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons trop de devoirs. (Manana raharaha be loatra izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu manges trop de sucre. (Mihinana siramamy be loatra ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils boivent trop de café. (Misotro kafe be loatra izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Trop de" dia midika hoe <strong>be loatra</strong> na <strong>mihoatra</strong>. Matetika ampiasaina hilazana fa tsy mety na manimba ny habetsahana.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES QUATRE EXPRESSIONS ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny expressions de quantité</h2>
+    <div class="definition-mg">
+      <strong><span class="color-beaucoup">BEAUCOUP DE</span></strong> → be dia be<br>
+      Ohatra : J'ai beaucoup d'amis. (Manana namana be dia be aho.)<br><br>
+      
+      <strong><span class="color-peu">PEU DE</span></strong> → kely<br>
+      Ohatra : J'ai peu d'amis. (Manana namana kely aho.)<br><br>
+      
+      <strong><span class="color-assez">ASSEZ DE</span></strong> → ampy<br>
+      Ohatra : J'ai assez d'amis. (Manana namana ampy aho.)<br><br>
+      
+      <strong><span class="color-trop">TROP DE</span></strong> → be loatra<br>
+      Ohatra : J'ai trop d'amis. (Manana namana be loatra aho.)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a beaucoup de pluie. (Misy orana be dia be.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a peu de pluie. (Misy orana kely.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a assez de pluie. (Misy orana ampy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a trop de pluie. (Misy orana be loatra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXPRESSIONS AVEC NOM COMPTABLE ET NOM INCOMPTABLE ==================== -->
+  <div class="card">
+    <h2>📌 Expressions de quantité avec noms comptables et incomptables</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny expressions de quantité dia azo ampiasaina amin'ny <strong>nom comptable</strong> (azo isaina) sy <strong>nom incomptable</strong> (tsy azo isaina).<br><br>
+      
+      <strong>Nom comptable (azo isaina) :</strong><br>
+      • Ohatra : livres, amis, élèves, maisons<br>
+      Ohatra : J'ai <strong>beaucoup de</strong> livres.<br><br>
+      
+      <strong>Nom incomptable (tsy azo isaina) :</strong><br>
+      • Ohatra : eau, argent, temps, sucre<br>
+      Ohatra : J'ai <strong>beaucoup d'</strong>eau.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra fanampiny
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Beaucoup de personnes sont venues. (Olona be dia be no tonga - comptable.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Beaucoup d'eau est tombée. (Rano be dia be no nidina - incomptable.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Peu d'étudiants ont réussi. (Mpianatra vitsy no nahomby - comptable.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Peu de temps nous reste. (Fotoana kely sisa tavela - incomptable.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXPRESSIONS DE QUANTITÉ SPÉCIFIQUES ==================== -->
+  <div class="card">
+    <h2>📗 Autres expressions de quantité utiles</h2>
+    <div class="definition-mg">
+      <strong>Un peu de</strong> → kely kely<br>
+      Ohatra : J'ai <strong>un peu de</strong> temps. (Manana fotoana kely kely aho.)<br><br>
+      
+      <strong>Beaucoup trop de</strong> → be loatra dia be loatra<br>
+      Ohatra : Il y a <strong>beaucoup trop de</strong> monde. (Misy olona be loatra dia be loatra.)<br><br>
+      
+      <strong>Plus de</strong> → mihoatra (avy amin'ny "ne...plus de")<br>
+      Ohatra : Je n'ai <strong>plus de</strong> pain. (Tsy manana mofo intsony aho.)<br><br>
+      
+      <strong>Assez de</strong> → ampy (voaresaka teo)<br><br>
+      
+      <strong>Pas mal de</strong> → tsy dia kely (maro kely)<br>
+      Ohatra : J'ai <strong>pas mal de</strong> choses à faire. (Manana zavatra maro kely hatao aho.)
+    </div>
+  </div>
+
+  <!-- ==================== NÉGATION AVEC LES EXPRESSIONS DE QUANTITÉ ==================== -->
+  <div class="card">
+    <h2>📌 Négation avec les expressions de quantité</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Amin'ny négation, rehefa misy <strong>"ne...pas"</strong> dia miova ho <strong>"de"</strong> ny article indéfini na partitif.<br><br>
+      Ohatra :<br>
+      • <em>Je n'ai <strong>pas</strong> <strong>de</strong> pain.</em> (Tsy manana mofo aho.)<br>
+      • <em>Il n'y a <strong>pas</strong> <strong>d'</strong>eau.</em> (Tsy misy rano.)<br><br>
+      
+      <strong>Raha misy "plus de" na "pas de" :</strong><br>
+      • <em>Je n'ai <strong>plus de</strong> temps.</em> (Tsy manana fotoana intsony aho.)<br>
+      • <em>Je n'ai <strong>pas</strong> <strong>de</strong> chance.</em> (Tsy manana vintana aho.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny négation
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je n'ai pas d'argent. (Tsy manana vola aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il n'y a pas de pain. (Tsy misy mofo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous n'avons pas de temps. (Tsy manana fotoana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je n'ai plus de café. (Tsy manana kafe intsony aho.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>expressions de quantité</strong> dia ampiasaina hilazana ny habetsahan'ny zavatra iray.</li>
+        <li>Apetraka <strong>eo alohan'ny anarana</strong> (nom) izy ireo ary arahin'ny <strong>"de"</strong> na <strong>"d'"</strong>.</li>
+        <li><strong>Beaucoup de</strong> → be dia be (habetsahana lehibe)</li>
+        <li><strong>Peu de</strong> → kely (habetsahana kely)</li>
+        <li><strong>Assez de</strong> → ampy (habetsahana ampy)</li>
+        <li><strong>Trop de</strong> → be loatra (mihoatra noho ny ilaina)</li>
+        <li>Rehefa misy <strong>négation</strong> (ne...pas), dia miova ho <strong>"de"</strong> ny article.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fomba fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny expressions de quantité dia tena ilaina amin'ny resaka andavanandro rehefa miresaka ny <strong>habetsahan'ny zavatra</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny expressions de quantité.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

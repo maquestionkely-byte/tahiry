@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Formation des mots – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour la formation des mots */
+    .color-simple {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-prefixe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-suffixe {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-compose {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>FORMATION DES MOTS</h1>
+  </div>
+
+  <!-- Carte : Inona ny formation des mots ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "formation des mots" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>formation des mots</strong> dia mamaritra ny <strong>fomba famoronana</strong> teny vaovao amin'ny teny frantsay.<br><br>
+      🔹 Misy karazany <strong>roa</strong> lehibe ny teny :<br><br>
+      <span class="icone">📌</span> <strong>Mots simples</strong> → teny tsy azo zaraina intsony.<br>
+      Ohatra : <em>jour</em> (andro), <em>terre</em> (tany), <em>maison</em> (trano)<br><br>
+      <span class="icone">📌</span> <strong>Mots construits</strong> → teny noforonina avy amin'ny fototeny (racine).<br><br>
+      🔹 Misy fomba <strong>telu</strong> hamoronana mots construits :<br><br>
+      <span class="icone">🔧</span> <strong>Préfixation</strong> → manampy <span class="color-prefixe">préfixe</span> (eo aloha)<br>
+      Ohatra : <em>refaire</em> (manao indray) ← <em>re- + faire</em><br><br>
+      <span class="icone">🔧</span> <strong>Suffixation</strong> → manampy <span class="color-suffixe">suffixe</span> (eo aoriana)<br>
+      Ohatra : <em>jardinier</em> (mpamboly) ← <em>jardin + -ier</em><br><br>
+      <span class="icone">🔧</span> <strong>Composition</strong> → manambatra teny <strong>roa</strong> na <strong>mihoatra</strong><br>
+      Ohatra : <em>portefeuille</em> (kitapo) ← <em>porte + feuille</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type de mot</th>
+            <th>Définition</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-simple">MOT SIMPLE</span></td>
+            <td>Tsy azo zaraina intsony</td>
+            <td>jour, terre, maison</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-prefixe">PRÉFIXATION</span></td>
+            <td>Manampy préfixe (eo aloha)</td>
+            <td>re-faire → refaire</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-suffixe">SUFFIXATION</span></td>
+            <td>Manampy suffixe (eo aoriana)</td>
+            <td>jardin-ier → jardinier</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-compose">COMPOSITION</span></td>
+            <td>Manambatra teny roa</td>
+            <td>porte + feuille → portefeuille</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>mot simple</strong> dia fototeny (racine) tsy azo zaraina intsony.<br>
+      • Ny <strong>préfixe</strong> dia ampiana <strong>eo alohan'ny</strong> fototeny mba hanova ny heviny.<br>
+      • Ny <strong>suffixe</strong> dia ampiana <strong>eo aorian'ny</strong> fototeny mba hanova ny heviny na ny sokajin-teny.<br>
+      • Ny <strong>composition</strong> dia manambatra teny <strong>roa</strong> na <strong>mihoatra</strong> mba hamoronana teny vaovao.<br>
+      • Ny fahafantarana ny fomba famoronana teny dia manampy <strong>hamakafaka</strong> sy <strong>hahafantatra</strong> ny hevitry ny teny tsy fantatra.
+    </div>
+  </div>
+
+  <!-- 1. MOTS SIMPLES -->
+  <div class="card">
+    <h2>1️⃣ MOTS SIMPLES</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>mot simple</strong> dia teny <strong>tsy azo zaraina</strong> ho singa kely kokoa. Izy no <strong>fototeny</strong> (racine) izay ampiasaina hamoronana teny hafa.<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>jour</em> (andro)<br>
+      • <em>terre</em> (tany)<br>
+      • <em>maison</em> (trano)<br>
+      • <em>voir</em> (mahita)<br>
+      • <em>beau</em> (tsara)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <strong>jour</strong> est beau. (Tsara ny <strong>andro</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La <strong>terre</strong> est ronde. (Bory ny <strong>tany</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette <strong>maison</strong> est grande. (Lehibe ity <strong>trano</strong> ity.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>vois</strong> un oiseau. (M<strong>ahita</strong> vorona aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny mots simples dia <strong>fototeny</strong> (racines) izay ampiasaina hamoronana mots construits.
+    </div>
+  </div>
+
+  <!-- 2. PRÉFIXATION -->
+  <div class="card">
+    <h2>2️⃣ PRÉFIXATION (manampy eo aloha)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>préfixation</strong> dia fomba famoronana teny amin'ny alalan'ny fanampiana <strong>préfixe</strong> (tovy kely) <strong>eo alohan'ny</strong> fototeny (racine).<br><br>
+      <strong>Préfixes courants :</strong><br>
+      • <strong>re-</strong> → indray (refaire = manao indray)<br>
+      • <strong>dé-</strong> → manala (défaire = manala / manavotra)<br>
+      • <strong>pré-</strong> → aloha (prévoir = mahita mialoha)<br>
+      • <strong>in-</strong> / <strong>im-</strong> / <strong>il-</strong> / <strong>ir-</strong> → tsy (incapable = tsy mahay)<br>
+      • <strong>mal-</strong> → ratsy (malade = marary)<br>
+      • <strong>co-</strong> → miaraka (copain = namana)<br>
+      • <strong>trans-</strong> → miampita (transporter = mitondra)<br>
+      • <strong>anti-</strong> → manohitra (antigel = manohitra ny ranomandry)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>re-</strong> + faire → <strong>refaire</strong> (manao indray)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>dé-</strong> + faire → <strong>défaire</strong> (manala / manavotra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>pré-</strong> + voir → <strong>prévoir</strong> (mahita mialoha)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>in-</strong> + capable → <strong>incapable</strong> (tsy mahay)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>mal-</strong> + ade → <strong>malade</strong> (marary)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>co-</strong> + pain → <strong>copain</strong> (namana)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny préfixe dia <strong>manova ny hevitry</strong> ny fototeny fa tsy manova ny sokajin-teny (verbe, nom, adjectif) matetika.
+    </div>
+  </div>
+
+  <!-- 3. SUFFIXATION -->
+  <div class="card">
+    <h2>3️⃣ SUFFIXATION (manampy eo aoriana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>suffixation</strong> dia fomba famoronana teny amin'ny alalan'ny fanampiana <strong>suffixe</strong> (tovy kely) <strong>eo aorian'ny</strong> fototeny (racine).<br><br>
+      <strong>Suffixes courants :</strong><br>
+      • <strong>-ier</strong> → olona manao asa (jardinier = mpamboly)<br>
+      • <strong>-euse</strong> / <strong>-rice</strong> → olona vavy manao asa (danseuse = mpandihy vavy)<br>
+      • <strong>-ment</strong> → fomba (lentement = mora)<br>
+      • <strong>-tion</strong> / <strong>-ation</strong> → hetsika (information = fampahalalana)<br>
+      • <strong>-able</strong> / <strong>-ible</strong> → azo atao (mangeable = azo hanina)<br>
+      • <strong>-eur</strong> → olona manao asa (chanteur = mpihira)<br>
+      • <strong>-iste</strong> → olona manao asa (artiste = mpanakanto)<br>
+      • <strong>-ment</strong> → fomba (doucement = mora)<br>
+      • <strong>-té</strong> → toetra (beauté = hatsarana)<br>
+      • <strong>-age</strong> → hetsika (voyage = dia)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">jardin + <strong>-ier</strong> → <strong>jardinier</strong> (mpamboly)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">danse + <strong>-euse</strong> → <strong>danseuse</strong> (mpandihy vavy)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">lent + <strong>-ment</strong> → <strong>lentement</strong> (mora)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">information + <strong>-tion</strong> → <strong>information</strong> (fampahalana)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">mange + <strong>-able</strong> → <strong>mangeable</strong> (azo hanina)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">chante + <strong>-eur</strong> → <strong>chanteur</strong> (mpihira)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny suffixe dia <strong>manova ny sokajin-teny</strong> matetika (ohatra : verbe → nom, adjectif → adverbe).
+    </div>
+  </div>
+
+  <!-- 4. COMPOSITION -->
+  <div class="card">
+    <h2>4️⃣ COMPOSITION (manambatra teny roa)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>composition</strong> dia fomba famoronana teny amin'ny alalan'ny fanambarana <strong>teny roa</strong> na <strong>mihoatra</strong> mba hamoronana teny vaovao.<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>porte + feuille</em> → <strong>portefeuille</strong> (kitapo)<br>
+      • <em>garde + robe</em> → <strong>garderobe</strong> (efitrano fitafiana)<br>
+      • <em>chou + fleur</em> → <strong>chou-fleur</strong> (voatavo)<br>
+      • <em>pomme + terre</em> → <strong>pomme de terre</strong> (ovo)<br>
+      • <em>arc + en + ciel</em> → <strong>arc-en-ciel</strong> (avana)<br>
+      • <em>sans + soin</em> → <strong>insouciant</strong> (tsy miraharaha) - miaraka amin'ny préfixe
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">porte + feuille → <strong>portefeuille</strong> (kitapo)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">garde + robe → <strong>garderobe</strong> (efitrano fitafiana)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">chou + fleur → <strong>chou-fleur</strong> (voatavo)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">pomme + terre → <strong>pomme de terre</strong> (ovo)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">arc + en + ciel → <strong>arc-en-ciel</strong> (avana)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">sans + soin → <strong>insouciant</strong> (tsy miraharaha)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny composition dia miteraka teny vaovao amin'ny alalan'ny fanambarana <strong>teny roa</strong> na <strong>mihoatra</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES QUATRE TYPES ==================== -->
+  <div class="card">
+    <h2>📌 Comparaison des types de formation des mots</h2>
+    <div class="definition-mg">
+      <strong><span class="color-simple">MOT SIMPLE</span></strong> → tsy azo zaraina<br>
+      Ohatra : <em>jour, terre, maison</em><br><br>
+      
+      <strong><span class="color-prefixe">PRÉFIXATION</span></strong> → manampy eo aloha<br>
+      Ohatra : <em>re-faire</em> (manao indray)<br><br>
+      
+      <strong><span class="color-suffixe">SUFFIXATION</span></strong> → manampy eo aoriana<br>
+      Ohatra : <em>jardin-ier</em> (mpamboly)<br><br>
+      
+      <strong><span class="color-compose">COMPOSITION</span></strong> → manambatra teny roa<br>
+      Ohatra : <em>porte-feuille</em> (kitapo)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MOT SIMPLE : <strong>voir</strong> (mahita)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PRÉFIXATION : <strong>pré-voir</strong> (mahita mialoha)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SUFFIXATION : <strong>voy-age</strong> (dia)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">COMPOSITION : <strong>porte-monnaie</strong> (kitapom-bola)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PRÉFIXES COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Préfixes courants à connaître</h2>
+    <div class="definition-mg">
+      <strong>Les préfixes les plus utilisés :</strong><br><br>
+      • <strong>re-</strong> / <strong>ré-</strong> → indray (refaire, revenir)<br>
+      • <strong>dé-</strong> → manala (défaire, démonter)<br>
+      • <strong>pré-</strong> → aloha (prévoir, préhistoire)<br>
+      • <strong>in-</strong> / <strong>im-</strong> / <strong>il-</strong> / <strong>ir-</strong> → tsy (incapable, impossible, illégal, irréel)<br>
+      • <strong>mal-</strong> → ratsy (malade, malhonnête)<br>
+      • <strong>co-</strong> / <strong>com-</strong> → miaraka (copain, compagnon)<br>
+      • <strong>anti-</strong> → manohitra (antigel, antibiotique)<br>
+      • <strong>trans-</strong> → miampita (transporter, transférer)<br>
+      • <strong>inter-</strong> → eo anelanelan'ny (international, interdire)<br>
+      • <strong>sur-</strong> → mihoatra (surhomme, surcharge)<br>
+      • <strong>sous-</strong> → ambany (sous-marin, sous-sol)
+    </div>
+  </div>
+
+  <!-- ==================== SUFFIXES COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Suffixes courants à connaître</h2>
+    <div class="definition-mg">
+      <strong>Les suffixes les plus utilisés :</strong><br><br>
+      • <strong>-ier</strong> / <strong>-ière</strong> → olona manao asa (jardinier, infirmière)<br>
+      • <strong>-eur</strong> / <strong>-euse</strong> → olona manao asa (chanteur, danseuse)<br>
+      • <strong>-tion</strong> / <strong>-ation</strong> → hetsika (information, création)<br>
+      • <strong>-ment</strong> → fomba (lentement, doucement)<br>
+      • <strong>-able</strong> / <strong>-ible</strong> → azo atao (mangeable, lisible)<br>
+      • <strong>-iste</strong> → olona manao asa (artiste, dentiste)<br>
+      • <strong>-té</strong> → toetra (beauté, bonté)<br>
+      • <strong>-age</strong> → hetsika (voyage, mariage)<br>
+      • <strong>-oire</strong> → fitaovana (armoire, bouilloire)<br>
+      • <strong>-isme</strong> → foto-pinoana (optimisme, réalisme)<br>
+      • <strong>-esse</strong> → toetra (jeunesse, tristesse)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>mots simples</strong> dia fototeny tsy azo zaraina intsony.</li>
+        <li>Ny <strong>préfixe</strong> dia ampiana <strong>eo alohan'ny</strong> fototeny.</li>
+        <li>Ny <strong>suffixe</strong> dia ampiana <strong>eo aorian'ny</strong> fototeny.</li>
+        <li>Ny <strong>composition</strong> dia manambatra teny <strong>roa</strong> na <strong>mihoatra</strong>.</li>
+        <li>Ny préfixe dia <strong>manova ny hevitry</strong> ny fototeny.</li>
+        <li>Ny suffixe dia <strong>manova ny sokajin-teny</strong> matetika.</li>
+        <li>Ny fahafantarana ny préfixe sy suffixe dia manampy <strong>hamakafaka</strong> sy <strong>hahafantatra</strong> ny hevitry ny teny tsy fantatra.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny fomba famoronana teny dia tena ilaina mba ho <strong>mora</strong> ny fahafantarana ny hevitry ny teny vaovao. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny formation des mots.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

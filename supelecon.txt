@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Superlatif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le superlatif */
+    .color-plus {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-moins {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-meilleur {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>SUPERLATIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny superlatif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "superlatif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>superlatif</strong> dia ampiasaina hilazana fa ny zavatra iray dia <strong>ambony indrindra</strong> na <strong>ambany indrindra</strong> raha oharina amin'ny rehetra.<br><br>
+      🔹 Misy karazany <strong>telo</strong> ny superlatif :<br><br>
+      <span class="icone">🏆</span> <strong>Superlatif de supériorité</strong> → <span class="color-plus">le/la/les + plus + adjectif</span> (indrindra)<br>
+      Ohatra : <em>C'est <strong>le plus</strong> grand.</em> (Izy no <strong>lehibe indrindra</strong>.)<br><br>
+      <span class="icone">🏆</span> <strong>Superlatif d'infériorité</strong> → <span class="color-moins">le/la/les + moins + adjectif</span> (vitsy indrindra)<br>
+      Ohatra : <em>C'est <strong>le moins</strong> grand.</em> (Izy no <strong>kely indrindra</strong>.)<br><br>
+      <span class="icone">🏆</span> <strong>Superlatif irrégulier</strong> → <span class="color-meilleur">le meilleur</span> (tsara indrindra)<br>
+      Ohatra : <em>C'est <strong>le meilleur</strong>.</em> (Izy no <strong>tsara indrindra</strong>.)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Superlatif</th>
+            <th>Famaritana malagasy</th>
+            <th>Structure</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-plus">SUPÉRIORITÉ</span></td>
+            <td>indrindra (mihoatra ny rehetra)</td>
+            <td>le/la/les + plus + adjectif</td>
+            <td>C'est le plus grand.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-moins">INFÉRIORITÉ</span></td>
+            <td>vitsy indrindra</td>
+            <td>le/la/les + moins + adjectif</td>
+            <td>C'est le moins grand.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-meilleur">IRRÉGULIER</span></td>
+            <td>tsara indrindra</td>
+            <td>le/la/les + meilleur</td>
+            <td>C'est le meilleur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>superlatif</strong> dia mampitaha zavatra iray amin'ny <strong>rehetra</strong> (tsy amin'ny zavatra iray ihany).<br>
+      • Ny superlatif dia mampiasa ny <strong>article défini</strong> (le, la, les) + <strong>plus</strong> (na <strong>moins</strong>) + <strong>adjectif</strong>.<br>
+      • Ny adjectif amin'ny superlatif dia <strong>mifanaraka</strong> amin'ny anarana (genre et nombre).<br>
+      • Misy <strong>exceptions</strong> : bon → le meilleur, bien → le mieux, mauvais → le pire/le plus mauvais.<br>
+      • Mampiasa ny <strong>"de"</strong> rehefa manondro vondrona iray manokana.<br>
+      Ohatra : <em>C'est le plus grand <strong>de</strong> la classe.</em>
+    </div>
+  </div>
+
+  <!-- 1. SUPERLATIF DE SUPÉRIORITÉ - LE/LA/LES + PLUS -->
+  <div class="card">
+    <h2>1️⃣ Superlatif de SUPÉRIORITÉ : le/la/les + plus (indrindra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le/la/les + plus + adjectif"</strong> dia ampiasaina hilazana fa ny zavatra iray dia <strong>mihoatra ny rehetra</strong>. Mitovy amin'ny hoe <strong>"...indrindra"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Structure :</strong> <em>article défini (le/la/les) + plus + adjectif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le plus</strong> grand. (Izy no <strong>lehibe indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>la plus</strong> belle maison. (Ity no trano <strong>tsara indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les plus</strong> intelligents. (Izy ireo no <strong>manan-tsaina indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>le plus</strong> gentil de la classe. (Izy no <strong>tsara fanahy indrindra</strong> ao amin'ny kilasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>la plus</strong> sérieuse de l'équipe. (Izy no <strong>matotra indrindra</strong> ao amin'ny ekipa.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les plus</strong> beaux tableaux. (Ireto no sary <strong>tsara indrindra</strong>.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny superlatif de supériorité dia ampiasaina hilazana fa zavatra iray dia <strong>mihoatra ny rehetra</strong> (le plus, la plus, les plus).
+    </div>
+  </div>
+
+  <!-- 2. SUPERLATIF D'INFÉRIORITÉ - LE/LA/LES + MOINS -->
+  <div class="card">
+    <h2>2️⃣ Superlatif d'INFÉRIORITÉ : le/la/les + moins (vitsy indrindra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le/la/les + moins + adjectif"</strong> dia ampiasaina hilazana fa ny zavatra iray dia <strong>vitsy noho ny rehetra</strong>. Mitovy amin'ny hoe <strong>"...vitsy indrindra"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Structure :</strong> <em>article défini (le/la/les) + moins + adjectif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le moins</strong> grand. (Izy no <strong>kely indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>la moins</strong> belle maison. (Ity no trano <strong>ratsy indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les moins</strong> intelligents. (Izy ireo no <strong>vitsy indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>le moins</strong> gentil de la classe. (Izy no <strong>ratsy fanahy indrindra</strong> ao amin'ny kilasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>la moins</strong> sérieuse de l'équipe. (Izy no <strong>tsy matotra indrindra</strong> ao amin'ny ekipa.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny superlatif d'infériorité dia ampiasaina hilazana fa zavatra iray dia <strong>vitsy noho ny rehetra</strong> (le moins, la moins, les moins).
+    </div>
+  </div>
+
+  <!-- 3. SUPERLATIF IRRÉGULIER - LE MEILLEUR -->
+  <div class="card">
+    <h2>3️⃣ Superlatif irrégulier : LE MEILLEUR (tsara indrindra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"le meilleur"</strong> dia endrika irrégulier amin'ny superlatif ho an'ny adjectif <strong>"bon"</strong> (tsara). Mitovy amin'ny hoe <strong>"tsara indrindra"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Accord :</strong><br>
+      • Masculin singulier → <strong>le meilleur</strong><br>
+      • Féminin singulier → <strong>la meilleure</strong><br>
+      • Masculin pluriel → <strong>les meilleurs</strong><br>
+      • Féminin pluriel → <strong>les meilleures</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le meilleur</strong> élève. (Izy no mpianatra <strong>tsara indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>la meilleure</strong> élève. (Izy no mpianatra vavy <strong>tsara indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les meilleurs</strong> élèves. (Izy ireo no mpianatra <strong>tsara indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les meilleures</strong> élèves. (Izy ireo no mpianatra vavy <strong>tsara indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le meilleur</strong> restaurant de la ville. (Ity no trano fisakafoanana <strong>tsara indrindra</strong> ao an-tanàna.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>la meilleure</strong> idée. (Ity no hevitra <strong>tsara indrindra</strong>.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Bon" → "le meilleur" (tsy "le plus bon"). Mitovy amin'ny "bien" → "le mieux" (tsy "le plus bien") ho an'ny adverbe.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON SUPERLATIF vs COMPARATIF ==================== -->
+  <div class="card">
+    <h2>📌 Superlatif vs Comparatif</h2>
+    <div class="definition-mg">
+      <strong>COMPARATIF</strong> → mampitaha <strong>zavatra roa</strong><br>
+      Ohatra : <em>Il est <strong>plus</strong> grand <strong>que</strong> moi.</em><br><br>
+      
+      <strong>SUPERLATIF</strong> → mampitaha zavatra iray amin'ny <strong>rehetra</strong><br>
+      Ohatra : <em>Il est <strong>le plus</strong> grand <strong>de</strong> la classe.</em><br><br>
+      
+      🔔 <strong>Marihina :</strong> Ny superlatif dia mampiasa ny <strong>article défini</strong> (le, la, les) ary matetika arahin'ny <strong>"de"</strong> + vondrona.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">COMPARATIF : Il est plus grand que moi. (Lehibe mihoatra noho izy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SUPERLATIF : Il est le plus grand de la classe. (Izy no lehibe indrindra ao amin'ny kilasy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SUPERLATIF AVEC "DE" ==================== -->
+  <div class="card">
+    <h2>📌 Superlatif avec "de"</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Rehefa manondro vondrona iray manokana isika amin'ny superlatif, dia mampiasa ny <strong>"de"</strong> (na <strong>"d'"</strong> alohan'ny zanatsoratra).<br><br>
+      <strong>Structure :</strong> <em>le/la/les + plus/moins + adjectif + de + groupe</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est le plus grand <strong>de</strong> la classe. (Izy no lehibe indrindra <strong>ao amin'ny</strong> kilasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est la plus belle <strong>de</strong> la famille. (Izy no tsara tarehy indrindra <strong>ao amin'ny</strong> fianakaviana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont les meilleurs <strong>de</strong> l'équipe. (Izy ireo no tsara indrindra <strong>ao amin'ny</strong> ekipa.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est le moins cher <strong>d'</strong>entre eux. (Izy no mora indrindra <strong>amin'izy</strong> ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SUPERLATIF AVEC "BIEN" ==================== -->
+  <div class="card">
+    <h2>📌 Superlatif de "bien" → le mieux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny adverbe <strong>"bien"</strong> (tsara) dia manana superlatif irrégulier : <strong>"le mieux"</strong> (tsara indrindra).<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>Il chante <strong>le mieux</strong>.</em> (Izy no mihira <strong>tsara indrindra</strong>.)<br>
+      • <em>C'est <strong>le mieux</strong> pour toi.</em> (Ity no <strong>tsara indrindra</strong> ho anao.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il chante <strong>le mieux</strong> de la classe. (Izy no mihira <strong>tsara indrindra</strong> ao amin'ny kilasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le mieux</strong> que tu puisses faire. (Ity no <strong>tsara indrindra</strong> azonao atao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle danse <strong>le mieux</strong> du groupe. (Izy no mandihy <strong>tsara indrindra</strong> ao amin'ny vondrona.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SUPERLATIF DE "MAUVAIS" ==================== -->
+  <div class="card">
+    <h2>📌 Superlatif de "mauvais" → le pire</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny adjectif <strong>"mauvais"</strong> (ratsy) dia manana superlatif irrégulier : <strong>"le pire"</strong> (ratsy indrindra).<br><br>
+      <strong>Accord :</strong><br>
+      • Masculin singulier → <strong>le pire</strong><br>
+      • Féminin singulier → <strong>la pire</strong><br>
+      • Masculin pluriel → <strong>les pires</strong><br>
+      • Féminin pluriel → <strong>les pires</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>le pire</strong> élève de la classe. (Izy no mpianatra <strong>ratsy indrindra</strong> ao amin'ny kilasy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est <strong>la pire</strong> idée. (Ity no hevitra <strong>ratsy indrindra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce sont <strong>les pires</strong> jours de l'année. (Ireto no andro <strong>ratsy indrindra</strong> amin'ny taona.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>superlatif</strong> dia ampiasaina hilazana zavatra iray amin'ny <strong>rehetra</strong>.</li>
+        <li><strong>Le/la/les + plus</strong> → mihoatra ny rehetra (indrindra)</li>
+        <li><strong>Le/la/les + moins</strong> → vitsy ny rehetra (vitsy indrindra)</li>
+        <li>Mampiasa ny <strong>article défini</strong> (le, la, les) foana ny superlatif.</li>
+        <li>Mampiasa ny <strong>"de"</strong> rehefa manondro vondrona iray.</li>
+        <li><strong>Bon</strong> → le meilleur (tsara indrindra)</li>
+        <li><strong>Bien</strong> → le mieux (tsara indrindra - adverbe)</li>
+        <li><strong>Mauvais</strong> → le pire (ratsy indrindra)</li>
+        <li>Tsy mitovy amin'ny <strong>comparatif</strong> ny superlatif (comparatif = zavatra roa, superlatif = zavatra iray amin'ny rehetra).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny superlatif dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>ambony indrindra</strong> na <strong>ambany indrindra</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny superlatif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

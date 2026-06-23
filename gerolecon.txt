@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Imparfait – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'imparfait */
+    .color-terminaison {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-special {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>IMPARFAIT</h1>
+  </div>
+
+  <!-- Carte : Inona ny imparfait ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "imparfait" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>imparfait</strong> dia ampiasaina hilazana zavatra <strong>mitranga tamin'ny lasa</strong>, zavatra <strong>mahazatra</strong> taloha, na zavatra <strong>mitohy</strong> tamin'ny lasa.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"nanao"</strong> (mahazatra) na <strong>"taloha"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ny imparfait dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Radical</strong> (fototeny) amin'ny <strong>1ère personne du pluriel (nous)</strong> au présent + <span class="color-terminaison">terminaisons</span><br><br>
+      🔹 Ohatra :<br>
+      • <em>Je <span class="color-terminaison">mangeais</span>.</em> (Nihinana aho - mahazatra.)<br>
+      • <em>Il <span class="color-terminaison">dormait</span>.</em> (Natory izy - mitohy.)<br><br>
+      🔹 <strong>Règle :</strong> Mampiasa ny <strong>radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span> : <strong>-ais, -ais, -ait, -ions, -iez, -aient</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-terminaison">Terminaison</span></th>
+            <th>Verbe -er (parler)</th>
+            <th>Verbe -ir (finir)</th>
+            <th>Verbe -re (vendre)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je</td>
+            <td><span class="color-terminaison">-ais</span></td>
+            <td>parlais</td>
+            <td>finissais</td>
+            <td>vendais</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu</td>
+            <td><span class="color-terminaison">-ais</span></td>
+            <td>parlais</td>
+            <td>finissais</td>
+            <td>vendais</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il/Elle/On</td>
+            <td><span class="color-terminaison">-ait</span></td>
+            <td>parlait</td>
+            <td>finissait</td>
+            <td>vendait</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous</td>
+            <td><span class="color-terminaison">-ions</span></td>
+            <td>parlions</td>
+            <td>finissions</td>
+            <td>vendions</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous</td>
+            <td><span class="color-terminaison">-iez</span></td>
+            <td>parliez</td>
+            <td>finissiez</td>
+            <td>vendiez</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils/Elles</td>
+            <td><span class="color-terminaison">-aient</span></td>
+            <td>parlaient</td>
+            <td>finissaient</td>
+            <td>vendaient</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>imparfait</strong> dia ampiasaina hilazana zavatra <strong>mahazatra</strong> na <strong>mitohy</strong> tamin'ny lasa.<br>
+      • Mampiasa ny <strong>radical</strong> avy amin'ny <strong>"nous"</strong> amin'ny présent (esorina ny "-ons") + <span class="color-terminaison">terminaisons</span>.<br>
+      • Ny terminaisons dia : <strong>-ais, -ais, -ait, -ions, -iez, -aient</strong>.<br>
+      • Ny hany verbe <span class="color-special">tsy ara-dalàna</span> amin'ny imparfait dia <strong>"être"</strong> (j'étais, tu étais...).<br>
+      • Ohatra : <em>nous parlons</em> → radical "parl-" → <em>je parlais</em>.
+    </div>
+  </div>
+
+  <!-- 1. CONJUGAISON DE L'IMPARFAIT - 1ER GROUPE -->
+  <div class="card">
+    <h2>1️⃣ Imparfait - 1er groupe (verbes en -ER)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>1er groupe</strong> (mifarana amin'ny <strong>-er</strong>) dia miforona amin'ny alalan'ny <strong>radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Exemple :</strong> <em>parler</em> (miteny)<br>
+      <strong>Présent :</strong> nous parl<span class="color-special">ons</span> → radical : <strong>parl-</strong><br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> parl<span class="color-terminaison">ais</span><br>
+      <strong>Tu</strong> parl<span class="color-terminaison">ais</span><br>
+      <strong>Il/Elle/On</strong> parl<span class="color-terminaison">ait</span><br>
+      <strong>Nous</strong> parl<span class="color-terminaison">ions</span><br>
+      <strong>Vous</strong> parl<span class="color-terminaison">iez</span><br>
+      <strong>Ils/Elles</strong> parl<span class="color-terminaison">aient</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-terminaison">parlais</span> français. (Niteny frantsay aho - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-terminaison">mangeais</span> des pommes. (Nihinana paoma ianao - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">chantait</span> bien. (Nihira tsara izy - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">dansions</span> ensemble. (Nandihy miaraka izahay - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-terminaison">travailliez</span> bien. (Niasa tsara ianareo - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-terminaison">aimaient</span> ce film. (Tia ity sarimihetsika ity izy ireo - mahazatra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CONJUGAISON DE L'IMPARFAIT - 2EME GROUPE -->
+  <div class="card">
+    <h2>2️⃣ Imparfait - 2ème groupe (verbes en -IR)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>2ème groupe</strong> (mifarana amin'ny <strong>-ir</strong>) dia miforona amin'ny alalan'ny <strong>radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Exemple :</strong> <em>finir</em> (mamita)<br>
+      <strong>Présent :</strong> nous finiss<span class="color-special">ons</span> → radical : <strong>finiss-</strong><br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> finiss<span class="color-terminaison">ais</span><br>
+      <strong>Tu</strong> finiss<span class="color-terminaison">ais</span><br>
+      <strong>Il/Elle/On</strong> finiss<span class="color-terminaison">ait</span><br>
+      <strong>Nous</strong> finiss<span class="color-terminaison">ions</span><br>
+      <strong>Vous</strong> finiss<span class="color-terminaison">iez</span><br>
+      <strong>Ils/Elles</strong> finiss<span class="color-terminaison">aient</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-terminaison">finissais</span> mes devoirs. (Namita ny raharahako aho - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-terminaison">choisissais</span> un livre. (Nisafidy boky ianao - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">réussissait</span> toujours. (Nahomby foana izy - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">finissions</span> le travail. (Namita ny asa izahay - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-terminaison">choisissiez</span> bien. (Nisafidy tsara ianareo - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-terminaison">obéissaient</span> à leurs parents. (Nankatò ny ray amandreniny izy ireo - mahazatra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CONJUGAISON DE L'IMPARFAIT - 3EME GROUPE -->
+  <div class="card">
+    <h2>3️⃣ Imparfait - 3ème groupe (verbes irréguliers)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>3ème groupe</strong> dia miforona amin'ny alalan'ny <strong>radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>ALLER :</strong><br>
+      Présent : nous allons → radical : <strong>all-</strong><br>
+      j'<span class="color-terminaison">allais</span>, tu <span class="color-terminaison">allais</span>, il <span class="color-terminaison">allait</span>, nous <span class="color-terminaison">allions</span>, vous <span class="color-terminaison">alliez</span>, ils <span class="color-terminaison">allaient</span><br><br>
+      
+      <strong>FAIRE :</strong><br>
+      Présent : nous faisons → radical : <strong>fais-</strong><br>
+      je <span class="color-terminaison">faisais</span>, tu <span class="color-terminaison">faisais</span>, il <span class="color-terminaison">faisait</span>, nous <span class="color-terminaison">faisions</span>, vous <span class="color-terminaison">faisiez</span>, ils <span class="color-terminaison">faisaient</span><br><br>
+      
+      <strong>VOIR :</strong><br>
+      Présent : nous voyons → radical : <strong>voy-</strong><br>
+      je <span class="color-terminaison">voyais</span>, tu <span class="color-terminaison">voyais</span>, il <span class="color-terminaison">voyait</span>, nous <span class="color-terminaison">voyions</span>, vous <span class="color-terminaison">voyiez</span>, ils <span class="color-terminaison">voyaient</span><br><br>
+      
+      <strong>PRENDRE :</strong><br>
+      Présent : nous prenons → radical : <strong>pren-</strong><br>
+      je <span class="color-terminaison">prenais</span>, tu <span class="color-terminaison">prenais</span>, il <span class="color-terminaison">prenait</span>, nous <span class="color-terminaison">prenions</span>, vous <span class="color-terminaison">preniez</span>, ils <span class="color-terminaison">prenaient</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-terminaison">allais</span> à l'école. (Nandeha any an-tsekoly aho - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">faisait</span> beau. (Tsara ny andro - taloha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">voyions</span> des films. (Nijery sarimihetsika izahay - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-terminaison">prenaient</span> le train. (Naka ny lamasinina izy ireo - mahazatra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CONJUGAISON DE "ÊTRE" À L'IMPARFAIT -->
+  <div class="card">
+    <h2>4️⃣ Conjugaison de <span class="color-special">ÊTRE</span> à l'imparfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe <strong>"être"</strong> (misy / maha-izy) dia <span class="color-special">tsy ara-dalàna</span> (irrégulier) amin'ny imparfait. Tsy manaraka ny règle mahazatra izy.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>ét<span class="color-terminaison">ais</span><br>
+      <strong>Tu</strong> ét<span class="color-terminaison">ais</span><br>
+      <strong>Il/Elle/On</strong> ét<span class="color-terminaison">ait</span><br>
+      <strong>Nous</strong> ét<span class="color-terminaison">ions</span><br>
+      <strong>Vous</strong> ét<span class="color-terminaison">iez</span><br>
+      <strong>Ils/Elles</strong> ét<span class="color-terminaison">aient</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-terminaison">étais</span> étudiant. (Mpianatra aho taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-terminaison">étais</span> gentil. (Tsara fanahy ianao taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">était</span> grand. (Lehibe izy taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">étions</span> fatigués. (Vizana izahay taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-terminaison">étiez</span> prêts. (Vonona ianareo taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-terminaison">étaient</span> heureux. (Faly izy ireo taloha - mahazatra.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Être" dia ny hany verbe <span class="color-special">tsy ara-dalàna</span> amin'ny imparfait.
+    </div>
+  </div>
+
+  <!-- 5. CONJUGAISON DE "AVOIR" À L'IMPARFAIT -->
+  <div class="card">
+    <h2>5️⃣ Conjugaison de <span class="color-special">AVOIR</span> à l'imparfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe <strong>"avoir"</strong> (manana) dia miforona amin'ny alalan'ny <strong>radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Présent :</strong> nous avons → radical : <strong>av-</strong><br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>av<span class="color-terminaison">ais</span><br>
+      <strong>Tu</strong> av<span class="color-terminaison">ais</span><br>
+      <strong>Il/Elle/On</strong> av<span class="color-terminaison">ait</span><br>
+      <strong>Nous</strong> av<span class="color-terminaison">ions</span><br>
+      <strong>Vous</strong> av<span class="color-terminaison">iez</span><br>
+      <strong>Ils/Elles</strong> av<span class="color-terminaison">aient</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-terminaison">avais</span> un frère. (Manana rahalahy aho taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-terminaison">avais</span> soif. (Mangetaheta ianao taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">avait</span> faim. (Noana izy taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">avions</span> une voiture. (Manana fiara izahay taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-terminaison">aviez</span> raison. (Marina ianareo taloha - mahazatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-terminaison">avaient</span> froid. (Mangatsiaka izy ireo taloha - mahazatra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. EMPLOI DE L'IMPARFAIT -->
+  <div class="card">
+    <h2>6️⃣ Emploi de l'imparfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny imparfait dia ampiasaina amin'ny toe-javatra <strong>efatra</strong> :<br><br>
+      
+      <strong>1. Description (famaritana) :</strong><br>
+      Ohatra : <em>Il <span class="color-terminaison">faisait</span> beau.</em> (Tsara ny andro taloha.)<br><br>
+      
+      <strong>2. Habitude (fanao mahazatra) :</strong><br>
+      Ohatra : <em>Je <span class="color-terminaison">mangeais</span> à midi.</em> (Nihinana tamin'ny mitataovovonana aho taloha.)<br><br>
+      
+      <strong>3. Action en cours (hetsika mitohy) :</strong><br>
+      Ohatra : <em>Il <span class="color-terminaison">dormait</span> quand je suis arrivé.</em> (Natory izy rehefa tonga aho.)<br><br>
+      
+      <strong>4. Condition avec "si" :</strong><br>
+      Ohatra : <em>Si j'<span class="color-terminaison">étais</span> riche...</em> (Raha manan-karena aho...)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">DESCRIPTION : Il <span class="color-terminaison">était</span> grand et <span class="color-terminaison">avait</span> les yeux bleus. (Lehibe izy ary manana maso manga taloha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">HABITUDE : Je <span class="color-terminaison">me levais</span> à 7 heures. (Nifoha tamin'ny 7 ora aho taloha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACTION EN COURS : Elle <span class="color-terminaison">lisait</span> un livre quand je suis entré. (Namaky boky izy rehefa niditra aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">CONDITION : Si tu <span class="color-terminaison">étais</span> là, je serais content. (Raha teo ianao, ho faly aho.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. NÉGATION AVEC L'IMPARFAIT -->
+  <div class="card">
+    <h2>7️⃣ Négation avec l'imparfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Amin'ny négation, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe à l'imparfait.<br><br>
+      <strong>Structure :</strong><br>
+      <em>Sujet + ne + verbe (imparfait) + pas</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-terminaison">ne</span> mangeais <span class="color-terminaison">pas</span> de viande. (Tsy nihinana hena aho taloha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-terminaison">n'</span>était <span class="color-terminaison">pas</span> content. (Tsy faly izy taloha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-terminaison">ne</span> finissions <span class="color-terminaison">pas</span> à l'heure. (Tsy namita ara-potoana izahay taloha.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. QUESTIONS AVEC L'IMPARFAIT -->
+  <div class="card">
+    <h2>8️⃣ Questions avec l'imparfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana <strong>fanontaniana</strong> amin'ny imparfait, dia azo atao ny mampiasa :<br><br>
+      <strong>1. Inversion :</strong> <em>Mangeais-tu ?</em><br>
+      <strong>2. Est-ce que :</strong> <em>Est-ce que tu mangeais ?</em><br>
+      <strong>3. Intonation :</strong> <em>Tu mangeais ?</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mangeais-tu des pommes ? (Nihinana paoma ve ianao taloha?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu mangeais des pommes ? (Nihinana paoma ve ianao taloha?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu mangeais des pommes ? (Nihinana paoma ve ianao taloha?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. Formation :</strong><br>
+      • <strong>Radical</strong> (nous du présent - "ons") + <span class="color-terminaison">terminaisons</span> (-ais, -ais, -ait, -ions, -iez, -aient)<br>
+      Ohatra : <em>nous parlons</em> → radical "parl-" → <em>je parlais</em><br><br>
+      
+      <strong>2. Terminaisons :</strong><br>
+      • <span class="color-terminaison">-ais, -ais, -ait, -ions, -iez, -aient</span><br><br>
+      
+      <strong>3. Exception :</strong><br>
+      • <span class="color-special">Être</span> → j'étais, tu étais, il était, nous étions, vous étiez, ils étaient<br><br>
+      
+      <strong>4. Emploi :</strong><br>
+      • <strong>Description</strong> (famaritana)<br>
+      • <strong>Habitude</strong> (fanao mahazatra)<br>
+      • <strong>Action en cours</strong> (hetsika mitohy)<br>
+      • <strong>Condition avec "si"</strong><br><br>
+      
+      <strong>5. Négation :</strong><br>
+      • <em>ne + verbe (imparfait) + pas</em><br><br>
+      
+      <strong>6. Questions :</strong><br>
+      • Inversion, "est-ce que", ou intonation
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>imparfait</strong> dia ampiasaina hilazana zavatra <strong>mahazatra</strong> na <strong>mitohy</strong> tamin'ny lasa.</li>
+        <li>Miforona amin'ny alalan'ny : <strong>radical (nous du présent - "ons") + terminaisons</strong>.</li>
+        <li>Ny terminaisons dia : <span class="color-terminaison">-ais, -ais, -ait, -ions, -iez, -aient</span>.</li>
+        <li>Ny hany verbe <span class="color-special">tsy ara-dalàna</span> amin'ny imparfait dia <strong>"être"</strong>.</li>
+        <li>Amin'ny <strong>négation</strong>, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe.</li>
+        <li>Amin'ny <strong>questions</strong>, dia azo atao ny <strong>inversion</strong>, <strong>"est-ce que"</strong>, na <strong>intonation</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny imparfait dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>taloha</strong> na <strong>mahazatra</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny imparfait.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

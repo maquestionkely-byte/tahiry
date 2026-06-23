@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Figures de style – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 320px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les figures de style */
+    .color-metaphore {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-comparaison {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-personnification {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-hyperbole {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-litote {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-euphemisme {
+      background-color: #a7f3d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-anaphore {
+      background-color: #c4b5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-oxymore {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-metonimie {
+      background-color: #fdba74;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>FIGURES DE STYLE</h1>
+  </div>
+
+  <!-- Carte : Inona ny figures de style ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "figures de style" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>figures de style</strong> dia fomba fiteny <strong>manatsara</strong> (embellir) ny lahateny na ny fanoratana amin'ny alalan'ny <strong>sary an-tsaina</strong> (images).<br><br>
+      🔹 Misy karazany <strong>maro</strong> ny figures de style. Amin'ity lesona ity dia hifantoka amin'ny <strong>sivy</strong> isika :<br><br>
+      <span class="icone">📌</span> <span class="color-metaphore">MÉTAPHORE</span> → fampitahana tsy misy "comme"<br>
+      <span class="icone">📌</span> <span class="color-comparaison">COMPARAISON</span> → fampitahana misy "comme"<br>
+      <span class="icone">📌</span> <span class="color-personnification">PERSONNIFICATION</span> → fanomezana toetra maha-olona<br>
+      <span class="icone">📌</span> <span class="color-hyperbole">HYPERBOLE</span> → fanitarana / fanehoana amin'ny fomba tafahoatra<br>
+      <span class="icone">📌</span> <span class="color-litote">LITOTE</span> → milaza kely nefa midika be<br>
+      <span class="icone">📌</span> <span class="color-euphemisme">EUPHÉMISME</span> → fanalefahana ny teny masiaka<br>
+      <span class="icone">📌</span> <span class="color-anaphore">ANAPHORE</span> → famerimberenana teny eo am-piandohana<br>
+      <span class="icone">📌</span> <span class="color-oxymore">OXYMORE</span> → fampifandraisana teny mifanohitra<br>
+      <span class="icone">📌</span> <span class="color-metonimie">MÉTONYMIE</span> → fampiasana ny ampahany ho solon'ny iray manontolo
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Figure de style</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-metaphore">MÉTAPHORE</span></td>
+            <td>Fampitahana tsy misy "comme"</td>
+            <td>Il est un lion.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-comparaison">COMPARAISON</span></td>
+            <td>Fampitahana misy "comme"</td>
+            <td>Il est fort comme un lion.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-personnification">PERSONNIFICATION</span></td>
+            <td>Manome toetra maha-olona</td>
+            <td>Le vent chante.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-hyperbole">HYPERBOLE</span></td>
+            <td>Fanitarana / fanehoana tafahoatra</td>
+            <td>Je suis mort de faim.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-litote">LITOTE</span></td>
+            <td>Milaza kely nefa midika be</td>
+            <td>Ce n'est pas mauvais.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-euphemisme">EUPHÉMISME</span></td>
+            <td>Fanalefahana teny masiaka</td>
+            <td>Il nous a quittés.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-anaphore">ANAPHORE</span></td>
+            <td>Famerimberenana teny eo am-piandohana</td>
+            <td>Je veux..., je veux...</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-oxymore">OXYMORE</span></td>
+            <td>Fampifandraisana teny mifanohitra</td>
+            <td>Une obscure clarté.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-metonimie">MÉTONYMIE</span></td>
+            <td>Ampahany ho solon'ny manontolo</td>
+            <td>Boire un verre.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-metaphore">métaphore</span> dia fampitahana <strong>tsy misy</strong> "comme".<br>
+      • Ny <span class="color-comparaison">comparaison</span> dia fampitahana <strong>misy</strong> "comme".<br>
+      • Ny <span class="color-personnification">personnification</span> dia manome <strong>toetra maha-olona</strong> amin'ny zavatra tsy olona.<br>
+      • Ny <span class="color-hyperbole">hyperbole</span> dia <strong>fanitarana</strong> (exagération).<br>
+      • Ny <span class="color-litote">litote</span> dia milaza <strong>kely</strong> nefa midika <strong>be</strong>.<br>
+      • Ny <span class="color-euphemisme">euphémisme</span> dia <strong>fanalefahana</strong> ny teny masiaka.<br>
+      • Ny <span class="color-anaphore">anaphore</span> dia <strong>famerimberenana</strong> teny eo am-piandohana.<br>
+      • Ny <span class="color-oxymore">oxymore</span> dia fampifandraisana teny <strong>mifanohitra</strong>.<br>
+      • Ny <span class="color-metonimie">métonymie</span> dia fampiasana ny <strong>ampahany</strong> ho solon'ny <strong>manontolo</strong>.
+    </div>
+  </div>
+
+  <!-- 1. MÉTAPHORE - Fampitahana tsy misy "comme" -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-metaphore">MÉTAPHORE</span> (fampitahana tsy misy "comme")</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-metaphore">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>. Mampitaha zavatra roa <strong>mivantana</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Tsy misy <strong>"comme"</strong> na <strong>"tel que"</strong>.<br>
+      • Mampitaha zavatra roa <strong>mivantana</strong>.<br>
+      • Matetika ampiasaina amin'ny <strong>poésie</strong> sy ny <strong>literatiora</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est un <span class="color-metaphore">lion</span> au combat. (Liona izy amin'ny ady - tsy tena liona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette femme est une <span class="color-metaphore">rose</span>. (Voninkazo ity vehivavy ity - tsy tena voninkazo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le temps est un <span class="color-metaphore">voleur</span>. (Mpangalatra ny fotoana - tsy tena olona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ses yeux sont des <span class="color-metaphore">étoiles</span>. (Kintana ny masony - tsy tena kintana.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-metaphore">métaphore</span> dia fampitahana <strong>tsy misy "comme"</strong>.<br>
+      Ohatra : <em>Il est un lion.</em>
+    </div>
+  </div>
+
+  <!-- 2. COMPARAISON - Fampitahana misy "comme" -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-comparaison">COMPARAISON</span> (fampitahana misy "comme")</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-comparaison">comparaison</span> dia fampitahana <strong>misy "comme"</strong> na <strong>"tel que"</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Misy <strong>"comme"</strong> na <strong>"tel que"</strong>.<br>
+      • Mampitaha zavatra roa amin'ny alalan'ny <strong>teny fampitahana</strong>.<br>
+      • Matetika ampiasaina amin'ny <strong>resaka andavanandro</strong> sy ny <strong>literatiora</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-comparaison">fort comme un lion</span>. (Mahery toy ny liona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <span class="color-comparaison">belle comme une rose</span>. (Tsara tarehy toy ny voninkazo izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il court <span class="color-comparaison">comme le vent</span>. (Mihazakazaka toy ny rivotra izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle chante <span class="color-comparaison">comme un oiseau</span>. (Mihira toy ny vorona izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-comparaison">comparaison</span> dia fampitahana <strong>misy "comme"</strong>.<br>
+      Ohatra : <em>Il est fort comme un lion.</em>
+    </div>
+  </div>
+
+  <!-- 3. PERSONNIFICATION - Toetra maha-olona -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-personnification">PERSONNIFICATION</span> (toetra maha-olona)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-personnification">personnification</span> dia <strong>manome toetra maha-olona</strong> (humain) amin'ny zavatra tsy olona.<br><br>
+      <strong>Règle :</strong><br>
+      • Manome <strong>toetra maha-olona</strong> amin'ny zavatra tsy olona.<br>
+      • Matetika ampiasaina amin'ny <strong>poésie</strong> sy ny <strong>littérature</strong>.<br>
+      • Mampitombo ny <strong>hambaraka</strong> ny fehezanteny.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le vent <span class="color-personnification">chante</span>. (Mihira ny rivotra - tsy tena mihira.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La lune <span class="color-personnification">sourit</span>. (Mitsiky ny volana - tsy tena mitsiky.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le soleil <span class="color-personnification">se couche</span>. (Matory ny masoandro - tsy tena olona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La mer <span class="color-personnification">pleure</span>. (Mitomany ny ranomasina - tsy tena mitomany.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-personnification">personnification</span> dia <strong>manome toetra maha-olona</strong> amin'ny zavatra tsy olona.<br>
+      Ohatra : <em>Le vent chante.</em>
+    </div>
+  </div>
+
+  <!-- 4. HYPERBOLE - Fanitarana / Fanehoana tafahoatra -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-hyperbole">HYPERBOLE</span> (fanitarana / fanehoana tafahoatra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-hyperbole">hyperbole</span> dia <strong>fanitarana</strong> (exagération) ny zavatra iray, matetika mba hanehoana fihetseham-po mahery.<br><br>
+      <strong>Règle :</strong><br>
+      • Mampitombo (exagérer) ny zavatra resahina.<br>
+      • Matetika ampiasaina amin'ny <strong>resaka andavanandro</strong> sy ny <strong>literatiora</strong>.<br>
+      • Maneho <strong>fihetseham-po</strong> mahery.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je suis <span class="color-hyperbole">mort de faim</span>. (Maty noana aho - tsy tena maty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a <span class="color-hyperbole">attendu une éternité</span>. (Niandry mandrakizay izy - tsy tena mandrakizay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a <span class="color-hyperbole">pleuré des rivières</span>. (Nitory ranomasina izy - tsy tena ranomasina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-hyperbole">court plus vite que le vent</span>. (Mihazakazaka haingana noho ny rivotra izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-hyperbole">hyperbole</span> dia <strong>fanitarana</strong> (exagération).<br>
+      Ohatra : <em>Je suis mort de faim.</em>
+    </div>
+  </div>
+
+  <!-- 5. LITOTE - Milaza kely nefa midika be -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-litote">LITOTE</span> (milaza kely nefa midika be)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-litote">litote</span> dia fomba fiteny <strong>milaza kely</strong> (peu) nefa <strong>midika be</strong> (beaucoup).<br><br>
+      <strong>Règle :</strong><br>
+      • Mampiasa <strong>fandavana</strong> (négation) mba hanehoana ny <strong>fanamafisana</strong> (affirmation).<br>
+      • Matetika ampiasaina amin'ny <strong>literatiora</strong> sy ny <strong>resaka andavanandro</strong>.<br>
+      • Maneho <strong>fahalalam-pomba</strong> (politesse) na <strong>fanamafisana</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce n'est pas <span class="color-litote">mauvais</span>. (Tsy ratsy izany - midika fa tsara be.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne suis pas <span class="color-litote">mécontent</span>. (Tsy tsy faly aho - midika fa faly be.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il n'est pas <span class="color-litote">bête</span>. (Tsy adala izy - midika fa manan-tsaina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce n'est pas <span class="color-litote">facile</span>. (Tsy mora izany - midika fa sarotra be.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-litote">litote</span> dia <strong>milaza kely</strong> nefa <strong>midika be</strong>.<br>
+      Ohatra : <em>Ce n'est pas mauvais.</em> (midika fa tsara be.)
+    </div>
+  </div>
+
+  <!-- 6. EUPHÉMISME - Fanalefahana teny masiaka -->
+  <div class="card">
+    <h2>6️⃣ <span class="color-euphemisme">EUPHÉMISME</span> (fanalefahana teny masiaka)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-euphemisme">euphémisme</span> dia fomba fiteny <strong>manalefaka</strong> (adoucir) ny teny masiaka na maharary.<br><br>
+      <strong>Règle :</strong><br>
+      • Mampiasa teny <strong>malefaka</strong> (plus doux) mba hisorohana ny teny masiaka.<br>
+      • Matetika ampiasaina amin'ny <strong>resaka andavanandro</strong> sy ny <strong>politesse</strong>.<br>
+      • Ampiasaina amin'ny lohahevitra toy ny <strong>fahafatesana</strong>, <strong>aretina</strong>, sns.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-euphemisme">nous a quittés</span>. (Nandao antsika izy - midika fa maty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <span class="color-euphemisme">dans un meilleur monde</span>. (Ao amin'ny tontolo tsara kokoa izy - midika fa maty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <span class="color-euphemisme">parti</span>. (Lasa izy - midika fa maty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a <span class="color-euphemisme">des problèmes de santé</span>. (Manana olana ara-pahasalamana izy - midika fa marary.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-euphemisme">euphémisme</span> dia <strong>manalefaka</strong> ny teny masiaka.<br>
+      Ohatra : <em>Il nous a quittés.</em> (midika fa maty.)
+    </div>
+  </div>
+
+  <!-- 7. ANAPHORE - Famerimberenana teny eo am-piandohana -->
+  <div class="card">
+    <h2>7️⃣ <span class="color-anaphore">ANAPHORE</span> (famerimberenana teny eo am-piandohana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-anaphore">anaphore</span> dia <strong>famerimberenana</strong> (répétition) teny iray na vondrona teny eo am-piandohan'ny fehezanteny mifandimby.<br><br>
+      <strong>Règle :</strong><br>
+      • Mamer

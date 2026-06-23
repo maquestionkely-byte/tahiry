@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Les préfixes – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les préfixes */
+    .color-diminutif {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-augmentatif {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-privatif {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>LES PRÉFIXES</h1>
+  </div>
+
+  <!-- Carte : Inona ny préfixe ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "préfixe" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>préfixe</strong> dia <strong>tovona</strong> (tovy kely) ampiana <strong>eo alohan'ny</strong> fototeny (racine) mba hamoronana teny vaovao.<br><br>
+      🔹 Ny préfixe dia <strong>manova ny hevitry</strong> ny fototeny nefa tsy manova ny sokajin-teny (verbe, nom, adjectif) matetika.<br><br>
+      🔹 Misy karazany <strong>maro</strong> ny préfixe, fa amin'ity lesona ity dia hifantoka amin'ny karazany <strong>telo</strong> isika :<br><br>
+      <span class="icone">🔽</span> <strong>Préfixes diminutifs</strong> → milaza <span class="color-diminutif">kely</span> (mini-, micro-)<br>
+      Ohatra : <em>mini-jupe</em> (zipo kely), <em>micro-ondes</em> (ondry kely)<br><br>
+      <span class="icone">🔼</span> <strong>Préfixes augmentatifs</strong> → milaza <span class="color-augmentatif">be</span> na <span class="color-augmentatif">mihoatra</span> (sur-, super-, archi-)<br>
+      Ohatra : <em>sur-homme</em> (olona mihoatra), <em>super-marché</em> (tsena lehibe)<br><br>
+      <span class="icone">🚫</span> <strong>Préfixes privatifs</strong> → milaza <span class="color-privatif">tsy</span> na <span class="color-privatif">fanolavana</span> (in-, im-, il-, ir-, dé-)<br>
+      Ohatra : <em>in-capable</em> (tsy mahay), <em>im-possible</em> (tsy azo atao)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type de préfixe</th>
+            <th>Préfixes</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-diminutif">DIMINUTIF</span></td>
+            <td>mini-, micro-</td>
+            <td>kely</td>
+            <td>mini-jupe (zipo kely)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-augmentatif">AUGMENTATIF</span></td>
+            <td>sur-, super-, archi-</td>
+            <td>be / mihoatra</td>
+            <td>surhomme (olona mihoatra)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-privatif">PRIVATIF</span></td>
+            <td>in-, im-, il-, ir-</td>
+            <td>tsy (fanolavana)</td>
+            <td>incapable (tsy mahay)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>préfixe</strong> dia ampiana <strong>eo alohan'ny</strong> fototeny (racine).<br>
+      • Ny préfixe dia <strong>manova ny hevitry</strong> ny fototeny fa tsy manova ny sokajin-teny matetika.<br>
+      • Ny <strong>préfixes diminutifs</strong> (mini-, micro-) dia manao ny zavatra ho <strong>kely</strong>.<br>
+      • Ny <strong>préfixes augmentatifs</strong> (sur-, super-, archi-) dia manao ny zavatra ho <strong>be</strong> na <strong>mihoatra</strong>.<br>
+      • Ny <strong>préfixes privatifs</strong> (in-, im-, il-, ir-) dia manome heviny <strong>manohitra</strong> na <strong>tsy</strong> (fanolavana).<br>
+      • Ny préfixe <strong>in-</strong> dia miova ho <strong>im-</strong> alohan'ny 'b', 'm', 'p' ary ho <strong>il-</strong> alohan'ny 'l' ary ho <strong>ir-</strong> alohan'ny 'r'.
+    </div>
+  </div>
+
+  <!-- 1. PRÉFIXES DIMINUTIFS - MINI-, MICRO- -->
+  <div class="card">
+    <h2>1️⃣ Préfixes DIMINUTIFS (kely) : mini-, micro-</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny préfixes <strong>diminutifs</strong> dia ampiasaina hilazana zavatra <strong>kely</strong> na <strong>kely kokoa</strong> noho ny mahazatra.<br><br>
+      <strong>Préfixes :</strong><br>
+      • <span class="color-diminutif">mini-</span> → kely (mini-jupe, mini-série)<br>
+      • <span class="color-diminutif">micro-</span> → kely dia kely (micro-ondes, microbe)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>mini-</strong> + jupe → <strong>mini-jupe</strong> (zipo kely)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>mini-</strong> + série → <strong>mini-série</strong> (andian-tantara kely)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>micro-</strong> + ondes → <strong>micro-ondes</strong> (ondry kely / lafaoro)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>micro-</strong> + be → <strong>microbe</strong> (mikroba - zavamananaina kely)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle porte une <strong>mini-jupe</strong>. (Manao zipo <strong>kely</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <strong>micro-ondes</strong> est rapide. (Haingana ny lafaoro <strong>mikro-ondes</strong>.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny préfixes diminutifs (mini-, micro-) dia manao ny zavatra ho <strong>kely</strong> na <strong>kely kokoa</strong>.
+    </div>
+  </div>
+
+  <!-- 2. PRÉFIXES AUGMENTATIFS - SUR-, SUPER-, ARCHI- -->
+  <div class="card">
+    <h2>2️⃣ Préfixes AUGMENTATIFS (be / mihoatra) : sur-, super-, archi-</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny préfixes <strong>augmentatifs</strong> dia ampiasaina hilazana zavatra <strong>be</strong> na <strong>mihoatra</strong> noho ny mahazatra.<br><br>
+      <strong>Préfixes :</strong><br>
+      • <span class="color-augmentatif">sur-</span> → mihoatra (surhomme, surcharge)<br>
+      • <span class="color-augmentatif">super-</span> → tena lehibe / tsara (super-marché, super-héros)<br>
+      • <span class="color-augmentatif">archi-</span> → tena lehibe (archiduc, archipel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>sur-</strong> + homme → <strong>surhomme</strong> (olona mihoatra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>sur-</strong> + charge → <strong>surcharge</strong> (vesatra be loatra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>super-</strong> + marché → <strong>super-marché</strong> (tsena lehibe)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>super-</strong> + héros → <strong>super-héros</strong> (mahery fo lehibe)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>archi-</strong> + duc → <strong>archiduc</strong> (andriana lehibe)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est un <strong>surhomme</strong>. (Olona <strong>mihoatra</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <strong>super-marché</strong> est ouvert. (Misy ny <strong>tsena lehibe</strong>.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny préfixes augmentatifs (sur-, super-, archi-) dia manao ny zavatra ho <strong>be</strong> na <strong>mihoatra</strong>.
+    </div>
+  </div>
+
+  <!-- 3. PRÉFIXES PRIVATIFS - IN-, IM-, IL-, IR- -->
+  <div class="card">
+    <h2>3️⃣ Préfixes PRIVATIFS (tsy / fanolavana) : in-, im-, il-, ir-</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny préfixes <strong>privatifs</strong> dia ampiasaina hilazana <strong>fanolavana</strong> na <strong>tsy fisiana</strong>. Mitovy amin'ny hoe <strong>"tsy"</strong> amin'ny teny malagasy.<br><br>
+      <strong>Préfixes :</strong><br>
+      • <span class="color-privatif">in-</span> → tsy (incapable, inconnu)<br>
+      • <span class="color-privatif">im-</span> → tsy (alohan'ny 'b', 'm', 'p') (impossible, imbattable)<br>
+      • <span class="color-privatif">il-</span> → tsy (alohan'ny 'l') (illégal, illogique)<br>
+      • <span class="color-privatif">ir-</span> → tsy (alohan'ny 'r') (irréel, irrégulier)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>in-</strong> + capable → <strong>incapable</strong> (tsy mahay)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>in-</strong> + connu → <strong>inconnu</strong> (tsy fantatra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>im-</strong> + possible → <strong>impossible</strong> (tsy azo atao)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>im-</strong> + battable → <strong>imbattable</strong> (tsy azo resena)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>il-</strong> + légal → <strong>illégal</strong> (tsy ara-dalàna)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>il-</strong> + logique → <strong>illogique</strong> (tsy misy dikany)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>ir-</strong> + réel → <strong>irréel</strong> (tsy tena)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>ir-</strong> + régulier → <strong>irrégulier</strong> (tsy ara-dalàna / tsy milamina)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny préfixes privatifs (in-, im-, il-, ir-) dia manome heviny <strong>tsy</strong> na <strong>fanolavana</strong>.<br>
+      • <strong>in-</strong> → alohan'ny ankamaroan'ny renisoratra<br>
+      • <strong>im-</strong> → alohan'ny 'b', 'm', 'p'<br>
+      • <strong>il-</strong> → alohan'ny 'l'<br>
+      • <strong>ir-</strong> → alohan'ny 'r'
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES PRÉFIXES PRIVATIFS ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des préfixes privatifs</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny préfixe <strong>in-</strong> dia miova arakaraka ny litera manaraka :<br><br>
+      • <strong>in-</strong> → alohan'ny 'a', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'n', 'o', 'q', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'<br>
+      Ohatra : <em>incapable, inconnu, inactif</em><br><br>
+      • <strong>im-</strong> → alohan'ny 'b', 'm', 'p'<br>
+      Ohatra : <em>impossible, imbattable, impoli</em><br><br>
+      • <strong>il-</strong> → alohan'ny 'l'<br>
+      Ohatra : <em>illégal, illogique, illisible</em><br><br>
+      • <strong>ir-</strong> → alohan'ny 'r'<br>
+      Ohatra : <em>irréel, irrégulier, irresponsable</em>
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>in-</strong> + capable = <strong>incapable</strong> (tsy mahay)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>im-</strong> + possible = <strong>impossible</strong> (tsy azo atao)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>il-</strong> + légal = <strong>illégal</strong> (tsy ara-dalàna)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>ir-</strong> + régulier = <strong>irrégulier</strong> (tsy milamina)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AUTRES PRÉFIXES COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Autres préfixes courants</h2>
+    <div class="definition-mg">
+      <strong>Préfixes de lieu :</strong><br>
+      • <strong>ex-</strong> → any ivelany (exporter, extraire)<br>
+      • <strong>trans-</strong> → miampita (transporter, transférer)<br>
+      • <strong>inter-</strong> → eo anelanelan'ny (international, interdire)<br>
+      • <strong>extra-</strong> → any ivelany (extraordinaire, extraterrestre)<br><br>
+      
+      <strong>Préfixes de temps :</strong><br>
+      • <strong>pré-</strong> → aloha (prévoir, préhistoire)<br>
+      • <strong>post-</strong> → aorian'ny (postérieur, postface)<br>
+      • <strong>ré-</strong> / <strong>re-</strong> → indray (refaire, recommencer)<br>
+      • <strong>anti-</strong> → alohan'ny (antigel, antibiotique)<br><br>
+      
+      <strong>Préfixes de quantité :</strong><br>
+      • <strong>poly-</strong> → maro (polygone, polytechnique)<br>
+      • <strong>multi-</strong> → maro (multicolore, multiprise)<br>
+      • <strong>mono-</strong> → iray (monologue, monocle)<br>
+      • <strong>bi-</strong> → roa (bicycle, bilingue)
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES TROIS TYPES ==================== -->
+  <div class="card">
+    <h2>📌 Comparaison des trois types de préfixes</h2>
+    <div class="definition-mg">
+      <strong><span class="color-diminutif">DIMINUTIF</span></strong> → kely (mini-, micro-)<br>
+      Ohatra : <em>mini-jupe</em> (zipo kely)<br><br>
+      
+      <strong><span class="color-augmentatif">AUGMENTATIF</span></strong> → be / mihoatra (sur-, super-, archi-)<br>
+      Ohatra : <em>surhomme</em> (olona mihoatra)<br><br>
+      
+      <strong><span class="color-privatif">PRIVATIF</span></strong> → tsy (in-, im-, il-, ir-)<br>
+      Ohatra : <em>incapable</em> (tsy mahay)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">DIMINUTIF : <strong>mini</strong>-jupe (zipo kely)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">AUGMENTATIF : <strong>super</strong>-marché (tsena lehibe)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PRIVATIF : <strong>in</strong>-capable (tsy mahay)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>préfixe</strong> dia tovona ampiana eo alohan'ny fototeny (racine).</li>
+        <li>Ny préfixe dia <strong>manova ny hevitry</strong> ny fototeny fa tsy manova ny sokajin-teny.</li>
+        <li>Ny préfixes <strong>diminutifs</strong> (mini-, micro-) dia manao ny zavatra ho <strong>kely</strong>.</li>
+        <li>Ny préfixes <strong>augmentatifs</strong> (sur-, super-, archi-) dia manao ny zavatra ho <strong>be</strong> na <strong>mihoatra</strong>.</li>
+        <li>Ny préfixes <strong>privatifs</strong> (in-, im-, il-, ir-) dia manome heviny <strong>tsy</strong> na <strong>fanolavana</strong>.</li>
+        <li><strong>in-</strong> → tsy (incapable)</li>
+        <li><strong>im-</strong> → tsy alohan'ny 'b', 'm', 'p' (impossible)</li>
+        <li><strong>il-</strong> → tsy alohan'ny 'l' (illégal)</li>
+        <li><strong>ir-</strong> → tsy alohan'ny 'r' (irréel)</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny préfixe dia tena ilaina mba ho <strong>mora</strong> ny fahafantarana ny hevitry ny teny vaovao. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny préfixes.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

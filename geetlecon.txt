@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Genre et nombre – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style des tableaux récapitulatifs */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le genre et le nombre */
+    .color-masculin {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-singulier {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-pluriel {
+      background-color: #fde68a;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>GENRE ET NOMBRE</h1>
+  </div>
+
+  <!-- Carte : Inona ny genre et le nombre ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "genre" sy "nombre" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>genre</strong> dia ny maha-<strong>masculin</strong> na <strong>féminin</strong> ny anarana (nom).<br><br>
+      🔹 Ny <strong>nombre</strong> dia ny maha-<strong>singulier</strong> (tokana) na <strong>pluriel</strong> (maro) ny anarana.<br><br>
+      🔹 Zava-dehibe ny mahafantatra ny genre sy ny nombre satria <strong>miova</strong> ny endrik'ilay anarana sy ny teny mifamatotra aminy (déterminant, adjectif, pronom, etc.).<br><br>
+      🔹 Ireto ny fehin-kevitra :<br><br>
+      <span class="icone">📌</span> <strong>Masculin</strong> → anarana lahy<br><br>
+      <span class="icone">📌</span> <strong>Féminin</strong> → anarana vavy<br><br>
+      <span class="icone">📌</span> <strong>Singulier</strong> → zavatra tokana (1)<br><br>
+      <span class="icone">📌</span> <strong>Pluriel</strong> → zavatra maro (+ de 1)
+    </div>
+  </div>
+
+  <!-- ==================== LE GENRE ==================== -->
+  <div class="card">
+    <h2>1️⃣ LE GENRE (maha-lahy / maha-vavy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>genre</strong> dia mamaritra raha <strong>masculin</strong> (lahy) na <strong>féminin</strong> (vavy) ny anarana. Tsy misy fitsipika mazava foana amin'ny famantarana raha masculin na féminin ny anarana, fa misy famaranana (terminaison) mahazatra.
+    </div>
+    
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Genre</th>
+            <th>Famaritana</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-masculin">MASCCULIN</span></td>
+            <td>Anarana lahy</td>
+            <td>le père, le livre, le chat, le garçon</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-feminin">FÉMININ</span></td>
+            <td>Anarana vavy</td>
+            <td>la mère, la maison, la chatte, la fille</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="definition-mg">
+      <strong>🔍 Ahoana no ahafantarana ny genre ?</strong><br><br>
+      <span class="color-masculin">🔵</span> <strong>Masculin</strong> : matetika famaranana amin'ny <strong>-age, -ment, -eau, -isme, -on</strong>...<br>
+      Ohatra : le fromage, le gouvernement, le chapeau, le tourisme, le garçon.<br><br>
+      <span class="color-feminin">🌸</span> <strong>Féminin</strong> : matetika famaranana amin'ny <strong>-tion, -sion, -té, -ée, -esse, -ette</strong>...<br>
+      Ohatra : la nation, la télévision, la liberté, la journée, la princesse, la fillette.
+    </div>
+
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le père et la mère sont ici. (Ny ray sy ny reny dia eto.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat est noir, la chatte est blanche. (Ny saka lahy dia mainty, ny saka vavy dia fotsy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le garçon est petit, la fille est grande. (Ny zazalahy dia kely, ny zazavavy dia lehibe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre est neuf, la maison est vieille. (Ny boky dia vaovao, ny trano dia taloha.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny maha-masculin na féminin ny anarana dia <strong>tsy miankina amin'ny zavatra tena izy</strong>. Ohatra : "une voiture" (fiara) dia féminin na dia tsy manana lahy na vavy aza ny fiara.
+    </div>
+  </div>
+
+  <!-- ==================== LA FORMATION DU FÉMININ ==================== -->
+  <div class="card">
+    <h2>1.1 Formation du féminin (fomba famoronana ny féminin)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Matetika dia ampiana <strong>"e"</strong> amin'ny faran'ny anarana masculin mba hahatonga azy ho féminin. Saingy misy fitsipika maro samihafa.
+    </div>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Règle</th>
+            <th>Masculin</th>
+            <th>Féminin</th>
+            <th>Traduction malgasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Ajouter -e</td>
+            <td>grand (lehibe)</td>
+            <td>grande</td>
+            <td>lehibe (lahy/vavy)</td>
+          </tr>
+          <tr>
+            <td>Ajouter -e</td>
+            <td>petit (kely)</td>
+            <td>petite</td>
+            <td>kely (lahy/vavy)</td>
+          </tr>
+          <tr>
+            <td>Ajouter -e</td>
+            <td>content (faly)</td>
+            <td>contente</td>
+            <td>faly (lahy/vavy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>-en → -enne</td>
+            <td>européen (Eoropeana)</td>
+            <td>européenne</td>
+            <td>Eoropeana (lahy/vavy)</td>
+          </tr>
+          <tr>
+            <td>-ien → -ienne</td>
+            <td>musicien (mpitendry mozika)</td>
+            <td>musicienne</td>
+            <td>mpitendry mozika (lahy/vavy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>-on → -onne</td>
+            <td>bon (tsara)</td>
+            <td>bonne</td>
+            <td>tsara (lahy/vavy)</td>
+          </tr>
+          <tr>
+            <td>-er → -ère</td>
+            <td>cher (lafo)</td>
+            <td>chère</td>
+            <td>lafo (lahy/vavy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>-eur → -euse</td>
+            <td>heureux (sambatra)</td>
+            <td>heureuse</td>
+            <td>sambatra (lahy/vavy)</td>
+          </tr>
+          <tr>
+            <td>-teur → -trice</td>
+            <td>acteur (mpilalao sarimihetsika)</td>
+            <td>actrice</td>
+            <td>mpilalao (lahy/vavy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>-f → -ve</td>
+            <td>neuf (vaovao)</td>
+            <td>neuve</td>
+            <td>vaovao (lahy/vavy)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est grand. Elle est grande. (Lehibe izy - lehilahy. Lehibe izy - vehivavy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est heureux. Elle est heureuse. (Sambatra izy - lehilahy. Sambatra izy - vehivavy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est acteur. Elle est actrice. (Mpilalao sarimihetsika izy - lehilahy. Mpilalao sarimihetsika izy - vehivavy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== LE NOMBRE ==================== -->
+  <div class="card">
+    <h2>2️⃣ LE NOMBRE (tokana / maro)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>nombre</strong> dia mamaritra raha <strong>singulier</strong> (tokana) na <strong>pluriel</strong> (maro) ny anarana.
+    </div>
+    
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Famaritana</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-singulier">SINGULIER</span></td>
+            <td>Zavatra tokana (1)</td>
+            <td>le livre, la maison, un chat, une fille</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-pluriel">PLURIEL</span></td>
+            <td>Zavatra maro (+ de 1)</td>
+            <td>les livres, les maisons, des chats, des filles</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== FORMATION DU PLURIEL ==================== -->
+  <div class="card">
+    <h2>2.1 Formation du pluriel (fomba famoronana ny pluriel)</h2>
+    <div class="definition-mg">
+      <strong>📖 Règles générales :</strong><br>
+      Matetika dia ampiana <strong>"s"</strong> amin'ny faran'ny anarana singulier mba hahatonga azy ho pluriel. Saingy misy fitsipika manokana.
+    </div>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Règle</th>
+            <th>Singulier</th>
+            <th>Pluriel</th>
+            <th>Traduction malgasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Ajouter -s</td>
+            <td>le livre</td>
+            <td>les livres</td>
+            <td>ny boky (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>Ajouter -s</td>
+            <td>la maison</td>
+            <td>les maisons</td>
+            <td>ny trano (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>Ajouter -s</td>
+            <td>un chat</td>
+            <td>des chats</td>
+            <td>saka (tokana/maro)</td>
+          </tr>
+          <tr class="categorie">
+            <td>-eau → -eaux</td>
+            <td>le chapeau (satrok'ady)</td>
+            <td>les chapeaux</td>
+            <td>satrok'ady (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>-eu → -eux</td>
+            <td>le feu (afo)</td>
+            <td>les feux</td>
+            <td>afo (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>-al → -aux</td>
+            <td>le cheval (soavaly)</td>
+            <td>les chevaux</td>
+            <td>soavaly (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>-ou → -ous</td>
+            <td>le trou (lavaka)</td>
+            <td>les trous</td>
+            <td>lavaka (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>-ou → -oux (Exceptions)</td>
+            <td>le genou (lohalika)</td>
+            <td>les genoux</td>
+            <td>lohalika (tokana/maro)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Miaraka amin'ny -s, -x, -z</td>
+            <td>le nez (orona)</td>
+            <td>les nez</td>
+            <td>orona (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>Miaraka amin'ny -s, -x, -z</td>
+            <td>le prix (vidiny)</td>
+            <td>les prix</td>
+            <td>vidiny (tokana/maro)</td>
+          </tr>
+          <tr>
+            <td>Miaraka amin'ny -s, -x, -z</td>
+            <td>le fils (zanaka lahy)</td>
+            <td>les fils</td>
+            <td>zanaka lahy (tokana/maro)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un livre → des livres. (Boky iray → boky maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une maison → des maisons. (Trano iray → trano maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un chapeau → des chapeaux. (Satrok'ady iray → satrok'ady maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un cheval → des chevaux. (Soavaly iray → soavaly maro.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <strong>déterminant</strong> (article, possessif, etc.) dia miova koa rehefa miova ny nombre.<br>
+      Ohatra : le livre → les livres / mon livre → mes livres / ce livre → ces livres.
+    </div>
+  </div>
+
+  <!-- ==================== ACCORD DU GENRE ET DU NOMBRE ==================== -->
+  <div class="card">
+    <h2>📌 L'accord en genre et en nombre (Fifanarahana)</h2>
+    <div class="definition-mg">
+      <strong>Règle importante :</strong><br>
+      Ny <strong>adjectif qualificatif</strong> dia <strong>miova</strong> arakaraka ny genre sy ny nombre ny anarana tondroiny.<br><br>
+      🔹 Raha <strong>masculin singulier</strong> ny anarana → adjectif masculin singulier<br>
+      🔹 Raha <strong>féminin singulier</strong> ny anarana → adjectif féminin singulier<br>
+      🔹 Raha <strong>masculin pluriel</strong> ny anarana → adjectif masculin pluriel<br>
+      🔹 Raha <strong>féminin pluriel</strong> ny anarana → adjectif féminin pluriel
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un grand garçon. (Zazalahy lehibe iray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une grande fille. (Zazavavy lehibe iray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des grands garçons. (Zazalahy lehibe maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des grandes filles. (Zazavavy lehibe maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un livre intéressant. (Boky mahaliana iray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une histoire intéressante. (Tantara mahaliana iray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des livres intéressants. (Boky mahaliana maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des histoires intéressantes. (Tantara mahaliana maro.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa miova ny genre na ny nombre ny anarana, dia <strong>miova</strong> koa ny adjectif, ny déterminant, ny pronom, ary ny participe passé.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif complet</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Masculin</th>
+            <th>Féminin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><strong>Singulier</strong></td>
+            <td><span class="color-masculin">le / un / ce / mon...</span><br>le garçon, un livre, ce chat, mon père</td>
+            <td><span class="color-feminin">la / une / cette / ma...</span><br>la fille, une maison, cette voiture, ma mère</td>
+          </tr>
+          <tr class="categorie">
+            <td><strong>Pluriel</strong></td>
+            <td><span class="color-pluriel">les / des / ces / mes...</span><br>les garçons, des livres, ces chats, mes pères</td>
+            <td><span class="color-pluriel">les / des / ces / mes...</span><br>les filles, des maisons, ces voitures, mes mères</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== EXCEPTIONS COURANTES ==================== -->
+  <div class="card">
+    <h2>📌 Exceptions courantes</h2>
+    <div class="definition-mg">
+      <strong>⚠️ Anarana sasany tsy manaraka fitsipika mahazatra :</strong><br><br>
+      • <strong>L'homme</strong> (lehilahy) → masculin<br>
+      • <strong>La femme</strong> (vehivavy) → féminin<br>
+      • <strong>Le problème</strong> (olana) → masculin<br>
+      • <strong>La solution</strong> (vahaolana) → féminin<br>
+      • <strong>Le système</strong> (rafitra) → masculin<br>
+      • <strong>La méthode</strong> (fomba) → féminin<br>
+      • <strong>Le cinéma</strong> → masculin<br>
+      • <strong>La télévision</strong> → féminin<br><br>
+      <strong>⚠️ Anarana tsy miova amin'ny pluriel :</strong><br><br>
+      • <strong>Le prix</strong> → les prix (vidiny)<br>
+      • <strong>Le nez</strong> → les nez (orona)<br>
+      • <strong>Le fils</strong> → les fils (zanaka lahy)<br>
+      • <strong>Le bras</strong> → les bras (sandry)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Mianara <strong>tsianjery</strong> ny maha-masculin na féminin ny anarana mahazatra.</li>
+        <li>Ny <strong>déterminant</strong> (le, la, un, une, mon, ma, etc.) dia manampy anao hahalala ny genre.</li>
+        <li>Raha misalasala, jereo ny <strong>famarana</strong> (terminaison) ny anarana.</li>
+        <li>Ho an'ny <strong>pluriel</strong>, ampio <strong>"s"</strong> matetika amin'ny anarana sy ny adjectif.</li>
+        <li>Tsidiho ny <strong>exceptions</strong> (ohatra : -eau → -eaux, -al → -aux).</li>
+        <li>Ny adjectif sy ny déterminant dia <strong>miara-miova</strong> amin'ny anarana.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fiovan'ny teny.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny genre sy ny nombre dia <strong>fototry ny fiteny frantsay</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny genre sy nombre.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

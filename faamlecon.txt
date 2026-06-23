@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Faux amis – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les faux amis */
+    .color-faux-ami {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-vrai-sens {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-francais {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-anglais {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>FAUX AMIS</h1>
+  </div>
+
+  <!-- Carte : Inona ny faux amis ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "faux amis" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>faux amis</strong> dia teny mitovy <strong>endrika</strong> (orthographe) na <strong>fanonona</strong> (prononciation) amin'ny teny hafa, saingy <strong>tsy mitovy</strong> ny heviny.<br><br>
+      🔹 Mety hitarika <strong>fahadisoana</strong> (erreurs) izy ireo rehefa mandika teny na miresaka.<br><br>
+      🔹 Ohatra :<br>
+      • <span class="color-francais">FRANÇAIS</span> : <em><span class="color-faux-ami">actuel</span></em> → <span class="color-vrai-sens">amin'izao fotoana izao (current)</span><br>
+      • <span class="color-anglais">ANGLAIS</span> : <em><span class="color-faux-ami">actual</span></em> → <span class="color-vrai-sens">tena (real)</span><br><br>
+      🔹 Amin'ity lesona ity dia hifantoka amin'ny faux amis amin'ny <strong>français</strong> sy ny <strong>malagasy</strong> (na anglisy) isika.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mot français</th>
+            <th>Faux sens (erroné)</th>
+            <th>Vrai sens</th>
+            <th>Traduction malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-francais">actuel</span></td>
+            <td>actual (anglais) → tena</td>
+            <td><span class="color-vrai-sens">current</span></td>
+            <td>amin'izao fotoana izao</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">assister</span></td>
+            <td>assist (anglais) → manampy</td>
+            <td><span class="color-vrai-sens">to attend</span></td>
+            <td>manatrika</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">attendre</span></td>
+            <td>attend (anglais) → manatrika</td>
+            <td><span class="color-vrai-sens">to wait</span></td>
+            <td>miandry</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">car</span></td>
+            <td>car (anglais) → fiara</td>
+            <td><span class="color-vrai-sens">because</span></td>
+            <td>satria</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">chair</span></td>
+            <td>chair (anglais) → seza</td>
+            <td><span class="color-vrai-sens">flesh</span></td>
+            <td>hena (olona)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">demander</span></td>
+            <td>demand (anglais) → mitaky</td>
+            <td><span class="color-vrai-sens">to ask</span></td>
+            <td>mangataka / manontany</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">déçu</span></td>
+            <td>deceived (anglais) → voafitaka</td>
+            <td><span class="color-vrai-sens">disappointed</span></td>
+            <td>diso fanantenana</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">envie</span></td>
+            <td>envy (anglais) → fialonana</td>
+            <td><span class="color-vrai-sens">wish / desire</span></td>
+            <td>faniriana</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">expérience</span></td>
+            <td>experience (anglais) → traikefa</td>
+            <td><span class="color-vrai-sens">experiment</span></td>
+            <td>fanandramana</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">fabrique</span></td>
+            <td>fabric (anglais) → lamba</td>
+            <td><span class="color-vrai-sens">factory</span></td>
+            <td>orinarina</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">geste</span></td>
+            <td>gesture (anglais) → fihetsika</td>
+            <td><span class="color-vrai-sens">gesture</span></td>
+            <td>fihetsika (mitovy)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">grossesse</span></td>
+            <td>gross (anglais) → mavesatra</td>
+            <td><span class="color-vrai-sens">pregnancy</span></td>
+            <td>vohoka</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">ignorer</span></td>
+            <td>ignore (anglais) → tsy miraharaha</td>
+            <td><span class="color-vrai-sens">not to know</span></td>
+            <td>tsy mahafantatra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">jour</span></td>
+            <td>jour (anglais) → dia</td>
+            <td><span class="color-vrai-sens">day</span></td>
+            <td>andro</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">location</span></td>
+            <td>location (anglais) → toerana</td>
+            <td><span class="color-vrai-sens">rental</span></td>
+            <td>famofonam-bola</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">monnaie</span></td>
+            <td>money (anglais) → vola</td>
+            <td><span class="color-vrai-sens">change</span></td>
+            <td>vola tsy mitovy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">parent</span></td>
+            <td>parent (anglais) → ray aman-dreny</td>
+            <td><span class="color-vrai-sens">relative</span></td>
+            <td>havana</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">pension</span></td>
+            <td>pension (anglais) → fisotroan-dronono</td>
+            <td><span class="color-vrai-sens">boarding house</span></td>
+            <td>trano fandraisana vahiny</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">prétendre</span></td>
+            <td>pretend (anglais) → mody</td>
+            <td><span class="color-vrai-sens">to claim</span></td>
+            <td>mitaky (zava-bita)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">sensible</span></td>
+            <td>sensible (anglais) → tsara</td>
+            <td><span class="color-vrai-sens">sensitive</span></td>
+            <td>mora tohina</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">sympathique</span></td>
+            <td>sympathetic (anglais) → mamindra fo</td>
+            <td><span class="color-vrai-sens">nice</span></td>
+            <td>sariaka / tsara fanahy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-faux-ami">faux amis</span> dia teny mitovy endrika nefa <strong>tsy mitovy</strong> heviny amin'ny fiteny hafa.<br>
+      • Tena ilaina ny <strong>mamakafaka</strong> (analyser) ny teny alohan'ny hampiasana azy.<br>
+      • Mety hitarika <strong>fahadisoana</strong> (erreurs) lehibe ny fampiasana faux amis.<br>
+      • Ny fomba tsara indrindra hialana amin'ny faux amis dia ny <strong>mamaky</strong> (lire) sy <strong>mihaino</strong> (écouter) maro.<br>
+      • Raha misalasala, dia <strong>jereo ao amin'ny dictionnaire</strong> (dictionnaire) ny hevitry ny teny.
+    </div>
+  </div>
+
+  <!-- 1. LES FAUX AMIS LES PLUS COURANTS -->
+  <div class="card">
+    <h2>1️⃣ Les faux amis les plus courants</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny faux amis matetika ampiasaina sy mety hitarika fahadisoana.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">actuel</span> → "actual" amin'ny anglisy = tena (real), fa amin'ny frantsay = <span class="color-vrai-sens">amin'izao fotoana izao (current)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">assister</span> → "assist" amin'ny anglisy = manampy (help), fa amin'ny frantsay = <span class="color-vrai-sens">manatrika (to attend)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">attendre</span> → "attend" amin'ny anglisy = manatrika (to attend), fa amin'ny frantsay = <span class="color-vrai-sens">miandry (to wait)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">car</span> → "car" amin'ny anglisy = fiara (vehicle), fa amin'ny frantsay = <span class="color-vrai-sens">satria (because)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">demander</span> → "demand" amin'ny anglisy = mitaky (to demand), fa amin'ny frantsay = <span class="color-vrai-sens">mangataka / manontany (to ask)</span>.</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (suite)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">déçu</span> → "deceived" amin'ny anglisy = voafitaka (deceived), fa amin'ny frantsay = <span class="color-vrai-sens">diso fanantenana (disappointed)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">envie</span> → "envy" amin'ny anglisy = fialonana (envy), fa amin'ny frantsay = <span class="color-vrai-sens">faniriana (wish / desire)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">parent</span> → "parent" amin'ny anglisy = ray aman-dreny (parent), fa amin'ny frantsay = <span class="color-vrai-sens">havana (relative)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">sensible</span> → "sensible" amin'ny anglisy = tsara (sensible), fa amin'ny frantsay = <span class="color-vrai-sens">mora tohina (sensitive)</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">sympathique</span> → "sympathetic" amin'ny anglisy = mamindra fo (sympathetic), fa amin'ny frantsay = <span class="color-vrai-sens">sariaka / tsara fanahy (nice)</span>.</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-faux-ami">faux amis</span> dia mety hitarika fahadisoana lehibe. Ampiasao tsara ary jereo ny heviny alohan'ny hampiasana azy.
+    </div>
+  </div>
+
+  <!-- 2. FAUX AMIS AVEC LE MALAGASY -->
+  <div class="card">
+    <h2>2️⃣ Faux amis avec le malagasy</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy ihany koa ny faux amis eo amin'ny <strong>français</strong> sy ny <strong>malagasy</strong>.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">à</span> → amin'ny malagasy = "à" dia tsy midika hoe "any", fa <span class="color-vrai-sens">"any amin'ny"</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">aller</span> → mitovy amin'ny "alley" (malagasy) fa <span class="color-vrai-sens">mandeha</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">chez</span> → tsy midika hoe "zaza" (cheza) fa <span class="color-vrai-sens">"any amin'ny trano"</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">donc</span> → tsy midika hoe "donge" (ondana) fa <span class="color-vrai-sens">"ka"</span>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-francais">sous</span> → tsy midika hoe "sosy" (sous - tsindrona) fa <span class="color-vrai-sens">"ambany"</span>.</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy ihany koa ny faux amis eo amin'ny <span class="color-francais">français</span> sy ny <span class="color-vrai-sens">malagasy</span>. Tandremo tsara ny fampiasana azy.
+    </div>
+  </div>
+
+  <!-- 3. COMMENT ÉVITER LES FAUX AMIS -->
+  <div class="card">
+    <h2>3️⃣ Comment éviter les faux amis ?</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fomba maro hialana amin'ny faux amis :<br><br>
+      <strong>1. Lire beaucoup</strong> → ny famakiana boky sy gazety dia manampy hahafantatra ny hevitry ny teny.<br>
+      <strong>2. Écouter</strong> → ny fihainoana resaka sy radio dia manampy hahatakatra ny fomba fampiasana azy.<br>
+      <strong>3. Utiliser un dictionnaire</strong> → jereo ao amin'ny dictionnaire ny hevitry ny teny alohan'ny hampiasana azy.<br>
+      <strong>4. Pratiquer</strong> → ny fampiasana matetika dia manampy hahatsiahy ny hevitry ny teny.<br>
+      <strong>5. Demander</strong> → raha misalasala, dia anontanio ny olona mahay.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-vrai-sens">demande</span> à mon professeur. (Manontany ny mpampianatro aho - tsy "mitaky".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je suis <span class="color-vrai-sens">déçu</span> de ce résultat. (Diso fanantenana aho amin'ity vokatra ity - tsy "voafitaka".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai <span class="color-vrai-sens">envie</span> de manger une pomme. (Mila mihinana paoma aho - tsy "fialonana".)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TABLEAU RÉCAPITULATIF DÉTAILLÉ -->
+  <div class="card">
+    <h2>4️⃣ Tableau récapitulatif détaillé</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mot français</th>
+            <th>Vrai sens français</th>
+            <th>Traduction malagasy</th>
+            <th>Faux ami anglais</th>
+            <th>Sens anglais</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-francais">actuel</span></td>
+            <td><span class="color-vrai-sens">current</span></td>
+            <td>amin'izao fotoana izao</td>
+            <td><span class="color-anglais">actual</span></td>
+            <td>tena (real)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">assister</span></td>
+            <td><span class="color-vrai-sens">to attend</span></td>
+            <td>manatrika</td>
+            <td><span class="color-anglais">assist</span></td>
+            <td>manampy (help)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">attendre</span></td>
+            <td><span class="color-vrai-sens">to wait</span></td>
+            <td>miandry</td>
+            <td><span class="color-anglais">attend</span></td>
+            <td>manatrika (to attend)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">car</span></td>
+            <td><span class="color-vrai-sens">because</span></td>
+            <td>satria</td>
+            <td><span class="color-anglais">car</span></td>
+            <td>fiara (vehicle)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">demander</span></td>
+            <td><span class="color-vrai-sens">to ask</span></td>
+            <td>mangataka / manontany</td>
+            <td><span class="color-anglais">demand</span></td>
+            <td>mitaky (to demand)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">déçu</span></td>
+            <td><span class="color-vrai-sens">disappointed</span></td>
+            <td>diso fanantenana</td>
+            <td><span class="color-anglais">deceived</span></td>
+            <td>voafitaka (deceived)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">envie</span></td>
+            <td><span class="color-vrai-sens">wish / desire</span></td>
+            <td>faniriana</td>
+            <td><span class="color-anglais">envy</span></td>
+            <td>fialonana (envy)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">parent</span></td>
+            <td><span class="color-vrai-sens">relative</span></td>
+            <td>havana</td>
+            <td><span class="color-anglais">parent</span></td>
+            <td>ray aman-dreny (parent)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">sensible</span></td>
+            <td><span class="color-vrai-sens">sensitive</span></td>
+            <td>mora tohina</td>
+            <td><span class="color-anglais">sensible</span></td>
+            <td>tsara (sensible)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-francais">sympathique</span></td>
+            <td><span class="color-vrai-sens">nice</span></td>
+            <td>sariaka / tsara fanahy</td>
+            <td><span class="color-anglais">sympathetic</span></td>
+            <td>mamindra fo (sympathetic)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-faux-ami">FAUX AMIS</span></strong> → teny mitovy endrika nefa tsy mitovy heviny.<br>
+      Ohatra : <em>actuel</em> (amin'izao fotoana izao) ≠ <em>actual</em> (tena)<br><br>
+      
+      <strong>2. <span class="color-francais">FRANÇAIS</span> vs <span class="color-anglais">ANGLAIS</span></strong><br>
+      Ohatra : <em>assister</em> (manatrika) ≠ <em>assist</em> (manampy)<br><br>
+      
+      <strong>3. <span class="color-francais">FRANÇAIS</span> vs <span class="color-vrai-sens">MALAGASY</span></strong><br>
+      Ohatra : <em>donc</em> (ka) ≠ <em>donge</em> (ondana)<br><br>
+      
+      <strong>4. COMMENT ÉVITER :</strong><br>
+      • Lire beaucoup (mamaky maro)<br>
+      • Écouter (mihaino)<br>
+      • Utiliser un dictionnaire (mampiasa dictionnaire)<br>
+      • Pratiquer (mampiasa matetika)<br>
+      • Demander (manontany)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-faux-ami">faux amis</span> dia mety hitarika fahadisoana lehibe amin'ny resaka.</li>
+        <li>Zava-dehibe ny <strong>mamakafaka</strong> (analyser) ny teny alohan'ny hampiasana azy.</li>
+        <li>Raha misalasala, dia <strong>jereo ao amin'ny dictionnaire</strong> ny hevitry ny teny.</li>
+        <li>Ny famakiana boky sy gazety dia manampy hahafantatra ny hevitry ny teny.</li>
+        <li>Ny fihainoana resaka sy radio dia manampy hahatakatra ny fomba fampiasana azy.</li>
+        <li>Ny fampiasana matetika dia manampy hahatsiahy ny hevitry ny teny.</li>
+        <li>Raha misalasala, dia <strong>anontanio</strong> ny olona mahay.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny faux amis dia tena ilaina mba ho <strong>marina</strong> sy <strong>mazava</strong> ny resaka sy ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny faux amis.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

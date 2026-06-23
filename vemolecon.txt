@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Verbes modaux – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les verbes modaux */
+    .color-pouvoir {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-vouloir {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-devoir {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>VERBES MODAUX</h1>
+  </div>
+
+  <!-- Carte : Inona ny verbes modaux ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "verbes modaux" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>verbes modaux</strong> dia verbe manampy mba hanomezana heviny manokana (fahaizana, faniriana, adidy, sns.) amin'ny verbe hafa.<br><br>
+      🔹 Rehefa misy verbe modal, dia <strong>infinitif</strong> ny verbe manaraka.<br><br>
+      🔹 Ireto ny verbes modaux fototra ho an'ny débutant :<br><br>
+      <span class="icone">💪</span> <strong>POUVOIR</strong> → afaka / mahay (fahaizana, fahalalahana)<br><br>
+      <span class="icone">❤️</span> <strong>VOULOIR</strong> → te-hanao (faniriana, fahavononana)<br><br>
+      <span class="icone">⚖️</span> <strong>DEVOIR</strong> → tokony / tsy maintsy (adidy, fahariana)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Verbe modal</th>
+            <th>Famaritana malagasy</th>
+            <th>Fampiasana</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-pouvoir">POUVOIR</span></td>
+            <td>afaka / mahay</td>
+            <td>Fahaizana, fahalalahana</td>
+            <td>Je peux parler français.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-vouloir">VOULOIR</span></td>
+            <td>te-hanao</td>
+            <td>Faniriana, fahavononana</td>
+            <td>Je veux manger.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-devoir">DEVOIR</span></td>
+            <td>tokony / tsy maintsy</td>
+            <td>Adidy, fahariana</td>
+            <td>Je dois travailler.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Rehefa misy <strong>verbe modal</strong> (pouvoir, vouloir, devoir), dia <strong>infinitif</strong> foana ny verbe manaraka.<br>
+      Ohatra : <em>Je <strong>peux</strong> venir.</em> (Afaka ho avy aho.)<br><br>
+      • Tsy mila préposition (à, de, pour) eo anelanelan'ny verbe modal sy ny infinitif.<br>
+      Ohatra : <em>Je <strong>veux</strong> manger.</em> (Te hihinana aho.) — <strong>tsy</strong> "je veux à manger"<br><br>
+      • Ny verbes modaux dia miova arakaraka ny <strong>olona</strong> (je, tu, il...) sy ny <strong>fotoana</strong> (présent, passé...).
+    </div>
+  </div>
+
+  <!-- 1. POUVOIR - Afaka / Mahay -->
+  <div class="card">
+    <h2>1️⃣ POUVOIR (afaka / mahay)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"pouvoir"</strong> dia midika hoe <strong>"afaka"</strong> na <strong>"mahay"</strong>. Ampiasaina hilazana fahaizana na fahalalahana manao zavatra.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>peux</strong> (afaka aho)<br>
+      Tu <strong>peux</strong> (afaka ianao)<br>
+      Il/Elle <strong>peut</strong> (afaka izy)<br>
+      Nous <strong>pouvons</strong> (afaka izahay)<br>
+      Vous <strong>pouvez</strong> (afaka ianareo)<br>
+      Ils/Elles <strong>peuvent</strong> (afaka izy ireo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je peux parler français. (Afaka miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu peux venir demain. (Afaka ho avy rahampitso ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il peut nager très bien. (Mahay milomano tsara izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous pouvons vous aider. (Afaka manampy anareo izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous pouvez entrer. (Afaka miditra ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils peuvent finir le travail. (Afaka mamita ny asa izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Pouvoir" dia ampiasaina hilazana <strong>fahaizana</strong> (savoir faire) na <strong>fahalalahana</strong> (avoir la permission).
+    </div>
+  </div>
+
+  <!-- 2. VOULOIR - Te-hanao -->
+  <div class="card">
+    <h2>2️⃣ VOULOIR (te-hanao)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"vouloir"</strong> dia midika hoe <strong>"te-hanao"</strong> na <strong>"maniry"</strong>. Ampiasaina hilazana faniriana na fahavononana.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>veux</strong> (te-hanao aho)<br>
+      Tu <strong>veux</strong> (te-hanao ianao)<br>
+      Il/Elle <strong>veut</strong> (te-hanao izy)<br>
+      Nous <strong>voulons</strong> (te-hanao izahay)<br>
+      Vous <strong>voulez</strong> (te-hanao ianareo)<br>
+      Ils/Elles <strong>veulent</strong> (te-hanao izy ireo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je veux manger une pomme. (Te-hihinana paoma aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu veux aller au cinéma ? (Te-handeha any amin'ny sinema ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle veut apprendre le français. (Te-hianatra teny frantsay izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous voulons voyager. (Te-handehandeha izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous voulez du café ? (Te-hisotro kafe ve ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils veulent acheter une maison. (Te-hividy trano izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Vouloir" dia ampiasaina hilazana <strong>faniriana</strong> na <strong>fahavononana</strong>. Mety ho ampiasaina amin'ny fangatahana koa (Je voudrais...).
+    </div>
+  </div>
+
+  <!-- 3. DEVOIR - Tokony / Tsy maintsy -->
+  <div class="card">
+    <h2>3️⃣ DEVOIR (tokony / tsy maintsy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"devoir"</strong> dia midika hoe <strong>"tokony"</strong> na <strong>"tsy maintsy"</strong>. Ampiasaina hilazana adidy na fahariana.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>dois</strong> (tokony aho / tsy maintsy aho)<br>
+      Tu <strong>dois</strong> (tokony ianao / tsy maintsy ianao)<br>
+      Il/Elle <strong>doit</strong> (tokony izy / tsy maintsy izy)<br>
+      Nous <strong>devons</strong> (tokony izahay / tsy maintsy izahay)<br>
+      Vous <strong>devez</strong> (tokony ianareo / tsy maintsy ianareo)<br>
+      Ils/Elles <strong>doivent</strong> (tokony izy ireo / tsy maintsy izy ireo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je dois travailler aujourd'hui. (Tokony hiara aho androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu dois faire tes devoirs. (Tokony hanao ny raharahanao ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle doit partir maintenant. (Tsy maintsy handeha izy izao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous devons étudier pour l'examen. (Tokony hianatra ho an'ny fanadinana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous devez être à l'heure. (Tokony ho tonga ara-potoana ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils doivent payer le loyer. (Tokony handoa ny hofan-trano izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Devoir" dia ampiasaina hilazana <strong>adidy</strong> na <strong>fahariana</strong>. Mety hilaza koa fa "tsy maintsy" zavatra iray.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES TROIS VERBES MODAUX ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny pouvoir, vouloir, devoir</h2>
+    <div class="definition-mg">
+      <strong><span class="color-pouvoir">POUVOIR</span></strong> → afaka / mahay (fahaizana, fahalalahana)<br>
+      Ohatra : Je peux parler français. (Afaka miteny frantsay aho.)<br><br>
+      
+      <strong><span class="color-vouloir">VOULOIR</span></strong> → te-hanao / maniry (faniriana, fahavononana)<br>
+      Ohatra : Je veux parler français. (Te-hiteny frantsay aho.)<br><br>
+      
+      <strong><span class="color-devoir">DEVOIR</span></strong> → tokony / tsy maintsy (adidy, fahariana)<br>
+      Ohatra : Je dois parler français. (Tokony hiteny frantsay aho.)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je peux sortir. (Afaka mivoaka aho - fahalalahana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je veux sortir. (Te-hivoaka aho - faniriana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je dois sortir. (Tokony hivoaka aho - adidy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      🧠 <strong>Fomba tsarovana :</strong><br>
+      • <strong>Pouvoir</strong> → "afaka" (Je peux = afaka aho)<br>
+      • <strong>Vouloir</strong> → "te-hanao" (Je veux = te-hanao aho)<br>
+      • <strong>Devoir</strong> → "tokony" / "tsy maintsy" (Je dois = tokony aho)
+    </div>
+  </div>
+
+  <!-- ==================== NÉGATION AVEC LES VERBES MODAUX ==================== -->
+  <div class="card">
+    <h2>📌 Négation avec les verbes modaux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Amin'ny négation, ny <strong>"ne"</strong> dia apetraka alohan'ny verbe modal, ary ny <strong>"pas"</strong> dia apetraka aorian'ny verbe modal.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>sujet + ne + verbe modal + pas + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny négation
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne peux pas parler français. (Tsy afaka miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu ne veux pas venir ? (Tsy te-ho avy ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle ne doit pas fumer. (Tsy tokony hifoka izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous ne pouvons pas venir. (Tsy afaka ho avy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous ne voulez pas de café ? (Tsy te-hisotro kafe ve ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils ne doivent pas arriver en retard. (Tsy tokony ho tara izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny négation dia manodidina ny <strong>verbe modal</strong>, fa tsy ny infinitif.
+    </div>
+  </div>
+
+  <!-- ==================== PASSÉ COMPOSÉ DES VERBES MODAUX ==================== -->
+  <div class="card">
+    <h2>📌 Passé composé des verbes modaux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny verbes modaux amin'ny passé composé dia mampiasa ny auxiliaire <strong>"avoir"</strong>.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>sujet + auxiliaire avoir (conjugué) + participe passé du verbe modal + infinitif</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny passé composé
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai pu parler français. (Afaka niteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu as voulu partir. (Te-handeha ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a dû travailler hier. (Tsy maintsy niasa izy omaly.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons pu finir. (Afaka namita izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils ont voulu aider. (Te-hanampy izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny verbes modaux amin'ny passé composé dia mampiasa ny auxiliaire <strong>"avoir"</strong> (j'ai pu, tu as voulu, il a dû).
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif complet</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-pouvoir">POUVOIR</span></th>
+            <th><span class="color-vouloir">VOULOIR</span></th>
+            <th><span class="color-devoir">DEVOIR</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>JE</td>
+            <td>je peux</td>
+            <td>je veux</td>
+            <td>je dois</td>
+          </tr>
+          <tr class="categorie">
+            <td>TU</td>
+            <td>tu peux</td>
+            <td>tu veux</td>
+            <td>tu dois</td>
+          </tr>
+          <tr class="categorie">
+            <td>IL / ELLE / ON</td>
+            <td>il/elle/on peut</td>
+            <td>il/elle/on veut</td>
+            <td>il/elle/on doit</td>
+          </tr>
+          <tr class="categorie">
+            <td>NOUS</td>
+            <td>nous pouvons</td>
+            <td>nous voulons</td>
+            <td>nous devons</td>
+          </tr>
+          <tr class="categorie">
+            <td>VOUS</td>
+            <td>vous pouvez</td>
+            <td>vous voulez</td>
+            <td>vous devez</td>
+          </tr>
+          <tr class="categorie">
+            <td>ILS / ELLES</td>
+            <td>ils/elles peuvent</td>
+            <td>ils/elles veulent</td>
+            <td>ils/elles doivent</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>verbes modaux</strong> dia manampy mba hanomezana heviny manokana amin'ny verbe hafa.</li>
+        <li>Rehefa misy <strong>verbe modal</strong>, dia <strong>infinitif</strong> foana ny verbe manaraka.</li>
+        <li>Tsy mila préposition (à, de, pour) eo anelanelan'ny verbe modal sy ny infinitif.</li>
+        <li><strong>Pouvoir</strong> → afaka / mahay (fahaizana, fahalalahana)</li>
+        <li><strong>Vouloir</strong> → te-hanao / maniry (faniriana, fahavononana)</li>
+        <li><strong>Devoir</strong> → tokony / tsy maintsy (adidy, fahariana)</li>
+        <li>Amin'ny <strong>négation</strong>, ny "ne" dia apetraka alohan'ny verbe modal ary ny "pas" aoriany.</li>
+        <li>Ny verbes modaux amin'ny passé composé dia mampiasa ny auxiliaire <strong>"avoir"</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fomba fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny verbes modaux dia tena ilaina amin'ny resaka andavanandro rehefa miresaka zavatra <strong>azo atao, tiana atao, na tsy maintsy atao</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny verbes modaux.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

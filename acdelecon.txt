@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Accord de l'adjectif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les adjectifs */
+    .color-masculin-sg {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin-sg {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-masculin-pl {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin-pl {
+      background-color: #a7f3d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ACCORD DE L'ADJECTIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny accord de l'adjectif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "accord de l'adjectif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>accord de l'adjectif</strong> dia ny <strong>fifanarahana</strong> eo amin'ny <strong>adjectif</strong> sy ny <strong>anarana (nom)</strong> tondroiny.<br><br>
+      🔹 Ny adjectif dia <strong>miova</strong> arakaraka ny <strong>lahy na vavy (genre)</strong> sy ny <strong>tokana na maro (nombre)</strong> ny anarana.<br><br>
+      🔹 Misy fitsipika (règles) maromaro tokony hotadidina :<br><br>
+      <span class="icone">📌</span> <strong>Règle 1 :</strong> Ny adjectif dia <span class="color-masculin-sg">mifanaraka amin'ny anarana amin'ny genre (masculin/féminin)</span>.<br>
+      Ohatra : <em>un <strong>grand</strong> garçon</em> (masculin) / <em>une <strong>grande</strong> fille</em> (féminin)<br><br>
+      <span class="icone">📌</span> <strong>Règle 2 :</strong> Ny adjectif dia <span class="color-masculin-pl">mifanaraka amin'ny anarana amin'ny nombre (singulier/pluriel)</span>.<br>
+      Ohatra : <em>un <strong>grand</strong> arbre</em> (singulier) / <em>des <strong>grands</strong> arbres</em> (pluriel)<br><br>
+      <span class="icone">📌</span> <strong>Règle 3 :</strong> Ny adjectif dia <span class="color-feminin-pl">miova amin'ny féminin sy amin'ny pluriel</span>.<br>
+      Ohatra : <em>grand → grande → grands → grandes</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Adjectif</th>
+            <th><span class="color-masculin-sg">Masculin Singulier</span></th>
+            <th><span class="color-feminin-sg">Féminin Singulier</span></th>
+            <th><span class="color-masculin-pl">Masculin Pluriel</span></th>
+            <th><span class="color-feminin-pl">Féminin Pluriel</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>grand</td>
+            <td><span class="color-masculin-sg">grand</span></td>
+            <td><span class="color-feminin-sg">grande</span></td>
+            <td><span class="color-masculin-pl">grands</span></td>
+            <td><span class="color-feminin-pl">grandes</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>petit</td>
+            <td><span class="color-masculin-sg">petit</span></td>
+            <td><span class="color-feminin-sg">petite</span></td>
+            <td><span class="color-masculin-pl">petits</span></td>
+            <td><span class="color-feminin-pl">petites</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>vert</td>
+            <td><span class="color-masculin-sg">vert</span></td>
+            <td><span class="color-feminin-sg">verte</span></td>
+            <td><span class="color-masculin-pl">verts</span></td>
+            <td><span class="color-feminin-pl">vertes</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>sérieux</td>
+            <td><span class="color-masculin-sg">sérieux</span></td>
+            <td><span class="color-feminin-sg">sérieuse</span></td>
+            <td><span class="color-masculin-pl">sérieux</span></td>
+            <td><span class="color-feminin-pl">sérieuses</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>heureux</td>
+            <td><span class="color-masculin-sg">heureux</span></td>
+            <td><span class="color-feminin-sg">heureuse</span></td>
+            <td><span class="color-masculin-pl">heureux</span></td>
+            <td><span class="color-feminin-pl">heureuses</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny adjectif dia <strong>tsy maintsy mifanaraka</strong> amin'ny anarana tondroiny.<br>
+      • <span class="color-masculin-sg">Masculin singulier</span> → tsy misy fanampiny (grand, petit)<br>
+      • <span class="color-feminin-sg">Féminin singulier</span> → manampy <strong>"e"</strong> (grande, petite)<br>
+      • <span class="color-masculin-pl">Masculin pluriel</span> → manampy <strong>"s"</strong> (grands, petits)<br>
+      • <span class="color-feminin-pl">Féminin pluriel</span> → manampy <strong>"es"</strong> (grandes, petites)<br>
+      • Misy <strong>exceptions</strong> : sérieux → sérieuse, heureux → heureuse<br>
+      • Misy adjectif <strong>tsy miova amin'ny féminin</strong> : rouge, jaune, calme, etc.
+    </div>
+  </div>
+
+  <!-- 1. ACCORD EN GENRE (Masculin / Féminin) -->
+  <div class="card">
+    <h2>1️⃣ Accord en GENRE (Masculin / Féminin)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny adjectif dia <strong>miova</strong> arakaraka ny <strong>lahy na vavy</strong> (genre) ny anarana.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-masculin-sg">Masculin</span> → tsy misy fanampiny (grand)<br>
+      • <span class="color-feminin-sg">Féminin</span> → manampy <strong>"e"</strong> (grande)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>grand</strong> garçon. (Masculin - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>grande</strong> fille. (Féminin - manampy "e".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>petit</strong> chat. (Masculin - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>petite</strong> souris. (Féminin - manampy "e".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>vert</strong> stylo. (Masculin - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>verte</strong> feuille. (Féminin - manampy "e".)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif amin'ny féminin dia manampy <strong>"e"</strong> amin'ny ankapobeny.
+    </div>
+  </div>
+
+  <!-- 2. ACCORD EN NOMBRE (Singulier / Pluriel) -->
+  <div class="card">
+    <h2>2️⃣ Accord en NOMBRE (Singulier / Pluriel)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny adjectif dia <strong>miova</strong> arakaraka ny <strong>tokana na maro</strong> (nombre) ny anarana.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-masculin-sg">Singulier</span> → tsy misy fanampiny (grand)<br>
+      • <span class="color-masculin-pl">Pluriel</span> → manampy <strong>"s"</strong> (grands)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>grand</strong> arbre. (Singulier - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des <strong>grands</strong> arbres. (Pluriel - manampy "s".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>petite</strong> maison. (Singulier - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des <strong>petites</strong> maisons. (Pluriel - manampy "s".)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>beau</strong> jardin. (Singulier - tsy misy fanampiny.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des <strong>beaux</strong> jardins. (Pluriel - manampy "x".)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif amin'ny pluriel dia manampy <strong>"s"</strong> amin'ny ankapobeny. Misy adjectif izay manampy <strong>"x"</strong> (beau → beaux).
+    </div>
+  </div>
+
+  <!-- 3. ACCORD EN GENRE ET NOMBRE (Les 4 formes) -->
+  <div class="card">
+    <h2>3️⃣ Accord en GENRE et NOMBRE (Les 4 formes)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny adjectif dia miova arakaraka ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      <strong>Les 4 formes :</strong><br>
+      • <span class="color-masculin-sg">Masculin singulier</span> → <strong>grand</strong><br>
+      • <span class="color-feminin-sg">Féminin singulier</span> → <strong>grande</strong><br>
+      • <span class="color-masculin-pl">Masculin pluriel</span> → <strong>grands</strong><br>
+      • <span class="color-feminin-pl">Féminin pluriel</span> → <strong>grandes</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>grand</strong> garçon. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>grande</strong> fille. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des <strong>grands</strong> garçons. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des <strong>grandes</strong> filles. (Féminin pluriel.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif dia miova amin'ny <strong>4 endrika</strong> : masculin singulier, féminin singulier, masculin pluriel, féminin pluriel.
+    </div>
+  </div>
+
+  <!-- ==================== EXCEPTIONS COURANTES ==================== -->
+  <div class="card">
+    <h2>📌 Exceptions courantes</h2>
+    <div class="definition-mg">
+      <strong>1. Adjectifs qui doublent la consonne finale :</strong><br>
+      • <em>bon</em> → <strong>bonne</strong> (tsara)<br>
+      • <em>gentil</em> → <strong>gentille</strong> (tsara fanahy)<br>
+      • <em>gros</em> → <strong>grosse</strong> (matevina)<br>
+      • <em>bas</em> → <strong>basse</strong> (ambany)<br><br>
+      
+      <strong>2. Adjectifs qui changent au féminin :</strong><br>
+      • <em>beau</em> → <strong>belle</strong> (tsara tarehy)<br>
+      • <em>nouveau</em> → <strong>nouvelle</strong> (vaovao)<br>
+      • <em>vieux</em> → <strong>vieille</strong> (antitra)<br>
+      • <em>fou</em> → <strong>folle</strong> (adala)<br>
+      • <em>mou</em> → <strong>molle</strong> (malemy)<br><br>
+      
+      <strong>3. Adjectifs en -x au féminin :</strong><br>
+      • <em>heureux</em> → <strong>heureuse</strong> (faly)<br>
+      • <em>sérieux</em> → <strong>sérieuse</strong> (matotra)<br>
+      • <em>généreux</em> → <strong>généreuse</strong> (malala-tanana)<br><br>
+      
+      <strong>4. Adjectifs en -f au féminin :</strong><br>
+      • <em>actif</em> → <strong>active</strong> (mavitrika)<br>
+      • <em>sportif</em> → <strong>sportive</strong> (tia fanatanjahan-tena)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra amin'ny exceptions
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>bon</strong> ami / Une <strong>bonne</strong> amie. (Tsara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>beau</strong> jardin / Une <strong>belle</strong> maison. (Tsara tarehy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un homme <strong>heureux</strong> / Une femme <strong>heureuse</strong>. (Faly.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un élève <strong>sérieux</strong> / Une élève <strong>sérieuse</strong>. (Matotra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ADJECTIFS INVARIABLES ==================== -->
+  <div class="card">
+    <h2>📌 Adjectifs invariables (tsy miova)</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Misy adjectif <strong>tsy miova</strong> na oviana na oviana (invariables).<br><br>
+      <strong>Exemples :</strong><br>
+      • <em>marron</em> (volon-kafe) → <strong>marron</strong> (tsy miova)<br>
+      • <em>orange</em> (volom-boasary) → <strong>orange</strong> (tsy miova)<br>
+      • <em>cerise</em> (volon-paraky) → <strong>cerise</strong> (tsy miova)<br>
+      • <em>chic</em> (kanto) → <strong>chic</strong> (tsy miova)<br>
+      • <em>super</em> (tena tsara) → <strong>super</strong> (tsy miova)<br><br>
+      <strong>Tsarovy :</strong> Ireo adjectif ireo dia avy amin'ny <strong>nom</strong> (anarana), ka tsy miova.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un pull <strong>marron</strong> / Des pulls <strong>marron</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une jupe <strong>orange</strong> / Des jupes <strong>orange</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une robe <strong>cerise</strong> / Des robes <strong>cerise</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un style <strong>chic</strong> / Des styles <strong>chic</strong>. (Tsy miova.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PLACE DE L'ADJECTIF ==================== -->
+  <div class="card">
+    <h2>📌 Place de l'adjectif</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Amin'ny ankapobeny, ny adjectif dia apetraka <strong>aorian'ny anarana</strong>.<br>
+      Ohatra : <em>un livre <strong>intéressant</strong></em><br><br>
+      
+      <strong>Adjectifs qui se placent DEVANT le nom :</strong><br>
+      • <strong>BANGS</strong> (Beauté, Âge, Nouveauté, Grandeur, Saveur)<br>
+      - <strong>B</strong>eau / belle (tsara tarehy)<br>
+      - <strong>A</strong>ncien / vieux (antitra)<br>
+      - <strong>N</strong>ouveau / nouvelle (vaovao)<br>
+      - <strong>G</strong>rand / petit (lehibe / kely)<br>
+      - <strong>S</strong>ympa / bon (sariaka / tsara)<br><br>
+      
+      Ohatra : <em>un <strong>grand</strong> arbre</em>, <em>une <strong>belle</strong> maison</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny adjectif dia <strong>tsy maintsy mifanaraka</strong> amin'ny anarana tondroiny.</li>
+        <li>Amin'ny <strong>féminin</strong> → manampy <strong>"e"</strong> (grand → grande).</li>
+        <li>Amin'ny <strong>pluriel</strong> → manampy <strong>"s"</strong> (grand → grands).</li>
+        <li>Amin'ny <strong>féminin pluriel</strong> → manampy <strong>"es"</strong> (grand → grandes).</li>
+        <li>Misy adjectif <strong>tsy miova</strong> (marron, orange, cerise, chic).</li>
+        <li>Misy adjectif <strong>miova manokana</strong> (beau → belle, vieux → vieille).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny accord de l'adjectif dia tena ilaina mba ho <strong>marina</strong> ny fehezanteny. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny accord de l'adjectif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

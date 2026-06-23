@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Analyse du texte – Types de textes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les types de textes */
+    .color-narratif {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-descriptif {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-argumentatif {
+      background-color: #fde68a;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-injonctif {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-informatif {
+      background-color: #c4b5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ANALYSE DU TEXTE – TYPES DE TEXTES</h1>
+  </div>
+
+  <!-- Carte : Inona ny analyse du texte ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "analyse du texte" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>analyse du texte</strong> dia fandinihana ny <strong>karazana</strong> na ny <strong>endriky</strong> ny lahatsoratra iray.<br><br>
+      🔹 Misy karazana lahatsoratra <strong>dimy (5)</strong> lehibe ho an'ny mpianatra vao manomboka :<br><br>
+      <span class="icone">📖</span> <strong>Texte narratif</strong> – mitantara tantara (fitantarana)<br><br>
+      <span class="icone">🖼️</span> <strong>Texte descriptif</strong> – mamaritra zavatra, olona, na toerana (famaritana)<br><br>
+      <span class="icone">⚖️</span> <strong>Texte argumentatif</strong> – miady hevitra, mampiaiky hevitra (fandresen-dahatra)<br><br>
+      <span class="icone">📢</span> <strong>Texte injonctif</strong> – manome baiko, torohevitra, na didy (baiko / torohevitra)<br><br>
+      <span class="icone">📰</span> <strong>Texte informatif</strong> – manome vaovao, fampahalalana (fampahalalam-baovao)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type de texte</th>
+            <th>Tanjona (Objectif)</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-narratif">Narratif</span></td>
+            <td>Mitantara tantara (Raconter une histoire)</td>
+            <td>Ny tantara, ny angano, ny vaovao</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-descriptif">Descriptif</span></td>
+            <td>Mamaritra zavatra (Décrire quelque chose)</td>
+            <td>Famaritana olona, toerana, zavatra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-argumentatif">Argumentatif</span></td>
+            <td>Mampiaiky hevitra (Convaincre / persuader)</td>
+            <td>Lahateny, taratasy miady hevitra, dokam-barotra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-injonctif">Injonctif</span></td>
+            <td>Manome baiko na torohevitra (Donner un ordre ou un conseil)</td>
+            <td>Didy, torohevitra, fampitandremana</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-informatif">Informatif</span></td>
+            <td>Manome fampahalalana (Donner des informations)</td>
+            <td>Gazety, lahatsoratra siantifika, fanazavana</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 NOTE IMPORTANTE :</strong><br><br>
+      Mety misy lahatsoratra iray ahitana <strong>karazana maro</strong> (ohatra : tantara misy famaritana). Ny zava-dehibe dia ny mahafantatra ny <strong>tanjona lehibe</strong> sy ny <strong>endri-javatra</strong> (indices) ahafantarana ny karazana lahatsoratra.
+    </div>
+  </div>
+
+  <!-- 1. TEXTE NARRATIF -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-narratif">TEXTE NARRATIF</span> – Fitantarana</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>texte narratif</strong> dia lahatsoratra <strong>mitantara tantara</strong> na zava-nitranga iray. Misy <strong>mpitantara</strong>, <strong>mpilalao</strong> (personnages), ary <strong>fotoana</strong> sy <strong>toerana</strong>.<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy matoanteny amin'ny <strong>passé</strong> (lasa) na <strong>présent</strong> de narration<br>
+      • Misy <strong>mpitantara</strong> (je, il, elle...)<br>
+      • Misy <strong>fotoana</strong> sy <strong>toerana</strong> mazava<br>
+      • Misy <strong>zava-nitranga</strong> misesy (chronologie)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était une fois un petit garçon qui vivait dans un village. (Indray mandeha dia nisy zazalahy kely nipetraka tao amin'ny vohitra iray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Hier, je suis allé au marché et j'ai acheté des fruits. (Omaly, dia nankeny an-tsena aho ary nividy voankazo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le loup arriva et mangea le petit chaperon rouge. (Nahatongavany ny amboadia ary nihinana ilay ankizivavy kely mena.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TEXTE DESCRIPTIF -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-descriptif">TEXTE DESCRIPTIF</span> – Famaritana</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>texte descriptif</strong> dia lahatsoratra <strong>mamaritra</strong> olona, zavatra, toerana, na biby iray. Mampiasa <strong>adjectif</strong> (mpamaritra) sy <strong>comparaison</strong> (tahaka).<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>adjectif</strong> maro (grand, petit, beau, etc.)<br>
+      • Misy <strong>comparaison</strong> (comme, tel que, semblable à...)<br>
+      • Misy <strong>verbe d'état</strong> (être, sembler, paraître...)<br>
+      • Mamaly ny fanontaniana : <strong>Inona? Iza? Ahoana?</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La maison est grande et belle. Elle a un toit rouge et des fenêtres bleues. (Lehibe sy tsara tarehy ny trano. Misy tafo mena sy varavarana manga izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon père est grand, mince et très gentil. (Lehibe, mahia ary tena tsara fanahy ny raiko.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le ciel est bleu comme la mer. (Manga tahaka ny ranomasina ny lanitra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TEXTE ARGUMENTATIF -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-argumentatif">TEXTE ARGUMENTATIF</span> – Fandresen-dahatra</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>texte argumentatif</strong> dia lahatsoratra <strong>miady hevitra</strong> mba <strong>hampiaiky</strong> ny mpamaky na mpihaino. Mampiasa <strong>hevitra</strong> (arguments) sy <strong>ohatra</strong> (exemples).<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>hevitra</strong> (arguments) sy <strong>ohatra</strong> (exemples)<br>
+      • Misy <strong>mpifamatotra</strong> (car, donc, en effet, cependant...)<br>
+      • Misy <strong>mpamaritra</strong> (à mon avis, selon moi, il est évident que...)<br>
+      • Misy <strong>famaritana</strong> (donc, par conséquent, ainsi...)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il faut protéger l'environnement car la planète est en danger. (Tokony hiaro ny tontolo iainana isika satria tandindonin-doza ny tany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">À mon avis, le sport est bon pour la santé. Donc, tout le monde devrait faire du sport. (Raha ny hevitro, ny fanatanjahan-tena dia tsara ho an'ny fahasalamana. Noho izany, ny olona rehetra dia tokony hanao fanatanjahan-tena.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les enfants doivent lire des livres parce que cela développe leur imagination. (Tokony hamaky boky ny ankizy satria izany dia mampivelatra ny eritreriny.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TEXTE INJONCTIF -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-injonctif">TEXTE INJONCTIF</span> – Baiko / Torohevitra</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>texte injonctif</strong> dia lahatsoratra <strong>manome baiko</strong>, <strong>torohevitra</strong>, na <strong>didim-panjakana</strong>. Mampiasa <strong>impératif</strong> (baiko) na <strong>devoir</strong> (tokony).<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>impératif</strong> (Fais ! Va ! Viens !)<br>
+      • Misy <strong>verbe au futur</strong> (tu feras, tu iras...)<br>
+      • Misy <strong>devoir</strong> (il faut, tu dois...)<br>
+      • Misy <strong>consigne</strong> (marche à suivre, règles...)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ferme la porte et viens ici. (Akòny ny varavarana ary avia aty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il faut manger des fruits et des légumes pour être en bonne santé. (Tokony hihina voankazo sy anana isika mba ho salama.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ne touchez pas à ceci ! (Aza mikasika ity !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Prenez votre temps pour faire cet exercice. (Makà fotoana hanaovana ity fanazaran-tena ity.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. TEXTE INFORMATIF -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-informatif">TEXTE INFORMATIF</span> – Fampahalalam-baovao</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>texte informatif</strong> dia lahatsoratra <strong>manome vaovao</strong> na <strong>fampahalalana</strong>. Tsy mitady handresy lahatra na hitantara tantara, fa manazava fotsiny.<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>fampahalalana</strong> (faits) marina<br>
+      • Misy <strong>isa</strong> na <strong>daty</strong><br>
+      • Misy <strong>famaritana</strong> (c'est-à-dire, etc.)<br>
+      • Misy <strong>loharano</strong> (selon, d'après...)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Madagascar est une île située dans l'océan Indien. Sa capitale est Antananarivo. (Madagasikara dia nosy hita ao amin'ny ranomasimbe Indiana. Ny renivohiny dia Antananarivo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'eau bout à 100 degrés Celsius. (Ny rano dia mangotraka amin'ny 100 degré Celsius.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La France compte environ 67 millions d'habitants. (Any Frantsa dia misy olona 67 tapitrisa eo ho eo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES TYPES ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny types de textes</h2>
+    <div class="definition-mg">
+      <strong><span class="color-narratif">📖 Narratif</span></strong> → Mitantara tantara. Misy mpitantara, mpilalao, fotoana, toerana.<br>
+      Ohatra : Tantara, angano, vaovao.<br><br>
+      
+      <strong><span class="color-descriptif">🖼️ Descriptif</span></strong> → Mamaritra zavatra. Misy adjectif, comparaison, verbe d'état.<br>
+      Ohatra : Famaritana olona, toerana, zavatra.<br><br>
+      
+      <strong><span class="color-argumentatif">⚖️ Argumentatif</span></strong> → Miady hevitra. Misy hevitra (arguments), ohatra, mpifamatotra.<br>
+      Ohatra : Lahateny, taratasy miady hevitra.<br><br>
+      
+      <strong><span class="color-injonctif">📢 Injonctif</span></strong> → Manome baiko na torohevitra. Misy impératif, devoir, consigne.<br>
+      Ohatra : Didy, torohevitra, fampitandremana.<br><br>
+      
+      <strong><span class="color-informatif">📰 Informatif</span></strong> → Manome fampahalalana. Misy faits, isa, daty.<br>
+      Ohatra : Gazety, lahatsoratra siantifika.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana ny karazana lahatsoratra
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Hier, je suis allé à la plage. (Nankeny amoron-dranomasina aho omaly.) → Narratif</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La plage est belle avec son sable blanc et son eau bleue. (Tsara tarehy ny amoron-dranomasina miaraka amin'ny fasika fotsy sy rano manga.) → Descriptif</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il faut protéger les plages pour préserver la nature. (Tokony hiaro ny amoron-dranomasina isika mba hiarovana ny natiora.) → Argumentatif</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ne jetez pas vos déchets sur la plage ! (Aza manipy ny fako eo amoron-dranomasina !) → Injonctif</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les plages de Madagascar s'étendent sur plus de 5000 km. (Ny amoron-dranomasina eto Madagasikara dia mirefy 5000 km mahery.) → Informatif</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif complet</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Tanjona</th>
+            <th>Famantarana (Indices)</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-narratif">Narratif</span></td>
+            <td>Mitantara tantara</td>
+            <td>Passé, personnages, chronologie</td>
+            <td>Tantara, angano</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-descriptif">Descriptif</span></td>
+            <td>Mamaritra zavatra</td>
+            <td>Adjectifs, comparaisons, être</td>
+            <td>Famaritana olona/zavatra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-argumentatif">Argumentatif</span></td>
+            <td>Mampiaiky hevitra</td>
+            <td>Arguments, exemples, connecteurs</td>
+            <td>Lahateny, taratasy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-injonctif">Injonctif</span></td>
+            <td>Manome baiko/torohevitra</td>
+            <td>Impératif, devoir, consignes</td>
+            <td>Didy, règle, conseil</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-informatif">Informatif</span></td>
+            <td>Manome fampahalalana</td>
+            <td>Faits, chiffres, dates</td>
+            <td>Gazety, article</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Alohan'ny hamaritana ny karazana lahatsoratra dia <strong>vakio tsara</strong> ilay lahatsoratra.</li>
+        <li>Jereo ny <strong>tanjona</strong> : Inona no tian'ny mpanoratra hatao? (Mitantara? Mamaritra? Mampiaiky? Manome baiko? Manome vaovao?)</li>
+        <li>Jereo ny <strong>famantarana (indices)</strong> : Misy adjectif maro? Misy impératif? Misy passé? Misy arguments?</li>
+        <li>Mety misy <strong>karazana maro</strong> ao anaty lahatsoratra iray. Ny zava-dehibe dia ny mahafantatra ny <strong>karazana lehibe</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafan'ny karazana lahatsoratra.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahaizana mamantatra ny karazana lahatsoratra dia tena ilaina amin'ny <strong>fahatakarana sy famakiana</strong> lahatsoratra rehetra. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny analyse du texte.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

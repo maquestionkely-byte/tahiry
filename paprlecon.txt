@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Participe présent et Gérondif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le participe présent et le gérondif */
+    .color-participe {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-gerondif {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-special {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PARTICIPE PRÉSENT ET GÉRONDIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny participe présent et le gérondif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "participe présent" sy "gérondif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>participe présent</strong> sy ny <strong>gérondif</strong> dia endrika roa miforona avy amin'ny <strong>verbe</strong> ary mifarana amin'ny <strong>"-ant"</strong>.<br><br>
+      🔹 Misy <strong>fahasamihafana</strong> eo amin'ny fampiasana azy ireo :<br><br>
+      <span class="icone">📌</span> <span class="color-participe">PARTICIPE PRÉSENT</span> → <strong>verbe</strong> + <strong>-ant</strong> (mangeant, parlant, finissant)<br>
+      Ohatra : <em>Elle parle <span class="color-participe">en mangeant</span>.</em><br><br>
+      <span class="icone">📌</span> <span class="color-gerondif">GÉRONDIF</span> → <strong>en</strong> + <strong>participe présent</strong> (en mangeant, en parlant)<br>
+      Ohatra : <em>Elle parle <span class="color-gerondif">en mangeant</span>.</em><br><br>
+      🔹 <strong>Règle :</strong> Ny participe présent dia ampiasaina <strong>tsy misy "en"</strong>, fa ny gérondif dia ampiasaina <strong>miaraka amin'ny "en"</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Forme</th>
+            <th>Formation</th>
+            <th>Exemple</th>
+            <th>Emploi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-participe">PARTICIPE PRÉSENT</span></td>
+            <td>verbe + <strong>-ant</strong></td>
+            <td>mangeant, parlant</td>
+            <td>Comme adjectif ou verbe</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-gerondif">GÉRONDIF</span></td>
+            <td><strong>en</strong> + participe présent</td>
+            <td>en mangeant, en parlant</td>
+            <td>Complément circonstanciel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-participe">participe présent</span> dia miforona amin'ny alalan'ny <strong>verbe + -ant</strong>.<br>
+      Ohatra : <em>manger → mangeant</em> / <em>finir → finissant</em><br><br>
+      • Ny <span class="color-gerondif">gérondif</span> dia miforona amin'ny alalan'ny <strong>en + participe présent</strong>.<br>
+      Ohatra : <em>en mangeant</em> / <em>en finissant</em><br><br>
+      • Ny <span class="color-participe">participe présent</span> dia <strong>tsy miova</strong> (invariable) na oviana na oviana.<br>
+      • Ny <span class="color-gerondif">gérondif</span> dia ampiasaina hilazana zavatra mitranga <strong>miaraka</strong> amin'ny hetsika hafa.<br>
+      Ohatra : <em>Il lit <span class="color-gerondif">en écoutant</span> de la musique.</em> (Mamaky boky <strong>raha mihaino</strong> mozika izy.)
+    </div>
+  </div>
+
+  <!-- 1. FORMATION DU PARTICIPE PRÉSENT -->
+  <div class="card">
+    <h2>1️⃣ Formation du <span class="color-participe">PARTICIPE PRÉSENT</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-participe">participe présent</span> dia miforona amin'ny alalan'ny <strong>verbe</strong> + <strong>-ant</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • Ho an'ny verbe amin'ny <strong>1er groupe</strong> (-er) → esorina ny <strong>"er"</strong> ary ampiana <strong>"ant"</strong>.<br>
+      Ohatra : <em>manger → mange<span class="color-participe">ant</span></em><br><br>
+      • Ho an'ny verbe amin'ny <strong>2ème groupe</strong> (-ir) → esorina ny <strong>"ir"</strong> ary ampiana <strong>"issant"</strong>.<br>
+      Ohatra : <em>finir → finiss<span class="color-participe">ant</span></em><br><br>
+      • Ho an'ny verbe amin'ny <strong>3ème groupe</strong> → tsy ara-dalàna (ilaina ny tsianjery).<br>
+      Ohatra : <em>être → ét<span class="color-participe">ant</span></em> / <em>avoir → ay<span class="color-participe">ant</span></em>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>1er groupe :</strong><br>
+      manger → mange<span class="color-participe">ant</span> (mihinana)<br>
+      parler → parl<span class="color-participe">ant</span> (miresaka)<br>
+      chanter → chant<span class="color-participe">ant</span> (mihira)<br><br>
+      
+      <strong>2ème groupe :</strong><br>
+      finir → finiss<span class="color-participe">ant</span> (mamita)<br>
+      choisir → choisiss<span class="color-participe">ant</span> (misafidy)<br>
+      réussir → réussiss<span class="color-participe">ant</span> (mahomby)<br><br>
+      
+      <strong>3ème groupe (irréguliers) :</strong><br>
+      être → ét<span class="color-participe">ant</span><br>
+      avoir → ay<span class="color-participe">ant</span><br>
+      aller → all<span class="color-participe">ant</span><br>
+      faire → fais<span class="color-participe">ant</span><br>
+      venir → ven<span class="color-participe">ant</span><br>
+      prendre → pren<span class="color-participe">ant</span>
+    </div>
+  </div>
+
+  <!-- 2. EMPLOI DU PARTICIPE PRÉSENT -->
+  <div class="card">
+    <h2>2️⃣ Emploi du <span class="color-participe">PARTICIPE PRÉSENT</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-participe">participe présent</span> dia ampiasaina amin'ny fomba <strong>telu</strong> :<br><br>
+      <strong>1. Comme <span class="color-special">adjectif verbal</span> (mamaritra ny anarana) :</strong><br>
+      Ohatra : <em>Une <span class="color-participe">marchant</span> dans la rue.</em><br><br>
+      <strong>2. Comme <span class="color-special">verbe</span> (amin'ny fehezanteny) :</strong><br>
+      Ohatra : <em>Il <span class="color-participe">court</span> en <span class="color-participe">criant</span>.</em><br><br>
+      <strong>3. Pour exprimer une <span class="color-special">cause</span> ou une <span class="color-special">condition</span> :</strong><br>
+      Ohatra : <em><span class="color-participe">Étant</span> malade, il est resté chez lui.</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une personne <span class="color-participe">parlant</span> français. (Olona <span class="color-participe">miteny</span> frantsay - adjectif verbal.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il sort <span class="color-participe">en courant</span>. (Mivoaka <span class="color-participe">raha mihazakazaka</span> izy - verbe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-participe">Étant</span> fatigué, il s'est couché. (<span class="color-participe">Satria</span> vizana izy, dia natory.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-participe">Ayant</span> fini ses devoirs, elle est sortie. (<span class="color-participe">Rehefa</span> namita ny raharahany izy, dia nivoaka.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. FORMATION DU GÉRONDIF -->
+  <div class="card">
+    <h2>3️⃣ Formation du <span class="color-gerondif">GÉRONDIF</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-gerondif">gérondif</span> dia miforona amin'ny alalan'ny <strong>en</strong> + <span class="color-participe">participe présent</span>.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-gerondif">en</span> + <span class="color-participe">verbe + -ant</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>en</strong> mang<span class="color-gerondif">eant</span> (raha mihinana)<br>
+      <strong>en</strong> parl<span class="color-gerondif">ant</span> (raha miteny)<br>
+      <strong>en</strong> finiss<span class="color-gerondif">ant</span> (raha mamita)<br>
+      <strong>en</strong> choisiss<span class="color-gerondif">ant</span> (raha misafidy)<br>
+      <strong>en</strong> ét<span class="color-gerondif">ant</span> (raha misy / raha maha-izy)<br>
+      <strong>en</strong> ay<span class="color-gerondif">ant</span> (raha manana)<br>
+      <strong>en</strong> all<span class="color-gerondif">ant</span> (raha mandeha)
+    </div>
+  </div>
+
+  <!-- 4. EMPLOI DU GÉRONDIF -->
+  <div class="card">
+    <h2>4️⃣ Emploi du <span class="color-gerondif">GÉRONDIF</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-gerondif">gérondif</span> dia ampiasaina hilazana zavatra mitranga <strong>miaraka</strong> amin'ny hetsika hafa. Izy io dia <strong>complément circonstanciel</strong> (fanampiny).<br><br>
+      <strong>Fampiasana :</strong><br>
+      • <strong>Maneho fomba</strong> (manao ahoana)<br>
+      • <strong>Maneho fotoana</strong> (oviana)<br>
+      • <strong>Maneho antony</strong> (nahoana)<br>
+      • <strong>Maneho fepetra</strong> (raha)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Fomba)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il travaille <span class="color-gerondif">en écoutant</span> de la musique. (Miasa <span class="color-gerondif">raha mihaino</span> mozika izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle parle <span class="color-gerondif">en mangeant</span>. (Miteny <span class="color-gerondif">raha mihinana</span> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il court <span class="color-gerondif">en criant</span>. (Mihazakazaka <span class="color-gerondif">raha miantsoantso</span> izy.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Fotoana)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-gerondif">En sortant</span> de la maison, il a rencontré Marie. (<span class="color-gerondif">Rehefa</span> nivoaka ny trano izy, dia nifanena tamin'i Marie.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-gerondif">En rentrant</span> chez lui, il a vu un chat. (<span class="color-gerondif">Rehefa</span> nody izy, dia nahita saka.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Antony / Fepetra)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-gerondif">En étant</span> malade, il ne peut pas venir. (<span class="color-gerondif">Satria</span> marary izy, dia tsy afaka ho avy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-gerondif">En travaillant</span> bien, tu réussiras. (<span class="color-gerondif">Raha</span> miasa tsara ianao, dia hahomby.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-gerondif">gérondif</span> dia ampiasaina hilazana zavatra mitranga <strong>miaraka</strong> amin'ny hetsika hafa.
+    </div>
+  </div>
+
+  <!-- 5. DIFFÉRENCE ENTRE PARTICIPE PRÉSENT ET GÉRONDIF -->
+  <div class="card">
+    <h2>5️⃣ Différence entre <span class="color-participe">PARTICIPE PRÉSENT</span> et <span class="color-gerondif">GÉRONDIF</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fahasamihafana lehibe eo amin'ny fampiasana ny <span class="color-participe">participe présent</span> sy ny <span class="color-gerondif">gérondif</span>.<br><br>
+      <strong><span class="color-participe">PARTICIPE PRÉSENT</span> :</strong><br>
+      • <strong>Tsy</strong> misy "en" eo alohany.<br>
+      • Azo ampiasaina ho <strong>adjectif</strong> na ho <strong>verbe</strong>.<br>
+      • Miova ho <strong>adjectif verbal</strong> raha mamaritra ny anarana.<br>
+      Ohatra : <em>Une <span class="color-participe">maison</span> <span class="color-participe">blanche</span>.</em><br><br>
+      <strong><span class="color-gerondif">GÉRONDIF</span> :</strong><br>
+      • Misy <strong>"en"</strong> eo alohany.<br>
+      • Ampiasaina ho <strong>complément circonstanciel</strong> (fanampiny).<br>
+      • Maneho <strong>fomba</strong>, <strong>fotoana</strong>, <strong>antony</strong>, na <strong>fepetra</strong>.<br>
+      Ohatra : <em>Il parle <span class="color-gerondif">en mangeant</span>.</em>
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PARTICIPE PRÉSENT : <span class="color-participe">Marchant</span> dans la rue, il a vu Marie. (Nandeha teny an-dalana izy, dia nahita an'i Marie.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">GÉRONDIF : Il a vu Marie <span class="color-gerondif">en marchant</span> dans la rue. (Nahita an'i Marie izy <span class="color-gerondif">raha</span> nandeha teny an-dalana.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>🧪</span> Fahasamihafana hafa
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PARTICIPE PRÉSENT : <span class="color-participe">Ayant</span> faim, il a mangé. (Satria noana izy, dia nihinana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">GÉRONDIF : Il a mangé <span class="color-gerondif">en ayant</span> faim. (Nihinana izy <span class="color-gerondif">raha</span> noana.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-participe">participe présent</span> dia <strong>tsy</strong> misy "en", fa ny <span class="color-gerondif">gérondif</span> dia <strong>misy</strong> "en".<br>
+      • <span class="color-participe">Participe présent</span> → mety ho <strong>adjectif</strong> na <strong>verbe</strong>.<br>
+      • <span class="color-gerondif">Gérondif</span> → <strong>complément circonstanciel</strong> foana.
+    </div>
+  </div>
+
+  <!-- 6. ADJECTIF VERBAL -->
+  <div class="card">
+    <h2>6️⃣ Adjectif verbal (participe présent comme adjectif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa ampiasaina ho <strong>adjectif</strong> ny participe présent, dia antsoina hoe <strong>adjectif verbal</strong>. Izy io dia <strong>mifanaraka</strong> amin'ny anarana (genre et nombre).<br><br>
+      <strong>Règle :</strong><br>
+      • Ny adjectif verbal dia <strong>miova</strong> (manampy e, s, es) toy ny adjectif mahazatra.<br>
+      Ohatra : <em>une <span class="color-participe">maison</span> <span class="color-participe">blanche</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une personne <span class="color-participe">parlante</span> français. (Olona <span class="color-participe">miteny</span> frantsay - adjectif verbal.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une enfant <span class="color-participe">dormante</span>. (Zaza <span class="color-participe">matoky</span> - adjectif verbal.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des personnes <span class="color-participe">parlantes</span> français. (Olona <span class="color-participe">miteny</span> frantsay - pluriel.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif verbal dia <strong>mifanaraka</strong> amin'ny anarana, fa ny participe présent dia <strong>tsy miova</strong>.
+    </div>
+  </div>
+
+  <!-- 7. VERBES IRRÉGULIERS -->
+  <div class="card">
+    <h2>7️⃣ Verbes irréguliers courants</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny verbes irréguliers matetika ampiasaina amin'ny participe présent.<br><br>
+      <strong>Liste :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>être</strong> → étant (misy / maha-izy)<br>
+      <strong>avoir</strong> → ayant (manana)<br>
+      <strong>aller</strong> → allant (mandeha)<br>
+      <strong>faire</strong> → faisant (manao)<br>
+      <strong>venir</strong> → venant (ho avy)<br>
+      <strong>prendre</strong> → prenant (maka)<br>
+      <strong>dire</strong> → disant (milaza)<br>
+      <strong>écrire</strong> → écrivant (manoratra)<br>
+      <strong>voir</strong> → voyant (mahita)<br>
+      <strong>savoir</strong> → sachant (mahafantatra)<br>
+      <strong>pouvoir</strong> → pouvant (afaka)<br>
+      <strong>vouloir</strong> → voulant (te-hanao)
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-participe">PARTICIPE PRÉSENT</span> :</strong><br>
+      • Formation : <strong>verbe + -ant</strong><br>
+      • Emploi : <strong>adjectif</strong> ou <strong>verbe</strong><br>
+      • Invariable (tsy miova)<br>
+      Ohatra : <em>mangeant, parlant, finissant</em><br><br>
+      
+      <strong>2. <span class="color-gerondif">GÉRONDIF</span> :</strong><br>
+      • Formation : <strong>en + participe présent</strong><br>
+      • Emploi : <strong>complément circonstanciel</strong><br>
+      • Invariable (tsy miova)<br>
+      Ohatra : <em>en mangeant, en parlant, en finissant</em><br><br>
+      
+      <strong>3. <span class="color-special">ADJECTIF VERBAL</span> :</strong><br>
+      • Formation : <strong>participe présent + accord</strong><br>
+      • Emploi : <strong>adjectif</strong><br>
+      • Variable (miova)<br>
+      Ohatra : <em>une personne parlante</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-participe">participe présent</span> dia miforona amin'ny <strong>verbe + -ant</strong>.</li>
+        <li>Ny <span class="color-gerondif">gérondif</span> dia miforona amin'ny <strong>en + participe présent</strong>.</li>
+        <li>Ny <span class="color-participe">participe présent</span> dia <strong>tsy miova</strong> (invariable).</li>
+        <li>Ny <span class="color-gerondif">gérondif</span> dia <strong>tsy miova</strong> ihany koa.</li>
+        <li>Ny <span class="color-special">adjectif verbal</span> dia <strong>miova</strong> (mifanaraka amin'ny anarana).</li>
+        <li>Ny <span class="color-gerondif">gérondif</span> dia ampiasaina hilazana zavatra mitranga <strong>miaraka</strong> amin'ny hetsika hafa.</li>
+        <li>Misy verbes irréguliers (être → étant, avoir → ayant, etc.).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny fahasamihafana eo amin'ny participe présent sy ny gérondif dia tena ilaina mba ho <strong>marina</strong> ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny participe présent sy gérondif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

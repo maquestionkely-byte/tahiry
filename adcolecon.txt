@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Adjectif de couleur – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les catégories d'adjectifs de couleur */
+    .color-simple {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-compose {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-nom {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ADJECTIF DE COULEUR</h1>
+  </div>
+
+  <!-- Carte : Inona ny adjectif de couleur ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "adjectif de couleur" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>adjectif de couleur</strong> dia adjectif <strong>mamaritra ny lokon'ny zavatra</strong> iray.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"mena", "fotsy", "manga", "maitso"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Misy <strong>règles d'accord</strong> (fifanarahana) manokana ny adjectif de couleur :<br><br>
+      <span class="icone">🎨</span> <strong>Adjectifs simples</strong> → mifanaraka amin'ny anarana (genre et nombre)<br>
+      Ohatra : vert, verte, verts, vertes<br><br>
+      <span class="icone">🎨</span> <strong>Adjectifs composés</strong> → tsy miova (invariables)<br>
+      Ohatra : bleu foncé, vert clair<br><br>
+      <span class="icone">🎨</span> <strong>Noms utilisés comme couleurs</strong> → tsy miova (invariables)<br>
+      Ohatra : marron, orange, cerise
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Catégorie</th>
+            <th>Règle d'accord</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-simple">ADJECTIFS SIMPLES</span></td>
+            <td>S'accordent en genre et en nombre</td>
+            <td>vert, verte, verts, vertes</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-compose">ADJECTIFS COMPOSÉS</span></td>
+            <td>Invariables (ne s'accordent pas)</td>
+            <td>bleu foncé, vert clair</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-nom">NOMS UTILISÉS COMME COULEURS</span></td>
+            <td>Invariables (ne s'accordent pas)</td>
+            <td>marron, orange, cerise</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLE GÉNÉRALE :</strong><br><br>
+      • Les adjectifs de couleur <strong>simples</strong> (vert, bleu, blanc, noir, rouge, jaune) s'accordent en <strong>genre</strong> (masculin/féminin) et en <strong>nombre</strong> (singulier/pluriel).<br><br>
+      • Les adjectifs de couleur <strong>composés</strong> (bleu foncé, vert clair, rouge vif) sont <strong>invariables</strong> (tsy miova).<br><br>
+      • Les <strong>noms</strong> utilisés comme couleurs (marron, orange, cerise, paille, etc.) sont <strong>invariables</strong> (tsy miova).
+    </div>
+  </div>
+
+  <!-- 1. COULEURS SIMPLES - ACCORD RÉGULIER -->
+  <div class="card">
+    <h2>1️⃣ Couleurs simples (accord régulier)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny adjectif de couleur <strong>simple</strong> dia <strong>mifanaraka</strong> amin'ny anarana (nom) amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      <strong>Règle :</strong><br>
+      • Masculin singulier → tsy misy fanampiny (vert)<br>
+      • Féminin singulier → manampy <strong>"e"</strong> (verte)<br>
+      • Masculin pluriel → manampy <strong>"s"</strong> (verts)<br>
+      • Féminin pluriel → manampy <strong>"es"</strong> (vertes)
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Exemples de couleurs simples :</strong><br>
+      <strong>vert</strong> (maitso) • <strong>bleu</strong> (manga) • <strong>blanc</strong> (fotsy)<br>
+      <strong>noir</strong> (mainty) • <strong>rouge</strong> (mena) • <strong>jaune</strong> (mavo)<br>
+      <strong>rose</strong> (mavokely) • <strong>violet</strong> (volomparasy)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un crayon <strong>vert</strong>. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une chaise <strong>verte</strong>. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des crayons <strong>verts</strong>. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des chaises <strong>vertes</strong>. (Féminin pluriel.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra hafa amin'ny couleurs simples
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un chapeau <strong>noir</strong> / Des chapeaux <strong>noirs</strong>. (Mainty.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une robe <strong>rouge</strong> / Des robes <strong>rouges</strong>. (Mena.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un mur <strong>blanc</strong> / Des murs <strong>blancs</strong>. (Fotsy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une fleur <strong>jaune</strong> / Des fleurs <strong>jaunes</strong>. (Mavo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. COULEURS COMPOSÉES - INVARIABLES -->
+  <div class="card">
+    <h2>2️⃣ Couleurs composées (invariables)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny adjectif de couleur <strong>composé</strong> dia misy <strong>deux mots</strong> (ex: bleu + foncé). Izy ireo dia <strong>tsy miova</strong> (invariables) na inona na inona ny anarana.<br><br>
+      <strong>Règle :</strong><br>
+      • Tsy mifanaraka amin'ny anarana na oviana na oviana.<br>
+      • Mijanona ho <strong>mitovy</strong> foana na masculin na féminin, na singulier na pluriel.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Exemples de couleurs composées :</strong><br>
+      <strong>bleu foncé</strong> (manga lalina) • <strong>vert clair</strong> (maitso mazava)<br>
+      <strong>rouge vif</strong> (mena mamirapiratra) • <strong>gris souris</strong> (fotsy volo)<br>
+      <strong>jaune pâle</strong> (mavo hatsatra) • <strong>bleu marine</strong> (manga ranomasina)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un pantalon <strong>bleu foncé</strong>. (Masculin singulier - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une jupe <strong>bleu foncé</strong>. (Féminin singulier - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des pantalons <strong>bleu foncé</strong>. (Masculin pluriel - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des jupes <strong>bleu foncé</strong>. (Féminin pluriel - tsy miova.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra hafa amin'ny couleurs composées
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une chemise <strong>vert clair</strong> / Des chemises <strong>vert clair</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un manteau <strong>gris souris</strong> / Des manteaux <strong>gris souris</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une robe <strong>rouge vif</strong> / Des robes <strong>rouge vif</strong>. (Tsy miova.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif de couleur composé dia <strong>tsy miova na oviana na oviana</strong>. Tsy misy "e" na "s" ampiana azy.
+    </div>
+  </div>
+
+  <!-- 3. NOMS UTILISÉS COMME COULEURS - INVARIABLES -->
+  <div class="card">
+    <h2>3️⃣ Noms utilisés comme couleurs (invariables)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy adjectif de couleur izay avy amin'ny <strong>anarana (nom)</strong>. Izy ireo dia <strong>tsy miova</strong> (invariables) na inona na inona ny anarana.<br><br>
+      <strong>Règle :</strong><br>
+      • Tsy mifanaraka amin'ny anarana na oviana na oviana.<br>
+      • Mijanona ho <strong>mitovy</strong> foana.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Exemples de noms utilisés comme couleurs :</strong><br>
+      <strong>marron</strong> (volon-kafe) • <strong>orange</strong> (volom-boasary)<br>
+      <strong>cerise</strong> (volon-paraky) • <strong>paille</strong> (volon-bary)<br>
+      <strong>acajou</strong> (volon-kazo) • <strong>chocolat</strong> (volon-sôkôla)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un pull <strong>marron</strong>. (Masculin singulier - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une veste <strong>marron</strong>. (Féminin singulier - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des pulls <strong>marron</strong>. (Masculin pluriel - tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des vestes <strong>marron</strong>. (Féminin pluriel - tsy miova.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra hafa amin'ny noms utilisés comme couleurs
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un tee-shirt <strong>orange</strong> / Des tee-shirts <strong>orange</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une robe <strong>cerise</strong> / Des robes <strong>cerise</strong>. (Tsy miova.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un pantalon <strong>chocolat</strong> / Des pantalons <strong>chocolat</strong>. (Tsy miova.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Marron" sy "orange" dia <strong>tsy miova na oviana na oviana</strong> satria avy amin'ny anarana izy ireo. Tsy misy "marronne" na "orangée" (afatsy rehefa zavatra hafa ny dikan'izy ireo).
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif des règles d'accord</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type d'adjectif de couleur</th>
+            <th>Règle</th>
+            <th>Masculin Singulier</th>
+            <th>Féminin Singulier</th>
+            <th>Masculin Pluriel</th>
+            <th>Féminin Pluriel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-simple">Couleur simple</span></td>
+            <td>S'accorde</td>
+            <td>vert</td>
+            <td>verte</td>
+            <td>verts</td>
+            <td>vertes</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-compose">Couleur composée</span></td>
+            <td>Invariable</td>
+            <td>bleu foncé</td>
+            <td>bleu foncé</td>
+            <td>bleu foncé</td>
+            <td>bleu foncé</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-nom">Nom utilisé comme couleur</span></td>
+            <td>Invariable</td>
+            <td>marron</td>
+            <td>marron</td>
+            <td>marron</td>
+            <td>marron</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== COULEURS QUI ONT UNE FORME FÉMININE SPÉCIALE ==================== -->
+  <div class="card">
+    <h2>📌 Couleurs avec forme féminine spéciale</h2>
+    <div class="definition-mg">
+      <strong>Quelques couleurs ont une forme féminine irrégulière :</strong><br><br>
+      • <strong>Blanc</strong> → <strong>blanche</strong> (fotsy)<br>
+      • <strong>Beau</strong> → <strong>belle</strong> (tsara - fa tsy couleur) - tsy couleur<br>
+      • <strong>Frais</strong> → <strong>fraîche</strong> (vaovao) - tsy couleur<br><br>
+      <strong>Mais pour les couleurs :</strong><br>
+      • <strong>Vert</strong> → <strong>verte</strong> (maitso)<br>
+      • <strong>Bleu</strong> → <strong>bleue</strong> (manga)<br>
+      • <strong>Noir</strong> → <strong>noire</strong> (mainty)<br>
+      • <strong>Rouge</strong> → <strong>rouge</strong> (mena) - tsy miova amin'ny féminin<br>
+      • <strong>Jaune</strong> → <strong>jaune</strong> (mavo) - tsy miova amin'ny féminin
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny couleurs irrégulières
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un mur <strong>blanc</strong> / Une porte <strong>blanche</strong>. (Fotsy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un pull <strong>vert</strong> / Une écharpe <strong>verte</strong>. (Maitso.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un ciel <strong>bleu</strong> / Une mer <strong>bleue</strong>. (Manga.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COULEURS INVARIABLES IMPORTANTES ==================== -->
+  <div class="card">
+    <h2>📌 Couleurs invariables importantes à retenir</h2>
+    <div class="definition-mg">
+      <strong>Ces couleurs sont TOUJOURS invariables :</strong><br><br>
+      <span class="color-nom">marron</span> (volon-kafe)<br>
+      <span class="color-nom">orange</span> (volom-boasary)<br>
+      <span class="color-nom">cerise</span> (volon-paraky)<br>
+      <span class="color-nom">paille</span> (volon-bary)<br>
+      <span class="color-nom">chocolat</span> (volon-sôkôla)<br>
+      <span class="color-nom">acajou</span> (volon-kazo)<br>
+      <span class="color-nom">noisette</span> (volon-tsinaina)<br>
+      <span class="color-nom">café</span> (volon-kafe)<br>
+      <span class="color-nom">crème</span> (volon-ronono)
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ireo couleurs ireo dia <strong>tsy miova na oviana na oviana</strong> satria avy amin'ny anarana (nom) izy ireo. Tsy misy "marronne", "orangee", "cerisee".
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny adjectif de couleur <strong>simple</strong> dia <strong>mifanaraka</strong> amin'ny anarana (genre et nombre).</li>
+        <li>Ny adjectif de couleur <strong>composé</strong> (ex: bleu foncé) dia <strong>tsy miova</strong> (invariable).</li>
+        <li>Ny <strong>noms utilisés comme couleurs</strong> (ex: marron, orange) dia <strong>tsy miova</strong> (invariable).</li>
+        <li>Raha misalasala, jereo raha avy amin'ny <strong>anarana</strong> ilay teny (marron, orange, cerise).</li>
+        <li>Raha avy amin'ny anarana → <strong>tsy miova</strong>.</li>
+        <li>Raha tsy avy amin'ny anarana → <strong>mifanaraka</strong> (vert, bleu, noir, etc.).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahasamihafana lehibe dia ny fahafantarana raha <strong>avy amin'ny anarana</strong> ilay teny couleur. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny adjectif de couleur.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

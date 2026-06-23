@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Discours indirect libre – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les types de discours */
+    .color-direct {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-indirect {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-indirect-libre {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>DISCOURS INDIRECT LIBRE</h1>
+  </div>
+
+  <!-- Carte : Inona ny discours indirect libre ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "discours indirect libre" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>discours indirect libre</strong> dia fomba fiteny ampiasaina ao amin'ny <strong>littérature</strong> (soratra) izay mampifangaro ny <strong>famaritana</strong> (narration) sy ny <strong>tenin'olon-kafa</strong> (parole rapportée).<br><br>
+      🔹 Mitovy amin'ny hoe <strong>fiteny atao anaty</strong> na <strong>eritreritra</strong> mifangaro amin'ny fitantarana.<br><br>
+      🔹 Tsy misy <strong>guillemets</strong> (« ») na <strong>verbe introducteur</strong> (dire, penser, etc.) tahaka ny amin'ny discours direct na indirect.<br><br>
+      🔹 Ampiasaina indrindra amin'ny <strong>tantara</strong>, <strong>novel</strong>, ary <strong>poetry</strong> mba hampidirana ny eritreritry ny mpilalao (personnage).
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type de discours</th>
+            <th>Famaritana</th>
+            <th>Famantarana</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-direct">Discours direct</span></td>
+            <td>Fiteny mivantana</td>
+            <td>Guillemets (« »), tiret (—)</td>
+            <td>« Je vais à l'école. » dit-il.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-indirect">Discours indirect</span></td>
+            <td>Fiteny ankolaka</td>
+            <td>Verbe introducteur (que, de)</td>
+            <td>Il dit qu'il va à l'école.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-indirect-libre">Discours indirect libre</span></td>
+            <td>Fiteny mifangaro</td>
+            <td>Tsy misy guillemets ni verbe introducteur</td>
+            <td>Il irait à l'école. Pourquoi pas ?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 NOTE IMPORTANTE :</strong><br><br>
+      Ny <strong>discours indirect libre</strong> dia ampiasaina mba <strong>hampidirana ny eritreritra</strong> na ny <strong>tenin'ny mpilalao</strong> ao anatin'ny fitantarana, nefa <strong>tsy misy famantarana</strong> mazava (guillemets na verbe introducteur).<br><br>
+      Mampiasa <strong>conditionnel</strong> na <strong>fotoana lasa</strong> izy ary mifangaro amin'ny <strong>fitantarana</strong>.
+    </div>
+  </div>
+
+  <!-- 1. DISCOURS DIRECT -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-direct">DISCOURS DIRECT</span> – Fiteny mivantana</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>discours direct</strong> dia fomba fiteny <strong>mivantana</strong> izay <strong>mamerina</strong> ny tenin'olon-kafa <strong>toy ny teniny</strong>. Mampiasa <strong>guillemets</strong> (« ») na <strong>tiret</strong> (—).<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>guillemets</strong> (« »)<br>
+      • Misy <strong>verbe introducteur</strong> (dire, répondre, crier, etc.)<br>
+      • Misy <strong>tiret</strong> (—) matetika amin'ny resaka<br>
+      • Misy <strong>point d'exclamation</strong> (!) na <strong>point d'interrogation</strong> (?)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">« Je vais à l'école », dit-il. (« Mandeha any an-tsekoly aho », hoy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">« Où vas-tu ? » demanda-t-elle. (« Hiankany ho aiza ianao? » hoy izy nanontany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">— Je suis content ! s'écria-t-il. (— Faly aho ! hoy izy niantsoantso.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DISCOURS INDIRECT -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-indirect">DISCOURS INDIRECT</span> – Fiteny ankolaka</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>discours indirect</strong> dia fomba fiteny <strong>ankolaka</strong> izay <strong>mitatitra</strong> ny tenin'olon-kafa nefa <strong>mamadika</strong> azy. Mampiasa <strong>verbe introducteur</strong> sy <strong>conjonction</strong> (que, de, si).<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • Misy <strong>verbe introducteur</strong> (dire, penser, affirmer, etc.)<br>
+      • Misy <strong>conjonction</strong> (que, de, si)<br>
+      • Miova ny <strong>pronom</strong> sy ny <strong>fotoana</strong><br>
+      • Tsy misy <strong>guillemets</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il dit qu'il va à l'école. (Hoy izy fa mandeha any an-tsekoly izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle demanda où il allait. (Nanontany izy hoe hiankany ho aiza izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a dit qu'il était content. (Hoy izy fa faly izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. DISCOURS INDIRECT LIBRE -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-indirect-libre">DISCOURS INDIRECT LIBRE</span> – Fiteny mifangaro</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>discours indirect libre</strong> dia fomba fiteny <strong>mifangaro</strong> eo amin'ny <strong>famaritana</strong> sy ny <strong>tenin'olon-kafa</strong>. <strong>Tsy misy guillemets</strong> na <strong>verbe introducteur</strong>. Mifangaro ny <strong>eritreritra</strong> sy ny <strong>fitantarana</strong>.<br><br>
+      <strong>🔍 Famantarana (indices) :</strong><br>
+      • <strong>Tsy misy guillemets</strong> (« »)<br>
+      • <strong>Tsy misy verbe introducteur</strong> (dire, penser, etc.)<br>
+      • Mampiasa <strong>conditionnel</strong> na <strong>fotoana lasa</strong><br>
+      • Mampiasa <strong>fiantsoana</strong> (!) na <strong>fanontaniana</strong> (?)<br>
+      • Mifangaro amin'ny <strong>famaritana</strong> (narration)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il irait à l'école. Pourquoi pas ? (Handeha any an-tsekoly izy. Nahoana no tsia?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle était fatiguée. Elle pourrait bien dormir un peu. (Vizana izy. Afaka natory kely izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il faisait beau. Quelle belle journée ! (Tsara ny andro. Tontsara be ity andro ity !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre arriva à la maison. Elle serait là ? Il l'espérait. (Nahatongavany tao an-trano i Pierre. Hoatry ho eo ve izy? Nanantena izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <strong>discours indirect libre</strong> dia mampiditra ny <strong>eritreritra</strong> na ny <strong>tenin'ny mpilalao</strong> ao anatin'ny <strong>famaritana</strong> nefa <strong>tsy mampiasa</strong> guillemets na verbe introducteur.
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES TROIS ==================== -->
+  <div class="card">
+    <h2>📌 Fahasamihafana eo amin'ny trois types de discours</h2>
+    <div class="definition-mg">
+      <strong><span class="color-direct">🔵 Discours direct</span></strong><br>
+      • Misy guillemets (« »)<br>
+      • Misy verbe introducteur (dire, répondre...)<br>
+      • Mamerina ny tenin'olon-kafa <strong>toy ny teniny</strong><br>
+      Ohatra : « Je suis fatigué », dit-il.<br><br>
+      
+      <strong><span class="color-indirect">🩷 Discours indirect</span></strong><br>
+      • Tsy misy guillemets<br>
+      • Misy verbe introducteur + conjonction (que, de, si)<br>
+      • <strong>Mamadika</strong> ny tenin'olon-kafa<br>
+      Ohatra : Il dit qu'il est fatigué.<br><br>
+      
+      <strong><span class="color-indirect-libre">🟢 Discours indirect libre</span></strong><br>
+      • Tsy misy guillemets<br>
+      • Tsy misy verbe introducteur<br>
+      • Mifangaro amin'ny <strong>famaritana</strong> (narration)<br>
+      Ohatra : Il était fatigué. Il pourrait bien dormir.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU COMPARATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau comparatif complet</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th><span class="color-direct">Discours direct</span></th>
+            <th><span class="color-indirect">Discours indirect</span></th>
+            <th><span class="color-indirect-libre">Discours indirect libre</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Guillemets</td>
+            <td>Oui (« »)</td>
+            <td>Non</td>
+            <td>Non</td>
+          </tr>
+          <tr class="categorie">
+            <td>Verbe introducteur</td>
+            <td>Oui (dire, répondre...)</td>
+            <td>Oui (dire, penser...)</td>
+            <td>Non</td>
+          </tr>
+          <tr class="categorie">
+            <td>Conjonction</td>
+            <td>Non</td>
+            <td>Oui (que, de, si)</td>
+            <td>Non</td>
+          </tr>
+          <tr class="categorie">
+            <td>Famaritana (narration)</td>
+            <td>Misara-panana</td>
+            <td>Misara-panana</td>
+            <td>Mifangaro (mélangé)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Points ! ou ?</td>
+            <td>Oui</td>
+            <td>Miankina (selon)</td>
+            <td>Oui</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ohatra</td>
+            <td>« Je vais bien. »</td>
+            <td>Il dit qu'il va bien.</td>
+            <td>Il irait bien. Pourquoi pas ?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== EXEMPLES DANS UN TEXTE ==================== -->
+  <div class="card">
+    <h2>📖 Ohatra ao anaty lahatsoratra iray</h2>
+    <div class="definition-mg">
+      <strong>🔍 Jereo ny fahasamihafan'ny trois discours ao anaty lahatsoratra iray ihany :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Marie entra dans la chambre. « Où est mon livre ? » demanda-t-elle. Son frère lui répondit qu'il ne savait pas. Elle le chercha partout. Il serait peut-être sous le lit. Pourquoi ne pas regarder là-bas ?</span>
+      </div>
+    </div>
+    <div class="definition-mg" style="margin-top: 12px;">
+      <strong>📝 Fandinihana (Analyse) :</strong><br><br>
+      <span class="color-direct">🔵 « Où est mon livre ? » demanda-t-elle.</span> → <strong>Discours direct</strong> (misy guillemets, verbe introducteur)<br><br>
+      <span class="color-indirect">🩷 Son frère lui répondit qu'il ne savait pas.</span> → <strong>Discours indirect</strong> (misy verbe introducteur + que)<br><br>
+      <span class="color-indirect-libre">🟢 Il serait peut-être sous le lit. Pourquoi ne pas regarder là-bas ?</span> → <strong>Discours indirect libre</strong> (tsisy guillemets, tsisy verbe introducteur, mifangaro amin'ny narration)
+    </div>
+  </div>
+
+  <!-- ==================== POURQUOI UTILISER LE DISCOURS INDIRECT LIBRE ? ==================== -->
+  <div class="card">
+    <h2>📌 Nahoana no ampiasaina ny discours indirect libre ?</h2>
+    <div class="definition-mg">
+      <strong>🔹 Tanjona :</strong><br>
+      • Mba <strong>hampidirana</strong> ny eritreritra na ny fihetseham-pon'ny mpilalao (personnage) ao anatin'ny fitantarana.<br>
+      • Mba <strong>hialana</strong> amin'ny famerimberenan'ny "il dit que", "elle pensa que"...<br>
+      • Mba <strong>hanehoana</strong> ny fihetseham-po sy ny eritreritra amin'ny fomba <strong>voajanahary</strong> kokoa.<br>
+      • Mba <strong>hanakaiky</strong> ny mpamaky amin'ny eritreritry ny mpilalao.<br><br>
+      <strong>🔹 Matetika ampiasaina amin'ny :</strong><br>
+      • <strong>Roman</strong> (novel, tantara lavabe)<br>
+      • <strong>Nouvelle</strong> (tantara fohy)<br>
+      • <strong>Poésie</strong> (tononkalo)<br>
+      • <strong>Littérature</strong> amin'ny ankapobeny
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fanampiny
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il regarda par la fenêtre. La pluie tombait sans arrêt. Il resterait bien à la maison aujourd'hui. Pourquoi sortir par ce temps ? (Nijery tamin'ny varavarana izy. Nandatsaka orana tsy nitsahatra. Hoatry ny hijanona ao an-trano izy androany. Nahoana no hivoaka amin'ity andro ity?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Mba hahafantarana ny <strong>discours direct</strong> → Tadiavo ny <strong>guillemets</strong> (« ») sy ny <strong>verbe introducteur</strong>.</li>
+        <li>Mba hahafantarana ny <strong>discours indirect</strong> → Tadiavo ny <strong>verbe introducteur</strong> sy ny <strong>conjonction</strong> (que, de, si).</li>
+        <li>Mba hahafantarana ny <strong>discours indirect libre</strong> → Tadiavo ny <strong>tsisy guillemets</strong>, <strong>tsisy verbe introducteur</strong>, fa misy <strong>eritreritra</strong> na <strong>tenin'olon-kafa</strong> mifangaro amin'ny fitantarana.</li>
+        <li>Ny <strong>discours indirect libre</strong> dia matetika mampiasa <strong>conditionnel</strong> (serait, irait, etc.) na <strong>fotoana lasa</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafan'ny karazana discours.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahaizana mamantatra ny <strong>discours indirect libre</strong> dia tena ilaina amin'ny <strong>famakiana literatiora</strong> (tantara sy novel). Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny discours indirect libre.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

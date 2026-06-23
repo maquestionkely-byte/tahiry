@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Exprimer une opinion – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les expressions d'opinion */
+    .color-avis {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-pense {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-selon {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>EXPRIMER UNE OPINION</h1>
+  </div>
+
+  <!-- Carte : Inona ny expression d'opinion ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "exprimer une opinion" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>expression d'opinion</strong> dia ampiasaina hilazana ny <strong>hevitra</strong> (point de vue) na ny <strong>finoana</strong> (croyance) ananantsika momba zavatra iray.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"amin'ny hevitro", "mieritreritra aho fa", "ara-tsaina"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Misy fomba <strong>maro</strong> hilazana ny hevitra :<br><br>
+      <span class="icone">📌</span> <span class="color-avis">À MON AVIS</span> → amin'ny hevitro<br>
+      Ohatra : <em><span class="color-avis">À mon avis</span>, il a raison.</em><br><br>
+      <span class="icone">📌</span> <span class="color-pense">JE PENSE QUE</span> → mieritreritra aho fa<br>
+      Ohatra : <em><span class="color-pense">Je pense que</span> c'est une bonne idée.</em><br><br>
+      <span class="icone">📌</span> <span class="color-selon">SELON MOI</span> → ara-tsaina (amin'ny hevitro)<br>
+      Ohatra : <em><span class="color-selon">Selon moi</span>, il a tort.</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Expression</th>
+            <th>Famaritana malagasy</th>
+            <th>Fampiasana</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-avis">À MON AVIS</span></td>
+            <td>amin'ny hevitro</td>
+            <td>Hevitra manokana</td>
+            <td>À mon avis, il a raison.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-pense">JE PENSE QUE</span></td>
+            <td>mieritreritra aho fa</td>
+            <td>Hevitra manokana</td>
+            <td>Je pense que c'est une bonne idée.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-selon">SELON MOI</span></td>
+            <td>ara-tsaina</td>
+            <td>Hevitra manokana</td>
+            <td>Selon moi, il a tort.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • <span class="color-avis">À MON AVIS</span> → ampiasaina hilazana <strong>hevitra manokana</strong>. Apetraka <strong>eo am-piandohana</strong> matetika.<br>
+      Ohatra : <em><span class="color-avis">À mon avis</span>, il a raison.</em><br><br>
+      • <span class="color-pense">JE PENSE QUE</span> → ampiasaina hilazana <strong>hevitra manokana</strong> amin'ny alalan'ny <strong>verbe "penser"</strong>. Arahin'ny <strong>"que"</strong>.<br>
+      Ohatra : <em><span class="color-pense">Je pense que</span> c'est une bonne idée.</em><br><br>
+      • <span class="color-selon">SELON MOI</span> → ampiasaina hilazana <strong>hevitra manokana</strong>. Apetraka <strong>eo am-piandohana</strong> matetika.<br>
+      Ohatra : <em><span class="color-selon">Selon moi</span>, il a tort.</em>
+    </div>
+  </div>
+
+  <!-- 1. À MON AVIS - Amin'ny hevitro -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-avis">À MON AVIS</span> (amin'ny hevitro)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-avis">À MON AVIS</span> dia ampiasaina hilazana <strong>hevitra manokana</strong>. Apetraka <strong>eo am-piandohana</strong> matetika.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-avis">À MON AVIS</span> + <strong>sujet + verbe</strong><br>
+      • Apetraka <strong>eo am-piandohana</strong> matetika<br>
+      • Maneho hevitra manokana
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-avis">À mon avis</span>, il a raison. (Amin'ny hevitro, marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-avis">À mon avis</span>, c'est une bonne idée. (Amin'ny hevitro, hevitra tsara izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-avis">À mon avis</span>, il devrait venir. (Amin'ny hevitro, tokony ho avy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-avis">À mon avis</span>, ce film est excellent. (Amin'ny hevitro, tena tsara ity sarimihetsika ity.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-avis">À MON AVIS</span> dia ampiasaina hilazana <strong>hevitra manokana</strong>.
+    </div>
+  </div>
+
+  <!-- 2. JE PENSE QUE - Mieritreritra aho fa -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-pense">JE PENSE QUE</span> (mieritreritra aho fa)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-pense">JE PENSE QUE</span> dia ampiasaina hilazana <strong>hevitra manokana</strong> amin'ny alalan'ny <strong>verbe "penser"</strong>. Arahin'ny <strong>"que"</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-pense">JE PENSE QUE</span> + <strong>sujet + verbe</strong><br>
+      • Apetraka <strong>eo am-piandohana</strong> matetika<br>
+      • Mampiasa ny <strong>indicatif</strong> (fa tsy subjonctif)<br>
+      • Ny "je" dia miova arakaraka ny olona (je, tu, il, nous, vous, ils)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Je pense que</span> c'est une bonne idée. (Mieritreritra aho fa hevitra tsara izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Je pense que</span> tu as raison. (Mieritreritra aho fa marina ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Il pense que</span> c'est trop cher. (Mieritreritra izy fa lafo loatra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Nous pensons que</span> c'est important. (Mieritreritra izahay fa zava-dehibe izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Je pense que</span> nous devrions partir. (Mieritreritra aho fa tokony handeha isika.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-pense">JE PENSE QUE</span> dia ampiasaina hilazana <strong>hevitra manokana</strong>. Mampiasa ny <strong>indicatif</strong>.
+    </div>
+  </div>
+
+  <!-- 3. SELON MOI - Ara-tsaina -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-selon">SELON MOI</span> (ara-tsaina)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-selon">SELON MOI</span> dia ampiasaina hilazana <strong>hevitra manokana</strong>. Apetraka <strong>eo am-piandohana</strong> matetika.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-selon">SELON MOI</span> + <strong>sujet + verbe</strong><br>
+      • Apetraka <strong>eo am-piandohana</strong> matetika<br>
+      • Maneho hevitra manokana<br>
+      • Mety miova ho <span class="color-selon">SELON TOI</span>, <span class="color-selon">SELON LUI</span>, <span class="color-selon">SELON NOUS</span>, sns.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-selon">Selon moi</span>, il a tort. (Ara-tsaina, diso izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-selon">Selon moi</span>, c'est la meilleure solution. (Ara-tsaina, io no vahaolana tsara indrindra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-selon">Selon toi</span>, qu'en penses-tu ? (Ara-tsainao, inona ny hevitrao momba izany?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-selon">Selon lui</span>, ce n'est pas possible. (Ara-tsainy, tsy azo atao izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-selon">Selon nous</span>, il faut essayer. (Ara-tsainay, tokony hanandrana isika.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-selon">SELON MOI</span> dia ampiasaina hilazana <strong>hevitra manokana</strong>. Mety miova arakaraka ny olona izy (selon toi, selon lui, etc.).
+    </div>
+  </div>
+
+  <!-- 4. AUTRES EXPRESSIONS D'OPINION -->
+  <div class="card">
+    <h2>4️⃣ Autres expressions d'opinion</h2>
+    <div class="definition-mg">
+      <strong>Expressions courantes :</strong><br><br>
+      • <strong>Je crois que</strong> → mino aho fa (mino / mieritreritra)<br>
+      Ohatra : <em>Je crois qu'il a raison.</em><br><br>
+      • <strong>Je trouve que</strong> → mahita aho fa (mijery / mieritreritra)<br>
+      Ohatra : <em>Je trouve que c'est bien.</em><br><br>
+      • <strong>Il me semble que</strong> → toa aho fa<br>
+      Ohatra : <em>Il me semble qu'il est fatigué.</em><br><br>
+      • <strong>Je suis d'avis que</strong> → manaraka ny hevitro aho fa<br>
+      Ohatra : <em>Je suis d'avis qu'il faut agir.</em><br><br>
+      • <strong>Pour moi</strong> → ho ahy<br>
+      Ohatra : <em>Pour moi, c'est une bonne idée.</em><br><br>
+      • <strong>À mon goût</strong> → amin'ny tsiroko<br>
+      Ohatra : <em>À mon goût, c'est trop salé.</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-pense">crois</span> qu'il a raison. (Mino aho fa marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-pense">trouve</span> que c'est bien. (Mahita aho fa tsara izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-pense">me semble</span> qu'il est fatigué. (Toa aho fa vizana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-pense">Pour moi</span>, c'est une bonne idée. (Ho ahy, hevitra tsara izany.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy maro hafa ny fomba hilazana hevitra : <strong>je crois que</strong>, <strong>je trouve que</strong>, <strong>il me semble que</strong>, <strong>pour moi</strong>, sns.
+    </div>
+  </div>
+
+  <!-- 5. PHRASES POUR DEMANDER L'OPINION -->
+  <div class="card">
+    <h2>5️⃣ Phrases pour demander l'opinion</h2>
+    <div class="definition-mg">
+      <strong>Expressions pour demander l'opinion :</strong><br><br>
+      • <strong>Qu'en penses-tu ?</strong> → Inona ny hevitrao momba izany?<br>
+      • <strong>À ton avis ?</strong> → Amin'ny hevitrao?<br>
+      • <strong>Selon toi ?</strong> → Ara-tsainao?<br>
+      • <strong>Que penses-tu de... ?</strong> → Inona ny hevitrao momba ny...?<br>
+      • <strong>Est-ce que tu es d'accord ?</strong> → Manaraka ny hevitrao ve ianao?<br>
+      • <strong>Tu trouves que... ?</strong> → Mahita ve ianao fa...?
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Qu'en penses-tu ? (Inona ny hevitrao momba izany?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">À ton avis, c'est une bonne idée ? (Amin'ny hevitrao, hevitra tsara ve izany?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Selon toi, qu'est-ce qu'il faut faire ? (Ara-tsainao, inona no tokony hatao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Que penses-tu de ce film ? (Inona ny hevitrao momba ity sarimihetsika ity?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Est-ce que tu es d'accord avec moi ? (Manaraka ny hevitro ve ianao?)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy fomba maro hilazana ny <strong>hevitra</strong> sy <strong>hanontanian'ny hevitry</strong> ny hafa.
+    </div>
+  </div>
+
+  <!-- 6. COMPARAISON DES EXPRESSIONS -->
+  <div class="card">
+    <h2>6️⃣ Comparaison des expressions d'opinion</h2>
+    <div class="definition-mg">
+      <strong><span class="color-avis">À MON AVIS</span></strong> → amin'ny hevitro<br>
+      Ohatra : <em>À mon avis, c'est bien.</em><br><br>
+      
+      <strong><span class="color-pense">JE PENSE QUE</span></strong> → mieritreritra aho fa<br>
+      Ohatra : <em>Je pense que c'est bien.</em><br><br>
+      
+      <strong><span class="color-selon">SELON MOI</span></strong> → ara-tsaina<br>
+      Ohatra : <em>Selon moi, c'est bien.</em><br><br>
+      
+      <strong>Fahasamihafana :</strong><br>
+      • <span class="color-avis">À MON AVIS</span> → ampiasaina amin'ny resaka <strong>andavanandro</strong> (courant).<br>
+      • <span class="color-pense">JE PENSE QUE</span> → ampiasaina amin'ny resaka <strong>andavanandro</strong> sy <strong>ara-dalàna</strong>.<br>
+      • <span class="color-selon">SELON MOI</span> → ampiasaina amin'ny resaka <strong>ara-dalàna</strong> kokoa (formel).<br>
+      • Samy maneho <strong>hevitra manokana</strong> izy rehetra.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">À MON AVIS : <span class="color-avis">À mon avis</span>, il a raison. (Amin'ny hevitro, marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">JE PENSE QUE : <span class="color-pense">Je pense que</span> il a raison. (Mieritreritra aho fa marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SELON MOI : <span class="color-selon">Selon moi</span>, il a raison. (Ara-tsaina, marina izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-avis">À MON AVIS</span></strong> → amin'ny hevitro (hevitra manokana)<br>
+      Ohatra : <em>À mon avis, c'est bien.</em><br><br>
+      
+      <strong>2. <span class="color-pense">JE PENSE QUE</span></strong> → mieritreritra aho fa (hevitra manokana + indicatif)<br>
+      Ohatra : <em>Je pense que c'est bien.</em><br><br>
+      
+      <strong>3. <span class="color-selon">SELON MOI</span></strong> → ara-tsaina (hevitra manokana)<br>
+      Ohatra : <em>Selon moi, c'est bien.</em><br><br>
+      
+      <strong>4. Autres expressions :</strong><br>
+      • <strong>Je crois que</strong> → mino aho fa<br>
+      • <strong>Je trouve que</strong> → mahita aho fa<br>
+      • <strong>Il me semble que</strong> → toa aho fa<br>
+      • <strong>Pour moi</strong> → ho ahy<br><br>
+      
+      <strong>5. Demander l'opinion :</strong><br>
+      • <strong>Qu'en penses-tu ?</strong> → Inona ny hevitrao?<br>
+      • <strong>À ton avis ?</strong> → Amin'ny hevitrao?<br>
+      • <strong>Selon toi ?</strong> → Ara-tsainao?
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-avis">À MON AVIS</span> dia ampiasaina amin'ny resaka <strong>andavanandro</strong>.</li>
+        <li>Ny <span class="color-pense">JE PENSE QUE</span> dia ampiasaina amin'ny resaka <strong>andavanandro</strong> sy <strong>ara-dalàna</strong>.</li>
+        <li>Ny <span class="color-selon">SELON MOI</span> dia ampiasaina amin'ny resaka <strong>ara-dalàna</strong> kokoa.</li>
+        <li>Ny <span class="color-pense">JE PENSE QUE</span> dia mampiasa ny <strong>indicatif</strong> (fa tsy subjonctif).</li>
+        <li>Misy maro hafa ny fomba hilazana hevitra : <strong>je crois que</strong>, <strong>je trouve que</strong>, <strong>il me semble que</strong>, <strong>pour moi</strong>, sns.</li>
+        <li>Mba hanontanian'ny hevitry ny hafa, dia ampiasao ny <strong>Qu'en penses-tu ?</strong>, <strong>À ton avis ?</strong>, <strong>Selon toi ?</strong></li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny fomba hilazana ny <strong>opinion</strong> dia tena ilaina amin'ny resaka andavanandro rehefa milaza ny <strong>hevitra</strong> manokana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny expression d'opinion.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Adjectif de qualification – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les adjectifs */
+    .color-masculin {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-feminin {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-pluriel {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ADJECTIF DE QUALIFICATION</h1>
+  </div>
+
+  <!-- Carte : Inona ny adjectif de qualification ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "adjectif de qualification" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>adjectif de qualification</strong> dia adjectif <strong>mamaritra ny toetra</strong> (qualité) na ny <strong>foto-javatra</strong> (défaut) na ny <strong>habe</strong>, ny <strong>endrika</strong>, ny <strong>sary</strong>, sns. amin'ny olona na zavatra iray.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"tsara fanahy", "matotra", "manan-tsaina", "lehibe", "kely"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Izy ireo dia <strong>mamaritra</strong> ny anarana (nom) ary <strong>mifanaraka</strong> amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      🔹 Ireto ny ohatra sasany :<br><br>
+      <span class="icone">⭐</span> <strong>gentil</strong> (tsara fanahy)<br><br>
+      <span class="icone">⭐</span> <strong>sérieux</strong> (matotra)<br><br>
+      <span class="icone">⭐</span> <strong>intelligent</strong> (manan-tsaina)<br><br>
+      <span class="icone">⭐</span> <strong>grand</strong> (lehibe)<br><br>
+      <span class="icone">⭐</span> <strong>petit</strong> (kely)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Adjectif</th>
+            <th>Famaritana malagasy</th>
+            <th>Masculin Singulier</th>
+            <th>Féminin Singulier</th>
+            <th>Masculin Pluriel</th>
+            <th>Féminin Pluriel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-masculin">GENTIL</span></td>
+            <td>tsara fanahy</td>
+            <td>gentil</td>
+            <td>gentille</td>
+            <td>gentils</td>
+            <td>gentilles</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-masculin">SÉRIEUX</span></td>
+            <td>matotra</td>
+            <td>sérieux</td>
+            <td>sérieuse</td>
+            <td>sérieux</td>
+            <td>sérieuses</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-masculin">INTELLIGENT</span></td>
+            <td>manan-tsaina</td>
+            <td>intelligent</td>
+            <td>intelligente</td>
+            <td>intelligents</td>
+            <td>intelligentes</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-masculin">GRAND</span></td>
+            <td>lehibe</td>
+            <td>grand</td>
+            <td>grande</td>
+            <td>grands</td>
+            <td>grandes</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-masculin">PETIT</span></td>
+            <td>kely</td>
+            <td>petit</td>
+            <td>petite</td>
+            <td>petits</td>
+            <td>petites</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES D'ACCORD :</strong><br><br>
+      • Ny adjectif de qualification dia <strong>mifanaraka</strong> amin'ny anarana (nom) amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).<br><br>
+      • Féminin singulier → manampy <strong>"e"</strong> (sauf exceptions)<br>
+      • Pluriel → manampy <strong>"s"</strong><br>
+      • Féminin pluriel → manampy <strong>"es"</strong>
+    </div>
+  </div>
+
+  <!-- 1. GENTIL - Tsara fanahy -->
+  <div class="card">
+    <h2>1️⃣ GENTIL (tsara fanahy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"gentil"</strong> dia midika hoe <strong>"tsara fanahy"</strong> na <strong>"sariaka"</strong>. Mamaritra olona na zavatra tsara fanahy, mahafinaritra.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Accord :</strong><br>
+      <strong>gentil</strong> (masculin singulier)<br>
+      <strong>gentille</strong> (féminin singulier)<br>
+      <strong>gentils</strong> (masculin pluriel)<br>
+      <strong>gentilles</strong> (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un garçon <strong>gentil</strong>. (Zazalahy <strong>tsara fanahy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une fille <strong>gentille</strong>. (Zazavavy <strong>tsara fanahy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des garçons <strong>gentils</strong>. (Zazalahy <strong>tsara fanahy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des filles <strong>gentilles</strong>. (Zazavavy <strong>tsara fanahy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est très <strong>gentil</strong>. (Tena <strong>tsara fanahy</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>gentille</strong> avec tout le monde. (<strong>Tsara fanahy</strong> amin'ny olona rehetra izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SÉRIEUX - Matotra -->
+  <div class="card">
+    <h2>2️⃣ SÉRIEUX (matotra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"sérieux"</strong> dia midika hoe <strong>"matotra"</strong> na <strong>"tsy milalao"</strong>. Mamaritra olona na zavatra matotra, tena zava-dehibe.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Accord :</strong><br>
+      <strong>sérieux</strong> (masculin singulier)<br>
+      <strong>sérieuse</strong> (féminin singulier)<br>
+      <strong>sérieux</strong> (masculin pluriel - tsy miova)<br>
+      <strong>sérieuses</strong> (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un homme <strong>sérieux</strong>. (Lehilahy <strong>matotra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une femme <strong>sérieuse</strong>. (Vehivavy <strong>matotra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des hommes <strong>sérieux</strong>. (Lehilahy <strong>matotra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des femmes <strong>sérieuses</strong>. (Vehivavy <strong>matotra</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est très <strong>sérieux</strong>. (Tena <strong>matotra</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>sérieuse</strong> dans son travail. (<strong>Matotra</strong> amin'ny asany izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Sérieux" dia tsy miova amin'ny masculin pluriel (sérieux) fa ny féminin pluriel dia "sérieuses".
+    </div>
+  </div>
+
+  <!-- 3. INTELLIGENT - Manan-tsaina -->
+  <div class="card">
+    <h2>3️⃣ INTELLIGENT (manan-tsaina)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"intelligent"</strong> dia midika hoe <strong>"manan-tsaina"</strong> na <strong>"mahay"</strong>. Mamaritra olona na zavatra manan-tsaina, mahay mamaha olana.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Accord :</strong><br>
+      <strong>intelligent</strong> (masculin singulier)<br>
+      <strong>intelligente</strong> (féminin singulier)<br>
+      <strong>intelligents</strong> (masculin pluriel)<br>
+      <strong>intelligentes</strong> (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un garçon <strong>intelligent</strong>. (Zazalahy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une fille <strong>intelligente</strong>. (Zazavavy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des garçons <strong>intelligents</strong>. (Zazalahy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des filles <strong>intelligentes</strong>. (Zazavavy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est très <strong>intelligent</strong>. (Tena <strong>manan-tsaina</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>intelligente</strong> et travailleuse. (<strong>Manan-tsaina</strong> sy mazoto miasa izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. GRAND - Lehibe -->
+  <div class="card">
+    <h2>4️⃣ GRAND (lehibe)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"grand"</strong> dia midika hoe <strong>"lehibe"</strong> na <strong>"be"</strong>. Mamaritra olona na zavatra lehibe, be, na zokiny.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Accord :</strong><br>
+      <strong>grand</strong> (masculin singulier)<br>
+      <strong>grande</strong> (féminin singulier)<br>
+      <strong>grands</strong> (masculin pluriel)<br>
+      <strong>grandes</strong> (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un arbre <strong>grand</strong>. (Hazo <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une maison <strong>grande</strong>. (Trano <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des arbres <strong>grands</strong>. (Hazo <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des maisons <strong>grandes</strong>. (Trano <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>grand</strong> comme son père. (<strong>Lehibe</strong> tahaka ny rainy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a une <strong>grande</strong> famille. (Manana fianakaviana <strong>lehibe</strong> izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PETIT - Kely -->
+  <div class="card">
+    <h2>5️⃣ PETIT (kely)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"petit"</strong> dia midika hoe <strong>"kely"</strong> na <strong>"bitsika"</strong>. Mamaritra olona na zavatra kely, tsy lehibe, na zandry.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Accord :</strong><br>
+      <strong>petit</strong> (masculin singulier)<br>
+      <strong>petite</strong> (féminin singulier)<br>
+      <strong>petits</strong> (masculin pluriel)<br>
+      <strong>petites</strong> (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un chat <strong>petit</strong>. (Saka <strong>kely</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une voiture <strong>petite</strong>. (Fiara <strong>kely</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des chats <strong>petits</strong>. (Saka <strong>kely</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des voitures <strong>petites</strong>. (Fiara <strong>kely</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>petit</strong> pour son âge. (<strong>Kely</strong> raha jerena ny taonany izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle habite une <strong>petite</strong> maison. (Mipetraka ao anaty trano <strong>kely</strong> izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON DES ADJECTIFS ==================== -->
+  <div class="card">
+    <h2>📌 Comparaison des adjectifs qualificatifs</h2>
+    <div class="definition-mg">
+      <strong><span class="color-masculin">GENTIL</span></strong> → tsara fanahy (sariaka)<br>
+      <strong><span class="color-masculin">SÉRIEUX</span></strong> → matotra (tsy milalao)<br>
+      <strong><span class="color-masculin">INTELLIGENT</span></strong> → manan-tsaina (mahay)<br>
+      <strong><span class="color-masculin">GRAND</span></strong> → lehibe (be)<br>
+      <strong><span class="color-masculin">PETIT</span></strong> → kely (bitsika)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un garçon <strong>gentil</strong> et <strong>intelligent</strong>. (Zazalahy <strong>tsara fanahy</strong> sy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une fille <strong>sérieuse</strong> et <strong>grande</strong>. (Zazavavy <strong>matotra</strong> sy <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des enfants <strong>petits</strong> mais <strong>intelligents</strong>. (Ankizy <strong>kely</strong> nefa <strong>manan-tsaina</strong>.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PLACE DE L'ADJECTIF ==================== -->
+  <div class="card">
+    <h2>📌 Place de l'adjectif qualificatif</h2>
+    <div class="definition-mg">
+      <strong>Règle générale :</strong><br>
+      Ny adjectif qualificatif dia apetraka <strong>aorian'ny anarana</strong> amin'ny ankapobeny.<br><br>
+      <strong>Adjectifs qui se placent DEVANT le nom :</strong><br>
+      • <strong>BANGS</strong> (Beauté, Âge, Nouveauté, Grandeur, Saveur)<br>
+      - <strong>G</strong>rand / <strong>p</strong>etit (lehibe / kely)<br>
+      - <strong>B</strong>on / <strong>m</strong>auvais (tsara / ratsy)<br>
+      - <strong>J</strong>eune / <strong>v</strong>ieux (tanora / antitra)<br>
+      - <strong>B</strong>eau (tsara tarehy)<br><br>
+      Ohatra : <em>un <strong>grand</strong> arbre</em> / <em>un <strong>petit</strong> chat</em>
+    </div>
+  </div>
+
+  <!-- ==================== LISTE DES ADJECTIFS QUALIFICATIFS COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Adjectifs qualificatifs courants</h2>
+    <div class="definition-mg">
+      <strong>Qualités (toetra tsara) :</strong><br>
+      • <strong>gentil</strong> (tsara fanahy) • <strong>sympa</strong> (sariaka)<br>
+      • <strong>intelligent</strong> (manan-tsaina) • <strong>sérieux</strong> (matotra)<br>
+      • <strong>patient</strong> (mahandry) • <strong>courageux</strong> (be herim-po)<br>
+      • <strong>généreux</strong> (malala-tanana) • <strong>honnête</strong> (mahitsy)<br><br>
+      
+      <strong>Défauts (toetra ratsy) :</strong><br>
+      • <strong>paresseux</strong> (kamo) • <strong>menteur</strong> (mpandainga)<br>
+      • <strong>égoïste</strong> (tia tena) • <strong>timide</strong> (sady)<br>
+      • <strong>têtu</strong> (mafy loha) • <strong>colérique</strong> (tezitra mora)<br><br>
+      
+      <strong>Habe / Taille :</strong><br>
+      • <strong>grand</strong> (lehibe) • <strong>petit</strong> (kely)<br>
+      • <strong>gros</strong> (matevina) • <strong>mince</strong> (manify)<br><br>
+      
+      <strong>Âge :</strong><br>
+      • <strong>jeune</strong> (tanora) • <strong>vieux</strong> (antitra)<br>
+      • <strong>âgé</strong> (be taona)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>adjectif qualificatif</strong> dia mamaritra ny toetra, ny habe, ny endrika, ny sary, sns.</li>
+        <li>Mifanaraka amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel) ny adjectif.</li>
+        <li>Féminin singulier → manampy <strong>"e"</strong> (sauf exceptions comme "sérieux" → "sérieuse").</li>
+        <li>Pluriel → manampy <strong>"s"</strong> (sauf exceptions comme "sérieux" izay tsy miova amin'ny masculin pluriel).</li>
+        <li>Misy adjectif apetraka <strong>alohan'ny anarana</strong> (grand, petit, beau, bon, jeune, vieux).</li>
+        <li>Ny ankamaroany dia apetraka <strong>aorian'ny anarana</strong> (intelligent, sérieux, gentil).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny adjectif qualificatif dia tena ilaina amin'ny resaka andavanandro rehefa <strong>mamaritra olona na zavatra</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny adjectif de qualification.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

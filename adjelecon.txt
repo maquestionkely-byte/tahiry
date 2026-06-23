@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Adjectif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les adjectifs */
+    .color-qualificatif {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-epithete {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-attribut {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ADJECTIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny adjectif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "adjectif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>adjectif</strong> dia teny <strong>mamaritra</strong> na <strong>manova</strong> ny anarana (nom) na ny pronom.<br><br>
+      🔹 Manome fampahalalana momba ny <strong>toetra</strong>, ny <strong>habe</strong>, ny <strong>loko</strong>, ny <strong>sary</strong>, sns.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"be", "kely", "mena", "tsara"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Misy karazany <strong>roa</strong> ny adjectif araka ny <strong>fonction</strong> (asa) ataony :<br><br>
+      <span class="icone">📌</span> <strong>Adjectif épithète</strong> → mamaritra ny anarana <strong>mivantana</strong> (eo akaikin'ny anarana)<br><br>
+      <span class="icone">📌</span> <strong>Adjectif attribut</strong> → mamaritra ny anarana <strong>amin'ny alalan'ny verbe</strong> (être, sembler, paraître...)<br><br>
+      🔹 Misy karazany <strong>roa</strong> ihany koa araka ny <strong>nature</strong> :<br><br>
+      <span class="icone">📌</span> <strong>Adjectif qualificatif</strong> → mamaritra ny toetra (grand, petit, beau, intelligent)<br><br>
+      <span class="icone">📌</span> <strong>Adjectif non qualificatif</strong> → mamaritra ny fananana, ny isa, ny fanondroana (possessif, numéral, démonstratif)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type d'adjectif</th>
+            <th>Fonction</th>
+            <th>Famaritana malagasy</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-epithete">ÉPITHÈTE</span></td>
+            <td>Mamaritra mivantana</td>
+            <td>eo akaikin'ny anarana</td>
+            <td>Une belle maison.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-attribut">ATTRIBUT</span></td>
+            <td>Mamaritra amin'ny alalan'ny verbe</td>
+            <td>miaraka amin'ny être</td>
+            <td>La maison est belle.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-qualificatif">QUALIFICATIF</span></td>
+            <td>Mamaritra toetra</td>
+            <td>toetra, loko, habe</td>
+            <td>grand, petit, rouge</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny adjectif dia <strong>mifanaraka</strong> amin'ny anarana (nom) amin'ny <strong>lahy na vavy (genre)</strong> sy ny <strong>tokana na maro (nombre)</strong>.<br>
+      Ohatra : <em>un grand garçon</em> (masculin) / <em>une grande fille</em> (féminin)<br><br>
+      • Amin'ny ankapobeny, ny adjectif dia apetraka <strong>aorian'ny anarana</strong> (izany no mahazatra amin'ny teny frantsay).<br>
+      Ohatra : <em>un livre <strong>intéressant</strong></em><br><br>
+      • Misy adjectif vitsivitsy apetraka <strong>alohan'ny anarana</strong> (bon, petit, grand, beau, etc.).<br>
+      Ohatra : <em><strong>un bon</strong> livre</em>
+    </div>
+  </div>
+
+  <!-- 1. ADJECTIF ÉPITHÈTE -->
+  <div class="card">
+    <h2>1️⃣ Adjectif ÉPITHÈTE</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>adjectif épithète</strong> dia adjectif apetraka <strong>eo akaikin'ny anarana</strong> (na eo aloha na aoriany) mba hamaritra azy mivantana.<br><br>
+      Ohatra : <em>un <strong>grand</strong> arbre</em> (hazo <strong>lehibe</strong>)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (aorian'ny anarana)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est une maison <strong>blanche</strong>. (Trano <strong>fotsy</strong> izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai acheté une robe <strong>rouge</strong>. (Nividy akanjo <strong>mena</strong> aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il lit un livre <strong>intéressant</strong>. (Mamaky boky <strong>mahaliana</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle porte des chaussures <strong>noires</strong>. (Manao kiraro <strong>mainty</strong> izy.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (alohan'ny anarana)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est un <strong>grand</strong> homme. (Lehilahy <strong>lehibe</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai un <strong>petit</strong> chien. (Manana alika <strong>kely</strong> aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est un <strong>beau</strong> jardin. (Zaridaina <strong>tsara</strong> izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a une <strong>bonne</strong> idée. (Manana hevitra <strong>tsara</strong> izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif épithète dia mamaritra ny anarana <strong>mivantana</strong>. Mety ho eo aloha na aorian'ny anarana izy.
+    </div>
+  </div>
+
+  <!-- 2. ADJECTIF ATTRIBUT -->
+  <div class="card">
+    <h2>2️⃣ Adjectif ATTRIBUT</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>adjectif attribut</strong> dia adjectif apetraka <strong>aorian'ny verbe d'état</strong> (être, sembler, paraître, devenir, rester, etc.) mba hamaritra ny anarana.<br><br>
+      Ohatra : <em>L'arbre est <strong>grand</strong>.</em> (Lehibe ny hazo.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La maison est <strong>blanche</strong>. (Fotsy ny trano.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est <strong>grand</strong>. (Lehibe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est <strong>belle</strong>. (Tsara tarehy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce livre est <strong>intéressant</strong>. (Mahaliana ity boky ity.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes <strong>fatigués</strong>. (Vizana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils semblent <strong>heureux</strong>. (Toa faly izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le ciel devient <strong>gris</strong>. (Mivadika fotsy ny lanitra.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adjectif attribut dia <strong>mifanaraka</strong> amin'ny anarana (sujet) fa tsy amin'ny "être". Ohatra : <em>Les filles sont <strong>belles</strong>.</em>
+    </div>
+  </div>
+
+  <!-- 3. ADJECTIF QUALIFICATIF -->
+  <div class="card">
+    <h2>3️⃣ Adjectif QUALIFICATIF</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>adjectif qualificatif</strong> dia adjectif <strong>mamaritra ny toetra</strong> (qualité) na ny <strong>foto-javatra</strong> (défaut) na ny <strong>loko</strong>, ny <strong>habe</strong>, ny <strong>endrika</strong>, sns.<br><br>
+      Ohatra : <em>un <strong>grand</strong> arbre</em> (hazo <strong>lehibe</strong>), <em>une <strong>belle</strong> fleur</em> (voninkazo <strong>tsara</strong>)
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Ohatra amin'ny adjectif qualificatif :</strong><br>
+      <strong>grand</strong> (lehibe) • <strong>petit</strong> (kely) • <strong>beau</strong> (tsara)<br>
+      <strong>rouge</strong> (mena) • <strong>bleu</strong> (manga) • <strong>noir</strong> (mainty)<br>
+      <strong>intelligent</strong> (manan-tsaina) • <strong>gentil</strong> (tsara fanahy)<br>
+      <strong>fatigué</strong> (vizana) • <strong>content</strong> (faly)<br>
+      <strong>difficile</strong> (sarotra) • <strong>facile</strong> (mora)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>grand</strong> arbre. (Hazo <strong>lehibe</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>belle</strong> fleur. (Voninkazo <strong>tsara</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un <strong>petit</strong> chat. (Saka <strong>kely</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>rouge</strong> voiture. (Fiara <strong>mena</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un homme <strong>intelligent</strong>. (Lehilahy <strong>manan-tsaina</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une <strong>difficile</strong> question. (Fanontaniana <strong>sarotra</strong>.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PLACE DE L'ADJECTIF ==================== -->
+  <div class="card">
+    <h2>📌 Place de l'adjectif (Toerana misy ny adjectif)</h2>
+    <div class="definition-mg">
+      <strong>Règle générale :</strong><br>
+      Ny adjectif dia apetraka <strong>aorian'ny anarana</strong> amin'ny ankapobeny.<br><br>
+      <strong>Adjectifs qui se placent DEVANT le nom :</strong><br>
+      • <strong>BANGS</strong> (Beauté, Âge, Nouveauté, Grandeur, Saveur)<br>
+      - <strong>B</strong>eau / belle (tsara tarehy)<br>
+      - <strong>A</strong>ncien / vieux (taloha / antitra)<br>
+      - <strong>N</strong>ouveau / nouvelle (vaovao)<br>
+      - <strong>G</strong>rand / petit (lehibe / kely)<br>
+      - <strong>S</strong>ympa / bon (sariaka / tsara)<br><br>
+      Ohatra : <em>un <strong>beau</strong> jardin</em> (zaridaina tsara)<br><br>
+      
+      <strong>Adjectifs qui se placent APRES le nom :</strong><br>
+      • Loko : <em>une robe <strong>rouge</strong></em> (akanjo mena)<br>
+      • Endrika : <em>une table <strong>ronde</strong></em> (latabatra boribory)<br>
+      • Fiaviana : <em>un produit <strong>français</strong></em> (vokatra frantsay)
+    </div>
+  </div>
+
+  <!-- ==================== ACCORD DE L'ADJECTIF ==================== -->
+  <div class="card">
+    <h2>📌 Accord de l'adjectif (Fifanarahana)</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny adjectif dia <strong>mifanaraka</strong> amin'ny anarana (nom) amin'ny :<br><br>
+      
+      <strong>1. Genre (lahy na vavy) :</strong><br>
+      • Masculin → tsy misy fanampiny (grand, petit, beau)<br>
+      • Féminin → manampy <strong>"e"</strong> (grande, petite, belle)<br>
+      Ohatra : <em>un <strong>grand</strong> garçon</em> / <em>une <strong>grande</strong> fille</em><br><br>
+      
+      <strong>2. Nombre (tokana na maro) :</strong><br>
+      • Singulier → tsy misy fanampiny<br>
+      • Pluriel → manampy <strong>"s"</strong> (grands, grandes)<br>
+      Ohatra : <em>des <strong>grands</strong> garçons</em> / <em>des <strong>grandes</strong> filles</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny accord
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un petit chat. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Une petite chatte. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des petits chats. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Des petites chattes. (Féminin pluriel.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ADJECTIFS IRRÉGULIERS ==================== -->
+  <div class="card">
+    <h2>📌 Adjectifs irréguliers au féminin</h2>
+    <div class="definition-mg">
+      <strong>Quelques adjectifs irréguliers :</strong><br><br>
+      • <strong>Beau</strong> → <strong>belle</strong> (tsara tarehy)<br>
+      • <strong>Nouveau</strong> → <strong>nouvelle</strong> (vaovao)<br>
+      • <strong>Vieux</strong> → <strong>vieille</strong> (antitra / taloha)<br>
+      • <strong>Fou</strong> → <strong>folle</strong> (adala)<br>
+      • <strong>Mou</strong> → <strong>molle</strong> (malemy)<br>
+      • <strong>Blanc</strong> → <strong>blanche</strong> (fotsy)<br>
+      • <strong>Franc</strong> → <strong>franche</strong> (mahitsy fo)<br>
+      • <strong>Sec</strong> → <strong>sèche</strong> (maina)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny adjectifs irréguliers
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un beau garçon / Une belle fille. (Zazalahy tsara tarehy / Zazavavy tsara tarehy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un nouveau livre / Une nouvelle maison. (Boky vaovao / Trano vaovao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un vieux chien / Une vieille voiture. (Alika antitra / Fiara antitra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>adjectif</strong> dia mamaritra ny anarana (nom) na ny pronom.</li>
+        <li>Misy karazany <strong>roa</strong> araka ny <strong>fonction</strong> : épithète (eo akaikin'ny anarana) sy attribut (miaraka amin'ny être).</li>
+        <li>Ny adjectif dia <strong>mifanaraka</strong> amin'ny anarana amin'ny <strong>genre</strong> (masculin/féminin) sy ny <strong>nombre</strong> (singulier/pluriel).</li>
+        <li>Amin'ny ankapobeny, ny adjectif dia apetraka <strong>aorian'ny anarana</strong>.</li>
+        <li>Misy adjectif vitsivitsy apetraka <strong>alohan'ny anarana</strong> (BANGS : Beau, Âge, Nouveau, Grand, Saveur).</li>
+        <li>Misy adjectif <strong>irréguliers</strong> amin'ny féminin (beau → belle, nouveau → nouvelle, etc.).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fomba fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny adjectif dia tena ilaina amin'ny resaka andavanandro rehefa mamaritra zavatra na olona. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny adjectif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

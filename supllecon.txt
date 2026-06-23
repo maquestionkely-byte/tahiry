@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Subjonctif plus-que-parfait – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le subjonctif plus-que-parfait */
+    .color-auxiliaire {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-participe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-avoir-subj-pqp {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-etre-subj-pqp {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>SUBJONCTIF PLUS-QUE-PARFAIT</h1>
+  </div>
+
+  <!-- Carte : Inona ny subjonctif plus-que-parfait ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "subjonctif plus-que-parfait" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>subjonctif plus-que-parfait</strong> dia ampiasaina hilazana zavatra <strong>efa vita</strong> tamin'ny lasa, ao anatin'ny fehezanteny mila subjonctif, ary <strong>talohan'ny</strong> zavatra hafa tamin'ny lasa.<br><br>
+      🔹 Ampiasaina amin'ny <strong>fanoratana ara-literatiora</strong> (littérature, contes, histoires) fa <strong>tsy ampiasaina amin'ny resaka andavanandro</strong> (izay ampiasaina ny subjonctif passé).<br><br>
+      🔹 Ny subjonctif plus-que-parfait dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Auxiliaire</strong> (<span class="color-avoir-subj-pqp">avoir</span> ou <span class="color-etre-subj-pqp">être</span>) au <strong>subjonctif imparfait</strong> + <span class="color-participe">participe passé</span><br><br>
+      🔹 Ohatra :<br>
+      • <em>Il fallait que j'<span class="color-avoir-subj-pqp">eusse</span> <span class="color-participe">mangé</span>.</em> (Mila efa nihinana aho - taloha.)<br>
+      • <em>Il était possible qu'il <span class="color-etre-subj-pqp">fût</span> <span class="color-participe">parti</span>.</em> (Mety ho efa lasa izy - taloha.)<br><br>
+      🔹 <strong>Règle :</strong> Mampiasa ny <span class="color-avoir-subj-pqp">avoir</span> na <span class="color-etre-subj-pqp">être</span> (amin'ny <strong>subjonctif imparfait</strong>) + <span class="color-participe">participe passé</span>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-avoir-subj-pqp">AVOIR (subj. imparfait)</span></th>
+            <th><span class="color-etre-subj-pqp">ÊTRE (subj. imparfait)</span></th>
+            <th>Participe passé</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Que je</td>
+            <td><span class="color-avoir-subj-pqp">eusse</span></td>
+            <td><span class="color-etre-subj-pqp">fusse</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>que j'eusse mangé</td>
+          </tr>
+          <tr class="categorie">
+            <td>Que tu</td>
+            <td><span class="color-avoir-subj-pqp">eusses</span></td>
+            <td><span class="color-etre-subj-pqp">fusses</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>que tu eusses mangé</td>
+          </tr>
+          <tr class="categorie">
+            <td>Qu'il/elle/on</td>
+            <td><span class="color-avoir-subj-pqp">eût</span></td>
+            <td><span class="color-etre-subj-pqp">fût</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>qu'il eût mangé</td>
+          </tr>
+          <tr class="categorie">
+            <td>Que nous</td>
+            <td><span class="color-avoir-subj-pqp">eussions</span></td>
+            <td><span class="color-etre-subj-pqp">fussions</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>que nous eussions mangé</td>
+          </tr>
+          <tr class="categorie">
+            <td>Que vous</td>
+            <td><span class="color-avoir-subj-pqp">eussiez</span></td>
+            <td><span class="color-etre-subj-pqp">fussiez</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>que vous eussiez mangé</td>
+          </tr>
+          <tr class="categorie">
+            <td>Qu'ils/elles</td>
+            <td><span class="color-avoir-subj-pqp">eussent</span></td>
+            <td><span class="color-etre-subj-pqp">fussent</span></td>
+            <td><span class="color-participe">mangé</span></td>
+            <td>qu'ils eussent mangé</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>subjonctif plus-que-parfait</strong> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature) fa <strong>tsy</strong> amin'ny resaka andavanandro.<br>
+      • Mampiasa ny <span class="color-avoir-subj-pqp">avoir</span> na <span class="color-etre-subj-pqp">être</span> amin'ny <strong>subjonctif imparfait</strong> + <span class="color-participe">participe passé</span>.<br>
+      • Ny <span class="color-avoir-subj-pqp">avoir</span> dia ampiasaina amin'ny ankamaroan'ny verbes.<br>
+      • Ny <span class="color-etre-subj-pqp">être</span> dia ampiasaina amin'ny verbes <strong>mifindra</strong> (aller, venir, partir, etc.) sy ny verbes <strong>prénominaux</strong> (se laver, se réveiller...).<br>
+      • Ny <span class="color-participe">participe passé</span> dia <strong>mifanaraka</strong> amin'ny sujet rehefa mampiasa <span class="color-etre-subj-pqp">être</span>.<br>
+      • Ampiasaina rehefa milaza zavatra <strong>efa vita</strong> talohan'ny zavatra hafa tamin'ny lasa, ao anatin'ny fehezanteny mila subjonctif.<br>
+      • Matetika ampiasaina miaraka amin'ny <strong>"il fallait que"</strong>, <strong>"il était possible que"</strong>, <strong>"je doutais que"</strong>.
+    </div>
+  </div>
+
+  <!-- 1. SUBJONCTIF PLUS-QUE-PARFAIT AVEC "AVOIR" -->
+  <div class="card">
+    <h2>1️⃣ Subjonctif plus-que-parfait avec <span class="color-avoir-subj-pqp">AVOIR</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny ankamaroan'ny verbe dia mampiasa ny auxiliaire <span class="color-avoir-subj-pqp">avoir</span> amin'ny subjonctif plus-que-parfait.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-avoir-subj-pqp">avoir</span> (subjonctif imparfait) + <span class="color-participe">participe passé</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Que j'</strong>eusse mang<span class="color-participe">é</span><br>
+      <strong>Que tu</strong> eusses mang<span class="color-participe">é</span><br>
+      <strong>Qu'il/elle/on</strong> eût mang<span class="color-participe">é</span><br>
+      <strong>Que nous</strong> eussions mang<span class="color-participe">é</span><br>
+      <strong>Que vous</strong> eussiez mang<span class="color-participe">é</span><br>
+      <strong>Qu'ils/elles</strong> eussent mang<span class="color-participe">é</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il fallait que j'<span class="color-avoir-subj-pqp">eusse</span> <span class="color-participe">mangé</span> avant de partir. (Mila efa nihinana aho alohan'ny hivoahako - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je doutais que tu <span class="color-avoir-subj-pqp">eusses</span> <span class="color-participe">fini</span> tes devoirs. (Nisalasala aho raha efa namita ny raharahanao ianao - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible qu'il <span class="color-avoir-subj-pqp">eût</span> <span class="color-participe">parlé</span> français. (Mety ho efa niteny frantsay izy - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je souhaitais que nous <span class="color-avoir-subj-pqp">eussions</span> <span class="color-participe">dansé</span> ensemble. (Naniry aho fa efa nandihy miaraka izahay - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était important que vous <span class="color-avoir-subj-pqp">eussiez</span> <span class="color-participe">travaillé</span> bien. (Zava-dehibe ny efa niasa tsara ianareo - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne croyais pas qu'ils <span class="color-avoir-subj-pqp">eussent</span> <span class="color-participe">chanté</span> cette chanson. (Tsy nino aho fa efa nihira ity hira ity izy ireo - literatiora.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny subjonctif plus-que-parfait dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature) fa <strong>tsy</strong> amin'ny resaka andavanandro.
+    </div>
+  </div>
+
+  <!-- 2. SUBJONCTIF PLUS-QUE-PARFAIT AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>2️⃣ Subjonctif plus-que-parfait avec <span class="color-etre-subj-pqp">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbes <strong>mifindra</strong> (aller, venir, partir, etc.) sy ny verbes <strong>prénominaux</strong> (se laver, se réveiller...) dia mampiasa ny auxiliaire <span class="color-etre-subj-pqp">être</span>.<br><br>
+      <strong>Règle :</strong><br>
+      <em><span class="color-etre-subj-pqp">être</span> (subjonctif imparfait) + <span class="color-participe">participe passé</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Que je</strong> fusse all<span class="color-participe">é</span><br>
+      <strong>Que tu</strong> fusses all<span class="color-participe">é</span><br>
+      <strong>Qu'il/elle/on</strong> fût all<span class="color-participe">é</span><br>
+      <strong>Que nous</strong> fussions all<span class="color-participe">és</span><br>
+      <strong>Que vous</strong> fussiez all<span class="color-participe">é(e)(s)</span><br>
+      <strong>Qu'ils/elles</strong> fussent all<span class="color-participe">és</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible que je <span class="color-etre-subj-pqp">fusse</span> <span class="color-participe">allé</span> à l'école. (Mety ho efa nandeha any an-tsekoly aho - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je doutais que tu <span class="color-etre-subj-pqp">fusses</span> <span class="color-participe">venu</span> avec moi. (Nisalasala aho raha efa tonga niaraka taminy ianao - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible qu'elle <span class="color-etre-subj-pqp">fût</span> <span class="color-participe">partie</span> ce matin. (Mety ho efa lasa izy maraina - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je souhaitais que nous <span class="color-etre-subj-pqp">fussions</span> <span class="color-participe">sortis</span> ensemble. (Naniry aho fa efa nivoaka miaraka izahay - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était important que vous <span class="color-etre-subj-pqp">fussiez</span> <span class="color-participe">arrivés</span> à l'heure. (Zava-dehibe ny efa tonga ara-potoana ianareo - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne croyais pas qu'ils <span class="color-etre-subj-pqp">fussent</span> <span class="color-participe">descendus</span> du train. (Tsy nino aho fa efa nidina avy amin'ny lamasinina izy ireo - literatiora.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny verbes mifindra (aller, venir, partir, etc.) dia mampiasa <span class="color-etre-subj-pqp">être</span>. Ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet (sary, feminin, pluriel).
+    </div>
+  </div>
+
+  <!-- 3. LISTE DES VERBES AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>3️⃣ Verbes qui utilisent <span class="color-etre-subj-pqp">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ireto ny verbes <strong>mifindra</strong> izay mampiasa <span class="color-etre-subj-pqp">être</span> amin'ny subjonctif plus-que-parfait.<br><br>
+      <strong>Liste des verbes (DR & MRS VANDERTRAMP) :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>D</strong>evenir (lasa / mivadika)<br>
+      <strong>R</strong>evenir (miverina)<br>
+      <strong>M</strong>ourir (maty)<br>
+      <strong>S</strong>ortir (mivoaka)<br>
+      <strong>V</strong>enir (ho avy)<br>
+      <strong>A</strong>ller (mandeha)<br>
+      <strong>N</strong>aître (teraka)<br>
+      <strong>D</strong>escendre (midina)<br>
+      <strong>E</strong>ntrer (miditra)<br>
+      <strong>R</strong>ester (mijanona)<br>
+      <strong>T</strong>omber (hianjera)<br>
+      <strong>R</strong>etourner (miverina)<br>
+      <strong>A</strong>rriver (tonga)<br>
+      <strong>M</strong>onter (miakatra)<br>
+      <strong>P</strong>artir (mivoaka / lasa)<br>
+      <strong>P</strong>asser (mandalo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible qu'elle <span class="color-etre-subj-pqp">fût</span> <span class="color-participe">devenue</span> médecin. (Mety ho efa lasa dokotera izy - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je doutais qu'ils <span class="color-etre-subj-pqp">fussent</span> <span class="color-participe">morts</span> jeunes. (Nisalasala aho raha efa maty tanora izy ireo - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible que nous <span class="color-etre-subj-pqp">fussions</span> <span class="color-participe">nés</span> à Madagascar. (Mety ho efa teraka teto Madagasikara izahay - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne croyais pas qu'il <span class="color-etre-subj-pqp">fût</span> <span class="color-participe">tombé</span> dans l'escalier. (Tsy nino aho fa efa nianjera tany amin'ny tohatra izy - literatiora.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ACCORD DU PARTICIPE PASSÉ AVEC "ÊTRE" -->
+  <div class="card">
+    <h2>4️⃣ Accord du participe passé avec <span class="color-etre-subj-pqp">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa mampiasa <span class="color-etre-subj-pqp">être</span>, ny <span class="color-participe">participe passé</span> dia <strong>mifanaraka</strong> amin'ny <strong>sujet</strong> (genre et nombre).<br><br>
+      <strong>Règle :</strong><br>
+      • Masculin singulier → tsy misy fanampiny (allé)<br>
+      • Féminin singulier → manampy <strong>"e"</strong> (allée)<br>
+      • Masculin pluriel → manampy <strong>"s"</strong> (allés)<br>
+      • Féminin pluriel → manampy <strong>"es"</strong> (allées)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">qu'il fût <span class="color-participe">allé</span>. (Masculin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">qu'elle fût <span class="color-participe">allée</span>. (Féminin singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">qu'ils fussent <span class="color-participe">allés</span>. (Masculin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">qu'elles fussent <span class="color-participe">allées</span>. (Féminin pluriel.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">que nous fussions <span class="color-participe">allés</span> au cinéma. (Pluriel - si groupes mixtes, masculin l'emporte.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa mampiasa <span class="color-etre-subj-pqp">être</span>, ny participe passé dia <strong>mifanaraka</strong> amin'ny sujet. Raha mampiasa <span class="color-avoir-subj-pqp">avoir</span>, dia <strong>tsy</strong> mifanaraka.
+    </div>
+  </div>
+
+  <!-- 5. EMPLOI DU SUBJONCTIF PLUS-QUE-PARFAIT -->
+  <div class="card">
+    <h2>5️⃣ Emploi du subjonctif plus-que-parfait</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>subjonctif plus-que-parfait</strong> dia ampiasaina amin'ny toe-javatra <strong>roa</strong> :<br><br>
+      
+      <strong>1. Action antérieure dans le passé (littérature) :</strong><br>
+      • Hilazana zavatra efa vita <strong>talohan'ny</strong> zavatra hafa tamin'ny lasa, ao anatin'ny fehezanteny mila subjonctif.<br>
+      Ohatra : <em>Il fallait qu'il <span class="color-auxiliaire">eût</span> <span class="color-participe">fini</span> avant de sortir.</em> (Mila efa vita izy alohan'ny hivoahana - literatiora.)<br><br>
+      
+      <strong>2. Après une expression de sentiment/opinion au passé :</strong><br>
+      • Hilazana zavatra tsy azo antoka tamin'ny lasa, ao anatin'ny fehezanteny mila subjonctif.<br>
+      Ohatra : <em>Je doutais qu'il <span class="color-auxiliaire">eût</span> <span class="color-participe">réussi</span>.</em> (Nisalasala aho raha nahomby izy - literatiora.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Action antérieure)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il fallait qu'il <span class="color-auxiliaire">eût</span> <span class="color-participe">fini</span> avant de sortir. (Mila efa vita izy alohan'ny hivoahana - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était nécessaire qu'elle <span class="color-auxiliaire">eût</span> <span class="color-participe">mangé</span> avant de partir. (Ilaina efa nihinana izy alohan'ny handehanana - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il était possible qu'il <span class="color-auxiliaire">eût</span> <span class="color-participe">parlé</span> avant de se taire. (Mety ho efa niteny izy talohan'ny nanginany - literatiora.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Sentiment / Opinion)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je doutais qu'il <span class="color-auxiliaire">eût</span> <span class="color-participe">réussi</span>. (Nisalasala aho raha nahomby izy - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle regrettait qu'il <span class="color-auxiliaire">fût</span> <span class="color-participe">parti</span>. (Nalahelo izy fa lasa - literatiora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne croyais pas qu'elle <span class="color-auxiliaire">eût</span> <span class="color-participe">dit</span> ça. (Tsy nino aho fa nilaza izany izy - literatiora.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-auxiliaire">subjonctif plus-que-parfait</span> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature) fa <strong>tsy</strong> amin'ny resaka andavanandro.
+    </div>
+  </div>
+
+  <!-- 6. COMPARAISON SUBJONCTIF PASSÉ vs SUBJONCTIF PLUS-QUE-PARFAIT -->
+  <div class="card">
+    <h2>6️⃣ Comparaison SUBJONCTIF PASSÉ vs SUBJONCTIF PLUS-QUE-PARFAIT</h2>
+    <div class="definition-mg">
+      <strong><span class="color-avoir-subj">SUBJONCTIF PASSÉ</span></strong><br>
+      • Ampiasaina amin'ny <strong>resaka andavanandro</strong> (parlé)<br>
+      • Mampiasa ny auxiliaire amin'ny <strong>subjonctif présent</strong><br>
+      • Hilazana zavatra efa vita tamin'ny lasa<br>
+      Ohatra : <em>Il faut que j'<span class="color-avoir-subj">aie</span> <span class="color-participe">mangé</span>.</em><br><br>
+      
+      <strong><span class="color-avoir-subj-pqp">SUBJONCTIF PLUS-QUE-PARFAIT</span></strong><br>
+      • Ampiasaina amin'ny <strong>fanoratana</strong> (littérature)<br>
+      • Mampiasa ny auxiliaire amin'ny <strong>subjonctif imparfait</strong><br>
+      • Hilazana zavatra efa vita <strong>talohan'ny</strong> zavatra hafa tamin'ny lasa<br>
+      Ohatra : <em>Il fallait que j'<span class="color-avoir-subj-pqp">eusse</span> <span class="color-participe">mangé</span>.</em><br><br>
+      
+      <strong>Fahasamihafana :</strong><br>
+      • Ny <span class="color-avoir-subj">subjonctif passé</span> dia ampiasaina amin'ny <strong>resaka andavanandro</strong>.<br>
+      • Ny <span class="color-avoir-subj-pqp">subjonctif plus-que-parfait</span> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature).<br>
+      • Samy maneho zavatra efa vita tamin'ny lasa izy roa.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SUBJONCTIF PASSÉ : Il faut que j'<span class="color-avoir-subj">aie</span> <span class="color-participe">mangé</span>. (Andavanandro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SUBJONCTIF PLUS-QUE-PARFAIT : Il fallait que j'<span class="color-avoir-subj-pqp">eusse</span> <span class="color-participe">mangé</span>. (Literatiora.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. RÉSUMÉ DES RÈGLES -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. Formation :</strong><br>
+      • <span class="color-avoir-subj-pqp">Avoir</span> ou <span class="color-etre-subj-pqp">Être</span> (subjonctif imparfait) + <span class="color-participe">participe passé</span><br><br>
+      
+      <strong>2. Auxiliaire "Avoir" :</strong><br>
+      • Ampiasaina amin'ny ankamaroan'ny verbe.<br>
+      • Ohatra : <em>que j'eusse mangé, que tu eusses fini</em><br><br>
+      
+      <strong>3. Auxiliaire "Être" :</strong><br>
+      • Ampiasaina amin'ny verbes <strong>mifindra</strong> (aller, venir, partir...)<br>
+      • Ampiasaina amin'ny verbes <strong>prénominaux</strong> (se laver, se réveiller...)<br>
+      • Ohatra : <em>que je fusse allé, qu'elle fût partie</em><br><br>
+      
+      <strong>4. Accord du participe passé :</strong><br>
+      • Avec <span class="color-avoir-subj-pqp">avoir</span> → <strong>tsy</strong> mifanaraka<br>
+      • Avec <span class="color-etre-subj-pqp">être</span> → <strong>mifanaraka</strong> amin'ny sujet (e, s, es)<br><br>
+      
+      <strong>5. Emploi :</strong><br>
+      • Ampiasaina amin'ny <strong>fanoratana</strong> (littérature)<br>
+      • Hilazana zavatra efa vita <strong>talohan'ny</strong> zavatra hafa tamin'ny lasa<br>
+      • Matetika miaraka amin'ny <strong>"il fallait que"</strong>, <strong>"il était possible que"</strong>, <strong>"je doutais que"</strong>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>subjonctif plus-que-parfait</strong> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature, contes, histoire).</li>
+        <li>Ny <strong>subjonctif passé</strong> dia ampiasaina amin'ny <strong>resaka andavanandro</strong>.</li>
+        <li>Miforona amin'ny alalan'ny : <strong>auxiliaire (avoir/être au subjonctif imparfait) + participe passé</strong>.</li>
+        <li>Ny ankamaroan'ny verbe dia mampiasa <span class="color-avoir-subj-pqp">avoir</span>.</li>
+        <li>Ny verbes <strong>mifindra</strong> (aller, venir, partir...) dia mampiasa <span class="color-etre-subj-pqp">être</span>.</li>
+        <li>Ny verbes <strong>prénominaux</strong> (se laver, se réveiller...) dia mampiasa <span class="color-etre-subj-pqp">être</span>.</li>
+        <li>Ny participe passé amin'ny <span class="color-etre-subj-pqp">être</span> dia <strong>mifanaraka</strong> amin'ny sujet.</li>
+        <li>Matetika ampiasaina miaraka amin'ny <strong>"il fallait que"</strong>, <strong>"il était possible que"</strong>, <strong>"je doutais que"</strong>.</li>
+        <li>Raha mamaky boky na tantara ianao, dia hahita ny subjonctif plus-que-parfait matetika.</li>
+        <li>Amin'ny resaka andavanandro, dia ampiasao ny <strong>subjonctif passé</strong> foana.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny subjonctif plus-que-parfait dia tena ilaina mba ho <strong>mora</strong> ny famakiana boky sy tantara amin'ny teny frantsay. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny subjonctif plus-que-parfait.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

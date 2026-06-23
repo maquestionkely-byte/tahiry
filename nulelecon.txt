@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nuances lexicales et synonymie – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les nuances lexicales */
+    .color-intensite {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-registre {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-connotation {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-contexte {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>NUANCES LEXICALES ET SYNONYMIE</h1>
+  </div>
+
+  <!-- Carte : Inona ny nuances lexicales et la synonymie ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "nuances lexicales" sy "synonymie" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>synonymie</strong> dia rehefa misy teny roa na mihoatra izay <strong>mitovy hevitra</strong> (même sens).<br>
+      Ohatra : <em>content</em> (faly) sy <em>heureux</em> (faly) → mitovy hevitra.<br><br>
+      🔹 Ny <strong>nuances lexicales</strong> dia ny <strong>fahasamihafana kely</strong> (différences subtiles) eo amin'ny teny mitovy hevitra.<br>
+      Ohatra : <em>content</em> (faly vetivety) sy <em>heureux</em> (faly lalina kokoa).<br><br>
+      🔹 Misy karazany <strong>efatra</strong> ny nuances lexicales :<br><br>
+      <span class="icone">📌</span> <span class="color-intensite">Nuance d'intensité</span> → fahasamihafana amin'ny <strong>hamafiny</strong> (degré)<br>
+      Ohatra : <em>fatigué</em> (vizana) / <em>épuisé</em> (reraka tanteraka)<br><br>
+      <span class="icone">📌</span> <span class="color-registre">Nuance de registre</span> → fahasamihafana amin'ny <strong>fomba fiteny</strong> (soutenu/courant/familier)<br>
+      Ohatra : <em>manger</em> (mihinana) / <em>bouffer</em> (mihinana - familier)<br><br>
+      <span class="icone">📌</span> <span class="color-connotation">Nuance de connotation</span> → fahasamihafana amin'ny <strong>hevitra misy ao anatiny</strong> (positif/négatif)<br>
+      Ohatra : <em>mince</em> (manify - positif) / <em>maigre</em> (manify - négatif)<br><br>
+      <span class="icone">📌</span> <span class="color-contexte">Nuance de contexte</span> → fahasamihafana amin'ny <strong>toe-javatra</strong> (situation)<br>
+      Ohatra : <em>parler</em> (miresaka) / <em>discuter</em> (mifanakalo hevitra)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type de nuance</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-intensite">INTENSITÉ</span></td>
+            <td>Hamafiny (degré)</td>
+            <td>fatigué / épuisé</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-registre">REGISTRE</span></td>
+            <td>Fomba fiteny</td>
+            <td>manger / bouffer</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-connotation">CONNOTATION</span></td>
+            <td>Hevitra miafina (positif/négatif)</td>
+            <td>mince / maigre</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-contexte">CONTEXTE</span></td>
+            <td>Toe-javatra (situation)</td>
+            <td>parler / discuter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-intensite">nuance d'intensité</span> dia mampiseho ny <strong>hamafiny</strong> (degré) samy hafa.<br>
+      Ohatra : <em>fatigué</em> (vizana) → <em>épuisé</em> (reraka tanteraka)<br><br>
+      • Ny <span class="color-registre">nuance de registre</span> dia mampiseho ny <strong>fomba fiteny</strong> samy hafa (soutenu, courant, familier).<br>
+      Ohatra : <em>manger</em> (mihinana - courant) → <em>bouffer</em> (mihinana - familier)<br><br>
+      • Ny <span class="color-connotation">nuance de connotation</span> dia mampiseho ny <strong>hevitra misy ao anatiny</strong> (positif na négatif).<br>
+      Ohatra : <em>mince</em> (manify - positif) → <em>maigre</em> (manify - négatif)<br><br>
+      • Ny <span class="color-contexte">nuance de contexte</span> dia mampiseho ny <strong>toe-javatra</strong> samy hafa.<br>
+      Ohatra : <em>parler</em> (miresaka) → <em>discuter</em> (mifanakalo hevitra)
+    </div>
+  </div>
+
+  <!-- 1. NUANCE D'INTENSITÉ - Hamafiny -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-intensite">NUANCE D'INTENSITÉ</span> (hamafiny)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-intensite">nuance d'intensité</span> dia mampiseho ny <strong>hamafiny</strong> (degré) samy hafa eo amin'ny teny mitovy hevitra.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">fatigué (vizana) → épuisé (reraka tanteraka) → <strong>épuisé</strong> dia <span class="color-intensite">mahery kokoa</span> noho ny <strong>fatigué</strong>.</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">content (faly kely) → heureux (faly be) → ravi (faly indrindra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">froid (mangatsiaka) → glacial (mangatsiaka be)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">petit (kely) → minuscule (kely dia kely)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">chaud (mafana) → brûlant (mafana be)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-intensite">nuance d'intensité</span> dia mampiseho ny <strong>hamafiny</strong> (degré) samy hafa.<br>
+      Ohatra : <em>fatigué</em> (vizana) < <em>épuisé</em> (reraka tanteraka) < <em>exténué</em> (reraka indrindra)
+    </div>
+  </div>
+
+  <!-- 2. NUANCE DE REGISTRE - Fomba fiteny -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-registre">NUANCE DE REGISTRE</span> (fomba fiteny)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-registre">nuance de registre</span> dia mampiseho ny <strong>fomba fiteny</strong> samy hafa (soutenu, courant, familier).<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-registre">SOUTENU</span> : se sustenter (mihinana) → <span class="color-registre">COURANT</span> : manger (mihinana) → <span class="color-registre">FAMILIER</span> : bouffer (mihinana)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-registre">SOUTENU</span> : dormir (matory) → <span class="color-registre">COURANT</span> : dormir (matory) → <span class="color-registre">FAMILIER</span> : pioncer (matory)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-registre">SOUTENU</span> : parler (miresaka) → <span class="color-registre">COURANT</span> : parler (miresaka) → <span class="color-registre">FAMILIER</span> : causer (miresaka)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-registre">SOUTENU</span> : voiture (fiara) → <span class="color-registre">COURANT</span> : voiture (fiara) → <span class="color-registre">FAMILIER</span> : bagnole (fiara)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-registre">nuance de registre</span> dia mampiseho ny <strong>fomba fiteny</strong> samy hafa (soutenu, courant, familier).<br>
+      Ohatra : <em>manger</em> (courant) → <em>bouffer</em> (familier) → <em>se sustenter</em> (soutenu)
+    </div>
+  </div>
+
+  <!-- 3. NUANCE DE CONNOTATION - Hevitra miafina -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-connotation">NUANCE DE CONNOTATION</span> (hevitra miafina)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-connotation">nuance de connotation</span> dia mampiseho ny <strong>hevitra miafina</strong> (positif na négatif) eo amin'ny teny mitovy hevitra.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-connotation">POSITIF</span> : mince (manify) → <span class="color-connotation">NÉGATIF</span> : maigre (manify loatra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-connotation">POSITIF</span> : économe (mpitsitsy) → <span class="color-connotation">NÉGATIF</span> : avare (mpitranga)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-connotation">POSITIF</span> : courageux (be herim-po) → <span class="color-connotation">NÉGATIF</span> : téméraire (tsy mitandrina)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-connotation">POSITIF</span> : curieux (tia mahafantatra) → <span class="color-connotation">NÉGATIF</span> : indiscret (mpanontany be loatra)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-connotation">POSITIF</span> : jeune (tanora) → <span class="color-connotation">NÉGATIF</span> : immature (tsy matotra)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-connotation">nuance de connotation</span> dia mampiseho ny <strong>hevitra miafina</strong> (positif na négatif).<br>
+      Ohatra : <em>mince</em> (manify - positif) → <em>maigre</em> (manify loatra - négatif)
+    </div>
+  </div>
+
+  <!-- 4. NUANCE DE CONTEXTE - Toe-javatra -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-contexte">NUANCE DE CONTEXTE</span> (toe-javatra)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-contexte">nuance de contexte</span> dia mampiseho ny <strong>toe-javatra</strong> (situation) samy hafa eo amin'ny teny mitovy hevitra.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-contexte">parler</span> (miresaka - tsotra) → <span class="color-contexte">discuter</span> (mifanakalo hevitra - lalina kokoa) → <span class="color-contexte">dialoguer</span> (mifampiresaka)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-contexte">regarder</span> (mijery - tsotra) → <span class="color-contexte">observer</span> (mijery tsara) → <span class="color-contexte">contempler</span> (mijery amim-pitiavana)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-contexte">écouter</span> (mihaino - tsotra) → <span class="color-contexte">entendre</span> (mandre) → <span class="color-contexte">prêter attention</span> (mihaino tsara)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-contexte">marcher</span> (mandeha - tsotra) → <span class="color-contexte">se promener</span> (mandehandeha - fialamboly) → <span class="color-contexte">déambuler</span> (mandehandeha tsy misy antony)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-contexte">écrire</span> (manoratra - tsotra) → <span class="color-contexte">rédiger</span> (manoratra amin'ny fomba ofisialy) → <span class="color-contexte">composer</span> (manoratra amin'ny fomba literatiora)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-contexte">nuance de contexte</span> dia mampiseho ny <strong>toe-javatra</strong> (situation) samy hafa.<br>
+      Ohatra : <em>parler</em> (miresaka - tsotra) → <em>discuter</em> (mifanakalo hevitra - lalina kokoa)
+    </div>
+  </div>
+
+  <!-- 5. COMPARAISON DES QUATRE NUANCES -->
+  <div class="card">
+    <h2>5️⃣ Comparaison des quatre nuances</h2>
+    <div class="definition-mg">
+      <strong><span class="color-intensite">INTENSITÉ</span></strong> → hamafiny (degré)<br>
+      Ohatra : <em>fatigué</em> < <em>épuisé</em><br><br>
+      
+      <strong><span class="color-registre">REGISTRE</span></strong> → fomba fiteny (soutenu/courant/familier)<br>
+      Ohatra : <em>manger</em> (courant) / <em>bouffer</em> (familier)<br><br>
+      
+      <strong><span class="color-connotation">CONNOTATION</span></strong> → hevitra miafina (positif/négatif)<br>
+      Ohatra : <em>mince</em> (positif) / <em>maigre</em> (négatif)<br><br>
+      
+      <strong><span class="color-contexte">CONTEXTE</span></strong> → toe-javatra (situation)<br>
+      Ohatra : <em>parler</em> (tsotra) / <em>discuter</em> (lalina kokoa)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">INTENSITÉ : Il est <span class="color-intensite">fatigué</span> → Il est <span class="color-intensite">épuisé</span>. (Vizana → Reraka tanteraka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">REGISTRE : Je <span class="color-registre">mange</span> → Je <span class="color-registre">bouffe</span>. (Mihinana - courant → familier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">CONNOTATION : Elle est <span class="color-connotation">mince</span> → Elle est <span class="color-connotation">maigre</span>. (Manify - positif → négatif.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">CONTEXTE : Nous <span class="color-contexte">parlons</span> → Nous <span class="color-contexte">discutons</span>. (Miresaka - tsotra → mifanakalo hevitra - lalina.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. LISTE DES SYNONYMES AVEC NUANCES -->
+  <div class="card">
+    <h2>6️⃣ Liste des synonymes avec nuances</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-intensite">Content / Heureux / Ravi / Enchanté</span></strong><br>
+      • <strong>content</strong> → faly (kely)<br>
+      • <strong>heureux</strong> → faly (be)<br>
+      • <strong>ravi</strong> → faly indrindra<br>
+      • <strong>enchanté</strong> → faly (amin'ny fahalalam-pomba)<br><br>
+      
+      <strong>2. <span class="color-registre">Manger / Bouffer / Se sustenter / Goûter</span></strong><br>
+      • <strong>manger</strong> → mihinana (courant)<br>
+      • <strong>bouffer</strong> → mihinana (familier)<br>
+      • <strong>se sustenter</strong> → mihinana (soutenu)<br>
+      • <strong>goûter</strong> → manandrana (kely)<br><br>
+      
+      <strong>3. <span class="color-connotation">Économe / Avare / Frugal / Radin</span></strong><br>
+      • <strong>économe</strong> → mpitsitsy (positif)<br>
+      • <strong>frugal</strong> → mampihena (neutre)<br>
+      • <strong>avare</strong> → mpitranga (négatif)<br>
+      • <strong>radin</strong> → mpitranga (familier - négatif)<br><br>
+      
+      <strong>4. <span class="color-contexte">Parler / Discuter / Causer / Bavarder / Dialoguer</span></strong><br>
+      • <strong>parler</strong> → miresaka (tsotra)<br>
+      • <strong>discuter</strong> → mifanakalo hevitra (lalina)<br>
+      • <strong>causer</strong> → miresaka (familier)<br>
+      • <strong>bavarder</strong> → miresaka tsy misy dikany<br>
+      • <strong>dialoguer</strong> → mifampiresaka (ara-dalàna)
+    </div>
+  </div>
+
+  <!-- 7. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-intensite">INTENSITÉ</span></strong> → hamafiny (degré)<br>
+      Ohatra : <em>fatigué → épuisé</em><br><br>
+      
+      <strong>2. <span class="color-registre">REGISTRE</span></strong> → fomba fiteny (soutenu/courant/familier)<br>
+      Ohatra : <em>manger → bouffer</em><br><br>
+      
+      <strong>3. <span class="color-connotation">CONNOTATION</span></strong> → hevitra miafina (positif/négatif)<br>
+      Ohatra : <em>mince → maigre</em><br><br>
+      
+      <strong>4. <span class="color-contexte">CONTEXTE</span></strong> → toe-javatra (situation)<br>
+      Ohatra : <em>parler → discuter</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-intensite">nuance d'intensité</span> dia mampiseho ny <strong>hamafiny</strong> (degré) samy hafa.</li>
+        <li>Ny <span class="color-registre">nuance de registre</span> dia mampiseho ny <strong>fomba fiteny</strong> samy hafa.</li>
+        <li>Ny <span class="color-connotation">nuance de connotation</span> dia mampiseho ny <strong>hevitra miafina</strong> (positif na négatif).</li>
+        <li>Ny <span class="color-contexte">nuance de contexte</span> dia mampiseho ny <strong>toe-javatra</strong> (situation) samy hafa.</li>
+        <li>Zava-dehibe ny mahafantatra ny <strong>nuances</strong> mba hahafahana mampiasa ny teny mety amin'ny toe-javatra mety.</li>
+        <li>Ny fampiasana teny mety dia manampy amin'ny <strong>fahazavan'ny</strong> resaka.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny nuances lexicales dia tena ilaina mba ho <strong>marina</strong> sy <strong>mety</strong> ny fampiasana ny teny frantsay arakaraka ny toe-javatra. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny nuances lexicales.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

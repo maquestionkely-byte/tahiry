@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Temps présent de l'indicatif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les groupes */
+    .color-groupe1 {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-groupe2 {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-groupe3 {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>TEMPS PRÉSENT DE L'INDICATIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny présent de l'indicatif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "présent de l'indicatif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>présent de l'indicatif</strong> dia ampiasaina hilazana zavatra <strong>mitranga ankehitriny</strong>, zavatra <strong>mahazatra</strong>, na zavatra <strong>ho avy akaiky</strong>.<br><br>
+      🔹 Misy <strong>telo</strong> ny sokajin-teny (groupes) amin'ny teny frantsay :<br><br>
+      <span class="icone">📌</span> <span class="color-groupe1">1er groupe</span> → verbe mifarana amin'ny <strong>-er</strong><br>
+      Ohatra : <em>parler, manger, chanter</em><br><br>
+      <span class="icone">📌</span> <span class="color-groupe2">2ème groupe</span> → verbe mifarana amin'ny <strong>-ir</strong> (miaraka amin'ny -issant)<br>
+      Ohatra : <em>finir, choisir, réussir</em><br><br>
+      <span class="icone">📌</span> <span class="color-groupe3">3ème groupe</span> → verbe rehetra tsy tafiditra ao amin'ny 1er sy 2ème<br>
+      Ohatra : <em>être, avoir, aller, faire, dire, prendre, venir</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-groupe1">1er groupe (-er)</span></th>
+            <th><span class="color-groupe2">2ème groupe (-ir)</span></th>
+            <th><span class="color-groupe3">3ème groupe</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je</td>
+            <td>parle</td>
+            <td>finis</td>
+            <td>vais, suis, ai</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu</td>
+            <td>parles</td>
+            <td>finis</td>
+            <td>vas, es, as</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il/Elle/On</td>
+            <td>parle</td>
+            <td>finit</td>
+            <td>va, est, a</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous</td>
+            <td>parlons</td>
+            <td>finissons</td>
+            <td>allons, sommes, avons</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous</td>
+            <td>parlez</td>
+            <td>finissez</td>
+            <td>allez, êtes, avez</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils/Elles</td>
+            <td>parlent</td>
+            <td>finissent</td>
+            <td>vont, sont, ont</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-groupe1">1er groupe</span> (-er) : je parle, tu parles, il parle, nous parlons, vous parlez, ils parlent.<br>
+      • Ny <span class="color-groupe2">2ème groupe</span> (-ir) : je finis, tu finis, il finit, nous finissons, vous finissez, ils finissent.<br>
+      • Ny <span class="color-groupe3">3ème groupe</span> : tsy ara-dalàna (irréguliers). Tokony ho <strong>tsianjery</strong> izy ireo.<br>
+      • Ny <strong>infinitif</strong> dia endrika tsy miova izay ampiasaina hamantarana ny sokajin-teny.<br>
+      • Ny <strong>radical</strong> dia fototeny (racine) izay ampiana ny faran-teny (terminaison).
+    </div>
+  </div>
+
+  <!-- 1. 1ER GROUPE - LES VERBES EN -ER -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-groupe1">1ER GROUPE</span> : Verbes en <strong>-ER</strong></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-groupe1">1er groupe</span> dia ahitana ny verbe mifarana amin'ny <strong>"-er"</strong>. Izy ireo no <strong>be indrindra</strong> ary <strong>ara-dalàna</strong> (réguliers).<br><br>
+      <strong>Exemples :</strong> parler (miteny), manger (mihinana), chanter (mihira), aimer (tia), danser (mandihy), travailler (miasa), etc.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> parl<strong>e</strong><br>
+      <strong>Tu</strong> parl<strong>es</strong><br>
+      <strong>Il/Elle/On</strong> parl<strong>e</strong><br>
+      <strong>Nous</strong> parl<strong>ons</strong><br>
+      <strong>Vous</strong> parl<strong>ez</strong><br>
+      <strong>Ils/Elles</strong> parl<strong>ent</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>parle</strong> français. (Miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>manges</strong> une pomme. (Mihinana paoma ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>chante</strong> bien. (Mihira tsara izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>aimons</strong> le café. (Tia kafe izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>dans</strong>ez bien. (Mandihy tsara ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>travaillent</strong> ensemble. (Miasa miaraka izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny 1er groupe dia mifarana amin'ny <strong>-er</strong>. Ny faran-teny (terminaisons) dia : <strong>-e, -es, -e, -ons, -ez, -ent</strong>.
+    </div>
+  </div>
+
+  <!-- 2. 2EME GROUPE - LES VERBES EN -IR -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-groupe2">2ÈME GROUPE</span> : Verbes en <strong>-IR</strong></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-groupe2">2ème groupe</span> dia ahitana ny verbe mifarana amin'ny <strong>"-ir"</strong> ary manana ny <strong>"-issant"</strong> amin'ny participe présent. Izy ireo dia <strong>ara-dalàna</strong> (réguliers).<br><br>
+      <strong>Exemples :</strong> finir (mamita), choisir (misafidy), réussir (mahomby), obéir (mankatò), etc.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> fin<strong>is</strong><br>
+      <strong>Tu</strong> fin<strong>is</strong><br>
+      <strong>Il/Elle/On</strong> fin<strong>it</strong><br>
+      <strong>Nous</strong> fin<strong>issons</strong><br>
+      <strong>Vous</strong> fin<strong>issez</strong><br>
+      <strong>Ils/Elles</strong> fin<strong>issent</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>finis</strong> mes devoirs. (Mamita ny raharahako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>choisis</strong> un livre. (Misafidy boky ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>réussit</strong> toujours. (Mahomby foana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>finissons</strong> le travail. (Mamita ny asa izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>choisissez</strong> bien. (Misafidy tsara ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>obéissent</strong> à leurs parents. (Mankatò ny ray amandreniny izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny 2ème groupe dia mifarana amin'ny <strong>-ir</strong> ary manana ny <strong>-issant</strong> amin'ny participe présent. Ny faran-teny dia : <strong>-is, -is, -it, -issons, -issez, -issent</strong>.
+    </div>
+  </div>
+
+  <!-- 3. 3EME GROUPE - LES VERBES IRRÉGULIERS -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-groupe3">3ÈME GROUPE</span> : Verbes irréguliers</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-groupe3">3ème groupe</span> dia ahitana ny verbe rehetra <strong>tsy tafiditra</strong> ao amin'ny 1er sy 2ème groupe. Izy ireo dia <strong>tsy ara-dalàna</strong> (irréguliers) ary tokony ho <strong>tsianjery</strong>.<br><br>
+      <strong>Exemples :</strong> être, avoir, aller, faire, dire, venir, prendre, mettre, pouvoir, vouloir, devoir, etc.
+    </div>
+  </div>
+
+  <!-- 3a. ÊTRE - Verbe irrégulier -->
+  <div class="card">
+    <h2>3a️⃣ <span class="color-groupe3">ÊTRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"être"</strong> dia midika hoe <strong>"misy"</strong> na <strong>"maha-izy"</strong>. Izy io dia <strong>tsy ara-dalàna</strong> (irrégulier).<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> suis<br>
+      <strong>Tu</strong> es<br>
+      <strong>Il/Elle/On</strong> est<br>
+      <strong>Nous</strong> sommes<br>
+      <strong>Vous</strong> êtes<br>
+      <strong>Ils/Elles</strong> sont
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>suis</strong> étudiant. (Mpianatra aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>es</strong> gentil. (Tsara fanahy ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>est</strong> grand. (Lehibe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>sommes</strong> fatigués. (Vizana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>êtes</strong> prêts. (Vonona ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>sont</strong> heureux. (Faly izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3b. AVOIR - Verbe irrégulier -->
+  <div class="card">
+    <h2>3b️⃣ <span class="color-groupe3">AVOIR</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"avoir"</strong> dia midika hoe <strong>"manana"</strong>. Izy io dia <strong>tsy ara-dalàna</strong> (irrégulier).<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>ai<br>
+      <strong>Tu</strong> as<br>
+      <strong>Il/Elle/On</strong> a<br>
+      <strong>Nous</strong> avons<br>
+      <strong>Vous</strong> avez<br>
+      <strong>Ils/Elles</strong> ont
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<strong>ai</strong> un frère. (Manana rahalahy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>as</strong> soif. (Mangetaheta ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>a</strong> faim. (Noana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>avons</strong> une voiture. (Manana fiara izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>avez</strong> raison. (Marina ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>ont</strong> froid. (Mangatsiaka izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3c. ALLER - Verbe irrégulier -->
+  <div class="card">
+    <h2>3c️⃣ <span class="color-groupe3">ALLER</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"aller"</strong> dia midika hoe <strong>"mandeha"</strong>. Izy io dia <strong>tsy ara-dalàna</strong> (irrégulier).<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> vais<br>
+      <strong>Tu</strong> vas<br>
+      <strong>Il/Elle/On</strong> va<br>
+      <strong>Nous</strong> allons<br>
+      <strong>Vous</strong> allez<br>
+      <strong>Ils/Elles</strong> vont
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>vais</strong> à l'école. (Mandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>vas</strong> bien ? (Manao ahoana ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>va</strong> au marché. (Mandeha any an-tsena izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>allons</strong> au cinéma. (Mandeha any amin'ny sinema izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>allez</strong> où ? (Ho aiza ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>vont</strong> ensemble. (Mandeha miaraka izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3d. FAIRE - Verbe irrégulier -->
+  <div class="card">
+    <h2>3d️⃣ <span class="color-groupe3">FAIRE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"faire"</strong> dia midika hoe <strong>"manao"</strong>. Izy io dia <strong>tsy ara-dalàna</strong> (irrégulier).<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> fais<br>
+      <strong>Tu</strong> fais<br>
+      <strong>Il/Elle/On</strong> fait<br>
+      <strong>Nous</strong> faisons<br>
+      <strong>Vous</strong> faites<br>
+      <strong>Ils/Elles</strong> font
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>fais</strong> mes devoirs. (Manao ny raharahako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>fais</strong> du sport. (Manao fanatanjahan-tena ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>fait</strong> beau. (Tsara ny andro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>faisons</strong> un gâteau. (Manao mofomamy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>faites</strong> quoi ? (Inona no ataonao ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>font</strong> du bruit. (Manao tabataba izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF DES TERMINAISONS ==================== -->
+  <div class="card">
+    <h2>📊 Tableau des terminaisons (Faran-teny)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-groupe1">1er groupe (-er)</span></th>
+            <th><span class="color-groupe2">2ème groupe (-ir)</span></th>
+            <th><span class="color-groupe3">3ème groupe</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je</td>
+            <td><strong>-e</strong></td>
+            <td><strong>-is</strong></td>
+            <td>-s, -x (irrégulier)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu</td>
+            <td><strong>-es</strong></td>
+            <td><strong>-is</strong></td>
+            <td>-s, -x (irrégulier)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il/Elle/On</td>
+            <td><strong>-e</strong></td>
+            <td><strong>-it</strong></td>
+            <td>-t, -d (irrégulier)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous</td>
+            <td><strong>-ons</strong></td>
+            <td><strong>-issons</strong></td>
+            <td>-ons (irrégulier)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous</td>
+            <td><strong>-ez</strong></td>
+            <td><strong>-issez</strong></td>
+            <td>-ez (irrégulier)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils/Elles</td>
+            <td><strong>-ent</strong></td>
+            <td><strong>-issent</strong></td>
+            <td>-ent (irrégulier)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-groupe1">1er groupe</span> (-er) dia <strong>ara-dalàna</strong> ary <strong>be indrindra</strong>. Tsarovy ny faran-teny : -e, -es, -e, -ons, -ez, -ent.</li>
+        <li>Ny <span class="color-groupe2">2ème groupe</span> (-ir) dia <strong>ara-dalàna</strong> ihany koa. Tsarovy ny faran-teny : -is, -is, -it, -issons, -issez, -issent.</li>
+        <li>Ny <span class="color-groupe3">3ème groupe</span> dia <strong>tsy ara-dalàna</strong> (irréguliers). Tsy maintsy <strong>tsianjery</strong> izy ireo.</li>
+        <li>Ny verbes <strong>être, avoir, aller, faire</strong> dia tena ilaina ary tokony ho <strong>tsianjery</strong>.</li>
+        <li>Ny <strong>radical</strong> dia fototeny (racine) izay ampiana ny faran-teny.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny présent de l'indicatif dia tena ilaina amin'ny resaka andavanandro rehefa milaza zavatra <strong>mitranga ankehitriny</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny temps présent de l'indicatif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

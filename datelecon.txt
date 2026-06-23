@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Date – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 280px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour la date */
+    .color-jour {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-mois {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-annee {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-jour-semaine {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>DATE</h1>
+  </div>
+
+  <!-- Carte : Inona ny date ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "date" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>date</strong> dia ampiasaina hilazana ny <strong>andro</strong>, <strong>volana</strong>, ary <strong>taona</strong>.<br><br>
+      🔹 Misy fomba <strong>roa</strong> hilazana ny date amin'ny teny frantsay :<br><br>
+      <span class="icone">📅</span> <strong>Date complète</strong> → <span class="color-jour-semaine">jour</span> + <span class="color-jour">nombre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span><br>
+      Ohatra : <em><span class="color-jour-semaine">Lundi</span> <span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span></em><br><br>
+      <span class="icone">📅</span> <strong>Date simple</strong> → <span class="color-jour">nombre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span><br>
+      Ohatra : <em><span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span></em><br><br>
+      🔹 Ny <strong>question</strong> : <em><span class="color-jour">Quelle est la date</span> d'aujourd'hui ?</em> (Inona ny daty androany?)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF - JOURS ==================== -->
+  <div class="card">
+    <h2>📊 Les jours de la semaine</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Lundi</span></td>
+            <td>Alatsinainy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Mardi</span></td>
+            <td>Talata</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Mercredi</span></td>
+            <td>Alarobia</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Jeudi</span></td>
+            <td>Alakamisy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Vendredi</span></td>
+            <td>Zoma</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Samedi</span></td>
+            <td>Asabotsy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-jour-semaine">Dimanche</span></td>
+            <td>Alahady</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-jour-semaine">jours</span> dia misy <strong>majuscule</strong> amin'ny teny frantsay.<br>
+      • Ohatra : <em><span class="color-jour-semaine">Lundi</span></em>, <em><span class="color-jour-semaine">Mardi</span></em>...
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF - MOIS ==================== -->
+  <div class="card">
+    <h2>📊 Les mois de l'année</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-mois">Janvier</span></td>
+            <td>Janoary</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Février</span></td>
+            <td>Febroary</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Mars</span></td>
+            <td>Martsa</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Avril</span></td>
+            <td>Aprily</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Mai</span></td>
+            <td>Mey</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Juin</span></td>
+            <td>Jona</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Juillet</span></td>
+            <td>Jolay</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Août</span></td>
+            <td>Aogositra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Septembre</span></td>
+            <td>Septambra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Octobre</span></td>
+            <td>Oktobra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Novembre</span></td>
+            <td>Novambra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-mois">Décembre</span></td>
+            <td>Desambra</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-mois">mois</span> dia misy <strong>majuscule</strong> amin'ny teny frantsay.<br>
+      • Ohatra : <em><span class="color-mois">Janvier</span></em>, <em><span class="color-mois">Février</span></em>...
+    </div>
+  </div>
+
+  <!-- 1. COMMENT DIRE LA DATE -->
+  <div class="card">
+    <h2>1️⃣ Comment dire la date</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hilazana ny <strong>date</strong>, dia ampiasaina ny <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span>.<br><br>
+      <strong>Structure :</strong><br>
+      <em>le + <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes le <span class="color-jour">1er</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span>. (1er Janoary 2024 izao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Aujourd'hui, c'est le <span class="color-jour">15</span> <span class="color-mois">juillet</span> <span class="color-annee">2024</span>. (15 Jolay 2024 androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon anniversaire est le <span class="color-jour">10</span> <span class="color-mois">mai</span> <span class="color-annee">2000</span>. (10 Mey 2000 ny fitsingerenan'ny andro nahaterahako.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Noël est le <span class="color-jour">25</span> <span class="color-mois">décembre</span>. (25 Desambra ny Noël.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La rentrée est le <span class="color-jour">1er</span> <span class="color-mois">septembre</span> <span class="color-annee">2024</span>. (1er Septambra 2024 ny famerenana.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ho an'ny <span class="color-jour">1er</span>, dia ampiasaina ny <strong>"premier"</strong> fa tsy "un".<br>
+      Ohatra : <em>le 1er janvier</em> (fa tsy "le un janvier").
+    </div>
+  </div>
+
+  <!-- 2. DATE AVEC LE JOUR DE LA SEMAINE -->
+  <div class="card">
+    <h2>2️⃣ Date avec le jour de la semaine</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hilazana ny <strong>date</strong> miaraka amin'ny <span class="color-jour-semaine">jour</span>, dia ampiasaina ny <span class="color-jour-semaine">jour</span> + <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span>.<br><br>
+      <strong>Structure :</strong><br>
+      <em><span class="color-jour-semaine">jour</span> + le + <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span></em><br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes <span class="color-jour-semaine">lundi</span> <span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span>. (Alatsinainy 10 Janoary 2024 izao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Aujourd'hui, c'est <span class="color-jour-semaine">mardi</span> <span class="color-jour">15</span> <span class="color-mois">juillet</span> <span class="color-annee">2024</span>. (Talata 15 Jolay 2024 androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon anniversaire est <span class="color-jour-semaine">vendredi</span> <span class="color-jour">10</span> <span class="color-mois">mai</span> <span class="color-annee">2000</span>. (Zoma 10 Mey 2000 ny fitsingerenan'ny andro nahaterahako.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Noël est <span class="color-jour-semaine">lundi</span> <span class="color-jour">25</span> <span class="color-mois">décembre</span>. (Alatsinainy 25 Desambra ny Noël.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. COMMENT DEMANDER LA DATE -->
+  <div class="card">
+    <h2>3️⃣ Comment demander la date</h2>
+    <div class="definition-mg">
+      <strong>Questions :</strong><br><br>
+      • <em><span class="color-jour">Quelle est la date</span> d'aujourd'hui ?</em> (Inona ny daty androany?)<br>
+      • <em><span class="color-jour">Quelle date</span> sommes-nous ?</em> (Amin'ny daty firy isika?)<br>
+      • <em>Nous sommes le combien ?</em> (Amin'ny daty firy isika?)<br><br>
+      <strong>Réponses :</strong><br><br>
+      • <em>Nous sommes le <span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span>.</em><br>
+      • <em>C'est le <span class="color-jour">15</span> <span class="color-mois">juillet</span>.</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-jour">Quelle est la date</span> d'aujourd'hui ? (Inona ny daty androany?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes le <span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span>. (10 Janoary 2024 izao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-jour">Quelle date</span> sommes-nous ? (Amin'ny daty firy isika?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes le <span class="color-jour">15</span> <span class="color-mois">juillet</span>. (15 Jolay izao.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. LES NOMBRES POUR LA DATE -->
+  <div class="card">
+    <h2>4️⃣ Les nombres pour la date</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ho an'ny <strong>date</strong>, dia ampiasaina ny <strong>chiffres cardinaux</strong> (isa) afa-tsy ny <span class="color-jour">1er</span> izay ampiasaina ny <strong>"premier"</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-jour">1er</span> → <strong>premier</strong> (voalohany)<br>
+      • <span class="color-jour">2</span> → <strong>deux</strong> (roa)<br>
+      • <span class="color-jour">3</span> → <strong>trois</strong> (telo)<br>
+      • <span class="color-jour">4</span> → <strong>quatre</strong> (efatra)<br>
+      • <span class="color-jour">5</span> → <strong>cinq</strong> (dimy)<br>
+      • <span class="color-jour">6</span> → <strong>six</strong> (enina)<br>
+      • <span class="color-jour">7</span> → <strong>sept</strong> (fito)<br>
+      • <span class="color-jour">8</span> → <strong>huit</strong> (valo)<br>
+      • <span class="color-jour">9</span> → <strong>neuf</strong> (sivy)<br>
+      • <span class="color-jour">10</span> → <strong>dix</strong> (folo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">1er</span> janvier. (1er Janoary.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">2</span> février. (2 Febroary.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">3</span> mars. (3 Martsa.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">10</span> octobre. (10 Oktobra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">15</span> novembre. (15 Novambra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le <span class="color-jour">20</span> décembre. (20 Desambra.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. LES ANNÉES -->
+  <div class="card">
+    <h2>5️⃣ Les années</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hilazana ny <strong>année</strong>, dia ampiasaina ny <strong>chiffres</strong> amin'ny teny frantsay.<br><br>
+      <strong>Règle :</strong><br>
+      • Ho an'ny taona <span class="color-annee">2000</span> sy mihoatra, dia ampiasaina ny <strong>chiffres complets</strong>.<br>
+      Ohatra : <em>deux mille vingt-quatre</em> (2024)<br><br>
+      • Ho an'ny taona <span class="color-annee">1900-1999</span>, dia azo ampiasaina ny <strong>chiffres séparés</strong>.<br>
+      Ohatra : <em>dix-neuf cent quatre-vingt-dix</em> (1990)<br><br>
+      <strong>Exemples :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-annee">2024</span> → deux mille vingt-quatre</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-annee">2025</span> → deux mille vingt-cinq</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-annee">1990</span> → dix-neuf cent quatre-vingt-dix</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-annee">2000</span> → deux mille</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-annee">2010</span> → deux mille dix</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ho an'ny taona <span class="color-annee">2000</span> sy mihoatra, dia ampiasaina ny <strong>"deux mille"</strong> (fa tsy "vingt cent").
+    </div>
+  </div>
+
+  <!-- ==================== EXPRESSIONS AVEC LA DATE ==================== -->
+  <div class="card">
+    <h2>📌 Expressions avec la date</h2>
+    <div class="definition-mg">
+      <strong>Expressions courantes :</strong><br><br>
+      • <strong>aujourd'hui</strong> → androany<br>
+      • <strong>demain</strong> → rahampitso<br>
+      • <strong>hier</strong> → omaly<br>
+      • <strong>le lendemain</strong> → ny ampitso<br>
+      • <strong>la veille</strong> → ny omaly<br>
+      • <strong>cette année</strong> → ity taona ity<br>
+      • <strong>l'année dernière</strong> → tamin'ny taona lasa<br>
+      • <strong>l'année prochaine</strong> → amin'ny taona ho avy
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes le <span class="color-jour">10</span> <span class="color-mois">janvier</span> <span class="color-annee">2024</span> <strong>aujourd'hui</strong>. (10 Janoary 2024 androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>Demain</strong>, nous serons le <span class="color-jour">11</span> <span class="color-mois">janvier</span>. (Rahampitso, dia 11 Janoary isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><strong>Hier</strong>, nous étions le <span class="color-jour">9</span> <span class="color-mois">janvier</span>. (Omaly, dia 9 Janoary isika.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. Structure de la date :</strong><br>
+      • <em>le + <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span></em><br>
+      Ohatra : <em>le 10 janvier 2024</em><br><br>
+      
+      <strong>2. Avec le jour :</strong><br>
+      • <em><span class="color-jour-semaine">jour</span> + le + <span class="color-jour">chiffre</span> + <span class="color-mois">mois</span> + <span class="color-annee">année</span></em><br>
+      Ohatra : <em>lundi 10 janvier 2024</em><br><br>
+      
+      <strong>3. 1er :</strong><br>
+      • <span class="color-jour">1er</span> → <strong>premier</strong><br>
+      Ohatra : <em>le 1er janvier</em><br><br>
+      
+      <strong>4. Les jours et mois :</strong><br>
+      • Misy <strong>majuscule</strong> amin'ny teny frantsay.<br>
+      Ohatra : <em>Lundi, Janvier</em><br><br>
+      
+      <strong>5. Les années :</strong><br>
+      • <span class="color-annee">2000+</span> → <em>deux mille</em> + chiffre<br>
+      • <span class="color-annee">1900-1999</span> → <em>dix-neuf cent</em> + chiffre
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>date</strong> dia ampiasaina hilazana ny <strong>andro</strong>, <strong>volana</strong>, ary <strong>taona</strong>.</li>
+        <li>Ny <span class="color-jour">1er</span> dia ampiasaina ny <strong>"premier"</strong>.</li>
+        <li>Ny <span class="color-jour-semaine">jours</span> sy <span class="color-mois">mois</span> dia misy <strong>majuscule</strong>.</li>
+        <li>Ho an'ny taona <span class="color-annee">2000+</span>, dia ampiasaina ny <strong>"deux mille"</strong>.</li>
+        <li>Ny <strong>question</strong> dia : <em>Quelle est la date ?</em></li>
+        <li>Ny <strong>réponse</strong> dia : <em>Nous sommes le...</em></li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny date dia tena ilaina amin'ny resaka andavanandro rehefa milaza ny <strong>andro</strong>, <strong>volana</strong>, ary <strong>taona</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny date.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

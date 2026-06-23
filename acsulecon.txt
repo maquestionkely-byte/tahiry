@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Accord sujet-verbe – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'accord sujet-verbe */
+    .color-sujet {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-verbe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>ACCORD SUJET-VERBE</h1>
+  </div>
+
+  <!-- Carte : Inona ny accord sujet-verbe ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "accord sujet-verbe" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>accord sujet-verbe</strong> dia ny <strong>fifanarahana</strong> eo amin'ny <span class="color-sujet">sujet</span> (mpanao) sy ny <span class="color-verbe">verbe</span> (mpamaritra).<br><br>
+      🔹 Ny verbe dia <strong>miova</strong> arakaraka ny <strong>olona</strong> (personne) sy ny <strong>isa</strong> (nombre) ny sujet.<br><br>
+      🔹 Misy fitsipika (règles) maromaro tokony hotadidina :<br><br>
+      <span class="icone">📌</span> <strong>Règle 1 :</strong> Ny sujet <strong>tokana</strong> (singulier) dia mitaky verbe amin'ny <strong>singulier</strong>.<br>
+      Ohatra : <em>Il <strong>mange</strong>.</em> (Mihinana izy.)<br><br>
+      <span class="icone">📌</span> <strong>Règle 2 :</strong> Ny sujet <strong>maro</strong> (pluriel) dia mitaky verbe amin'ny <strong>pluriel</strong>.<br>
+      Ohatra : <em>Ils <strong>mangent</strong>.</em> (Mihinana izy ireo.)<br><br>
+      <span class="icone">📌</span> <strong>Règle 3 :</strong> Rehefa misy sujet <strong>maro</strong> (sujet composé), dia mampiasa ny <strong>pluriel</strong>.<br>
+      Ohatra : <em>Pierre et Marie <strong>mangent</strong>.</em> (Pierre sy Marie mihinana.)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th>Verbe (présent)</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-sujet">Je</span> (1ère personne sg)</td>
+            <td><span class="color-verbe">mange</span></td>
+            <td>Je mange.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Tu</span> (2ème personne sg)</td>
+            <td><span class="color-verbe">manges</span></td>
+            <td>Tu manges.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Il / Elle / On</span> (3ème personne sg)</td>
+            <td><span class="color-verbe">mange</span></td>
+            <td>Il mange.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Nous</span> (1ère personne pl)</td>
+            <td><span class="color-verbe">mangeons</span></td>
+            <td>Nous mangeons.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Vous</span> (2ème personne pl)</td>
+            <td><span class="color-verbe">mangez</span></td>
+            <td>Vous mangez.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-sujet">Ils / Elles</span> (3ème personne pl)</td>
+            <td><span class="color-verbe">mangent</span></td>
+            <td>Ils mangent.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-sujet">sujet</span> sy ny <span class="color-verbe">verbe</span> dia <strong>tsy maintsy mifanaraka</strong> amin'ny <strong>olona</strong> (personne) sy ny <strong>isa</strong> (nombre).<br><br>
+      • Rehefa misy <strong>sujet composé</strong> (roa na mihoatra) dia ampiasaina ny <strong>pluriel</strong>.<br>
+      Ohatra : <em>Le chat et le chien <strong>jouent</strong>.</em> (Milalao ny saka sy ny alika.)<br><br>
+      • Rehefa misy <strong>"et"</strong> (sy) eo anelanelan'ny sujet roa, dia <strong>pluriel</strong> ny verbe.<br>
+      Ohatra : <em>Pierre <strong>et</strong> Marie <strong>viennent</strong>.</em> (Pierre sy Marie tonga.)<br><br>
+      • Rehefa misy <strong>"ou"</strong> (na) eo anelanelan'ny sujet roa, dia mifanaraka amin'ny <strong>sujet farany</strong> ny verbe.<br>
+      Ohatra : <em>Pierre <strong>ou</strong> Marie <strong>vient</strong>.</em> (Pierre na Marie tonga.)
+    </div>
+  </div>
+
+  <!-- 1. SUJET SINGULIER - Verbe singulier -->
+  <div class="card">
+    <h2>1️⃣ Sujet SINGULIER → Verbe SINGULIER</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa <strong>tokana</strong> (singulier) ny sujet, dia <strong>tokana</strong> (singulier) ihany koa ny verbe.<br><br>
+      <strong>Sujets singuliers :</strong><br>
+      • <em>je, tu, il, elle, on</em><br>
+      • Anarana tokana (le garçon, la fille, un chat)<br>
+      • Nom propre (Pierre, Marie, Madagascar)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <strong>mange</strong> une pomme. (Mihinana paoma aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <strong>manges</strong> une pomme. (Mihinana paoma ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <strong>mange</strong> une pomme. (Mihinana paoma izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le garçon <strong>mange</strong> une pomme. (Mihinana paoma ny zazalahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre <strong>mange</strong> une pomme. (Mihinana paoma i Pierre.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa tokana ny sujet, dia <strong>tokana</strong> ihany koa ny verbe.
+    </div>
+  </div>
+
+  <!-- 2. SUJET PLURIEL - Verbe pluriel -->
+  <div class="card">
+    <h2>2️⃣ Sujet PLURIEL → Verbe PLURIEL</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa <strong>maro</strong> (pluriel) ny sujet, dia <strong>maro</strong> (pluriel) ihany koa ny verbe.<br><br>
+      <strong>Sujets pluriels :</strong><br>
+      • <em>nous, vous, ils, elles</em><br>
+      • Anarana maro (les garçons, les filles, des chats)<br>
+      • Anarana miaraka amin'ny "et" (Pierre et Marie)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <strong>mangeons</strong> des pommes. (Mihinana paoma izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <strong>mangez</strong> des pommes. (Mihinana paoma ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <strong>mangent</strong> des pommes. (Mihinana paoma izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Les garçons <strong>mangent</strong> des pommes. (Mihinana paoma ny zazalahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre et Marie <strong>mangent</strong> des pommes. (Mihinana paoma i Pierre sy i Marie.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa maro ny sujet, dia <strong>maro</strong> ihany koa ny verbe.
+    </div>
+  </div>
+
+  <!-- 3. SUJET COMPOSÉ AVEC "ET" -->
+  <div class="card">
+    <h2>3️⃣ Sujet composé avec "ET" (sy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <strong>"et"</strong> (sy) eo anelanelan'ny sujet roa na mihoatra, dia <strong>pluriel</strong> ny verbe.<br><br>
+      <strong>Règle :</strong><br>
+      <em>Sujet 1 <strong>et</strong> Sujet 2 + verbe <strong>pluriel</strong></em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre <strong>et</strong> Marie <strong>viennent</strong>. (Tonga i Pierre <strong>sy</strong> i Marie.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat <strong>et</strong> le chien <strong>jouent</strong>. (Milalao ny saka <strong>sy</strong> ny alika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Paul <strong>et</strong> Jean <strong>sont</strong> amis. (Namana i Paul <strong>sy</strong> i Jean.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La France <strong>et</strong> l'Espagne <strong>sont</strong> en Europe. (Any Eoropa i Frantsa <strong>sy</strong> i Espaina.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa misy <strong>"et"</strong> (sy), dia <strong>pluriel</strong> foana ny verbe.
+    </div>
+  </div>
+
+  <!-- 4. SUJET COMPOSÉ AVEC "OU" -->
+  <div class="card">
+    <h2>4️⃣ Sujet composé avec "OU" (na)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <strong>"ou"</strong> (na) eo anelanelan'ny sujet roa, dia mifanaraka amin'ny <strong>sujet farany</strong> ny verbe.<br><br>
+      <strong>Règle :</strong><br>
+      <em>Sujet 1 <strong>ou</strong> Sujet 2 + verbe mifanaraka amin'ny sujet farany</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Pierre <strong>ou</strong> Marie <strong>vient</strong>. (Tonga i Pierre <strong>na</strong> i Marie - singulier satria "Marie" dia tokana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Paul <strong>ou</strong> ses amis <strong>viennent</strong>. (Tonga i Paul <strong>na</strong> ny namany - pluriel satria "ses amis" dia maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le chat <strong>ou</strong> le chien <strong>est</strong> dans le jardin. (Ao anaty zaridaina ny saka <strong>na</strong> ny alika - singulier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Un crayon <strong>ou</strong> des stylos <strong>sont</strong> sur la table. (Eo ambonin'ny latabatra ny pensilihazo <strong>na</strong> ny penina - pluriel.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa misy <strong>"ou"</strong> (na), dia mifanaraka amin'ny <strong>sujet farany</strong> ny verbe.
+    </div>
+  </div>
+
+  <!-- 5. SUJET COLLECTIF -->
+  <div class="card">
+    <h2>5️⃣ Sujet collectif (vondrona)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>sujet collectif</strong> dia teny izay milaza vondrona olona na zavatra (la famille, le groupe, l'équipe).<br><br>
+      <strong>Règle :</strong><br>
+      • Matetika dia <strong>singulier</strong> ny verbe (raha tokana ny hevitra).<br>
+      • Mety ho <strong>pluriel</strong> koa ny verbe (raha misaraka ny hevitra).<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>La famille <strong>mange</strong> ensemble.</em> (Mihinana miaraka ny fianakaviana.)<br>
+      • <em>L'équipe <strong>joue</strong> bien.</em> (Manao tsara ny ekipa.)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">La famille <strong>mange</strong> ensemble. (Mihinana miaraka ny fianakaviana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le groupe <strong>chante</strong> bien. (Mahay mihira ny vondrona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'équipe <strong>joue</strong> au football. (Milalao baolina kitra ny ekipa.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny sujet collectif dia matetika <strong>singulier</strong> ny verbe (satria tokana ny hevitra).
+    </div>
+  </div>
+
+  <!-- ==================== ACCORD AVEC "ON" ==================== -->
+  <div class="card">
+    <h2>📌 Accord avec "ON"</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny <strong>"on"</strong> dia sujet <strong>singulier</strong> (3ème personne du singulier) ary mitaky <strong>singulier</strong> ny verbe.<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>On <strong>mange</strong> ensemble.</em> (Mihinana miaraka isika.)<br>
+      • <em>On <strong>va</strong> au marché.</em> (Mandeha any an-tsena isika.)<br><br>
+      <strong>Marihina :</strong> Na dia "on" aza no ampiasaina hilazana "nous" (izahay), dia <strong>singulier</strong> foana ny verbe.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">On <strong>a</strong> faim. (Noana isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">On <strong>va</strong> au cinéma. (Mandeha any amin'ny sinema isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">On <strong>parle</strong> français. (Miteny frantsay isika.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "On" dia singulier, ka <strong>singulier</strong> foana ny verbe.
+    </div>
+  </div>
+
+  <!-- ==================== ACCORD AVEC "CE" ==================== -->
+  <div class="card">
+    <h2>📌 Accord avec "CE"</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Ny <strong>"ce"</strong> dia sujet <strong>singulier</strong> (3ème personne du singulier) ary mitaky <strong>singulier</strong> ny verbe "être".<br><br>
+      <strong>Ohatra :</strong><br>
+      • <em>Ce <strong>est</strong> un livre.</em> (Boky iray izany.)<br>
+      • <em>Ce <strong>sont</strong> des livres.</em> (Boky ireo.)<br><br>
+      <strong>Marihina :</strong> Rehefa misy <strong>"ce"</strong> + "sont" dia <strong>pluriel</strong> ny "être" (ce sont).
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce <strong>est</strong> un ami. (Sakaiza iray izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce <strong>sont</strong> des amis. (Sakaiza ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce <strong>est</strong> une belle maison. (Trano tsara izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce <strong>sont</strong> de belles maisons. (Trano tsara ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== INFLUENCE DU SUJET SUR LE VERBE ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles d'accord</h2>
+    <div class="definition-mg">
+      <strong>1. Sujet singulier → Verbe singulier</strong><br>
+      Ohatra : <em>Le chat <strong>dort</strong>.</em> (Matoky ny saka.)<br><br>
+      
+      <strong>2. Sujet pluriel → Verbe pluriel</strong><br>
+      Ohatra : <em>Les chats <strong>dorment</strong>.</em> (Matoky ny saka.)<br><br>
+      
+      <strong>3. Sujet composé avec "et" → Verbe pluriel</strong><br>
+      Ohatra : <em>Le chat et le chien <strong>dorment</strong>.</em> (Matoky ny saka sy ny alika.)<br><br>
+      
+      <strong>4. Sujet composé avec "ou" → Verbe mifanaraka amin'ny sujet farany</strong><br>
+      Ohatra : <em>Le chat ou le chien <strong>dort</strong>.</em> (Matoky ny saka na ny alika.)<br><br>
+      
+      <strong>5. "On" → Verbe singulier</strong><br>
+      Ohatra : <em>On <strong>dort</strong> bien.</em> (Matoky tsara isika.)<br><br>
+      
+      <strong>6. "Ce" → "ce est" → "c'est" ; "ce sont" → "ce sont"</strong><br>
+      Ohatra : <em>C'<strong>est</strong> un livre.</em> / <em>Ce <strong>sont</strong> des livres.</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>sujet</strong> sy ny <strong>verbe</strong> dia <strong>tsy maintsy mifanaraka</strong> amin'ny olona sy isa.</li>
+        <li>Rehefa <strong>tokana</strong> ny sujet → <strong>tokana</strong> ny verbe.</li>
+        <li>Rehefa <strong>maro</strong> ny sujet → <strong>maro</strong> ny verbe.</li>
+        <li>Rehefa misy <strong>"et"</strong> (sy) → <strong>pluriel</strong> ny verbe.</li>
+        <li>Rehefa misy <strong>"ou"</strong> (na) → mifanaraka amin'ny <strong>sujet farany</strong> ny verbe.</li>
+        <li><strong>"On"</strong> dia <strong>singulier</strong> foana.</li>
+        <li><strong>"Ce"</strong> dia mitaky <strong>"est"</strong> (singulier) na <strong>"sont"</strong> (pluriel).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny accord sujet-verbe dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fehezanteny. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny accord sujet-verbe.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Les signes orthographiques – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les signes orthographiques */
+    .color-cedille {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-trema {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-accent {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>LES SIGNES ORTHOGRAPHIQUES</h1>
+  </div>
+
+  <!-- Carte : Inona ny signes orthographiques ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "signes orthographiques" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>signes orthographiques</strong> dia ireo <strong>marika</strong> apetraka eo ambonin'ny na eo ambanin'ny litera sasany mba <strong>hanovana ny fanonona</strong> azy na <strong>hanavahana</strong> ny heviny.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"marika fanononana"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ireto ny signes orthographiques fototra :<br><br>
+      <span class="icone">📌</span> <span class="color-cedille">ç</span> La cédille (cedilla)<br><br>
+      <span class="icone">📌</span> <span class="color-trema">ë, ü</span> Le tréma (tremà)<br><br>
+      <span class="icone">📌</span> <span class="color-accent">é</span> L'accent aigu (aigu)<br><br>
+      <span class="icone">📌</span> <span class="color-accent">è, ê</span> L'accent grave et circonflexe (grave sy circonflexe)<br><br>
+      <span class="icone">📌</span> <span class="color-accent">û</span> L'accent circonflexe (circonflexe)<br><br>
+      <span class="icone">📌</span> <span class="color-accent">à</span> L'accent grave (grave)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Signe</th>
+            <th>Nom français</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-cedille">ç</span></td>
+            <td>La cédille</td>
+            <td>fanamarihana eo ambanin'ny 'c'</td>
+            <td>ça, français, leçon</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-trema">ë, ü</span></td>
+            <td>Le tréma</td>
+            <td>roa teboka eo ambonin'ny litera</td>
+            <td>Noël, aiguë, haïr</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accent">é</span></td>
+            <td>L'accent aigu</td>
+            <td>zanatsoratra manka-ankavia</td>
+            <td>éléphant, été, né</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accent">è</span></td>
+            <td>L'accent grave</td>
+            <td>zanatsoratra manka-ankavanana</td>
+            <td>père, mère, très</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accent">ê</span></td>
+            <td>L'accent circonflexe</td>
+            <td>tampon kely eo ambonin'ny litera</td>
+            <td>tête, fête, être</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accent">û</span></td>
+            <td>L'accent circonflexe</td>
+            <td>tampon kely eo ambonin'ny 'u'</td>
+            <td>goût, août, sûr</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accent">à</span></td>
+            <td>L'accent grave</td>
+            <td>zanatsoratra manka-ankavanana</td>
+            <td>à, là, où</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-cedille">cédille</span> (ç) dia apetraka eo ambanin'ny 'c' mba hanehoana fa <strong>"s"</strong> no fononony (fa tsy "k").<br>
+      Ohatra : <em>français</em> (fa tsy "francais")<br><br>
+      • Ny <span class="color-trema">tréma</span> (ë, ü) dia apetraka eo ambonin'ny zanatsoratra mba hanehoana fa <strong>misy feo roa</strong> (tsy mitambatra).<br>
+      Ohatra : <em>Noël</em> (fa tsy "Noel")<br><br>
+      • Ny <span class="color-accent">accent aigu</span> (é) dia apetraka eo ambonin'ny 'e' mba hanehoana fa <strong>e mihidy</strong> (fermé).<br>
+      Ohatra : <em>éléphant</em> (fa tsy "elephant")<br><br>
+      • Ny <span class="color-accent">accent grave</span> (è, à) dia apetraka eo ambonin'ny 'e' na 'a' mba hanehoana fa <strong>e misokatra</strong> (ouvert).<br>
+      Ohatra : <em>père</em> (fa tsy "pere"), <em>à</em> (fa tsy "a")<br><br>
+      • Ny <span class="color-accent">accent circonflexe</span> (ê, û) dia apetraka eo ambonin'ny zanatsoratra mba hanehoana fa nisy litera <strong>very</strong> taloha (s).<br>
+      Ohatra : <em>tête</em> (avy amin'ny "teste"), <em>goût</em> (avy amin'ny "goust")
+    </div>
+  </div>
+
+  <!-- 1. LA CÉDILLE (ç) - La cédille -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-cedille">ç</span> LA CÉDILLE (cedilla)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-cedille">cédille</span> (ç) dia marika apetraka <strong>eo ambanin'ny 'c'</strong> mba hanehoana fa <strong>"s"</strong> no fononony (fa tsy "k").<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina alohan'ny <strong>a, o, u</strong> (fa tsy alohan'ny e, i).<br>
+      • Ohatra : <em>ça</em> (fa tsy "ca"), <em>français</em> (fa tsy "francais")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-cedille">ç</span>a va ? (Manao ahoana ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je parle fran<span class="color-cedille">ç</span>ais. (Miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a une le<span class="color-cedille">ç</span>on. (Manana lesona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a re<span class="color-cedille">ç</span>u un cadeau. (Nahazo fanomezana izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-cedille">cédille</span> (ç) dia ampiasaina mba hanehoana fa "s" no fononony (fa tsy "k"). Ampiasaina alohan'ny <strong>a, o, u</strong>.
+    </div>
+  </div>
+
+  <!-- 2. LE TRÉMA (ë, ü) - Le tréma -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-trema">ë, ü</span> LE TRÉMA (tremà)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-trema">tréma</span> (ë, ü) dia marika apetraka <strong>eo ambonin'ny zanatsoratra</strong> mba hanehoana fa <strong>misy feo roa</strong> (tsy mitambatra).<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina mba hanehoana fa <strong>tsy tokony hivaky</strong> miaraka ny zanatsoratra roa.<br>
+      • Ohatra : <em>Noël</em> (fa tsy "Noel"), <em>aiguë</em> (fa tsy "aigue")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">No<span class="color-trema">ë</span>l est en décembre. (Ny Krismasy dia amin'ny Desambra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est aigu<span class="color-trema">ë</span>. (Marani-tsaina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a ha<span class="color-trema">ï</span>r ce film. (Nankahala ity sarimihetsika ity izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est une situat<span class="color-trema">ï</span>on difficile. (Toetra sarotra izany.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-trema">tréma</span> (ë, ü) dia ampiasaina mba hanehoana fa misy feo roa (tsy mitambatra).
+    </div>
+  </div>
+
+  <!-- 3. L'ACCENT AIGU (é) - L'accent aigu -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-accent">é</span> L'ACCENT AIGU (aigu)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-accent">accent aigu</span> (é) dia marika apetraka <strong>eo ambonin'ny 'e'</strong> mba hanehoana fa <strong>e mihidy</strong> (fermé).<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina amin'ny 'e' voalohany matetika.<br>
+      • Ohatra : <em>éléphant</em> (fa tsy "elephant"), <em>été</em> (fa tsy "ete")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accent">é</span>l<span class="color-accent">é</span>phant. (Elefanta.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">L'<span class="color-accent">é</span>t<span class="color-accent">é</span> est chaud. (Mafana ny fahavaratra.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est n<span class="color-accent">é</span> à Paris. (Teraka tany Paris izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accent">É</span>coute-moi ! (Mihainoa ahy!)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-accent">accent aigu</span> (é) dia ampiasaina amin'ny 'e' mba hanehoana fa e mihidy.
+    </div>
+  </div>
+
+  <!-- 4. L'ACCENT GRAVE (è, à) - L'accent grave -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-accent">è, à</span> L'ACCENT GRAVE (grave)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-accent">accent grave</span> (è, à) dia marika apetraka <strong>eo ambonin'ny 'e' na 'a'</strong> mba hanehoana fa <strong>e misokatra</strong> (ouvert) na hanavahana heviny.<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina amin'ny 'e' misokatra (è) ary amin'ny 'a' (à) mba hanavahana heviny.<br>
+      • Ohatra : <em>père</em> (fa tsy "pere"), <em>à</em> (fa tsy "a")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français (è)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Mon p<span class="color-accent">è</span>re est gentil. (Tsara fanahy ny raiko.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ma m<span class="color-accent">è</span>re est belle. (Tsara tarehy ny reniko.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est tr<span class="color-accent">è</span>s grand. (Tena lehibe izy.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français (à)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais <span class="color-accent">à</span> l'école. (Mandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est l<span class="color-accent">à</span>. (Any izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a dit <span class="color-accent">à</span> moi. (Nanao tamin'ny ahy izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-accent">accent grave</span> (è, à) dia ampiasaina amin'ny 'e' misokatra sy amin'ny 'a' mba hanavahana heviny.
+    </div>
+  </div>
+
+  <!-- 5. L'ACCENT CIRCONFLEXE (ê, û) - L'accent circonflexe -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-accent">ê, û</span> L'ACCENT CIRCONFLEXE (circonflexe)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-accent">accent circonflexe</span> (ê, û) dia marika apetraka <strong>eo ambonin'ny zanatsoratra</strong> mba hanehoana fa nisy litera <strong>very</strong> taloha (matetika 's').<br><br>
+      <strong>Règle :</strong><br>
+      • Ampiasaina amin'ny 'e', 'o', 'a', 'u', 'i' mba hanehoana fa nisy litera very taloha.<br>
+      • Ohatra : <em>tête</em> (avy amin'ny "teste"), <em>goût</em> (avy amin'ny "goust")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français (ê)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a mal à la t<span class="color-accent">ê</span>te. (Malahelo loha izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous allons à la f<span class="color-accent">ê</span>te. (Mandeha any amin'ny fety isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accent">Ê</span>tre ou ne pas être. (Ho sa tsy ho.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny français (û)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'aime le go<span class="color-accent">û</span>t du café. (Tiako ny tsiro kafe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est s<span class="color-accent">û</span>r de lui. (Matoky tena izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes en ao<span class="color-accent">û</span>t. (Amin'ny Aogositra isika.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-accent">accent circonflexe</span> (ê, û) dia ampiasaina hanehoana fa nisy litera very taloha (matetika 's').
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des signes orthographiques</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-cedille">ç</span> La cédille</strong> → ampiasaina alohan'ny <strong>a, o, u</strong> mba hanehoana fa "s" no fononony.<br>
+      Ohatra : <em>ça, français, leçon</em><br><br>
+      
+      <strong>2. <span class="color-trema">ë, ü</span> Le tréma</strong> → ampiasaina hanehoana fa misy feo roa (tsy mitambatra).<br>
+      Ohatra : <em>Noël, aiguë, haïr</em><br><br>
+      
+      <strong>3. <span class="color-accent">é</span> L'accent aigu</strong> → ampiasaina amin'ny 'e' mba hanehoana fa e mihidy.<br>
+      Ohatra : <em>éléphant, été, né</em><br><br>
+      
+      <strong>4. <span class="color-accent">è, à</span> L'accent grave</strong> → ampiasaina amin'ny 'e' misokatra sy amin'ny 'a' mba hanavahana heviny.<br>
+      Ohatra : <em>père, à, là</em><br><br>
+      
+      <strong>5. <span class="color-accent">ê, û</span> L'accent circonflexe</strong> → ampiasaina hanehoana fa nisy litera very taloha.<br>
+      Ohatra : <em>tête, goût, sûr</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-cedille">cédille</span> (ç) dia ampiasaina alohan'ny <strong>a, o, u</strong>.</li>
+        <li>Ny <span class="color-trema">tréma</span> (ë, ü) dia ampiasaina hanehoana fa misy feo <strong>roa</strong>.</li>
+        <li>Ny <span class="color-accent">accent aigu</span> (é) dia ampiasaina amin'ny <strong>'e' mihidy</strong>.</li>
+        <li>Ny <span class="color-accent">accent grave</span> (è, à) dia ampiasaina amin'ny <strong>'e' misokatra</strong> sy amin'ny <strong>'a'</strong> mba hanavahana heviny.</li>
+        <li>Ny <span class="color-accent">accent circonflexe</span> (ê, û) dia ampiasaina hanehoana fa nisy litera <strong>very</strong> taloha.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny signes orthographiques dia tena ilaina mba ho <strong>marina</strong> ny fanonona sy ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny signes orthographiques.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Passé simple – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour le passé simple */
+    .color-groupe1 {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-groupe2 {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-groupe3 {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PASSÉ SIMPLE</h1>
+  </div>
+
+  <!-- Carte : Inona ny passé simple ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "passé simple" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>passé simple</strong> dia ampiasaina hilazana zavatra <strong>efa vita</strong> sy <strong>lany</strong> tamin'ny lasa (action ponctuelle et achevée).<br><br>
+      🔹 Ampiasaina amin'ny <strong>fanoratana ara-literatiora</strong> (littérature, contes, histoires) fa <strong>tsy ampiasaina amin'ny resaka andavanandro</strong> (izay ampiasaina ny passé composé).<br><br>
+      🔹 Ny passé simple dia miforona amin'ny alalan'ny :<br><br>
+      <span class="icone">📌</span> <strong>Radical</strong> (fototeny) + <span class="color-terminaison">terminaisons</span> manokana<br><br>
+      🔹 Ohatra :<br>
+      • <em>Il <span class="color-groupe1">parla</span>.</em> (Niteny izy.)<br>
+      • <em>Il <span class="color-groupe2">finit</span>.</em> (Namita izy.)<br>
+      • <em>Il <span class="color-groupe3">vint</span>.</em> (Tonga izy.)<br><br>
+      🔹 <strong>Règle :</strong> Ny passé simple dia tsy ampiasaina amin'ny resaka andavanandro. Ampiasaina amin'ny <strong>livres, contes, récits historiques</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th><span class="color-groupe1">1er groupe (-er)</span></th>
+            <th><span class="color-groupe2">2ème groupe (-ir)</span></th>
+            <th><span class="color-groupe3">3ème groupe</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je</td>
+            <td>parl<strong>ai</strong></td>
+            <td>fin<strong>is</strong></td>
+            <td>vins</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu</td>
+            <td>parl<strong>as</strong></td>
+            <td>fin<strong>is</strong></td>
+            <td>vins</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il/Elle/On</td>
+            <td>parl<strong>a</strong></td>
+            <td>fin<strong>it</strong></td>
+            <td>vint</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous</td>
+            <td>parl<strong>âmes</strong></td>
+            <td>fin<strong>îmes</strong></td>
+            <td>vînmes</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous</td>
+            <td>parl<strong>âtes</strong></td>
+            <td>fin<strong>îtes</strong></td>
+            <td>vîntes</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils/Elles</td>
+            <td>parl<strong>èrent</strong></td>
+            <td>fin<strong>irent</strong></td>
+            <td>vinrent</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-groupe1">1er groupe</span> (-er) dia mifarana amin'ny : <strong>-ai, -as, -a, -âmes, -âtes, -èrent</strong>.<br>
+      Ohatra : <em>parler → je parlai, tu parlas, il parla, nous parlâmes, vous parlâtes, ils parlèrent</em><br><br>
+      • Ny <span class="color-groupe2">2ème groupe</span> (-ir) dia mifarana amin'ny : <strong>-is, -is, -it, -îmes, -îtes, -irent</strong>.<br>
+      Ohatra : <em>finir → je finis, tu finis, il finit, nous finîmes, vous finîtes, ils finirent</em><br><br>
+      • Ny <span class="color-groupe3">3ème groupe</span> dia <strong>tsy ara-dalàna</strong> (irréguliers). Tsy maintsy <strong>tsianjery</strong> izy ireo.<br>
+      Ohatra : <em>être → je fus, tu fus, il fut, nous fûmes, vous fûtes, ils furent</em><br>
+      Ohatra : <em>avoir → j'eus, tu eus, il eut, nous eûmes, vous eûtes, ils eurent</em><br>
+      Ohatra : <em>aller → j'allai, tu allas, il alla, nous allâmes, vous allâtes, ils allèrent</em>
+    </div>
+  </div>
+
+  <!-- 1. PASSÉ SIMPLE - 1ER GROUPE (verbes en -ER) -->
+  <div class="card">
+    <h2>1️⃣ Passé simple - <span class="color-groupe1">1er groupe (-ER)</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>1er groupe</strong> (mifarana amin'ny <strong>-er</strong>) dia miforona amin'ny alalan'ny <strong>radical</strong> (infinitif - er) + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Exemple :</strong> <em>parler</em> (miteny)<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> parl<span class="color-groupe1">ai</span><br>
+      <strong>Tu</strong> parl<span class="color-groupe1">as</span><br>
+      <strong>Il/Elle/On</strong> parl<span class="color-groupe1">a</span><br>
+      <strong>Nous</strong> parl<span class="color-groupe1">âmes</span><br>
+      <strong>Vous</strong> parl<span class="color-groupe1">âtes</span><br>
+      <strong>Ils/Elles</strong> parl<span class="color-groupe1">èrent</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-groupe1">parlai</span> à mon ami. (Niteny tamin'ny sakaizako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-groupe1">mangeas</span> une pomme. (Nihinana paoma ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe1">chanta</span> une chanson. (Nihira hira izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-groupe1">dansâmes</span> ensemble. (Nandihy miaraka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-groupe1">travaillâtes</span> bien. (Niasa tsara ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-groupe1">aimèrent</span> ce film. (Tia ity sarimihetsika ity izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PASSÉ SIMPLE - 2EME GROUPE (verbes en -IR) -->
+  <div class="card">
+    <h2>2️⃣ Passé simple - <span class="color-groupe2">2ème groupe (-IR)</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>2ème groupe</strong> (mifarana amin'ny <strong>-ir</strong>) dia miforona amin'ny alalan'ny <strong>radical</strong> (infinitif - ir) + <span class="color-terminaison">terminaisons</span>.<br><br>
+      <strong>Exemple :</strong> <em>finir</em> (mamita)<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> fin<span class="color-groupe2">is</span><br>
+      <strong>Tu</strong> fin<span class="color-groupe2">is</span><br>
+      <strong>Il/Elle/On</strong> fin<span class="color-groupe2">it</span><br>
+      <strong>Nous</strong> fin<span class="color-groupe2">îmes</span><br>
+      <strong>Vous</strong> fin<span class="color-groupe2">îtes</span><br>
+      <strong>Ils/Elles</strong> fin<span class="color-groupe2">irent</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-groupe2">finis</span> mes devoirs. (Namita ny raharahako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-groupe2">choisis</span> un livre. (Nisafidy boky ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe2">réussit</span> toujours. (Nahomby foana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-groupe2">finîmes</span> le travail. (Namita ny asa izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-groupe2">choisîtes</span> bien. (Nisafidy tsara ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-groupe2">obéirent</span> à leurs parents. (Nankatò ny ray amandreniny izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PASSÉ SIMPLE - 3EME GROUPE (verbes irréguliers) -->
+  <div class="card">
+    <h2>3️⃣ Passé simple - <span class="color-groupe3">3ème groupe</span> (irréguliers)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>3ème groupe</strong> dia <span class="color-groupe3">tsy ara-dalàna</span> (irréguliers). Tsy maintsy <strong>tsianjery</strong> izy ireo.<br><br>
+      <strong>Exemples :</strong>
+    </div>
+  </div>
+
+  <!-- 3a. ÊTRE - Passé simple -->
+  <div class="card">
+    <h2>3a️⃣ <span class="color-groupe3">ÊTRE</span> (passé simple)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"être"</strong> dia midika hoe <strong>"misy"</strong> na <strong>"maha-izy"</strong>. Izy io dia <span class="color-groupe3">tsy ara-dalàna</span>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Je</strong> f<span class="color-groupe3">us</span><br>
+      <strong>Tu</strong> f<span class="color-groupe3">us</span><br>
+      <strong>Il/Elle/On</strong> f<span class="color-groupe3">ut</span><br>
+      <strong>Nous</strong> f<span class="color-groupe3">ûmes</span><br>
+      <strong>Vous</strong> f<span class="color-groupe3">ûtes</span><br>
+      <strong>Ils/Elles</strong> f<span class="color-groupe3">urent</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-groupe3">fus</span> content. (Nony faly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-groupe3">fus</span> gentil. (Nony tsara fanahy ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe3">fut</span> grand. (Nony lehibe izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-groupe3">fûmes</span> fatigués. (Nony vizana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-groupe3">fûtes</span> prêts. (Nony vonona ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-groupe3">furent</span> heureux. (Nony faly izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3b. AVOIR - Passé simple -->
+  <div class="card">
+    <h2>3b️⃣ <span class="color-groupe3">AVOIR</span> (passé simple)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"avoir"</strong> dia midika hoe <strong>"manana"</strong>. Izy io dia <span class="color-groupe3">tsy ara-dalàna</span>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>e<span class="color-groupe3">us</span><br>
+      <strong>Tu</strong> e<span class="color-groupe3">us</span><br>
+      <strong>Il/Elle/On</strong> e<span class="color-groupe3">ut</span><br>
+      <strong>Nous</strong> e<span class="color-groupe3">ûmes</span><br>
+      <strong>Vous</strong> e<span class="color-groupe3">ûtes</span><br>
+      <strong>Ils/Elles</strong> e<span class="color-groupe3">urent</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-groupe3">eus</span> un frère. (Nony nanana rahalahy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-groupe3">eus</span> soif. (Nony nangetaheta ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe3">eut</span> faim. (Nony noana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-groupe3">eûmes</span> une voiture. (Nony nanana fiara izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-groupe3">eûtes</span> raison. (Nony marina ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-groupe3">eurent</span> froid. (Nony nangatsiaka izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3c. ALLER - Passé simple -->
+  <div class="card">
+    <h2>3c️⃣ <span class="color-groupe3">ALLER</span> (passé simple)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"aller"</strong> dia midika hoe <strong>"mandeha"</strong>. Izy io dia <span class="color-groupe3">tsy ara-dalàna</span>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>J'</strong>all<span class="color-groupe3">ai</span><br>
+      <strong>Tu</strong> all<span class="color-groupe3">as</span><br>
+      <strong>Il/Elle/On</strong> all<span class="color-groupe3">a</span><br>
+      <strong>Nous</strong> all<span class="color-groupe3">âmes</span><br>
+      <strong>Vous</strong> all<span class="color-groupe3">âtes</span><br>
+      <strong>Ils/Elles</strong> all<span class="color-groupe3">èrent</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'<span class="color-groupe3">allai</span> à l'école. (Nony nandeha any an-tsekoly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu <span class="color-groupe3">allas</span> au marché. (Nony nandeha any an-tsena ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe3">alla</span> au cinéma. (Nony nandeha any amin'ny sinema izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous <span class="color-groupe3">allâmes</span> ensemble. (Nony nandeha miaraka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous <span class="color-groupe3">allâtes</span> où ? (Nony nandeha ho aiza ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils <span class="color-groupe3">allèrent</span> au parc. (Nony nandeha any amin'ny valan-javaboary izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. EMPLOI DU PASSÉ SIMPLE -->
+  <div class="card">
+    <h2>4️⃣ Emploi du passé simple</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>passé simple</strong> dia ampiasaina amin'ny toe-javatra <strong>telu</strong> :<br><br>
+      
+      <strong>1. Littérature (livres, contes, romans) :</strong><br>
+      Ohatra : <em>Il <span class="color-groupe1">parla</span> et <span class="color-groupe1">sortit</span>.</em><br><br>
+      
+      <strong>2. Récits historiques (tantara) :</strong><br>
+      Ohatra : <em>Napoléon <span class="color-groupe1">gagna</span> la bataille.</em><br><br>
+      
+      <strong>3. Journaux (gazety) :</strong><br>
+      Ohatra : <em>Le président <span class="color-groupe1">déclara</span> la guerre.</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il <span class="color-groupe1">ouvrit</span> la porte et <span class="color-groupe1">sortit</span>. (Nisokatra ny varavarana izy ary nivoaka - littérature.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Napoléon <span class="color-groupe1">gagna</span> la bataille d'Austerlitz. (Nandresy ny ady tao Austerlitz i Napoléon - histoire.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le président <span class="color-groupe1">déclara</span> la guerre en 1914. (Nanambara ady tamin'ny 1914 ny filoha - journal.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-groupe1">passé simple</span> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature, histoire) fa <strong>tsy</strong> amin'ny resaka andavanandro.
+    </div>
+  </div>
+
+  <!-- 5. COMPARAISON PASSÉ SIMPLE vs PASSÉ COMPOSÉ -->
+  <div class="card">
+    <h2>5️⃣ Comparaison PASSÉ SIMPLE vs PASSÉ COMPOSÉ</h2>
+    <div class="definition-mg">
+      <strong><span class="color-groupe1">PASSÉ SIMPLE</span></strong><br>
+      • Ampiasaina amin'ny <strong>littérature</strong> (fanoratana)<br>
+      • Hevitra : zavatra <strong>efa vita</strong> sy <strong>lany</strong> tamin'ny lasa<br>
+      Ohatra : <em>Il <span class="color-groupe1">parla</span>.</em> (Niteny izy.)<br><br>
+      
+      <strong><span class="color-passe-compose">PASSÉ COMPOSÉ</span></strong><br>
+      • Ampiasaina amin'ny <strong>resaka andavanandro</strong> (parlé)<br>
+      • Hevitra : zavatra <strong>efa vita</strong> tamin'ny lasa<br>
+      Ohatra : <em>Il <span class="color-passe-compose">a parlé</span>.</em> (Efa niteny izy.)<br><br>
+      
+      <strong>Fahasamihafana :</strong><br>
+      • Ny <span class="color-groupe1">passé simple</span> dia ampiasaina amin'ny <strong>fanoratana</strong>.<br>
+      • Ny <span class="color-passe-compose">passé composé</span> dia ampiasaina amin'ny <strong>resaka andavanandro</strong>.<br>
+      • Samy maneho zavatra <strong>efa vita</strong> tamin'ny lasa izy roa.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSÉ SIMPLE : Il <span class="color-groupe1">mangea</span> une pomme. (Nihinana paoma izy - littérature.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">PASSÉ COMPOSÉ : Il <span class="color-passe-compose">a mangé</span> une pomme. (Efa nihinana paoma izy - andavanandro.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>passé simple</strong> dia ampiasaina amin'ny <strong>fanoratana</strong> (littérature, contes, histoire).</li>
+        <li>Ny <strong>passé composé</strong> dia ampiasaina amin'ny <strong>resaka andavanandro</strong>.</li>
+        <li>Ny 1er groupe (-er) dia mifarana amin'ny : <span class="color-groupe1">-ai, -as, -a, -âmes, -âtes, -èrent</span>.</li>
+        <li>Ny 2ème groupe (-ir) dia mifarana amin'ny : <span class="color-groupe2">-is, -is, -it, -îmes, -îtes, -irent</span>.</li>
+        <li>Ny 3ème groupe dia <span class="color-groupe3">tsy ara-dalàna</span> (être → fus, avoir → eus, aller → allai).</li>
+        <li>Raha mamaky boky na tantara ianao, dia hahita ny passé simple matetika.</li>
+        <li>Amin'ny resaka andavanandro, dia ampiasao ny <strong>passé composé</strong> foana.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny passé simple dia tena ilaina mba ho <strong>mora</strong> ny famakiana boky sy tantara amin'ny teny frantsay. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny passé simple.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

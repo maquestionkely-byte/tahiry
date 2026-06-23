@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pronoms personnels sujets – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 280px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les pronoms personnels */
+    .color-1sg {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-2sg {
+      background-color: #fde68a;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-3sg {
+      background-color: #fbcfe8;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-1pl {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-2pl {
+      background-color: #a7f3d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-3pl {
+      background-color: #c4b5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 650px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PRONOMS PERSONNELS SUJETS</h1>
+  </div>
+
+  <!-- Carte : Inona ny pronom personnel sujet ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "pronom personnel sujet" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>pronom personnel sujet</strong> dia teny <strong>misolo olona na zavatra</strong> izay <strong>mpanao</strong> ny asa (sujet) ao amin'ny fehezanteny.<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"izaho", "ianao", "izy", "isika/izahay", "ianareo", "izy ireo"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ireto ny pronoms personnels sujets amin'ny teny frantsay :<br><br>
+      <span class="icone">📌</span> <span class="color-1sg">Je</span> → Izaho (1ère personne du singulier)<br><br>
+      <span class="icone">📌</span> <span class="color-2sg">Tu</span> → Ianao (2ème personne du singulier)<br><br>
+      <span class="icone">📌</span> <span class="color-3sg">Il / Elle / On</span> → Izy (3ème personne du singulier)<br><br>
+      <span class="icone">📌</span> <span class="color-1pl">Nous</span> → Izahay / Isika (1ère personne du pluriel)<br><br>
+      <span class="icone">📌</span> <span class="color-2pl">Vous</span> → Ianareo (2ème personne du pluriel)<br><br>
+      <span class="icone">📌</span> <span class="color-3pl">Ils / Elles</span> → Izy ireo (3ème personne du pluriel)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Personne</th>
+            <th>Singulier</th>
+            <th>Pluriel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>1ère personne<br>(izaho / izahay)</td>
+            <td><span class="color-1sg">je</span></td>
+            <td><span class="color-1pl">nous</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>2ème personne<br>(ianao / ianareo)</td>
+            <td><span class="color-2sg">tu</span></td>
+            <td><span class="color-2pl">vous</span></td>
+          </tr>
+          <tr class="categorie">
+            <td>3ème personne<br>(izy / izy ireo)</td>
+            <td><span class="color-3sg">il / elle / on</span></td>
+            <td><span class="color-3pl">ils / elles</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 NOTE IMPORTANTE :</strong><br><br>
+      <span class="color-1sg">🔵 je</span> → dia miova ho <strong>j'</strong> rehefa manomboka amin'ny <strong>zanatsoratra (a, e, i, o, u, y)</strong> na <strong>h muet</strong> ny matoanteny manaraka.<br>
+      Ohatra : j'ai, j'écoute, j'habite, j'aime<br><br>
+      <span class="color-3sg">🟣 il / elle / on</span> → "on" dia ampiasaina hilazana <strong>olona tsy voafaritra</strong> (mitovy amin'ny hoe "olona" na "isika" amin'ny teny malagasy).<br><br>
+      <span class="color-3pl">🟣 ils / elles</span> → <strong>ils</strong> ho an'ny <strong>masculin pluriel</strong> (lahy maro) na <strong>mixte</strong> (lahy sy vavy), <strong>elles</strong> ho an'ny <strong>féminin pluriel</strong> (vavy maro).<br><br>
+      <span class="color-2pl">🟢 vous</span> → ampiasaina ho an'ny <strong>maro</strong> (ianareo) ary koa ho <strong>fanajana</strong> olona iray (toy ny hoe "ianao" amin'ny fahalalam-pomba).
+    </div>
+  </div>
+
+  <!-- 1. JE - 1ère personne du singulier -->
+  <div class="card">
+    <h2>1️⃣ JE (izaho) - 1ère personne du singulier</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"je"</strong> dia ampiasaina rehefa <strong>izaho</strong> no mpanao ny asa (sujet). Miova ho <strong>"j'"</strong> alohan'ny zanatsoratra na h muet.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je suis content. (Faly aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai un chat. (Manana saka aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'écoute de la musique. (Mihaino mozika aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je parle français. (Miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'habite à Madagascar. (Mipetraka any Madagasikara aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Je" → "j'" rehefa manomboka amin'ny zanatsoratra na h muet ny matoanteny manaraka.
+    </div>
+  </div>
+
+  <!-- 2. TU - 2ème personne du singulier -->
+  <div class="card">
+    <h2>2️⃣ TU (ianao) - 2ème personne du singulier</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"tu"</strong> dia ampiasaina rehefa <strong>ianao</strong> no mpanao ny asa (sujet). Ampiasaina amin'ny <strong>fahalalam-pomba tsotra</strong> (fampahafantarana, namana, fianakaviana).
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu es gentil. (Tsoa fanahy ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu as soif. (Mangetaheta ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu parles français ? (Miteny frantsay ve ianao ?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu aimes le chocolat ? (Tia sôkôla ve ianao ?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu viens demain ? (Ho avy ianao rahampitso ?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. IL / ELLE / ON - 3ème personne du singulier -->
+  <div class="card">
+    <h2>3️⃣ IL / ELLE / ON (izy) - 3ème personne du singulier</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"il", "elle", "on"</strong> dia ampiasaina rehefa <strong>izy</strong> no mpanao ny asa (sujet).<br><br>
+      • <strong>"Il"</strong> → ho an'ny lehilahy na zavatra lahy (masculin)<br>
+      • <strong>"Elle"</strong> → ho an'ny vehivavy na zavatra vavy (féminin)<br>
+      • <strong>"On"</strong> → olona tsy voafaritra (mitovy amin'ny hoe "olona" na "isika")
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est grand. (Lehibe izy - lehilahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est belle. (Tsara tarehy izy - vehivavy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il fait beau. (Tsara ny andro - zavatra tsy misy aina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">On parle français ici. (Miteny frantsay eto isika/olona.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">On va au cinéma ce soir. (Mandeha any amin'ny sinema isika anio hariva.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a 25 ans. (25 taona izy - vehivavy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "On" dia ampiasaina amin'ny <strong>fiteny andavanandro</strong> hilazana hoe "isika" na "olona". Amin'ny fiteny mahazatra dia azo soloina "nous" koa izy.
+    </div>
+  </div>
+
+  <!-- 4. NOUS - 1ère personne du pluriel -->
+  <div class="card">
+    <h2>4️⃣ NOUS (izahay / isika) - 1ère personne du pluriel</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"nous"</strong> dia ampiasaina rehefa <strong>izahay</strong> na <strong>isika</strong> no mpanao ny asa (sujet). Ampiasaina rehefa misy olona mihoatra ny iray ao anatin'ny vondrona.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes fatigués. (Vizana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons faim. (Noana izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous allons à l'école. (Mandeha any an-tsekoly izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous parlons malgache. (Miteny malagasy izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous aimons voyager. (Tia mandehandeha izahay.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. VOUS - 2ème personne du pluriel -->
+  <div class="card">
+    <h2>5️⃣ VOUS (ianareo) - 2ème personne du pluriel</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"vous"</strong> dia ampiasaina rehefa <strong>ianareo</strong> no mpanao ny asa (sujet). Ampiasaina koa ho <strong>fanajana</strong> olona iray (toy ny hoe "ianao" amin'ny fahalalam-pomba).
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous êtes gentils. (Tsoa fanahy ianareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous avez raison. (Marina ny hevitrareo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous parlez français ? (Miteny frantsay ve ianareo ?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous venez avec nous ? (Ho avy miaraka aminay ve ianareo ?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous êtes professeur ? (Mpampianatra ve ianareo ? - fanajana olona iray.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> "Vous" dia ampiasaina amin'ny <strong>fanajana</strong> olona iray (toy ny hoe "ianao" amin'ny fahalalam-pomba) ary ho an'ny <strong>maro</strong> (ianareo).
+    </div>
+  </div>
+
+  <!-- 6. ILS / ELLES - 3ème personne du pluriel -->
+  <div class="card">
+    <h2>6️⃣ ILS / ELLES (izy ireo) - 3ème personne du pluriel</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"ils"</strong> sy <strong>"elles"</strong> dia ampiasaina rehefa <strong>izy ireo</strong> no mpanao ny asa (sujet).<br><br>
+      • <strong>"Ils"</strong> → ho an'ny lehilahy maro (masculin pluriel) na <strong>mixte</strong> (lahy sy vavy)<br>
+      • <strong>"Elles"</strong> → ho an'ny vehivavy maro (féminin pluriel)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils sont grands. (Lehibe izy ireo - lehilahy maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles sont belles. (Tsara tarehy izy ireo - vehivavy maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils ont 20 ans. (20 taona izy ireo - mixte ou lehilahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles parlent malgache. (Miteny malagasy izy ireo - vehivavy maro.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils vont à l'école. (Mandeha any an-tsekoly izy ireo - mixte.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles aiment danser. (Tia mandihy izy ireo - vehivavy maro.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Raha misy <strong>lahy sy vavy</strong> ao anatin'ny vondrona iray, dia ampiasaina ny <strong>"ils"</strong>. Ny "elles" dia ho an'ny <strong>vavy fotsiny</strong>.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF COMPLET ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif complet</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Personne</th>
+            <th>Singulier</th>
+            <th>Pluriel</th>
+            <th>Traduction malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>1ère</td>
+            <td><span class="color-1sg">je (j')</span></td>
+            <td><span class="color-1pl">nous</span></td>
+            <td>izaho / izahay</td>
+          </tr>
+          <tr class="categorie">
+            <td>2ème</td>
+            <td><span class="color-2sg">tu</span></td>
+            <td><span class="color-2pl">vous</span></td>
+            <td>ianao / ianareo</td>
+          </tr>
+          <tr class="categorie">
+            <td>3ème</td>
+            <td><span class="color-3sg">il / elle / on</span></td>
+            <td><span class="color-3pl">ils / elles</span></td>
+            <td>izy / izy ireo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== RÈGLES IMPORTANTES ==================== -->
+  <div class="card">
+    <h2>📌 Règles manan-danja tokony hotadidina</h2>
+    <div class="definition-mg">
+      ✅ <strong>Règle n°1 : Élision</strong><br>
+      Ny <strong>"je"</strong> dia miova ho <strong>"j'"</strong> rehefa manomboka amin'ny <strong>zanatsoratra (a, e, i, o, u, y)</strong> na <strong>h muet</strong> ny matoanteny manaraka.<br>
+      Ohatra : j'ai, j'écoute, j'habite, j'aime (fa tsy je ai, je écoute...)<br><br>
+      
+      ✅ <strong>Règle n°2 : "On"</strong><br>
+      Ny <strong>"on"</strong> dia ampiasaina amin'ny <strong>fiteny andavanandro</strong> hilazana hoe "olona" na "isika". Amin'ny fiteny mahazatra dia azo soloina "nous" izy.<br>
+      Ohatra : On va au marché. (Mandeha any an-tsena isika.)<br><br>
+      
+      ✅ <strong>Règle n°3 : "Ils" vs "Elles"</strong><br>
+      Raha misy <strong>lahy sy vavy</strong> ao anatin'ny vondrona iray, dia ampiasaina ny <strong>"ils"</strong>. Ny "elles" dia ho an'ny <strong>vavy fotsiny</strong>.<br><br>
+      
+      ✅ <strong>Règle n°4 : "Vous" comme politesse</strong><br>
+      Ny <strong>"vous"</strong> dia ampiasaina ho <strong>fanajana</strong> olona iray (toy ny hoe "ianao" amin'ny fahalalam-pomba) ary ho an'ny <strong>maro</strong> (ianareo).
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>pronom personnel sujet</strong> dia <strong>mpanao</strong> ny asa ao amin'ny fehezanteny.</li>
+        <li>Tsy maintsy <strong>mifanaraka</strong> amin'ny matoanteny (verbe) ny pronom sujet.</li>
+        <li>Raha <strong>zanatsoratra</strong> no manomboka ny matoanteny manaraka, ny "je" dia miova ho <strong>"j'"</strong>.</li>
+        <li>Raha <strong>lehilahy sy vehivavy</strong> ao anatin'ny vondrona iray, dia ampiasaina ny <strong>"ils"</strong>.</li>
+        <li>Ny <strong>"on"</strong> dia ampiasaina amin'ny <strong>fiteny andavanandro</strong> (mitovy amin'ny hoe "olona" na "isika").</li>
+        <li>Ny <strong>"vous"</strong> dia ampiasaina ho <strong>fanajana</strong> olona iray sy ho an'ny <strong>maro</strong> (ianareo).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny feon'ny pronom tsirairay.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny pronom personnel sujet dia <strong>fototry ny fehezanteny</strong> rehetra amin'ny teny frantsay. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny pronoms personnels sujets.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

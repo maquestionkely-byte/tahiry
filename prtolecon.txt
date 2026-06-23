@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pronoms toniques – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les pronoms toniques */
+    .color-singulier {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-pluriel {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>PRONOMS TONIQUES</h1>
+  </div>
+
+  <!-- Carte : Inona ny pronom tonique ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "pronom tonique" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>pronom tonique</strong> dia pronom ampiasaina <strong>mba hanamafisana</strong> na <strong>hanavahana</strong> olona iray. Antsoina koa hoe <strong>pronom disjoint</strong> satria afaka <strong>mijanona irery</strong> tsy misy matoanteny.<br><br>
+      🔹 Ampiasaina amin'ny toe-javatra samihafa :<br><br>
+      <span class="icone">📌</span> <strong>Singulier :</strong> <span class="color-singulier">moi, toi, lui, elle</span><br><br>
+      <span class="icone">📌</span> <strong>Pluriel :</strong> <span class="color-pluriel">nous, vous, eux, elles</span><br><br>
+      🔹 Tsy mitovy amin'ny <strong>pronoms sujets</strong> (je, tu, il, elle, nous, vous, ils, elles) izy ireo satria <strong>tsy miaraka amin'ny matoanteny</strong> mivantana.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sujet</th>
+            <th>Pronom tonique</th>
+            <th>Traduction malgasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td>Je (izaho)</td>
+            <td><span class="color-singulier">moi</span></td>
+            <td>aho (ahy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Tu (ianao)</td>
+            <td><span class="color-singulier">toi</span></td>
+            <td>ianao (anao)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Il (izy lahy)</td>
+            <td><span class="color-singulier">lui</span></td>
+            <td>izy (azy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Elle (izy vavy)</td>
+            <td><span class="color-singulier">elle</span></td>
+            <td>izy (azy)</td>
+          </tr>
+          <tr class="categorie">
+            <td>Nous (izahay/isika)</td>
+            <td><span class="color-pluriel">nous</span></td>
+            <td>izahay / isika</td>
+          </tr>
+          <tr class="categorie">
+            <td>Vous (ianareo)</td>
+            <td><span class="color-pluriel">vous</span></td>
+            <td>ianareo</td>
+          </tr>
+          <tr class="categorie">
+            <td>Ils (izy ireo lahy)</td>
+            <td><span class="color-pluriel">eux</span></td>
+            <td>izy ireo</td>
+          </tr>
+          <tr class="categorie">
+            <td>Elles (izy ireo vavy)</td>
+            <td><span class="color-pluriel">elles</span></td>
+            <td>izy ireo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 NOTE IMPORTANTE :</strong><br><br>
+      Ny pronom tonique dia ampiasaina amin'ny toe-javatra <strong>6</strong> :<br>
+      1️⃣ <strong>Mba hanamafisana</strong> (moi, je...)<br>
+      2️⃣ <strong>Aorian'ny préposition</strong> (avec moi, pour toi, chez lui...)<br>
+      3️⃣ <strong>Ho an'ny fampitahana</strong> (lui et moi)<br>
+      4️⃣ <strong>Ho an'ny fanontaniana "et toi ?"</strong><br>
+      5️⃣ <strong>Mba hamaliana fohy</strong> (Moi !)<br>
+      6️⃣ <strong>Miaraka amin'ny "à" na "de"</strong> (penser à moi)
+    </div>
+  </div>
+
+  <!-- ==================== 1. POUR RENFORCER LE SUJET ==================== -->
+  <div class="card">
+    <h2>1️⃣ Pour renforcer le sujet (Mba hanamafisana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique <strong>miaraka amin'ny pronom sujet</strong> mba <strong>hanamafisana</strong> na <strong>hanavahana</strong> olona iray. Matetika dia misy <strong>"moi, je..."</strong> na <strong>"toi, tu..."</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Moi, je suis malagasy. (Aho, dia Malagasy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Toi, tu es français. (Ianao, dia Frantsay ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Lui, il est professeur. (Izy, dia mpampianatra izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle, elle est médecin. (Izy, dia dokotera izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous, nous allons à l'école. (Izahay, dia mandeha any an-tsekoly.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Eux, ils sont étudiants. (Izy ireo, dia mpianatra izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. APRÈS UNE PRÉPOSITION ==================== -->
+  <div class="card">
+    <h2>2️⃣ Après une préposition (Aorian'ny préposition)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique <strong>aorian'ny préposition</strong> (avec, pour, sans, chez, etc.). Tsy azo ampiasaina ny pronom sujet (je, tu, il...) aorian'ny préposition.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il vient avec moi. (Miaraka amiko izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce cadeau est pour toi. (Ity fanomezana ity dia ho anao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle habite chez lui. (Mipetraka ao aminy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je pense à elle. (Mieritreritra azy aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils travaillent sans nous. (Miasa tsy misy antsika izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais chez vous. (Mandeha any aminareo aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce livre est à eux. (Ity boky ity dia azy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Aorian'ny préposition dia tsy maintsy ampiasaina ny <strong>pronom tonique</strong> (moi, toi, lui, elle, nous, vous, eux, elles).
+    </div>
+  </div>
+
+  <!-- ==================== 3. POUR LA COMPARAISON ==================== -->
+  <div class="card">
+    <h2>3️⃣ Pour la comparaison (Ho an'ny fampitahana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique rehefa <strong>mampitaha</strong> olona na zavatra. Matetika miaraka amin'ny <strong>"et"</strong> na <strong>"que"</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Lui et moi, nous sommes amis. (Izaho sy izy dia sakaiza.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle est plus grande que toi. (Lehibe noho ianao izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Eux, ils sont plus âgés que nous. (Izy ireo dia antitra noho izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Toi et moi, nous irons au marché. (Ianao sy izaho dia handeha any an-tsena.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. POUR LA QUESTION "ET TOI ?" ==================== -->
+  <div class="card">
+    <h2>4️⃣ Pour la question "Et toi ?" (Ho an'ny fanontaniana)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique amin'ny fanontaniana <strong>"et toi ?"</strong> na <strong>"et vous ?"</strong> mba <strong>hiverenan'ny fanontaniana</strong> amin'ny olona iresahana.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je vais bien, et toi ? (Tsara aho, ary ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes prêts, et vous ? (Vonona izahay, ary ianareo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est malade, et elle ? (Marary izy, ary izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils vont au cinéma, et vous ? (Mandeha any amin'ny sinema izy ireo, ary ianareo?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. POUR RÉPONDRE SEUL ==================== -->
+  <div class="card">
+    <h2>5️⃣ Pour répondre seul (Mba hamaliana fohy)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique mba <strong>hamaliana fohy</strong> amin'ny fanontaniana, <strong>tsy miaraka amin'ny matoanteny</strong>.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Qui veut du café ? - Moi ! (Iza no mila kafe? - Aho!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Qui est là ? - Lui ! (Iza no eo? - Izy!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Qui viendra ? - Nous ! (Iza no ho avy? - Izahay!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Qui a fait ça ? - Eux ! (Iza no nanao izany? - Izy ireo!)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 6. AVEC "À" ET "DE" ==================== -->
+  <div class="card">
+    <h2>6️⃣ Avec "à" et "de" (Miaraka amin'ny à na de)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ampiasaina ny pronom tonique aorian'ny <strong>"à"</strong> na <strong>"de"</strong> rehefa tsy misy verbe. Matetika amin'ny fomba fiteny <strong>"à moi"</strong>, <strong>"de toi"</strong>, sns.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ce livre est à moi. (Ity boky ity dia ahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Cette maison est à elle. (Ity trano ity dia azy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je parle de toi. (Miresaka anao aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il pense à nous. (Mieritreritra antsika izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉCAPITULATIF DES UTILISATIONS ==================== -->
+  <div class="card">
+    <h2>📌 Récapitulatif des utilisations (Famintinana)</h2>
+    <div class="definition-mg">
+      <strong>Les 6 cas d'utilisation des pronoms toniques :</strong><br><br>
+      
+      <span class="color-singulier">🔵 1. Renforcer le sujet</span><br>
+      Ohatra : <em>Moi, je suis content.</em> (Aho, dia faly aho.)<br><br>
+      
+      <span class="color-singulier">🔵 2. Après une préposition</span><br>
+      Ohatra : <em>Il vient avec moi.</em> (Miaraka amiko izy.)<br><br>
+      
+      <span class="color-singulier">🔵 3. Comparaison</span><br>
+      Ohatra : <em>Elle est plus grande que toi.</em> (Lehibe noho ianao izy.)<br><br>
+      
+      <span class="color-singulier">🔵 4. Question "et toi ?"</span><br>
+      Ohatra : <em>Je vais bien, et toi ?</em> (Tsara aho, ary ianao?)<br><br>
+      
+      <span class="color-singulier">🔵 5. Réponse seule</span><br>
+      Ohatra : <em>Qui veut ? - Moi !</em> (Iza no mila? - Aho!)<br><br>
+      
+      <span class="color-singulier">🔵 6. Après "à" ou "de"</span><br>
+      Ohatra : <em>Ce livre est à moi.</em> (Ity boky ity dia ahy.)
+    </div>
+  </div>
+
+  <!-- ==================== COMPARAISON PRONOM SUJET vs TONIQUE ==================== -->
+  <div class="card">
+    <h2>📌 Différence : Pronom sujet vs Pronom tonique</h2>
+    <div class="definition-mg">
+      <strong>Pronom sujet (Sujet) :</strong><br>
+      • Ampiasaina miaraka amin'ny <strong>verbe</strong><br>
+      • Tsy azo afangaro irery<br>
+      Ohatra : <strong>Je</strong> mange. / <strong>Tu</strong> parles.<br><br>
+      <strong>Pronom tonique (Tonique) :</strong><br>
+      • Ampiasaina <strong>irery</strong> na aorian'ny préposition<br>
+      • Azo afangaro tsy misy verbe<br>
+      Ohatra : <strong>Moi</strong>, je mange. / C'est pour <strong>toi</strong>.
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je parle français. → Moi, je parle français. (Miteny frantsay aho → Aho, dia miteny frantsay aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">C'est pour toi. → (Pronom tonique aorian'ny préposition "pour")</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Toi et moi, nous sommes amis. → (Pronom tonique ho an'ny fampitahana)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXEMPLES SUPPLÉMENTAIRES ==================== -->
+  <div class="card">
+    <h2>📌 Exemples supplémentaires</h2>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Pronoms toniques dans des phrases
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Moi, j'adore le chocolat. (Aho, dia tia sôkôla be aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Toi, tu préfères le café. (Ianao, dia tia kafe kokoa ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Lui, il travaille beaucoup. (Izy, dia miasa be izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle, elle chante bien. (Izy, dia mahay mihira izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous, nous aimons voyager. (Izahay, dia tia mandehandeha.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous, vous êtes gentils. (Ianareo, dia tsara fanahy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Eux, ils sont fatigués. (Izy ireo, dia vizana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles, elles sont contentes. (Izy ireo, dia faly.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny pronom tonique dia ampiasaina rehefa <strong>tsy miaraka amin'ny matoanteny</strong> mivantana.</li>
+        <li>Aorian'ny <strong>préposition</strong> (avec, pour, sans, chez, etc.) dia tsy maintsy ampiasaina ny pronom tonique.</li>
+        <li>Mba <strong>hanamafisana</strong> ny zavatra lazaina, dia ampiasao ny pronom tonique + pronom sujet (ex: Moi, je...).</li>
+        <li>Mba <strong>hamaliana fohy</strong> dia ampiasao ny pronom tonique irery (ex: Moi !).</li>
+        <li>Mba <strong>hampitaha</strong> olona roa dia ampiasao ny pronom tonique (ex: lui et moi).</li>
+        <li>Ny pronom tonique <strong>lui</strong> dia ampiasaina ho an'ny <strong>ilahy</strong> sy <strong>vavy</strong> (fa tsy mitovy amin'ny elle).</li>
+        <li>Ny pronom tonique <strong>eux</strong> dia ho an'ny <strong>lahy maro</strong>, <strong>elles</strong> ho an'ny <strong>vavy maro</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny pronom tonique dia tena ilaina amin'ny resaka andavanandro mba <strong>hanamafisana</strong> sy <strong>hanavahana</strong> olona. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny pronoms toniques.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

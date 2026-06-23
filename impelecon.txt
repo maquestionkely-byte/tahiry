@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Impératif – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .conjugaison-ligne {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .conjugaison-ligne strong {
+      color: #1e40af;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'impératif */
+    .color-tu {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-nous {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-vous {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>IMPÉRATIF</h1>
+  </div>
+
+  <!-- Carte : Inona ny impératif ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "impératif" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>impératif</strong> dia ampiasaina hilazana <strong>baiko</strong>, <strong>fandraràna</strong>, <strong>toromarika</strong>, na <strong>fanoroana</strong> (conseil).<br><br>
+      🔹 Mitovy amin'ny hoe <strong>"manaova", "fa"</strong> amin'ny teny malagasy.<br><br>
+      🔹 Ny impératif dia manana endrika <strong>telo</strong> (olona telo) :<br><br>
+      <span class="icone">📌</span> <span class="color-tu">2ème personne du singulier</span> → <strong>tu</strong><br>
+      Ohatra : <em><span class="color-tu">Donne</span> !</em> (Omeo !)<br><br>
+      <span class="icone">📌</span> <span class="color-nous">1ère personne du pluriel</span> → <strong>nous</strong><br>
+      Ohatra : <em><span class="color-nous">Donnons</span> !</em> (Omeo isika !)<br><br>
+      <span class="icone">📌</span> <span class="color-vous">2ème personne du pluriel</span> → <strong>vous</strong><br>
+      Ohatra : <em><span class="color-vous">Donnez</span> !</em> (Omeo ianareo !)<br><br>
+      🔹 <strong>Règle :</strong> Ny impératif dia <strong>tsy misy sujet</strong> (tsy misy pronom). Ny endriky ny verbe ihany no ampiasaina.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Personne</th>
+            <th>Verbe -er (donner)</th>
+            <th>Verbe -ir (finir)</th>
+            <th>Verbe -re (vendre)</th>
+            <th>Verbe irrégulier (être)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-tu">Tu</span></td>
+            <td>donn<span class="color-tu">e</span></td>
+            <td>fin<span class="color-tu">is</span></td>
+            <td>vend<span class="color-tu">s</span></td>
+            <td>sois</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-nous">Nous</span></td>
+            <td>donn<span class="color-nous">ons</span></td>
+            <td>finiss<span class="color-nous">ons</span></td>
+            <td>vend<span class="color-nous">ons</span></td>
+            <td>soyons</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-vous">Vous</span></td>
+            <td>donn<span class="color-vous">ez</span></td>
+            <td>finiss<span class="color-vous">ez</span></td>
+            <td>vend<span class="color-vous">ez</span></td>
+            <td>soyez</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>impératif</strong> dia ampiasaina hilazana <strong>baiko</strong>, <strong>toromarika</strong>, na <strong>fandraràna</strong>.<br>
+      • Tsy misy <strong>sujet</strong> (pronom) amin'ny impératif.<br>
+      • Ny endrika <span class="color-tu">2ème personne du singulier</span> dia ny an'ny <strong>tu</strong> (fa tsy misy "tu").<br>
+      • Ny endrika <span class="color-nous">1ère personne du pluriel</span> dia ny an'ny <strong>nous</strong> (fa tsy misy "nous").<br>
+      • Ny endrika <span class="color-vous">2ème personne du pluriel</span> dia ny an'ny <strong>vous</strong> (fa tsy misy "vous").<br>
+      • Ho an'ny verbe en <strong>-er</strong>, dia esorina ny <strong>"s"</strong> amin'ny 2ème personne du singulier (parle fa tsy parles).
+    </div>
+  </div>
+
+  <!-- 1. L'IMPÉRATIF - 1ER GROUPE (verbes en -ER) -->
+  <div class="card">
+    <h2>1️⃣ Impératif - 1er groupe (verbes en -ER)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>1er groupe</strong> (mifarana amin'ny <strong>-er</strong>) dia miforona amin'ny alalan'ny fampiasana ny endrika <strong>présent</strong> nefa <strong>tsy misy sujet</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-tu">Tu</span> → esorina ny <strong>"s"</strong> (parle fa tsy parles)<br>
+      • <span class="color-nous">Nous</span> → mitovy amin'ny présent (parlons)<br>
+      • <span class="color-vous">Vous</span> → mitovy amin'ny présent (parlez)
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> parl<span class="color-tu">e</span><br>
+      <strong><span class="color-nous">(nous)</span></strong> parl<span class="color-nous">ons</span><br>
+      <strong><span class="color-vous">(vous)</span></strong> parl<span class="color-vous">ez</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Parle</span> plus fort ! (Mitenena mafy kokoa !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Mangeons</span> ensemble ! (Mihinana miaraka isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Chantez</span> bien ! (Mihira tsara ianareo !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Donne</span> moi ce livre ! (Omeo ahy ity boky ity !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Dansons</span> ensemble ! (Mandihy miaraka isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Travaillez</span> bien ! (Miasa tsara ianareo !)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ho an'ny verbe en <strong>-er</strong>, dia esorina ny <strong>"s"</strong> amin'ny 2ème personne du singulier.
+    </div>
+  </div>
+
+  <!-- 2. L'IMPÉRATIF - 2ÈME GROUPE (verbes en -IR) -->
+  <div class="card">
+    <h2>2️⃣ Impératif - 2ème groupe (verbes en -IR)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>2ème groupe</strong> (mifarana amin'ny <strong>-ir</strong>) dia miforona amin'ny alalan'ny fampiasana ny endrika <strong>présent</strong> nefa <strong>tsy misy sujet</strong>.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-tu">Tu</span> → mitovy amin'ny présent (finis)<br>
+      • <span class="color-nous">Nous</span> → mitovy amin'ny présent (finissons)<br>
+      • <span class="color-vous">Vous</span> → mitovy amin'ny présent (finissez)
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> fin<span class="color-tu">is</span><br>
+      <strong><span class="color-nous">(nous)</span></strong> finiss<span class="color-nous">ons</span><br>
+      <strong><span class="color-vous">(vous)</span></strong> finiss<span class="color-vous">ez</span>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Finis</span> tes devoirs ! (Ampio ny raharahanao !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Finissons</span> le travail ! (Ampio isika ny asa !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Choisissez</span> un livre ! (Misafidia boky ianareo !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Réussis</span> à l'examen ! (Mahomby amin'ny fanadinana !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. L'IMPÉRATIF - 3ÈME GROUPE (verbes irréguliers) -->
+  <div class="card">
+    <h2>3️⃣ Impératif - 3ème groupe (verbes irréguliers)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny verbe amin'ny <strong>3ème groupe</strong> dia <strong>tsy ara-dalàna</strong> (irréguliers). Tsy maintsy <strong>tsianjery</strong> izy ireo.<br><br>
+      <strong>Exemples :</strong> être, avoir, aller, faire, dire, etc.
+    </div>
+  </div>
+
+  <!-- 3a. ÊTRE - Impératif -->
+  <div class="card">
+    <h2>3a️⃣ <span class="color-tu">ÊTRE</span> (impératif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"être"</strong> dia midika hoe <strong>"misy"</strong> na <strong>"maha-izy"</strong>. Izy io dia <strong>tsy ara-dalàna</strong>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> sois<br>
+      <strong><span class="color-nous">(nous)</span></strong> soyons<br>
+      <strong><span class="color-vous">(vous)</span></strong> soyez
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Sois</span> gentil ! (Maha-tsara fanahy !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Soyons</span> calmes ! (Maha-tontolo isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Soyez</span> prêts ! (Maha-vonona ianareo !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3b. AVOIR - Impératif -->
+  <div class="card">
+    <h2>3b️⃣ <span class="color-tu">AVOIR</span> (impératif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"avoir"</strong> dia midika hoe <strong>"manana"</strong>. Izy io dia <strong>tsy ara-dalàna</strong>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> aie<br>
+      <strong><span class="color-nous">(nous)</span></strong> ayons<br>
+      <strong><span class="color-vous">(vous)</span></strong> ayez
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Aie</span> confiance ! (Manana finoana !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Ayons</span> patience ! (Manana faharetana isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Ayez</span> du courage ! (Manana herim-po ianareo !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3c. ALLER - Impératif -->
+  <div class="card">
+    <h2>3c️⃣ <span class="color-tu">ALLER</span> (impératif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"aller"</strong> dia midika hoe <strong>"mandeha"</strong>. Izy io dia <strong>tsy ara-dalàna</strong>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> va<br>
+      <strong><span class="color-nous">(nous)</span></strong> allons<br>
+      <strong><span class="color-vous">(vous)</span></strong> allez
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Va</span> à l'école ! (Mandeha any an-tsekoly !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Allons</span> au cinéma ! (Mandeha any amin'ny sinema isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Allez</span> au marché ! (Mandeha any an-tsena ianareo !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3d. FAIRE - Impératif -->
+  <div class="card">
+    <h2>3d️⃣ <span class="color-tu">FAIRE</span> (impératif)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"faire"</strong> dia midika hoe <strong>"manao"</strong>. Izy io dia <strong>tsy ara-dalàna</strong>.<br><br>
+      <strong>Conjugaison :</strong>
+    </div>
+    <div class="conjugaison-ligne">
+      <strong><span class="color-tu">(tu)</span></strong> fais<br>
+      <strong><span class="color-nous">(nous)</span></strong> faisons<br>
+      <strong><span class="color-vous">(vous)</span></strong> faites
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Fais</span> tes devoirs ! (Manaova raharahanao !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Faisons</span> un gâteau ! (Manao mofomamy isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Faites</span> attention ! (Mitandrema ianareo !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. L'IMPÉRATIF NÉGATIF -->
+  <div class="card">
+    <h2>4️⃣ L'impératif négatif</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Mba hanaovana <strong>fandraràna</strong> (impératif négatif), dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe.<br><br>
+      <strong>Structure :</strong><br>
+      <em>ne + verbe (impératif) + pas</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Ne</span> mange <span class="color-tu">pas</span> trop ! (Aza mihinana be loatra !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-nous">Ne</span> parlons <span class="color-nous">pas</span> trop fort ! (Aza miteny mafy loatra isika !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-vous">Ne</span> fumez <span class="color-vous">pas</span> ici ! (Aza mifoka sigara eto ianareo !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-tu">Ne</span> sois <span class="color-tu">pas</span> triste ! (Aza malahelo !)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Amin'ny impératif négatif, ny <strong>"ne...pas"</strong> dia manodidina ny verbe.
+    </div>
+  </div>
+
+  <!-- 5. PRONOMS AVEC L'IMPÉRATIF -->
+  <div class="card">
+    <h2>5️⃣ Pronoms avec l'impératif</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      • Amin'ny <strong>impératif affirmatif</strong>, ny pronom dia apetraka <strong>aorian'ny</strong> verbe ary mifamatotra amin'ny <strong>tiret</strong> (-).<br>
+      Ohatra : <em>Donne-<strong>moi</strong> !</em> (Omeo ahy !)<br><br>
+      
+      • Amin'ny <strong>impératif négatif</strong>, ny pronom dia apetraka <strong>alohan'ny</strong> verbe.<br>
+      Ohatra : <em>Ne me donne pas !</em> (Aza omena ahy !)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">IMPÉRATIF AFFIRMATIF : Donne-<strong>moi</strong> ce livre ! (Omeo ahy ity boky ity !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">IMPÉRATIF NÉGATIF : Ne me donne pas ce livre ! (Aza omena ahy ity boky ity !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">IMPÉRATIF AFFIRMATIF : Lève-<strong>toi</strong> ! (Mitsangana !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">IMPÉRATIF NÉGATIF : Ne te lève pas ! (Aza mitsangana !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>impératif</strong> dia ampiasaina hilazana <strong>baiko</strong>, <strong>toromarika</strong>, na <strong>fandraràna</strong>.</li>
+        <li>Tsy misy <strong>sujet</strong> (pronom) amin'ny impératif.</li>
+        <li>Misy endrika <strong>telo</strong> : <span class="color-tu">tu</span>, <span class="color-nous">nous</span>, <span class="color-vous">vous</span>.</li>
+        <li>Ho an'ny verbe en <strong>-er</strong>, dia esorina ny <strong>"s"</strong> amin'ny 2ème personne du singulier.</li>
+        <li>Ny <span class="color-irregulier">verbes irréguliers</span> (être, avoir, aller, faire) dia tokony ho <strong>tsianjery</strong>.</li>
+        <li>Amin'ny <strong>impératif négatif</strong>, dia apetraka ny <strong>"ne...pas"</strong> manodidina ny verbe.</li>
+        <li>Amin'ny <strong>impératif affirmatif</strong>, ny pronom dia apetraka <strong>aorian'ny</strong> verbe.</li>
+        <li>Amin'ny <strong>impératif négatif</strong>, ny pronom dia apetraka <strong>alohan'ny</strong> verbe.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny impératif dia tena ilaina amin'ny resaka andavanandro rehefa milaza <strong>baiko</strong> na <strong>toromarika</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny impératif.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

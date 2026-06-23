@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Subordonnées et coordonnées – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les propositions */
+    .color-juxtaposee {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-coordonnee {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-subordonnee {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>SUBORDONNÉES ET COORDONNÉES</h1>
+  </div>
+
+  <!-- Carte : Inona ny subordonnées et coordonnées ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "subordonnées" sy "coordonnées" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>propositions</strong> (fefy) dia singa ao anaty fehezanteny (phrase).<br><br>
+      🔹 Misy karazany <strong>telu</strong> ny fikambanan'ny propositions :<br><br>
+      <span class="icone">📌</span> <span class="color-juxtaposee">JUXTAPOSÉES</span> → mifanaraka tsy misy mot de liaison (virgule na point-virgule)<br>
+      Ohatra : <em>Il chante, il danse.</em><br><br>
+      <span class="icone">📌</span> <span class="color-coordonnee">COORDONNÉES</span> → mifanaraka amin'ny alalan'ny <strong>conjonction de coordination</strong> (mais, ou, et, donc, or, ni, car)<br>
+      Ohatra : <em>Il chante <span class="color-coordonnee">et</span> il danse.</em><br><br>
+      <span class="icone">📌</span> <span class="color-subordonnee">SUBORDONNÉES</span> → miankina amin'ny proposition hafa amin'ny alalan'ny <strong>conjonction de subordination</strong> (que, quand, si, parce que, etc.)<br>
+      Ohatra : <em>Il danse <span class="color-subordonnee">parce qu'</span>il est content.</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Lien</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-juxtaposee">JUXTAPOSÉES</span></td>
+            <td>virgule (,) ou point-virgule (;)</td>
+            <td>mifanaraka tsy misy mot de liaison</td>
+            <td>Il chante, il danse.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-coordonnee">COORDONNÉES</span></td>
+            <td>mais, ou, et, donc, or, ni, car</td>
+            <td>mifanaraka amin'ny alalan'ny coordination</td>
+            <td>Il chante et il danse.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-subordonnee">SUBORDONNÉES</span></td>
+            <td>que, quand, si, parce que, etc.</td>
+            <td>miankina amin'ny proposition hafa</td>
+            <td>Il danse parce qu'il est content.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-juxtaposee">propositions juxtaposées</span> dia <strong>mitovy lanja</strong> ary tsy misy mot de liaison.<br>
+      Ohatra : <em>Il est fatigué, il dort.</em><br><br>
+      • Ny <span class="color-coordonnee">propositions coordonnées</span> dia <strong>mitovy lanja</strong> ary mifandray amin'ny alalan'ny <strong>conjonction de coordination</strong>.<br>
+      Ohatra : <em>Il est fatigué <strong>et</strong> il dort.</em><br><br>
+      • Ny <span class="color-subordonnee">propositions subordonnées</span> dia <strong>tsy mitovy lanja</strong> (iray miankina amin'ny iray) ary mifandray amin'ny alalan'ny <strong>conjonction de subordination</strong>.<br>
+      Ohatra : <em>Il dort <strong>parce qu'</strong>il est fatigué.</em>
+    </div>
+  </div>
+
+  <!-- 1. PROPOSITIONS JUXTAPOSÉES -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-juxtaposee">PROPOSITIONS JUXTAPOSÉES</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-juxtaposee">propositions juxtaposées</span> dia fefy roa na mihoatra izay <strong>mifanaraka</strong> (mitovy lanja) ary <strong>tsy misy mot de liaison</strong>. Misy virgule (,) na point-virgule (;) eo anelanelany.<br><br>
+      <strong>Règle :</strong><br>
+      • Fefy roa dia <strong>mitovy lanja</strong>.<br>
+      • Tsy misy <strong>conjonction</strong> (teny mampifandray).<br>
+      • Misy <strong>virgule</strong> (,) na <strong>point-virgule</strong> (;).
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est fatigué<span class="color-juxtaposee">,</span> il dort. (Vizana izy<span class="color-juxtaposee">,</span> matory.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle chante<span class="color-juxtaposee">,</span> elle danse. (Mihira izy<span class="color-juxtaposee">,</span> mandihy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il pleut<span class="color-juxtaposee">,</span> nous restons à la maison. (Misy orana<span class="color-juxtaposee">,</span> mijanona ao an-trano isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est parti<span class="color-juxtaposee">;</span> il ne reviendra pas. (Lasa izy<span class="color-juxtaposee">;</span> tsy hiverina.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-juxtaposee">juxtaposition</span> dia mampifandray fefy roa amin'ny alalan'ny <strong>virgule</strong> na <strong>point-virgule</strong>, tsy misy mot de liaison.
+    </div>
+  </div>
+
+  <!-- 2. PROPOSITIONS COORDONNÉES -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-coordonnee">PROPOSITIONS COORDONNÉES</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-coordonnee">propositions coordonnées</span> dia fefy roa na mihoatra izay <strong>mifanaraka</strong> (mitovy lanja) ary mifandray amin'ny alalan'ny <strong>conjonction de coordination</strong>.<br><br>
+      <strong>Conjonctions de coordination :</strong><br>
+      • <strong>mais</strong> (fa)<br>
+      • <strong>ou</strong> (na)<br>
+      • <strong>et</strong> (ary)<br>
+      • <strong>donc</strong> (ka)<br>
+      • <strong>or</strong> (nefa)<br>
+      • <strong>ni</strong> (na...na)<br>
+      • <strong>car</strong> (satria)<br><br>
+      <strong>Règle :</strong><br>
+      • Fefy roa dia <strong>mitovy lanja</strong>.<br>
+      • Misy <strong>conjonction de coordination</strong> eo anelanelany.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est fatigué <span class="color-coordonnee">et</span> il dort. (Vizana izy <span class="color-coordonnee">ary</span> matory.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle chante <span class="color-coordonnee">ou</span> elle danse. (Mihira izy <span class="color-coordonnee">na</span> mandihy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est parti, <span class="color-coordonnee">mais</span> il reviendra. (Lasa izy, <span class="color-coordonnee">fa</span> hiverina.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est malade, <span class="color-coordonnee">donc</span> il ne vient pas. (Marary izy, <span class="color-coordonnee">ka</span> tsy ho avy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est riche, <span class="color-coordonnee">or</span> il n'est pas heureux. (Mpanankarena izy, <span class="color-coordonnee">nefa</span> tsy faly.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il ne parle <span class="color-coordonnee">ni</span> français <span class="color-coordonnee">ni</span> anglais. (Tsy miteny <span class="color-coordonnee">na</span> frantsay <span class="color-coordonnee">na</span> anglisy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est fatigué, <span class="color-coordonnee">car</span> il a beaucoup travaillé. (Vizana izy, <span class="color-coordonnee">satria</span> niasa be.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-coordonnee">coordination</span> dia mampifandray fefy roa mitovy lanja amin'ny alalan'ny <strong>mais, ou, et, donc, or, ni, car</strong>.
+    </div>
+  </div>
+
+  <!-- 3. PROPOSITIONS SUBORDONNÉES -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-subordonnee">PROPOSITIONS SUBORDONNÉES</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-subordonnee">propositions subordonnées</span> dia fefy iray izay <strong>miankina</strong> amin'ny fefy hafa (tsy mitovy lanja). Misy <strong>conjonction de subordination</strong> eo anelanelany.<br><br>
+      <strong>Conjonctions de subordination courantes :</strong><br>
+      • <strong>que</strong> (fa)<br>
+      • <strong>quand</strong> (rehefa / oviana)<br>
+      • <strong>si</strong> (raha)<br>
+      • <strong>parce que</strong> (satria)<br>
+      • <strong>lorsque</strong> (rehefa)<br>
+      • <strong>comme</strong> (toy ny / satria)<br>
+      • <strong>bien que</strong> (na dia)<br>
+      • <strong>afin que</strong> (mba)<br>
+      • <strong>pour que</strong> (mba)<br>
+      • <strong>pendant que</strong> (raha)<br>
+      • <strong>tandis que</strong> (raha)<br><br>
+      <strong>Règle :</strong><br>
+      • Fefy roa dia <strong>tsy mitovy lanja</strong> (iray miankina amin'ny iray).<br>
+      • Misy <strong>conjonction de subordination</strong> eo anelanelany.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il dort <span class="color-subordonnee">parce qu'</span>il est fatigué. (Matory izy <span class="color-subordonnee">satria</span> vizana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je pense <span class="color-subordonnee">qu'</span>il viendra. (Mieritreritra aho <span class="color-subordonnee">fa</span> ho avy izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je viendrai <span class="color-subordonnee">si</span> j'ai le temps. (Ho avy aho <span class="color-subordonnee">raha</span> manana fotoana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-subordonnee">Quand</span> il arrive, il téléphone. (<span class="color-subordonnee">Rehefa</span> tonga izy, dia mba miantso.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il mange <span class="color-subordonnee">pour qu'</span>il ait de l'énergie. (Mihinana izy <span class="color-subordonnee">mba</span> hanana hery.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-subordonnee">Bien qu'</span>il soit fatigué, il travaille. (<span class="color-subordonnee">Na dia</span> vizana aza izy, dia miasa.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-subordonnee">subordination</span> dia mampifandray fefy roa tsy mitovy lanja amin'ny alalan'ny <strong>que, quand, si, parce que, etc.</strong>
+    </div>
+  </div>
+
+  <!-- 4. COMPARAISON DES TROIS TYPES -->
+  <div class="card">
+    <h2>4️⃣ Comparaison des trois types</h2>
+    <div class="definition-mg">
+      <strong><span class="color-juxtaposee">JUXTAPOSÉES</span></strong><br>
+      • Lien : virgule (,) ou point-virgule (;)<br>
+      • Fefy roa : <strong>mitovy lanja</strong><br>
+      • Tsy misy mot de liaison<br>
+      Ohatra : <em>Il est fatigué, il dort.</em><br><br>
+      
+      <strong><span class="color-coordonnee">COORDONNÉES</span></strong><br>
+      • Lien : conjonction de coordination (mais, ou, et, donc, or, ni, car)<br>
+      • Fefy roa : <strong>mitovy lanja</strong><br>
+      • Misy mot de liaison<br>
+      Ohatra : <em>Il est fatigué et il dort.</em><br><br>
+      
+      <strong><span class="color-subordonnee">SUBORDONNÉES</span></strong><br>
+      • Lien : conjonction de subordination (que, quand, si, parce que, etc.)<br>
+      • Fefy roa : <strong>tsy mitovy lanja</strong> (iray miankina amin'ny iray)<br>
+      • Misy mot de liaison<br>
+      Ohatra : <em>Il dort parce qu'il est fatigué.</em>
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">JUXTAPOSÉES : Il est fatigué, il dort. (Vizana izy, matory.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">COORDONNÉES : Il est fatigué et il dort. (Vizana izy ary matory.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">SUBORDONNÉES : Il dort parce qu'il est fatigué. (Matory izy satria vizana.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CONJONCTIONS DE COORDINATION -->
+  <div class="card">
+    <h2>5️⃣ Conjonctions de coordination (détail)</h2>
+    <div class="definition-mg">
+      <strong>Les 7 conjonctions de coordination :</strong><br><br>
+      • <strong>mais</strong> → fa (opposition)<br>
+      Ohatra : <em>Je veux y aller, <span class="color-coordonnee">mais</span> je n'ai pas le temps.</em><br><br>
+      • <strong>ou</strong> → na (alternative)<br>
+      Ohatra : <em>Tu prends le train <span class="color-coordonnee">ou</span> l'avion ?</em><br><br>
+      • <strong>et</strong> → ary (addition)<br>
+      Ohatra : <em>Il est grand <span class="color-coordonnee">et</span> fort.</em><br><br>
+      • <strong>donc</strong> → ka (conséquence)<br>
+      Ohatra : <em>Il a faim, <span class="color-coordonnee">donc</span> il mange.</em><br><br>
+      • <strong>or</strong> → nefa (opposition)<br>
+      Ohatra : <em>Il est riche, <span class="color-coordonnee">or</span> il n'est pas heureux.</em><br><br>
+      • <strong>ni</strong> → na...na (négation)<br>
+      Ohatra : <em>Il ne parle <span class="color-coordonnee">ni</span> français <span class="color-coordonnee">ni</span> anglais.</em><br><br>
+      • <strong>car</strong> → satria (cause)<br>
+      Ohatra : <em>Il reste à la maison, <span class="color-coordonnee">car</span> il est malade.</em>
+    </div>
+  </div>
+
+  <!-- 6. CONJONCTIONS DE SUBORDINATION -->
+  <div class="card">
+    <h2>6️⃣ Conjonctions de subordination (détail)</h2>
+    <div class="definition-mg">
+      <strong>Les conjonctions de subordination courantes :</strong><br><br>
+      • <strong>que</strong> → fa<br>
+      Ohatra : <em>Je pense <span class="color-subordonnee">qu'</span>il viendra.</em><br><br>
+      • <strong>quand</strong> / <strong>lorsque</strong> → rehefa<br>
+      Ohatra : <em><span class="color-subordonnee">Quand</span> il arrive, il téléphone.</em><br><br>
+      • <strong>si</strong> → raha<br>
+      Ohatra : <em>Je viendrai <span class="color-subordonnee">si</span> j'ai le temps.</em><br><br>
+      • <strong>parce que</strong> → satria<br>
+      Ohatra : <em>Il est content <span class="color-subordonnee">parce qu'</span>il a réussi.</em><br><br>
+      • <strong>pour que</strong> / <strong>afin que</strong> → mba<br>
+      Ohatra : <em>Il étudie <span class="color-subordonnee">pour qu'</span>il réussisse.</em><br><br>
+      • <strong>bien que</strong> → na dia<br>
+      Ohatra : <em><span class="color-subordonnee">Bien qu'</span>il soit fatigué, il travaille.</em><br><br>
+      • <strong>comme</strong> → satria / toy ny<br>
+      Ohatra : <em><span class="color-subordonnee">Comme</span> il est malade, il reste à la maison.</em><br><br>
+      • <strong>pendant que</strong> / <strong>tandis que</strong> → raha / mandritra<br>
+      Ohatra : <em>Il dort <span class="color-subordonnee">pendant que</span> je travaille.</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-juxtaposee">juxtaposées</span> dia mifanaraka tsy misy mot de liaison (virgule na point-virgule).</li>
+        <li>Ny <span class="color-coordonnee">coordonnées</span> dia mifanaraka amin'ny alalan'ny <strong>mais, ou, et, donc, or, ni, car</strong>.</li>
+        <li>Ny <span class="color-subordonnee">subordonnées</span> dia miankina amin'ny proposition hafa amin'ny alalan'ny <strong>que, quand, si, parce que, etc.</strong></li>
+        <li>Amin'ny <span class="color-juxtaposee">juxtaposées</span> sy <span class="color-coordonnee">coordonnées</span>, ny fefy roa dia <strong>mitovy lanja</strong>.</li>
+        <li>Amin'ny <span class="color-subordonnee">subordonnées</span>, ny fefy roa dia <strong>tsy mitovy lanja</strong> (iray miankina amin'ny iray).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny subordonnées sy coordonnées dia tena ilaina mba ho <strong>mazava</strong> sy <strong>marina</strong> ny fehezanteny lava. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny subordonnées sy coordonnées.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

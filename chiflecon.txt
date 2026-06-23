@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chiffres – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 200px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les chiffres */
+    .color-unite {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-dizaine {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-centaine {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-special {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>CHIFFRES</h1>
+  </div>
+
+  <!-- Carte : Inona ny chiffres ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "chiffres" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>chiffres</strong> dia ampiasaina hilazana <strong>isa</strong> (nombre) amin'ny teny frantsay.<br><br>
+      🔹 Misy karazany <strong>roa</strong> :<br><br>
+      <span class="icone">🔢</span> <strong>Chiffres cardinaux</strong> → milaza ny <strong>isa</strong> (un, deux, trois...)<br><br>
+      <span class="icone">🔢</span> <strong>Chiffres ordinaux</strong> → milaza ny <strong>filaharana</strong> (premier, deuxième, troisième...)<br><br>
+      🔹 Amin'ity lesona ity dia hifantoka amin'ny <strong>chiffres cardinaux</strong> isika.
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF 0-20 ==================== -->
+  <div class="card">
+    <h2>📊 Chiffres de 0 à 20</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chiffre</th>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-unite">0</span></td>
+            <td>zéro</td>
+            <td>tsy misy / aotra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">1</span></td>
+            <td>un</td>
+            <td>iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">2</span></td>
+            <td>deux</td>
+            <td>roa</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">3</span></td>
+            <td>trois</td>
+            <td>telo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">4</span></td>
+            <td>quatre</td>
+            <td>efatra</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">5</span></td>
+            <td>cinq</td>
+            <td>dimy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">6</span></td>
+            <td>six</td>
+            <td>enina</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">7</span></td>
+            <td>sept</td>
+            <td>fito</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">8</span></td>
+            <td>huit</td>
+            <td>valo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">9</span></td>
+            <td>neuf</td>
+            <td>sivy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">10</span></td>
+            <td>dix</td>
+            <td>folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">11</span></td>
+            <td>onze</td>
+            <td>iraika ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">12</span></td>
+            <td>douze</td>
+            <td>roa ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">13</span></td>
+            <td>treize</td>
+            <td>telo ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">14</span></td>
+            <td>quatorze</td>
+            <td>efatra ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">15</span></td>
+            <td>quinze</td>
+            <td>dimy ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">16</span></td>
+            <td>seize</td>
+            <td>enina ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">17</span></td>
+            <td>dix-sept</td>
+            <td>fito ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">18</span></td>
+            <td>dix-huit</td>
+            <td>valo ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">19</span></td>
+            <td>dix-neuf</td>
+            <td>sivy ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">20</span></td>
+            <td>vingt</td>
+            <td>roapolo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny chiffres 0-16 dia <strong>tsy misy fanampiny</strong> (sauf 17-19 = dix + sept, huit, neuf).<br>
+      • Ny chiffre <span class="color-unite">1</span> dia miova ho <strong>"une"</strong> amin'ny féminin.<br>
+      Ohatra : <em>un garçon</em> (zazalahy iray) / <em>une fille</em> (zazavavy iray)<br>
+      • Ny chiffre <span class="color-special">20</span> (vingt) dia manampy <strong>"s"</strong> rehefa ampitomboina sy tsy misy isa manaraka.<br>
+      Ohatra : <em>quatre-vingts</em> (80) fa <em>quatre-vingt-un</em> (81).
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU 21-69 ==================== -->
+  <div class="card">
+    <h2>📊 Chiffres de 21 à 69</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chiffre</th>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-dizaine">21</span></td>
+            <td>vingt et un</td>
+            <td>roapolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">22</span></td>
+            <td>vingt-deux</td>
+            <td>roapolo sy roa</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">30</span></td>
+            <td>trente</td>
+            <td>telopolo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">31</span></td>
+            <td>trente et un</td>
+            <td>telopolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">40</span></td>
+            <td>quarante</td>
+            <td>efapolo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">41</span></td>
+            <td>quarante et un</td>
+            <td>efapolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">50</span></td>
+            <td>cinquante</td>
+            <td>dimampolo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">51</span></td>
+            <td>cinquante et un</td>
+            <td>dimampolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">60</span></td>
+            <td>soixante</td>
+            <td>enimpolo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">61</span></td>
+            <td>soixante et un</td>
+            <td>enimpolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-dizaine">69</span></td>
+            <td>soixante-neuf</td>
+            <td>enimpolo sy sivy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ho an'ny chiffre mifarana amin'ny <strong>1</strong>, dia ampiasaina ny <strong>"et"</strong> (sy).<br>
+      Ohatra : <em>vingt et un</em> (21), <em>trente et un</em> (31)<br>
+      • Ho an'ny chiffre mifarana amin'ny 2-9, dia ampiasaina ny <strong>"-"</strong> (tiret).<br>
+      Ohatra : <em>vingt-deux</em> (22), <em>trente-deux</em> (32)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU 70-99 ==================== -->
+  <div class="card">
+    <h2>📊 Chiffres de 70 à 99</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chiffre</th>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-special">70</span></td>
+            <td>soixante-dix</td>
+            <td>enimpolo sy folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">71</span></td>
+            <td>soixante et onze</td>
+            <td>enimpolo sy iraika ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">72</span></td>
+            <td>soixante-douze</td>
+            <td>enimpolo sy roa ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">80</span></td>
+            <td>quatre-vingts</td>
+            <td>efapolo (na valopolo)</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">81</span></td>
+            <td>quatre-vingt-un</td>
+            <td>efapolo sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">82</span></td>
+            <td>quatre-vingt-deux</td>
+            <td>efapolo sy roa</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">90</span></td>
+            <td>quatre-vingt-dix</td>
+            <td>efapolo sy folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">91</span></td>
+            <td>quatre-vingt-onze</td>
+            <td>efapolo sy iraika ambin'ny folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-special">99</span></td>
+            <td>quatre-vingt-dix-neuf</td>
+            <td>efapolo sy sivy ambin'ny folo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-special">70-79</span> dia <strong>"soixante" + dix (10) à dix-neuf (19)</strong>.<br>
+      Ohatra : <em>soixante-dix</em> (70), <em>soixante-dix-neuf</em> (79)<br>
+      • Ny <span class="color-special">80-89</span> dia <strong>"quatre-vingt" + 1 à 9</strong>.<br>
+      Ohatra : <em>quatre-vingts</em> (80), <em>quatre-vingt-un</em> (81)<br>
+      • Ny <span class="color-special">90-99</span> dia <strong>"quatre-vingt" + dix (10) à dix-neuf (19)</strong>.<br>
+      Ohatra : <em>quatre-vingt-dix</em> (90), <em>quatre-vingt-dix-neuf</em> (99)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU 100-1000 ==================== -->
+  <div class="card">
+    <h2>📊 Chiffres de 100 à 1000</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chiffre</th>
+            <th>Français</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-centaine">100</span></td>
+            <td>cent</td>
+            <td>zato</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">101</span></td>
+            <td>cent un</td>
+            <td>zato sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">110</span></td>
+            <td>cent dix</td>
+            <td>zato sy folo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">200</span></td>
+            <td>deux cents</td>
+            <td>roanjato</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">201</span></td>
+            <td>deux cent un</td>
+            <td>roanjato sy iray</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">300</span></td>
+            <td>trois cents</td>
+            <td>telo jato</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">1000</span></td>
+            <td>mille</td>
+            <td>arivo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-centaine">2000</span></td>
+            <td>deux mille</td>
+            <td>roa arivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-centaine">cent</span> dia manampy <strong>"s"</strong> rehefa ampitomboina sy tsy misy isa manaraka.<br>
+      Ohatra : <em>deux cents</em> (200) fa <em>deux cent un</em> (201)<br>
+      • Ny <span class="color-centaine">mille</span> dia <strong>tsy miova</strong> na oviana na oviana.<br>
+      Ohatra : <em>deux mille</em> (2000), <em>trois mille</em> (3000)<br>
+      • Ny chiffre 100 dia <strong>"cent"</strong> (tsy "un cent").
+    </div>
+  </div>
+
+  <!-- ==================== CHIFFRES ORDINAUX ==================== -->
+  <div class="card">
+    <h2>📊 Chiffres ordinaux (filaharana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chiffre</th>
+            <th>Masculin</th>
+            <th>Féminin</th>
+            <th>Malagasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-unite">1er</span></td>
+            <td>premier</td>
+            <td>première</td>
+            <td>voalohany</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">2e</span></td>
+            <td>deuxième</td>
+            <td>deuxième</td>
+            <td>faharoa</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">3e</span></td>
+            <td>troisième</td>
+            <td>troisième</td>
+            <td>fahatelo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">4e</span></td>
+            <td>quatrième</td>
+            <td>quatrième</td>
+            <td>efa- faha</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">5e</span></td>
+            <td>cinquième</td>
+            <td>cinquième</td>
+            <td>fahadimy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">6e</span></td>
+            <td>sixième</td>
+            <td>sixième</td>
+            <td>fahenina</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">7e</span></td>
+            <td>septième</td>
+            <td>septième</td>
+            <td>fahafito</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">8e</span></td>
+            <td>huitième</td>
+            <td>huitième</td>
+            <td>fahavalo</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">9e</span></td>
+            <td>neuvième</td>
+            <td>neuvième</td>
+            <td>fahasivy</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-unite">10e</span></td>
+            <td>dixième</td>
+            <td>dixième</td>
+            <td>fahafolo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-unite">1er</span> dia miova ho <strong>"première"</strong> amin'ny féminin.<br>
+      Ohatra : <em>le premier jour</em> / <em>la première semaine</em><br>
+      • Ny chiffres ordinaux mifarana amin'ny <strong>"-ième"</strong> dia <strong>tsy miova amin'ny féminin</strong>.<br>
+      Ohatra : <em>le deuxième jour</em> / <em>la deuxième semaine</em>
+    </div>
+  </div>
+
+  <!-- ==================== EXEMPLES DANS DES PHRASES ==================== -->
+  <div class="card">
+    <h2>📌 Exemples dans des phrases</h2>
+    <div class="definition-mg">
+      <strong>Exemples avec des chiffres :</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'ai <strong>un</strong> frère. (Manana rahalahy <strong>iray</strong> aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il a <strong>deux</strong> sœurs. (Manana rahavavy <strong>roa</strong> izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous avons <strong>trois</strong> chats. (Manana saka <strong>telo</strong> izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle a <strong>dix-huit</strong> ans. (<strong>Valo ambin'ny folo</strong> taona izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il y a <strong>vingt-cinq</strong> élèves. (Misy mpianatra <strong>roapolo sy dimy</strong>.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Le livre coûte <strong>quatre-vingt-dix</strong> euros. (<strong>Efapolo sy folo</strong> euro ny vidin'ny boky.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle habite au <strong>dixième</strong> étage. (Mipetraka amin'ny rihana <strong>fahafolo</strong> izy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÈGLES DE LIAISON ==================== -->
+  <div class="card">
+    <h2>📌 Règles de liaison avec les chiffres</h2>
+    <div class="definition-mg">
+      <strong>1. Avec "un" :</strong><br>
+      • <em>un</em> → <strong>une</strong> (féminin)<br>
+      Ohatra : <em>une fille</em> (zazavavy iray)<br><br>
+      
+      <strong>2. Avec "vingt" et "cent" :</strong><br>
+      • Manampy <strong>"s"</strong> rehefa ampitomboina sy tsy misy isa manaraka.<br>
+      Ohatra : <em>quatre-vingts</em> (80), <em>deux cents</em> (200)<br>
+      • <strong>Tsy</strong> manampy "s" rehefa misy isa manaraka.<br>
+      Ohatra : <em>quatre-vingt-un</em> (81), <em>deux cent un</em> (201)<br><br>
+      
+      <strong>3. Avec "mille" :</strong><br>
+      • <strong>Tsy miova</strong> na oviana na oviana.<br>
+      Ohatra : <em>deux mille</em> (2000), <em>trois mille</em> (3000)
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny chiffres 0-16 dia <strong>tsy misy fanampiny</strong>.</li>
+        <li>Ny chiffres 17-19 dia <strong>dix + sept/huit/neuf</strong>.</li>
+        <li>Ny chiffres 21, 31, 41, 51, 61 dia mampiasa <strong>"et"</strong> (vingt et un).</li>
+        <li>Ny chiffres 70-79 dia <strong>soixante + dix à dix-neuf</strong>.</li>
+        <li>Ny chiffres 80-99 dia <strong>quatre-vingt + chiffre</strong>.</li>
+        <li>Ny <strong>cent</strong> dia manampy "s" rehefa ampitomboina (deux cents).</li>
+        <li>Ny <strong>mille</strong> dia tsy miova na oviana na oviana.</li>
+        <li>Ny <strong>1er</strong> dia miova ho <strong>première</strong> amin'ny féminin.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny chiffres dia tena ilaina amin'ny resaka andavanandro rehefa milaza <strong>isa</strong> na <strong>filaharana</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny chiffres.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

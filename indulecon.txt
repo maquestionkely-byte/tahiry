@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Inversion du sujet – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'inversion du sujet */
+    .color-interrogative {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-adverbe {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-tiret {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>INVERSION DU SUJET</h1>
+  </div>
+
+  <!-- Carte : Inona ny inversion du sujet ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "inversion du sujet" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>inversion du sujet</strong> dia rehefa <strong>miova toerana</strong> (miova filaharana) ny <strong>sujet</strong> sy ny <strong>verbe</strong> ao anaty fehezanteny.<br><br>
+      🔹 Amin'ny ankapobeny, ny filaharana mahazatra dia : <span class="color-verbe">Sujet + Verbe</span>.<br>
+      Ohatra : <em>Tu <span class="color-verbe">parles</span>.</em><br><br>
+      🔹 Amin'ny <strong>inversion</strong>, dia lasa : <span class="color-verbe">Verbe + Sujet</span>.<br>
+      Ohatra : <em><span class="color-verbe">Parles</span>-tu ?</em><br><br>
+      🔹 Ampiasaina amin'ny <span class="color-interrogative">fanontaniana</span> (interrogative) sy <span class="color-adverbe">aorian'ny adverbe sasany</span>.<br><br>
+      🔹 Misy fitsipika (règles) maromaro tokony hotadidina :<br><br>
+      <span class="icone">📌</span> <strong>Amin'ny interrogative :</strong><br>
+      • Mba hanaovana fanontaniana amin'ny fomba <strong>ara-dalàna</strong>.<br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet.<br><br>
+      <span class="icone">📌</span> <strong>Aorian'ny adverbes :</strong><br>
+      • Rehefa misy adverbe sasany (à peine, peut-être, sans doute, etc.) eo am-piandohana.<br>
+      • Mba hanehoana <strong>fanamafisana</strong> (emphase) na <strong>fahalalam-pomba</strong> (style soutenu).
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cas</th>
+            <th>Structure</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-interrogative">Interrogative simple</span></td>
+            <td>Verbe + sujet</td>
+            <td>Parles-tu ?</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-interrogative">Interrogative avec mot interrogatif</span></td>
+            <td>Mot interrogatif + verbe + sujet</td>
+            <td>Où vas-tu ?</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-interrogative">Avec "que" (sujet)</span></td>
+            <td>Que + verbe + sujet</td>
+            <td>Que fait-il ?</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-adverbe">Avec "à peine"</span></td>
+            <td>À peine + verbe + sujet</td>
+            <td>À peine est-il arrivé.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-adverbe">Avec "peut-être"</span></td>
+            <td>Peut-être + verbe + sujet</td>
+            <td>Peut-être viendra-t-il.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-adverbe">Avec "sans doute"</span></td>
+            <td>Sans doute + verbe + sujet</td>
+            <td>Sans doute a-t-il raison.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-interrogative">inversion interrogative</span> dia ampiasaina amin'ny fomba <strong>ara-dalàna</strong> (formel).<br>
+      • Ny <span class="color-tiret">tiret</span> (-) dia apetraka eo anelanelan'ny <strong>verbe</strong> sy ny <strong>sujet</strong>.<br>
+      • Raha mifarana amin'ny <strong>zanatsoratra</strong> ny verbe, dia ampiana <strong>"-t-"</strong> eo anelanelany.<br>
+      Ohatra : <em>Parle-<span class="color-tiret">t-</span>il ?</em><br><br>
+      • Ny <span class="color-adverbe">inversion aorian'ny adverbe</span> dia ampiasaina amin'ny fomba <strong>ara-dalàna</strong> (soutenu).<br>
+      • Misy adverbe sasany izay <strong>tsy maintsy</strong> manao inversion (à peine, peut-être, sans doute, etc.).<br>
+      • Misy adverbe hafa izay <strong>tsy voatery</strong> manao inversion (souvent, toujours, etc.).
+    </div>
+  </div>
+
+  <!-- 1. INVERSION INTERROGATIVE - Simultanéité -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-interrogative">INVERSION INTERROGATIVE</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-interrogative">inversion interrogative</span> dia ampiasaina hanaovana fanontaniana amin'ny fomba <strong>ara-dalàna</strong> (formel).<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-interrogative">Verbe + Sujet</span> (miova filaharana)<br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet<br>
+      • Raha mifarana amin'ny zanatsoratra ny verbe → ampiana <strong>"-t-"</strong>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Pronoms sujets)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Parles</span>-<span class="color-tiret">tu</span> ? (Miteny ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Mange</span>-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> ? (Mihinana ve izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Vient</span>-<span class="color-tiret">elle</span> ? (Ho avy ve izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Allons</span>-<span class="color-tiret">nous</span> ? (Mandeha ve isika?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Avez</span>-<span class="color-tiret">vous</span> faim ? (Noana ve ianareo?)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (Noms sujets)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Pierre</span> <span class="color-interrogative">parle</span>-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> ? (Miteny ve i Pierre?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Marie</span> <span class="color-interrogative">vient</span>-<span class="color-tiret">elle</span> ? (Ho avy ve i Marie?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Les enfants</span> <span class="color-interrogative">jouent</span>-<span class="color-tiret">ils</span> ? (Milalao ve ny ankizy?)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa mifarana amin'ny <span class="color-tiret">zanatsoratra</span> ny verbe, dia ampiana <strong>"-t-"</strong> eo anelanelan'ny verbe sy ny sujet.<br>
+      Ohatra : <em>Parle-<span class="color-tiret">t-</span>il ?</em> (fa tsy "parle-il")
+    </div>
+  </div>
+
+  <!-- 2. INVERSION AVEC LES MOTS INTERROGATIFS -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-interrogative">INVERSION AVEC LES MOTS INTERROGATIFS</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <span class="color-interrogative">mot interrogatif</span> (pourquoi, comment, quand, où, que, etc.), dia apetraka eo am-piandohana ilay mot interrogatif, arahin'ny <span class="color-interrogative">verbe + sujet</span>.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-interrogative">Mot interrogatif + Verbe + Sujet</span><br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Où</span> vas-<span class="color-tiret">tu</span> ? (Ho aiza ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Pourquoi</span> es-<span class="color-tiret">tu</span> en retard ? (Nahoana ianao no tara?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Comment</span> va-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> ? (Manao ahoana izy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Quand</span> viennent-<span class="color-tiret">ils</span> ? (Oviana no ho avy izy ireo?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Que</span> fait-<span class="color-tiret">il</span> ? (Inona no ataony?)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-interrogative">mot interrogatif</span> dia apetraka <strong>eo am-piandohana</strong> ary arahin'ny <strong>inversion</strong>.
+    </div>
+  </div>
+
+  <!-- 3. INVERSION AVEC "QUE" (SUJET) -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-interrogative">INVERSION AVEC "QUE" (SUJET)</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa <span class="color-interrogative">"que"</span> no <strong>sujet</strong> (mpanao) ao amin'ny fanontaniana, dia atao inversion.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-interrogative">Que + Verbe + Sujet</span><br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Que</span> se passe-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> ? (Inona no mitranga?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Que</span> dit-<span class="color-tiret">il</span> ? (Inona no lazainy?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-interrogative">Que</span> veux-<span class="color-tiret">tu</span> ? (Inona no tianao?)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa <span class="color-interrogative">"que"</span> no <strong>sujet</strong>, dia mifanaraka amin'ny sujet ny verbe.<br>
+      Ohatra : <em>Que <span class="color-interrogative">se passe</span>-t-il ?</em>
+    </div>
+  </div>
+
+  <!-- 4. INVERSION APRÈS "À PEINE" -->
+  <div class="card">
+    <h2>4️⃣ <span class="color-adverbe">INVERSION APRÈS "À PEINE"</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <span class="color-adverbe">"à peine"</span> (zara raha / vao) eo am-piandohana, dia <strong>tsy maintsy</strong> manao inversion.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-adverbe">À peine + Verbe + Sujet</span><br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet<br>
+      • Maneho fa <strong>vao</strong> nitranga ilay zavatra
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">À peine</span> est-<span class="color-tiret">il</span> arrivé qu'il est reparti. (Vao tonga izy dia lasa indray.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">À peine</span> avions-<span class="color-tiret">nous</span> commencé qu'il a plu. (Vao nanomboka izahay dia nisy orana.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">À peine</span> fut-<span class="color-tiret">elle</span> sortie qu'elle l'a vu. (Vao nivoaka izy dia nahita azy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-adverbe">"à peine"</span> dia <strong>tsy maintsy</strong> manao inversion.<br>
+      Ohatra : <em>À peine est-il arrivé.</em>
+    </div>
+  </div>
+
+  <!-- 5. INVERSION APRÈS "PEUT-ÊTRE" -->
+  <div class="card">
+    <h2>5️⃣ <span class="color-adverbe">INVERSION APRÈS "PEUT-ÊTRE"</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <span class="color-adverbe">"peut-être"</span> (mety ho) eo am-piandohana, dia <strong>tsy maintsy</strong> manao inversion.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-adverbe">Peut-être + Verbe + Sujet</span><br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet<br>
+      • Maneho <strong>fisalasalana</strong> (doute)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Peut-être</span> viendra-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> demain. (Mety ho avy rahampitso izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Peut-être</span> a-<span class="color-tiret">t</span>-<span class="color-tiret">elle</span> raison. (Mety ho marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Peut-être</span> sont-<span class="color-tiret">ils</span> déjà partis. (Mety ho efa lasa izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-adverbe">"peut-être"</span> dia <strong>tsy maintsy</strong> manao inversion.<br>
+      Ohatra : <em>Peut-être viendra-t-il.</em>
+    </div>
+  </div>
+
+  <!-- 6. INVERSION APRÈS "SANS DOUTE" -->
+  <div class="card">
+    <h2>6️⃣ <span class="color-adverbe">INVERSION APRÈS "SANS DOUTE"</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Rehefa misy <span class="color-adverbe">"sans doute"</span> (azo antoka fa) eo am-piandohana, dia <strong>tsy maintsy</strong> manao inversion.<br><br>
+      <strong>Règle :</strong><br>
+      • <span class="color-adverbe">Sans doute + Verbe + Sujet</span><br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelan'ny verbe sy ny sujet<br>
+      • Maneho <strong>fahalalam-pomba</strong> (style soutenu)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Sans doute</span> a-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> raison. (Azo antoka fa marina izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Sans doute</span> est-<span class="color-tiret">elle</span> malade. (Azo antoka fa marary izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Sans doute</span> seront-<span class="color-tiret">ils</span> en retard. (Azo antoka fa ho tara izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny <span class="color-adverbe">"sans doute"</span> dia <strong>tsy maintsy</strong> manao inversion amin'ny fomba ara-dalàna.<br>
+      Ohatra : <em>Sans doute a-t-il raison.</em>
+    </div>
+  </div>
+
+  <!-- 7. INVERSION AVEC "AUSSI", "PEUT-ÊTRE" (AUTRES ADVERBES) -->
+  <div class="card">
+    <h2>7️⃣ <span class="color-adverbe">AUTRES ADVERBES AVEC INVERSION</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy adverbe hafa izay <strong>tsy maintsy</strong> manao inversion na <strong>azo atao</strong> ihany koa.<br><br>
+      <strong>Adverbes qui nécessitent l'inversion :</strong><br>
+      • <span class="color-adverbe">À peine</span> (zara raha / vao)<br>
+      • <span class="color-adverbe">Peut-être</span> (mety ho)<br>
+      • <span class="color-adverbe">Sans doute</span> (azo antoka fa)<br>
+      • <span class="color-adverbe">Aussi</span> (koa) - amin'ny fomba ara-dalàna<br>
+      • <span class="color-adverbe">Encore</span> (mbola) - amin'ny fomba ara-dalàna
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Aussi</span> a-<span class="color-tiret">t</span>-<span class="color-tiret">il</span> décidé de partir. (Koa nanapa-kevitra ny handeha izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-adverbe">Encore</span> faut-<span class="color-tiret">il</span> le savoir. (Mbola mila mahafantatra izany isika.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny adverbe sasany dia <strong>tsy maintsy</strong> manao inversion (à peine, peut-être, sans doute).<br>
+      Ny adverbe hafa dia <strong>azo atao</strong> inversion na tsia (souvent, toujours, etc.).
+    </div>
+  </div>
+
+  <!-- 8. RÈGLES DE PRONONCIATION -->
+  <div class="card">
+    <h2>8️⃣ <span class="color-tiret">RÈGLES DE PRONONCIATION</span></h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fitsipika momba ny <strong>fanonona</strong> (prononciation) rehefa manao inversion :<br><br>
+      <strong>Règle :</strong><br>
+      • Raha mifarana amin'ny <span class="color-tiret">zanatsoratra</span> ny verbe (a, e, i, o, u) ary manomboka amin'ny <span class="color-tiret">zanatsoratra</span> koa ny sujet (il, elle, on), dia ampiana <strong>"-t-"</strong> eo anelanelany.<br>
+      Ohatra : <em>Parle-<span class="color-tiret">t-</span>il ?</em><br><br>
+      • Raha mifarana amin'ny <span class="color-tiret">consonne</span> ny verbe, dia tsy ilaina ny "-t-".<br>
+      Ohatra : <em>Vient-il ?</em><br><br>
+      • Amin'ny <span class="color-tiret">passé composé</span>, ny inversion dia atao amin'ny <strong>auxiliaire</strong> (avoir ou être).<br>
+      Ohatra : <em>A-t-il mangé ?</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Parle-<span class="color-tiret">t</span>-il ? (Ampiana "-t-" satria mifarana amin'ny "e" ny verbe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vient-il ? (Tsy ilaina ny "-t-" satria mifarana amin'ny "t" ny verbe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">A-<span class="color-tiret">t</span>-il mangé ? (Ampiana "-t-" amin'ny passé composé.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Raha mifarana amin'ny <span class="color-tiret">zanatsoratra</span> ny verbe, dia ampiana <strong>"-t-"</strong> eo anelanelan'ny verbe sy ny sujet.<br>
+      Ohatra : <em>Parle-<span class="color-tiret">t-</span>il ?</em> (fa tsy "parle-il")
+    </div>
+  </div>
+
+  <!-- 9. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-interrogative">Inversion interrogative</span></strong><br>
+      • <span class="color-interrogative">Verbe + Sujet</span> (miova filaharana)<br>
+      • <span class="color-tiret">Tiret</span> (-) eo anelanelany<br>
+      • Ampiasaina amin'ny fomba <strong>ara-dalàna</strong><br>
+      Ohatra : <em>Parles-tu ?</em><br><br>
+      
+      <strong>2. <span class="color-interrogative">Avec mots interrogatifs</span></strong><br>
+      • <span class="color-interrogative">Mot interrogatif + Verbe + Sujet</span><br>
+      Ohatra : <em>Où vas-tu ?</em><br><br>
+      
+      <strong>3. <span class="color-adverbe">Après "à peine", "peut-être", "sans doute"</span></strong><br>
+      • <span class="color-adverbe">Adverbe + Verbe + Sujet</span><br>
+      • <strong>Tsy maintsy</strong> manao inversion<br>
+      Ohatra : <em>À peine est-il arrivé.</em><br><br>
+      
+      <strong>4. <span class="color-tiret">Règle du "-t-"</span></strong><br>
+      • Raha mifarana amin'ny <span class="color-tiret">zanatsoratra</span> ny verbe → ampiana <strong>"-t-"</strong><br>
+      Ohatra : <em>Parle-<span class="color-tiret">t-</span>il ?</em>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-interrogative">inversion interrogative</span> dia ampiasaina amin'ny fomba <strong>ara-dalàna</strong> (formel).</li>
+        <li>Ny <span class="color-tiret">tiret</span> (-) dia apetraka eo anelanelan'ny <strong>verbe</strong> sy ny <strong>sujet</strong>.</li>
+        <li>Raha mifarana amin'ny <span class="color-tiret">zanatsoratra</span> ny verbe → ampiana <strong>"-t-"</strong>.</li>
+        <li>Ny <span class="color-adverbe">"à peine"</span>, <span class="color-adverbe">"peut-être"</span>, ary <span class="color-adverbe">"sans doute"</span> dia <strong>tsy maintsy</strong> manao inversion.</li>
+        <li>Amin'ny <span class="color-tiret">passé composé</span>, ny inversion dia atao amin'ny <strong>auxiliaire</strong>.</li>
+        <li>Amin'ny fomba <strong>andavanandro</strong> (familier), dia ampiasaina ny <strong>"est-ce que"</strong> na ny <strong>intonation</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny inversion du sujet dia tena ilaina amin'ny fomba <strong>ara-dalàna</strong> rehefa manontany na manao fanamafisana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny inversion du sujet.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

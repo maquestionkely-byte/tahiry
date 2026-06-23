@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Exprimer l'accord et le désaccord – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour l'accord et le désaccord */
+    .color-accord {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-desaccord {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-moitie {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>EXPRIMER L'ACCORD ET LE DÉSACCORD</h1>
+  </div>
+
+  <!-- Carte : Inona ny expression d'accord et de désaccord ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "exprimer l'accord et le désaccord" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>accord</strong> dia mamaritra fa <strong>manaiky</strong> (être d'accord) hevitra iray.<br><br>
+      🔹 Ny <strong>désaccord</strong> dia mamaritra fa <strong>tsy manaiky</strong> (ne pas être d'accord) hevitra iray.<br><br>
+      🔹 Misy fomba <strong>maro</strong> hilazana ny fankatoavana sy ny fandavana :<br><br>
+      <span class="icone">✅</span> <span class="color-accord">ACCORD</span> → manaiky (être d'accord)<br>
+      Ohatra : <em><span class="color-accord">Je suis d'accord</span> avec toi.</em><br><br>
+      <span class="icone">❌</span> <span class="color-desaccord">DÉSACCORD</span> → tsy manaiky (ne pas être d'accord)<br>
+      Ohatra : <em><span class="color-desaccord">Je ne suis pas d'accord</span> avec toi.</em><br><br>
+      <span class="icone">⚖️</span> <span class="color-moitie">ACCORD PARTIEL</span> → manaiky kely (accord partiel)<br>
+      Ohatra : <em><span class="color-moitie">Je suis d'accord</span> en partie.</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Expression</th>
+            <th>Famaritana malagasy</th>
+            <th>Exemple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-accord">ACCORD</span></td>
+            <td>Je suis d'accord</td>
+            <td>manaiky aho</td>
+            <td>Je suis d'accord avec toi.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accord">ACCORD</span></td>
+            <td>Je pense comme toi</td>
+            <td>mitovy hevitra aminao aho</td>
+            <td>Je pense comme toi.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-accord">ACCORD</span></td>
+            <td>Oui, c'est vrai</td>
+            <td>eny, marina izany</td>
+            <td>Oui, c'est vrai.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-desaccord">DÉSACCORD</span></td>
+            <td>Je ne suis pas d'accord</td>
+            <td>tsy manaiky aho</td>
+            <td>Je ne suis pas d'accord.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-desaccord">DÉSACCORD</span></td>
+            <td>Je ne pense pas</td>
+            <td>tsy mieritreritra aho</td>
+            <td>Je ne pense pas.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-desaccord">DÉSACCORD</span></td>
+            <td>Non, ce n'est pas vrai</td>
+            <td>tsia, tsy marina izany</td>
+            <td>Non, ce n'est pas vrai.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-moitie">ACCORD PARTIEL</span></td>
+            <td>Je suis d'accord en partie</td>
+            <td>manaiky kely aho</td>
+            <td>Je suis d'accord en partie.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-moitie">ACCORD PARTIEL</span></td>
+            <td>Je ne suis pas tout à fait d'accord</td>
+            <td>tsy manaiky tanteraka aho</td>
+            <td>Je ne suis pas tout à fait d'accord.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • <span class="color-accord">ÊTRE D'ACCORD</span> → ampiasaina hilazana <strong>fankatoavana</strong> (accord). Arahin'ny <strong>"avec"</strong> (miaraka amin'ny) na <strong>"que"</strong> (fa).<br>
+      Ohatra : <em>Je suis d'accord <span class="color-accord">avec</span> toi.</em><br><br>
+      • <span class="color-desaccord">NE PAS ÊTRE D'ACCORD</span> → ampiasaina hilazana <strong>fandavana</strong> (désaccord). Arahin'ny <strong>"avec"</strong> (miaraka amin'ny) na <strong>"que"</strong> (fa).<br>
+      Ohatra : <em>Je ne suis pas d'accord <span class="color-desaccord">avec</span> toi.</em><br><br>
+      • <span class="color-accord">PENSER COMME TOI</span> → mitovy hevitra (penser comme).<br>
+      Ohatra : <em>Je pense <span class="color-accord">comme</span> toi.</em><br><br>
+      • <span class="color-moitie">ACCORD PARTIEL</span> → manaiky kely nefa tsy tanteraka.<br>
+      Ohatra : <em>Je suis d'accord <span class="color-moitie">en partie</span>.</em>
+    </div>
+  </div>
+
+  <!-- 1. EXPRIMER L'ACCORD - Manaiky -->
+  <div class="card">
+    <h2>1️⃣ <span class="color-accord">EXPRIMER L'ACCORD</span> (manaiky)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fomba <strong>maro</strong> hilazana fa <span class="color-accord">manaiky</span> (être d'accord).<br><br>
+      <strong>Expressions :</strong><br>
+      • <span class="color-accord">Je suis d'accord</span> → manaiky aho<br>
+      • <span class="color-accord">Je pense comme toi</span> → mitovy hevitra aminao aho<br>
+      • <span class="color-accord">Oui, c'est vrai</span> → eny, marina izany<br>
+      • <span class="color-accord">Tout à fait</span> → tena marina<br>
+      • <span class="color-accord">Exactement</span> → marina tsara<br>
+      • <span class="color-accord">Je suis du même avis</span> → manaraka ny hevitra iray ihany aho
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Je suis d'accord</span> avec toi. (Manaiky aho amin'ny hevitrao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Je pense comme toi</span>. (Mitovy hevitra aminao aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Oui, c'est vrai</span>. (Eny, marina izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Tout à fait</span> ! (Tena marina!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Exactement</span> ! (Marina tsara!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-accord">suis du même avis</span>. (Manaraka ny hevitra iray ihany aho.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy fomba maro hilazana <span class="color-accord">fankatoavana</span> (accord). Ny mahazatra indrindra dia <strong>"Je suis d'accord"</strong>.
+    </div>
+  </div>
+
+  <!-- 2. EXPRIMER LE DÉSACCORD - Tsy manaiky -->
+  <div class="card">
+    <h2>2️⃣ <span class="color-desaccord">EXPRIMER LE DÉSACCORD</span> (tsy manaiky)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fomba <strong>maro</strong> hilazana fa <span class="color-desaccord">tsy manaiky</span> (ne pas être d'accord).<br><br>
+      <strong>Expressions :</strong><br>
+      • <span class="color-desaccord">Je ne suis pas d'accord</span> → tsy manaiky aho<br>
+      • <span class="color-desaccord">Je ne pense pas</span> → tsy mieritreritra aho<br>
+      • <span class="color-desaccord">Non, ce n'est pas vrai</span> → tsia, tsy marina izany<br>
+      • <span class="color-desaccord">Je ne suis pas du même avis</span> → tsy manaraka ny hevitra iray ihany aho<br>
+      • <span class="color-desaccord">Tu as tort</span> → diso ianao<br>
+      • <span class="color-desaccord">Je ne crois pas</span> → tsy mino aho
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-desaccord">Je ne suis pas d'accord</span> avec toi. (Tsy manaiky aho amin'ny hevitrao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-desaccord">Je ne pense pas</span> que ce soit vrai. (Tsy mieritreritra aho fa marina izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-desaccord">Non, ce n'est pas vrai</span>. (Tsia, tsy marina izany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-desaccord">ne suis pas du même avis</span>. (Tsy manaraka ny hevitra iray ihany aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-desaccord">Tu as tort</span>. (Diso ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-desaccord">ne crois pas</span> que ce soit une bonne idée. (Tsy mino aho fa hevitra tsara izany.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy fomba maro hilazana <span class="color-desaccord">fandavana</span> (désaccord). Ny mahazatra indrindra dia <strong>"Je ne suis pas d'accord"</strong>.
+    </div>
+  </div>
+
+  <!-- 3. EXPRIMER UN ACCORD PARTIEL -->
+  <div class="card">
+    <h2>3️⃣ <span class="color-moitie">EXPRIMER UN ACCORD PARTIEL</span> (manaiky kely)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Misy fomba <strong>maro</strong> hilazana fa <span class="color-moitie">manaiky kely</span> (accord partiel).<br><br>
+      <strong>Expressions :</strong><br>
+      • <span class="color-moitie">Je suis d'accord en partie</span> → manaiky kely aho<br>
+      • <span class="color-moitie">Je ne suis pas tout à fait d'accord</span> → tsy manaiky tanteraka aho<br>
+      • <span class="color-moitie">Je comprends ton point de vue, mais...</span> → azoko ny hevitrao, fa...<br>
+      • <span class="color-moitie">C'est une bonne idée, mais...</span> → hevitra tsara izany, fa...<br>
+      • <span class="color-moitie">Je suis d'accord sur ce point</span> → manaiky aho amin'ity teboka ity
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-moitie">Je suis d'accord en partie</span>. (Manaiky kely aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je <span class="color-moitie">ne suis pas tout à fait d'accord</span>. (Tsy manaiky tanteraka aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-moitie">Je comprends ton point de vue</span>, mais je ne suis pas d'accord. (Azoko ny hevitrao, fa tsy manaiky aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-moitie">C'est une bonne idée</span>, mais ce n'est pas facile. (Hevitra tsara izany, fa tsy mora.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-moitie">Je suis d'accord sur ce point</span>. (Manaiky aho amin'ity teboka ity.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Misy fomba maro hilazana <span class="color-moitie">fankatoavana kely</span> (accord partiel). Matetika ampiasaina ny <strong>"mais"</strong> (fa) mba hanehoana fanoherana.
+    </div>
+  </div>
+
+  <!-- 4. PHRASES POUR DEMANDER L'ACCORD -->
+  <div class="card">
+    <h2>4️⃣ Phrases pour demander l'accord</h2>
+    <div class="definition-mg">
+      <strong>Expressions pour demander l'accord :</strong><br><br>
+      • <strong>Tu es d'accord ?</strong> → Manaiky ve ianao?<br>
+      • <strong>Es-tu d'accord avec moi ?</strong> → Manaiky ny hevitro ve ianao?<br>
+      • <strong>Qu'en penses-tu ?</strong> → Inona ny hevitrao momba izany?<br>
+      • <strong>Tu ne trouves pas ?</strong> → Tsy mahita ve ianao?<br>
+      • <strong>D'accord ?</strong> → Manaiky ve?<br>
+      • <strong>Ça te va ?</strong> → Mety aminao ve izany?
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Tu es d'accord</span> ? (Manaiky ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Es-tu d'accord avec moi</span> ? (Manaiky ny hevitro ve ianao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Qu'en penses-tu</span> ? (Inona ny hevitrao momba izany?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">D'accord</span> ? (Manaiky ve?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-accord">Ça te va</span> ? (Mety aminao ve izany?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. COMPARAISON ACCORD / DÉSACCORD -->
+  <div class="card">
+    <h2>5️⃣ Comparaison ACCORD / DÉSACCORD</h2>
+    <div class="definition-mg">
+      <strong><span class="color-accord">ACCORD</span> (manaiky)</strong><br>
+      • <em>Je suis d'accord.</em> (Manaiky aho.)<br>
+      • <em>Oui, c'est vrai.</em> (Eny, marina izany.)<br>
+      • <em>Je pense comme toi.</em> (Mitovy hevitra aminao aho.)<br><br>
+      
+      <strong><span class="color-desaccord">DÉSACCORD</span> (tsy manaiky)</strong><br>
+      • <em>Je ne suis pas d'accord.</em> (Tsy manaiky aho.)<br>
+      • <em>Non, ce n'est pas vrai.</em> (Tsia, tsy marina izany.)<br>
+      • <em>Tu as tort.</em> (Diso ianao.)<br><br>
+      
+      <strong><span class="color-moitie">ACCORD PARTIEL</span> (manaiky kely)</strong><br>
+      • <em>Je suis d'accord en partie.</em> (Manaiky kely aho.)<br>
+      • <em>Je ne suis pas tout à fait d'accord.</em> (Tsy manaiky tanteraka aho.)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACCORD : <span class="color-accord">Je suis d'accord</span> avec toi. (Manaiky aho amin'ny hevitrao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">DÉSACCORD : <span class="color-desaccord">Je ne suis pas d'accord</span> avec toi. (Tsy manaiky aho amin'ny hevitrao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">ACCORD PARTIEL : <span class="color-moitie">Je suis d'accord en partie</span>. (Manaiky kely aho.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. RÉSUMÉ -->
+  <div class="card">
+    <h2>📌 Résumé des règles</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-accord">ACCORD</span> (manaiky)</strong><br>
+      • <strong>Je suis d'accord</strong> → manaiky aho<br>
+      • <strong>Je pense comme toi</strong> → mitovy hevitra aminao aho<br>
+      • <strong>Oui, c'est vrai</strong> → eny, marina izany<br><br>
+      
+      <strong>2. <span class="color-desaccord">DÉSACCORD</span> (tsy manaiky)</strong><br>
+      • <strong>Je ne suis pas d'accord</strong> → tsy manaiky aho<br>
+      • <strong>Je ne pense pas</strong> → tsy mieritreritra aho<br>
+      • <strong>Non, ce n'est pas vrai</strong> → tsia, tsy marina izany<br><br>
+      
+      <strong>3. <span class="color-moitie">ACCORD PARTIEL</span> (manaiky kely)</strong><br>
+      • <strong>Je suis d'accord en partie</strong> → manaiky kely aho<br>
+      • <strong>Je ne suis pas tout à fait d'accord</strong> → tsy manaiky tanteraka aho<br>
+      • <strong>Je comprends ton point de vue, mais...</strong> → azoko ny hevitrao, fa...<br><br>
+      
+      <strong>4. Demander l'accord</strong><br>
+      • <strong>Tu es d'accord ?</strong> → Manaiky ve ianao?<br>
+      • <strong>Qu'en penses-tu ?</strong> → Inona ny hevitrao?
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-accord">ACCORD</span> dia ampiasaina hilazana <strong>fankatoavana</strong> (être d'accord).</li>
+        <li>Ny <span class="color-desaccord">DÉSACCORD</span> dia ampiasaina hilazana <strong>fandavana</strong> (ne pas être d'accord).</li>
+        <li>Ny <span class="color-moitie">ACCORD PARTIEL</span> dia ampiasaina hilazana <strong>fankatoavana kely</strong> (accord partiel).</li>
+        <li>Ny mahazatra indrindra amin'ny <span class="color-accord">ACCORD</span> dia <strong>"Je suis d'accord"</strong>.</li>
+        <li>Ny mahazatra indrindra amin'ny <span class="color-desaccord">DÉSACCORD</span> dia <strong>"Je ne suis pas d'accord"</strong>.</li>
+        <li>Mba hanontanian'ny hevitry ny hafa, dia ampiasao ny <strong>"Tu es d'accord ?"</strong> na <strong>"Qu'en penses-tu ?"</strong></li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny fomba hilazana ny <strong>accord</strong> sy ny <strong>désaccord</strong> dia tena ilaina amin'ny resaka andavanandro rehefa milaza ny <strong>fankatoavana</strong> na ny <strong>fandavana</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny expression de l'accord et du désaccord.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

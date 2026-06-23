@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Verbes pronominaux – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les verbes pronominaux */
+    .color-reflexif {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-reciproque {
+      background-color: #fca5a5;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-idiomatique {
+      background-color: #fbbf24;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>VERBES PRONOMINAUX</h1>
+  </div>
+
+  <!-- Carte : Inona ny verbes pronominaux ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "verbes pronominaux" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>verbes pronominaux</strong> dia ireo verbe miaraka amin'ny <strong>pronom réfléchi</strong> (me, te, se, nous, vous, se).<br><br>
+      🔹 Misy karazany <strong>telo</strong> ny verbes pronominaux :<br><br>
+      <span class="icone">🔄</span> <strong>Verbes réfléchis</strong> → ny mpanao dia manao ny hetsika <strong>amin'ny tenany</strong>.<br>
+      Ohatra : se laver (manasa tena), se regarder (mijery tena)<br><br>
+      <span class="icone">🔄</span> <strong>Verbes réciproques</strong> → ny mpanao roa na maro dia manao hetsika <strong>mifamaly</strong>.<br>
+      Ohatra : se parler (mifampiteny), se regarder (mifampijery)<br><br>
+      <span class="icone">🔄</span> <strong>Verbes idiomatiques</strong> → tsy misy heviny raha tsy miaraka amin'ny pronom réfléchi.<br>
+      Ohatra : se souvenir (mahatsiaro), s'ennuyer (mankaleo)
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Verbe pronominal</th>
+            <th>Famaritana malagasy</th>
+            <th>Ohatra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-reflexif">RÉFLÉCHI</span></td>
+            <td>se laver</td>
+            <td>manasa tena</td>
+            <td>Je me lave.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-reflexif">RÉFLÉCHI</span></td>
+            <td>se regarder</td>
+            <td>mijery tena</td>
+            <td>Elle se regarde dans le miroir.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-reciproque">RÉCIPROQUE</span></td>
+            <td>se parler</td>
+            <td>mifampiteny</td>
+            <td>Ils se parlent.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-reciproque">RÉCIPROQUE</span></td>
+            <td>se regarder</td>
+            <td>mifampijery</td>
+            <td>Nous nous regardons.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-idiomatique">IDIOMATIQUE</span></td>
+            <td>se réveiller</td>
+            <td>mifoha</td>
+            <td>Je me réveille à 7h.</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-idiomatique">IDIOMATIQUE</span></td>
+            <td>s'ennuyer</td>
+            <td>mankaleo</td>
+            <td>Je m'ennuie.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <strong>verbes pronominaux</strong> dia miaraka amin'ny <strong>pronom réfléchi</strong> (me, te, se, nous, vous, se).<br><br>
+      • Ny pronom réfléchi dia apetraka <strong>eo alohan'ny verbe</strong>.<br><br>
+      • Miova ho <strong>m', t', s'</strong> alohan'ny zanatsoratra na h muet.<br>
+      Ohatra : <em>Je m'appelle...</em> (se appeler)<br><br>
+      • Amin'ny <strong>passé composé</strong>, ny verbes pronominaux dia mampiasa ny auxiliaire <strong>"être"</strong>.<br><br>
+      • Ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> (sary, feminin, pluriel).
+    </div>
+  </div>
+
+  <!-- 1. SE RÉVEILLER - Verbe idiomatique -->
+  <div class="card">
+    <h2>1️⃣ SE RÉVEILLER (mifoha)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"se réveiller"</strong> dia midika hoe <strong>"mifoha"</strong>. Verbe <strong>idiomatique</strong> izay tsy misy heviny raha tsy miaraka amin'ny pronom réfléchi.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>me</strong> réveille<br>
+      Tu <strong>te</strong> réveilles<br>
+      Il/Elle <strong>se</strong> réveille<br>
+      Nous <strong>nous</strong> réveillons<br>
+      Vous <strong>vous</strong> réveillez<br>
+      Ils/Elles <strong>se</strong> réveillent
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me réveille à 7 heures. (Mifoha amin'ny 7 ora aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu te réveilles tôt. (Mifoha maraina ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle se réveille en retard. (Mifoha tara izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous réveillons à 6 heures. (Mifoha amin'ny 6 ora izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se réveillent tous les jours à 8h. (Mifoha isan'andro amin'ny 8 ora izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SE LAVER - Verbe réfléchi -->
+  <div class="card">
+    <h2>2️⃣ SE LAVER (manasa tena)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"se laver"</strong> dia midika hoe <strong>"manasa tena"</strong>. Verbe <strong>réfléchi</strong> izay manao ny hetsika amin'ny tenany.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>me</strong> lave<br>
+      Tu <strong>te</strong> laves<br>
+      Il/Elle <strong>se</strong> lave<br>
+      Nous <strong>nous</strong> lavons<br>
+      Vous <strong>vous</strong> lavez<br>
+      Ils/Elles <strong>se</strong> lavent
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me lave les mains. (Manasa tanako aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu te laves le visage. (Manasa tavanao ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle se lave les cheveux. (Manasa volony izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous lavons après le sport. (Manasa tena izahay rehefa avy nanao fanatanjahan-tena.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se lavent tous les matins. (Manasa tena isa-maraina izy ireo.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SE REGARDER - Verbe réfléchi et réciproque -->
+  <div class="card">
+    <h2>3️⃣ SE REGARDER (mijery tena / mifampijery)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"se regarder"</strong> dia mety ho <strong>réfléchi</strong> (mijery tena) na <strong>réciproque</strong> (mifampijery) arakaraka ny zavatra tondroina.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>me</strong> regarde<br>
+      Tu <strong>te</strong> regardes<br>
+      Il/Elle <strong>se</strong> regarde<br>
+      Nous <strong>nous</strong> regardons<br>
+      Vous <strong>vous</strong> regardez<br>
+      Ils/Elles <strong>se</strong> regardent
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (RÉFLÉCHI)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me regarde dans le miroir. (Mijery tenako ao anaty fitaratra aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle se regarde avant de sortir. (Mijery tena alohan'ny hivoahana izy.)</span>
+      </div>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay (RÉCIPROQUE)
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se regardent dans les yeux. (Mifampijery maso izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous regardons tous les jours. (Mifampijery isan'andro izahay.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny "se regarder" dia mety ho réfléchi (mijery tena) na réciproque (mifampijery). Ny zavatra tondroina no mamaritra izany.
+    </div>
+  </div>
+
+  <!-- 4. SE PARLER - Verbe réciproque -->
+  <div class="card">
+    <h2>4️⃣ SE PARLER (mifampiteny)</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <strong>"se parler"</strong> dia midika hoe <strong>"mifampiteny"</strong>. Verbe <strong>réciproque</strong> izay ampiasaina rehefa misy olona roa na maro mifampiresaka.
+    </div>
+    <div class="conjugaison-ligne">
+      <strong>Conjugaison au présent :</strong><br>
+      Je <strong>me</strong> parle (miresaka amin'ny tenako)<br>
+      Tu <strong>te</strong> parles (miresaka amin'ny tenanao)<br>
+      Il/Elle <strong>se</strong> parle (miresaka amin'ny tenany)<br>
+      Nous <strong>nous</strong> parlons (mifampiresaka izahay)<br>
+      Vous <strong>vous</strong> parlez (mifampiresaka ianareo)<br>
+      Ils/Elles <strong>se</strong> parlent (mifampiresaka izy ireo)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se parlent tous les jours. (Mifampiteny isan'andro izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous parlons en français. (Mifampiteny amin'ny teny frantsay izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se parlent au téléphone. (Mifampiresaka amin'ny telefaona izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Vous vous parlez souvent ? (Mifampiresaka matetika ve ianareo?)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AUTRES VERBES PRONOMINAUX COURANTS ==================== -->
+  <div class="card">
+    <h2>📗 Autres verbes pronominaux courants</h2>
+    <div class="definition-mg">
+      <strong>RÉFLÉCHIS (manao amin'ny tenany) :</strong><br>
+      • <strong>Se laver</strong> → manasa tena<br>
+      • <strong>Se regarder</strong> → mijery tena<br>
+      • <strong>Se brosser</strong> → miborosy (les dents / les cheveux)<br>
+      • <strong>Se maquiller</strong> → manao makiazy<br>
+      • <strong>Se raser</strong> → manaratra volombava<br>
+      • <strong>Se coucher</strong> → mandry (matory)<br>
+      • <strong>Se lever</strong> → mitsangana<br><br>
+      
+      <strong>RÉCIPROQUES (mifamaly) :</strong><br>
+      • <strong>Se parler</strong> → mifampiteny<br>
+      • <strong>Se regarder</strong> → mifampijery<br>
+      • <strong>Se sourire</strong> → mifampitsiky<br>
+      • <strong>S'embrasser</strong> → mifanoroka<br>
+      • <strong>Se rencontrer</strong> → mifankahita<br><br>
+      
+      <strong>IDIOMATIQUES (tsy misy heviny raha tsy miaraka amin'ny pronom) :</strong><br>
+      • <strong>Se réveiller</strong> → mifoha<br>
+      • <strong>S'ennuyer</strong> → mankaleo<br>
+      • <strong>Se souvenir</strong> → mahatsiaro<br>
+      • <strong>Se promener</strong> → mandehandeha<br>
+      • <strong>Se fâcher</strong> → tezitra<br>
+      • <strong>Se dépêcher</strong> → maika<br>
+      • <strong>S'habiller</strong> → manao akanjo
+    </div>
+  </div>
+
+  <!-- ==================== FORMATION DU PASSÉ COMPOSÉ ==================== -->
+  <div class="card">
+    <h2>📌 Passé composé des verbes pronominaux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      • Ny verbes pronominaux dia mampiasa ny auxiliaire <strong>"être"</strong> amin'ny passé composé.<br>
+      • Ny <strong>participe passé</strong> dia mifanaraka amin'ny <strong>sujet</strong> (genre et nombre).<br><br>
+      
+      <strong>Rafitra :</strong><br>
+      <em>sujet + pronom réfléchi + auxiliaire être (conjugué) + participe passé</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny passé composé
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je me suis réveillé(e) à 7h. (Nifoha tamin'ny 7 ora aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Tu t'es lavé(e). (Nanasa tena ianao.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle s'est regardée dans le miroir. (Nijery tena tao anaty fitaratra izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous nous sommes parlé(e)s. (Nifampiresaka izahay.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils se sont levés tôt. (Nitsangana maraina izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elles se sont promenées. (Nandehandeha izy ireo.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> (e ho an'ny féminin, s ho an'ny pluriel, es ho an'ny féminin pluriel).
+    </div>
+  </div>
+
+  <!-- ==================== NÉGATION AVEC LES VERBES PRONOMINAUX ==================== -->
+  <div class="card">
+    <h2>📌 Négation avec les verbes pronominaux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      Amin'ny négation, ny <strong>"ne"</strong> dia apetraka <strong>alohan'ny pronom réfléchi</strong>, ary ny <strong>"pas"</strong> dia apetraka <strong>aorian'ny verbe</strong>.<br><br>
+      <strong>Rafitra :</strong><br>
+      <em>sujet + ne + pronom réfléchi + verbe + pas</em>
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny négation
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je ne me réveille pas tôt. (Tsy mifoha maraina aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Elle ne se lave pas les mains. (Tsy manasa tanana izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ils ne se parlent pas. (Tsy mifampiteny izy ireo.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous ne nous regardons pas. (Tsy mifampijery izahay.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== IMPÉRATIF AVEC LES VERBES PRONOMINAUX ==================== -->
+  <div class="card">
+    <h2>📌 Impératif avec les verbes pronominaux</h2>
+    <div class="definition-mg">
+      <strong>Règle :</strong><br>
+      • Amin'ny <strong>impératif affirmatif</strong>, ny pronom réfléchi dia apetraka <strong>aorian'ny verbe</strong> ary miova ho <strong>toi, nous, vous</strong>.<br>
+      Ohatra : <em>Lève-toi !</em> (Mitsangana!)<br><br>
+      
+      • Amin'ny <strong>impératif négatif</strong>, ny pronom réfléchi dia apetraka <strong>eo alohan'ny verbe</strong>.<br>
+      Ohatra : <em>Ne te lève pas !</em> (Aza mitsangana!)
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny impératif
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Réveille-toi ! (Mifoha!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Lave-toi les mains ! (Manasa tana!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Regardez-vous ! (Mifampijery!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ne te regarde pas ! (Aza mijery tena!)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Parle-lui ! (Miresaha amin'ny tenany!) - tsy pronominal</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Ne te fâche pas ! (Aza tezitra!)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <strong>verbes pronominaux</strong> dia tsy maintsy miaraka amin'ny <strong>pronom réfléchi</strong> (me, te, se, nous, vous, se).</li>
+        <li>Misy karazany <strong>telu</strong> : réfléchi (amin'ny tena), réciproque (mifamaly), idiomatique (tsy misy heviny raha tsy miaraka amin'ny pronom).</li>
+        <li>Apetraka <strong>eo alohan'ny verbe</strong> ny pronom réfléchi (afa-tsy amin'ny impératif affirmatif).</li>
+        <li>Miova ho <strong>m', t', s'</strong> alohan'ny zanatsoratra na h muet.</li>
+        <li>Ny <strong>passé composé</strong> dia mampiasa ny auxiliaire <strong>"être"</strong>.</li>
+        <li>Ny <strong>participe passé</strong> dia mifanaraka amin'ny <strong>sujet</strong> (genre et nombre).</li>
+        <li>Amin'ny <strong>impératif affirmatif</strong>, ny pronom dia <strong>aorian'ny verbe</strong> (lève-toi).</li>
+        <li>Amin'ny <strong>impératif négatif</strong>, ny pronom dia <strong>alohan'ny verbe</strong> (ne te lève pas).</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fomba fampiasana azy.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny verbes pronominaux dia tena ilaina amin'ny resaka andavanandro rehefa miresaka zavatra atao amin'ny <strong>tena</strong> na <strong>mifamaly</strong>. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny verbes pronominaux.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

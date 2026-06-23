@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Majuscules et minuscules – Famaritana amin'ny teny malagasy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9f4;
+      color: #1a2e2a;
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-main {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 6px 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .title-main h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e6cf;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #f9c74f;
+    }
+    
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      color: #c45c1a;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .exemple-modern .exo-ligne {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3e5cf;
+    }
+    
+    .exemple-modern .exo-ligne:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .exemple-modern .fr {
+      background: white;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #1e3a5f;
+      font-size: 0.88rem;
+      min-width: 300px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    .important-remark {
+      background: #fef1cf;
+      padding: 16px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      border-left: 5px solid #e94560;
+    }
+
+    .important-remark strong {
+      color: #e94560;
+    }
+
+    .icone {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+
+    /* Style du tableau récapitulatif */
+    .tableau-recap {
+      background: #eef4ea;
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    
+    .tableau-recap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    
+    .tableau-recap th {
+      background: #93c5fd;
+      color: #1e3a8a;
+      padding: 12px 8px;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .tableau-recap td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5a0;
+      border-left: 1px solid #cbd5a0;
+      border-right: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap tr:first-child td {
+      border-top: 1px solid #cbd5a0;
+    }
+    
+    .tableau-recap .categorie {
+      font-weight: 700;
+      color: #1e40af;
+      background: #d9e8d4;
+      border-left: 1px solid #cbd5a0;
+    }
+    
+    /* Couleurs pour les majuscules */
+    .color-majuscule {
+      background-color: #93c5fd;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    
+    .color-minuscule {
+      background-color: #bbf7d0;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e6cf;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .liste-avec-lignes-vides {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .liste-avec-lignes-vides li {
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+    .liste-avec-lignes-vides li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+    }
+    .liste-avec-lignes-vides li:last-child {
+      margin-bottom: 0;
+    }
+
+    .definition-mg p {
+      margin-bottom: 12px;
+    }
+    .definition-mg p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 700px) {
+      .exemple-modern .exo-ligne {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exemple-modern .fr {
+        align-self: flex-start;
+      }
+      .tableau-recap {
+        font-size: 0.7rem;
+      }
+      .tableau-recap th, .tableau-recap td {
+        padding: 6px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="title-main">
+    <h1>MAJUSCULES ET MINUSCULES</h1>
+  </div>
+
+  <!-- Carte : Inona ny majuscules et minuscules ? -->
+  <div class="card">
+    <h2>🏷️ Inona ny "majuscules et minuscules" ?</h2>
+    <div class="definition-mg">
+      🔹 Ny <strong>majuscules</strong> dia <strong>soratra lehibe</strong> ampiasaina amin'ny <strong>fanombohana</strong> fehezanteny na anarana manokana.<br>
+      Ohatra : <em><span class="color-majuscule">P</span>ierre, <span class="color-majuscule">M</span>adagascar, <span class="color-majuscule">L</span>undi</em><br><br>
+      🔹 Ny <strong>minuscules</strong> dia <strong>soratra kely</strong> ampiasaina amin'ny ankamaroan'ny teny.<br>
+      Ohatra : <em><span class="color-minuscule">p</span>omme, <span class="color-minuscule">m</span>aison, <span class="color-minuscule">l</span>ivre</em><br><br>
+      🔹 Misy fitsipika (règles) maromaro tokony hotadidina :<br><br>
+      <span class="icone">📌</span> <strong>Règle 1 :</strong> <span class="color-majuscule">M</span>ajuscule au <strong>début d'une phrase</strong>.<br>
+      Ohatra : <em><span class="color-majuscule">L</span>e chat dort.</em><br><br>
+      <span class="icone">📌</span> <strong>Règle 2 :</strong> <span class="color-majuscule">M</span>ajuscule pour les <strong>noms propres</strong>.<br>
+      Ohatra : <em><span class="color-majuscule">P</span>aul, <span class="color-majuscule">F</span>rance, <span class="color-majuscule">N</span>oël</em><br><br>
+      <span class="icone">📌</span> <strong>Règle 3 :</strong> <span class="color-minuscule">m</span>inuscule pour les <strong>noms communs</strong>.<br>
+      Ohatra : <em><span class="color-minuscule">u</span>n chat, <span class="color-minuscule">l</span>a France</em> (fa "la France" dia tsy misy majuscule satria "la" dia article)<br><br>
+      <span class="icone">📌</span> <strong>Règle 4 :</strong> <span class="color-majuscule">M</span>ajuscule pour les <strong>jours, mois, fêtes</strong>.<br>
+      Ohatra : <em><span class="color-majuscule">L</span>undi, <span class="color-majuscule">J</span>anvier, <span class="color-majuscule">P</span>âques</em>
+    </div>
+  </div>
+
+  <!-- ==================== TABLEAU RÉCAPITULATIF ==================== -->
+  <div class="card">
+    <h2>📊 Tableau récapitulatif (Famintinana)</h2>
+    <div class="tableau-recap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cas d'utilisation</th>
+            <th>Exemple</th>
+            <th>Explication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="categorie">
+            <td><span class="color-majuscule">Début de phrase</span></td>
+            <td><span class="color-majuscule">L</span>e chat dort.</td>
+            <td>Mivantana amin'ny majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-majuscule">Noms propres</span></td>
+            <td><span class="color-majuscule">P</span>ierre, <span class="color-majuscule">M</span>adagascar</td>
+            <td>Misy majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-majuscule">Jours, mois, fêtes</span></td>
+            <td><span class="color-majuscule">L</span>undi, <span class="color-majuscule">J</span>anvier</td>
+            <td>Misy majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-majuscule">Titres</span></td>
+            <td><span class="color-majuscule">M</span>onsieur, <span class="color-majuscule">M</span>adame</td>
+            <td>Misy majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-minuscule">Noms communs</span></td>
+            <td><span class="color-minuscule">u</span>n chat, <span class="color-minuscule">l</span>a maison</td>
+            <td>Tsy misy majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-minuscule">Articles</span></td>
+            <td><span class="color-minuscule">l</span>e, <span class="color-minuscule">l</span>a, <span class="color-minuscule">l</span>es</td>
+            <td>Tsy misy majuscule</td>
+          </tr>
+          <tr class="categorie">
+            <td><span class="color-minuscule">Prépositions</span></td>
+            <td><span class="color-minuscule">à</span>, <span class="color-minuscule">d</span>e, <span class="color-minuscule">p</span>our</td>
+            <td>Tsy misy majuscule</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="important-remark">
+      <strong>📌 RÈGLES IMPORTANTES :</strong><br><br>
+      • Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>fanombohana fehezanteny</strong>.<br>
+      • Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>noms propres</strong> (anaran'olona, firenena, tanàna).<br>
+      • Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>jours, mois, fêtes</strong>.<br>
+      • Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>titres</strong> (Monsieur, Madame).<br>
+      • Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>noms communs</strong> (chose, animal, objet).<br>
+      • Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>articles et prépositions</strong>.
+    </div>
+  </div>
+
+  <!-- 1. MAJUSCULE AU DÉBUT DE PHRASE -->
+  <div class="card">
+    <h2>1️⃣ Majuscule au DÉBUT DE PHRASE</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>fanombohana</strong> fehezanteny rehetra.<br><br>
+      <strong>Règle :</strong><br>
+      • Rehefa manomboka fehezanteny, dia <strong>majuscule</strong> foana ny litera voalohany.<br>
+      • Aorian'ny <strong>point</strong> (.), <strong>point d'interrogation</strong> (?), <strong>point d'exclamation</strong> (!), dia majuscule foana.
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">L</span>e chat dort. (Matoky ny saka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">M</span>on ami est gentil. (Tsara fanahy ny sakaizako.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">Q</span>uelle heure est-il ? (Amin'ny ora firy izao?)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">Q</span>uel beau jour ! (Andro tsara be !)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est parti. <span class="color-majuscule">I</span>l revient demain. (Lasa izy. Hiverina rahampitso izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Rehefa manomboka fehezanteny dia <span class="color-majuscule">majuscule</span> foana.
+    </div>
+  </div>
+
+  <!-- 2. MAJUSCULE POUR LES NOMS PROPRES -->
+  <div class="card">
+    <h2>2️⃣ Majuscule pour les NOMS PROPRES</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>noms propres</strong> (anaran'olona, toerana, zavatra manokana).<br><br>
+      <strong>Noms propres :</strong><br>
+      • <strong>Prénoms</strong> : Pierre, Marie, Jean<br>
+      • <strong>Noms de famille</strong> : Dupont, Lefèvre<br>
+      • <strong>Pays, villes</strong> : France, Paris, Madagascar<br>
+      • <strong>Fleuves, montagnes</strong> : La Seine, Les Alpes<br>
+      • <strong>Marques</strong> : Renault, Apple<br>
+      • <strong>Institutions</strong> : L'ONU, L'UNESCO
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">P</span>ierre est mon ami. (Sakaizako i <span class="color-majuscule">P</span>ierre.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">J'habite à <span class="color-majuscule">M</span>adagascar. (Mipetraka any <span class="color-majuscule">M</span>adagasikara aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">P</span>aris est la capitale de la <span class="color-majuscule">F</span>rance. (I <span class="color-majuscule">P</span>aris no renivohitry ny <span class="color-majuscule">F</span>rantsa.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je conduis une <span class="color-majuscule">R</span>enault. (Mitondra fiara <span class="color-majuscule">R</span>enault aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il travaille à l'<span class="color-majuscule">O</span>NU. (Miasa ao amin'ny <span class="color-majuscule">O</span>NU izy.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny noms propres dia manana <span class="color-majuscule">majuscule</span> foana.
+    </div>
+  </div>
+
+  <!-- 3. MAJUSCULE POUR LES JOURS, MOIS, FÊTES -->
+  <div class="card">
+    <h2>3️⃣ Majuscule pour les JOURS, MOIS, FÊTES</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>jours, mois, fêtes</strong>.<br><br>
+      <strong>Exemples :</strong><br>
+      • <strong>Jours</strong> : lundi, mardi, mercredi... → <span class="color-majuscule">L</span>undi, <span class="color-majuscule">M</span>ardi<br>
+      • <strong>Mois</strong> : janvier, février, mars... → <span class="color-majuscule">J</span>anvier, <span class="color-majuscule">F</span>évrier<br>
+      • <strong>Fêtes</strong> : noël, pâques → <span class="color-majuscule">N</span>oël, <span class="color-majuscule">P</span>âques
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous sommes <span class="color-majuscule">L</span>undi. (<span class="color-majuscule">A</span>latsinainy androany.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Je pars en <span class="color-majuscule">J</span>anvier. (Mandeha amin'ny <span class="color-majuscule">J</span>anvier aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Nous fêtons <span class="color-majuscule">N</span>oël en famille. (Mankalaza ny <span class="color-majuscule">N</span>oël miaraka amin'ny fianakaviana isika.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">P</span>âques est en avril. (Ny <span class="color-majuscule">P</span>âques dia amin'ny Aprily.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny jours, mois, fêtes dia manana <span class="color-majuscule">majuscule</span> foana.
+    </div>
+  </div>
+
+  <!-- 4. MAJUSCULE POUR LES TITRES -->
+  <div class="card">
+    <h2>4️⃣ Majuscule pour les TITRES</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>titres</strong> (Monsieur, Madame, Mademoiselle, Docteur).<br><br>
+      <strong>Exemples :</strong><br>
+      • <span class="color-majuscule">M</span>onsieur, <span class="color-majuscule">M</span>adame, <span class="color-majuscule">M</span>ademoiselle<br>
+      • <span class="color-majuscule">D</span>octeur, <span class="color-majuscule">P</span>rofesseur<br>
+      • <span class="color-majuscule">M</span>on <span class="color-majuscule">D</span>ieu !
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">M</span>onsieur Dupont est ici. (Eto i <span class="color-majuscule">M</span>onsieur Dupont.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">M</span>adame Martin est gentille. (Tsara fanahy i <span class="color-majuscule">M</span>adame Martin.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">D</span>octeur, je suis malade. (<span class="color-majuscule">D</span>okotera, marary aho.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-majuscule">M</span>on <span class="color-majuscule">D</span>ieu ! C'est incroyable ! (<span class="color-majuscule">A</span>ndriananahary ! Tsy mampino !)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MINUSCULES POUR LES NOMS COMMUNS -->
+  <div class="card">
+    <h2>5️⃣ Minuscules pour les NOMS COMMUNS</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>noms communs</strong> (anarana tsy manokana).<br><br>
+      <strong>Noms communs :</strong><br>
+      • <strong>Animaux</strong> : un chat, un chien<br>
+      • <strong>Objets</strong> : une table, un livre<br>
+      • <strong>Choses</strong> : une maison, une voiture<br>
+      • <strong>Qualités</strong> : la beauté, l'intelligence
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">u</span>n <span class="color-minuscule">c</span>hat dort. (Matory ny <span class="color-minuscule">s</span>aka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">l</span>a <span class="color-minuscule">m</span>aison est grande. (Lehibe ny <span class="color-minuscule">t</span>rano.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">l</span>e <span class="color-minuscule">l</span>ivre est sur la table. (Eo ambonin'ny latabatra ny <span class="color-minuscule">b</span>oky.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">l</span>a <span class="color-minuscule">v</span>oiture est rouge. (Mena ny <span class="color-minuscule">f</span>iara.)</span>
+      </div>
+    </div>
+    <div class="highlight">
+      💡 <strong>Tsarovy :</strong> Ny noms communs dia manana <span class="color-minuscule">minuscule</span> foana (afatsy rehefa manomboka fehezanteny).
+    </div>
+  </div>
+
+  <!-- 6. MINUSCULES POUR LES ARTICLES ET PRÉPOSITIONS -->
+  <div class="card">
+    <h2>6️⃣ Minuscules pour les ARTICLES ET PRÉPOSITIONS</h2>
+    <div class="definition-mg">
+      <strong>📖 Famaritana malagasy :</strong><br>
+      Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>articles</strong> sy <strong>prépositions</strong>.<br><br>
+      <strong>Articles :</strong><br>
+      • <span class="color-minuscule">l</span>e, <span class="color-minuscule">l</span>a, <span class="color-minuscule">l</span>es<br>
+      • <span class="color-minuscule">u</span>n, <span class="color-minuscule">u</span>ne, <span class="color-minuscule">d</span>es<br><br>
+      <strong>Prépositions :</strong><br>
+      • <span class="color-minuscule">à</span>, <span class="color-minuscule">d</span>e, <span class="color-minuscule">p</span>our, <span class="color-minuscule">a</span>vec, <span class="color-minuscule">s</span>ans
+    </div>
+    <div class="exemple-modern">
+      <div class="exo-titre">
+        <span>✨</span> Ohatra amin'ny teny frantsay
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">l</span>e chat dort <span class="color-minuscule">à</span> la maison. (Matory ao anaty trano ny saka.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">u</span>n livre <span class="color-minuscule">d</span>'histoire. (Boky tantara.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">Il est parti <span class="color-minuscule">p</span>our Paris. (Lasa <span class="color-minuscule">h</span>o any Paris izy.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr"><span class="color-minuscule">l</span>es enfants jouent <span class="color-minuscule">a</span>vec leurs amis. (Milalao miaraka amin'ny namany ny ankizy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RÉSUMÉ DES RÈGLES ==================== -->
+  <div class="card">
+    <h2>📌 Résumé des règles (Famintinana)</h2>
+    <div class="definition-mg">
+      <strong>1. <span class="color-majuscule">MAJUSCULE</span> :</strong><br>
+      • Début de phrase<br>
+      • Noms propres (Pierre, France, Paris)<br>
+      • Jours, mois, fêtes (Lundi, Janvier, Noël)<br>
+      • Titres (Monsieur, Madame, Docteur)<br>
+      • Noms de marques (Renault, Apple)<br>
+      • Noms d'institutions (ONU, UNESCO)<br><br>
+      
+      <strong>2. <span class="color-minuscule">MINUSCULE</span> :</strong><br>
+      • Noms communs (chat, maison, livre)<br>
+      • Articles (le, la, les, un, une, des)<br>
+      • Prépositions (à, de, pour, avec, sans)<br>
+      • Conjonctions (et, ou, mais, donc)<br>
+      • Adjectifs (grand, petit, beau)
+    </div>
+    <div class="exemple-modern" style="margin-top: 12px;">
+      <div class="exo-titre">
+        <span>🧪</span> Ohatra fampitahana mazava
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MAJUSCULE : <span class="color-majuscule">P</span>ierre habite à <span class="color-majuscule">P</span>aris. (Mipetraka any <span class="color-majuscule">P</span>aris i <span class="color-majuscule">P</span>ierre.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MINUSCULE : <span class="color-minuscule">u</span>n <span class="color-minuscule">h</span>omme <span class="color-minuscule">g</span>rand. (Lehilahy <span class="color-minuscule">l</span>ehibe.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MAJUSCULE : <span class="color-majuscule">L</span>undi <span class="color-majuscule">J</span>anvier. (<span class="color-majuscule">A</span>latsinainy <span class="color-majuscule">J</span>anvier.)</span>
+      </div>
+      <div class="exo-ligne">
+        <span class="fr">MINUSCULE : <span class="color-minuscule">l</span>a <span class="color-minuscule">m</span>aison <span class="color-minuscule">b</span>lanche. (Trano <span class="color-minuscule">f</span>otsy.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte Torohevitra -->
+  <div class="card">
+    <h2>🎯 Torohevitra mahasoa ho an'ny débutant</h2>
+    <div class="definition-mg" style="margin-bottom: 6px;">
+      <ul class="liste-avec-lignes-vides">
+        <li>Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>fanombohana fehezanteny</strong>.</li>
+        <li>Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>noms propres</strong> (anaran'olona, tanàna, firenena).</li>
+        <li>Ny <span class="color-majuscule">majuscule</span> dia ampiasaina amin'ny <strong>jours, mois, fêtes</strong>.</li>
+        <li>Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>noms communs</strong> (zavatra, biby, zavatra tsy manokana).</li>
+        <li>Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>articles</strong> sy <strong>prépositions</strong>.</li>
+        <li>Ny <span class="color-minuscule">minuscule</span> dia ampiasaina amin'ny <strong>adjectifs</strong> sy <strong>verbes</strong>.</li>
+        <li>Vakio mafy ny ohatra isan'andro mba hahatsapanao ny fahasamihafana.</li>
+      </ul>
+    </div>
+    <div class="highlight" style="margin-top: 8px;">
+      🌱 <strong>Tsarovy :</strong> Ny fahafantarana ny majuscules et minuscules dia tena ilaina mba ho <strong>marina</strong> ny fanoratana. Mianara tsikelikely ary aza matahotra diso !
+    </div>
+  </div>
+
+  <!-- Carte Fanampiana & Fifandraisana -->
+  <div class="card">
+    <h2>📬 Fanamarihana sy Fifandraisana</h2>
+    <div class="definition-mg" style="margin-bottom: 8px;">
+      <p>Raha misy ny fanamarihana avy aminao : </p>
+      <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+      <p>➡️ Na maniry hianatra ianao.</p>
+      <p>➡️ Na manana olana amin'ny majuscules et minuscules.</p>
+      <p> Dia azonao atao ny miresaka aminay mivantana.</p>
+    </div>
+    
+    <button class="fb-button-small" id="fbContactBtn">
+      <span class="fb-icon-small">f</span>
+      Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+    </button>
+    
+    <div class="contact-info">
+      <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const FB_PAGE_ID = "61555313604553";
+  const FB_URL = `https://www.facebook.com/profile.php?id=${FB_PAGE_ID}`;
+  
+  const fbButton = document.getElementById('fbContactBtn');
+  if (fbButton) {
+    fbButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open(FB_URL, '_blank');
+    });
+  }
+
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>
