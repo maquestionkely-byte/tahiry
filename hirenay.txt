@@ -567,7 +567,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
     
     <div id="screenDebutant" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -580,7 +580,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
 
     <div id="screenIntermediaire" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -592,7 +592,7 @@ body:has(#screenLecteurQCM.active) .footer {
         </div>
     </div>
 <div id="screenPhotos" class="screen">
-    <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+    <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
     <div class="page-niveau">
         <div class="bandeau-haut">
             <div>
@@ -605,7 +605,7 @@ body:has(#screenLecteurQCM.active) .footer {
 </div>
 
 <div id="screenSms" class="screen">
-    <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+    <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
     <div class="page-niveau">
         <div class="bandeau-haut">
             <div>
@@ -617,7 +617,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
 </div>
     <div id="screenAvance" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -630,7 +630,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
 
     <div id="screenDictionnaire" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -643,7 +643,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
 
     <div id="screenConjugaison" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -656,7 +656,7 @@ body:has(#screenLecteurQCM.active) .footer {
     </div>
 
     <div id="screenDialoguer" class="screen">
-        <button class="btn-retour-top" onclick="showScreen('accueil')">← Retour</button>
+        <button class="btn-retour-top" onclick="showScreen('accueil')">Retour</button>
         <div class="page-niveau">
             <div class="bandeau-haut">
                 <div>
@@ -1074,6 +1074,8 @@ const speciaux = [
     { nom: "hirelecon.txt", type: "hiresaka", dbName: "hirelecon" },
     // ⭐ AJOUTER CES DEUX LIGNES ⭐
     { nom: "hirephoto.txt", type: "photos", dbName: "hirephoto" },
+ // ⭐ AJOUTER CETTE LIGNE ⭐
+    { nom: "hiretestlecon.txt", type: "test", dbName: "hiretestlecon" },
     { nom: "hirefitia.txt", type: "sms", dbName: "hirefitia" }
 ];
 
@@ -1590,13 +1592,13 @@ function afficherListeExercices(leconTitre, niveau) {
     
     modal.innerHTML = `
         <div class="modal-fullscreen-header">
-            <div><button id="backToLeconsBtn" style="background:#0055A4;color:white;border:none;padding:6px 12px;border-radius:40px;">← Retour</button></div>
+            <div><button id="backToLeconsBtn" style="background:#0055A4;color:white;border:none;padding:6px 12px;border-radius:40px;">Retour</button></div>
             <div style="display:flex;justify-content:space-between;align-items:center;width:100%;margin-left:10px;">
                 <h2 style="flex:1;text-align:center;margin:0;font-size:1rem;">📚 ${leconTitre}</h2>
                 <button class="btn-close-fullscreen" id="closeModalBtn" style="background:#ef4444;width:30px;height:30px;border-radius:50%;">✕</button>
             </div>
         </div>
-        <div class="modal-fullscreen-body" style="max-height: 80vh; overflow-y: auto;">
+        <div class="modal-fullscreen-body" style="max-height: 120vh; overflow-y: auto;">
             <div style="max-width: 900px; margin: 0 auto; padding: 20px;">
                 <h3 style="margin-bottom: 15px;">✏️ Choisissez le type d'exercice et le niveau</h3>
                 ${tousExercicesHtml}
@@ -1680,13 +1682,17 @@ ouvrirLecteurQCMIntegre(fichier, lecon);
     }
 }
 
+
 // ======================= VÉRIFICATION DES NIVEAUX DANS LA DB =======================
 async function verifierNiveauxDansDB(leconTitre) {
     const niveauxTrouves = [];
     const codeLecon = getCodeLecon(leconTitre);
     
-    // Tous les types d'exercices à vérifier
-    const tousLesTypes = TYPES_EXERCICE_CONFIG.map(t => t.code);
+    // ✅ TOUS les types d'exercices (QCM + Autres)
+    const tousLesTypes = [
+        ...TYPES_EXERCICE_CONFIG.map(t => t.code),
+        ...TYPES_AUTRE_EXERCICE.map(t => t.code)
+    ];
     
     // Vérifier les niveaux 1 à 5 pour chaque type
     for (const niveau of [1, 2, 3, 4, 5]) {
@@ -2257,7 +2263,7 @@ menuItems.forEach(item => {
 });
 
 
- // Carte Vidéo
+// Carte Vidéo
     
   // ======================= CARTES PHOTOS ET SMS (style comme Vidéo/Audio) =======================
 
@@ -2266,7 +2272,7 @@ const cardPhotos = document.createElement('div');
 cardPhotos.className = 'niveau-card';
 cardPhotos.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,240,245,0.95) 100%)';
 cardPhotos.style.borderLeft = '8px solid #e84393';
-cardPhotos.innerHTML = `<div class="niveau-info"><span class="niveau-icon">📸</span><div><div class="niveau-title">📸 Photos</div><div class="niveau-desc">Photos motivantes, etc.</div></div></div><span class="niveau-arrow">→</span>`;
+cardPhotos.innerHTML = `<div class="niveau-info"><span class="niveau-icon">📸</span><div><div class="niveau-title">📸 Photos</div><div class="niveau-desc">Photos motivantes, etc.</div></div></div><span class="niveau-arrow">📱</span>`;
 cardPhotos.addEventListener('click', async () => {
     const nomFichier = "hirephoto.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
@@ -2279,13 +2285,27 @@ const cardSms = document.createElement('div');
 cardSms.className = 'niveau-card';
 cardSms.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,235,245,0.95) 100%)';
 cardSms.style.borderLeft = '8px solid #fd79a8';
-cardSms.innerHTML = `<div class="niveau-info"><span class="niveau-icon">💌</span><div><div class="niveau-title">💌 SMS D'AMOUR</div><div class="niveau-desc">Messages d'amour</div></div></div><span class="niveau-arrow">→</span>`;
+cardSms.innerHTML = `<div class="niveau-info"><span class="niveau-icon">💌</span><div><div class="niveau-title">💌 SMS D'AMOUR</div><div class="niveau-desc">Messages d'amour</div></div></div><span class="niveau-arrow">🥰</span>`;
 cardSms.addEventListener('click', async () => {
     const nomFichier = "hirefitia.txt";
     const url = `${WORKER_URL}/${nomFichier}`;
     chargerLecon("💌 SMS D'AMOUR", nomFichier, url, "Contenu SMS non disponible");
 });
 niveauList.appendChild(cardSms);  
+
+
+   
+// Carte Test de niveau
+    const cardTest = document.createElement('div');
+    cardTest.className = 'niveau-card niveau-card-test';
+    cardTest.innerHTML = `<div class="niveau-info"><span class="niveau-icon">🎯</span><div><div class="niveau-title">📈 Test de niveau A1,A2 / B1,B2 / C1,C2</div><div class="niveau-desc">Passer un test de niveau par niveau</div></div></div><span class="niveau-arrow">🏆</span>`;
+    cardTest.addEventListener('click', async () => {
+        const nomFichier = "hiretestlecon.txt";
+        const url = `${WORKER_URL}/${nomFichier}`;
+        chargerLecon("Hiresaka mivantana", nomFichier, url, "Contenu test");
+    });
+    niveauList.appendChild(cardTest);
+
 
     
     // Carte Hiresaka
@@ -2416,7 +2436,7 @@ chargerImageAvecNomFix(
         setTimeout(() => {
             const navBar = document.createElement('div');
             navBar.className = 'floating-nav-bar';
-            navBar.innerHTML = `<button class="btn-back" id="backBtn">← Retour</button><button id="homeBtn">🏠 Accueil</button>`;
+            navBar.innerHTML = `<button class="btn-back" id="backBtn">Retour</button><button id="homeBtn">🏠 Accueil</button>`;
             document.body.appendChild(navBar);
             document.getElementById('backBtn')?.addEventListener('click', () => { window.location.href = localStorage.getItem('pagePrincipaleUrl') || originalPageUrl; });
             document.getElementById('homeBtn')?.addEventListener('click', () => { window.location.href = originalPageUrl; });
@@ -2975,7 +2995,7 @@ async function chargerQCMIntegreDirect(nomFichier, leconTitre, forceUpdate = fal
             <div style="text-align: center; padding: 50px; color: white;">
                 <div style="font-size: 3rem;">⚠️</div>
                 <p style="margin-top: 20px;">Erreur: ${error.message}</p>
-                <button onclick="fermerLecteurQCM()" style="background: #0055A4; color: white; border: none; padding: 10px 25px; border-radius: 40px; cursor: pointer; margin-top: 15px;">← Retour</button>
+                <button onclick="fermerLecteurQCM()" style="background: #0055A4; color: white; border: none; padding: 10px 25px; border-radius: 40px; cursor: pointer; margin-top: 15px;">Retour</button>
             </div>
         `;
     }
@@ -3428,7 +3448,7 @@ async function chargerQCMIntegre(nomFichier, leconTitre, forceUpdate = false) {
             <div style="text-align: center; padding: 50px; color: white;">
                 <div style="font-size: 3rem;">⚠️</div>
                 <p style="margin-top: 20px;">Erreur: ${error.message}</p>
-                <button onclick="fermerLecteurQCM()" style="background: #0055A4; color: white; border: none; padding: 10px 25px; border-radius: 40px; cursor: pointer; margin-top: 15px;">← Retour</button>
+                <button onclick="fermerLecteurQCM()" style="background: #0055A4; color: white; border: none; padding: 10px 25px; border-radius: 40px; cursor: pointer; margin-top: 15px;">Retour</button>
             </div>
         `;
     }
@@ -3461,6 +3481,1783 @@ async function getRemoteVersionForFile(nomFichier) {
         console.warn("Impossible de récupérer la version distante:", error);
         return null;
     }
+}
+
+
+// ============================================================
+// 📋 CONFIGURATION DES AUTRES TYPES D'EXERCICES (INDÉPENDANT DU QCM)
+// ============================================================
+const TYPES_AUTRE_EXERCICE = [
+    { nom: "Texte à corriger", code: "txc", description: "Ahitsio zay diso", icon: "✏️", couleur: "#2563eb" },
+    { nom: "Dictée", code: "dic", description: "Henoy ary soraty", icon: "🎧", couleur: "#f59e0b" },
+    { nom: "Trous", code: "trc", description: "Fenoy ny banga", icon: "🧩", couleur: "#8b5cf6" },
+    { nom: "Choix multiple", code: "chx", description: "Mifidy ny valiny marina", icon: "📊", couleur: "#22c55e" }
+];
+
+
+
+function parseDictee(texte) {
+    // ✅ VÉRIFICATION : si le texte commence par <!DOCTYPE, c'est du HTML
+    if (texte.trim().startsWith('<!DOCTYPE') || texte.trim().startsWith('<html')) {
+        console.warn("⚠️ Le fichier contient du HTML au lieu de texte de dictée !");
+        // Utiliser des données de secours
+        const backup = `
+EXERCICE 1
+La petite fille joue dans le jardin avec son chien.
+Traduction : Ny zazavavy kely milalao ao amin'ny zaridaina miaraka amin'ny alikany.
+
+EXERCICE 2
+Le professeur explique la leçon aux élèves attentifs.
+Traduction : Mpampianatra manazava ny lesona amin'ireo mpianatra mailo.
+`;
+        return parseDictee(backup);
+    }
+    
+    // Le reste du code normal...
+    const resultats = [];
+    const lignes = texte.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    let currentTexte = null, currentTraduction = null;
+
+    for (let ligne of lignes) {
+        if (ligne.match(/^EXERCICE\s*\d+/i)) {
+            if (currentTexte) resultats.push({ texte: currentTexte, traduction: currentTraduction || '' });
+            currentTexte = null; currentTraduction = null;
+            continue;
+        }
+        if (!currentTexte && !ligne.match(/^Traduction/i) && !ligne.match(/^EXERCICE/i) && ligne.includes(' ')) {
+            currentTexte = ligne;
+            continue;
+        }
+        if (ligne.match(/^Traduction/i)) {
+            currentTraduction = ligne.replace(/^Traduction\s*:\s*/i, '').trim();
+            continue;
+        }
+    }
+    if (currentTexte) resultats.push({ texte: currentTexte, traduction: currentTraduction || '' });
+    return resultats;
+}
+
+
+// ============================================================
+// 📋 PARSER POUR TEXTE À CORRIGER
+// ============================================================
+function parserFichierTexteCorriger(content) {
+    const resultats = [];
+    const lignes = content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    let currentErreurs = null, currentCorrect = null, currentTraduction = null, exerciceEnCours = false;
+    for (let ligne of lignes) {
+        if (ligne.match(/^EXERCICE\s*\d+/i)) {
+            if (currentErreurs && currentCorrect) {
+                resultats.push({ texteAvecErreurs: currentErreurs, texteCorrect: currentCorrect, traduction: currentTraduction || '' });
+            }
+            currentErreurs = null; currentCorrect = null; currentTraduction = null; exerciceEnCours = true;
+            continue;
+        }
+        if (exerciceEnCours) {
+            if (ligne.match(/^Traduction/i)) {
+                currentTraduction = ligne.replace(/^Traduction\s*:\s*/i, '').trim();
+                continue;
+            }
+            if (ligne.length > 10 && ligne.match(/[a-zA-Zéèêëàâôûîïç]/) && ligne.includes(' ')) {
+                if (!currentErreurs) currentErreurs = ligne;
+                else if (!currentCorrect && ligne !== currentErreurs) currentCorrect = ligne;
+            }
+        }
+    }
+    if (currentErreurs && currentCorrect) {
+        resultats.push({ texteAvecErreurs: currentErreurs, texteCorrect: currentCorrect, traduction: currentTraduction || '' });
+    }
+    return resultats;
+}
+
+// ============================================================
+// 📋 PARSER POUR DICTÉE
+// ============================================================
+function parserFichierDictee(content) {
+    const resultats = [];
+    const lignes = content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    let currentTexte = null, currentTraduction = null;
+    for (let ligne of lignes) {
+        if (ligne.match(/^EXERCICE\s*\d+/i)) {
+            if (currentTexte) resultats.push({ texte: currentTexte, traduction: currentTraduction || '' });
+            currentTexte = null; currentTraduction = null;
+            continue;
+        }
+        if (!currentTexte && !ligne.match(/^Traduction/i) && !ligne.match(/^EXERCICE/i) && ligne.includes(' ')) {
+            currentTexte = ligne;
+            continue;
+        }
+        if (ligne.match(/^Traduction/i)) {
+            currentTraduction = ligne.replace(/^Traduction\s*:\s*/i, '').trim();
+            continue;
+        }
+    }
+    if (currentTexte) resultats.push({ texte: currentTexte, traduction: currentTraduction || '' });
+    return resultats;
+}
+
+// ============================================================
+// 📋 PARSER POUR TROUS
+// ============================================================
+function parserFichierTrous(content) {
+    const exercices = [];
+    const lignes = content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    let currentExercice = [];
+    let currentPhrase = null;
+    let currentReponse = null;
+    let currentExplication = null;
+    let phraseId = 0;
+    
+    for (let ligne of lignes) {
+        if (ligne.match(/^EXERCICE\s*\d+/i)) {
+            if (currentExercice.length > 0) exercices.push(currentExercice);
+            currentExercice = [];
+            phraseId = 0;
+            continue;
+        }
+        
+        // Format: 1. Texte avec ___ | infinitive | suffixe
+        const matchPhrase = ligne.match(/^(\d+)\.\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+)$/);
+        if (matchPhrase) {
+            if (currentPhrase) {
+                currentExercice.push({
+                    id: phraseId++,
+                    text: currentPhrase.text,
+                    infinitive: currentPhrase.infinitive,
+                    suffix: currentPhrase.suffix,
+                    correct: currentReponse || '',
+                    explication: currentExplication || ''
+                });
+            }
+            currentPhrase = {
+                text: matchPhrase[2].trim(),
+                infinitive: matchPhrase[3].trim(),
+                suffix: matchPhrase[4].trim()
+            };
+            currentReponse = null;
+            currentExplication = null;
+            continue;
+        }
+        
+        if (ligne.match(/^R[ée]ponse\s*[:;]\s*/i)) {
+            currentReponse = ligne.replace(/^R[ée]ponse\s*[:;]\s*/, '').trim();
+            continue;
+        }
+        if (ligne.match(/^Explication\s*[:;]\s*/i)) {
+            currentExplication = ligne.replace(/^Explication\s*[:;]\s*/, '').trim();
+            continue;
+        }
+    }
+    
+    if (currentPhrase) {
+        currentExercice.push({
+            id: phraseId++,
+            text: currentPhrase.text,
+            infinitive: currentPhrase.infinitive,
+            suffix: currentPhrase.suffix,
+            correct: currentReponse || '',
+            explication: currentExplication || ''
+        });
+    }
+    
+    if (currentExercice.length > 0) exercices.push(currentExercice);
+    return exercices;
+}
+
+function parserFichierChoix(content) {
+    const exercices = [];
+    const lignes = content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    let currentExercice = [];
+    let currentQuestion = null, currentOptions = [], currentBonnes = [];
+    let currentExplication = null, currentTraduction = null;
+    
+    for (let ligne of lignes) {
+        if (ligne.match(/^EXERCICE\s*\d+/i)) {
+            if (currentExercice.length > 0) exercices.push(currentExercice);
+            currentExercice = [];
+            currentQuestion = null; currentOptions = []; currentBonnes = [];
+            currentExplication = null; currentTraduction = null;
+            continue;
+        }
+        
+        const matchQuestion = ligne.match(/^(\d+)\.\s*(.+)$/);
+        if (matchQuestion && !ligne.match(/^[A-Z]\s*[\)\*]/) && !ligne.match(/^TRADUCTION/i) && !ligne.match(/^EXPLICATION/i)) {
+            if (currentQuestion && currentOptions.length > 0) {
+                currentExercice.push({
+                    phrase: currentQuestion,
+                    options: currentOptions,
+                    bonnes: currentBonnes,
+                    explication: currentExplication || '',
+                    traduction: currentTraduction || ''
+                });
+            }
+            currentQuestion = matchQuestion[2].trim();
+            currentOptions = [];
+            currentBonnes = [];
+            currentExplication = null;
+            currentTraduction = null;
+            continue;
+        }
+        
+        // Format: *A) Option correcte  ou  A) Option incorrecte
+        const matchOption = ligne.match(/^(\*?)\s*([A-D])\s*[\)]\s*(.+)$/);
+        if (matchOption) {
+            const estBonne = matchOption[1] === '*';
+            const valeur = matchOption[3].trim();
+            currentOptions.push(valeur);
+            if (estBonne) currentBonnes.push(valeur);
+            continue;
+        }
+        
+        if (ligne.match(/^EXPLICATION/i)) {
+            currentExplication = ligne.replace(/^EXPLICATION\s*[:;]\s*/i, '').trim();
+            continue;
+        }
+        if (ligne.match(/^TRADUCTION/i)) {
+            currentTraduction = ligne.replace(/^TRADUCTION\s*[:;]\s*/i, '').trim();
+            continue;
+        }
+    }
+    
+    if (currentQuestion && currentOptions.length > 0) {
+        currentExercice.push({
+            phrase: currentQuestion,
+            options: currentOptions,
+            bonnes: currentBonnes,
+            explication: currentExplication || '',
+            traduction: currentTraduction || ''
+        });
+    }
+    
+    if (currentExercice.length > 0) exercices.push(currentExercice);
+    return exercices;
+}
+
+// ============================================================
+// 📋 FONCTION POUR DÉTERMINER LE TYPE ET OUVRIR LE BON LECTEUR
+// ============================================================
+function ouvrirExerciceAutreType(code, fichier, lecon) {
+    if (code === 'txc') {
+        ouvrirLecteurTexteCorrigerIntegre(fichier, lecon);
+    } else if (code === 'dic') {
+        ouvrirLecteurDicteeIntegre(fichier, lecon);
+    } else if (code === 'trc') {
+        ouvrirLecteurTrousIntegre(fichier, lecon);
+    } else if (code === 'chx') {
+        ouvrirLecteurChoixIntegre(fichier, lecon);
+    }
+}
+
+// ============================================================
+// 📋 OUVERTURE DES LECTEURS POUR CHAQUE TYPE
+// ============================================================
+
+// 1. TEXTE À CORRIGER
+function ouvrirLecteurTexteCorrigerIntegre(nomFichier, leconTitre) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const lecteurScreen = document.getElementById('screenLecteurQCM');
+    lecteurScreen.classList.add('active');
+    const container = document.getElementById('lecteurQCMContainer');
+    container.style.height = '100vh';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.overflow = 'hidden';
+    container.innerHTML = `
+        <div style="background:#0f2c3d;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #facc15;flex-shrink:0;">
+            <button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:6px 14px;border-radius:40px;cursor:pointer;font-weight:bold;font-size:0.85rem;">Retour</button>
+            <span style="color:#ffdd99;font-weight:bold;font-size:1rem;">✏️ ${leconTitre}</span>
+            <button id="updateTxcBtn" style="background:#2b7a4b;color:white;border:none;padding:4px 10px;border-radius:40px;cursor:pointer;font-size:0.6rem;font-weight:bold;">🔄 Màj</button>
+        </div>
+        <div id="lecteurTxcContent" style="flex:1;overflow-y:auto;padding:10px 6px;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">📥 Chargement...</p></div>
+        </div>
+    `;
+    document.getElementById('updateTxcBtn')?.addEventListener('click', () => chargerTexteCorrigerIntegre(nomFichier, leconTitre, true));
+    chargerTexteCorrigerIntegre(nomFichier, leconTitre, false);
+}
+
+async function chargerTexteCorrigerIntegre(nomFichier, leconTitre, forceUpdate = false) {
+    const contentDiv = document.getElementById('lecteurTxcContent');
+    if (!contentDiv) return;
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = null;
+        let localVersion = null;
+        
+        // ✅ 1. PRIORITÉ ABSOLUE : Vérifier IndexedDB d'abord
+        try { 
+            contenu = await recupererContenu(dbName); 
+            localVersion = await recupererVersion(dbName); 
+            if (contenu && contenu.length > 50) {
+                console.log(`📦 TEXTE: Utilisation du cache pour ${nomFichier} (version: ${localVersion})`);
+                const parsed = parserFichierTexteCorriger(contenu);
+                if (parsed && parsed.length > 0) {
+                    window._txcData = { exercices: parsed, currentIndex: 0, leconTitre: leconTitre };
+                    renderTexteCorriger(0);
+                    return; // ✅ FIN : On utilise le cache
+                }
+            }
+        } catch(e) {
+            console.log("📦 Pas de cache valide pour:", nomFichier);
+        }
+        
+        // ✅ 2. Si pas de cache OU forceUpdate = true → Télécharger
+        if (forceUpdate || !contenu || contenu.length < 50) {
+            contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">${forceUpdate ? '🔄 Mise à jour...' : '📥 Téléchargement...'}</p></div>`;
+            const urlAvecDevice = `${WORKER_URL}/${nomFichier}?deviceModel=${encodeURIComponent(deviceModel)}&t=${Date.now()}`;
+            const response = await fetch(urlAvecDevice, { cache: 'no-cache' });
+            
+            if (response.status === 403) {
+                const errorData = await response.json();
+                if (errorData.needsCode) {
+                    fermerLecteurQCM();
+                    pendingRequest = { 
+                        fileName: nomFichier, 
+                        niveau: errorData.niveau || getNiveauParFichier(nomFichier), 
+                        deviceModel: deviceModel, 
+                        titre: leconTitre, 
+                        url: urlAvecDevice 
+                    };
+                    document.getElementById('modalNiveau').innerText = pendingRequest.niveau;
+                    document.getElementById('modalFileName').innerText = nomFichier;
+                    document.getElementById('codeModal').classList.add('active');
+                    return;
+                }
+                throw new Error(errorData.message || 'Accès refusé');
+            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            contenu = await response.text();
+            const remoteVersion = await getRemoteVersionForFile(nomFichier);
+            await stockerContenuEtVersion(dbName, contenu, remoteVersion || new Date().toLocaleString('fr-FR'));
+            lecteurCurrentVersion = remoteVersion;
+            console.log(`✅ TEXTE: Fichier ${nomFichier} téléchargé et stocké`);
+        }
+        
+        if (!contenu || contenu.length < 50) throw new Error("Contenu invalide ou vide");
+        const parsed = parserFichierTexteCorriger(contenu);
+        if (!parsed || parsed.length === 0) throw new Error("Aucun exercice trouvé");
+        window._txcData = { exercices: parsed, currentIndex: 0, leconTitre: leconTitre };
+        renderTexteCorriger(0);
+    } catch (error) {
+        contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Erreur: ${error.message}</p><button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;margin-top:15px;">Retour</button></div>`;
+    }
+}
+
+function renderTexteCorriger(index) {
+    const data = window._txcData;
+    if (!data || !data.exercices || data.exercices.length === 0) return;
+    const exercice = data.exercices[index] || data.exercices[0];
+    const total = data.exercices.length;
+    const currentIndex = Math.min(index, total - 1);
+    const contentDiv = document.getElementById('lecteurTxcContent');
+    if (!contentDiv) return;
+    contentDiv.style.cssText = 'display:flex;align-items:flex-start;justify-content:center;padding:10px 5%;overflow:auto;min-height:100%;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);';
+    contentDiv.innerHTML = `
+        <div style="max-width:820px;width:100%;background:white;padding:1.5rem 1.8rem 2rem;border-radius:40px;box-shadow:0 12px 30px rgba(0,0,0,0.08);margin:10px auto;">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-bottom:2px solid #eef2f6;padding-bottom:0.8rem;margin-bottom:1.2rem;gap:12px;">
+                <h2 style="margin:0;font-size:1.3rem;font-weight:600;color:#1e293b;">✏️ Ahitsio zay diso</h2>
+                <span style="background:#eef2f6;padding:4px 16px;border-radius:40px;font-size:0.8rem;font-weight:600;color:#1e293b;">${currentIndex + 1} / ${total}</span>
+            </div>
+            <p><strong>📖 Vakio tsara ilay lahatsoratra, ary soraty amin'ny endriny tsara izy :</strong></p>
+            <div style="background:#f8fafc;padding:8px 20px;border-left:5px solid #2563eb;border-right:5px solid #2563eb;font-size:18px;color:#0f172a;border-radius:8px;margin:10px 0;">
+                <p style="margin:6px 0;color:#0f172a;">${escapeHtml(exercice.texteAvecErreurs)}</p>
+            </div>
+            <textarea id="txcTextarea" style="width:100%;height:120px;padding:12px 16px;font-size:18px;border:2px solid #cbd5e1;border-radius:10px;margin-top:10px;resize:vertical;font-family:inherit;transition:0.2s;" placeholder="Soraty eto ny lahatsoratra tsara..."></textarea>
+            <br><br>
+            <button id="txcCheckBtn" style="background:#2ecc71;color:white;border:none;padding:0.7rem 1.5rem;border-radius:40px;font-weight:600;font-size:1rem;cursor:pointer;transition:0.15s;width:100%;">✅ Jereo ny valiny</button>
+            <div style="font-size:0.78rem;color:#64748b;margin-top:0.8rem;border-top:1px dashed #dce1e9;padding-top:0.8rem;display:flex;justify-content:space-between;">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    const textarea = document.getElementById('txcTextarea');
+    const btn = document.getElementById('txcCheckBtn');
+    if (textarea) setTimeout(() => textarea.focus(), 100);
+    if (btn) btn.addEventListener('click', function() { verifierTexteCorriger(currentIndex); });
+}
+
+function verifierTexteCorriger(index) {
+    const data = window._txcData;
+    if (!data || !data.exercices) return;
+    const exercice = data.exercices[index];
+    const textarea = document.getElementById('txcTextarea');
+    const reponse = textarea ? textarea.value : '';
+    const texteCorrect = exercice.texteCorrect;
+    const traduction = exercice.traduction;
+    const seuil = Math.max(1, Math.floor(texteCorrect.replace(/\s/g, '').length * 0.5));
+    if (!reponse.trim()) {
+        showModal('⚠️ Azafady!', `<p style="color:#b13e3e;font-weight:bold;text-align:center;font-size:1.1rem;">⚠️ Soraty aloha ny lahatsoratra tsara !</p><button class="btn-recommencer" onclick="fermerModal()">✅ OK</button>`);
+        return;
+    }
+    const nbCaracteresReponse = reponse.replace(/\s/g, '').length;
+    if (nbCaracteresReponse < seuil) {
+        showModal('⚠️ Vereno vakio ary soraty tsara', `<div style="text-align:center;"><span style="font-size:3.5rem;">⚠️</span><h2 style="color:#dc3545;">Vereno vakio ary soraty tsara</h2><p><strong>Lasa betsaka ny hadisoanao !</strong><br>Mba vakio tsara ilay lahatsoratra indray<br>ary soraty tsara izy.</p><button class="btn-recommencer" onclick="fermerModal()">✅ OK</button></div>`);
+        return;
+    }
+    function nettoyerPourComparaison(texte) {
+        return texte.toLowerCase().replace(/[.,;:!?'"]/g, '').replace(/\s+/g, ' ').trim();
+    }
+    const originalNettoye = nettoyerPourComparaison(texteCorrect);
+    const reponseNettoyee = nettoyerPourComparaison(reponse);
+    const motsOriginal = originalNettoye.split(' ');
+    const motsReponse = reponseNettoyee.split(' ');
+    const maxMots = Math.max(motsOriginal.length, motsReponse.length);
+    let motsCorrects = 0;
+    let comparaisonMots = [];
+    for (let i = 0; i < maxMots; i++) {
+        const orig = i < motsOriginal.length ? motsOriginal[i] : '(manquant)';
+        const rep = i < motsReponse.length ? motsReponse[i] : '(manquant)';
+        if (orig === rep && orig !== '(manquant)') {
+            motsCorrects++;
+            comparaisonMots.push(`<span style="color:#2b6e4b;font-weight:bold;">${escapeHtml(rep)}</span>`);
+        } else {
+            comparaisonMots.push(`<span style="color:#dc3545;font-weight:bold;">${escapeHtml(rep)}</span>`);
+        }
+    }
+    const totalMots = motsOriginal.length;
+    const score = Math.round((motsCorrects / totalMots) * 100);
+    let classeScore, emoji, message;
+    if (score === 100) { classeScore = 'perfect'; emoji = '🏆👑'; message = '🎉 Tena tsara ! Vita tsara ny fanoratanao !'; }
+    else if (score >= 80) { classeScore = 'good'; emoji = '👍'; message = '👍 Tena tsara ! Misy hadisoana kely sisa.'; }
+    else { classeScore = 'poor'; emoji = '📖'; message = '📖 Vakio tsara ilay lahatsoratra ary soraty tsara.'; }
+    const nbCaracteresTexte = texteCorrect.replace(/\s/g, '').length;
+    const isLast = (index === data.exercices.length - 1);
+    let modalHtml = `
+        <h2 style="color:#1e293b;text-align:center;margin-bottom:10px;">Vokatra - Fanazaran-tena ${index + 1}</h2>
+        <div style="font-size:2rem;font-weight:700;text-align:center;padding:15px;border-radius:16px;margin-bottom:15px;background:${score === 100 ? '#fde8b3' : score >= 80 ? '#d1e7dd' : '#f8d7da'};color:${score === 100 ? '#7c5a00' : score >= 80 ? '#0f5132' : '#721c24'};border:3px solid ${score === 100 ? '#f5b342' : score >= 80 ? '#198754' : '#dc3545'};">
+            ${emoji} <strong>${score}%</strong> ny teniny marina (${motsCorrects}/${totalMots})
+        </div>
+        <p style="text-align:center;font-weight:600;">${message}</p>
+        <hr>
+        <p><strong>✅ Lahatsoratra tsara (tokony hosoratinao) :</strong><br><span style="color:#000000;font-weight:bold;">${escapeHtml(texteCorrect)}</span></p>
+        <p><strong>✍️ Ny nosoratanao :</strong><br>${escapeHtml(reponse)}</p>
+        <p><strong>🔍 Fampitahana mot à mot :</strong><br><span style="font-size:14px;line-height:2.2;background:#f8fafc;padding:12px;border-radius:10px;display:block;word-break:break-word;">${comparaisonMots.join(' ')}</span></p>
+        <div style="background:#eef2ff;border-left:4px solid #2563eb;padding:10px 15px;border-radius:8px;margin:8px 0;font-style:italic;color:#1e293b;">
+            <strong>🇲🇬 TRADUCTION :</strong> ${escapeHtml(traduction)}
+        </div>
+        <p style="font-size:0.75rem;color:#94a3b8;text-align:center;margin-top:5px;">📝 ${nbCaracteresReponse} soratra nosoratana (tokony ho ${nbCaracteresTexte})</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px;padding-top:15px;border-top:2px solid #eef2f6;">
+            <button class="btn-modal btn-replay" onclick="fermerModal(); renderTexteCorriger(${index});" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#f59e0b;color:white;">📖 Revoir le texte</button>
+    `;
+    if (!isLast) {
+        modalHtml += `<button class="btn-modal btn-next" onclick="fermerModal(); window._txcData.currentIndex = ${index + 1}; renderTexteCorriger(${index + 1});" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#22c55e;color:white;">➡️ Texte suivant</button>`;
+    } else {
+        modalHtml += `<button class="btn-modal btn-next" onclick="fermerModal(); showModal('🎉 Félicitations !', '<div style=\\'text-align:center;padding:15px;\\'><div style=\\'font-size:3.5rem;\\'>🎉🏆</div><h2 style=\\'color:#1e293b;\\'>Vita ny fanazarana rehetra !</h2><p style=\\'color:#64748b;\\'>Tena tsara ny ezakao !<br>Mbola afaka mamerina indray ianao raha tiana.</p><button class=\\'btn-recommencer\\' onclick=\\'fermerModal(); window._txcData.currentIndex = 0; renderTexteCorriger(0);\\' style=\\'display:block;margin:15px auto 0;padding:12px 35px;background:#2563eb;color:white;border:none;border-radius:40px;cursor:pointer;font-size:1rem;font-weight:600;transition:0.2s;\\'>🔄 Recommencer</button></div>');" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#8b5cf6;color:white;">🎉 Terminé</button>`;
+    }
+    modalHtml += `</div>`;
+    showModal('📊 Résultat', modalHtml);
+}
+
+// ============================================================
+// 2. DICTÉE
+// ============================================================
+function ouvrirLecteurDicteeIntegre(nomFichier, leconTitre) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const lecteurScreen = document.getElementById('screenLecteurQCM');
+    lecteurScreen.classList.add('active');
+    const container = document.getElementById('lecteurQCMContainer');
+    container.style.height = '100vh';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.overflow = 'hidden';
+    container.innerHTML = `
+        <div style="background:#0f2c3d;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #facc15;flex-shrink:0;">
+            <button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:6px 14px;border-radius:40px;cursor:pointer;font-weight:bold;font-size:0.85rem;">Retour</button>
+            <span style="color:#ffdd99;font-weight:bold;font-size:1rem;">🎧 ${leconTitre}</span>
+            <button id="updateDitBtn" style="background:#2b7a4b;color:white;border:none;padding:4px 10px;border-radius:40px;cursor:pointer;font-size:0.6rem;font-weight:bold;">🔄 Màj</button>
+        </div>
+        <div id="lecteurDitContent" style="flex:1;overflow-y:auto;padding:10px 6px;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">📥 Chargement...</p></div>
+        </div>
+    `;
+    document.getElementById('updateDitBtn')?.addEventListener('click', () => chargerDicteeIntegre(nomFichier, leconTitre, true));
+    chargerDicteeIntegre(nomFichier, leconTitre, false);
+}
+
+async function chargerDicteeIntegre(nomFichier, leconTitre, forceUpdate = false) {
+    const contentDiv = document.getElementById('lecteurDitContent');
+    if (!contentDiv) return;
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        const remoteVersion = await getRemoteVersionForFile(nomFichier);
+        let localVersion = null, contenu = null;
+        try { contenu = await recupererContenu(dbName); localVersion = await recupererVersion(dbName); } catch(e) {}
+        let needUpdate = forceUpdate || !contenu;
+        if (!forceUpdate && contenu && localVersion && remoteVersion && localVersion !== remoteVersion) needUpdate = true;
+        if (needUpdate) {
+            contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">${forceUpdate ? '🔄 Mise à jour...' : '📥 Téléchargement...'}</p></div>`;
+            const urlAvecDevice = `${WORKER_URL}/${nomFichier}?deviceModel=${encodeURIComponent(deviceModel)}&t=${Date.now()}`;
+            const response = await fetch(urlAvecDevice, { cache: 'no-cache' });
+            if (response.status === 403) {
+                const errorData = await response.json();
+                if (errorData.needsCode) {
+                    fermerLecteurQCM();
+                    pendingRequest = { fileName: nomFichier, niveau: errorData.niveau || getNiveauParFichier(nomFichier), deviceModel: deviceModel, titre: leconTitre, url: urlAvecDevice };
+                    document.getElementById('modalNiveau').innerText = pendingRequest.niveau;
+                    document.getElementById('modalFileName').innerText = nomFichier;
+                    document.getElementById('codeModal').classList.add('active');
+                    return;
+                }
+                throw new Error(errorData.message || 'Accès refusé');
+            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            contenu = await response.text();
+            await stockerContenuEtVersion(dbName, contenu, remoteVersion || new Date().toLocaleString('fr-FR'));
+            lecteurCurrentVersion = remoteVersion;
+        } else lecteurCurrentVersion = localVersion;
+        if (!contenu || contenu.length < 50) throw new Error("Contenu invalide ou vide");
+        const parsed = parserFichierDictee(contenu);
+        if (!parsed || parsed.length === 0) throw new Error("Aucun exercice trouvé");
+        window._ditData = { exercices: parsed, currentIndex: 0, leconTitre: leconTitre };
+        renderDictee(0);
+    } catch (error) {
+        contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Erreur: ${error.message}</p><button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;margin-top:15px;">Retour</button></div>`;
+    }
+}
+
+
+// ============================================================
+// 2. DICTÉE - VERSION UNIQUE ET CORRIGÉE
+// ============================================================
+
+function ouvrirLecteurDicteeIntegre(nomFichier, leconTitre) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const lecteurScreen = document.getElementById('screenLecteurQCM');
+    lecteurScreen.classList.add('active');
+    const container = document.getElementById('lecteurQCMContainer');
+    container.style.height = '100vh';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.overflow = 'hidden';
+    container.innerHTML = `
+        <div style="background:#0f2c3d;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #facc15;flex-shrink:0;">
+            <button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:6px 14px;border-radius:40px;cursor:pointer;font-weight:bold;font-size:0.85rem;">Retour</button>
+            <span style="color:#ffdd99;font-weight:bold;font-size:1rem;">🎧 ${leconTitre}</span>
+            <button id="updateDitBtn" style="background:#2b7a4b;color:white;border:none;padding:4px 10px;border-radius:40px;cursor:pointer;font-size:0.6rem;font-weight:bold;">🔄 Màj</button>
+        </div>
+        <div id="lecteurDitContent" style="flex:1;overflow-y:auto;padding:10px 6px;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">📥 Chargement...</p></div>
+        </div>
+    `;
+    document.getElementById('updateDitBtn')?.addEventListener('click', () => chargerDicteeIntegre(nomFichier, leconTitre, true));
+    chargerDicteeIntegre(nomFichier, leconTitre, false);
+}
+
+async function chargerDicteeIntegre(nomFichier, leconTitre, forceUpdate = false) {
+    const contentDiv = document.getElementById('lecteurDitContent');
+    if (!contentDiv) return;
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        const remoteVersion = await getRemoteVersionForFile(nomFichier);
+        let localVersion = null, contenu = null;
+        try { contenu = await recupererContenu(dbName); localVersion = await recupererVersion(dbName); } catch(e) {}
+        let needUpdate = forceUpdate || !contenu;
+        if (!forceUpdate && contenu && localVersion && remoteVersion && localVersion !== remoteVersion) needUpdate = true;
+        if (needUpdate) {
+            contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">${forceUpdate ? '🔄 Mise à jour...' : '📥 Téléchargement...'}</p></div>`;
+            const urlAvecDevice = `${WORKER_URL}/${nomFichier}?deviceModel=${encodeURIComponent(deviceModel)}&t=${Date.now()}`;
+            const response = await fetch(urlAvecDevice, { cache: 'no-cache' });
+            if (response.status === 403) {
+                const errorData = await response.json();
+                if (errorData.needsCode) {
+                    fermerLecteurQCM();
+                    pendingRequest = { fileName: nomFichier, niveau: errorData.niveau || getNiveauParFichier(nomFichier), deviceModel: deviceModel, titre: leconTitre, url: urlAvecDevice };
+                    document.getElementById('modalNiveau').innerText = pendingRequest.niveau;
+                    document.getElementById('modalFileName').innerText = nomFichier;
+                    document.getElementById('codeModal').classList.add('active');
+                    return;
+                }
+                throw new Error(errorData.message || 'Accès refusé');
+            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            contenu = await response.text();
+            await stockerContenuEtVersion(dbName, contenu, remoteVersion || new Date().toLocaleString('fr-FR'));
+            lecteurCurrentVersion = remoteVersion;
+        } else lecteurCurrentVersion = localVersion;
+        if (!contenu || contenu.length < 50) throw new Error("Contenu invalide ou vide");
+        const parsed = parserFichierDictee(contenu);
+        if (!parsed || parsed.length === 0) throw new Error("Aucun exercice trouvé");
+        window._ditData = { exercices: parsed, currentIndex: 0, leconTitre: leconTitre };
+        renderDictee(0);
+    } catch (error) {
+        contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Erreur: ${error.message}</p><button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;margin-top:15px;">Retour</button></div>`;
+    }
+}
+
+// ✅ VERSION CORRECTE DE renderDictee
+function renderDictee(index) {
+    const data = window._ditData;
+    if (!data || !data.exercices || data.exercices.length === 0) {
+        console.error("❌ Aucune donnée de dictée trouvée !");
+        return;
+    }
+    
+    const exercice = data.exercices[index] || data.exercices[0];
+    const total = data.exercices.length;
+    const currentIndex = Math.min(index, total - 1);
+    const contentDiv = document.getElementById('lecteurDitContent');
+    
+    if (!contentDiv) {
+        console.error("❌ Élément lecteurDitContent non trouvé !");
+        return;
+    }
+    
+    contentDiv.style.cssText = 'display:flex;align-items:flex-start;justify-content:center;padding:10px 5%;overflow:auto;min-height:100%;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);';
+    
+    contentDiv.innerHTML = `
+        <div style="max-width:820px;width:100%;background:white;padding:1.5rem 1.8rem 2rem;border-radius:40px;box-shadow:0 12px 30px rgba(0,0,0,0.08);margin:10px auto;">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-bottom:2px solid #eef2f6;padding-bottom:0.8rem;margin-bottom:1.2rem;gap:12px;">
+                <h2 style="margin:0;font-size:1.3rem;font-weight:600;color:#1e293b;">🎧 Dictée</h2>
+                <span style="background:#eef2f6;padding:4px 16px;border-radius:40px;font-size:0.8rem;font-weight:600;color:#1e293b;">Dictée ${currentIndex + 1} / ${total}</span>
+            </div>
+            <p><strong>📢 Henoy tsara ilay lahatsoratra, ary soraty izay renao :</strong></p>
+            <button id="playAudioBtn" style="background:#f59e0b;color:white;border:none;padding:12px;border-radius:40px;font-weight:600;font-size:1rem;cursor:pointer;transition:0.15s;width:100%;">🔊 Henoy ilay lahatsoratra</button>
+            <br><br>
+            <textarea id="ditTextarea" style="width:100%;height:120px;padding:12px 16px;font-size:18px;border:2px solid #cbd5e1;border-radius:10px;margin-top:10px;resize:vertical;font-family:inherit;transition:0.2s;" placeholder="Soraty eto izay renao..."></textarea>
+            <br><br>
+            <button id="ditCheckBtn" style="background:#2ecc71;color:white;border:none;padding:0.7rem 1.5rem;border-radius:40px;font-weight:600;font-size:1rem;cursor:pointer;transition:0.15s;width:100%;">✅ Jereo ny valiny</button>
+            <div style="font-size:0.78rem;color:#64748b;margin-top:0.8rem;border-top:1px dashed #dce1e9;padding-top:0.8rem;display:flex;justify-content:space-between;">
+                <span>📝 ${data.leconTitre}</span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    
+    const textarea = document.getElementById('ditTextarea');
+    const playBtn = document.getElementById('playAudioBtn');
+    const checkBtn = document.getElementById('ditCheckBtn');
+    
+    function jouerAudio() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(exercice.texte);
+            utterance.lang = 'fr-FR';
+            utterance.rate = 0.7;
+            utterance.pitch = 1;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Tsy tohanan'ny navigateur-nao io. Mampiasà Chrome, Edge na Safari.");
+        }
+    }
+    
+    if (playBtn) {
+        playBtn.addEventListener('click', jouerAudio);
+    }
+    
+    if (textarea) {
+        setTimeout(() => textarea.focus(), 100);
+    }
+    
+    if (checkBtn) {
+        checkBtn.addEventListener('click', function(e) {
+            const reponse = document.getElementById('ditTextarea')?.value || '';
+            verifierDictee(currentIndex, reponse);
+        });
+    }
+    
+    setTimeout(jouerAudio, 500);
+}
+
+
+// ✅ FONCTION VÉRIFICATION - CORRIGÉE
+function verifierDictee(index, reponseSaisie) {
+    console.log("🔍 Vérification de la dictée, index:", index);
+    
+    const data = window._ditData;
+    if (!data || !data.exercices) {
+        console.error("❌ Données de dictée manquantes !");
+        alert("⚠️ Erreur : Aucune donnée de dictée trouvée. Veuillez recharger la page.");
+        return;
+    }
+    
+    const exercice = data.exercices[index];
+    if (!exercice) {
+        console.error("❌ Exercice non trouvé à l'index:", index);
+        alert("⚠️ Erreur : Exercice non trouvé.");
+        return;
+    }
+    
+    // Utiliser la réponse passée en paramètre ou récupérer depuis la textarea
+    const reponse = reponseSaisie || document.getElementById('ditTextarea')?.value || '';
+    const texteOriginal = exercice.texte;
+    const traduction = exercice.traduction;
+    
+    console.log("📝 Réponse saisie:", reponse);
+    console.log("📖 Texte original:", texteOriginal);
+    
+    // ✅ VÉRIFICATION 1 : Réponse vide
+    if (!reponse.trim()) {
+        showModal('⚠️ Azafady', `
+            <div style="text-align:center;padding:20px;">
+                <span style="font-size:4rem;">⚠️</span>
+                <h2 style="color:#dc3545;margin:10px 0;">Soraty aloha izay renao !</h2>
+                <p style="color:#64748b;font-size:1.1rem;">Mba soraty aloha ilay renao vao tsindrio ny "Jereo ny valiny".</p>
+                <button onclick="fermerModal()" style="background:#64748b;color:white;border:none;padding:10px 30px;border-radius:40px;cursor:pointer;margin-top:15px;font-weight:bold;">✅ OK</button>
+            </div>
+        `);
+        return;
+    }
+    
+    // ✅ VÉRIFICATION 2 : Réponse trop courte (moins de 50%)
+    const seuil = Math.max(1, Math.floor(texteOriginal.replace(/\s/g, '').length * 0.5));
+    const nbCaracteresReponse = reponse.replace(/\s/g, '').length;
+    
+    if (nbCaracteresReponse < seuil) {
+        showModal('⚠️ Vereno henoana ary soraty tsara', `
+            <div style="text-align:center;padding:20px;">
+                <span style="font-size:4rem;">⚠️</span>
+                <h2 style="color:#dc3545;margin:10px 0;">Vereno henoana ary soraty tsara</h2>
+                <p style="color:#64748b;font-size:1.1rem;">
+                    <strong>Lasa betsaka ny hadisoanao !</strong><br>
+                    Mba henoy tsara ilay lahatsoratra indray<br>
+                    ary soraty tsara izy.
+                </p>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+                    <button onclick="fermerModal(); document.getElementById('playAudioBtn')?.click();" style="background:#f59e0b;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;font-weight:bold;">🔊 Henoy indray</button>
+                    <button onclick="fermerModal()" style="background:#64748b;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;font-weight:bold;">✅ OK</button>
+                </div>
+            </div>
+        `);
+        return;
+    }
+    
+    // ✅ VÉRIFICATION 3 : Comparaison mot à mot
+    function nettoyer(texte) {
+        return texte.toLowerCase().replace(/[.,;:!?'"]/g, '').replace(/\s+/g, ' ').trim();
+    }
+    
+    const originalNettoye = nettoyer(texteOriginal);
+    const reponseNettoyee = nettoyer(reponse);
+    const motsOriginal = originalNettoye.split(' ');
+    const motsReponse = reponseNettoyee.split(' ');
+    
+    let motsCorrects = 0;
+    let comparaisonMots = [];
+    
+    for (let i = 0; i < Math.max(motsOriginal.length, motsReponse.length); i++) {
+        const orig = motsOriginal[i] || '(manquant)';
+        const rep = motsReponse[i] || '(manquant)';
+        if (orig === rep && orig !== '(manquant)') {
+            motsCorrects++;
+            comparaisonMots.push(`<span style="color:#2b6e4b;font-weight:bold;">${escapeHtml(rep)}</span>`);
+        } else {
+            comparaisonMots.push(`<span style="color:#dc3545;font-weight:bold;">${escapeHtml(rep)}</span>`);
+        }
+    }
+    
+    const totalMots = motsOriginal.length;
+    const score = Math.round((motsCorrects / totalMots) * 100);
+    
+    let classeScore, emoji, message;
+    if (score === 100) { 
+        classeScore = 'perfect'; 
+        emoji = '🏆👑'; 
+        message = '🎉 Tena tsara ! Vita tsara ny fanoratanao !'; 
+    } else if (score >= 80) { 
+        classeScore = 'good'; 
+        emoji = '👍'; 
+        message = '👍 Tena tsara ! Misy hadisoana kely sisa.'; 
+    } else { 
+        classeScore = 'poor'; 
+        emoji = '📖'; 
+        message = '🔊 Henoy tsara ilay lahatsoratra ary soraty tsara.'; 
+    }
+    
+    const isLast = (index === data.exercices.length - 1);
+    const nbCaracteresTexte = texteOriginal.replace(/\s/g, '').length;
+    
+    let modalHtml = `
+        <h2 style="color:#1e293b;text-align:center;margin-bottom:10px;">📊 Vokatra - Dictée ${index + 1}</h2>
+        <div style="font-size:2rem;font-weight:700;text-align:center;padding:15px;border-radius:16px;margin-bottom:15px;background:${score === 100 ? '#fde8b3' : score >= 80 ? '#d1e7dd' : '#f8d7da'};color:${score === 100 ? '#7c5a00' : score >= 80 ? '#0f5132' : '#721c24'};border:3px solid ${score === 100 ? '#f5b342' : score >= 80 ? '#198754' : '#dc3545'};">
+            ${emoji} <strong>${score}%</strong> ny teniny marina (${motsCorrects}/${totalMots})
+        </div>
+        <p style="text-align:center;font-weight:600;">${message}</p>
+        <hr>
+        <br><p><strong>📖 Lahatsoratra tany am-boalohany :</strong><br><span style="color:#000000;font-weight:500;">${escapeHtml(texteOriginal)}</span></p><br><p><strong>✍️ Ny nosoratanao :</strong><br><span style="color:#000000;font-weight:500;">${escapeHtml(reponse)}</span></p>
+        <p><strong>🔍 Fampitahana mot à mot :</strong><br><span style="font-size:14px;line-height:2;background:#f8fafc;padding:12px;border-radius:10px;display:block;word-break:break-word;">${comparaisonMots.join(' ')}</span></p>
+        <div style="background:#eef2ff;border-left:4px solid #2563eb;padding:10px 15px;border-radius:8px;margin:8px 0;font-style:italic;color:#1e293b;">
+         
+<p><strong>📖 Lahatsoratra tany am-boalohany :</strong><br><span style="color:#000000;font-weight:500;">${escapeHtml(texteOriginal)}</span></p><br><strong>🇲🇬 :</strong> ${escapeHtml(traduction)}
+        </div>
+        <p style="font-size:0.75rem;color:#94a3b8;text-align:center;margin-top:5px;">📝 ${nbCaracteresReponse} soratra nosoratana (tokony ho ${nbCaracteresTexte})</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px;padding-top:15px;border-top:2px solid #eef2f6;">
+            <button onclick="fermerModal(); document.getElementById('playAudioBtn')?.click();" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#f59e0b;color:white;">🔊 Réécouter</button>
+    `;
+    
+    if (!isLast) {
+        modalHtml += `
+            <button onclick="fermerModal(); window._ditData.currentIndex = ${index + 1}; renderDictee(${index + 1});" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#22c55e;color:white;">➡️ Dictée suivante</button>
+        `;
+    } else {
+        modalHtml += `
+            <button onclick="fermerModal(); showModal('🎉 Félicitations !', '<div style=\\'text-align:center;padding:15px;\\'><div style=\\'font-size:3.5rem;\\'>🎉🏆</div><h2 style=\\'color:#1e293b;\\'>Vita ny fanazarana rehetra !</h2><p style=\\'color:#64748b;font-size:1.1rem;\\'>Tena tsara ny ezakao !<br>Mbola afaka mamerina indray ianao raha tiana.</p><button onclick=\\'fermerModal(); window._ditData.currentIndex = 0; renderDictee(0);\\' style=\\'display:block;margin:15px auto 0;padding:12px 35px;background:#2563eb;color:white;border:none;border-radius:40px;cursor:pointer;font-size:1rem;font-weight:600;transition:0.2s;\\'>🔄 Recommencer</button></div>');" style="padding:10px 24px;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.2s;flex:1;min-width:120px;background:#8b5cf6;color:white;">🎉 Terminé</button>
+        `;
+    }
+    
+    modalHtml += `</div>`;
+    showModal('📊 Résultat', modalHtml);
+}
+
+// ✅ FONCTION showModal - SI ELLE N'EXISTE PAS
+function showModal(titre, contenu) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-fullscreen';
+    modal.innerHTML = `
+        <div class="modal-fullscreen-header">
+            <h2>${titre}</h2>
+            <button class="btn-close-fullscreen" onclick="this.closest('.modal-fullscreen').remove()">✕</button>
+        </div>
+        <div class="modal-fullscreen-body">${contenu}</div>
+    `;
+    document.body.appendChild(modal);
+}
+
+// ✅ FONCTION fermerModal - SI ELLE N'EXISTE PAS
+function fermerModal() {
+    const modal = document.querySelector('.modal-fullscreen');
+    if (modal) modal.remove();
+}
+
+
+// ============================================================
+// 3. TROUS
+// ============================================================
+function ouvrirLecteurTrousIntegre(nomFichier, leconTitre) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const lecteurScreen = document.getElementById('screenLecteurQCM');
+    lecteurScreen.classList.add('active');
+    const container = document.getElementById('lecteurQCMContainer');
+    container.style.height = '100vh';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.overflow = 'hidden';
+    container.innerHTML = `
+        <div style="background:#0f2c3d;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #facc15;flex-shrink:0;">
+            <button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:6px 14px;border-radius:40px;cursor:pointer;font-weight:bold;font-size:0.85rem;">Retour</button>
+            <span style="color:#ffdd99;font-weight:bold;font-size:1rem;"></span>
+            <button id="updateTrcBtn" style="background:#2b7a4b;color:white;border:none;padding:4px 10px;border-radius:40px;cursor:pointer;font-size:0.6rem;font-weight:bold;">🔄 Màj</button>
+        </div>
+        <div id="lecteurTrcContent" style="flex:1;overflow-y:auto;padding:10px 6px;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">📥 Chargement...</p></div>
+        </div>
+    `;
+    document.getElementById('updateTrcBtn')?.addEventListener('click', () => chargerTrousIntegre(nomFichier, leconTitre, true));
+    chargerTrousIntegre(nomFichier, leconTitre, false);
+}
+
+async function chargerTrousIntegre(nomFichier, leconTitre, forceUpdate = false) {
+    const contentDiv = document.getElementById('lecteurTrcContent');
+    if (!contentDiv) return;
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = null;
+        let localVersion = null;
+        
+        // ✅ 1. PRIORITÉ ABSOLUE : Vérifier IndexedDB d'abord
+        try { 
+            contenu = await recupererContenu(dbName); 
+            localVersion = await recupererVersion(dbName); 
+            if (contenu && contenu.length > 50) {
+                console.log(`📦 TROUS: Utilisation du cache pour ${nomFichier} (version: ${localVersion})`);
+                const parsed = parserFichierTrous(contenu);
+                if (parsed && parsed.length > 0) {
+                    let toutesLesPhrases = [];
+                    for (const ex of parsed) {
+                        for (const phrase of ex) {
+                            toutesLesPhrases.push(phrase);
+                        }
+                    }
+                    window._trcData = {
+                        toutesLesPhrases: toutesLesPhrases,
+                        currentPage: 0,
+                        leconTitre: leconTitre,
+                        PHRASES_PAR_PAGE: 4,
+                        MAX_ATTEMPTS: 2
+                    };
+                    renderTrous();
+                    return; // ✅ FIN : On utilise le cache
+                }
+            }
+        } catch(e) {
+            console.log("📦 Pas de cache valide pour:", nomFichier);
+        }
+        
+        // ✅ 2. Si pas de cache OU forceUpdate = true → Télécharger
+        if (forceUpdate || !contenu || contenu.length < 50) {
+            contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">${forceUpdate ? '🔄 Mise à jour...' : '📥 Téléchargement...'}</p></div>`;
+            const urlAvecDevice = `${WORKER_URL}/${nomFichier}?deviceModel=${encodeURIComponent(deviceModel)}&t=${Date.now()}`;
+            const response = await fetch(urlAvecDevice, { cache: 'no-cache' });
+            
+            if (response.status === 403) {
+                const errorData = await response.json();
+                if (errorData.needsCode) {
+                    fermerLecteurQCM();
+                    pendingRequest = { 
+                        fileName: nomFichier, 
+                        niveau: errorData.niveau || getNiveauParFichier(nomFichier), 
+                        deviceModel: deviceModel, 
+                        titre: leconTitre, 
+                        url: urlAvecDevice 
+                    };
+                    document.getElementById('modalNiveau').innerText = pendingRequest.niveau;
+                    document.getElementById('modalFileName').innerText = nomFichier;
+                    document.getElementById('codeModal').classList.add('active');
+                    return;
+                }
+                throw new Error(errorData.message || 'Accès refusé');
+            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            contenu = await response.text();
+            const remoteVersion = await getRemoteVersionForFile(nomFichier);
+            await stockerContenuEtVersion(dbName, contenu, remoteVersion || new Date().toLocaleString('fr-FR'));
+            lecteurCurrentVersion = remoteVersion;
+            console.log(`✅ TROUS: Fichier ${nomFichier} téléchargé et stocké`);
+        }
+        
+        if (!contenu || contenu.length < 50) throw new Error("Contenu invalide ou vide");
+        const parsed = parserFichierTrous(contenu);
+        if (!parsed || parsed.length === 0) throw new Error("Aucun exercice trouvé");
+        
+        let toutesLesPhrases = [];
+        for (const ex of parsed) {
+            for (const phrase of ex) {
+                toutesLesPhrases.push(phrase);
+            }
+        }
+        window._trcData = {
+            toutesLesPhrases: toutesLesPhrases,
+            currentPage: 0,
+            leconTitre: leconTitre,
+            PHRASES_PAR_PAGE: 4,
+            MAX_ATTEMPTS: 4
+        };
+        renderTrous();
+    } catch (error) {
+        contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Erreur: ${error.message}</p><button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;margin-top:15px;">Retour</button></div>`;
+    }
+}
+function renderTrous() {
+    const data = window._trcData;
+    if (!data || !data.toutesLesPhrases || data.toutesLesPhrases.length === 0) return;
+    const toutesLesPhrases = data.toutesLesPhrases;
+    const totalPages = Math.ceil(toutesLesPhrases.length / data.PHRASES_PAR_PAGE);
+    let currentPage = data.currentPage || 0;
+    if (currentPage >= totalPages) currentPage = 0;
+    const startIdx = currentPage * data.PHRASES_PAR_PAGE;
+    const endIdx = Math.min(startIdx + data.PHRASES_PAR_PAGE, toutesLesPhrases.length);
+    const pagePhrases = toutesLesPhrases.slice(startIdx, endIdx);
+    const contentDiv = document.getElementById('lecteurTrcContent');
+    if (!contentDiv) return;
+    contentDiv.style.cssText = 'display:flex;align-items:flex-start;justify-content:center;padding:10px 5%;overflow:auto;min-height:100%;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);';
+    let html = `
+        <div style="max-width:820px;width:100%;background:white;padding:1.5rem 1.8rem 2rem;border-radius:40px;box-shadow:0 12px 30px rgba(0,0,0,0.08);margin:10px auto;">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-bottom:2px solid #eef2f6;padding-bottom:0.8rem;margin-bottom:1.2rem;gap:12px;">
+                <h2 style="margin:0;font-size:1.3rem;font-weight:600;color:#1e293b;">🧩 Fenoy ny banga</h2>
+                <span style="background:#eef2f6;padding:4px 16px;border-radius:40px;font-size:0.8rem;font-weight:600;color:#1e293b;">${currentPage + 1} / ${totalPages}</span>
+            </div>
+            <div id="trcEmptyNotification" style="display:none;background:#fff3cd;color:#856404;padding:10px 16px;border-radius:12px;margin-bottom:15px;border-left:4px solid #ffc107;font-size:0.9rem;text-align:center;">⚠️ Veuillez remplir tous les champs avant de valider !</div>
+            <div id="trcPhraseContainer">
+    `;
+    pagePhrases.forEach((p, idx) => {
+        const num = startIdx + idx + 1;
+        html += `
+            <div class="trc-phrase-item" data-index="${idx}" style="display:flex;flex-wrap:wrap;align-items:center;gap:0.2rem;background:transparent;padding:0.3rem 0.6rem 0.3rem 0.8rem;border-radius:12px;border-bottom:1px dashed #dce1e9;position:relative;">
+                <span style="font-size:1.1rem;color:#0f172a;font-weight:450;white-space:nowrap;">${num}. ${p.text} </span>
+                <span style="font-weight:700;color:#2563eb;background:#eef2ff;padding:0.05rem 0.5rem;border-radius:30px;font-size:1rem;white-space:nowrap;">(${p.infinitive})</span>
+                <span style="display:inline-flex;align-items:center;position:relative;min-width:80px;max-width:300px;flex-shrink:0;">
+                    <input type="text" placeholder="_____" data-idx="${idx}" autocomplete="off" spellcheck="false" style="width:100%;min-width:80px;padding:0.15rem 0.3rem;font-size:1.1rem;border:none;border-bottom:2px dashed #94a3b8;background:transparent !important;outline:none;transition:0.15s;font-weight:500;color:#0b1e33;letter-spacing:0.3px;text-align:left;font-family:inherit;caret-color:#2563eb;overflow:hidden;text-overflow:ellipsis;">
+                </span>
+                <span style="font-size:1.1rem;color:#0f172a;white-space:nowrap;"> ${p.suffix}</span>
+                <span class="trc-feedback" data-feedback="${idx}" style="display:inline-block;font-size:1.1rem;font-weight:700;padding:0.05rem 0.3rem;border-radius:40px;background:transparent;color:#1e293b;transition:0.1s;white-space:nowrap;margin-left:4px;min-width:24px;text-align:center;">⏳</span> <span </span>
+                <div class="trc-correction" data-correction="${idx}" style="width:100%;margin-top:3px;padding:4px 12px;border-radius:8px;font-size:0.85rem;display:none;font-weight:500;flex-shrink:0;"></div>
+            </div>
+        `;
+    });
+    html += `
+            </div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;margin:1rem 0 0.2rem;gap:12px;">
+                <button id="trcPrevBtn" style="background:transparent;border:1px solid #cbd5e1;padding:0.5rem 1.2rem;border-radius:40px;font-weight:550;font-size:0.9rem;color:#1e293b;cursor:pointer;transition:0.15s;touch-action:manipulation;" ${currentPage === 0 ? 'disabled' : ''}>⬅️ Précédent</button>
+                <button id="trcNextBtn" style="background:transparent;border:1px solid #cbd5e1;padding:0.5rem 1.2rem;border-radius:40px;font-weight:550;font-size:0.9rem;color:#1e293b;cursor:pointer;transition:0.15s;touch-action:manipulation;">${currentPage >= totalPages - 1 ? '🎉 Terminé' : '✅ Vérifier'}</button>
+            </div>
+            <div style="font-size:0.78rem;color:#64748b;margin-top:0.8rem;border-top:1px dashed #dce1e9;padding-top:0.8rem;display:flex;justify-content:space-between;">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    contentDiv.innerHTML = html;
+    const totalPhrases = pagePhrases.length;
+    const allAttempts = new Array(totalPhrases).fill(0);
+    const allIsCorrect = new Array(totalPhrases).fill(false);
+    let totalAttemptsAll = 0;
+    let terminéClicCount = 0;
+    let verifyClicked = false;
+    function allFieldsFilled() {
+        const inputs = contentDiv.querySelectorAll('.trc-phrase-item input');
+        for (const input of inputs) {
+            if (input.value.trim() === '') return false;
+        }
+        return true;
+    }
+    function allCorrect() { return allIsCorrect.every(v => v === true); }
+    function updateButtons() {
+        const filled = allFieldsFilled();
+        const allDone = allCorrect();
+        const checkBtn = contentDiv.querySelector('#trcCheckBtn');
+        const nextBtn = contentDiv.querySelector('#trcNextBtn');
+        if (checkBtn) {
+            checkBtn.disabled = !filled || allDone;
+            if (allDone) checkBtn.textContent = '✅ Fait';
+            else checkBtn.textContent = '✅ Vérifier';
+        }
+        if (nextBtn) {
+            const isLastPage = (currentPage >= totalPages - 1);
+            if (isLastPage) {
+                if (allDone) {
+                    nextBtn.textContent = '🎉 Terminé';
+                    nextBtn.style.background = '#2ecc71';
+                    nextBtn.style.color = 'white';
+                } else {
+                    nextBtn.textContent = '🎉 Terminé';
+                    nextBtn.style.background = 'transparent';
+                    nextBtn.style.border = '1px solid #cbd5e1';
+                    nextBtn.style.color = '#1e293b';
+                }
+            } else {
+                nextBtn.textContent = '✅ Vérifier';
+                nextBtn.style.background = 'transparent';
+                nextBtn.style.border = '1px solid #cbd5e1';
+                nextBtn.style.color = '#1e293b';
+            }
+        }
+    }
+    function showCorrection(idx) {
+        const msg = contentDiv.querySelector(`.trc-correction[data-correction="${idx}"]`);
+        if (!msg) return;
+        const phrase = pagePhrases[idx];
+        msg.style.display = 'block';
+        msg.style.color = '#842029';
+        msg.style.background = '#f8d7da';
+        msg.style.borderLeft = '4px solid #b13e3e';
+        msg.innerHTML = `<div><strong>❌ La bonne réponse est :</strong> « ${escapeHtml(phrase.correct)} »</div><div style="font-weight:400;color:#2c3e50;margin-top:2px;font-size:0.8rem;border-top:1px dashed rgba(0,0,0,0.08);padding-top:4px;">📖 ${escapeHtml(phrase.explication)}</div>`;
+    }
+    function hideCorrection(idx) {
+        const msg = contentDiv.querySelector(`.trc-correction[data-correction="${idx}"]`);
+        if (msg) { msg.style.display = 'none'; }
+    }
+    function showAllCorrections() {
+        const inputs = contentDiv.querySelectorAll('.trc-phrase-item input');
+        inputs.forEach((input, idx) => {
+            if (allIsCorrect[idx]) return;
+            const val = input.value.trim();
+            const phrase = pagePhrases[idx];
+            const badge = contentDiv.querySelector(`.trc-feedback[data-feedback="${idx}"]`);
+            if (val.toLowerCase() !== phrase.correct.toLowerCase()) {
+                input.style.borderBottom = '2px solid #b13e3e';
+                badge.textContent = '❌';
+                badge.style.color = '#b13e3e';
+                showCorrection(idx);
+            }
+        });
+    }
+    function adjustInputWidth(input) {
+        if (!input) return;
+        const temp = document.createElement('span');
+        temp.style.position = 'absolute';
+        temp.style.visibility = 'hidden';
+        temp.style.whiteSpace = 'pre';
+        temp.style.fontSize = window.getComputedStyle(input).fontSize;
+        temp.style.fontFamily = window.getComputedStyle(input).fontFamily;
+        temp.style.fontWeight = window.getComputedStyle(input).fontWeight;
+        temp.style.letterSpacing = window.getComputedStyle(input).letterSpacing;
+        temp.textContent = input.value || '';
+        document.body.appendChild(temp);
+        const width = temp.offsetWidth + 20;
+        document.body.removeChild(temp);
+        const minWidth = 80, maxWidth = 300;
+        const newWidth = Math.min(Math.max(width, minWidth), maxWidth);
+        input.style.width = newWidth + 'px';
+        input.style.minWidth = minWidth + 'px';
+        input.style.maxWidth = maxWidth + 'px';
+    }
+    
+const inputs = contentDiv.querySelectorAll('.trc-phrase-item input');
+inputs.forEach((input, idx) => {
+    const badge = contentDiv.querySelector(`.trc-feedback[data-feedback="${idx}"]`);
+    const attemptEl = contentDiv.querySelector(`.trc-attempt[data-attempt="${idx}"]`);
+    
+    input.addEventListener('blur', function() {
+        if (allIsCorrect[idx]) return;
+        const val = this.value.trim();
+        const phrase = pagePhrases[idx];
+        
+        // ✅ Si la réponse est incorrecte ET non vide
+        if (val !== '' && val.toLowerCase() !== phrase.correct.toLowerCase()) {
+            // ✅ INCRÉMENTER LE COMPTEUR (fonctionne toujours)
+            allAttempts[idx] = Math.min(allAttempts[idx] + 1, data.MAX_ATTEMPTS);
+            
+            // ✅ METTRE À JOUR L'AFFICHAGE (même si caché, ça reste en mémoire)
+            if (attemptEl) {
+                attemptEl.textContent = `${allAttempts[idx]}/${data.MAX_ATTEMPTS}`;
+            }
+            
+            this.style.borderBottom = '2px solid #b13e3e';
+            badge.textContent = '❌';
+            badge.style.color = '#b13e3e';
+            hideCorrection(idx);
+            
+            // ✅ BLOQUER APRÈS 4 TENTATIVES (toujours actif)
+            if (allAttempts[idx] >= data.MAX_ATTEMPTS) {
+                this.disabled = true;
+                badge.textContent = '❌';
+                badge.style.color = '#b13e3e';
+            }
+        } 
+        // ✅ Si la réponse est correcte
+        else if (val !== '' && val.toLowerCase() === phrase.correct.toLowerCase()) {
+            allIsCorrect[idx] = true;
+            this.style.borderBottom = '2px solid #2b6e4b';
+            badge.textContent = '✅';
+            badge.style.color = '#2b6e4b';
+            this.disabled = true;
+            hideCorrection(idx);
+        } 
+        // ✅ Si le champ est vide
+        else {
+            this.style.borderBottom = '2px dashed #94a3b8';
+            badge.textContent = '⏳';
+            badge.style.color = '#1e293b';
+            hideCorrection(idx);
+        }
+        
+        adjustInputWidth(this);
+        updateButtons();
+    });
+    
+    input.addEventListener('input', function() {
+        if (allIsCorrect[idx]) return;
+        this.style.borderBottom = '2px dashed #94a3b8';
+        badge.textContent = '⏳';
+        badge.style.color = '#1e293b';
+        hideCorrection(idx);
+        verifyClicked = false;
+        adjustInputWidth(this);
+        updateButtons();
+    });
+    
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') this.blur();
+    });
+    
+    input.addEventListener('focus', function() { 
+        adjustInputWidth(this); 
+    });
+});
+
+contentDiv.querySelector('#trcNextBtn')?.addEventListener('click', function() {
+        const allDone = allCorrect();
+        const isLastPage = (currentPage >= totalPages - 1);
+        if (isLastPage) {
+            if (terminéClicCount === 0) {
+                if (!allFieldsFilled()) {
+                    const empty = contentDiv.querySelector('#trcEmptyNotification');
+                    if (empty) { empty.style.display = 'block'; empty.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                    return;
+                }
+                const empty = contentDiv.querySelector('#trcEmptyNotification');
+                if (empty) empty.style.display = 'none';
+                showAllCorrections();
+                terminéClicCount++;
+                const btn = contentDiv.querySelector('#trcNextBtn');
+                if (btn) {
+                    btn.textContent = '🎉 Terminé (2ème clic)';
+                    btn.style.background = '#2ecc71';
+                    btn.style.color = 'white';
+                }
+                updateButtons();
+                return;
+            }
+            if (terminéClicCount >= 1) {
+                showModal('🎉 Félicitations !', `<div style="text-align:center;padding:15px;"><div style="font-size:3.5rem;">🎉🏆</div><h2 style="color:#1e293b;">Merci d'avoir participé !</h2><p style="color:#64748b;font-size:1.1rem;">Vous avez terminé tous les exercices avec succès !<br>Bravo pour votre travail !</p><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px;padding-top:15px;border-top:2px solid #eef2f6;"><button onclick="fermerModal(); data.currentPage = 0; renderTrous();" style="background:#f59e0b;color:white;border:none;border-radius:40px;padding:12px 24px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">🔄 Recommencer</button></div></div>`);
+                return;
+            }
+        }
+        if (allDone) {
+            if (currentPage < totalPages - 1) {
+                data.currentPage = currentPage + 1;
+                renderTrous();
+            }
+            return;
+        }
+        if (verifyClicked) {
+            if (currentPage < totalPages - 1) {
+                data.currentPage = currentPage + 1;
+                renderTrous();
+            }
+            return;
+        }
+        if (!allFieldsFilled()) {
+            const empty = contentDiv.querySelector('#trcEmptyNotification');
+            if (empty) { empty.style.display = 'block'; empty.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            return;
+        }
+        const empty = contentDiv.querySelector('#trcEmptyNotification');
+        if (empty) empty.style.display = 'none';
+        const inputs3 = contentDiv.querySelectorAll('.trc-phrase-item input');
+        inputs3.forEach((input, idx) => {
+            if (allIsCorrect[idx]) return;
+            const val = input.value.trim();
+            const phrase = pagePhrases[idx];
+            const badge = contentDiv.querySelector(`.trc-feedback[data-feedback="${idx}"]`);
+            if (val !== '' && val.toLowerCase() !== phrase.correct.toLowerCase()) {
+                input.style.borderBottom = '2px solid #b13e3e';
+                badge.textContent = '❌';
+                badge.style.color = '#b13e3e';
+                showCorrection(idx);
+            }
+        });
+
+
+updateButtons();
+const btn = contentDiv.querySelector('#trcNextBtn');
+if (btn) {
+    btn.textContent = '➡️ Passer au suivant';
+    btn.onclick = function(e) {
+        e.stopPropagation();
+        if (currentPage < totalPages - 1) {
+            data.currentPage = currentPage + 1;
+            renderTrous();
+        }
+    };
+}
+
+    });
+    inputs.forEach((input, idx) => {
+        const badge = contentDiv.querySelector(`.trc-feedback[data-feedback="${idx}"]`);
+        const attemptEl = contentDiv.querySelector(`.trc-attempt[data-attempt="${idx}"]`);
+        if (allIsCorrect[idx]) {
+            input.style.borderBottom = '2px solid #2b6e4b';
+            badge.textContent = '✅';
+            badge.style.color = '#2b6e4b';
+            input.disabled = true;
+        } else if (allAttempts[idx] >= data.MAX_ATTEMPTS) {
+            input.style.borderBottom = '2px solid #b13e3e';
+            badge.textContent = '❌';
+            badge.style.color = '#b13e3e';
+            input.disabled = true;
+        }
+        if (attemptEl) attemptEl.textContent = `${allAttempts[idx]}/${data.MAX_ATTEMPTS}`;
+        adjustInputWidth(input);
+    });
+    updateButtons();
+}
+
+
+
+// ============================================================
+// 4. CHOIX MULTIPLE
+// ============================================================
+function ouvrirLecteurChoixIntegre(nomFichier, leconTitre) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const lecteurScreen = document.getElementById('screenLecteurQCM');
+    lecteurScreen.classList.add('active');
+    const container = document.getElementById('lecteurQCMContainer');
+    container.style.height = '100vh';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.overflow = 'hidden';
+    container.innerHTML = `
+        <div style="background:#0f2c3d;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #facc15;flex-shrink:0;">
+            <button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:6px 14px;border-radius:40px;cursor:pointer;font-weight:bold;font-size:0.85rem;">Retour</button>
+            <span style="color:#ffdd99;font-weight:bold;font-size:1rem;">📊 ${leconTitre}</span>
+            <button id="updateChxBtn" style="background:#2b7a4b;color:white;border:none;padding:4px 10px;border-radius:40px;cursor:pointer;font-size:0.6rem;font-weight:bold;">🔄 Màj</button>
+        </div>
+        <div id="lecteurChxContent" style="flex:1;overflow-y:auto;padding:10px 6px;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">📥 Chargement...</p></div>
+        </div>
+    `;
+    document.getElementById('updateChxBtn')?.addEventListener('click', () => chargerChoixIntegre(nomFichier, leconTitre, true));
+    chargerChoixIntegre(nomFichier, leconTitre, false);
+}
+
+async function chargerChoixIntegre(nomFichier, leconTitre, forceUpdate = false) {
+    const contentDiv = document.getElementById('lecteurChxContent');
+    if (!contentDiv) return;
+    try {
+        const dbName = nomFichier.replace('.txt', '');
+        let contenu = null;
+        let localVersion = null;
+        
+        // ✅ 1. PRIORITÉ ABSOLUE : Vérifier IndexedDB d'abord
+        try { 
+            contenu = await recupererContenu(dbName); 
+            localVersion = await recupererVersion(dbName); 
+            if (contenu && contenu.length > 50) {
+                console.log(`📦 CHOIX: Utilisation du cache pour ${nomFichier} (version: ${localVersion})`);
+                const parsed = parserFichierChoix(contenu);
+                if (parsed && parsed.length > 0) {
+                    window._chxData = {
+                        exercices: parsed,
+                        currentIndex: 0,
+                        leconTitre: leconTitre,
+                        isShuffled: false
+                    };
+                    renderChoix(0);
+                    return; // ✅ FIN : On utilise le cache
+                }
+            }
+        } catch(e) {
+            console.log("📦 Pas de cache valide pour:", nomFichier);
+        }
+        
+        // ✅ 2. Si pas de cache OU forceUpdate = true → Télécharger
+        if (forceUpdate || !contenu || contenu.length < 50) {
+            contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div class="loading-spinner"></div><p style="margin-top:20px;">${forceUpdate ? '🔄 Mise à jour...' : '📥 Téléchargement...'}</p></div>`;
+            const urlAvecDevice = `${WORKER_URL}/${nomFichier}?deviceModel=${encodeURIComponent(deviceModel)}&t=${Date.now()}`;
+            const response = await fetch(urlAvecDevice, { cache: 'no-cache' });
+            
+            if (response.status === 403) {
+                const errorData = await response.json();
+                if (errorData.needsCode) {
+                    fermerLecteurQCM();
+                    pendingRequest = { 
+                        fileName: nomFichier, 
+                        niveau: errorData.niveau || getNiveauParFichier(nomFichier), 
+                        deviceModel: deviceModel, 
+                        titre: leconTitre, 
+                        url: urlAvecDevice 
+                    };
+                    document.getElementById('modalNiveau').innerText = pendingRequest.niveau;
+                    document.getElementById('modalFileName').innerText = nomFichier;
+                    document.getElementById('codeModal').classList.add('active');
+                    return;
+                }
+                throw new Error(errorData.message || 'Accès refusé');
+            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            contenu = await response.text();
+            const remoteVersion = await getRemoteVersionForFile(nomFichier);
+            await stockerContenuEtVersion(dbName, contenu, remoteVersion || new Date().toLocaleString('fr-FR'));
+            lecteurCurrentVersion = remoteVersion;
+            console.log(`✅ CHOIX: Fichier ${nomFichier} téléchargé et stocké`);
+        }
+        
+        if (!contenu || contenu.length < 50) throw new Error("Contenu invalide ou vide");
+        const parsed = parserFichierChoix(contenu);
+        if (!parsed || parsed.length === 0) throw new Error("Aucun exercice trouvé");
+        window._chxData = {
+            exercices: parsed,
+            currentIndex: 0,
+            leconTitre: leconTitre,
+            isShuffled: false
+        };
+        renderChoix(0);
+    } catch (error) {
+        contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Erreur: ${error.message}</p><button onclick="fermerLecteurQCM()" style="background:#0055A4;color:white;border:none;padding:10px 25px;border-radius:40px;cursor:pointer;margin-top:15px;">Retour</button></div>`;
+    }
+}
+
+function renderChoix(exerciseIndex) {
+    const data = window._chxData;
+    if (!data || !data.exercices || data.exercices.length === 0) return;
+    const questions = data.exercices[exerciseIndex] || data.exercices[0];
+    if (!questions || questions.length === 0) {
+        const contentDiv = document.getElementById('lecteurChxContent');
+        if (contentDiv) contentDiv.innerHTML = `<div style="text-align:center;padding:50px;color:white;"><div style="font-size:3rem;">⚠️</div><p style="margin-top:20px;">Aucune question trouvée.</p></div>`;
+        return;
+    }
+    const contentDiv = document.getElementById('lecteurChxContent');
+    if (!contentDiv) return;
+    
+    let questionsMelangees = [...questions];
+    if (data.isShuffled) {
+        for (let i = questionsMelangees.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [questionsMelangees[i], questionsMelangees[j]] = [questionsMelangees[j], questionsMelangees[i]];
+        }
+        data.isShuffled = false;
+    }
+    
+    const totalQuestions = questionsMelangees.length;
+    // ✅ AJOUTER CETTE LIGNE
+    const totalExercices = data.exercices.length;
+    
+    let currentPage = 0;
+    let reponsesUtilisateur = {};
+    questionsMelangees.forEach((_, idx) => { reponsesUtilisateur[idx] = []; });
+    
+    contentDiv.style.cssText = 'display:flex;align-items:flex-start;justify-content:center;padding:10px 5%;overflow:auto;min-height:100%;background:linear-gradient(135deg,#0f2b36,#1a4a5f,#2c3e50);';
+    
+    let html = `
+        <div style="max-width:820px;width:100%;background:white;padding:1.5rem 1.8rem 2rem;border-radius:40px;box-shadow:0 12px 30px rgba(0,0,0,0.08);margin:10px auto;">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-bottom:2px solid #eef2f6;padding-bottom:0.8rem;margin-bottom:1.2rem;gap:12px;">
+                <h2 style="margin:0;font-size:1.3rem;font-weight:600;color:#1e293b;">📊 Mifidy izay valiny marina</h2>
+                <span style="display:flex;gap:8px;flex-wrap:wrap;"><span id="questionCounter" style="background:#eef2f6;padding:4px 14px;border-radius:40px;font-size:0.75rem;font-weight:600;color:#1e293b;">Q : 1/${totalQuestions}</span>
+                </span>
+</div>
+            <div id="chxError" style="display:none;background:#fee2e2;color:#b91c1c;padding:10px 15px;border-radius:10px;margin:10px 0;border-left:4px solid #dc2626;font-size:0.95rem;">⚠️ Veuillez sélectionner au moins une réponse avant de continuer !</div>
+            <div id="chxPagesContainer">
+    `;
+    for (let p = 0; p < totalQuestions; p++) {
+        const q = questionsMelangees[p];
+        const qIdx = p;
+        const qNum = p + 1;
+        html += `<div id="chxPage${p}" class="chx-page" style="${p === 0 ? 'display:block;' : 'display:none;'}">
+            <div class="chx-question" id="chxQ${qIdx}" style="background:#f8fafc;padding:16px 18px;margin:12px 0;border-radius:12px;border-left:4px solid #2563eb;position:relative;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+                    <span style="font-weight:600;font-size:1rem;color:#0f172a;flex:1;">${qNum}. ${escapeHtml(q.phrase)}</span>
+                    <button class="chx-trad-btn" data-trad="chxTrad${qIdx}" style="background:#8b5cf6;color:white;border:none;padding:4px 14px;border-radius:40px;font-size:0.7rem;font-weight:600;cursor:pointer;transition:0.2s;touch-action:manipulation;white-space:nowrap;">🇲🇬 Traduction</button>
+                </div>
+                <div id="chxTrad${qIdx}" style="display:none;background:#eef2ff;padding:10px 14px;border-radius:8px;margin-top:10px;font-size:0.9rem;color:#1e293b;border-left:3px solid #8b5cf6;">
+                    <strong>🇲🇬 Traduction :</strong> ${escapeHtml(q.traduction || '')}
+                </div>
+        `;
+        q.options.forEach(opt => {
+            html += `
+                <label style="display:block;padding:5px 10px;margin:3px 0;border-radius:8px;cursor:pointer;transition:0.15s;font-size:0.95rem;">
+                    <input type="checkbox" class="chx-check" data-q="${qIdx}" value="${escapeHtml(opt)}" style="margin-right:10px;transform:scale(1.1);cursor:pointer;"> ${escapeHtml(opt)}
+                </label>
+            `;
+        });
+        html += `</div></div>`;
+    }
+    html += `
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:space-between;align-items:center;">
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <button id="chxPrevBtn" style="padding:10px 24px;background:#2563eb;color:white;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:600;transition:0.2s;touch-action:manipulation;" disabled>⬅️ Précédent</button>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-left:auto;">
+                    <button id="chxNextBtn" style="padding:10px 24px;background:#23eb;color:white;border:none;border-radius:40px;cursor:pointer;font-size:0.95rem;font-weight:600;transition:0.2s;touch-action:manipulation;">Vérifier </button>
+                </div>
+            </div>
+            <div style="font-size:0.78rem;color:#64748b;margin-top:0.8rem;border-top:1px dashed #dce1e9;padding-top:0.8rem;display:flex;justify-content:space-between;">
+                <span>📝 ${data.leconTitre}</span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    contentDiv.innerHTML = html;
+    contentDiv.querySelectorAll('.chx-trad-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tradId = this.dataset.trad;
+            const tradEl = document.getElementById(tradId);
+            if (tradEl) {
+                tradEl.style.display = tradEl.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+    });
+    function getChecked(qIdx) {
+        const checks = contentDiv.querySelectorAll(`.chx-check[data-q="${qIdx}"]:checked`);
+        return Array.from(checks).map(el => el.value);
+    }
+    function updateReponses() {
+        for (let i = 0; i < totalQuestions; i++) {
+            reponsesUtilisateur[i] = getChecked(i);
+        }
+    }
+    function currentPageHasAnswer() {
+        const checks = contentDiv.querySelectorAll(`.chx-check[data-q="${currentPage}"]:checked`);
+        return checks.length > 0;
+    }
+   function showPage(pageIndex) {
+    // 1. Afficher la bonne page
+    document.querySelectorAll('.chx-page').forEach(p => p.style.display = 'none');
+    const page = document.getElementById(`chxPage${pageIndex}`);
+    if (page) page.style.display = 'block';
+    
+    // 2. Mettre à jour l'index courant
+    currentPage = pageIndex;
+    
+    // 3. Gérer le bouton Précédent
+    document.getElementById('chxPrevBtn').disabled = (pageIndex === 0);
+    
+    // 4. Gérer le bouton Suivant
+    if (pageIndex === totalQuestions - 1) {
+        document.getElementById('chxNextBtn').textContent = '📊 Voir le résultat';
+    } else {
+        document.getElementById('chxNextBtn').textContent = 'Suivant ➡️';
+    }
+    
+    // 5. ✅ AJOUT : METTRE À JOUR LE COMPTEUR DE QUESTIONS
+    const counter = document.getElementById('questionCounter');
+    if (counter) {
+        counter.textContent = `Q : ${pageIndex + 1}/${totalQuestions}`;
+    }
+    
+    // 6. Cacher l'erreur
+    document.getElementById('chxError').style.display = 'none';
+    
+    // 7. Réinitialiser les bordures
+    document.querySelectorAll('.chx-question').forEach(q => q.style.borderLeftColor = '#2563eb');
+}
+
+function goToNextPage() {
+    updateReponses();
+    if (!currentPageHasAnswer()) {
+        const error = document.getElementById('chxError');
+        error.style.display = 'block';
+        const el = document.getElementById(`chxQ${currentPage}`);
+        if (el) el.style.borderLeftColor = '#dc2626';
+        error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+    document.getElementById('chxError').style.display = 'none';
+    document.querySelectorAll('.chx-question').forEach(q => q.style.borderLeftColor = '#2563eb');
+    
+    // ✅ Calcul du score sur le TOTAL des questions
+    let bonnesActuelles = 0;
+    // 👇 Utiliser totalQuestions (le nombre total de questions)
+    for (let i = 0; i < totalQuestions; i++) {
+        const q = questionsMelangees[i];
+        const checked = reponsesUtilisateur[i] || [];
+        const estCorrect = checked.length === q.bonnes.length && checked.every(v => q.bonnes.includes(v));
+        if (estCorrect) bonnesActuelles++;
+    }
+    // 👇 Score sur le total des questions
+    const scoreActuel = Math.round((bonnesActuelles / totalQuestions) * 100);
+    afficherPopupMotivationPalier(scoreActuel);
+    
+    if (currentPage < totalQuestions - 1) {
+        showPage(currentPage + 1);
+    } else {
+        afficherResultatChoix(exerciseIndex);
+    }
+}
+
+    function goToPrevPage() {
+        if (currentPage > 0) {
+            updateReponses();
+            showPage(currentPage - 1);
+        }
+    }
+    function afficherResultatChoix(exIdx) {
+        updateReponses();
+        let details = '';
+        let bonnes = 0;
+        questionsMelangees.forEach((q, idx) => {
+            const checked = reponsesUtilisateur[idx] || [];
+            const estCorrect = checked.length === q.bonnes.length && checked.every(v => q.bonnes.includes(v));
+            if (estCorrect) bonnes++;
+            const qNum = idx + 1;
+            const isCorrect = estCorrect;
+            details += `<div style="padding:10px 14px;margin:6px 0;border-radius:8px;${isCorrect ? 'background:#d4edda;color:#14532d;' : 'background:#f8d7da;color:#842029;'}">
+                <div style="font-weight:600;color:#0f172a;">${qNum}. ${escapeHtml(q.phrase)}</div>
+                ${isCorrect ? `<div style="color:#2b6e4b;font-weight:bold;margin-top:4px;">✅ Bonne réponse ! (${checked.join(', ')})</div>` : `
+                    ${q.traduction ? `<div style="font-size:0.85rem;color:#7c3aed;margin:4px 0;">🇲🇬 ${escapeHtml(q.traduction)}</div>` : ''}
+                    <div style="color:#b13e3e;font-weight:bold;margin-top:4px;">❌ Vos réponses : ${checked.length > 0 ? checked.join(', ') : '(aucune réponse)'}</div>
+                    <div style="color:#1a237e;font-weight:bold;">✅ La bonne réponse est : ${q.bonnes.join(', ')}</div>
+                    ${q.explication ? `<div style="font-size:0.85rem;color:#2c3e50;margin-top:4px;padding-left:10px;border-left:3px solid #b13e3e;">📖 ${escapeHtml(q.explication)}</div>` : ''}
+                `}
+            </div>`;
+        });
+        const total = questionsMelangees.length;
+        const score = Math.round((bonnes / total) * 100);
+
+
+// ✅ AJOUTER ICI 👇
+    afficherPopupMotivationPalier(score);
+
+
+        let emoji, message;
+        if (score === 100) { emoji = '🏆👑'; message = '🎉 Parfait ! Tu as tout juste ! 🌟'; }
+        else if (score >= 80) { emoji = '🌟'; message = '👍 Très bien ! Continue comme ça ! 💪'; }
+        else if (score >= 50) { emoji = '📖'; message = '📖 Pas mal ! Relis les explications pour t\'améliorer.'; }
+        else { emoji = '💪'; message = '💪 Relis bien tes leçons et réessaie. Tu peux y arriver !'; }
+        const isLastExercice = (exIdx === data.exercices.length - 1);
+        let modalHtml = `
+            <div style="text-align:center;margin-bottom:10px;"><h2 style="color:#1e293b;">📊 Résultat - Exercice ${exIdx + 1}</h2></div>
+            <div style="font-size:2rem;font-weight:700;text-align:center;padding:15px;border-radius:16px;margin-bottom:15px;background:${score === 100 ? '#fde8b3' : score >= 80 ? '#d1e7dd' : '#fff3cd'};color:${score === 100 ? '#7c5a00' : score >= 80 ? '#0f5132' : '#856404'};border:3px solid ${score === 100 ? '#f5b342' : score >= 80 ? '#198754' : '#f59e0b'};">
+                ${emoji} <strong>${score}%</strong> (${bonnes}/${total})
+            </div>
+            <p style="text-align:center;font-weight:600;">${message}</p>
+            <hr>
+            <h3 style="color:#1e293b;">📋 Détail des réponses :</h3>
+            ${details}
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:15px;padding-top:15px;border-top:2px solid #eef2f6;">
+                <button onclick="fermerModal(); data.isShuffled = true; renderChoix(${exIdx});" style="background:#f59e0b;color:white;border:none;border-radius:40px;padding:12px 24px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">🔄 Recommencer</button>
+        `;
+        if (!isLastExercice) {
+            modalHtml += `<button onclick="fermerModal(); renderChoix(${exIdx + 1});" style="background:#22c55e;color:white;border:none;border-radius:40px;padding:12px 24px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">➡️ Exercice suivant</button>`;
+        } else {
+            modalHtml += `<button onclick="fermerModal(); showModal('🎉 Félicitations !', '<div style=\\'text-align:center;padding:15px;\\'><div style=\\'font-size:3.5rem;\\'>🎉🏆</div><h2 style=\\'color:#1e293b;\\'>Vita ny fanazarana rehetra !</h2><p style=\\'color:#64748b;\\'>Tena tsara ny ezakao !<br>Mbola afaka mamerina indray ianao raha tiana.</p><button onclick=\\'fermerModal(); data.currentIndex = 0; renderChoix(0);\\' style=\\'display:block;margin:15px auto 0;padding:12px 35px;background:#2563eb;color:white;border:none;border-radius:40px;cursor:pointer;font-size:1rem;font-weight:600;transition:0.2s;\\'>🔄 Recommencer</button></div>');" style="background:#8b5cf6;color:white;border:none;border-radius:40px;padding:12px 24px;font-weight:700;cursor:pointer;flex:1;min-width:120px;">🎉 Terminé</button>`;
+        }
+        modalHtml += `</div>`;
+        showModal('📊 Résultat', modalHtml);
+    }
+    document.getElementById('chxNextBtn').addEventListener('click', goToNextPage);
+    document.getElementById('chxPrevBtn').addEventListener('click', goToPrevPage);
+    contentDiv.querySelectorAll('.chx-check').forEach(cb => {
+        cb.addEventListener('change', function() {
+            document.getElementById('chxError').style.display = 'none';
+            contentDiv.querySelectorAll('.chx-question').forEach(q => q.style.borderLeftColor = '#2563eb');
+            const qIdx = parseInt(this.dataset.q);
+            reponsesUtilisateur[qIdx] = getChecked(qIdx);
+        });
+    });
+    showPage(0);
+}
+
+// ============================================================
+// 📋 MODIFICATION DE afficherListeExercices (AJOUT)
+// ============================================================
+// REMPLACEZ la fonction afficherListeExercices par celle-ci :
+function afficherListeExercices(leconTitre, niveau) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-fullscreen';
+    const codeLecon = getCodeLecon(leconTitre);
+    
+    // Combinaison QCM + Autres types
+    const tousLesTypes = [...TYPES_EXERCICE_CONFIG, ...TYPES_AUTRE_EXERCICE];
+    
+    let tousExercicesHtml = '';
+    const niveauxDifficulte = [
+        { id: 1, nom: "Niveau 1 ⭐", desc: "Très facile" },
+        { id: 2, nom: "Niveau 2 ⭐⭐", desc: "Facile" },
+        { id: 3, nom: "Niveau 3 ⭐⭐⭐", desc: "Moyen" },
+        { id: 4, nom: "Niveau 4 ⭐⭐⭐⭐", desc: "Difficile" },
+        { id: 5, nom: "Niveau 5 ⭐⭐⭐⭐⭐", desc: "Expert" }
+    ];
+    
+    tousLesTypes.forEach(exo => {
+        tousExercicesHtml += `
+            <div style="margin-bottom:20px;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;">
+                <div style="background:${exo.couleur}15;padding:10px 15px;border-bottom:2px solid ${exo.couleur};">
+                    <span style="font-size:1.1rem;">${exo.icon}</span>
+                    <strong style="margin-left:8px;">${exo.nom}</strong>
+                    <span style="color:#666;font-size:0.7rem;margin-left:10px;">${exo.description}</span>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;padding:15px;background:white;">
+        `;
+        niveauxDifficulte.forEach(n => {
+            tousExercicesHtml += `
+                <div class="exo-niveau-card" data-code="${exo.code}" data-niveau="${n.id}" data-lecon="${leconTitre.replace(/"/g, '&quot;')}" data-niveau-parent="${niveau}" style="background:#f8fafc;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.2s ease;border:1px solid #e2edf7;">
+                    <div style="font-weight:bold;color:#2ecc71;">${n.nom}</div> 
+                    <div style="font-size:0.65rem;color:#3498db;">${n.desc}</div>
+                </div>
+            `;
+        });
+        tousExercicesHtml += `</div></div>`;
+    });
+    
+    modal.innerHTML = `
+        <div class="modal-fullscreen-header">
+            <div><button id="backToLeconsBtn" style="background:#0055A4;color:white;border:none;padding:6px 12px;border-radius:40px;">Retour</button></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;width:100%;margin-left:10px;">
+                <h2 style="flex:1;text-align:center;margin:0;font-size:1rem;">📚 ${leconTitre}</h2>
+                <button class="btn-close-fullscreen" id="closeModalBtn" style="background:#ef4444;width:30px;height:30px;border-radius:50%;">✕</button>
+            </div>
+        </div>
+        <div class="modal-fullscreen-body" style="max-height:120vh;overflow-y:auto;">
+            <div style="max-width:900px;margin:0 auto;padding:20px;">
+                <h3 style="margin-bottom:15px;">✏️ Choisissez le type d'exercice et le niveau</h3>
+                ${tousExercicesHtml}
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('backToLeconsBtn').addEventListener('click', () => modal.remove());
+    document.getElementById('closeModalBtn').addEventListener('click', () => modal.remove());
+    
+    modal.querySelectorAll('.exo-niveau-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const code = this.getAttribute('data-code');
+            const niveauQCM = this.getAttribute('data-niveau');
+            const lecon = this.getAttribute('data-lecon');
+            modal.remove();
+            const fichier = `${getCodeLecon(lecon)}${code}${niveauQCM}.txt`;
+            
+            // Vérifier si c'est un type QCM
+            const estQCM = TYPES_EXERCICE_CONFIG.some(t => t.code === code);
+            if (estQCM) {
+                ouvrirLecteurQCMIntegre(fichier, lecon);
+            } else {
+                ouvrirExerciceAutreType(code, fichier, lecon);
+            }
+        });
+    });
+}
+
+// ============================================================
+// 🎯 FIX NOTIFICATION DE PALIERS POUR CHOIX MULTIPLE
+// ============================================================
+
+// Remplacement de la fonction pour qu'elle fonctionne à coup sûr
+function afficherPopupMotivationPalier(percent) {
+    // Vérifier que percent est un nombre valide
+    if (isNaN(percent) || percent < 0) {
+        console.warn("⚠️ Score invalide:", percent);
+        return;
+    }
+    
+    console.log("📊 Score:", percent, "%");
+    
+    let palierAtteint = null;
+    
+    // Trouver le palier correspondant
+    for (const palier of PALIERS) {
+        if (percent >= palier.seuil && !paliersAffiches.has(palier.seuil)) {
+            palierAtteint = palier;
+            break;
+        }
+    }
+    
+    if (!palierAtteint) {
+        console.log("Aucun nouveau palier atteint");
+        return;
+    }
+    
+    paliersAffiches.add(palierAtteint.seuil);
+    console.log("🎉 Palier atteint:", palierAtteint.message);
+    
+    // Supprimer l'ancien popup
+    const ancien = document.getElementById('motivationPopup');
+    if (ancien) ancien.remove();
+    
+    // Créer le popup
+    const popup = document.createElement('div');
+    popup.id = 'motivationPopup';
+    popup.style.cssText = `
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.5);
+        background: white;
+        border-radius: 16px;
+        padding: 15px 35px;
+        z-index: 99999;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        text-align: center;
+        border: 4px solid ${palierAtteint.couleur};
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        max-width: 90vw;
+        min-width: 180px;
+    `;
+    popup.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <span style="font-size: 2rem;">${palierAtteint.message.split(' ')[0]}</span>
+            <span style="font-size: 1.4rem; font-weight: 700; color: ${palierAtteint.couleur};">${palierAtteint.message}</span>
+            <span style="font-size: 1rem; color: #888; background: #f0f0f0; padding: 2px 10px; border-radius: 20px;">${Math.round(percent)}%</span>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    
+    // Animation d'entrée
+    setTimeout(() => {
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateX(-50%) scale(1)';
+    }, 100);
+    
+    // Disparitzion après 2.5 secondes
+    setTimeout(() => {
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateX(-50%) scale(0.8)';
+        setTimeout(() => popup.remove(), 500);
+    }, 2500);
 }
 
 </script>
