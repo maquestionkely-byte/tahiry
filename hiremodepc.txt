@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Profil - Hanomboka</title>
+    <style>
+        /* Fomba fototra */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0b2a4a, #1b4a7a);
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 20px;
+        }
+
+        /* Karatra lehibe */
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 64px;
+            padding: 45px 40px 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+            transition: 0.3s;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Sary boribory - afovoany */
+        .profil-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .profil {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f0c4ff;
+            box-shadow: 0 12px 28px rgba(210, 130, 255, 0.3);
+            background: #b3a0c9;
+        }
+
+        /* Lohateny - miankavia */
+        .card h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        /* Lahatsoratra */
+        .card .text {
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 6px;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .card .text-light {
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+            padding-left: 4px;
+            border-left: 3px solid rgba(240, 196, 255, 0.3);
+            padding-left: 16px;
+        }
+
+        /* Bokotra - afovoany */
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-hanomboka {
+            background: linear-gradient(135deg, #f9e05d, #f5c842);
+            color: #0a1f33;
+            border: none;
+            padding: 18px 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 10px 0 #b3861a, 0 8px 25px rgba(245, 200, 60, 0.4);
+            transition: all 0.12s ease;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .btn-hanomboka:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 0 #b3861a, 0 12px 35px rgba(245, 200, 60, 0.6);
+            background: linear-gradient(135deg, #ffe875, #f7d14a);
+        }
+
+        .btn-hanomboka:active {
+            transform: translateY(6px);
+            box-shadow: 0 4px 0 #b3861a;
+        }
+
+        /* Toast OK - miankavia */
+        .toast-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .toast-ok {
+            padding: 10px 24px;
+            background: rgba(70, 220, 130, 0.15);
+            border: 1px solid #6fdf9e;
+            border-radius: 60px;
+            color: #b7ffd6;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transform: scale(0.85) translateX(-10px);
+            transition: 0.3s ease;
+        }
+
+        .toast-ok.show {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+        }
+
+        /* Indicateur plein écran */
+        .fs-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.85);
+            color: #25d366;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            letter-spacing: 0.5px;
+        }
+
+        .fs-indicator.show {
+            opacity: 1;
+        }
+
+        .fs-indicator .check {
+            color: #25d366;
+            margin-right: 6px;
+        }
+
+        .space {
+            margin-top: 10px;
+        }
+
+        .quote-icon {
+            color: rgba(240, 196, 255, 0.5);
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-right: 6px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 22px 35px 22px;
+                border-radius: 40px;
+            }
+            .profil {
+                width: 110px;
+                height: 110px;
+            }
+            .card h2 {
+                font-size: 1.6rem;
+            }
+            .btn-hanomboka {
+                padding: 14px 40px;
+                font-size: 1.2rem;
+            }
+            .card .text-light {
+                padding-left: 12px;
+            }
+            .fs-indicator {
+                font-size: 12px;
+                padding: 8px 20px;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <!-- Sary boribory (afovoany) -->
+        <div class="profil-wrapper">
+            <img 
+                class="profil" 
+                src="https://photopasse.ahofaly62.workers.dev/saryNiry.jpg" 
+                alt="Sary profil"
+            />
+        </div>
+
+        <!-- Teny fandraisana - miankavia -->
+        <h2>🙏 Miarahaba Tompoko!</h2>
+
+        <p class="text">
+            Misaoatra anao amin'ny <strong>fahazotoa hianatra</strong>.
+        </p>
+
+        <!-- Elanelana kely -->
+        <div class="space"></div>
+
+        <!-- Lahatsoratra faharoa - miankavia misy tsipika eo ankavia -->
+        <p class="text-light">
+            <span class="quote-icon">❝</span>
+            Ndao ary hanomboka isika,<br />
+            hitina ny hanomboka raha vonona hianatra izao.
+        </p>
+
+        <!-- Bokotra (afovoany) -->
+        <div class="btn-wrapper">
+            <button class="btn-hanomboka" id="btnHanomboka">🚀 Hanomboka</button>
+        </div>
+
+        <!-- Toast OK (miankavia) -->
+        <div class="toast-wrapper">
+            <div class="toast-ok" id="toastOk">✅ OK</div>
+        </div>
+
+    </div>
+
+    <!-- Indicateur plein écran -->
+    <div class="fs-indicator" id="fsIndicator">
+        <span class="check">✅</span> Plein écran activé
+    </div>
+
+    <script>
+        const btn = document.getElementById('btnHanomboka');
+        const toast = document.getElementById('toastOk');
+        const fsIndicator = document.getElementById('fsIndicator');
+        let isFullscreen = false;
+
+        btn.addEventListener('click', function() {
+            // Afficher le toast OK
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+
+            // Mettre en plein écran
+            if (!isFullscreen) {
+                const elem = document.documentElement;
+                const requestMethod = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.msRequestFullscreen;
+                if (requestMethod) {
+                    requestMethod.call(elem).then(() => {
+                        isFullscreen = true;
+                        fsIndicator.classList.add('show');
+                        setTimeout(() => fsIndicator.classList.remove('show'), 3000);
+                    }).catch(function(err) {
+                        console.log("Erreur plein écran:", err);
+                    });
+                }
+            }
+        });
+
+        // Détecter si l'utilisateur quitte le plein écran avec ESC
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                isFullscreen = false;
+            }
+        });
+
+        // ========== SÉCURITÉ ==========
+        (function() {
+            // Blocage du clic droit
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Blocage des raccourcis clavier
+            window.addEventListener('keydown', function(e) {
+                if (e.key === "F12" || e.code === "F12") {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "R" || e.key === "r")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.key === "F5" || e.code === "F5") {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key === "F5") {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Bloquer la sélection de texte
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Bloquer le drag & drop
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Bloquer la copie
+            document.addEventListener('copy', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Bloquer le cut
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Désactiver la console
+            if (window.console) {
+                const noop = function() {};
+                console.log = noop;
+                console.info = noop;
+                console.warn = noop;
+                console.debug = noop;
+                console.table = noop;
+                console.dir = noop;
+                console.trace = noop;
+                console.group = noop;
+                console.groupEnd = noop;
+            }
+            
+            // Détection de la console ouverte
+            function detectDevTools() {
+                const startTime = performance.now();
+                debugger;
+                const endTime = performance.now();
+                if (endTime - startTime > 100) {
+                    document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:99999;font-family:Arial;text-align:center;padding:20px;"><h1>🔒 Accès bloqué</h1><p>Les outils de développement sont désactivés.</p></div>';
+                }
+            }
+            
+            setInterval(detectDevTools, 1000);
+        })();
+    </script>
+
+</body>
+</html>
