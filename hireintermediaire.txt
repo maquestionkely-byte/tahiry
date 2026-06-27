@@ -1278,7 +1278,7 @@ function cleanBotMessage(text) {
     return cleaned;
 }
     // ========== CONFIGURATION ==========
-    const WORKER_URL = 'https://intermediaire.ahofaly62.workers.dev';
+    const WORKER_URL = 'https://frsinterme.maquestionkely.workers.dev/chat';
 
 // Par ceci :
 const PAGE_ID = "61555313604553";
@@ -1288,6 +1288,7 @@ const FACEBOOK_URL = `https://www.facebook.com/profile.php?id=${PAGE_ID}`;
     let userName = null;
     let userLieu = null;
     let userGender = null;
+	let userID = null;
 
     // ========== FONCTIONS DATE ==========
     function getFormattedDate() {
@@ -1516,8 +1517,12 @@ function showConnectionErrorModal(onResolve) {
         return await response.json();
     }
     
-    async function sendMessageToWorker(userMessage, userName, userGender, userLieu) {
-        const fullMessage = `RÈGLES GÉNÉRALES (à suivre ABSOLUMENT) :
+    // ============================================================
+// FONCTION : Envoyer un message au worker
+// ============================================================
+async function sendMessageToWorker(userMessage, userName, userGender, userLieu) {
+    // Construction du message avec les infos utilisateur
+    const fullMessage = `RÈGLES GÉNÉRALES (à suivre ABSOLUMENT) :
 
 A : tu ne salues pas sauf je dis salut ou salutation.
 ici mes informations non pas tes informations.
@@ -1566,29 +1571,47 @@ INFOS UTILISATEUR (mes infos) :
 
 MESSAGE DE L'UTILISATEUR À TRAITER :
 ${userMessage}`;
-        console.log("📤 Envoi au worker:", fullMessage);
-        
-        const response = await fetchWithTimeout(WORKER_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                message: fullMessage,
-                username: userName,
-                genre: userGender,
-                lieu: userLieu
-            })
-        }, 30000);
-        return await response.json();
+
+    console.log("📤 Envoi au worker:", fullMessage);
+
+    // ============================================================
+    // 1. ENVOI AU WORKER (format attendu)
+    // ============================================================
+    const response = await fetchWithTimeout(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            message: fullMessage,
+            username: userName,
+            genre: userGender,
+            lieu: userLieu,
+            user:userID  // ← ENVOIE DIRECTEMENT L'ID (ex: Ravo_26)
+        })
+    }, 30000);
+    
+    // ============================================================
+    // 2. TRAITER LA RÉPONSE DU WORKER
+    // ============================================================
+    const data = await response.json();
+    
+    if (data.responses && Array.isArray(data.responses)) {
+        const normalResponse = data.responses.find(r => r.type === 'normal');
+        if (normalResponse) {
+            return { reply: normalResponse.content };
+        }
+        return { reply: data.responses[0].content };
     }
     
-    async function checkWorkerStatus() {
-        try {
-            const response = await fetchWithTimeout(WORKER_URL, { method: 'GET' }, 5000);
-            return response.ok;
-        } catch (error) {
-            return false;
-        }
+    if (data.reply) {
+        return { reply: data.reply };
     }
+    
+    if (data.response) {
+        return { reply: data.response };
+    }
+    
+    return { reply: "Pardon, je n'ai pas reçu votre message. Renvoyez-le s'il vous plaît ! 🙏🏽" };
+}
 
     function setupGenderSelection() {
         const options = document.querySelectorAll('.gender-option');
@@ -1609,78 +1632,80 @@ ${userMessage}`;
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    async function handleRegister() {
-        const usernameInput = document.getElementById('usernameInput');
-        const lieuInput = document.getElementById('lieuInput');
-        const errorDiv = document.getElementById('registerError');
-        const registerBtn = document.getElementById('registerBtn');
-        
-        let username = usernameInput.value.trim();
-        const lieu = lieuInput.value.trim();
-        
-        username = capitalizeFirstLetter(username);
-        
-        if (!username) {
-    showErrorToast('❌ Fenoy tsara ny anaranao azafady');
-    usernameInput.focus();
-    return;
-}
+  async function handleRegister() {
+    const usernameInput = document.getElementById('usernameInput');
+    const lieuInput = document.getElementById('lieuInput');
+    const registerBtn = document.getElementById('registerBtn');
+    
+    let username = usernameInput.value.trim();
+    const lieu = lieuInput.value.trim();
+    
+    username = capitalizeFirstLetter(username);
+    
+    // === VALIDATIONS ===
+    if (!username) {
+        showErrorToast('❌ Fenoy tsara ny anaranao azafady');
+        usernameInput.focus();
+        return;
+    }
 
-if (!currentGender) {
-    showErrorToast('❌ Fidio hoe lelahy sa vevavy ianao, azafady! 🙏🏽');
-    return;
-}
+    if (!currentGender) {
+        showErrorToast('❌ Fidio hoe lelahy sa vevavy ianao, azafady! 🙏🏽');
+        return;
+    }
 
-if (!lieu) {
-    showErrorToast('❌ Fenoy tsara ny toerana misy anao azafady');
-    lieuInput.focus();
-    return;
-}
-        
-        if (!deviceModel) {
-            errorDiv.innerText = '⏳ Détection du modèle en cours...';
-            await getDeviceModel();
-        }
-        
-        errorDiv.innerText = '';
-        registerBtn.disabled = true;
-        registerBtn.innerHTML = '<span class="loading-spinner"></span> Verification...';
-        
-        try {
-            const isWorkerOk = await checkWorkerStatus();
-            if (!isWorkerOk) {
-                throw new Error('Serveur indisponible');
-            }
-            
-            const registerResult = await checkModelAndRegister(username, deviceModel, currentGender, lieu);
-            
-            if (!registerResult.success) {
-    // 🔥 Afficher le popup Facebook pour TOUTE erreur d'inscription
-    showModelExistsModal(deviceModel, { username: username, deviceModel: deviceModel });
-    registerBtn.disabled = false;
-    registerBtn.innerHTML = 'Manomboka';
-    return;
-}
-            
-            userName = username;
-            userLieu = lieu;
-            userGender = currentGender === 'masculin' ? 'masculin ' : 'féminin ';
-            
-            await saveUserInfoToDB(userName, userLieu, userGender);
-            
-            // Afficher l'écran de bienvenue avec bouton Commencer
-            document.getElementById('registerScreen').classList.add('hide');
-            showWelcomeScreen();
-            
-        } catch (error) {
-            console.error("Erreur détaillée:", error);
-            showConnectionErrorModal(() => handleRegister());
-        } finally {
-            registerBtn.disabled = false;
-            registerBtn.innerHTML = 'Manomboka';
-        }
+    if (!lieu) {
+        showErrorToast('❌ Fenoy tsara ny toerana misy anao azafady');
+        lieuInput.focus();
+        return;
     }
     
+    // === DÉSACTIVER LE BOUTON PENDANT L'ENREGISTREMENT ===
+    registerBtn.disabled = true;
+    registerBtn.innerHTML = '<span class="loading-spinner"></span> Fitehirizana...';
+    
+    try {
+        // === GÉNÉRER L'ID UNIQUE (ex: Ravo_26) ===
+        const today = new Date();
+        const day = today.getDate();
+        const userId = `${username}_${day}`;  // ← Ravo_26 (sans préfixe)
+        
+        // === STOCKER LES INFOS UTILISATEUR ===
+        userName = username;
+        userLieu = lieu;
+        userGender = currentGender === 'masculin' ? 'masculin' : 'féminin';
+        userID = userId; // ← Stocke "Ravo_26"
+        
+        // === SAUVEGARDER DANS INDEXEDDB AVEC L'ID ===
+        await openDB();
+        await saveUserInfoToDB(userName, userLieu, userGender, userID);
+        
+        console.log("✅ Utilisateur enregistré localement:", {
+            nom: userName,
+            lieu: userLieu,
+            genre: userGender,
+            id: userID  // ← Affiche "Ravo_26"
+        });
+        
+        // === AFFICHER UN MESSAGE DE CONFIRMATION ===
+        
+        // === ATTENDRE UN PEU PUIS AFFICHER L'ÉCRAN DE BIENVENUE ===
+        setTimeout(() => {
+            document.getElementById('registerScreen').classList.add('hide');
+            showWelcomeScreen();
+        }, 1500);
+        
+    } catch (error) {
+        console.error("❌ Erreur lors de l'enregistrement:", error);
+        showErrorToast('❌ Misy olana tamin\'ny fitehirizana ny anaranao');
+    } finally {
+        // === RÉACTIVER LE BOUTON ===
+        registerBtn.disabled = false;
+        registerBtn.innerHTML = 'Manomboka';
+    }
+}
+
+
     function showWelcomeScreen() {
         const welcomeScreen = document.getElementById('welcomeScreen');
         const welcomeUserName = document.getElementById('welcomeUserName');
@@ -1703,7 +1728,7 @@ if (!lieu) {
     
     // ========== INDEXEDDB ==========
     let db = null;
-    const DB_NAME = 'Discussion_intermed';
+    const DB_NAME = 'francais_interme';
     const DB_VERSION = 3;
     const STORE_NAME = 'messages';
     
@@ -1766,52 +1791,60 @@ if (!lieu) {
             request.onerror = () => reject(request.error);
         });
     }
-    
-    async function saveUserInfoToDB(name, lieu, gender) {
-        return new Promise((resolve, reject) => {
-            if (!db) { reject('DB non initialisée'); return; }
-            const transaction = db.transaction([STORE_NAME], 'readwrite');
-            const objectStore = transaction.objectStore(STORE_NAME);
-            // Supprimer anciennes infos
-            const getAllRequest = objectStore.getAll();
-            getAllRequest.onsuccess = () => {
-                const messages = getAllRequest.result;
-                const userInfoMessages = messages.filter(msg => msg.type === 'user_info');
-                userInfoMessages.forEach(msg => {
-                    objectStore.delete(msg.id);
-                });
-                const request = objectStore.add({
-                    type: 'user_info',
-                    name: name,
-                    lieu: lieu,
-                    gender: gender,
-                    timestamp: Date.now()
-                });
-                request.onsuccess = () => resolve();
-                request.onerror = () => reject(request.error);
-            };
-            getAllRequest.onerror = () => reject(getAllRequest.error);
-        });
-    }
-    
-    async function loadUserInfoFromDB() {
-        return new Promise((resolve, reject) => {
-            if (!db) { reject('DB non initialisée'); return; }
-            const transaction = db.transaction([STORE_NAME], 'readonly');
-            const objectStore = transaction.objectStore(STORE_NAME);
-            const request = objectStore.getAll();
-            request.onsuccess = () => {
-                const messages = request.result;
-                const userInfo = messages.find(msg => msg.type === 'user_info');
-                if (userInfo) {
-                    resolve({ name: userInfo.name, lieu: userInfo.lieu, gender: userInfo.gender });
-                } else {
-                    resolve(null);
-                }
-            };
+
+async function saveUserInfoToDB(name, lieu, gender, userId) {
+    return new Promise((resolve, reject) => {
+        if (!db) { reject('DB non initialisée'); return; }
+        const transaction = db.transaction([STORE_NAME], 'readwrite');
+        const objectStore = transaction.objectStore(STORE_NAME);
+        // Supprimer anciennes infos
+        const getAllRequest = objectStore.getAll();
+        getAllRequest.onsuccess = () => {
+            const messages = getAllRequest.result;
+            const userInfoMessages = messages.filter(msg => msg.type === 'user_info');
+            userInfoMessages.forEach(msg => {
+                objectStore.delete(msg.id);
+            });
+            const request = objectStore.add({
+                type: 'user_info',
+                name: name,
+                lieu: lieu,
+                gender: gender,
+                userId: userId,  // ← Stocke "Ravo_26"
+                timestamp: Date.now()
+            });
+            request.onsuccess = () => resolve();
             request.onerror = () => reject(request.error);
-        });
-    }
+        };
+        getAllRequest.onerror = () => reject(getAllRequest.error);
+    });
+}
+
+async function loadUserInfoFromDB() {
+    return new Promise((resolve, reject) => {
+        if (!db) { reject('DB non initialisée'); return; }
+        const transaction = db.transaction([STORE_NAME], 'readonly');
+        const objectStore = transaction.objectStore(STORE_NAME);
+        const request = objectStore.getAll();
+        request.onsuccess = () => {
+            const messages = request.result;
+            const userInfo = messages.find(msg => msg.type === 'user_info');
+            if (userInfo) {
+                resolve({ 
+                    name: userInfo.name, 
+                    lieu: userInfo.lieu, 
+                    gender: userInfo.gender,
+                    userId: userInfo.userId || `${userInfo.name}_${new Date().getDate()}`
+                });
+            } else {
+                resolve(null);
+            }
+        };
+        request.onerror = () => reject(request.error);
+    });
+}
+
+    
     
     // ========== ÉLÉMENTS DU CHAT ==========
     const chatContainer = document.getElementById('chatContainer');
@@ -2720,45 +2753,51 @@ async function addFacebookButtonMessage() {
         }
     }
     
-        function checkBlockedOnLoad() {
-        // Restaurer le déblocage par code
-        const savedUnlockTime = localStorage.getItem('unlockUntilTime');
-        if (savedUnlockTime && parseInt(savedUnlockTime) > Date.now()) {
-            unlockUntilTime = parseInt(savedUnlockTime);
-            console.log("🔓 Session débloquée par code jusqu'au:", new Date(unlockUntilTime));
-            
-            // Si débloqué, annuler tout blocage
-            if (isBlocked) {
-                isBlocked = false;
-                blockEndTime = null;
-                if (countdownInterval) clearInterval(countdownInterval);
-            }
-            return;
-        } else {
-            localStorage.removeItem('unlockUntilTime');
-        }
+       // ========== VERSION FINALE - COMPTEUR SAUVEGARDÉ APRÈS F5 ==========
+function checkBlockedOnLoad() {
+    // 🔥 Charger les timestamps sauvegardés (pour garder le compteur après F5)
+    loadTimestamps();
+    
+    // Restaurer le déblocage par code
+    const savedUnlockTime = localStorage.getItem('unlockUntilTime');
+    if (savedUnlockTime && parseInt(savedUnlockTime) > Date.now()) {
+        unlockUntilTime = parseInt(savedUnlockTime);
+        console.log("🔓 Session débloquée par code jusqu'au:", new Date(unlockUntilTime));
         
-        // Vérification du blocage normal
-        const savedBlockEnd = localStorage.getItem('blockEndTime');
-        if (savedBlockEnd && parseInt(savedBlockEnd) > Date.now()) {
-            blockEndTime = parseInt(savedBlockEnd);
+        if (isBlocked) {
+            isBlocked = false;
+            blockEndTime = null;
+            if (countdownInterval) clearInterval(countdownInterval);
+        }
+        return;
+    } else {
+        localStorage.removeItem('unlockUntilTime');
+    }
+    
+    // 🔥 Vérifier si l'utilisateur est bloqué AVEC les timestamps chargés
+    if (messageTimestamps.length >= MAX_MESSAGES) {
+        const oldestTimestamp = messageTimestamps[0];
+        const now = Date.now();
+        if (now - oldestTimestamp < TIME_WINDOW) {
             isBlocked = true;
+            blockEndTime = Date.now() + BLOCK_DURATION; // 1 MINUTE
             startCountdown();
-            setTimeout(async () => {
-                const remaining = Math.ceil((blockEndTime - Date.now()) / 1000);
-                const minutes = Math.floor(remaining / 60);
-                const seconds = remaining % 60;
-                const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                // Message normal du bot, pas système
-                await addMessage(`😊 Afaka miresaka amin'izay! Azafady an!`, 'bot');
-                
-                if (sendBlockedMsgDiv) sendBlockedMsgDiv.style.display = 'block';
-            }, 1000);
         } else {
-            localStorage.removeItem('blockEndTime');
+            messageTimestamps = [];
+            saveTimestamps();
         }
     }
+    
+    // Vérification du blocage normal (sauvegardé)
+    const savedBlockEnd = localStorage.getItem('blockEndTime');
+    if (savedBlockEnd && parseInt(savedBlockEnd) > Date.now()) {
+        blockEndTime = parseInt(savedBlockEnd);
+        isBlocked = true;
+        startCountdown();
+    } else {
+        localStorage.removeItem('blockEndTime');
+    }
+}
     
     setInterval(() => {
         if (isBlocked && blockEndTime) {
@@ -2980,8 +3019,6 @@ function enterFullscreen() {
         // Afficher le chat
         chatContainer.style.display = 'flex';
         
-        // Activer le plein écran
-        enterFullscreen();
         
         // Charger l'historique
         await loadChatHistory();
@@ -2993,7 +3030,7 @@ function enterFullscreen() {
         // Ajouter un message de bienvenue si aucun message
         if (chatBox.children.length === 0) {
             const genderWord = userGender === 'homme' ? 'un homme' : 'une femme';
-            let welcomeMsg = `\n\n\n\n\n\n\n\n\n\nSalut ${userName} !😊\n\nJe suis Nirina, ravie de te rencontrer ! `;
+            let welcomeMsg = `\n\n\n\n\n\n\n\n\n\nMiarahaba anao ${userName} ! 😊\nJe suis Nirina, ravie de vous rencontrer !\n\nMisy réglage azonao atao :\nJereo io bouton paramètre ⚙️ eo ambony havanana io.↗️\n\nToy izao no ho hita ao :\n\n👤 Profil\n→ Raha hijerena ny momba ahy.\n\n🔺 Agrandir la taille du texte\n→ Raha hatao geza ny haleben'soratra amin'resaka (texte)\n\n🔻 Réduire la taille du texte\n→ Raha hatao kely ny haben'ny soratra raha toa ka lehibe loatra.\n\n🌙 Mode sombre\n→ Raha atao ho fond noir, ho maizina (miaro ny maso)\n\n💚 Mode WhatsApp\n→ Hatao endrika tahaka WhatsApp\n\n🔵 Mode Facebook\n→ Hatao tahaka endrika Facebook Messenger\n\n🗑️ Supprimer la discussion\n→ Raha hamafa ny resaka rehetra (tsy azo averina intsony rehefa voafafa)\n\nEry amin'ny paramètre ⚙️ ery ambony !`;
             welcomeMsg = cleanBotMessage(welcomeMsg);
             await addMessage(welcomeMsg, 'bot');
         }
@@ -3007,23 +3044,29 @@ function enterFullscreen() {
     
     // ========== VÉRIFICATION UTILISATEUR EXISTANT ==========
     async function checkExistingUser() {
-        await openDB();
-        const userInfo = await loadUserInfoFromDB();
+    await openDB();
+    const userInfo = await loadUserInfoFromDB();
+    
+    if (userInfo && userInfo.name && userInfo.lieu && userInfo.gender) {
+        userName = userInfo.name;
+        userLieu = userInfo.lieu;
+        userGender = userInfo.gender;
+        userID = userInfo.userId || `${userName}_${new Date().getDate()}`;
         
-        if (userInfo && userInfo.name && userInfo.lieu && userInfo.gender) {
-            userName = userInfo.name;
-            userLieu = userInfo.lieu;
-            userGender = userInfo.gender;
-            
-            console.log("✅ Utilisateur trouvé localement:", userName, userGender, userLieu);
-            
-            // Afficher l'écran de bienvenue avec bouton Commencer
-            document.getElementById('registerScreen').classList.add('hide');
-            showWelcomeScreen();
-        } else {
-            console.log("👤 Nouvel utilisateur - affichage de la sélection de niveau");
-                    }
+        console.log("✅ Utilisateur trouvé localement:", {
+            nom: userName,
+            genre: userGender,
+            lieu: userLieu,
+            id: userID  // ← Affiche "Ravo_26"
+        });
+        
+        // Afficher l'écran de bienvenue
+        document.getElementById('registerScreen').classList.add('hide');
+        showWelcomeScreen();
+    } else {
+        console.log("👤 Nouvel utilisateur - affichage de l'inscription");
     }
+}
     
    // ========== CONFIGURATION DES ÉVÉNEMENTS ==========
 function setupChatEvents() {
@@ -3239,6 +3282,48 @@ function setupChatEvents() {
         
         await checkExistingUser();
     }
+
+
+
+// ========== SAUVEGARDE DES TIMESTAMPS ==========
+function saveTimestamps() {
+    try {
+        localStorage.setItem('messageTimestamps', JSON.stringify(messageTimestamps));
+    } catch(e) {
+        console.error('Erreur sauvegarde timestamps:', e);
+    }
+}
+
+function loadTimestamps() {
+    try {
+        const saved = localStorage.getItem('messageTimestamps');
+        if (saved) {
+            messageTimestamps = JSON.parse(saved);
+            // Filtrer les timestamps trop anciens
+            const now = Date.now();
+            messageTimestamps = messageTimestamps.filter(ts => now - ts < TIME_WINDOW);
+            saveTimestamps(); // Mettre à jour
+        }
+    } catch(e) {
+        console.error('Erreur chargement timestamps:', e);
+        messageTimestamps = [];
+    }
+}
+
+// ========== MODIFIER registerMessageSent ==========
+function registerMessageSent() {
+    messageTimestamps.push(Date.now());
+    cleanOldTimestamps();
+    saveTimestamps(); // ← SAUVEGARDE
+    
+    const remaining = MAX_MESSAGES - messageTimestamps.length;
+    // ... reste du code
+}
+
+
+
+
+
     
     init();
 // BOUTON TÉLÉCHARGER INDEX - Version corrigée en malgache
