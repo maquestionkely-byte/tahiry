@@ -659,119 +659,142 @@ align-self: flex-start; /* RESTE À DROITE POUR HERY */
   }
   
   // ==================== PARSEUR ====================
-  function parseCompleteFile(rawText) {
+  // ==================== PARSEUR AMÉLIORÉ ====================
+function parseCompleteFile(rawText) {
     const lines = rawText.split(/\r?\n/);
     const rubriques = [];
     const rubriquesData = {};
     const rubriquesDescriptions = {};
+    
     let currentRubrique = null;
+    let currentNom = null;
+    let currentMessage = [];
     let i = 0;
     
-    while (i < lines.length) {
-      let line = lines[i];
-      let trimmed = line.trim();
-      
-      const titreMatch = trimmed.match(/^[Tt]itre\s*:\s*(.+)$/);
-      if (titreMatch) {
-        currentRubrique = titreMatch[1].trim();
-        if (!rubriques.includes(currentRubrique)) {
-          rubriques.push(currentRubrique);
-          rubriquesData[currentRubrique] = [];
-          rubriquesDescriptions[currentRubrique] = "";
-        }
-        i++;
-        if (i < lines.length) {
-          let nextLine = lines[i].trim();
-          const descMatch = nextLine.match(/^[Dd]escription\s*:\s*(.+)$/);
-          if (descMatch) {
-            rubriquesDescriptions[currentRubrique] = descMatch[1].trim();
-            i++;
-          }
-        }
-        continue;
-      }
-      
-      if (currentRubrique && trimmed.length > 0) {
-        const dialogueMatch = trimmed.match(/^([A-Za-zÀ-ÿ]+)\s*:\s*(.*)$/);
-        if (dialogueMatch) {
-          const nom = dialogueMatch[1].trim();
-          let message = dialogueMatch[2];
-          const genre = getGenre(nom);
-          let traduction = "";
-          let j = i + 1;
-          let found = false;
-          while (j < lines.length) {
-            const next = lines[j];
-            const nextTrim = next.trim();
-            const tradMatch = nextTrim.match(/^[Tt]raduction\s*:\s*(.*)$/);
-            if (tradMatch) {
-              traduction = tradMatch[1];
-              found = true;
-              i = j;
-              break;
+    // Noms reconnus (garçons et filles)
+    const nomsReconnus = ['Hery', 'Safidy', 'Andry', 'Avotra', 'Dera', 'Faniry', 'Rojo', 'Rova', 'Nomena', 'Nirina', 'Meva'];
+    
+    function estNomAuDebut(ligne) {
+        const trimmed = ligne.trim();
+        for (const nom of nomsReconnus) {
+            if (trimmed.startsWith(nom + ':') || trimmed.startsWith(nom + ' :')) {
+                return nom;
             }
-            message += "\n" + next;
-            j++;
-          }
-          if (found) {
-            let k = i + 1;
-            while (k < lines.length) {
-              const next = lines[k];
-              const nextTrim = next.trim();
-              if (nextTrim.match(/^[A-Za-zÀ-ÿ]+\s*:/)) break;
-              if (nextTrim.match(/^[Tt]itre\s*:/)) break;
-              k++;
-            }
-            i = k - 1;
-          }
-          rubriquesData[currentRubrique].push({
-            nom: nom,
-            message: message,
-            traduction: traduction,
-            genre: genre
-          });
-          i++;
-          continue;
         }
-      }
-      i++;
+        return null;
     }
     
-    const valid = rubriques.filter(r => rubriquesData[r] && rubriquesData[r].length > 0);
-    return { rubriques: valid, rubriquesData, rubriquesDescriptions };
-  }
-  
-  // ==================== MISE À JOUR SILENCIEUSE ====================
-  async function silentUpdate() {
-    if (isUpdating || !navigator.onLine) return false;
-    try {
-      const remoteVer = await getRemoteVersionDate();
-      if (!remoteVer) return false;
-      if (currentVersionDate === remoteVer) return false;
-      
-      isUpdating = true;
-      const newContent = await fetchRemoteTxt();
-      if (!newContent || newContent.length < 100) throw new Error("Contenu invalide");
-      
-      await saveToDB(newContent, remoteVer);
-      currentVersionDate = remoteVer;
-      
-      const parsed = parseCompleteFile(newContent);
-      cachedRubriques = parsed.rubriques;
-      cachedRubriquesData = parsed.rubriquesData;
-      cachedDescriptions = parsed.rubriquesDescriptions;
-      
-      updateListOnly();
-      
-      isUpdating = false;
-      showToast('✅ Dialogues mis à jour');
-      return true;
-    } catch (e) {
-      console.error(e);
-      isUpdating = false;
-      return false;
+    function extraireMessage(ligne, nom) {
+        const trimmed = ligne.trim();
+        const pattern = new RegExp('^' + nom + '\\s*:\\s*(.*)$', 'i');
+        const match = trimmed.match(pattern);
+        return match ? match[1].trim() : null;
     }
-  }
+    
+    function sauvegarderMessage() {
+        if (currentRubrique && currentNom && currentMessage.length > 0) {
+            const messageTexte = currentMessage.join('\n').trim();
+            if (messageTexte) {
+                if (!rubriquesData[currentRubrique]) {
+                    rubriquesData[currentRubrique] = [];
+                }
+                rubriquesData[currentRubrique].push({
+                    nom: currentNom,
+                    message: messageTexte,
+                    genre: getGenre(currentNom)
+                });
+            }
+        }
+        currentNom = null;
+        currentMessage = [];
+    }
+    
+    while (i < lines.length) {
+        let line = lines[i];
+        let trimmed = line.trim();
+        
+        // ✅ 1. Détecter TITRE
+        const titreMatch = trimmed.match(/^[Tt]itre\s*[:;]\s*(.+)$/);
+        if (titreMatch) {
+            // Sauvegarder le message en cours (s'il existe)
+            sauvegarderMessage();
+            
+            const nouveauTitre = titreMatch[1].trim();
+            currentRubrique = nouveauTitre;
+            
+            if (!rubriques.includes(currentRubrique)) {
+                rubriques.push(currentRubrique);
+                rubriquesData[currentRubrique] = [];
+                rubriquesDescriptions[currentRubrique] = "";
+            }
+            
+            i++;
+            
+            // Vérifier si la ligne suivante est une Description
+            if (i < lines.length) {
+                let nextLine = lines[i].trim();
+                const descMatch = nextLine.match(/^[Dd]escription\s*[:;]\s*(.+)$/);
+                if (descMatch) {
+                    rubriquesDescriptions[currentRubrique] = descMatch[1].trim();
+                    i++;
+                }
+            }
+            continue;
+        }
+        
+        // ✅ 2. Détecter NOM au début de la ligne
+        const nomTrouve = estNomAuDebut(trimmed);
+        if (nomTrouve && currentRubrique) {
+            // Sauvegarder le message précédent
+            sauvegarderMessage();
+            
+            // Extraire le message
+            const message = extraireMessage(trimmed, nomTrouve);
+            currentNom = nomTrouve;
+            if (message) {
+                currentMessage.push(message);
+            } else {
+                currentMessage = [];
+            }
+            i++;
+            continue;
+        }
+        
+        // ✅ 3. Sinon, c'est du texte (suite du message en cours)
+        if (currentRubrique && currentNom) {
+            // Ignorer les lignes vides mais les garder comme saut de ligne
+            if (trimmed === '') {
+                currentMessage.push('');
+            } else {
+                // Vérifier si la ligne contient un nom mais PAS en début de ligne
+                // → c'est du texte normal, on le garde
+                currentMessage.push(line);
+            }
+        }
+        
+        i++;
+    }
+    
+    // ✅ Sauvegarder le dernier message
+    sauvegarderMessage();
+    
+    // ✅ Nettoyer : supprimer les rubriques vides
+    const rubriquesValides = rubriques.filter(r => rubriquesData[r] && rubriquesData[r].length > 0);
+    
+    // ✅ Réorganiser rubriquesData pour ne garder que les valides
+    const rubriquesDataFiltre = {};
+    const rubriquesDescriptionsFiltre = {};
+    for (const r of rubriquesValides) {
+        rubriquesDataFiltre[r] = rubriquesData[r];
+        rubriquesDescriptionsFiltre[r] = rubriquesDescriptions[r] || "";
+    }
+    
+    return {
+        rubriques: rubriquesValides,
+        rubriquesData: rubriquesDataFiltre,
+        rubriquesDescriptions: rubriquesDescriptionsFiltre
+    };
+}
   
   // ==================== RECHERCHE ====================
   function fuzzyMatch(text, search) {
