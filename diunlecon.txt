@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Dialogues français </title>
+  <title>Dialogues ang UNIQUE</title>
   
 
 
@@ -546,10 +546,10 @@ align-self: flex-start; /* RESTE À DROITE POUR HERY */
 
 <script>
   // ==================== CONFIGURATION ====================
-  const DB_NAME = 'diallefrancais';
-  const STORE_NAME = 'diallefrancais';
-  const FILE_KEY = 'diallefrancais_content';
-  const VERSION_KEY = 'diallefrancais_version';
+  const DB_NAME = 'dialunalagasy';
+  const STORE_NAME = 'dialgunmalagasy';
+  const FILE_KEY = 'diallemasanguny_content';
+  const VERSION_KEY = 'dialan_version';
   const FILE_URL = 'https://passage.ahofaly62.workers.dev/diallefrancais.txt';
   const DATE_INFO_URL = 'https://passage.ahofaly62.workers.dev/date_rehetra.txt';
   const TARGET_FILE = 'diallefrancais.txt';
@@ -659,7 +659,10 @@ align-self: flex-start; /* RESTE À DROITE POUR HERY */
   }
   
   // ==================== PARSEUR ====================
-  // ==================== PARSEUR AMÉLIORÉ ====================
+  
+ 
+
+// ==================== PARSEUR AMÉLIORÉ (DÉTECTE TOUS LES NOMS) ====================
 function parseCompleteFile(rawText) {
     const lines = rawText.split(/\r?\n/);
     const rubriques = [];
@@ -671,22 +674,21 @@ function parseCompleteFile(rawText) {
     let currentMessage = [];
     let i = 0;
     
-    // Noms reconnus (garçons et filles)
-    const nomsReconnus = ['Hery', 'Safidy', 'Andry', 'Avotra', 'Dera', 'Faniry', 'Rojo', 'Rova', 'Nomena', 'Nirina', 'Meva'];
-    
+    // ✅ Fonction pour détecter TOUT nom en début de ligne
+    // Un nom est une suite de lettres majuscules/minuscules suivie de ":" ou " :"
     function estNomAuDebut(ligne) {
         const trimmed = ligne.trim();
-        for (const nom of nomsReconnus) {
-            if (trimmed.startsWith(nom + ':') || trimmed.startsWith(nom + ' :')) {
-                return nom;
-            }
+        // Détecte un mot composé uniquement de lettres (A-Z, a-z, accents) suivi de ":" ou " :"
+        const match = trimmed.match(/^([A-Za-zÀ-ÿ]+)\s*[:;]\s*/);
+        if (match) {
+            return match[1];
         }
         return null;
     }
     
     function extraireMessage(ligne, nom) {
         const trimmed = ligne.trim();
-        const pattern = new RegExp('^' + nom + '\\s*:\\s*(.*)$', 'i');
+        const pattern = new RegExp('^' + nom + '\\s*[:;]\\s*(.*)$', 'i');
         const match = trimmed.match(pattern);
         return match ? match[1].trim() : null;
     }
@@ -716,9 +718,7 @@ function parseCompleteFile(rawText) {
         // ✅ 1. Détecter TITRE
         const titreMatch = trimmed.match(/^[Tt]itre\s*[:;]\s*(.+)$/);
         if (titreMatch) {
-            // Sauvegarder le message en cours (s'il existe)
             sauvegarderMessage();
-            
             const nouveauTitre = titreMatch[1].trim();
             currentRubrique = nouveauTitre;
             
@@ -729,8 +729,6 @@ function parseCompleteFile(rawText) {
             }
             
             i++;
-            
-            // Vérifier si la ligne suivante est une Description
             if (i < lines.length) {
                 let nextLine = lines[i].trim();
                 const descMatch = nextLine.match(/^[Dd]escription\s*[:;]\s*(.+)$/);
@@ -742,13 +740,10 @@ function parseCompleteFile(rawText) {
             continue;
         }
         
-        // ✅ 2. Détecter NOM au début de la ligne
+        // ✅ 2. Détecter TOUT NOM en début de ligne
         const nomTrouve = estNomAuDebut(trimmed);
         if (nomTrouve && currentRubrique) {
-            // Sauvegarder le message précédent
             sauvegarderMessage();
-            
-            // Extraire le message
             const message = extraireMessage(trimmed, nomTrouve);
             currentNom = nomTrouve;
             if (message) {
@@ -760,28 +755,18 @@ function parseCompleteFile(rawText) {
             continue;
         }
         
-        // ✅ 3. Sinon, c'est du texte (suite du message en cours)
+        // ✅ 3. Sinon, c'est du texte (suite du message)
         if (currentRubrique && currentNom) {
-            // Ignorer les lignes vides mais les garder comme saut de ligne
-            if (trimmed === '') {
-                currentMessage.push('');
-            } else {
-                // Vérifier si la ligne contient un nom mais PAS en début de ligne
-                // → c'est du texte normal, on le garde
-                currentMessage.push(line);
-            }
+            // Garder la ligne telle quelle (vide ou pas)
+            currentMessage.push(line);
         }
         
         i++;
     }
     
-    // ✅ Sauvegarder le dernier message
     sauvegarderMessage();
     
-    // ✅ Nettoyer : supprimer les rubriques vides
     const rubriquesValides = rubriques.filter(r => rubriquesData[r] && rubriquesData[r].length > 0);
-    
-    // ✅ Réorganiser rubriquesData pour ne garder que les valides
     const rubriquesDataFiltre = {};
     const rubriquesDescriptionsFiltre = {};
     for (const r of rubriquesValides) {
@@ -795,6 +780,40 @@ function parseCompleteFile(rawText) {
         rubriquesDescriptions: rubriquesDescriptionsFiltre
     };
 }
+
+
+
+  // ==================== MISE À JOUR SILENCIEUSE ====================
+  async function silentUpdate() {
+    if (isUpdating || !navigator.onLine) return false;
+    try {
+      const remoteVer = await getRemoteVersionDate();
+      if (!remoteVer) return false;
+      if (currentVersionDate === remoteVer) return false;
+      
+      isUpdating = true;
+      const newContent = await fetchRemoteTxt();
+      if (!newContent || newContent.length < 100) throw new Error("Contenu invalide");
+      
+      await saveToDB(newContent, remoteVer);
+      currentVersionDate = remoteVer;
+      
+      const parsed = parseCompleteFile(newContent);
+      cachedRubriques = parsed.rubriques;
+      cachedRubriquesData = parsed.rubriquesData;
+      cachedDescriptions = parsed.rubriquesDescriptions;
+      
+      updateListOnly();
+      
+      isUpdating = false;
+      showToast('✅ Dialogues mis à jour');
+      return true;
+    } catch (e) {
+      console.error(e);
+      isUpdating = false;
+      return false;
+    }
+  }
   
   // ==================== RECHERCHE ====================
   function fuzzyMatch(text, search) {
