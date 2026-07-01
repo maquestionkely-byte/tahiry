@@ -1,16 +1,19 @@
 titre : Demande de la santé
 
 SOUTENU
+signification : Manao ahoana tompoko ?
 - Comment allez-vous ?
 - Comment vous portez-vous ?
 - Comment va votre santé ?
 
 COURANT
+signification : manao ahoana e?
 - Comment ça va ?
 - Comment vas-tu ?
 - Ça va ?
 
 FAMILIER
+signification : de akory?
 - Ça va ?
 - Ça roule ?
 - Ça baigne ?
@@ -18,16 +21,19 @@ FAMILIER
 titre : Dire bonne nuit
 
 SOUTENU
+signification : Mirary torimaso milamina ho anao!
 - Je vous souhaite une excellente nuit.
 - Que votre nuit soit paisible et réparatrice.
 - Je vous souhaite de faire de beaux rêves.
 
 COURANT
+signification : tsaramandry !
 - Bonne nuit !
 - Fais de beaux rêves !
 - Dors bien !
 
 FAMILIER
+signification : tsaramandry! 
 - Bonne nuit, dors bien !
 - Fais de beaux rêves, à demain !
 - Va te coucher, repose-toi bien !
@@ -35,16 +41,19 @@ FAMILIER
 titre : Dire bonjour
 
 SOUTENU
+signification : Manao ahoana tompoko ?
 - Je vous adresse mes salutations distinguées.
 - Bonjour, comment vous portez-vous ?
 - Je suis ravi de vous voir.
 
 COURANT
+signification : manao ahoana e?
 - Bonjour !
 - Salut, comment ça va ?
 - Coucou, ça fait plaisir de te voir !
 
 FAMILIER
+signification : de akory?
 - Salut !
 - Hey, comment tu vas ?
 - Wesh, ça roule ?
@@ -52,16 +61,19 @@ FAMILIER
 titre : Dire merci
 
 SOUTENU
+signification : Isaorana tompoko
 - Je vous suis infiniment reconnaissant.
 - Je vous adresse mes plus vifs remerciements.
 - Je vous remercie du fond du cœur.
 
 COURANT
+signification : misaotra e!
 - Merci !
 - Merci beaucoup !
 - Un grand merci !
 
 FAMILIER
+signification : de misaotra!
 - Merci, trop sympa !
 - Cimer !
 - Merci, t'assures !
@@ -69,16 +81,19 @@ FAMILIER
 titre : S'excuser
 
 SOUTENU
+signification : Miala tsiny tompoko
 - Je vous présente mes excuses.
 - Veuillez m'excuser.
 - Je vous prie de bien vouloir m'excuser.
 
 COURANT
+signification : miala tsiny e!
 - Excuse-moi !
 - Pardon !
 - Je suis désolé.
 
 FAMILIER
+signification : de miala tsiny!
 - Désolé !
 - Pardon, c'était pas fait exprès !
 - Je suis trop désolé !
@@ -86,16 +101,19 @@ FAMILIER
 titre : Dire au revoir
 
 SOUTENU
+signification : Veloma tompoko
 - Je vous dis au revoir.
 - Permettez-moi de vous quitter.
 - Je prends congé de vous.
 
 COURANT
+signification : veloma e!
 - Au revoir !
 - Salut, à plus tard !
 - À bientôt !
 
 FAMILIER
+signification : de veloma!
 - Salut, à plus !
 - Tchao !
 - À la prochaine !
@@ -103,16 +121,19 @@ FAMILIER
 titre : Féliciter
 
 SOUTENU
+signification : Arahabaina tompoko
 - Je vous adresse mes plus sincères félicitations.
 - Je vous félicite chaleureusement.
 - Permettez-moi de vous féliciter.
 
 COURANT
+signification : arahabaina e!
 - Félicitations !
 - Bravo !
 - Je suis super content pour toi !
 
 FAMILIER
+signification : de arahabaina!
 - Trop fort !
 - Tu déchires !
 - Bravo, tu gères !
@@ -120,16 +141,19 @@ FAMILIER
 titre : Encourager
 
 SOUTENU
+signification : Hazotoa tompoko
 - Je vous encourage à persévérer.
 - Vous avez toute ma confiance.
 - Je vous soutiens dans votre démarche.
 
 COURANT
+signification : hazoto e!
 - Courage !
 - Tu vas y arriver !
 - Je crois en toi !
 
 FAMILIER
+signification : de hazoto!
 - Allez, t'es le meilleur !
 - Accroche-toi !
 - Tu vas déchirer !
@@ -137,16 +161,19 @@ FAMILIER
 titre : Exprimer son amour
 
 SOUTENU
+signification : Tiako ianao tompoko
 - Je vous aime profondément.
 - Je suis éperdument amoureux de vous.
 - Vous êtes l'amour de ma vie.
 
 COURANT
+signification : tiako ianao e!
 - Je t'aime !
 - Je t'aime beaucoup !
 - Tu es tout pour moi !
 
 FAMILIER
+signification : de tiako ianao!
 - Je t'aime, mon cœur !
 - Je t'adore !
 - Je suis dingue de toi !
@@ -154,16 +181,19 @@ FAMILIER
 titre : Souhaiter un anniversaire
 
 SOUTENU
+signification : Tratry ny tsingerintaona nahaterahana tompoko
 - Je vous souhaite un joyeux anniversaire.
 - Permettez-moi de vous souhaiter un heureux anniversaire.
 - Que cette journée vous soit agréable et joyeuse.
 
 COURANT
+signification : tratry ny tsingerintaona e!
 - Joyeux anniversaire !
 - Bon anniversaire !
 - Plein de bonheur pour toi !
 
 FAMILIER
+signification : de tratry ny tsingerintaona!
 - Joyeux anniv !
 - Bon anniversaire, gros !
 - Happy birthday, mon pote !
@@ -171,16 +201,19 @@ FAMILIER
 titre : Souhaiter un bon voyage
 
 SOUTENU
+signification : Soava dia tompoko
 - Je vous souhaite un excellent voyage.
 - Que votre voyage soit agréable.
 - Bon voyage et bonne route.
 
 COURANT
+signification : soava dia e!
 - Bon voyage !
 - Bonne route !
 - Bonne chance pour ton voyage !
 
 FAMILIER
+signification : de soava dia!
 - Bon voyage, amuse-toi bien !
 - Profite bien !
 - Bon voyage, on se voit à ton retour !
@@ -188,16 +221,19 @@ FAMILIER
 titre : Souhaiter un bon appétit
 
 SOUTENU
+signification : Mirary sakafo matsiro tompoko
 - Je vous souhaite un bon appétit.
 - Que ce repas vous soit agréable.
 - Bon appétit et bonne dégustation.
 
 COURANT
+signification : mirary sakafo matsiro e!
 - Bon appétit !
 - Bonne dégustation !
 - Régale-toi bien !
 
 FAMILIER
+signification : de mihinana tsara!
 - Bon app, les amis !
 - Mange bien !
 - Grave, régale-toi !
@@ -205,16 +241,19 @@ FAMILIER
 titre : Souhaiter un bon week-end
 
 SOUTENU
+signification : Mirary faran'ny herinandro mahafinaritra tompoko
 - Je vous souhaite un excellent week-end.
 - Passez un agréable week-end.
 - Que ce week-end vous soit reposant.
 
 COURANT
+signification : mirary faran'ny herinandro e!
 - Bon week-end !
 - Bonne fin de semaine !
 - Profite bien de ton week-end !
 
 FAMILIER
+signification : de faran'ny herinandro!
 - Bon week-end, amuse-toi bien !
 - Bon we, repose-toi bien !
 - Bon week-end, on se voit lundi !
@@ -222,16 +261,19 @@ FAMILIER
 titre : Souhaiter une bonne journée
 
 SOUTENU
+signification : Mirary andro mahafinaritra tompoko
 - Je vous souhaite une excellente journée.
 - Passez une agréable journée.
 - Que cette journée vous soit bénéfique.
 
 COURANT
+signification : mirary andro mahafinaritra e!
 - Bonne journée !
 - Bonne continuation !
 - Passe une bonne journée !
 
 FAMILIER
+signification : de andro mahafinaritra!
 - Bonne journée, à plus !
 - Passe une super journée !
 - Bonne journée, je t'appelle plus tard !
@@ -239,16 +281,19 @@ FAMILIER
 titre : Souhaiter une bonne année
 
 SOUTENU
+signification : Tratry ny taona vaovao tompoko
 - Je vous souhaite une excellente année.
 - Que cette année vous apporte bonheur et santé.
 - Je vous présente mes vœux pour cette nouvelle année.
 
 COURANT
+signification : tratry ny taona vaovao e!
 - Bonne année !
 - Meilleurs vœux !
 - Plein de bonheur pour cette année !
 
 FAMILIER
+signification : de tratry ny taona vaovao!
 - Bonne année, mon ami !
 - Meilleurs vœux, poto !
 - Bonne année, que du bonheur !
@@ -256,16 +301,19 @@ FAMILIER
 titre : Souhaiter un bon rétablissement
 
 SOUTENU
+signification : Mirary fahasitranana haingana tompoko
 - Je vous souhaite un prompt rétablissement.
 - Que votre santé revienne rapidement.
 - Je vous souhaite de retrouver la santé.
 
 COURANT
+signification : mirary fahasitranana haingana e!
 - Bon rétablissement !
 - Remets-toi vite !
 - Guéris vite !
 
 FAMILIER
+signification : de fahasitranana haingana!
 - Remets-toi bien !
 - Guéris, là !
 - Bon rétablissement, à bientôt !
@@ -273,16 +321,19 @@ FAMILIER
 titre : Souhaiter un bon courage
 
 SOUTENU
+signification : Mirary hery tompoko
 - Je vous souhaite beaucoup de courage.
 - Que le courage soit avec vous.
 - Je vous encourage dans cette épreuve.
 
 COURANT
+signification : mirary hery e!
 - Bon courage !
 - Courage !
 - Tiens bon !
 
 FAMILIER
+signification : de hery!
 - Allez, tu peux le faire !
 - Accroche-toi, mon pote !
 - Courage, ça va passer !
@@ -290,16 +341,19 @@ FAMILIER
 titre : Souhaiter un bon travail
 
 SOUTENU
+signification : Mirary asa tsara tompoko
 - Je vous souhaite un bon travail.
 - Que votre travail soit productif.
 - Bonne continuation dans votre travail.
 
 COURANT
+signification : mirary asa tsara e!
 - Bon travail !
 - Au travail !
 - Bonne chance pour le travail !
 
 FAMILIER
+signification : de asa tsara!
 - Bonne bosse !
 - Taf, taf, taf !
 - Bon courage pour le boulot !
@@ -307,16 +361,19 @@ FAMILIER
 titre : Souhaiter un bon repos
 
 SOUTENU
+signification : Mirary fitsaharana tsara tompoko
 - Je vous souhaite un bon repos.
 - Que ce moment de repos vous soit bénéfique.
 - Profitez de ce moment de détente.
 
 COURANT
+signification : mirary fitsaharana tsara e!
 - Bon repos !
 - Repose-toi bien !
 - Bonne sieste !
 
 FAMILIER
+signification : de fitsaharana tsara!
 - Repose-toi, gros !
 - Va te reposer !
 - Bonne pause, poto !
@@ -324,16 +381,19 @@ FAMILIER
 titre : Dire je t'aime
 
 SOUTENU
+signification : Tiako ianao tompoko
 - Je vous aime de tout mon cœur.
 - Je vous chéris profondément.
 - Vous êtes tout pour moi.
 
 COURANT
+signification : tiako ianao e!
 - Je t'aime !
 - Je t'aime plus que tout !
 - Tu es ma vie !
 
 FAMILIER
+signification : de tiako ianao!
 - Je t'aime, mon cœur !
 - Je t'adore, ma vie !
 - Je t'aime, bébé !
