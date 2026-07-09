@@ -1,0 +1,208 @@
+titre : Misaotra !
+
+SOUTENU
+signification : Isaorana tompoko!
+- Je vous suis infiniment reconnaissant.
+- Je vous adresse mes plus vifs remerciements.
+- Je vous remercie du fond du cœur.
+
+COURANT
+signification : misaotra e!
+- Merci !
+- Merci beaucoup !
+- Un grand merci !
+
+FAMILIER
+signification : de misaotra!
+- Cimer !
+- Merci, trop sympa !
+- Merci, t'assures !
+
+
+titre : Miala tsiny !
+
+SOUTENU
+signification : Miala tsiny tompoko!
+- Je vous présente mes excuses.
+- Veuillez m'excuser.
+- Je vous prie de bien vouloir m'excuser.
+
+COURANT
+signification : miala tsiny e!
+- Excuse-moi !
+- Pardon !
+- Je suis désolé.
+
+FAMILIER
+signification : de miala tsiny!
+- Désolé !
+- Pardon, c'était pas fait exprès !
+- Je suis trop désolé !
+
+
+titre : Azafady !
+
+SOUTENU
+signification : Azafady tompoko!
+- Veuillez m'excuser.
+- Permettez-moi de vous déranger.
+- Je vous prie de m'accorder un instant.
+
+COURANT
+signification : azafady e!
+- S'il te plaît.
+- Excuse-moi.
+- Pardon.
+
+FAMILIER
+signification : de azafady!
+- S'il te plaît (STP) !
+- Pardon, je passe !
+- Désolé, je te dérange !
+
+
+titre : Tsy nataoko fanahy !
+
+SOUTENU
+signification : Tsy nataoko fanahy tompoko!
+- Je vous assure que ce n'était pas intentionnel.
+- Veuillez croire que je n'ai pas agi délibérément.
+- Ce n'était pas mon intention.
+
+COURANT
+signification : tsy nataoko fanahy e!
+- Je n'ai pas fait exprès.
+- C'était involontaire.
+- Je ne l'ai pas fait volontairement.
+
+FAMILIER
+signification : de tsy nataoko fanahy!
+- Je l'ai pas fait exprès !
+- Pardon, c'est pas fait pour !
+- C'était pas voulu !
+
+
+titre : Tsy maninona !
+
+SOUTENU
+signification : Tsy maninona tompoko!
+- Cela ne fait rien.
+- Il n'y a pas de mal.
+- Ne vous inquiétez pas.
+
+COURANT
+signification : tsy maninona e!
+- Ce n'est pas grave.
+- Y'a pas de problème.
+- Pas de souci.
+
+FAMILIER
+signification : de tsy maninona!
+- Pas de souci !
+- Aucun problème !
+- Y'a pas de mal !
+
+
+titre : Aza fady !
+
+SOUTENU
+signification : Aza fady tompoko!
+- N'hésitez pas, je vous en prie.
+- Faites comme chez vous.
+- Je vous en prie, allez-y.
+
+COURANT
+signification : aza fady e!
+- N'hésite pas !
+- Fais-toi plaisir !
+- Vas-y, t'inquiète !
+
+FAMILIER
+signification : de aza fady!
+- Vas-y, gêne-toi pas !
+- Sers-toi !
+- T'inquiète, fais-toi plaisir !
+
+
+titre : Misaotra indrindra !
+
+SOUTENU
+signification : Misaotra indrindra tompoko!
+- Je vous remercie très sincèrement.
+- Mes plus vifs remerciements.
+- Je suis profondément reconnaissant.
+
+COURANT
+signification : misaotra indrindra e!
+- Merci infiniment !
+- Un énorme merci !
+- Mille mercis !
+
+FAMILIER
+signification : de misaotra indrindra!
+- Merci mille fois !
+- Trop merci !
+- Merci, trop gentil !
+
+
+titre : Miala tsiny indrindra !
+
+SOUTENU
+signification : Miala tsiny indrindra tompoko!
+- Je vous prie de bien vouloir m'excuser.
+- Je suis profondément désolé.
+- Je vous présente mes excuses les plus sincères.
+
+COURANT
+signification : miala tsiny indrindra e!
+- Je suis vraiment désolé.
+- Toutes mes excuses !
+- Vraiment pardon.
+
+FAMILIER
+signification : de miala tsiny indrindra!
+- Vraiment désolé !
+- Pardon, pardon, pardon !
+- Je suis trop désolé, j'assume pas !
+
+
+titre : Tsy izay no tiako holazaina !
+
+SOUTENU
+signification : Tsy izay no tiako holazaina tompoko!
+- Permettez-moi de rectifier mes propos.
+- Ce n'était pas là mon intention.
+- Je vous prie de ne pas mal interpréter mes paroles.
+
+COURANT
+signification : tsy izay no tiako holazaina e!
+- Ce n'est pas ce que je voulais dire.
+- Je me suis mal exprimé.
+- Je voulais dire autre chose.
+
+FAMILIER
+signification : de tsy izay no tiako holazaina!
+- C'est pas ça que j'ai voulu dire !
+- Je me suis trompé de mots !
+- Non mais c'était pas ça que je voulais dire !
+
+
+titre : Mankasitraka ny faharetanao !
+
+SOUTENU
+signification : Mankasitraka ny faharetanao tompoko!
+- Je vous suis reconnaissant pour votre patience.
+- Je vous remercie de votre indulgence.
+- Je vous sais gré de votre compréhension.
+
+COURANT
+signification : mankasitraka ny faharetanao e!
+- Merci d'avoir patienté.
+- Merci pour ta patience.
+- Je te remercie d'avoir attendu.
+
+FAMILIER
+signification : de mankasitraka ny faharetanao!
+- Merci d'avoir attendu !
+- T'as été trop patient, merci !
+- Merci d'avoir supporté !

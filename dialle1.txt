@@ -1,0 +1,208 @@
+titre : Manao ahoana !
+
+SOUTENU
+signification : Manao ahoana tompoko ?
+- Comment allez-vous ?
+- Comment vous portez-vous ?
+- Comment va votre santé ?
+
+COURANT
+signification : manao ahoana e?
+- Comment ça va ?
+- Comment vas-tu ?
+- Ça va ?
+
+FAMILIER
+signification : de akory?
+- Ça va ?
+- Ça roule ?
+- Ça baigne ?
+
+
+titre : Manao tsaramandry !
+
+SOUTENU
+signification : Mirary torimaso milamina ho anao!
+- Je vous souhaite une excellente nuit.
+- Que votre nuit soit paisible et réparatrice.
+- Je vous souhaite de faire de beaux rêves.
+
+COURANT
+signification : tsaramandry !
+- Bonne nuit !
+- Fais de beaux rêves !
+- Dors bien !
+
+FAMILIER
+signification : tsaramandry!
+- Bonne nuit, dors bien !
+- Fais de beaux rêves, à demain !
+- Va te coucher, repose-toi bien !
+
+
+titre : Tonga soa !
+
+SOUTENU
+signification : Tonga soa tompoko!
+- Soyez le bienvenu !
+- Nous sommes honorés de vous recevoir.
+- Veuillez entrer, je vous en prie.
+
+COURANT
+signification : tonga soa e!
+- Bienvenue !
+- Content de te voir !
+- Ravi de t'accueillir.
+
+FAMILIER
+signification : de tonga soa!
+- Bienvenue chez nous !
+- Entre, installe-toi !
+- Allez, viens, on t'attendait !
+
+
+titre : Inona ny vaovao ?
+
+SOUTENU
+signification : Inona ny vaovao tato ho ato?
+- Quelles sont les nouvelles ?
+- Avez-vous des nouvelles récentes ?
+- Que nous apprenez-vous de nouveau ?
+
+COURANT
+signification : inona ny vaovao?
+- Quoi de neuf ?
+- Des nouvelles ?
+- Qu'est-ce qui se passe ?
+
+FAMILIER
+signification : de vaovao?
+- Quoi de beau ?
+- Ça dit quoi ?
+- Y'a du nouveau ?
+
+
+titre : Mandra-pihaona !
+
+SOUTENU
+signification : Mandra-pihaona tompoko!
+- Dans l'attente de vous revoir.
+- En attendant de vous retrouver.
+- J'espère vous revoir bientôt.
+
+COURANT
+signification : mandra-pihaona e!
+- À bientôt !
+- On se voit plus tard !
+- À tout à l'heure !
+
+FAMILIER
+signification : de mandra-pihaona!
+- À plus !
+- On se capte !
+- À la prochaine !
+
+
+titre : Veloma !
+
+SOUTENU
+signification : Veloma tompoko!
+- Je vous dis au revoir.
+- Permettez-moi de vous quitter.
+- Je prends congé de vous.
+
+COURANT
+signification : veloma e!
+- Au revoir !
+- Salut, à plus tard !
+- À bientôt !
+
+FAMILIER
+signification : de veloma!
+- Tchao !
+- À plus !
+- À la prochaine !
+
+
+titre : Rahampitso !
+
+SOUTENU
+signification : Rahampitso tompoko!
+- Je vous retrouve demain.
+- En attendant demain.
+- À demain, si Dieu le veut.
+
+COURANT
+signification : rahampitso e!
+- À demain !
+- On se voit demain !
+- Rendez-vous demain !
+
+FAMILIER
+signification : de rahampitso!
+- À demain les potes !
+- Demain, comme prévu !
+- On se capte demain !
+
+
+titre : Mankasitraka !
+
+SOUTENU
+signification : Mankasitraka tompoko!
+- Je vous présente mes hommages.
+- Veuillez agréer mes salutations.
+- Je vous adresse mes respects.
+
+COURANT
+signification : mankasitraka e!
+- Toutes mes amitiés.
+- Salutations à tous !
+- Bien à vous !
+
+FAMILIER
+signification : de mankasitraka!
+- Salut à tous !
+- Coucou tout le monde !
+- Yo les gens !
+
+
+titre : Arahabaina !
+
+SOUTENU
+signification : Arahabaina tompoko!
+- Je vous adresse mes félicitations.
+- Je vous félicite chaleureusement.
+- Permettez-moi de vous féliciter.
+
+COURANT
+signification : arahabaina e!
+- Félicitations !
+- Bravo !
+- Je suis super content pour toi !
+
+FAMILIER
+signification : de arahabaina!
+- Trop fort !
+- Tu déchires !
+- Bravo, tu gères !
+
+
+titre : Mbola tsara ve ?
+
+SOUTENU
+signification : Mbola tsara ve ny fahasalamanareo?
+- Votre santé est-elle toujours bonne ?
+- Je me permets de m'enquérir de vous.
+- Comment vous sentez-vous aujourd'hui ?
+
+COURANT
+signification : mbola tsara ve?
+- Tu vas bien ?
+- Tout va bien ?
+- Ça va ?
+
+FAMILIER
+signification : de mbola tsara?
+- Ça gaze ?
+- T'es en forme ?
+- Ça roule pour toi ?

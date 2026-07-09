@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Expressions · Fomba ilazana</title>
+  
+
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f0f7ff 0%, #e9eef5 100%);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ========== HEADER ========== */
+    .app-header {
+      background: #1e2a3e;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .app-header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .app-header h1:before {
+      content: "🗣️";
+      font-size: 1.8rem;
+    }
+
+    .app-header h1:after {
+      content: "✨";
+      font-size: 1.8rem;
+    }
+
+    /* ========== BARRE DE RECHERCHE STICKY ========== */
+    .search-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(145deg, #f0f7ff 0%, #e9eef5 100%);
+      padding: 0.1rem 1rem;
+      border-bottom: 1px solid #e2edf7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #cfdfed;
+      transition: all 0.2s;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .search-wrapper:focus-within {
+      border-color: #c56985;
+      box-shadow: 0 0 0 3px rgba(197,105,133,0.2);
+    }
+
+    .search-icon {
+      padding-left: 1rem;
+      font-size: 1.1rem;
+      color: #c56985;
+    }
+
+    #searchInput {
+      flex: 1;
+      padding: 0.8rem 0.7rem;
+      font-size: 0.95rem;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 1rem;
+      color: #888;
+      transition: 0.2s;
+    }
+
+    .clear-btn:hover {
+      color: #c56985;
+    }
+
+    .search-stats {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: #5f7f9e;
+    }
+
+    .search-badge {
+      background: #eef2ff;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      color: #1e40af;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    /* ========== CONTENEUR DES CARTES ========== */
+    .cards-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .rubriques-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rubric-card {
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid #ffe0e7;
+      overflow: hidden;
+    }
+
+    .rubric-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 28px -8px rgba(0, 0, 0, 0.15);
+      border-color: #f7bfcf;
+      background: #fffafc;
+    }
+
+    .rubric-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.2rem;
+      background: white;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4a2e38;
+      cursor: pointer;
+    }
+
+    .rubric-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .rubric-num-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a4e;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(197,105,133,0.3);
+      flex-shrink: 0;
+    }
+
+    .rubric-title-text {
+      flex: 1;
+      font-size: 1rem;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .rubric-arrow {
+      font-size: 1.2rem;
+      opacity: 0.6;
+      color: #c56985;
+    }
+
+    .rubric-description {
+      font-size: 0.75rem;
+      color: #2563eb;
+      margin-top: 0.4rem;
+      margin-left: 3.5rem;
+      border-left: 3px solid #2563eb;
+      padding-left: 0.7rem;
+    }
+
+    .no-results {
+      text-align: center;
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      color: #b87388;
+      font-weight: 500;
+    }
+
+    .loading-box {
+      text-align: center;
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f1cfda;
+      border-top-color: #c56985;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ========== ÉCRAN DIALOGUE ========== */
+    .dialogue-fullscreen {
+      min-height: 100vh;
+      background: #fffef7;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .back-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fffef7;
+      padding: 12px;
+      border-bottom: 1px solid #ffb7cb;
+    }
+
+    .back-button {
+      background: rgba(196, 111, 137, 0.92);
+      border: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .card-header {
+      background: rgba(196, 111, 137, 0.12);
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 2px solid #ffb7cb;
+    }
+
+    .rubrique-titre {
+      display: inline-block;
+      max-width: 85%;
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 0.3rem 1.2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #a65474;
+    }
+
+    .description-header {
+      font-size: 0.7rem;
+      color: #3b82f6;
+      margin-top: 0.4rem;
+    }
+
+    .dialogue-area {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ===== STYLE DES CARTES D'EXPRESSIONS ===== */
+    .expression-card {
+      background: white;
+      border-radius: 32px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ffe0e7;
+    }
+
+    .expression-card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-left: 6px solid #93c5fd;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .expression-card.soutenu h2 {
+      color: #1e3a5f;
+      border-left-color: #1e3a5f;
+    }
+    .expression-card.courant h2 {
+      color: #2d6a4f;
+      border-left-color: #2d6a4f;
+    }
+    .expression-card.familier h2 {
+      color: #b9770e;
+      border-left-color: #b9770e;
+    }
+
+    .definition-mg {
+      background: #eef4ea;
+      padding: 16px;
+      border-radius: 24px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.5;
+    }
+
+    .exemple-modern {
+      background: #fff9ef;
+      padding: 18px;
+      border-radius: 28px;
+      margin: 16px 0 12px 0;
+      border-left: 5px solid #e94560;
+    }
+
+    .expression-card.soutenu .exemple-modern {
+      border-left: 5px solid #1e3a5f;
+    }
+    .expression-card.courant .exemple-modern {
+      border-left: 5px solid #2d6a4f;
+    }
+    .expression-card.familier .exemple-modern {
+      border-left: 5px solid #c2185b;
+    }
+
+    .exemple-modern .exo-titre {
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px 6px;
+      background: white;
+      color: #1e3a8a;
+      padding: 10px 16px;
+      border-radius: 16px;
+      border: 1px solid #dbe7f5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      width: 100%;
+    }
+
+    .exemple-modern .exo-titre .highlight-phrase {
+      font-weight: 400;
+      color: #0b2b5e;
+      background: white;
+      padding: 4px 14px;
+      border-radius: 10px;
+      border: 2.5px solid rgba(76, 175, 80, 0.15);
+      font-size: 1.15rem;
+      box-shadow: 0 1px 4px rgba(0,80,30,0.04);
+      line-height: 1.4;
+    }
+
+    .exemple-modern .exo-titre .emoji {
+      flex-shrink: 0;
+    }
+
+    .exemple-modern ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .exemple-modern ul li {
+      padding: 8px 0 8px 30px;
+      border-bottom: 1px solid #f3e5cf;
+      font-size: 0.95rem;
+      color: #1a2e2a;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .exemple-modern ul li:last-child {
+      border-bottom: none;
+    }
+
+    .expression-card.soutenu .exemple-modern ul li::before {
+      content: "❖";
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      color: #1e3a5f;
+      font-size: 1.1rem;
+    }
+    .expression-card.courant .exemple-modern ul li::before {
+      content: "▶";
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      color: #2d6a4f;
+      font-size: 0.9rem;
+    }
+    .expression-card.familier .exemple-modern ul li::before {
+      content: "●";
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      color: #b9770e;
+      font-size: 1rem;
+    }
+
+    .badge-classe {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 14px;
+      border-radius: 20px;
+      margin-left: 10px;
+      color: white;
+    }
+    .badge-soutenu { background: #1e3a5f; }
+    .badge-courant { background: #2d6a4f; }
+    .badge-familier { background: #b9770e; }
+
+    .highlight {
+      background: #fef1cf;
+      padding: 10px 12px;
+      border-radius: 28px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    /* ===== CARTES SUPPLÉMENTAIRES ===== */
+    .info-card {
+      background: white;
+      border-radius: 32px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ffe0e7;
+      margin-top: 8px;
+    }
+
+    .info-card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #a65474;
+      border-left: 6px solid #ffb7cb;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .info-card .definition-mg {
+      background: #fef8f0;
+      padding: 16px;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      color: #1f3d34;
+      line-height: 1.8;
+    }
+
+    .info-card .definition-mg strong {
+      font-weight: 700;
+    }
+
+    .fb-button-small {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s, background 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+      width: auto;
+      max-width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .fb-button-small:hover {
+      background: #0d65d9;
+    }
+    
+    .fb-button-small:active { 
+      transform: scale(0.97); 
+    }
+    
+    .fb-icon-small {
+      background: white;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #ffe0e7;
+    }
+
+    .small-note {
+      font-size: 0.7rem;
+      color: #6f8f7d;
+      margin-top: 10px;
+    }
+
+    .dialogue-footer {
+      background: #191970;
+      padding: 0.8rem;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #fff;
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .app-header h1 { font-size: 1.3rem; }
+      .app-header h1:before, .app-header h1:after { font-size: 1.3rem; }
+      .rubric-num-circle { width: 38px; height: 38px; font-size: 0.9rem; }
+      .rubric-title-text { font-size: 0.9rem; }
+      .rubric-btn { padding: 0.8rem 1rem; }
+      .exemple-modern ul li { font-size: 0.85rem; padding: 6px 0 6px 28px; }
+      .exemple-modern .exo-titre { font-size: 0.85rem; padding: 8px 12px; }
+      .exemple-modern .exo-titre .highlight-phrase { font-size: 1rem; }
+      .info-card h2 { font-size: 1.1rem; }
+    }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<div id="toast" class="toast-notification">✅ Message copié !</div>
+
+<script>
+  // ==================== CONFIGURATION ====================
+  const DB_NAME = 'expres4sion1sdb';
+  const STORE_NAME = 'expr4essi1onsstore';
+  const FILE_KEY = 'express4ions1_content';
+  const VERSION_KEY = 'expre4ssio1ns_version';
+  const FILE_URL = 'https://passage.ahofaly62.workers.dev/dialle4.txt';
+  const DATE_INFO_URL = 'https://passage.ahofaly62.workers.dev/date_rehetra.txt';
+  const TARGET_FILE = 'dialle4.txt';
+  
+  let cachedRubriques = [];
+  let cachedRubriquesData = {};
+  let cachedDescriptions = {};
+  let currentVersionDate = null;
+  let isUpdating = false;
+  let currentSearch = "";
+  
+  let rubriquesGrid = null;
+  let searchBadgeSpan = null;
+
+  // ==================== PARSEUR POUR EXPRESSIONS AVEC SIGNIFICATION ====================
+  function parseExpressionsFile(rawText) {
+    const lines = rawText.split(/\r?\n/);
+    const rubriques = [];
+    const rubriquesData = {};
+    const rubriquesDescriptions = {};
+    
+    let currentTitre = null;
+    let currentClasse = null;
+    let currentSignification = null;
+    let currentExpressions = [];
+    let i = 0;
+    
+    function sauvegarderClasse() {
+      if (currentTitre && currentClasse && currentExpressions.length > 0) {
+        if (!rubriquesData[currentTitre]) {
+          rubriquesData[currentTitre] = {};
+        }
+        rubriquesData[currentTitre][currentClasse.toLowerCase()] = {
+          signification: currentSignification || "",
+          expressions: currentExpressions.slice()
+        };
+        currentExpressions = [];
+        currentSignification = null;
+      }
+    }
+    
+    while (i < lines.length) {
+      let line = lines[i].trim();
+      
+      // Ignorer les lignes vides
+      if (!line) {
+        i++;
+        continue;
+      }
+      
+      // Détecter TITRE
+      const titreMatch = line.match(/^[Tt]itre\s*[:;]\s*(.+)$/);
+      if (titreMatch) {
+        sauvegarderClasse();
+        const nouveauTitre = titreMatch[1].trim();
+        currentTitre = nouveauTitre;
+        currentClasse = null;
+        currentSignification = null;
+        currentExpressions = [];
+        
+        if (!rubriques.includes(currentTitre)) {
+          rubriques.push(currentTitre);
+          rubriquesData[currentTitre] = {};
+          rubriquesDescriptions[currentTitre] = "";
+        }
+        
+        i++;
+        continue;
+      }
+      
+      // Détecter CLASSE (SOUTENU, COURANT, FAMILIER)
+      const classeMatch = line.match(/^(SOUTENU|COURANT|FAMILIER)$/i);
+      if (classeMatch && currentTitre) {
+        sauvegarderClasse();
+        currentClasse = classeMatch[1].toUpperCase();
+        currentSignification = null;
+        currentExpressions = [];
+        i++;
+        continue;
+      }
+      
+      // Détecter SIGNIFICATION
+      const sigMatch = line.match(/^signification\s*[:;]\s*(.+)$/i);
+      if (sigMatch && currentTitre && currentClasse) {
+        currentSignification = sigMatch[1].trim();
+        i++;
+        continue;
+      }
+      
+      // Détecter une expression (commence par - ou •)
+      const exprMatch = line.match(/^[-•]\s*(.+)$/);
+      if (exprMatch && currentTitre && currentClasse) {
+        currentExpressions.push(exprMatch[1].trim());
+        i++;
+        continue;
+      }
+      
+      // Description (optionnel)
+      const descMatch = line.match(/^[Dd]escription\s*[:;]\s*(.+)$/);
+      if (descMatch && currentTitre) {
+        rubriquesDescriptions[currentTitre] = descMatch[1].trim();
+        i++;
+        continue;
+      }
+      
+      i++;
+    }
+    
+    // Sauvegarder la dernière classe
+    sauvegarderClasse();
+    
+    // Nettoyer les rubriques vides
+    const rubriquesValides = rubriques.filter(r => {
+      const data = rubriquesData[r];
+      return data && (data.soutenu || data.courant || data.familier);
+    });
+    
+    const rubriquesDataFiltre = {};
+    const rubriquesDescriptionsFiltre = {};
+    for (const r of rubriquesValides) {
+      rubriquesDataFiltre[r] = rubriquesData[r];
+      rubriquesDescriptionsFiltre[r] = rubriquesDescriptions[r] || "";
+    }
+    
+    return {
+      rubriques: rubriquesValides,
+      rubriquesData: rubriquesDataFiltre,
+      rubriquesDescriptions: rubriquesDescriptionsFiltre
+    };
+  }
+
+  // ==================== INDEXEDDB ====================
+  function openDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, 2);
+      request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME);
+        }
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+  
+  async function saveToDB(content, version) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      const store = tx.objectStore(STORE_NAME);
+      store.put(content, FILE_KEY);
+      store.put(version, VERSION_KEY);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+  
+  async function loadFromDB() {
+    const db = await openDB();
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const reqContent = store.get(FILE_KEY);
+      const reqVersion = store.get(VERSION_KEY);
+      let content = null, version = null;
+      let completed = 0;
+      function check() {
+        completed++;
+        if (completed === 2) resolve({ content, version });
+      }
+      reqContent.onsuccess = () => { content = reqContent.result; check(); };
+      reqVersion.onsuccess = () => { version = reqVersion.result; check(); };
+      reqContent.onerror = () => check();
+      reqVersion.onerror = () => check();
+    });
+  }
+
+  // ==================== VERSION DISTANTE ====================
+  async function getRemoteVersionDate() {
+    try {
+      const res = await fetch(DATE_INFO_URL, { cache: 'no-cache' });
+      if (!res.ok) return null;
+      const text = await res.text();
+      const blocks = text.split(/DERNIÈRE MISE À JOUR/);
+      for (const block of blocks) {
+        const fileMatch = block.match(/📁 Fichier:\s*([^\n]+)/);
+        if (fileMatch && fileMatch[1].trim() === TARGET_FILE) {
+          const dayMatch = block.match(/📅\s*([\d\/]+)/);
+          const timeMatch = block.match(/⏰\s*([\d:]+)/);
+          if (dayMatch && timeMatch) return `${dayMatch[1]} ${timeMatch[1]}`;
+        }
+      }
+      return null;
+    } catch (e) { return null; }
+  }
+  
+  async function fetchRemoteTxt() {
+    const res = await fetch(FILE_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  }
+
+  // ==================== MISE À JOUR SILENCIEUSE ====================
+  async function silentUpdate() {
+    if (isUpdating || !navigator.onLine) return false;
+    try {
+      const remoteVer = await getRemoteVersionDate();
+      if (!remoteVer) return false;
+      if (currentVersionDate === remoteVer) return false;
+      
+      isUpdating = true;
+      const newContent = await fetchRemoteTxt();
+      if (!newContent || newContent.length < 100) throw new Error("Contenu invalide");
+      
+      await saveToDB(newContent, remoteVer);
+      currentVersionDate = remoteVer;
+      
+      const parsed = parseExpressionsFile(newContent);
+      cachedRubriques = parsed.rubriques;
+      cachedRubriquesData = parsed.rubriquesData;
+      cachedDescriptions = parsed.rubriquesDescriptions;
+      
+      updateListOnly();
+      
+      isUpdating = false;
+      showToast('✅ Expressions mises à jour');
+      return true;
+    } catch (e) {
+      console.error(e);
+      isUpdating = false;
+      return false;
+    }
+  }
+
+  // ==================== TOAST ====================
+  function showToast(msg, duration = 2000) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    setTimeout(() => { toast.style.opacity = '0'; }, duration);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+  }
+
+  // ==================== RECHERCHE ====================
+  function fuzzyMatch(text, search) {
+    if (!search.trim()) return true;
+    const t = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const s = search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return t.includes(s);
+  }
+
+  function filterRubriques() {
+    if (!currentSearch.trim()) return cachedRubriques;
+    const term = currentSearch.trim();
+    if (/^\d+$/.test(term)) {
+      const num = parseInt(term);
+      const found = cachedRubriques.find((_, idx) => idx + 1 === num);
+      return found ? [found] : [];
+    }
+    return cachedRubriques.filter(t => fuzzyMatch(t, term));
+  }
+
+  // ============ MISE À JOUR UNIQUEMENT DE LA LISTE ============
+  function updateListOnly() {
+    if (!rubriquesGrid) return;
+    const filtered = filterRubriques();
+    
+    if (searchBadgeSpan) {
+      if (currentSearch.trim()) {
+        searchBadgeSpan.innerHTML = `🔍 ${filtered.length} résultat(s) pour « ${escapeHtml(currentSearch)} »`;
+      } else {
+        searchBadgeSpan.innerHTML = ``;
+      }
+    }
+    
+    if (filtered.length === 0 && currentSearch.trim() !== "") {
+      rubriquesGrid.innerHTML = `<div class="no-results">😢 Aucun thème ne correspond à « ${escapeHtml(currentSearch)} »</div>`;
+      return;
+    }
+    
+    const cards = filtered.map(titre => {
+      const desc = cachedDescriptions[titre] || "";
+      const num = cachedRubriques.findIndex(t => t === titre) + 1;
+      return `
+        <div class="rubric-card" data-titre="${escapeHtml(titre)}">
+          <button class="rubric-btn">
+            <div class="rubric-header">
+              <span class="rubric-num-circle">${num}</span>
+              <span class="rubric-title-text">${escapeHtml(titre)}</span>
+              <span class="rubric-arrow">➡️</span>
+            </div>
+            ${desc ? `<div class="rubric-description">📝 ${escapeHtml(desc)}</div>` : ''}
+          </button>
+        </div>
+      `;
+    }).join('');
+    
+    rubriquesGrid.innerHTML = cards;
+    
+    document.querySelectorAll('.rubric-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const titre = card.getAttribute('data-titre');
+        if (titre) renderDialogue(titre);
+      });
+    });
+  }
+
+  // ============ ÉCRAN LISTE ============
+  function renderList() {
+    const filtered = filterRubriques();
+    const searchBadge = currentSearch.trim() ?
+      `<span class="search-badge" id="searchBadgeSpan">🔍 ${filtered.length} résultat(s) pour « ${escapeHtml(currentSearch)} »</span>` :
+      ``;
+    
+    const cards = filtered.map(titre => {
+      const desc = cachedDescriptions[titre] || "";
+      const num = cachedRubriques.findIndex(t => t === titre) + 1;
+      return `
+        <div class="rubric-card" data-titre="${escapeHtml(titre)}">
+          <button class="rubric-btn">
+            <div class="rubric-header">
+              <span class="rubric-num-circle">${num}</span>
+              <span class="rubric-title-text">${escapeHtml(titre)}</span>
+              <span class="rubric-arrow">➡️</span>
+            </div>
+            ${desc ? `<div class="rubric-description"> ${escapeHtml(desc)}</div>` : ''}
+          </button>
+        </div>
+      `;
+    }).join('');
+    
+    const app = document.getElementById('app-root');
+    app.innerHTML = `
+      <div class="app-header">
+        <h1>Expressions · Fomba ilazana</h1>
+      </div>
+      
+      <div class="search-sticky">
+        <div class="search-wrapper">
+          <span class="search-icon">🔎</span>
+          <input type="text" id="searchInput" placeholder="Rechercher un thème..." value="${escapeHtml(currentSearch)}" autocomplete="off">
+          <button class="clear-btn" id="clearBtn">✖</button>
+        </div>
+        <div class="search-stats">
+          ${searchBadge}
+        </div>
+      </div>
+      
+      <div class="cards-container">
+        <div class="rubriques-grid" id="rubriquesGrid">
+          ${cards || '<p style="text-align:center; padding:2rem;">Aucun thème</p>'}
+        </div>
+      </div>
+    `;
+    
+    rubriquesGrid = document.getElementById('rubriquesGrid');
+    searchBadgeSpan = document.getElementById('searchBadgeSpan');
+    
+    const input = document.getElementById('searchInput');
+    const clear = document.getElementById('clearBtn');
+    
+    if (input) {
+      input.value = currentSearch;
+      input.addEventListener('input', (e) => {
+        currentSearch = e.target.value;
+        updateListOnly();
+      });
+    }
+    if (clear) {
+      clear.addEventListener('click', () => {
+        currentSearch = '';
+        if (input) input.value = '';
+        updateListOnly();
+      });
+    }
+    
+    document.querySelectorAll('.rubric-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const titre = card.getAttribute('data-titre');
+        if (titre) renderDialogue(titre);
+      });
+    });
+  }
+
+  // ============ ÉCRAN DIALOGUE ============
+  function renderDialogue(titre) {
+    const data = cachedRubriquesData[titre] || {};
+    const description = cachedDescriptions[titre] || "";
+    
+    const classes = [
+      { key: 'soutenu', label: 'Soutenu (Mahalala fomba)', badge: 'soutenu', emoji: '🎩', text: 'teny frantsay (Soutenu)' },
+      { key: 'courant', label: 'Courant (Salasala)', badge: 'courant', emoji: '🟢', text: 'teny frantsay (Courant)' },
+      { key: 'familier', label: 'Familier', badge: 'familier', emoji: '🟠', text: 'teny frantsay (Familier)' }
+    ];
+    
+    const definitions = {
+      soutenu: "Ny <strong>\"Soutenu\"</strong> dia ampiasaina amin'ny toe-javatra <strong>ôfisialy</strong> na amin'ny olona <strong>hajaina</strong> (lehibe, zokiolona, vahiny). Feno fahalalam-pomba sy fanajana.",
+      courant: "Ny <strong>\"Courant\"</strong> dia kilasy <strong>ampiasaina indrindra</strong> andavanandro. Mety amin'ny namana, mpiara-miasa, havana, na olona rehetra. Tsy dia ôfisialy loatra nefa tsy vetaveta koa.",
+      familier: "Ny <strong>\"Familier\"</strong> dia ampiasaina amin'ny <strong>namana akaiky</strong>, ny ankizy, na ny tontolo tsy ara-potoana. Fohy sy milamina ary mampiseho fahafahana."
+    };
+    
+    const highlights = {
+      soutenu: "💡 <strong>Tsarovy :</strong> Ampiasao amin'ny olona tsy fantatra, ny lehibe, na amin'ny taratasy ofisialy.",
+      courant: "💡 <strong>Tsarovy :</strong> Ity no ampiasaina matetika indrindra amin'ny resaka andavanandro sy amin'ny olona rehetra.",
+      familier: "💡 <strong>Tsarovy :</strong> Ampiasao amin'ny namana akaiky na ankizy fotsiny. Aza ampiasaina amin'ny olona tsy fantatra."
+    };
+    
+    const expressionsHtml = classes.map(classe => {
+      const classData = data[classe.key] || {};
+      const items = classData.expressions || [];
+      const signification = classData.signification || "";
+      
+      if (items.length === 0) return '';
+      
+      // Construction du titre avec la signification
+      const titreHtml = signification ? 
+        `<span class="emoji">✨</span> 
+        <span>${items.length} fomba hilazana hoe</span>
+        <span class="highlight-phrase">"${escapeHtml(signification)}"</span>
+        <span>${classe.text}</span>` :
+        `<span class="emoji">✨</span> 
+        <span>${items.length} expressions en français</span>
+        <span class="highlight-phrase">"${escapeHtml(titre)}"</span>`;
+      
+      return `
+        <div class="expression-card ${classe.key}">
+          <h2>${classe.emoji} ${classe.label} <span class="badge-classe badge-${classe.badge}">${classe.key === 'soutenu' ? 'formel' : classe.key === 'courant' ? 'neutre' : 'décontracté'}</span></h2>
+          <div class="definition-mg">
+            <strong>📖 Famaritana malagasy :</strong><br>
+            ${definitions[classe.key]}
+          </div>
+          <div class="exemple-modern">
+            <div class="exo-titre">
+              ${titreHtml}
+            </div>
+            <ul>
+              ${items.map(expr => `<li>${escapeHtml(expr)}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="highlight">
+            ${highlights[classe.key]}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const app = document.getElementById('app-root');
+    app.innerHTML = `
+      <div class="dialogue-fullscreen">
+        <div class="back-header">
+          <button class="back-button" id="backBtn">← Retour</button>
+        </div>
+        <div class="card-header">
+          <div class="rubrique-titre">📖 ${escapeHtml(titre)}</div>
+          ${description ? `<div class="description-header">📝 ${escapeHtml(description)}</div>` : ''}
+        </div>
+        <div class="dialogue-area">
+          ${expressionsHtml}
+
+          <!-- ===== CARTE : Fahasamihafana ===== -->
+          <div class="info-card">
+            <h2>📌 Fahasamihafana eo amin'ny kilasy telo</h2>
+            <div class="definition-mg">
+              <strong><span style="color:#1e3a5f;">🎩 SOUTENU</span></strong> → ampiasaina amin'ny <strong>fanajana</strong> sy ny toe-javatra <strong>ôfisialy</strong>.<br><br>
+              
+              <strong><span style="color:#2d6a4f;">🟢 COURANT</span></strong> → ampiasaina <strong>andavanandro</strong> amin'ny olona rehetra.<br><br>
+              
+              <strong><span style="color:#b9770e;">🟠 FAMILIER</span></strong> → ampiasaina amin'ny <strong>namana akaiky</strong> sy ny tontolo <strong>tsy ara-potoana</strong>.
+            </div>
+          </div>
+
+          <!-- ===== CARTE : Fanamarihana sy Fifandraisana ===== -->
+          <div class="info-card">
+            <h2>📬 Fanamarihana sy Fifandraisana</h2>
+            <div class="definition-mg" style="margin-bottom: 8px;">
+              <p>Raha misy ny fanamarihana avy aminao :</p>
+              <p>➡️ Ohatra misy fanatsarana ny lesona.</p>
+              <p>➡️ Na maniry hianatra ianao.</p>
+              <p>➡️ Na manana olana amin'ny kilasy fiteny.</p>
+              <p>Dia azonao atao ny miresaka aminay mivantana.</p>
+            </div>
+            
+            <button class="fb-button-small" id="fbContactBtn">
+              <span class="fb-icon-small">f</span>
+              Raha hiresaka aminay amin'ny facebook dia kitiho ity<br>👉 FACEBOOK
+            </button>
+            
+            <div class="contact-info">
+              <div class="small-note">Mirary fahazotoana mianatra sy fahaizana ho anao 🙏🏽</div>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-footer">
+          💡 « Ny fahalalam-pomba dia maneho ny maha-olona » 🌹
+        </div>
+      </div>
+    `;
+
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) backBtn.addEventListener('click', () => renderList());
+
+    const fbButton = document.getElementById('fbContactBtn');
+    if (fbButton) {
+      fbButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://www.facebook.com/profile.php?id=61555313604553', '_blank');
+      });
+    }
+  }
+
+ 
+  // ==================== FALLBACK ====================
+  function getFallbackData() {
+    return {
+      rubriques: ["⚠️ Erreur de chargement"],
+      rubriquesData: {
+        "⚠️ Erreur de chargement": {
+          soutenu: { 
+            signification: "Misy olana", 
+            expressions: [
+              "Misy olana izy izany, mety hoe connexion angamba,"
+            ] 
+          },
+          courant: { 
+            signification: "Jereo ny connexion", 
+            expressions: [
+              "Jereo ny connexion raha mandeha tsara,"
+            ] 
+          },
+          familier: { 
+            signification: "Andramo indray", 
+            expressions: [
+              "de andramo indray, raha ka tena tsy mety",
+              "de miresaha amin'ny tompon'andraikitra hijerena ny vahaolana.",
+              "Misaotra tompoko !"
+            ] 
+          }
+        }
+      },
+      rubriquesDescriptions: {
+        "⚠️ Erreur de chargement": "Veuillez vérifier votre connexion internet"
+      }
+    };
+  }
+
+  // ==================== AFFICHAGE PAGE D'ERREUR ====================
+  function renderErrorPage(message) {
+    const app = document.getElementById('app-root');
+    const errorMsg = message || "Misy olana tamin'ny fampidirana ny rakitra";
+    
+    app.innerHTML = `
+      <div class="app-header">
+        <h1>Expressions · Fomba ilazana</h1>
+      </div>
+      
+      <div class="cards-container" style="max-width:500px; margin: 2rem auto;">
+        <div style="background: white; border-radius: 2rem; padding: 2.5rem 2rem; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,0.06); border: 1px solid #ffe0e7;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">⚠️</div>
+          <h2 style="color: #c56985; margin-bottom: 1rem;">Misy olana</h2>
+          <p style="color: #4a2e38; line-height: 1.8; margin-bottom: 1.5rem;">
+            Misy olana izy izany, mety hoe connexion angamba.<br>
+            Jereo ny connexion raha mandeha tsara.<br>
+            Andramo indray, raha ka tena tsy mety,<br>
+            miresaha amin'ny tompon'andraikitra hijerena ny vahaolana.
+          </p>
+          <p style="color: #888; font-size: 0.9rem; margin-bottom: 1.5rem;">Misaotra tompoko ! 🙏</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+            <button onclick="location.reload()" style="background: #c56985; color: white; border: none; border-radius: 40px; padding: 12px 30px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.1s; width: 100%; max-width: 280px;">
+              🔄 Andramo indray
+            </button>
+            
+            <button onclick="window.open('https://www.facebook.com/profile.php?id=61555313604553', '_blank')" style="background: #1877f2; color: white; border: none; border-radius: 40px; padding: 12px 30px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.1s; width: 100%; max-width: 280px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <span style="background: white; color: #1877f2; font-weight: bold; font-size: 18px; width: 28px; height: 28px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center;">f</span>
+              Hiresaka amin'ny tompon'andraikitra
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==================== INITIALISATION ====================
+  async function initApp() {
+    const app = document.getElementById('app-root');
+    app.innerHTML = `<div class="loading-box"><div class="spinner"></div><p>Chargement des expressions...</p></div>`;
+    
+    try {
+      const cached = await loadFromDB();
+      
+      if (cached.content && cached.content.trim().length > 50) {
+        currentVersionDate = cached.version;
+        const parsed = parseExpressionsFile(cached.content);
+        cachedRubriques = parsed.rubriques;
+        cachedRubriquesData = parsed.rubriquesData;
+        cachedDescriptions = parsed.rubriquesDescriptions;
+        
+        if (cachedRubriques.length > 0) {
+          renderList();
+        } else {
+          throw new Error("Fichier corrompu");
+        }
+      } else {
+        if (!navigator.onLine) throw new Error("Pas de connexion internet");
+        
+        const fileContent = await fetchRemoteTxt();
+        const remoteVersion = await getRemoteVersionDate();
+        const finalVersion = remoteVersion || new Date().toLocaleString('fr-FR');
+        
+        await saveToDB(fileContent, finalVersion);
+        currentVersionDate = finalVersion;
+        
+        const parsed = parseExpressionsFile(fileContent);
+        cachedRubriques = parsed.rubriques;
+        cachedRubriquesData = parsed.rubriquesData;
+        cachedDescriptions = parsed.rubriquesDescriptions;
+        
+        if (cachedRubriques.length === 0) {
+          throw new Error("Aucune expression trouvée");
+        }
+        
+        renderList();
+      }
+      
+      if (navigator.onLine) setTimeout(() => silentUpdate(), 2000);
+      window.addEventListener('online', () => setTimeout(() => silentUpdate(), 1000));
+      
+    } catch (err) {
+      console.error(err);
+      // Afficher la page d'erreur au lieu du fallback
+      renderErrorPage(err.message);
+    }
+  }
+  
+  initApp();
+
+  // ======================= CODE DE SÉCURITÉ =======================
+  (function() {
+    function showBlockOverlay() {
+      if (document.getElementById('securityOverlay')) return;
+      const overlay = document.createElement('div');
+      overlay.id = 'securityOverlay';
+      overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.98);z-index:30000;display:flex;justify-content:center;align-items:center;';
+      overlay.innerHTML = `<div style="background:#1a1a2e;border:2px solid #e94560;border-radius:24px;padding:45px 35px;text-align:center;max-width:420px;"><div style="font-size:60px;">🔒</div><h3 style="color:#e94560;">Ny henjana ihany no tonga aty an!</h3><p style="color:white;">Akatony ary avereno ity pejy ity.</p><button id="closeSecurityBtn" style="background:#e94560;color:white;border:none;padding:12px 28px;border-radius:40px;cursor:pointer;">🔄 Akatony & Avereno</button></div>`;
+      document.body.appendChild(overlay);
+      document.getElementById('closeSecurityBtn').onclick = () => location.reload();
+    }
+
+    function hideBlockOverlay() {
+      const overlay = document.getElementById('securityOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "F12" || e.code === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "J" || e.key === "j")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.key === "F5" || e.keyCode === 116) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('copy', (e) => { e.preventDefault(); return false; }, true);
+    document.addEventListener('cut', (e) => { e.preventDefault(); return false; }, true);
+
+    function detectDevTools() {
+      let devToolsOpen = false;
+      const threshold = 160;
+      setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+          if (!devToolsOpen) { devToolsOpen = true; showBlockOverlay(); }
+        } else {
+          if (devToolsOpen) { devToolsOpen = false; hideBlockOverlay(); }
+        }
+      }, 1000);
+    }
+
+    setInterval(() => { debugger; }, 50);
+    
+    if (window.console) {
+      const noop = () => {};
+      console.log = console.info = console.warn = console.debug = console.table = console.dir = console.trace = console.group = console.groupEnd = console.error = noop;
+    }
+
+    detectDevTools();
+  })();
+</script>
+</body>
+</html>

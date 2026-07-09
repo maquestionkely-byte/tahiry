@@ -1,0 +1,208 @@
+titre : Tiako ianao !
+
+SOUTENU
+signification : Tiako ianao tompoko!
+- Je vous aime profondément.
+- Je suis éperdument amoureux de vous.
+- Vous êtes l'amour de ma vie.
+
+COURANT
+signification : tiako ianao e!
+- Je t'aime !
+- Je t'aime beaucoup !
+- Tu es tout pour moi !
+
+FAMILIER
+signification : de tiako ianao!
+- Je t'aime, mon cœur !
+- Je t'adore !
+- Je suis dingue de toi !
+
+
+titre : Mankasitraka anao !
+
+SOUTENU
+signification : Mankasitraka anao tompoko!
+- J'ai beaucoup d'estime pour vous.
+- Vous avez toute mon admiration.
+- Je vous apprécie énormément.
+
+COURANT
+signification : mankasitraka anao e!
+- Je t'apprécie.
+- Je t'aime bien.
+- Tu me plais beaucoup.
+
+FAMILIER
+signification : de mankasitraka anao!
+- Je te kiffe !
+- T'es trop sympa !
+- Je t'adore, mon pote !
+
+
+titre : Tsy azoko atao ny tsy hieritreritra anao !
+
+SOUTENU
+signification : Tsy azoko atao ny tsy hieritreritra anao tompoko!
+- Je ne cesse de penser à vous.
+- Vous occupez toutes mes pensées.
+- Mon esprit est constamment tourné vers vous.
+
+COURANT
+signification : tsy azoko atao ny tsy hieritreritra anao e!
+- Je ne peux pas arrêter de penser à toi.
+- Je pense tout le temps à toi.
+- T'es toujours dans mes pensées.
+
+FAMILIER
+signification : de tsy azoko atao ny tsy hieritreritra anao!
+- Je pense qu'à toi !
+- T'es dans ma tête, c'est pas possible !
+- Je peux pas t'oublier, c'est trop !
+
+
+titre : Tia anao aho !
+
+SOUTENU
+signification : Tia anao aho tompoko!
+- Je vous aime de tout mon cœur.
+- Mon cœur vous appartient.
+- Mes sentiments pour vous sont profonds.
+
+COURANT
+signification : tia anao aho e!
+- Je suis amoureux de toi.
+- J'ai des sentiments pour toi.
+- Je suis fou de toi.
+
+FAMILIER
+signification : de tia anao aho!
+- Je suis raide dingue de toi !
+- Je te kiffe grave !
+- Je suis accro à toi !
+
+
+titre : Fanahy aiko ianao !
+
+SOUTENU
+signification : Fanahy aiko ianao tompoko!
+- Vous êtes l'âme de mon existence.
+- Vous êtes mon âme sœur.
+- Nos âmes sont liées pour l'éternité.
+
+COURANT
+signification : fanahy aiko ianao e!
+- Tu es mon âme sœur.
+- On est faits l'un pour l'autre.
+- Tu es la personne qui me correspond.
+
+FAMILIER
+signification : de fanahy aiko ianao!
+- T'es mon âme-sœur, grave !
+- On est faits pour être ensemble !
+- T'es ma moitié !
+
+
+titre : Malala tiako !
+
+SOUTENU
+signification : Malala tiako tompoko!
+- Mon amour, vous êtes tout pour moi.
+- Vous êtes la lumière de ma vie.
+- Vous êtes mon trésor le plus précieux.
+
+COURANT
+signification : malala tiako e!
+- Mon amour !
+- Ma chérie / Mon chéri !
+- Mon cœur !
+
+FAMILIER
+signification : de malala tiako!
+- Mon cœur !
+- Mon bébé !
+- Mon loulou / Ma poupée !
+
+
+titre : Tia anao aho hatramin'ny mandrakizay !
+
+SOUTENU
+signification : Tia anao aho hatramin'ny mandrakizay tompoko!
+- Je vous aimerai éternellement.
+- Notre amour est immortel.
+- Rien ne pourra jamais séparer nos cœurs.
+
+COURANT
+signification : tia anao aho hatramin'ny mandrakizay e!
+- Je t'aimerai toujours.
+- Pour toujours, je t'aime.
+- Je t'aimerai pour toujours.
+
+FAMILIER
+signification : de tia anao aho hatramin'ny mandrakizay!
+- Je t'aimerai jusqu'à la fin !
+- À la vie, à la mort, mon cœur !
+- Toute ma vie, c'est toi !
+
+
+titre : Sariaka ianao !
+
+SOUTENU
+signification : Sariaka ianao tompoko!
+- Vous avez un charme irrésistible.
+- Vous êtes d'une grande beauté.
+- Votre élégance me fascine.
+
+COURANT
+signification : sariaka ianao e!
+- Tu es mignon / mignonne.
+- T'es beau / belle.
+- T'es charmant / charmante.
+
+FAMILIER
+signification : de sariaka ianao!
+- T'es trop beau / belle !
+- T'es canon !
+- T'es un dieu / une déesse !
+
+
+titre : Mahafatifaty ianao !
+
+SOUTENU
+signification : Mahafatifaty ianao tompoko!
+- Vous êtes resplendissant(e).
+- Votre beauté m'émerveille.
+- Vous êtes d'une beauté à couper le souffle.
+
+COURANT
+signification : mahafatifaty ianao e!
+- Tu es magnifique.
+- T'es superbe.
+- T'es ravissant(e).
+
+FAMILIER
+signification : de mahafatifaty ianao!
+- T'es trop magnifique !
+- T'es un canon !
+- T'es magnifique, sans déconner !
+
+
+titre : Mamy anao !
+
+SOUTENU
+signification : Mamy anao tompoko!
+- Votre douceur m'envoûte.
+- Vous êtes d'une grande tendresse.
+- Votre gentillesse me touche profondément.
+
+COURANT
+signification : mamy anao e!
+- Tu es doux / douce.
+- T'es gentil / gentille.
+- T'es adorable.
+
+FAMILIER
+signification : de mamy anao!
+- T'es trop mignon / mignonne !
+- T'es un amour !
+- T'es trop gentil !

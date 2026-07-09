@@ -1,0 +1,208 @@
+titre : Hazoto !
+
+SOUTENU
+signification : Hazotoa tompoko!
+- Je vous encourage à persévérer.
+- Vous avez toute ma confiance.
+- Je vous soutiens dans votre démarche.
+
+COURANT
+signification : hazoto e!
+- Courage !
+- Tu vas y arriver !
+- Je crois en toi !
+
+FAMILIER
+signification : de hazoto!
+- Allez, t'es le meilleur !
+- Accroche-toi !
+- Tu vas déchirer !
+
+
+titre : Arahabaina !
+
+SOUTENU
+signification : Arahabaina tompoko!
+- Je vous adresse mes plus sincères félicitations.
+- Je vous félicite chaleureusement.
+- Permettez-moi de vous féliciter.
+
+COURANT
+signification : arahabaina e!
+- Félicitations !
+- Bravo !
+- Je suis super content pour toi !
+
+FAMILIER
+signification : de arahabaina!
+- Trop fort !
+- Tu déchires !
+- Bravo, tu gères !
+
+
+titre : Tohizo !
+
+SOUTENU
+signification : Tohizo tompoko!
+- Poursuivez votre effort.
+- Continuez comme cela.
+- Ne vous arrêtez pas en si bon chemin.
+
+COURANT
+signification : tohizo e!
+- Continue !
+- Ne lâche rien.
+- Persévère !
+
+FAMILIER
+signification : de tohizo!
+- Vas-y, continue !
+- Lâche pas !
+- Allez, on y va !
+
+
+titre : Mahavariana ianao !
+
+SOUTENU
+signification : Mahavariana ianao tompoko!
+- Vous êtes tout simplement remarquable.
+- Vous faites preuve d'une grande valeur.
+- Vous êtes exceptionnel.
+
+COURANT
+signification : mahavariana ianao e!
+- Tu es formidable !
+- T'es génial !
+- T'es incroyable !
+
+FAMILIER
+signification : de mahavariana ianao!
+- T'es trop fort !
+- T'assures grave !
+- T'es un monstre !
+
+
+titre : Mbola ho tsara kokoa !
+
+SOUTENU
+signification : Mbola ho tsara kokoa tompoko!
+- L'avenir vous réserve encore de belles choses.
+- Vous irez encore plus loin.
+- Le meilleur est à venir pour vous.
+
+COURANT
+signification : mbola ho tsara kokoa e!
+- Ce sera encore mieux !
+- Tu vas voir, ça va s'arranger.
+- Les choses vont s'améliorer.
+
+FAMILIER
+signification : de mbola ho tsara kokoa!
+- Ça va le faire !
+- Y'a rien de perdu !
+- Ça va s'arranger, t'inquiète !
+
+
+titre : Tsy misy tsy ho vita !
+
+SOUTENU
+signification : Tsy misy tsy ho vita tompoko!
+- Rien n'est impossible.
+- Tout est réalisable avec de la volonté.
+- Avec de la détermination, tout devient possible.
+
+COURANT
+signification : tsy misy tsy ho vita e!
+- Rien n'est impossible.
+- Tout est possible.
+- Y'a rien d'impossible.
+
+FAMILIER
+signification : de tsy misy tsy ho vita!
+- Rien est impossible !
+- Tout est jouable !
+- Y'a moyen !
+
+
+titre : Mendrika izany !
+
+SOUTENU
+signification : Mendrika izany tompoko!
+- Vous méritez amplement cette reconnaissance.
+- Vous êtes digne de cela.
+- Vous avez bien mérité cette récompense.
+
+COURANT
+signification : mendrika izany e!
+- Tu le mérites !
+- Tu l'as bien gagné.
+- C'est bien mérité !
+
+FAMILIER
+signification : de mendrika izany!
+- Trop mérité !
+- Tu l'as bien mérité !
+- T'as tout donné, tu mérites !
+
+
+titre : Velona ianao !
+
+SOUTENU
+signification : Velona ianao tompoko!
+- Vous êtes plein de vigueur.
+- Quelle énergie vous avez !
+- Vous êtes débordant de vie.
+
+COURANT
+signification : velona ianao e!
+- T'es en forme !
+- T'as la pêche !
+- T'es plein d'énergie !
+
+FAMILIER
+signification : de velona ianao!
+- T'es au taquet !
+- T'as une patate d'enfer !
+- T'es en pleine forme !
+
+
+titre : Aza kivy !
+
+SOUTENU
+signification : Aza kivy tompoko!
+- Ne vous laissez pas abattre.
+- Gardez espoir.
+- Restez fort dans l'épreuve.
+
+COURANT
+signification : aza kivy e!
+- Ne perd pas courage.
+- Ne te décourage pas.
+- Garde la foi.
+
+FAMILIER
+signification : de aza kivy!
+- Lâche pas !
+- Garde la pêche !
+- T'inquiète, ça va passer !
+
+
+titre : Ho vitanao izany !
+
+SOUTENU
+signification : Ho vitanao izany tompoko!
+- Je suis convaincu que vous y parviendrez.
+- Vous réussirez assurément.
+- Je n'ai aucun doute sur votre réussite.
+
+COURANT
+signification : ho vitanao izany e!
+- Tu vas y arriver.
+- Je crois en toi.
+- T'es capable.
+
+FAMILIER
+signification : de ho vitanao izany!
+- Tu vas le faire !
+- T'es capable, vas-y !
+- C'est dans la poche !
