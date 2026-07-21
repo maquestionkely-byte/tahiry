@@ -2853,7 +2853,7 @@ async function checkNewMessages() {
     }
     
     try {
-        const url = `${WORKER_URL}history?userId=${encodeURIComponent(userID)}`;
+        const url = ``;
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
         
