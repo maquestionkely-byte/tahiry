@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>coucou</title>
+</head>
+<body>
+    <p style="color: green;">coucou</p>
+</body>
+</html>
