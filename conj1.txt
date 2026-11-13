@@ -1,354 +1,202 @@
-<!DOCTYPE html>
-<html lang="mg">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le Présent — Fahaizana feno</title>
-<style>
-  :root{
-    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
-    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
-    --vert:#059669; --vert-pale:#ecfdf5;
-    --orange:#ea580c; --orange-pale:#fff7ed;
-    --rouge:#dc2626; --rouge-pale:#fef2f2;
-    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    background:var(--fond); color:var(--texte);
-    line-height:1.75; padding:2rem 1rem 4rem;
-  }
-  .conteneur{max-width:960px;margin:0 auto;}
-  header{
-    background:linear-gradient(135deg,#1e3a8a,#3b82f6 60%,#60a5fa);
-    color:#fff; border-radius:20px; padding:3rem 2.5rem;
-    margin-bottom:2rem; box-shadow:0 20px 45px rgba(30,58,138,.30);
-    position:relative; overflow:hidden;
-  }
-  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
-  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
-  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
-  header p{opacity:.95;font-size:1.05rem;max-width:680px;position:relative;z-index:1;}
+Le Présent — Fahaizana feno
 
-  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
-  section h2{font-size:1.35rem;color:var(--bleu);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--bleu-clair);display:flex;align-items:center;gap:.8rem;}
-  section h2 .num{background:linear-gradient(135deg,var(--bleu),var(--bleu-clair));color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(59,130,246,.35);}
-  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
-  section h3::before{content:"";width:6px;height:22px;background:var(--bleu-clair);border-radius:3px;flex-shrink:0;}
-  section h3:first-of-type{margin-top:0;}
-  p{margin-bottom:1rem;}
-  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
-  li{margin-bottom:.5rem;}
+Ny Présent de l'indicatif
 
-  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
-  thead{background:linear-gradient(135deg,var(--bleu),var(--bleu-clair));color:#fff;}
-  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
-  th{font-weight:700;}
-  tbody tr:nth-child(even){background:#f8fafc;}
-  tbody tr:hover{background:#e0e7ff;transition:background .2s;}
-  td:first-child{font-weight:600;color:var(--bleu);}
+Ny fananganana, ny terminaisons, ny soatoavina (anisan'izany ny habitude), ary ny fandrika — miaraka amin'ny ohatra frantsay sy malagasy.
 
-  .encadre{border-left:5px solid var(--bleu-clair);background:var(--bleu-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
-  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
-  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
-  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
-  .encadre strong{color:var(--bleu);}
-  .encadre.vert strong{color:var(--vert);}
-  .encadre.orange strong{color:var(--orange);}
-  .encadre.rouge strong{color:var(--rouge);}
+1 Famaritana
 
-  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--bleu-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
-  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
-  .exemple .fr .sujet{color:var(--bleu-clair);font-weight:700;font-style:normal;}
-  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
-  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
-  .exemple .mg::before{content:"🇲🇬 ";}
+Ny présent de l'indicatif dia temps simple (teny iray ihany, tsy misy auxiliaire). Asongadiny ny hetsika mitranga amin'izao fotoana izao — amin'ny fotoana itenenana. Saingy, arakaraka ny toe-javatra, mety hidika zavatra hafa koa izy (fahazarana, fahamarinana ankapobeny, famaritana, sns.).
 
-  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
-  .terminaisons div{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
-  .terminaisons div:hover{transform:scale(1.04);}
-  .terminaisons div span{color:var(--bleu-clair);font-weight:800;}
+Tadidio : ny présent no fotoana be mpampiasa indrindra amin'ny teny frantsay. Izy no fototra amin'ny fampifangaroana matoanteny ary hita amin'ny saika lahatsoratra rehetra : fitantarana, resaka, famaritana, sns.
 
-  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
-  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
-  .piege .correction{color:var(--vert);font-weight:700;}
+2 Ny terminaisons isaky ny groupe
 
-  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
-  .usage:hover{box-shadow:0 8px 25px rgba(59,130,246,.12);transform:translateY(-2px);}
-  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--bleu);margin-bottom:.6rem;}
-  .usage .titre-usage .puce{background:linear-gradient(135deg,var(--bleu),var(--bleu-clair));color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
-  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+1er groupe — matoanteny amin'ny -er (afa-tsy aller) — modely : parler
 
-  .recap{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(30,58,138,.25);}
-  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
-  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
-  .recap ul{margin-left:1.2rem;}
-  .recap li{margin-bottom:.7rem;}
-  .recap strong{color:#bfdbfe;}
+je parle
 
-  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+tu parles
 
-  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
-</style>
-</head>
-<body>
-<div class="conteneur">
+il/elle parle
 
-  <header>
-    <span class="badge">Le Présent — Fahaizana feno</span>
-    <h1>Ny Présent de l'indicatif</h1>
-    <p>Ny fananganana, ny terminaisons, ny soatoavina (anisan'izany ny <em>habitude</em>), ary ny fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
-  </header>
+nous parlons
 
-  <!-- 1. DÉFINITION -->
-  <section>
-    <h2><span class="num">1</span> Famaritana</h2>
-    <p>Ny <strong>présent de l'indicatif</strong> dia <strong>temps simple</strong> (teny iray ihany, tsy misy auxiliaire). Asongadiny ny hetsika <strong>mitranga amin'izao fotoana izao</strong> — amin'ny fotoana itenenana. Saingy, arakaraka ny toe-javatra, mety hidika zavatra hafa koa izy (fahazarana, fahamarinana ankapobeny, famaritana, sns.).</p>
-    <div class="encadre">
-      <strong>Tadidio :</strong> ny présent no fotoana be mpampiasa indrindra amin'ny teny frantsay. Izy no fototra amin'ny fampifangaroana matoanteny ary hita amin'ny saika lahatsoratra rehetra : fitantarana, resaka, famaritana, sns.
-    </div>
-  </section>
+vous parlez
 
-  <!-- 2. TERMINAISONS -->
-  <section>
-    <h2><span class="num">2</span> Ny terminaisons isaky ny groupe</h2>
+ils/elles parlent
 
-    <h3>1er groupe — matoanteny amin'ny <em>-er</em> (afa-tsy <em>aller</em>) — modely : <em>parler</em></h3>
-    <div class="terminaisons">
-      <div>je parl<span>e</span></div>
-      <div>tu parl<span>es</span></div>
-      <div>il/elle parl<span>e</span></div>
-      <div>nous parl<span>ons</span></div>
-      <div>vous parl<span>ez</span></div>
-      <div>ils/elles parl<span>ent</span></div>
-    </div>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">Je</span> <span class="verbe">parle</span> français.</span>
-      <span class="mg">Miteny frantsay aho.</span>
-    </div>
+Je parle français.
+Miteny frantsay aho.
 
-    <h3>2ème groupe — matoanteny amin'ny <em>-ir</em> → <em>-issons</em> — modely : <em>finir</em></h3>
-    <div class="terminaisons">
-      <div>je fin<span>is</span></div>
-      <div>tu fin<span>is</span></div>
-      <div>il/elle fin<span>it</span></div>
-      <div>nous fin<span>issons</span></div>
-      <div>vous fin<span>issez</span></div>
-      <div>ils/elles fin<span>issent</span></div>
-    </div>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">finissons</span> le travail.</span>
-      <span class="mg">Mahavita ny asa izahay.</span>
-    </div>
+2ème groupe — matoanteny amin'ny -ir → -issons — modely : finir
 
-    <h3>3ème groupe — ny hafa rehetra — ohatra : <em>prendre, venir, faire</em></h3>
-    <table>
-      <thead>
-        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>je</td><td>prends</td><td>viens</td><td>fais</td></tr>
-        <tr><td>tu</td><td>prends</td><td>viens</td><td>fais</td></tr>
-        <tr><td>il/elle</td><td>prend</td><td>vient</td><td>fait</td></tr>
-        <tr><td>nous</td><td>prenons</td><td>venons</td><td>faisons</td></tr>
-        <tr><td>vous</td><td>prenez</td><td>venez</td><td>faites</td></tr>
-        <tr><td>ils/elles</td><td>prennent</td><td>viennent</td><td>font</td></tr>
-      </tbody>
-    </table>
-    <div class="encadre orange">
-      <strong>Torohevitra :</strong> amin'ny <strong>3ème groupe</strong>, ny terminaisons matetika dia <em>-s, -s, -t, -ons, -ez, -ent</em>, saingy misy tsy fanarahan-dalàna maro. Tsy maintsy tsianjery tsirairay.
-    </div>
-  </section>
+je finis
 
-  <!-- 3. VALEURS -->
-  <section>
-    <h2><span class="num">3</span> Ny soatoavin'ny présent</h2>
-    <p>Ny présent dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra.</p>
+tu finis
 
-    <!-- a) -->
-    <div class="usage">
-      <div class="titre-usage"><span class="puce">a</span> Présent d'énonciation — ankehitriny</div>
-      <div class="expl">Hetsika mitranga <strong>amin'ny fotoana itenenana</strong>, eto sy izao.</div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Je</span> <span class="verbe">lis</span> un livre en ce moment.</span>
-        <span class="mg">Mamaky boky aho amin'izao fotoana izao.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Tu</span> <span class="verbe">manges</span> une pomme maintenant.</span>
-        <span class="mg">Mihinana paoma ianao izao.</span>
-      </div>
-    </div>
+il/elle finit
 
-    <!-- b) -->
-    <div class="usage">
-      <div class="titre-usage"><span class="puce">b</span> Présent de vérité générale — fahamarinana ankapobeny</div>
-      <div class="expl">Fahamarinana <strong>maharitra amin'ny fotoana rehetra</strong> : ohabolana, lalàna, famaritana siantifika, fitsipika.</div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">La Terre</span> <span class="verbe">tourne</span> autour du Soleil.</span>
-        <span class="mg">Mihodina manodidina ny Masoandro ny Tany.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">L'eau</span> <span class="verbe">bout</span> à 100 °C.</span>
-        <span class="mg">Mangotraka amin'ny 100 °C ny rano.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Qui</span> <span class="verbe">vole</span> un œuf <span class="verbe">vole</span> un bœuf.</span>
-        <span class="mg">Izay mangalatra atody dia mangalatra omby.</span>
-      </div>
-    </div>
+nous finissons
 
-    <!-- c) HABITUDE -->
-    <div class="usage">
-      <div class="titre-usage"><span class="puce">c</span> Présent d'habitude — fahazarana</div>
-      <div class="expl">Hetsika <strong>miverimberina</strong>, fahazarana isan'andro, isan-kerinandro… Matetika miaraka amin'ny teny toy ny <em>tous les jours, souvent, toujours, chaque…</em></div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Je</span> <span class="verbe">me lève</span> à 7 h tous les jours.</span>
-        <span class="mg">Mifoha amin'ny 7 ora isan'andro aho.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">va</span> au marché chaque samedi.</span>
-        <span class="mg">Mandeha any an-tsena izy isaky ny asabotsy.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">mangeons</span> du riz tous les soirs.</span>
-        <span class="mg">Mihinana vary izahay isa-paharivan'ny andro.</span>
-      </div>
-    </div>
+vous finissez
 
-    <!-- d) DESCRIPTION -->
-    <div class="usage">
-      <div class="titre-usage"><span class="puce">d</span> Présent de description — famaritana</div>
-      <div class="expl">Mamaritra <strong>sehatra, toerana, olona, na endrika</strong>. Matetika hita amin'ny fanombohan'ny tantara na amin'ny tononkalo.</div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">La maison</span> <span class="verbe">se dresse</span> au bord de la falaise.</span>
-        <span class="mg">Mitsangana eo amoron'ny hantsana ny trano.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Le ciel</span> <span class="verbe">est</span> bleu et les oiseaux <span class="verbe">chantent</span>.</span>
-        <span class="mg">Manga ny lanitra ary mihira ny vorona.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a</span> de longs cheveux noirs et un sourire doux.</span>
-        <span class="mg">Manana volo mainty lava sy tsiky malefaka izy.</span>
-      </div>
-    </div>
+ils/elles finissent
 
-    <!-- e) IMPÉRATIF -->
-    <div class="usage">
-      <div class="titre-usage"><span class="puce">e</span> Présent à valeur d'impératif — baiko</div>
-      <div class="expl">Maneho <strong>baiko, torohevitra, na fangatahana</strong> mivantana. Tsy misy matoanteny amin'ny impératif fa présent no ampiasaina mba hanamafisana.</div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Tu</span> <span class="verbe">restes</span> ici !</span>
-        <span class="mg">Mijanòna eto ianao !</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">Vous</span> <span class="verbe">fermez</span> la porte, s'il vous plaît.</span>
-        <span class="mg">Mikatona ny varavarana azafady.</span>
-      </div>
-      <div class="exemple">
-        <span class="fr"><span class="sujet">On</span> <span class="verbe">se dépêche</span> !</span>
-        <span class="mg">Haingana isika !</span>
-      </div>
-    </div>
+Nous finissons le travail.
+Mahavita ny asa izahay.
 
-    <div class="encadre vert">
-      <strong>Famintinana :</strong> ny présent dia afaka milaza <strong>ankehitriny</strong>, <strong>fahamarinana ankapobeny</strong>, <strong>fahazarana</strong>, <strong>famaritana</strong>, ary <strong>baiko</strong> — arakaraka ny teny manodidina sy ny karazana lahatsoratra.
-    </div>
-  </section>
+3ème groupe — ny hafa rehetra — ohatra : prendre, venir, faire
 
-  <!-- 4. FORMATION -->
-  <section>
-    <h2><span class="num">4</span> Fananganana ny présent</h2>
-    <p>Ny présent dia foronina avy amin'ny <strong>radical</strong> (fototry ny matoanteny), ampiana ny <strong>terminaisons</strong> mifanaraka amin'ny olona.</p>
-    <div class="encadre">
-      <strong>Raki-tsoratra :</strong> Radical + terminaison = matoanteny voarindra<br>
-      <em>parl-</em> (radical) + <em>-ons</em> → <strong>nous parlons</strong>
-    </div>
-    <p>Mitandrina : misy matoanteny manana <strong>radical miova</strong> arakaraka ny olona.</p>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">aller :</span> je <span class="verbe">vais</span>, nous <span class="verbe">allons</span>, ils <span class="verbe">vont</span>.</span>
-      <span class="mg">(mandeha) : mandeha aho, mandeha izahay, mandeha izy ireo.</span>
-    </div>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">prendre :</span> je <span class="verbe">prends</span>, nous <span class="verbe">prenons</span>, ils <span class="verbe">prennent</span>.</span>
-      <span class="mg">(mandray) : mandray aho, mandray izahay, mandray izy ireo.</span>
-    </div>
-  </section>
+Olon-tsotra | prendre (mandray) | venir (ho avy) | faire (manao) |
 
-  <!-- 5. PIÈGES -->
-  <section>
-    <h2><span class="num">5</span> Ny fandrika tsy tokony hatao</h2>
+je | prends | viens | fais |
 
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>je parl<strong>e</strong> → <span class="correction">✓ je parle</span> (1 <em>-e</em> ihany, tsy misy <em>-s</em> amin'ny <strong>1er groupe</strong>).</span>
-    </div>
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>tu parle → <span class="correction">✓ tu parles</span> (misy <em>-s</em> foana amin'ny olona faha-2).</span>
-    </div>
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>ils parlent<strong>s</strong> → <span class="correction">✓ ils parlent</span> (tsy misy <em>-s</em> amin'ny faha-3 ploraly).</span>
-    </div>
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>vous faisez → <span class="correction">✓ vous faites</span> (tsy manaraka lalàna ny <em>faire</em>).</span>
-    </div>
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>nous mangons → <span class="correction">✓ nous mangeons</span> (matoanteny amin'ny <em>-ger</em> : <em>-eons</em>).</span>
-    </div>
-    <div class="piege">
-      <span class="croix">✗</span>
-      <span>nous commencons → <span class="correction">✓ nous commençons</span> (matoanteny amin'ny <em>-cer</em> : cédille).</span>
-    </div>
-  </section>
+tu | prends | viens | fais |
 
-  <!-- 6. IRRÉGULIERS -->
-  <section>
-    <h2><span class="num">6</span> Matoanteny tsy manaraka lalàna tokony ho fantatra</h2>
-    <table>
-      <thead>
-        <tr><th>Olon-tsotra</th><th>être (ho)</th><th>avoir (manana)</th><th>aller (mandeha)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>je</td><td>suis</td><td>ai</td><td>vais</td></tr>
-        <tr><td>tu</td><td>es</td><td>as</td><td>vas</td></tr>
-        <tr><td>il/elle</td><td>est</td><td>a</td><td>va</td></tr>
-        <tr><td>nous</td><td>sommes</td><td>avons</td><td>allons</td></tr>
-        <tr><td>vous</td><td>êtes</td><td>avez</td><td>allez</td></tr>
-        <tr><td>ils/elles</td><td>sont</td><td>ont</td><td>vont</td></tr>
-      </tbody>
-    </table>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">Je</span> <span class="verbe">suis</span> malgache et <span class="sujet">j'</span><span class="verbe">ai</span> un livre.</span>
-      <span class="mg">Malagasy aho ary manana boky.</span>
-    </div>
-    <div class="exemple">
-      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">allons</span> à l'école.</span>
-      <span class="mg">Mandeha any an-tsekoly izahay.</span>
-    </div>
-  </section>
+il/elle | prend | vient | fait |
 
-  <!-- 7. RÉCAP -->
-  <section class="recap">
-    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
-    <ul>
-      <li><strong>Présent = temps simple</strong>, teny iray ihany, be mpampiasa indrindra amin'ny teny frantsay.</li>
-      <li><strong>1er groupe</strong> : terminaisons <em>-e, -es, -e, -ons, -ez, -ent</em>.</li>
-      <li><strong>2ème groupe</strong> : terminaisons <em>-is, -is, -it, -issons, -issez, -issent</em>.</li>
-      <li><strong>3ème groupe</strong> : tsy manaraka lalàna, tsy maintsy tsianjery.</li>
-      <li><strong>Soatoavina</strong> : ankehitriny, fahamarinana ankapobeny, <strong>fahazarana (habitude)</strong>, famaritana, baiko.</li>
-      <li><strong>Fandrika</strong> : <em>-s</em> amin'ny olona faha-2, tsy misy <em>-s</em> amin'ny faha-3 ploraly, <em>-eons</em> ho an'ny <em>-ger</em>, cédille ho an'ny <em>-cer</em>.</li>
-    </ul>
-  </section>
+nous | prenons | venons | faisons |
 
-  <footer>
-    Fiche pédagogique — Le Présent · Tokony ho fehezina alohan'ny handrosoana amin'ny fotoana manaraka.
-  </footer>
+vous | prenez | venez | faites |
 
-</div>
-</body>
-</html>
+ils/elles | prennent | viennent | font |
+
+Torohevitra : amin'ny 3ème groupe, ny terminaisons matetika dia -s, -s, -t, -ons, -ez, -ent, saingy misy tsy fanarahan-dalàna maro. Tsy maintsy tsianjery tsirairay.
+
+3 Ny soatoavin'ny présent
+
+Ny présent dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra.
+
+a Présent d'énonciation — ankehitriny
+
+Hetsika mitranga amin'ny fotoana itenenana, eto sy izao.
+
+Je lis un livre en ce moment.
+Mamaky boky aho amin'izao fotoana izao.
+
+Tu manges une pomme maintenant.
+Mihinana paoma ianao izao.
+
+b Présent de vérité générale — fahamarinana ankapobeny
+
+Fahamarinana maharitra amin'ny fotoana rehetra : ohabolana, lalàna, famaritana siantifika, fitsipika.
+
+La Terre tourne autour du Soleil.
+Mihodina manodidina ny Masoandro ny Tany.
+
+L'eau bout à 100 °C.
+Mangotraka amin'ny 100 °C ny rano.
+
+Qui vole un œuf vole un bœuf.
+Izay mangalatra atody dia mangalatra omby.
+
+c Présent d'habitude — fahazarana
+
+Hetsika miverimberina, fahazarana isan'andro, isan-kerinandro… Matetika miaraka amin'ny teny toy ny tous les jours, souvent, toujours, chaque…
+
+Je me lève à 7 h tous les jours.
+Mifoha amin'ny 7 ora isan'andro aho.
+
+Elle va au marché chaque samedi.
+Mandeha any an-tsena izy isaky ny asabotsy.
+
+Nous mangeons du riz tous les soirs.
+Mihinana vary izahay isa-paharivan'ny andro.
+
+d Présent de description — famaritana
+
+Mamaritra sehatra, toerana, olona, na endrika. Matetika hita amin'ny fanombohan'ny tantara na amin'ny tononkalo.
+
+La maison se dresse au bord de la falaise.
+Mitsangana eo amoron'ny hantsana ny trano.
+
+Le ciel est bleu et les oiseaux chantent.
+Manga ny lanitra ary mihira ny vorona.
+
+Elle a de longs cheveux noirs et un sourire doux.
+Manana volo mainty lava sy tsiky malefaka izy.
+
+e Présent à valeur d'impératif — baiko
+
+Maneho baiko, torohevitra, na fangatahana mivantana. Tsy misy matoanteny amin'ny impératif fa présent no ampiasaina mba hanamafisana.
+
+Tu restes ici !
+Mijanòna eto ianao !
+
+Vous fermez la porte, s'il vous plaît.
+Mikatona ny varavarana azafady.
+
+On se dépêche !
+Haingana isika !
+
+Famintinana : ny présent dia afaka milaza ankehitriny, fahamarinana ankapobeny, fahazarana, famaritana, ary baiko — arakaraka ny teny manodidina sy ny karazana lahatsoratra.
+
+4 Fananganana ny présent
+
+Ny présent dia foronina avy amin'ny radical (fototry ny matoanteny), ampiana ny terminaisons mifanaraka amin'ny olona.
+
+Raki-tsoratra : Radical + terminaison = matoanteny voarindra
+
+parl- (radical) + -ons → nous parlons
+
+Mitandrina : misy matoanteny manana radical miova arakaraka ny olona.
+
+aller : je vais, nous allons, ils vont.
+(mandeha) : mandeha aho, mandeha izahay, mandeha izy ireo.
+
+prendre : je prends, nous prenons, ils prennent.
+(mandray) : mandray aho, mandray izahay, mandray izy ireo.
+
+5 Ny fandrika tsy tokony hatao
+
+✗
+je parle → ✓ je parle (1 -e ihany, tsy misy -s amin'ny 1er groupe).
+
+✗
+tu parle → ✓ tu parles (misy -s foana amin'ny olona faha-2).
+
+✗
+ils parlents → ✓ ils parlent (tsy misy -s amin'ny faha-3 ploraly).
+
+✗
+vous faisez → ✓ vous faites (tsy manaraka lalàna ny faire).
+
+✗
+nous mangons → ✓ nous mangeons (matoanteny amin'ny -ger : -eons).
+
+✗
+nous commencons → ✓ nous commençons (matoanteny amin'ny -cer : cédille).
+
+6 Matoanteny tsy manaraka lalàna tokony ho fantatra
+
+Olon-tsotra | être (ho) | avoir (manana) | aller (mandeha) |
+
+je | suis | ai | vais |
+
+tu | es | as | vas |
+
+il/elle | est | a | va |
+
+nous | sommes | avons | allons |
+
+vous | êtes | avez | allez |
+
+ils/elles | sont | ont | vont |
+
+Je suis malgache et j'ai un livre.
+Malagasy aho ary manana boky.
+
+Nous allons à l'école.
+Mandeha any an-tsekoly izahay.
+
+7 Famintinana — ny zava-dehibe tokony hotadidina
+
+• Présent = temps simple, teny iray ihany, be mpampiasa indrindra amin'ny teny frantsay.
+• 1er groupe : terminaisons -e, -es, -e, -ons, -ez, -ent.
+• 2ème groupe : terminaisons -is, -is, -it, -issons, -issez, -issent.
+• 3ème groupe : tsy manaraka lalàna, tsy maintsy tsianjery.
+• Soatoavina : ankehitriny, fahamarinana ankapobeny, fahazarana (habitude), famaritana, baiko.
+• Fandrika : -s amin'ny olona faha-2, tsy misy -s amin'ny faha-3 ploraly, -eons ho an'ny -ger, cédille ho an'ny -cer.
+
+Fiche pédagogique — Le Présent · Tokony ho fehezina alohan'ny handrosoana amin'ny fotoana manaraka.

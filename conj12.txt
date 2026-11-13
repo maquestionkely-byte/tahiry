@@ -1,0 +1,192 @@
+Temps n°12 — L'Impératif passé
+
+Ny Impératif passé
+
+Fananganana, auxiliaires avoir/être amin'ny impératif présent, accord du participe passé, fampiasana 4, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.
+
+1 Famaritana
+
+Ny impératif passé dia temps composé ao amin'ny mode impératif : foronina avy amin'ny auxiliaire (avoir na être) amin'ny impératif présent + participe passé ny verbe. Asongadiny ny baiko na torohevitra ho vita amin'ny fotoana voafetra — izany hoe « vita alohan'ny… ».
+
+Tadidio : ny impératif passé dia mahazatra amin'ny fiteny andavanandro. Ampiasaina hilaza baiko izay tsy maintsy vita amin'ny fotoana iray. Amin'ny teny malagasy, matetika adika amin'ny « aza hadino » na « vita alohan'ny… ».
+
+Fanamarihana manan-danja : ny impératif dia mode (fa tsy temps). Misy ny impératif présent (temps n°11) sy ny impératif passé (ity fiche ity). Ny impératif passé dia mety tsy dia ampiasaina be amin'ny fiteny andavanandro, fa ilaina amin'ny fianarana.
+
+2 Fananganana ny impératif passé
+
+Ny impératif passé dia foronina amin'ny alalan'ny auxiliaire amin'ny impératif présent + participe passé.
+
+Raki-tsoratra :
+
+Auxiliaire (avoir na être) amin'ny impératif présent + participe passé = impératif passé
+
+Ny auxiliaire avoir amin'ny impératif présent
+
+Olon-tsotra | avoir (impératif) | + participe passé | Impératif passé |
+
+(tu) | aie | parlé | aie parlé |
+
+(nous) | ayons | parlé | ayons parlé |
+
+(vous) | ayez | parlé | ayez parlé |
+
+Ny auxiliaire être amin'ny impératif présent
+
+Olon-tsotra | être (impératif) | + participe passé | Impératif passé |
+
+(tu) | sois | allé(e) | sois allé(e) |
+
+(nous) | soyons | allé(e)s | soyons allé(e)s |
+
+(vous) | soyez | allé(e)(s) | soyez allé(e)(s) |
+
+3 Rahoviana no avoir ary rahoviana no être ?
+
+Ny fitsipika dia mitovy amin'ny passé composé sy plus-que-parfait :
+
+Verbe mampiasa avoir (ny ankamaroany)
+
+Ny ankamaroan'ny verbe dia mampiasa avoir.
+
+Aie fini avant midi !
+Vitao alohan'ny mitataovovonana !
+
+Verbe mampiasa être (ny 14 verbe + pronominal)
+
+Ny 14 verbes (aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer) sy ny verbe pronominal rehetra dia mampiasa être.
+
+Sois parti avant 8 h !
+Mandehana alohan'ny 8 ora !
+
+Soyez revenus avant la nuit !
+Miverena alohan'ny alina !
+
+4 Ny accord du participe passé
+
+Miaraka amin'ny être → mifanaraka amin'ny sujet
+
+Rehefa être no auxiliaire, ny participe passé dia mifanaraka amin'ny sujet amin'ny genre sy nombre.
+
+Sois partie avant midi ! (vehivavy)
+Mandehana alohan'ny mitataovovonana ! (partie : +e satria vehivavy)
+
+Soyons partis tôt ! (lehilahy na mifangaro)
+Andeha aloha isika ! (partis : +s satria ploraly)
+
+Soyez arrivées à l'heure ! (vehivavy)
+Tongava amin'ny ora ! (arrivées : +es satria vehivavy ploraly)
+
+Miaraka amin'ny avoir → tsy mifanaraka amin'ny sujet
+
+Rehefa avoir no auxiliaire, ny participe passé dia tsy mifanaraka amin'ny sujet (afa-tsy raha misy COD mialoha).
+
+Aie mangé avant de partir ! (vehivavy)
+Mihinàna alohan'ny handehanana ! (mangé : tsy +e satria avoir)
+
+Ayons fini le travail !
+Andeha hamita ny asa isika ! (fini : tsy +s satria avoir)
+
+Fandrika : miaraka amin'ny avoir, ny participe passé dia tsy mifanaraka amin'ny sujet. Ohatra : ✗ aie mangée. → ✓ aie mangé.
+
+5 Ny fampiasana ny impératif passé — 4 tranga
+
+Ny impératif passé dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.
+
+1 Ordre avec délai — baiko misy fe-potoana
+
+Maneho baiko izay tsy maintsy vita amin'ny fotoana voafetra. Matetika miaraka amin'ny avant…, d'ici…
+
+Aie fini avant midi !
+Vitao alohan'ny mitataovovonana !
+
+Soyez partis avant 8 h !
+Mandehana alohan'ny 8 ora !
+
+Ayez terminé d'ici demain !
+Vitao alohan'ny rahampitso !
+
+2 Conseil avec délai — torohevitra misy fe-potoana
+
+Maneho torohevitra izay tsara raha vita amin'ny fotoana iray.
+
+Aie lu ce livre avant l'examen.
+Vakio io boky io alohan'ny fanadinana.
+
+Soyez rentrés avant la nuit.
+Miverena alohan'ny alina.
+
+Ayez préparé vos affaires avant de partir.
+Amboary ny entanao alohan'ny handehanana.
+
+3 Demande avec délai — fangatahana misy fe-potoana
+
+Maneho fangatahana izay tsara raha vita amin'ny fotoana iray, matetika miaraka amin'ny s'il vous plaît.
+
+Ayez rempli le formulaire avant de sortir, s'il vous plaît.
+Fenoy ny taratasy alohan'ny hivoahana azafady.
+
+Soyez revenus avant 18 h, s'il vous plaît.
+Miverena alohan'ny 18 ora azafady.
+
+Ayez envoyé le message avant ce soir.
+Alefaso ny hafatra alohan'ity hariva ity.
+
+4 Interdiction avec délai — fandrarana misy fe-potoana
+
+Maneho fandrarana izay tsy maintsy vita alohan'ny fotoana iray, matetika miaraka amin'ny ne… pas.
+
+N'ayez pas fini avant 17 h ! (fandrarana : aza vita alohan'ny 17 ora)
+Aza vita alohan'ny 17 ora !
+
+Ne soyez pas partis avant mon retour !
+Aza mandeha alohan'ny fiverenako !
+
+N'ayez pas oublié vos clés !
+Aza hadino ny lakileo !
+
+Famintinana : ny impératif passé dia milaza baiko, torohevitra, fangatahana, ary fandrarana — miaraka amin'ny fe-potoana (vita alohan'ny…).
+
+6 Ny fandrika tsy tokony hatao
+
+✗
+aie parlé → ✓ aie parlé (mety, fa tadidio : aie fa tsy ai).
+
+✗
+sois allé → ✓ sois allé (mety, fa tadidio : sois fa tsy suis).
+
+✗
+aie mangée (vehivavy) → ✓ aie mangé (miaraka amin'ny avoir, tsy mifanaraka amin'ny sujet).
+
+✗
+sois partie (lehilahy) → ✓ sois parti (miaraka amin'ny être, mifanaraka amin'ny sujet).
+
+✗
+aie allé → ✓ sois allé (aller mampiasa être).
+
+✗
+aie prendu → ✓ aie pris (participe passé irrégulier).
+
+✗
+aie faise → ✓ aie fait (participe passé irrégulier).
+
+✗
+aie sus → ✓ aie su (participe passé irrégulier de savoir).
+
+✗
+aie eu (avoir) → ✓ aie eu (mety, fa tadidio : participe passé de avoir = eu).
+
+✗
+aie été (être) → ✓ aie été (mety, fa tadidio : participe passé de être = été).
+
+7 Famintinana — ny zava-dehibe tokony hotadidina
+
+• Impératif passé = temps composé ao amin'ny mode impératif : auxiliaire (avoir na être) amin'ny impératif présent + participe passé.
+• Olona 3 ihany : tu, nous, vous. Tsy misy sujet voasoratra.
+• Auxiliaire avoir : ny ankamaroan'ny verbe.
+• Auxiliaire être : ny 14 verbes + verbe pronominal.
+• Participe passé : 1er groupe -é, 2ème groupe -i, 3ème groupe irrégulier (tsianjery).
+• Accord : miaraka amin'ny être → mifanaraka amin'ny sujet; miaraka amin'ny avoir → tsy mifanaraka amin'ny sujet.
+• Fampiasana 4 : baiko misy fe-potoana, torohevitra misy fe-potoana, fangatahana misy fe-potoana, fandrarana misy fe-potoana.
+• Fahasamihafana amin'ny impératif présent : impératif présent = baiko tsotra; impératif passé = baiko vita alohan'ny fotoana iray.
+
+Fiche pédagogique — Temps n°12 : l'Impératif passé · Fananganana, auxiliaires, accord, fampiasana 4, ary fandrika.
