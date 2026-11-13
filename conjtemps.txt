@@ -1,9 +1,727 @@
 <!DOCTYPE html>
-<html>
+<html lang="mg">
 <head>
-    <title>coucou</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<title>Fahaizana · Temps français</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(145deg, #f0f7ff 0%, #e9eef5 100%);
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+  }
+  .app-header { background: #1e2a3e; padding: 0.8rem 1rem; text-align: center; color: white; }
+  .app-header h1 { font-size: 1.6rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+  .app-header h1:before { content: "📚"; font-size: 1.6rem; }
+  .app-header h1:after  { content: "🇫🇷"; font-size: 1.6rem; }
+
+  .search-sticky { position: sticky; top: 0; z-index: 100; background: linear-gradient(145deg, #f0f7ff 0%, #e9eef5 100%); padding: 0.6rem 1rem; border-bottom: 1px solid #e2edf7; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .search-wrapper { display: flex; align-items: center; background: white; border-radius: 20px; border: 1px solid #cfdfed; transition: all 0.2s; max-width: 550px; margin: 0 auto; }
+  .search-wrapper:focus-within { border-color: #c56985; box-shadow: 0 0 0 3px rgba(197,105,133,0.2); }
+  .search-icon { padding-left: 1rem; font-size: 1.1rem; color: #c56985; }
+  #searchInput { flex: 1; padding: 0.8rem 0.7rem; font-size: 0.95rem; border: none; background: transparent; outline: none; font-family: inherit; }
+  .clear-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; padding: 0 1rem; color: #888; }
+  .clear-btn:hover { color: #c56985; }
+  .search-stats { text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #5f7f9e; }
+  .search-badge { background: #eef2ff; padding: 0.2rem 0.8rem; border-radius: 30px; color: #1e40af; font-weight: 500; display: inline-block; }
+
+  .cards-container { max-width: 700px; margin: 0 auto; padding: 1rem; }
+  .rubriques-grid { display: flex; flex-direction: column; gap: 1rem; }
+  .rubric-card { background: white; border-radius: 1.5rem; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); transition: all 0.25s ease; cursor: pointer; border: 1px solid #ffe0e7; overflow: hidden; }
+  .rubric-card:hover { transform: translateY(-3px); box-shadow: 0 20px 28px -8px rgba(0, 0, 0, 0.15); border-color: #f7bfcf; background: #fffafc; }
+  .rubric-btn { width: 100%; text-align: left; padding: 1rem 1.2rem; background: white; border: none; font-size: 1rem; font-weight: 600; color: #4a2e38; cursor: pointer; }
+  .rubric-header { display: flex; align-items: center; gap: 1rem; }
+  .rubric-num-circle { display: inline-flex; align-items: center; justify-content: center; background: #c56985; color: white; font-weight: bold; font-size: 1rem; width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 2px 8px rgba(197,105,133,0.3); flex-shrink: 0; }
+  .rubric-title-text { flex: 1; font-size: 1rem; font-weight: 600; word-break: break-word; }
+  .rubric-arrow { font-size: 1.2rem; opacity: 0.6; color: #c56985; }
+  .rubric-description { font-size: 0.75rem; color: #2563eb; margin-top: 0.4rem; margin-left: 3.5rem; border-left: 3px solid #2563eb; padding-left: 0.7rem; }
+  .no-results { text-align: center; background: white; border-radius: 2rem; padding: 2rem; color: #b87388; font-weight: 500; }
+  .loading-box { text-align: center; background: white; border-radius: 2rem; padding: 2.5rem; margin-top: 2rem; }
+  .spinner { width: 40px; height: 40px; border: 4px solid #f1cfda; border-top-color: #c56985; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content-fullscreen { min-height: 100vh; background: #fffef7; display: flex; flex-direction: column; }
+  .back-header { position: sticky; top: 0; z-index: 100; background: #fffef7; padding: 12px; border-bottom: 1px solid #ffb7cb; }
+  .back-button { background: rgba(196, 111, 137, 0.92); border: none; color: white; padding: 6px 14px; border-radius: 40px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+  .content-header { background: rgba(196, 111, 137, 0.12); padding: 1rem; text-align: center; border-bottom: 2px solid #ffb7cb; }
+  .content-titre { display: inline-block; max-width: 85%; background: #ffffffdd; backdrop-filter: blur(4px); border-radius: 60px; padding: 0.3rem 1.2rem; font-size: 1.2rem; font-weight: 600; color: #a65474; }
+  .content-meta { font-size: 0.7rem; color: #3b82f6; margin-top: 0.4rem; }
+  .content-area { padding: 1rem; flex: 1; max-width: 100%; margin: 0 auto; width: 100%; }
+  .content-block { background: white; border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #c56985; }
+  .content-block h3 { font-size: 1rem; color: #1e40af; margin-bottom: 0.5rem; font-weight: 700; }
+  .content-block p { font-size: 0.95rem; color: #2c3e50; line-height: 1.6; margin-bottom: 0.5rem; }
+  .content-iframe { width: 100%; height: calc(100vh - 150px); border: none; background: #fffef7; }
+  .content-footer { background: #191970; padding: 0.8rem; text-align: center; font-size: 0.65rem; color: #fff; }
+  .toast-notification { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; z-index: 2000; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+  @media (max-width: 550px) {
+    .app-header h1 { font-size: 1.2rem; }
+    .app-header h1:before, .app-header h1:after { font-size: 1.2rem; }
+    .rubric-num-circle { width: 38px; height: 38px; font-size: 0.9rem; }
+    .rubric-title-text { font-size: 0.9rem; }
+    .rubric-btn { padding: 0.8rem 1rem; }
+    .content-iframe { height: calc(100vh - 130px); }
+  }
+</style>
 </head>
 <body>
-    <p style="color: green;">coucou</p>
+<div id="app-root"></div>
+<div id="toast" class="toast-notification">✅</div>
+
+<script>
+// ============================================================
+// CONFIGURATION
+// ============================================================
+const DB_NAME     = 'fahaizanaDB';
+const STORE_NAME  = 'fichiers';
+const BASE_URL    = 'https://passage.ahofaly62.workers.dev/';
+const VERSION_URL = 'https://passage.ahofaly62.workers.dev/date_rehetra.txt';
+
+// ============================================================
+// LISITRA NY TEMPS
+// ============================================================
+const TEMPS_LISTE = [
+  { num: 1,  titre: "Présent",                    fichier: "conj1.txt",  desc: "Fotoana ankehitriny" },
+  { num: 2,  titre: "Imparfait",                  fichier: "conj2.txt",  desc: "Fotoana lasa tsy vita" },
+  { num: 3,  titre: "Passé composé",              fichier: "conj3.txt",  desc: "Fotoana lasa vita" },
+  { num: 4,  titre: "Futur simple",               fichier: "conj4.txt",  desc: "Fotoana ho avy" },
+  { num: 5,  titre: "Plus-que-parfait",           fichier: "conj5.txt",  desc: "Lasa talohan'ny lasa" },
+  { num: 6,  titre: "Futur antérieur",            fichier: "conj6.txt",  desc: "Ho avy vita talohan'ny ho avy" },
+  { num: 7,  titre: "Conditionnel présent",       fichier: "conj7.txt",  desc: "Fepetra ankehitriny" },
+  { num: 8,  titre: "Subjonctif présent",         fichier: "conj8.txt",  desc: "Faniriana ankehitriny" },
+  { num: 9,  titre: "Conditionnel passé",         fichier: "conj9.txt",  desc: "Fepetra lasa" },
+  { num: 10, titre: "Subjonctif passé",           fichier: "conj10.txt", desc: "Faniriana lasa" },
+  { num: 11, titre: "Impératif présent",          fichier: "conj11.txt", desc: "Baiko ankehitriny" },
+  { num: 12, titre: "Impératif passé",            fichier: "conj12.txt", desc: "Baiko lasa" },
+  { num: 13, titre: "Passé simple",               fichier: "conj13.txt", desc: "Fitantarana an-tsoratra" },
+  { num: 14, titre: "Passé antérieur",            fichier: "conj14.txt", desc: "Lasa lavitra" },
+  { num: 15, titre: "Futur proche",               fichier: "conj15.txt", desc: "Ho avy akaiky" },
+  { num: 16, titre: "Passé récent",               fichier: "conj16.txt", desc: "Vao vita" },
+  { num: 17, titre: "Gérondif présent",           fichier: "conj17.txt", desc: "En + participe présent" },
+  { num: 18, titre: "Participe présent",          fichier: "conj18.txt", desc: "Radical + ant" },
+  { num: 19, titre: "Participe passé",            fichier: "conj19.txt", desc: "Radical + é/i/u" },
+  { num: 20, titre: "Imparfait vs Passé composé", fichier: "conj20.txt", desc: "Fahasamihafana" }
+];
+
+// ============================================================
+// VARIABLES GLOBALES
+// ============================================================
+let currentSearch   = "";
+let rubriquesGrid   = null;
+let searchBadgeSpan = null;
+let cachedFiles     = {};
+let useIndexedDB    = true;
+let autoUpdateInterval = null;
+
+// ============================================================
+// UTILITAIRES
+// ============================================================
+function showToast(msg, duration = 2000) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  setTimeout(() => { toast.style.opacity = '0'; }, duration);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+}
+
+function fuzzyMatch(text, search) {
+  if (!search.trim()) return true;
+  const t = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const s = search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return t.includes(s);
+}
+
+// ============================================================
+// STOCKAGE — IndexedDB + fallback localStorage
+// ============================================================
+function openDB() {
+  return new Promise((resolve, reject) => {
+    let request;
+    try {
+      request = indexedDB.open(DB_NAME, 1);
+    } catch (e) {
+      return reject(e);
+    }
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME);
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror  = () => reject(request.error);
+    request.onblocked = () => reject(new Error("IndexedDB blocked"));
+  });
+}
+
+function lsKey(key) { return 'fahaizana_' + key; }
+
+function lsSave(key, content, version) {
+  try {
+    localStorage.setItem(lsKey(key), JSON.stringify({ content, version }));
+    return true;
+  } catch (e) {
+    console.warn("localStorage save failed", e);
+    return false;
+  }
+}
+
+function lsLoad(key) {
+  try {
+    const raw = localStorage.getItem(lsKey(key));
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) {
+    return null;
+  }
+}
+
+async function saveToDB(key, content, version) {
+  if (useIndexedDB) {
+    try {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).put({ content, version }, key);
+        tx.oncomplete = () => resolve();
+        tx.onerror    = () => reject(tx.error);
+      });
+    } catch (e) {
+      console.warn("IndexedDB save failed, fallback localStorage:", e);
+      useIndexedDB = false;
+      lsSave(key, content, version);
+    }
+  } else {
+    lsSave(key, content, version);
+  }
+}
+
+async function loadFromDB(key) {
+  if (useIndexedDB) {
+    try {
+      const db = await openDB();
+      return await new Promise((resolve) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const req = tx.objectStore(STORE_NAME).get(key);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror   = () => resolve(null);
+      });
+    } catch (e) {
+      console.warn("IndexedDB load failed, fallback localStorage:", e);
+      useIndexedDB = false;
+      return lsLoad(key);
+    }
+  } else {
+    return lsLoad(key);
+  }
+}
+
+// ============================================================
+// VERSION DISTANTE
+// ============================================================
+async function getRemoteVersion(fichier) {
+  try {
+    const res = await fetch(VERSION_URL + '?t=' + Date.now(), { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const text = await res.text();
+    const blocks = text.split(/DERNIÈRE MISE À JOUR/);
+    for (const block of blocks) {
+      const fileMatch = block.match(/📁 Fichier:\s*([^\n]+)/);
+      if (fileMatch && fileMatch[1].trim() === fichier) {
+        const dayMatch  = block.match(/📅\s*([\d\/]+)/);
+        const timeMatch = block.match(/⏰\s*([\d:]+)/);
+        if (dayMatch && timeMatch) return `${dayMatch[1]} ${timeMatch[1]}`;
+      }
+    }
+    return null;
+  } catch (e) { return null; }
+}
+
+// ============================================================
+// FETCH FICHIER
+// ============================================================
+async function fetchRemoteFile(fichier) {
+  const url = BASE_URL + encodeURIComponent(fichier) + '?t=' + Date.now();
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.text();
+}
+
+// ============================================================
+// CHARGEMENT + VÉRIFICATION MISE À JOUR
+// ============================================================
+async function loadAndCacheFile(fichier, forceRefresh = false) {
+  if (!forceRefresh && cachedFiles[fichier]) {
+    return cachedFiles[fichier];
+  }
+
+  const cached = await loadFromDB(fichier);
+  let currentContent = cached ? cached.content : null;
+  let currentVersion = cached ? cached.version : null;
+
+  if (navigator.onLine) {
+    try {
+      const remoteVersion = await getRemoteVersion(fichier);
+      const needUpdate = !currentContent || (remoteVersion && remoteVersion !== currentVersion);
+
+      if (needUpdate) {
+        const newContent = await fetchRemoteFile(fichier);
+        if (!newContent || newContent.length < 10) {
+          throw new Error("Fichier vide ou invalide");
+        }
+        const finalVersion = remoteVersion || new Date().toLocaleString('fr-FR');
+        await saveToDB(fichier, newContent, finalVersion);
+        currentContent = newContent;
+        currentVersion = finalVersion;
+        showToast('✅ ' + fichier + ' mis à jour');
+      }
+    } catch (e) {
+      console.error(e);
+      if (!currentContent) {
+        throw new Error("Impossible de charger le contenu");
+      }
+    }
+  } else {
+    if (!currentContent) {
+      throw new Error("Pas de connexion et pas de cache");
+    }
+  }
+
+  cachedFiles[fichier] = { content: currentContent, version: currentVersion };
+  return cachedFiles[fichier];
+}
+
+// ============================================================
+// VÉRIFICATION AUTOMATIQUE NY DATY (isaky ny X minitra)
+// ============================================================
+async function verificationAuto() {
+  if (!navigator.onLine) {
+    console.log("📴 Hors ligne — vérification annulée");
+    return;
+  }
+  
+  console.log("🔄 Vérification automatique ny daty...");
+  
+  let updateCount = 0;
+  
+  for (const t of TEMPS_LISTE) {
+    try {
+      const remoteVersion = await getRemoteVersion(t.fichier);
+      const cached = await loadFromDB(t.fichier);
+      const localVersion = cached ? cached.version : null;
+      
+      // Raha niova ny version → maka fichier vaovao
+      if (remoteVersion && remoteVersion !== localVersion) {
+        console.log(`🆕 Mise à jour: ${t.fichier} (${localVersion} → ${remoteVersion})`);
+        const newContent = await fetchRemoteFile(t.fichier);
+        if (newContent && newContent.length > 10) {
+          await saveToDB(t.fichier, newContent, remoteVersion);
+          cachedFiles[t.fichier] = { content: newContent, version: remoteVersion };
+          updateCount++;
+        }
+      }
+    } catch (e) {
+      console.warn(`⚠️ Erreur ${t.fichier}:`, e.message);
+    }
+  }
+  
+  if (updateCount > 0) {
+    console.log(`✅ ${updateCount} fichier(s) mis à jour`);
+    showToast(`✅ ${updateCount} fichier(s) mis à jour`);
+  } else {
+    console.log("✅ Tous les fichiers sont à jour");
+  }
+}
+
+function demarrerVerificationAuto() {
+  // 1. Vérification immédiate (après 3 secondes)
+  setTimeout(() => verificationAuto(), 3000);
+  
+  // 2. Vérification toutes les 5 minutes
+  if (autoUpdateInterval) clearInterval(autoUpdateInterval);
+  autoUpdateInterval = setInterval(() => verificationAuto(), 5 * 60 * 1000);
+  
+  // 3. Vérification quand on revient sur l'onglet
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) verificationAuto();
+  });
+  
+  // 4. Vérification quand on revient en ligne
+  window.addEventListener('online', () => verificationAuto());
+}
+
+// ============================================================
+// PARSER LE FICHIER (structure libre)
+// ============================================================
+function parseFile(rawText) {
+  const lines = rawText.split(/\r?\n/);
+  const blocks = [];
+  let currentBlock = { titre: "", description: "", contenu: [] };
+
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+
+    const titleMatch = trimmed.match(/^Titre\s*:\s*(.+)$/i);
+    if (titleMatch) {
+      if (currentBlock.titre || currentBlock.contenu.length > 0) {
+        blocks.push(currentBlock);
+        currentBlock = { titre: "", description: "", contenu: [] };
+      }
+      currentBlock.titre = titleMatch[1].trim();
+      continue;
+    }
+
+    const descMatch = trimmed.match(/^Description\s*:\s*(.+)$/i);
+    if (descMatch) {
+      currentBlock.description = descMatch[1].trim();
+      continue;
+    }
+
+    if (trimmed) {
+      currentBlock.contenu.push(trimmed);
+    }
+  }
+  if (currentBlock.titre || currentBlock.contenu.length > 0) {
+    blocks.push(currentBlock);
+  }
+
+  return blocks;
+}
+
+// ============================================================
+// FILTRAGE
+// ============================================================
+function filterTemps() {
+  if (!currentSearch.trim()) return TEMPS_LISTE;
+  const term = currentSearch.trim();
+
+  if (/^\d+$/.test(term)) {
+    const num = parseInt(term);
+    return TEMPS_LISTE.filter(t => t.num === num);
+  }
+
+  return TEMPS_LISTE.filter(t =>
+    fuzzyMatch(t.titre, term) ||
+    fuzzyMatch(t.desc, term)
+  );
+}
+
+// ============================================================
+// RENDU LISTE
+// ============================================================
+function renderList() {
+  const filtered = filterTemps();
+
+  const searchBadge = currentSearch.trim()
+    ? `<span class="search-badge" id="searchBadgeSpan">🔍 ${filtered.length} résultat(s) pour « ${escapeHtml(currentSearch)} »</span>`
+    : `<span class="search-badge" id="searchBadgeSpan"></span>`;
+
+  const cards = filtered.map(t => `
+    <div class="rubric-card" data-num="${t.num}">
+      <button class="rubric-btn">
+        <div class="rubric-header">
+          <span class="rubric-num-circle">${t.num}</span>
+          <span class="rubric-title-text">${escapeHtml(t.titre)}</span>
+          <span class="rubric-arrow">➡️</span>
+        </div>
+        <div class="rubric-description">📝 ${escapeHtml(t.desc)}</div>
+      </button>
+    </div>
+  `).join('');
+
+  document.getElementById('app-root').innerHTML = `
+    <div class="app-header">
+      <h1>Temps français · Fahaizana</h1>
+    </div>
+
+    <div class="search-sticky">
+      <div class="search-wrapper">
+        <span class="search-icon">🔎</span>
+        <input type="text" id="searchInput" placeholder="Rechercher un temps..." value="${escapeHtml(currentSearch)}" autocomplete="off">
+        <button class="clear-btn" id="clearBtn">✖</button>
+      </div>
+      <div class="search-stats">${searchBadge}</div>
+    </div>
+
+    <div class="cards-container">
+      <div class="rubriques-grid" id="rubriquesGrid">
+        ${cards || '<p style="text-align:center; padding:2rem;">Aucun temps trouvé</p>'}
+      </div>
+    </div>
+  `;
+
+  rubriquesGrid   = document.getElementById('rubriquesGrid');
+  searchBadgeSpan = document.getElementById('searchBadgeSpan');
+
+  const input = document.getElementById('searchInput');
+  const clear = document.getElementById('clearBtn');
+
+  input.addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    updateListOnly();
+  });
+  clear.addEventListener('click', () => {
+    currentSearch = '';
+    input.value = '';
+    updateListOnly();
+  });
+
+  document.querySelectorAll('.rubric-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openTemps(parseInt(card.dataset.num));
+    });
+  });
+}
+
+function updateListOnly() {
+  const filtered = filterTemps();
+
+  if (searchBadgeSpan) {
+    searchBadgeSpan.innerHTML = currentSearch.trim()
+      ? `🔍 ${filtered.length} résultat(s) pour « ${escapeHtml(currentSearch)} »`
+      : '';
+  }
+
+  if (filtered.length === 0 && currentSearch.trim() !== "") {
+    rubriquesGrid.innerHTML = `<div class="no-results">😢 Aucun temps pour « ${escapeHtml(currentSearch)} »</div>`;
+    return;
+  }
+
+  rubriquesGrid.innerHTML = filtered.map(t => `
+    <div class="rubric-card" data-num="${t.num}">
+      <button class="rubric-btn">
+        <div class="rubric-header">
+          <span class="rubric-num-circle">${t.num}</span>
+          <span class="rubric-title-text">${escapeHtml(t.titre)}</span>
+          <span class="rubric-arrow">➡️</span>
+        </div>
+        <div class="rubric-description">📝 ${escapeHtml(t.desc)}</div>
+      </button>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.rubric-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openTemps(parseInt(card.dataset.num));
+    });
+  });
+}
+
+// ============================================================
+// OUVRIR UN TEMPS
+// ============================================================
+async function openTemps(num) {
+  const tempsInfo = TEMPS_LISTE.find(t => t.num === num);
+
+  document.getElementById('app-root').innerHTML = `
+    <div class="content-fullscreen">
+      <div class="back-header">
+        <button class="back-button" id="backBtn">← Retour</button>
+      </div>
+      <div class="loading-box">
+        <div class="spinner"></div>
+        <p>Chargement de <strong>${escapeHtml(tempsInfo.titre)}</strong>…</p>
+      </div>
+    </div>
+  `;
+  document.getElementById('backBtn').addEventListener('click', renderList);
+
+  try {
+    const data = await loadAndCacheFile(tempsInfo.fichier);
+    renderContent(tempsInfo, data.content);
+  } catch (err) {
+    console.error(err);
+    document.getElementById('app-root').innerHTML = `
+      <div class="content-fullscreen">
+        <div class="back-header">
+          <button class="back-button" id="backBtn">← Retour</button>
+        </div>
+        <div style="padding:2rem; text-align:center;">
+          <div style="font-size:3rem;">⚠️</div>
+          <h3 style="color:#c56985; margin:1rem 0;">Misy olana</h3>
+          <p style="color:#4a2e38;">${escapeHtml(err.message)}</p>
+          <button onclick="location.reload()" style="background:#c56985; color:white; border:none; padding:10px 24px; border-radius:40px; margin-top:1rem; cursor:pointer; font-weight:600;">
+            🔄 Andramo indray
+          </button>
+        </div>
+      </div>
+    `;
+    document.getElementById('backBtn').addEventListener('click', renderList);
+  }
+}
+
+// ============================================================
+// AFFICHER LE CONTENU — HTML ao anaty iframe (CSS feno)
+// ============================================================
+function renderContent(tempsInfo, rawContent) {
+  const isHTML = /<[a-z][\s\S]*>/i.test(rawContent);
+
+  if (isHTML) {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(rawContent, "text/html");
+      const body = doc.body;
+      const head = doc.head;
+
+      body.querySelectorAll("script").forEach(el => el.remove());
+      head.querySelectorAll("script").forEach(el => el.remove());
+
+      body.querySelectorAll("*").forEach(el => {
+        Array.from(el.attributes).forEach(attr => {
+          if (/^on/i.test(attr.name)) el.removeAttribute(attr.name);
+        });
+      });
+
+      const fullHTML = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ${head.innerHTML}
+  <style>
+    body { font-family: 'Segoe UI', Roboto, sans-serif; padding: 16px; color: #2c3e50; background: #fffef7; line-height: 1.7; }
+    h1 { color: #1e40af; border-bottom: 2px solid #c56985; padding-bottom: 6px; }
+    h2 { color: #1e40af; }
+    h3 { color: #c56985; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    th, td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+    th { background: #eff6ff; color: #1e40af; }
+    tr:nth-child(even) { background: #f8fafc; }
+    code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #b45309; }
+    blockquote { border-left: 4px solid #c56985; padding-left: 16px; color: #64748b; font-style: italic; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+    a { color: #1e40af; }
+  </style>
+</head>
+<body>
+  ${body.innerHTML}
+</body>
+</html>`;
+
+      document.getElementById('app-root').innerHTML = `
+        <div class="content-fullscreen">
+          <div class="back-header">
+            <button class="back-button" id="backBtn">← Retour</button>
+          </div>
+          <div class="content-header">
+            <div class="content-titre">📖 ${escapeHtml(tempsInfo.titre)}</div>
+            <div class="content-meta">${escapeHtml(tempsInfo.desc)}</div>
+          </div>
+          <div class="content-area" style="padding: 0; max-width: 100%;">
+            <iframe 
+              id="leconIframe" 
+              class="content-iframe"
+              sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            ></iframe>
+          </div>
+          <div class="content-footer">
+            📚 Temps n°${tempsInfo.num} · Fahaizana
+          </div>
+        </div>
+      `;
+
+      const iframe = document.getElementById('leconIframe');
+      iframe.srcdoc = fullHTML;
+
+      iframe.onload = () => {
+        try {
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const height = iframeDoc.body.scrollHeight;
+          iframe.style.height = (height + 40) + 'px';
+        } catch (e) {}
+      };
+
+      document.getElementById('backBtn').addEventListener('click', renderList);
+
+    } catch (e) {
+      console.error("iframe error:", e);
+      document.getElementById('app-root').innerHTML = `
+        <div class="content-fullscreen">
+          <div class="back-header">
+            <button class="back-button" id="backBtn">← Retour</button>
+          </div>
+          <div style="padding:2rem; text-align:center;">
+            <div style="font-size:3rem;">⚠️</div>
+            <h3 style="color:#c56985; margin:1rem 0;">Erreur HTML</h3>
+            <p style="color:#4a2e38;">${escapeHtml(e.message)}</p>
+            <button onclick="location.reload()" style="background:#c56985; color:white; border:none; padding:10px 24px; border-radius:40px; margin-top:1rem; cursor:pointer; font-weight:600;">
+              🔄 Andramo indray
+            </button>
+          </div>
+        </div>
+      `;
+      document.getElementById('backBtn').addEventListener('click', renderList);
+    }
+  } else {
+    const blocks = parseFile(rawContent);
+    const blocksHtml = blocks.map(b => `
+      <div class="content-block">
+        ${b.titre ? `<h3>📌 ${escapeHtml(b.titre)}</h3>` : ''}
+        ${b.description ? `<p><em>${escapeHtml(b.description)}</em></p>` : ''}
+        ${b.contenu.map(line => `<p>${escapeHtml(line)}</p>`).join('')}
+      </div>
+    `).join('');
+
+    document.getElementById('app-root').innerHTML = `
+      <div class="content-fullscreen">
+        <div class="back-header">
+          <button class="back-button" id="backBtn">← Retour</button>
+        </div>
+        <div class="content-header">
+          <div class="content-titre">📖 ${escapeHtml(tempsInfo.titre)}</div>
+          <div class="content-meta">${escapeHtml(tempsInfo.desc)}</div>
+        </div>
+        <div class="content-area">
+          ${blocksHtml || '<p style="text-align:center; padding:2rem;">Fichier vide</p>'}
+        </div>
+        <div class="content-footer">
+          📚 Temps n°${tempsInfo.num} · Fahaizana
+        </div>
+      </div>
+    `;
+
+    document.getElementById('backBtn').addEventListener('click', renderList);
+  }
+}
+
+// ============================================================
+// INITIALISATION
+// ============================================================
+async function initApp() {
+  document.getElementById('app-root').innerHTML = `
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p>Chargement…</p>
+    </div>
+  `;
+
+  try {
+    const db = await openDB();
+    db.close();
+  } catch (e) {
+    console.warn("IndexedDB tsy mandeha — fallback localStorage");
+    useIndexedDB = false;
+  }
+
+  try {
+    for (const t of TEMPS_LISTE) {
+      const cached = await loadFromDB(t.fichier);
+      if (cached) cachedFiles[t.fichier] = cached;
+    }
+  } catch (e) { /* ignore */ }
+
+  renderList();
+  
+  // ✅ MANOMBOKA NY VÉRIFICATION AUTO
+  demarrerVerificationAuto();
+}
+
+initApp();
+</script>
 </body>
 </html>
