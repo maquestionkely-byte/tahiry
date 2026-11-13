@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Impératif passé — Temps n°12 | Fiche complète</title>
+<style>
+  :root{
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --sarcelle:#134e4a; --sarcelle-clair:#2dd4bf; --sarcelle-pale:#f0fdfa;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#0f172a,#134e4a 60%,#2dd4bf);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(15,23,42,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--sarcelle);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--sarcelle-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#0f172a,#134e4a);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(19,78,74,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--sarcelle-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#0f172a,#134e4a);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--sarcelle-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--sarcelle);}
+
+  .encadre{border-left:5px solid var(--sarcelle-clair);background:var(--sarcelle-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--sarcelle);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--sarcelle-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--sarcelle);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border:1px solid #99f6e4;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--sarcelle);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(19,78,74,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--sarcelle);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#0f172a,#134e4a);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#0f172a,#134e4a);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(15,23,42,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#99f6e4;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°12 — L'Impératif passé</span>
+    <h1>Ny Impératif passé</h1>
+    <p>Fananganana, auxiliaires <em>avoir/être</em> amin'ny <strong>impératif présent</strong>, accord du participe passé, fampiasana 4, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>impératif passé</strong> dia <strong>temps composé ao amin'ny mode impératif</strong> : foronina avy amin'ny <strong>auxiliaire</strong> (<em>avoir</em> na <em>être</em>) amin'ny <strong>impératif présent</strong> + <strong>participe passé</strong> ny verbe. Asongadiny ny <strong>baiko na torohevitra ho vita amin'ny fotoana voafetra</strong> — izany hoe « vita alohan'ny… ».</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny impératif passé dia <strong>mahazatra amin'ny fiteny andavanandro</strong>. Ampiasaina hilaza baiko izay <strong>tsy maintsy vita</strong> amin'ny fotoana iray. Amin'ny teny malagasy, matetika adika amin'ny <em>« aza hadino »</em> na <em>« vita alohan'ny… »</em>.
+    </div>
+    <div class="encadre orange">
+      <strong>Fanamarihana manan-danja :</strong> ny impératif dia <strong>mode</strong> (fa tsy temps). Misy ny <strong>impératif présent</strong> (temps n°11) sy ny <strong>impératif passé</strong> (ity fiche ity). Ny impératif passé dia <strong>mety tsy dia ampiasaina be</strong> amin'ny fiteny andavanandro, fa ilaina amin'ny fianarana.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny impératif passé</h2>
+    <p>Ny impératif passé dia foronina amin'ny alalan'ny <strong>auxiliaire amin'ny impératif présent</strong> + <strong>participe passé</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Auxiliaire (avoir na être) amin'ny impératif présent + participe passé = impératif passé</strong>
+    </div>
+
+    <h3>Ny auxiliaire <em>avoir</em> amin'ny impératif présent</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>avoir (impératif)</th><th>+ participe passé</th><th>Impératif passé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>(tu)</td><td>aie</td><td>parlé</td><td>aie parlé</td></tr>
+        <tr><td>(nous)</td><td>ayons</td><td>parlé</td><td>ayons parlé</td></tr>
+        <tr><td>(vous)</td><td>ayez</td><td>parlé</td><td>ayez parlé</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ny auxiliaire <em>être</em> amin'ny impératif présent</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>être (impératif)</th><th>+ participe passé</th><th>Impératif passé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>(tu)</td><td>sois</td><td>allé(e)</td><td>sois allé(e)</td></tr>
+        <tr><td>(nous)</td><td>soyons</td><td>allé(e)s</td><td>soyons allé(e)s</td></tr>
+        <tr><td>(vous)</td><td>soyez</td><td>allé(e)(s)</td><td>soyez allé(e)(s)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. AVOIR OU ÊTRE ===================== -->
+  <section>
+    <h2><span class="num">3</span> Rahoviana no <em>avoir</em> ary rahoviana no <em>être</em> ?</h2>
+    <p>Ny fitsipika dia <strong>mitovy amin'ny passé composé sy plus-que-parfait</strong> :</p>
+
+    <h3>Verbe mampiasa <em>avoir</em> (ny ankamaroany)</h3>
+    <p>Ny <strong>ankamaroan'ny verbe</strong> dia mampiasa <em>avoir</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Aie fini</span> avant midi !</span>
+      <span class="mg">Vitao alohan'ny mitataovovonana !</span>
+    </div>
+
+    <h3>Verbe mampiasa <em>être</em> (ny 14 verbe + pronominal)</h3>
+    <p>Ny <strong>14 verbes</strong> (aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer) sy ny <strong>verbe pronominal rehetra</strong> dia mampiasa <em>être</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Sois parti</span> avant 8 h !</span>
+      <span class="mg">Mandehana alohan'ny 8 ora !</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Soyez revenus</span> avant la nuit !</span>
+      <span class="mg">Miverena alohan'ny alina !</span>
+    </div>
+  </section>
+
+  <!-- ===================== 4. ACCORD DU PARTICIPE PASSÉ ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny accord du participe passé</h2>
+
+    <h3>Miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>être</em> no auxiliaire, ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> amin'ny genre sy nombre.</p>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Sois partie</span> avant midi ! (vehivavy)</span>
+      <span class="mg">Mandehana alohan'ny mitataovovonana ! <em>(partie : +e satria vehivavy)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Soyons partis</span> tôt ! (lehilahy na mifangaro)</span>
+      <span class="mg">Andeha aloha isika ! <em>(partis : +s satria ploraly)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Soyez arrivées</span> à l'heure ! (vehivavy)</span>
+      <span class="mg">Tongava amin'ny ora ! <em>(arrivées : +es satria vehivavy ploraly)</em></span>
+    </div>
+
+    <h3>Miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>avoir</em> no auxiliaire, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong> (afa-tsy raha misy COD mialoha).</p>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Aie mangé</span> avant de partir ! (vehivavy)</span>
+      <span class="mg">Mihinàna alohan'ny handehanana ! <em>(mangé : tsy +e satria avoir)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Ayons fini</span> le travail !</span>
+      <span class="mg">Andeha hamita ny asa isika ! <em>(fini : tsy +s satria avoir)</em></span>
+    </div>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> miaraka amin'ny <em>avoir</em>, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong>. Ohatra : ✗ <em>aie mangée.</em> → ✓ <em>aie mangé.</em>
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny impératif passé — 4 tranga</h2>
+    <p>Ny impératif passé dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ORDRE AVEC DÉLAI -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Ordre avec délai — baiko misy fe-potoana</div>
+      <div class="expl">Maneho <strong>baiko izay tsy maintsy vita</strong> amin'ny fotoana voafetra. Matetika miaraka amin'ny <em>avant…, d'ici…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Aie fini</span> avant midi !</span>
+        <span class="mg">Vitao alohan'ny mitataovovonana !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Soyez partis</span> avant 8 h !</span>
+        <span class="mg">Mandehana alohan'ny 8 ora !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ayez terminé</span> d'ici demain !</span>
+        <span class="mg">Vitao alohan'ny rahampitso !</span>
+      </div>
+    </div>
+
+    <!-- 2) CONSEIL AVEC DÉLAI -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Conseil avec délai — torohevitra misy fe-potoana</div>
+      <div class="expl">Maneho <strong>torohevitra</strong> izay tsara raha vita amin'ny fotoana iray.</div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Aie lu</span> ce livre avant l'examen.</span>
+        <span class="mg">Vakio io boky io alohan'ny fanadinana.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Soyez rentrés</span> avant la nuit.</span>
+        <span class="mg">Miverena alohan'ny alina.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ayez préparé</span> vos affaires avant de partir.</span>
+        <span class="mg">Amboary ny entanao alohan'ny handehanana.</span>
+      </div>
+    </div>
+
+    <!-- 3) DEMANDE AVEC DÉLAI -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Demande avec délai — fangatahana misy fe-potoana</div>
+      <div class="expl">Maneho <strong>fangatahana</strong> izay tsara raha vita amin'ny fotoana iray, matetika miaraka amin'ny <em>s'il vous plaît</em>.</div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ayez rempli</span> le formulaire avant de sortir, s'il vous plaît.</span>
+        <span class="mg">Fenoy ny taratasy alohan'ny hivoahana azafady.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Soyez revenus</span> avant 18 h, s'il vous plaît.</span>
+        <span class="mg">Miverena alohan'ny 18 ora azafady.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ayez envoyé</span> le message avant ce soir.</span>
+        <span class="mg">Alefaso ny hafatra alohan'ity hariva ity.</span>
+      </div>
+    </div>
+
+    <!-- 4) INTERDICTION AVEC DÉLAI -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Interdiction avec délai — fandrarana misy fe-potoana</div>
+      <div class="expl">Maneho <strong>fandrarana</strong> izay tsy maintsy vita alohan'ny fotoana iray, matetika miaraka amin'ny <em>ne… pas</em>.</div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">N'ayez pas fini</span> avant 17 h ! (fandrarana : aza vita alohan'ny 17 ora)</span>
+        <span class="mg">Aza vita alohan'ny 17 ora !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ne soyez pas partis</span> avant mon retour !</span>
+        <span class="mg">Aza mandeha alohan'ny fiverenako !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">N'ayez pas oublié</span> vos clés !</span>
+        <span class="mg">Aza hadino ny lakileo !</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny impératif passé dia milaza <strong>baiko</strong>, <strong>torohevitra</strong>, <strong>fangatahana</strong>, ary <strong>fandrarana</strong> — miaraka amin'ny <strong>fe-potoana</strong> (vita alohan'ny…).
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie parlé</strong> → <span class="correction">✓ aie parlé</span> (mety, fa tadidio : <em>aie</em> fa tsy <em>ai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>sois allé</strong> → <span class="correction">✓ sois allé</span> (mety, fa tadidio : <em>sois</em> fa tsy <em>suis</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie mangée</strong> (vehivavy) → <span class="correction">✓ aie mangé</span> (miaraka amin'ny <em>avoir</em>, tsy mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>sois partie</strong> (lehilahy) → <span class="correction">✓ sois parti</span> (miaraka amin'ny <em>être</em>, mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie allé</strong> → <span class="correction">✓ sois allé</span> (<em>aller</em> mampiasa <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie prendu</strong> → <span class="correction">✓ aie pris</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie faise</strong> → <span class="correction">✓ aie fait</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie sus</strong> → <span class="correction">✓ aie su</span> (participe passé irrégulier de <em>savoir</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie eu</strong> (avoir) → <span class="correction">✓ aie eu</span> (mety, fa tadidio : participe passé de <em>avoir</em> = <em>eu</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie été</strong> (être) → <span class="correction">✓ aie été</span> (mety, fa tadidio : participe passé de <em>être</em> = <em>été</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Impératif passé = temps composé ao amin'ny mode impératif</strong> : auxiliaire (<em>avoir</em> na <em>être</em>) amin'ny <strong>impératif présent</strong> + participe passé.</li>
+      <li><strong>Olona 3 ihany</strong> : <em>tu</em>, <em>nous</em>, <em>vous</em>. Tsy misy sujet voasoratra.</li>
+      <li><strong>Auxiliaire <em>avoir</em></strong> : ny ankamaroan'ny verbe.</li>
+      <li><strong>Auxiliaire <em>être</em></strong> : ny <strong>14 verbes</strong> + verbe pronominal.</li>
+      <li><strong>Participe passé</strong> : 1er groupe <em>-é</em>, 2ème groupe <em>-i</em>, 3ème groupe irrégulier (tsianjery).</li>
+      <li><strong>Accord</strong> : miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet; miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet.</li>
+      <li><strong>Fampiasana 4</strong> : baiko misy fe-potoana, torohevitra misy fe-potoana, fangatahana misy fe-potoana, fandrarana misy fe-potoana.</li>
+      <li><strong>Fahasamihafana amin'ny impératif présent</strong> : impératif présent = baiko tsotra; impératif passé = baiko <strong>vita alohan'ny fotoana iray</strong>.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°12 : l'Impératif passé · Fananganana, auxiliaires, accord, fampiasana 4, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

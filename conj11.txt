@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Impératif présent — Temps n°11 | Fiche complète</title>
+<style>
+  :root{
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --bordeaux:#7f1d1d; --bordeaux-clair:#ef4444; --bordeaux-pale:#fef2f2;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#450a0a,#7f1d1d 60%,#ef4444);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(69,10,10,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--bordeaux);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--bordeaux-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(127,29,29,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--bordeaux-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--bordeaux-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--bordeaux);}
+
+  .encadre{border-left:5px solid var(--bordeaux-clair);background:var(--bordeaux-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--bordeaux);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--bordeaux-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--bordeaux);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#fef2f2,#fee2e2);border:1px solid #fecaca;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--bordeaux);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(127,29,29,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--bordeaux);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#450a0a,#7f1d1d);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(69,10,10,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#fecaca;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°11 — L'Impératif présent</span>
+    <h1>Ny Impératif présent</h1>
+    <p>Fananganana, <strong>olona 3 ihany</strong>, verbe irréguliers, fampiasana 4, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>impératif présent</strong> dia <strong>mode</strong> (fa tsy temps) ampiasaina hilaza <strong>baiko, torohevitra, fangatahana, na fanasana</strong>. Tsy manana sujet voasoratra izy — ny olona ampanaovina no sujet. Amin'ny teny malagasy, matetika adika amin'ny matoanteny tsy misy mpanao voasoratra.
+    </p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny impératif dia manana <strong>olona 3 ihany</strong> : <em>tu</em>, <em>nous</em>, <em>vous</em>. Tsy misy <em>je</em>, <em>il/elle</em>, <em>ils/elles</em>. Tsy misy sujet voasoratra mihitsy.
+    </div>
+    <div class="encadre orange">
+      <strong>Fanamarihana manan-danja :</strong> ny impératif dia <strong>mode</strong> (fa tsy temps). Misy ny <strong>impératif présent</strong> sy <strong>impératif passé</strong>. Eto isika dia mianatra ny <strong>impératif présent</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny impératif présent</h2>
+    <p>Ny impératif présent dia foronina avy amin'ny <strong>radical amin'ny présent de l'indicatif</strong> + terminaisons. <strong>Tsy misy sujet</strong> voasoratra.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Radical (présent) + terminaisons = impératif présent (olona 3 : tu, nous, vous)</strong>
+    </div>
+
+    <h3>Ny terminaisons fototra</h3>
+    <div class="terminaisons">
+      <div>(tu) -<span>e</span> / -<span>s</span></div>
+      <div>(nous) -<span>ons</span></div>
+      <div>(vous) -<span>ez</span></div>
+    </div>
+
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> ny impératif dia <strong>mitovy amin'ny présent de l'indicatif</strong> amin'ny <em>tu</em>, <em>nous</em>, <em>vous</em> — fa <strong>tsy misy sujet</strong>. Ny 1er groupe dia tsy manana <em>-s</em> amin'ny <em>tu</em> (afa-tsy raha misy <em>en</em> na <em>y</em>).
+    </div>
+  </section>
+
+  <!-- ===================== 3. LES 3 GROUPES ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny impératif présent isaky ny groupe</h2>
+
+    <h3>1er groupe — modely : <em>parler</em></h3>
+    <p>Radical <em>parl-</em> + terminaisons. <strong>Tsy misy <em>-s</em> amin'ny <em>tu</em></strong>.</p>
+    <div class="terminaisons">
+      <div>parl<span>e</span></div>
+      <div>parl<span>ons</span></div>
+      <div>parl<span>ez</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Parle</span> plus fort !</span>
+      <span class="mg">Mitenena mafy kokoa !</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Parlons</span> ensemble.</span>
+      <span class="mg">Andeha hiresaka isika.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Parlez</span> lentement, s'il vous plaît.</span>
+      <span class="mg">Mitenena miadana azafady.</span>
+    </div>
+
+    <h3>2ème groupe — modely : <em>finir</em></h3>
+    <p>Radical <em>finiss-</em> + terminaisons.</p>
+    <div class="terminaisons">
+      <div>fin<span>is</span></div>
+      <div>fin<span>issons</span></div>
+      <div>fin<span>issez</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Finis</span> ton travail !</span>
+      <span class="mg">Vitao ny asanao !</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Finissons</span> ensemble.</span>
+      <span class="mg">Andeha hamita izany isika.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="verbe">Finissez</span> vite.</span>
+      <span class="mg">Vitao haingana.</span>
+    </div>
+
+    <h3>3ème groupe — ohatra : <em>prendre, venir, faire</em></h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>(tu)</td><td>prends</td><td>viens</td><td>fais</td></tr>
+        <tr><td>(nous)</td><td>prenons</td><td>venons</td><td>faisons</td></tr>
+        <tr><td>(vous)</td><td>prenez</td><td>venez</td><td>faites</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 4. VERBES IRRÉGULIERS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny verbes irréguliers amin'ny impératif présent</h2>
+    <p>Ireto ny verbe manan-danja izay <strong>tsy manaraka</strong> ny fitsipika fototra. Ny radical-ny dia tsy maintsy tsianjery.</p>
+
+    <table>
+      <thead>
+        <tr><th>Verbe</th><th>(tu)</th><th>(nous)</th><th>(vous)</th><th>Dika malagasy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>être</td><td>sois</td><td>soyons</td><td>soyez</td><td>ho</td></tr>
+        <tr><td>avoir</td><td>aie</td><td>ayons</td><td>ayez</td><td>manana</td></tr>
+        <tr><td>aller</td><td>va</td><td>allons</td><td>allez</td><td>mandeha</td></tr>
+        <tr><td>faire</td><td>fais</td><td>faisons</td><td>faites</td><td>manao</td></tr>
+        <tr><td>savoir</td><td>sache</td><td>sachons</td><td>sachez</td><td>mahafantatra</td></tr>
+        <tr><td>vouloir</td><td>veuille</td><td>veuillons</td><td>veuillez</td><td>te-ho</td></tr>
+        <tr><td>pouvoir</td><td>—</td><td>—</td><td>—</td><td>(tsy misy impératif)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> ny verbe <em>être, avoir, aller, faire, savoir, vouloir</em> dia tena irrégulier. Tsy maintsy tsianjery tsara : <em>sois, aie, va, fais, sache, veuille</em>. Ary ny <em>pouvoir</em> dia <strong>tsy manana impératif</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny impératif présent — 4 tranga</h2>
+    <p>Ny impératif présent dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ORDRE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Ordre — baiko</div>
+      <div class="expl">Maneho <strong>baiko mivantana</strong>. Io no tena fampiasana fototra. Matetika miaraka amin'ny feo mafy na <em>!</em>.</div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Viens</span> ici !</span>
+        <span class="mg">Mankanesa eto !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Fermez</span> la porte !</span>
+        <span class="mg">Mikatona ny varavarana !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Sortez</span> de la classe !</span>
+        <span class="mg">Mivoaha amin'ny efitrano !</span>
+      </div>
+    </div>
+
+    <!-- 2) CONSEIL -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Conseil — torohevitra</div>
+      <div class="expl">Maneho <strong>torohevitra</strong> na <strong>fanasana</strong> amin'ny fomba tsara fanahy. Matetika miaraka amin'ny <em>s'il te plaît, s'il vous plaît…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Repose</span>-toi bien.</span>
+        <span class="mg">Mialà sasatra tsara.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Mangez</span> plus de légumes.</span>
+        <span class="mg">Mihinàna anana bebe kokoa.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Prenez</span> ce livre, il est très bien.</span>
+        <span class="mg">Raiso ity boky ity, tsara izy.</span>
+      </div>
+    </div>
+
+    <!-- 3) DEMANDE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Demande — fangatahana</div>
+      <div class="expl">Maneho <strong>fangatahana</strong> amin'ny fomba malefaka, matetika miaraka amin'ny <em>s'il vous plaît, s'il te plaît…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Donnez</span>-moi un verre d'eau, s'il vous plaît.</span>
+        <span class="mg">Omeo rano iray vera aho azafady.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Aidez</span>-moi, s'il te plaît.</span>
+        <span class="mg">Ampio aho azafady.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Attendez</span> un instant.</span>
+        <span class="mg">Andraso kely.</span>
+      </div>
+    </div>
+
+    <!-- 4) INTERDICTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Interdiction — fandrarana</div>
+      <div class="expl">Maneho <strong>fandrarana</strong>, matetika miaraka amin'ny <em>ne… pas</em> (na <em>ne… jamais</em>).</div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ne fumez pas</span> ici !</span>
+        <span class="mg">Aza mifoka eto !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">Ne parle pas</span> si fort !</span>
+        <span class="mg">Aza miteny mafy be !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="verbe">N'oubliez jamais</span> vos clés.</span>
+        <span class="mg">Aza hadino ny lakileo na oviana na oviana.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny impératif présent dia milaza <strong>baiko</strong>, <strong>torohevitra</strong>, <strong>fangatahana</strong>, ary <strong>fandrarana</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>parle</strong>s ! (1er groupe) → <span class="correction">✓ parle !</span> (tsy misy <em>-s</em> amin'ny <em>tu</em> amin'ny 1er groupe).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>parles</strong>-en ! (1er groupe + en) → <span class="correction">✓ parles-en !</span> (misy <em>-s</em> raha misy <em>en</em> na <em>y</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>finis</strong>! → <span class="correction">✓ finis !</span> (mety, fa tadidio : 2ème groupe dia misy <em>-s</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>sois</strong>! → <span class="correction">✓ sois !</span> (être : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>aie</strong>! → <span class="correction">✓ aie !</span> (avoir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>va</strong>! → <span class="correction">✓ va !</span> (aller : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>fais</strong>! → <span class="correction">✓ fais !</span> (faire : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>sache</strong>! → <span class="correction">✓ sache !</span> (savoir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span><strong>veuille</strong>! → <span class="correction">✓ veuille !</span> (vouloir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>ny <em>pouvoir</em> dia manana impératif → <span class="correction">✓ tsy manana impératif ny <em>pouvoir</em></span>.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Impératif présent = mode</strong> (fa tsy temps), ampiasaina hilaza baiko, torohevitra, fangatahana, na fandrarana.</li>
+      <li><strong>Olona 3 ihany</strong> : <em>tu</em>, <em>nous</em>, <em>vous</em>. Tsy misy sujet voasoratra.</li>
+      <li><strong>Fananganana</strong> : radical amin'ny présent + terminaisons. 1er groupe : <strong>tsisy <em>-s</em> amin'ny <em>tu</em></strong>.</li>
+      <li><strong>Verbes irréguliers</strong> : être → <em>sois</em>, avoir → <em>aie</em>, aller → <em>va</em>, faire → <em>fais</em>, savoir → <em>sache</em>, vouloir → <em>veuille</em>. Ny <em>pouvoir</em> dia tsy manana impératif.</li>
+      <li><strong>Fampiasana 4</strong> : baiko, torohevitra, fangatahana, fandrarana.</li>
+      <li><strong>Fanamarihana</strong> : raha misy <em>en</em> na <em>y</em> ao aorian'ny matoanteny amin'ny <em>tu</em>, dia miverina ny <em>-s</em> (ohatra : <em>parles-en</em>).</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°11 : l'Impératif présent · Fananganana, olona 3, verbes irréguliers, fampiasana 4, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

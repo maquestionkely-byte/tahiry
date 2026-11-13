@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Futur simple — Temps n°4 | Fiche complète</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --azur:#0369a1; --azur-clair:#0ea5e9; --azur-pale:#f0f9ff;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#0c4a6e,#0369a1 60%,#0ea5e9);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(12,74,110,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--azur);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--azur-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#0c4a6e,#0369a1);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(3,105,161,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--azur-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#0c4a6e,#0369a1);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--azur-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--azur);}
+
+  .encadre{border-left:5px solid var(--azur-clair);background:var(--azur-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--azur);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--azur-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--azur);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--azur);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(3,105,161,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--azur);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#0c4a6e,#0369a1);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#0c4a6e,#0369a1);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(12,74,110,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#bae6fd;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°4 — Le Futur simple</span>
+    <h1>Ny Futur simple</h1>
+    <p>Fananganana, terminaisons, ny <strong>verbes irréguliers</strong>, fampiasana 6, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>futur simple</strong> dia <strong>temps simple</strong> (teny iray ihany). Asongadiny ny hetsika <strong>ho avy</strong>, <strong>mbola tsy nitranga</strong>. Tsy toy ny présent misolo ny futur — ny futur simple dia <strong>manondro mivantana</strong> ny fotoana ho avy, na lavitra na akaiky.</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny futur simple dia <strong>fotoana fototra amin'ny fitantarana ho avy</strong>. Izy no ampiasaina hilaza drafitra, faminaniana, na fepetra ho avy. <strong>Raha mazava ny fotoana ho avy → futur simple.</strong>
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny futur simple</h2>
+    <p>Ny futur simple dia foronina avy amin'ny <strong>infinitif</strong> (na radical futur) + terminaisons <strong>mitovy ho an'ny groupe rehetra</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Infinitif (na radical futur) + terminaisons = futur simple</strong>
+    </div>
+
+    <h3>Ny terminaisons fototra (ho an'ny groupe rehetra)</h3>
+    <div class="terminaisons">
+      <div>je -<span>ai</span></div>
+      <div>tu -<span>as</span></div>
+      <div>il/elle -<span>a</span></div>
+      <div>nous -<span>ons</span></div>
+      <div>vous -<span>ez</span></div>
+      <div>ils/elles -<span>ont</span></div>
+    </div>
+
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> ny terminaisons amin'ny futur simple dia <strong>mitovy ho an'ny groupe rehetra</strong> — tsy misy exception amin'ny terminaisons. Ny <strong>radical</strong> ihany no mety miova (indrindra amin'ny 3ème groupe).
+    </div>
+  </section>
+
+  <!-- ===================== 3. LES 3 GROUPES ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny futur simple isaky ny groupe</h2>
+
+    <h3>1er groupe — modely : <em>parler</em></h3>
+    <p>Ny radical futur dia ny <strong>infinitif manontolo</strong> (<em>parler-</em>) + terminaisons.</p>
+    <div class="terminaisons">
+      <div>je parler<span>ai</span></div>
+      <div>tu parler<span>as</span></div>
+      <div>il/elle parler<span>a</span></div>
+      <div>nous parler<span>ons</span></div>
+      <div>vous parler<span>ez</span></div>
+      <div>ils/elles parler<span>ont</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">parlerai</span> à ma mère.</span>
+      <span class="mg">Hiresaka amin'ny reniko aho.</span>
+    </div>
+
+    <h3>2ème groupe — modely : <em>finir</em></h3>
+    <p>Ny radical futur dia ny <strong>infinitif manontolo</strong> (<em>finir-</em>) + terminaisons.</p>
+    <div class="terminaisons">
+      <div>je finir<span>ai</span></div>
+      <div>tu finir<span>as</span></div>
+      <div>il/elle finir<span>a</span></div>
+      <div>nous finir<span>ons</span></div>
+      <div>vous finir<span>ez</span></div>
+      <div>ils/elles finir<span>ont</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">finirons</span> le travail.</span>
+      <span class="mg">Hahavita ny asa izahay.</span>
+    </div>
+
+    <h3>3ème groupe — ohatra : <em>prendre, venir, faire</em></h3>
+    <p>Ny radical futur amin'ny 3ème groupe dia <strong>matetika tsy ny infinitif manontolo</strong> — misy fanovana. Tsy maintsy tsianjery.</p>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>prendrai</td><td>viendrai</td><td>ferai</td></tr>
+        <tr><td>tu</td><td>prendras</td><td>viendras</td><td>feras</td></tr>
+        <tr><td>il/elle</td><td>prendra</td><td>viendra</td><td>fera</td></tr>
+        <tr><td>nous</td><td>prendrons</td><td>viendrons</td><td>ferons</td></tr>
+        <tr><td>vous</td><td>prendrez</td><td>viendrez</td><td>ferez</td></tr>
+        <tr><td>ils/elles</td><td>prendront</td><td>viendront</td><td>feront</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre orange">
+      <strong>Fanamarihana :</strong> ny radical futur amin'ny 3ème groupe dia matetika <strong>tsy ny infinitif</strong> — ohatra <em>prendre → prendr-</em>, <em>venir → viendr-</em>, <em>faire → fer-</em>. Tsy maintsy tsianjery.
+    </div>
+  </section>
+
+  <!-- ===================== 4. VERBES IRRÉGULIERS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny verbes irréguliers amin'ny futur simple</h2>
+    <p>Ireto ny verbe manan-danja izay <strong>tsy manaraka</strong> ny fitsipika fototra. Ny radical-ny dia tsy maintsy tsianjery.</p>
+
+    <table>
+      <thead>
+        <tr><th>Verbe</th><th>Radical futur</th><th>Je</th><th>Dika malagasy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>être</td><td>ser-</td><td>je serai</td><td>ho izaho</td></tr>
+        <tr><td>avoir</td><td>aur-</td><td>j'aurai</td><td>hanana aho</td></tr>
+        <tr><td>aller</td><td>ir-</td><td>j'irai</td><td>handeha aho</td></tr>
+        <tr><td>faire</td><td>fer-</td><td>je ferai</td><td>hanao aho</td></tr>
+        <tr><td>venir</td><td>viendr-</td><td>je viendrai</td><td>ho avy aho</td></tr>
+        <tr><td>voir</td><td>verr-</td><td>je verrai</td><td>hahita aho</td></tr>
+        <tr><td>pouvoir</td><td>pourr-</td><td>je pourrai</td><td>afaka aho</td></tr>
+        <tr><td>vouloir</td><td>voudr-</td><td>je voudrai</td><td>te-ho aho</td></tr>
+        <tr><td>savoir</td><td>saur-</td><td>je saurai</td><td>hahafantatra aho</td></tr>
+        <tr><td>devoir</td><td>devr-</td><td>je devrai</td><td>tsy maintsy aho</td></tr>
+        <tr><td>envoyer</td><td>enverr-</td><td>j'enverrai</td><td>handefa aho</td></tr>
+        <tr><td>recevoir</td><td>recevr-</td><td>je recevrai</td><td>handray aho</td></tr>
+        <tr><td>tenir</td><td>tiendr-</td><td>je tiendrai</td><td>hitana aho</td></tr>
+        <tr><td>courir</td><td>courr-</td><td>je courrai</td><td>hihazakazaka aho</td></tr>
+        <tr><td>mourir</td><td>mourr-</td><td>je mourrai</td><td>ho faty aho</td></tr>
+        <tr><td>naître</td><td>naîtr-</td><td>je naîtrai</td><td>hateraka aho</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> ny verbe toy ny <em>appeler, jeter, acheter, payer</em> dia manana fanovana kely amin'ny radical futur (<em>appeller-, jetter-, achèter-, paier-</em>). Tsy maintsy jerena tsara.
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny futur simple — 6 tranga</h2>
+    <p>Ny futur simple dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ACTION FUTURE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Action future — hetsika ho avy</div>
+      <div class="expl">Hetsika <strong>hitranga amin'ny ho avy</strong>, tsy miankina amin'ny fahatokisana. Io no tena fampiasana fototra.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">partirai</span> demain.</span>
+        <span class="mg">Handeha rahampitso aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">mangera</span> à midi.</span>
+        <span class="mg">Hihinana izy amin'ny mitataovovonana.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">visiterons</span> le musée.</span>
+        <span class="mg">Hitety ny tranombakoka izahay.</span>
+      </div>
+    </div>
+
+    <!-- 2) PRÉDICTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Prédiction — faminaniana</div>
+      <div class="expl">Maminavina zavatra <strong>ho avy</strong>, matetika miaraka amin'ny <em>peut-être, probablement, sûrement…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il</span> <span class="verbe">pleuvra</span> demain.</span>
+        <span class="mg">Hitete orana rahampitso.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Tu</span> <span class="verbe">réussiras</span> sûrement.</span>
+        <span class="mg">Hahomby tokoa ianao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Ils</span> <span class="verbe">gagneront</span> le match.</span>
+        <span class="mg">Handresy ny lalao izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 3) PROMESSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Promesse — fampanantenana</div>
+      <div class="expl">Manao <strong>fampanantenana</strong> na <strong>fanoloran-tena</strong> hanao zavatra ho avy.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">t'aiderai</span>.</span>
+        <span class="mg">Hanampy anao aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">viendra</span> à la fête.</span>
+        <span class="mg">Ho avy amin'ny fety izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">reviendrons</span> bientôt.</span>
+        <span class="mg">Hiverina tsy ho ela izahay.</span>
+      </div>
+    </div>
+
+    <!-- 4) ORDRE ATTÉNUÉ -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Ordre atténué — baiko malefaka</div>
+      <div class="expl">Mampiasa ny futur <strong>hanao baiko malefaka</strong> na torohevitra, matetika miaraka amin'ny <em>tu feras, vous ferez…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Tu</span> <span class="verbe">feras</span> tes devoirs ce soir.</span>
+        <span class="mg">Hanao ny devoaranao ianao anio hariva.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Vous</span> <span class="verbe">attendrez</span> ici, s'il vous plaît.</span>
+        <span class="mg">Hiandry eto ianao azafady.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">On</span> <span class="verbe">partira</span> à 8 h.</span>
+        <span class="mg">Handeha amin'ny 8 ora isika.</span>
+      </div>
+    </div>
+
+    <!-- 5) SI + PRÉSENT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Si + présent → futur (fepetra ho avy)</div>
+      <div class="expl">Rehefa misy <strong>si + présent</strong>, ny valiny dia amin'ny <strong>futur simple</strong>. Ity no fepetra ho avy.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> tu <span class="verbe">viens</span>, je <span class="verbe">serai</span> content.</span>
+        <span class="mg">Raha tonga ianao, ho faly aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> il <span class="verbe">pleut</span>, nous <span class="verbe">resterons</span> à la maison.</span>
+        <span class="mg">Raha mitete orana, hijanona ao an-trano izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> elle <span class="verbe">étudie</span>, elle <span class="verbe">réussira</span>.</span>
+        <span class="mg">Raha mianatra izy, hahomby.</span>
+      </div>
+    </div>
+
+    <!-- 6) FUTUR vs PRÉSENT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Fahasamihafana amin'ny présent misolo futur</div>
+      <div class="expl">Ny futur simple dia <strong>manondro mivantana</strong> ny fotoana ho avy. Ny présent kosa mety hisolo azy, fa <strong>mila teny manodidina</strong> (<em>demain, bientôt…</em>) ary <strong>manamafy fahatokisana</strong>.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Futur :</span> Demain, je <span class="verbe">partirai</span>.</span>
+        <span class="mg">Rahampitso, handeha aho. <em>(mazava, tsy mila fanazavana)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Présent :</span> Demain, je <span class="verbe">pars</span>.</span>
+        <span class="mg">Rahampitso, mandeha aho. <em>(azo antoka, efa voalamina)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Futur :</span> Dans dix ans, je <span class="verbe">serai</span> médecin.</span>
+        <span class="mg">Afaka folo taona, ho mpitsabo aho. <em>(lavitra → futur)</em></span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny futur simple dia milaza <strong>hetsika ho avy</strong>, <strong>faminaniana</strong>, <strong>fampanantenana</strong>, <strong>baiko malefaka</strong>, ary <strong>fepetra ho avy</strong> (si + présent).
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je parler<strong>ai</strong> → <span class="correction">✓ je parlerai</span> (radical infinitif <em>parler-</em> + <em>-ai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je finir<strong>ai</strong> → <span class="correction">✓ je finirai</span> (radical infinitif <em>finir-</em> + <em>-ai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>prendrai</strong> → <span class="correction">✓ je prendrai</span> (radical <em>prendr-</em>, tsy <em>prendre-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>serai</strong> → <span class="correction">✓ je serai</span> (être → radical <em>ser-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>aurai</strong> → <span class="correction">✓ j'aurai</span> (avoir → radical <em>aur-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>irai</strong> → <span class="correction">✓ j'irai</span> (aller → radical <em>ir-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>ferai</strong> → <span class="correction">✓ je ferai</span> (faire → radical <em>fer-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>viendrai</strong> → <span class="correction">✓ je viendrai</span> (venir → radical <em>viendr-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>verrai</strong> → <span class="correction">✓ je verrai</span> (voir → radical <em>verr-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>pourrai</strong> → <span class="correction">✓ je pourrai</span> (pouvoir → radical <em>pourr-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>voudrai</strong> → <span class="correction">✓ je voudrai</span> (vouloir → radical <em>voudr-</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>saurai</strong> → <span class="correction">✓ je saurai</span> (savoir → radical <em>saur-</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Futur simple = temps simple</strong>, teny iray ihany, fotoana fototra amin'ny fitantarana ho avy.</li>
+      <li><strong>Fananganana</strong> : infinitif (na radical futur) + terminaisons <em>-ai, -as, -a, -ons, -ez, -ont</em>.</li>
+      <li><strong>Terminaisons mitovy ho an'ny groupe rehetra</strong> — tsy misy exception amin'ny terminaisons.</li>
+      <li><strong>Radical futur</strong> : 1er sy 2ème groupe → infinitif manontolo; 3ème groupe → matetika tsy infinitif (tsianjery).</li>
+      <li><strong>Verbes irréguliers</strong> : être → <em>ser-</em>, avoir → <em>aur-</em>, aller → <em>ir-</em>, faire → <em>fer-</em>, venir → <em>viendr-</em>, voir → <em>verr-</em>, pouvoir → <em>pourr-</em>, vouloir → <em>voudr-</em>, savoir → <em>saur-</em>, devoir → <em>devr-</em>.</li>
+      <li><strong>Fampiasana 6</strong> : hetsika ho avy, faminaniana, fampanantenana, baiko malefaka, fepetra ho avy (si + présent), fahasamihafana amin'ny présent.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°4 : le Futur simple · Fananganana, terminaisons, verbes irréguliers, fampiasana 6, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

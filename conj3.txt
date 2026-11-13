@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Passé composé — Temps n°3 | Fiche complète et corrigée</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --emeraude:#0f766e; --emeraude-clair:#14b8a6; --emeraude-pale:#f0fdfa;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#064e3b,#0f766e 60%,#14b8a6);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(6,78,59,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--emeraude);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--emeraude-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#064e3b,#0f766e);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(15,118,110,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--emeraude-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#064e3b,#0f766e);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--emeraude-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--emeraude);}
+
+  .encadre{border-left:5px solid var(--emeraude-clair);background:var(--emeraude-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--emeraude);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--emeraude-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--emeraude);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .verbes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.2rem 0;}
+  .verbe-card{background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border:1px solid #99f6e4;border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.7rem;transition:transform .2s;}
+  .verbe-card:hover{transform:translateX(4px);}
+  .verbe-card .num{background:var(--emeraude);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;}
+  .verbe-card .inf{font-weight:700;color:var(--emeraude);}
+  .verbe-card .mg{color:var(--gris);font-size:.85rem;font-style:italic;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(15,118,110,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--emeraude);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#064e3b,#0f766e);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#064e3b,#0f766e);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(6,78,59,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#99f6e4;}
+
+  .correction-box{background:#fffbeb;border:2px solid #f59e0b;border-radius:12px;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+  .correction-box .titre-correction{font-weight:800;color:#b45309;margin-bottom:.6rem;font-size:1rem;}
+  .correction-box .faux{color:var(--rouge);text-decoration:line-through;font-style:italic;}
+  .correction-box .vrai{color:var(--vert);font-weight:700;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°3 — Le Passé composé · Fiche corrigée</span>
+    <h1>Ny Passé composé</h1>
+    <p>Fananganana, auxiliaires <em>avoir/être</em>, <strong>ny 14 verbes mampiasa <em>être</em></strong> voatanisa feno, accord du participe passé, fampiasana 6, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== CORRECTION ===================== -->
+  <section>
+    <h2><span class="num">!</span> Fanitsiana manan-danja</h2>
+    <div class="correction-box">
+      <div class="titre-correction">⚠️ Fehezanteny diso tao amin'ny fiche taloha :</div>
+      <p class="faux">« Ny matoanteny 14 mampiasa être : aller, venir, arriver… » — <strong>tsy voatanisa</strong> ny 14 verbe.</p>
+      <div class="titre-correction" style="margin-top:1rem;">✅ Fehezanteny marina :</div>
+      <p class="vrai">« Ny <strong>14 verbes</strong> mampiasa <em>être</em> dia voatanisa eto ambany amin'ny <strong>tabilao feno</strong>, miaraka amin'ny dika malagasy sy ohatra. »</p>
+    </div>
+    <div class="encadre rouge">
+      <strong>Fanamarihana :</strong> ampiasaina ny teny <strong>« verbe »</strong> (fa tsy « matoanteny ») — satria io no teny frantsay mahazatra.
+    </div>
+  </section>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>passé composé</strong> dia <strong>temps composé</strong> : foronina avy amin'ny <strong>auxiliaire</strong> (<em>avoir</em> na <em>être</em>) amin'ny <strong>présent</strong> + <strong>participe passé</strong> ny verbe. Asongadiny ny hetsika <strong>vita</strong>, <strong>efa tanteraka</strong> tao amin'ny lasa.</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny passé composé dia <strong>fotoana fototra amin'ny fitantarana frantsay</strong> — izy no milaza hetsika vita (premier plan), fa ny imparfait kosa milaza sehatra (arrière-plan). <strong>Raha vita ny hetsika → passé composé.</strong>
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny passé composé</h2>
+    <p>Ny passé composé dia foronina amin'ny alalan'ny <strong>auxiliaire</strong> + <strong>participe passé</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Auxiliaire (avoir na être) amin'ny présent + participe passé = passé composé</strong>
+    </div>
+
+    <h3>Ny auxiliaire <em>avoir</em></h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>avoir (présent)</th><th>+ participe passé</th><th>Passé composé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>ai</td><td>parlé</td><td>j'ai parlé</td></tr>
+        <tr><td>tu</td><td>as</td><td>parlé</td><td>tu as parlé</td></tr>
+        <tr><td>il/elle</td><td>a</td><td>parlé</td><td>il a parlé</td></tr>
+        <tr><td>nous</td><td>avons</td><td>parlé</td><td>nous avons parlé</td></tr>
+        <tr><td>vous</td><td>avez</td><td>parlé</td><td>vous avez parlé</td></tr>
+        <tr><td>ils/elles</td><td>ont</td><td>parlé</td><td>ils ont parlé</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ny auxiliaire <em>être</em></h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>être (présent)</th><th>+ participe passé</th><th>Passé composé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>suis</td><td>allé(e)</td><td>je suis allé(e)</td></tr>
+        <tr><td>tu</td><td>es</td><td>allé(e)</td><td>tu es allé(e)</td></tr>
+        <tr><td>il/elle</td><td>est</td><td>allé(e)</td><td>il est allé / elle est allée</td></tr>
+        <tr><td>nous</td><td>sommes</td><td>allé(e)s</td><td>nous sommes allé(e)s</td></tr>
+        <tr><td>vous</td><td>êtes</td><td>allé(e)(s)</td><td>vous êtes allé(e)(s)</td></tr>
+        <tr><td>ils/elles</td><td>sont</td><td>allé(e)s</td><td>ils sont allés / elles sont allées</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. LES 14 VERBES ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny 14 verbes mampiasa <em>être</em> — lisitra feno</h2>
+    <p>Ireto ny <strong>14 verbes</strong> mampiasa <em>être</em> amin'ny passé composé. Samy voatanisa miaraka amin'ny dika malagasy sy ohatra.</p>
+
+    <div class="verbes-grid">
+      <div class="verbe-card"><span class="num">1</span><div><div class="inf">aller</div><div class="mg">mandeha</div></div></div>
+      <div class="verbe-card"><span class="num">2</span><div><div class="inf">venir</div><div class="mg">ho avy</div></div></div>
+      <div class="verbe-card"><span class="num">3</span><div><div class="inf">arriver</div><div class="mg">tonga</div></div></div>
+      <div class="verbe-card"><span class="num">4</span><div><div class="inf">partir</div><div class="mg">mandeha</div></div></div>
+      <div class="verbe-card"><span class="num">5</span><div><div class="inf">entrer</div><div class="mg">miditra</div></div></div>
+      <div class="verbe-card"><span class="num">6</span><div><div class="inf">sortir</div><div class="mg">mivoaka</div></div></div>
+      <div class="verbe-card"><span class="num">7</span><div><div class="inf">monter</div><div class="mg">miakatra</div></div></div>
+      <div class="verbe-card"><span class="num">8</span><div><div class="inf">descendre</div><div class="mg">midina</div></div></div>
+      <div class="verbe-card"><span class="num">9</span><div><div class="inf">naître</div><div class="mg">teraka</div></div></div>
+      <div class="verbe-card"><span class="num">10</span><div><div class="inf">mourir</div><div class="mg">maty</div></div></div>
+      <div class="verbe-card"><span class="num">11</span><div><div class="inf">rester</div><div class="mg">mijanona</div></div></div>
+      <div class="verbe-card"><span class="num">12</span><div><div class="inf">tomber</div><div class="mg">mianjera</div></div></div>
+      <div class="verbe-card"><span class="num">13</span><div><div class="inf">retourner</div><div class="mg">miverina</div></div></div>
+      <div class="verbe-card"><span class="num">14</span><div><div class="inf">passer</div><div class="mg">mandalo</div></div></div>
+    </div>
+
+    <h3>Ohatra miaraka amin'ny 14 verbes</h3>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Verbe</th><th>Passé composé</th><th>Dika malagasy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>aller</td><td>Je <strong>suis allé</strong> à l'école.</td><td>Nandeha tany an-tsekoly aho.</td></tr>
+        <tr><td>2</td><td>venir</td><td>Elle <strong>est venue</strong> hier.</td><td>Ntonga izy omaly.</td></tr>
+        <tr><td>3</td><td>arriver</td><td>Nous <strong>sommes arrivés</strong> tôt.</td><td>Ntonga aloha izahay.</td></tr>
+        <tr><td>4</td><td>partir</td><td>Ils <strong>sont partis</strong> à midi.</td><td>Nandeha tamin'ny mitataovovonana izy ireo.</td></tr>
+        <tr><td>5</td><td>entrer</td><td>Je <strong>suis entré</strong> dans la salle.</td><td>Niditra tao amin'ny efitrano aho.</td></tr>
+        <tr><td>6</td><td>sortir</td><td>Elle <strong>est sortie</strong> de la maison.</td><td>Nivoaka ny trano izy.</td></tr>
+        <tr><td>7</td><td>monter</td><td>Nous <strong>sommes montés</strong> au grenier.</td><td>Niakatra tany an-tampon-trano izahay.</td></tr>
+        <tr><td>8</td><td>descendre</td><td>Il <strong>est descendu</strong> du train.</td><td>Nidina ny lamasinina izy.</td></tr>
+        <tr><td>9</td><td>naître</td><td>Elle <strong>est née</strong> en 2000.</td><td>Teraka tamin'ny 2000 izy.</td></tr>
+        <tr><td>10</td><td>mourir</td><td>Il <strong>est mort</strong> à 80 ans.</td><td>Maty tamin'ny 80 taona izy.</td></tr>
+        <tr><td>11</td><td>rester</td><td>Je <strong>suis resté</strong> à la maison.</td><td>Nijanona tao an-trano aho.</td></tr>
+        <tr><td>12</td><td>tomber</td><td>Elle <strong>est tombée</strong> dans l'escalier.</td><td>Nianjera tamin'ny tohatra izy.</td></tr>
+        <tr><td>13</td><td>retourner</td><td>Nous <strong>sommes retournés</strong> à Paris.</td><td>Niverina tany Paris izahay.</td></tr>
+        <tr><td>14</td><td>passer</td><td>Il <strong>est passé</strong> devant la maison.</td><td>Nandalo teo alohan'ny trano izy.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre orange">
+      <strong>Fanamarihana :</strong> ireo 14 ireo dia <strong>lisitra fototra ofisialy</strong>. Misy verbe hafa koa mampiasa <em>être</em> (oh: <em>devenir, revenir, rentrer, remonter, redescendre, repartir, ressortir, retomber, intervenir, survenir, parvenir, renaître</em>), ary ny <strong>verbe pronominal rehetra</strong> (<em>se laver, se lever, s'habiller…</em>).
+    </div>
+  </section>
+
+  <!-- ===================== 4. AVOIR OU ÊTRE ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny verbe sasany dia mety haka <em>avoir</em> na <em>être</em> — ohatra <em>sortir</em></h2>
+    <p>Misy verbe toy ny <strong>sortir, monter, descendre, passer, retourner</strong> izay mety haka <em>avoir</em> na <em>être</em> arakaraka ny dikany. Ity ny ohatra mazava amin'ny <strong>sortir</strong>.</p>
+
+    <h3><em>sortir</em> + <em>avoir</em> = mamoaka zavatra (misy COD)</h3>
+    <p>Rehefa misy <strong>COD</strong> (zavatra avoaka), dia <em>avoir</em> no ampiasaina. Ny hetsika dia <strong>mandalo amin'ny zavatra</strong>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">J'</span><span class="verbe">ai sorti</span> le sac.</span>
+      <span class="mg">Namoa-kely ny kitapo aho. <em>(misy COD : le sac)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a sorti</span> les poubelles.</span>
+      <span class="mg">Namoa-kely ny fitoeram-pako izy. <em>(misy COD : les poubelles)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">avons sorti</span> les chaises.</span>
+      <span class="mg">Namoa-kely ny seza izahay. <em>(misy COD : les chaises)</em></span>
+    </div>
+
+    <h3><em>sortir</em> + <em>être</em> = mivoaka (tsy misy COD)</h3>
+    <p>Rehefa <strong>tsy misy COD</strong>, ary ny olona no mivoaka, dia <em>être</em> no ampiasaina. Ny hetsika dia <strong>miankina amin'ny sujet</strong>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">suis sorti</span> de la maison.</span>
+      <span class="mg">Nivoaka ny trano aho. <em>(tsy misy COD)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">est sortie</span> ce matin.</span>
+      <span class="mg">Nivoaka izy ny maraina. <em>(tsy misy COD)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">sommes sortis</span> ensemble.</span>
+      <span class="mg">Niara-nivoaka izahay. <em>(tsy misy COD)</em></span>
+    </div>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> raha misy <strong>COD</strong> → <em>avoir</em>; raha <strong>tsy misy COD</strong> → <em>être</em>.<br>
+      ✗ <em>J'ai sorti de la maison.</em> (diso — tsy misy COD)<br>
+      ✓ <em>Je suis sorti de la maison.</em> (marina)<br>
+      ✗ <em>Je suis sorti le sac.</em> (diso — misy COD)<br>
+      ✓ <em>J'ai sorti le sac.</em> (marina)
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> <em>sortir, monter, descendre, passer, retourner</em> dia mety haka <em>avoir</em> na <em>être</em> arakaraka ny fisian'ny COD. Raha misy COD → <em>avoir</em>; raha tsy misy → <em>être</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 5. PARTICIPE PASSÉ ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny participe passé isaky ny groupe</h2>
+    <table>
+      <thead>
+        <tr><th>Groupe</th><th>Terminaison</th><th>Ohatra</th><th>Participe passé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1er groupe</td><td>-er → <strong>-é</strong></td><td>parler</td><td>parlé</td></tr>
+        <tr><td>1er groupe</td><td>-er → <strong>-é</strong></td><td>manger</td><td>mangé</td></tr>
+        <tr><td>2ème groupe</td><td>-ir → <strong>-i</strong></td><td>finir</td><td>fini</td></tr>
+        <tr><td>2ème groupe</td><td>-ir → <strong>-i</strong></td><td>choisir</td><td>choisi</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>prendre</td><td>pris</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>faire</td><td>fait</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>venir</td><td>venu</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>voir</td><td>vu</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>avoir</td><td>eu</td></tr>
+        <tr><td>3ème groupe</td><td>irrégulier</td><td>être</td><td>été</td></tr>
+      </tbody>
+    </table>
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> ny participe passé amin'ny <strong>3ème groupe</strong> dia tsy manaraka lalàna — tsy maintsy tsianjery tsirairay.
+    </div>
+  </section>
+
+  <!-- ===================== 6. ACCORD DU PARTICIPE PASSÉ ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny accord du participe passé</h2>
+
+    <h3>Miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>être</em> no auxiliaire, ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> amin'ny genre sy nombre.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">est allée</span> à l'école.</span>
+      <span class="mg">Nandeha tany an-tsekoly izy (vehivavy). <em>(allée : +e satria vehivavy)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">sont partis</span> tôt.</span>
+      <span class="mg">Nandeha aloha izy ireo (lehilahy). <em>(partis : +s satria ploraly)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elles</span> <span class="verbe">sont arrivées</span>.</span>
+      <span class="mg">Ntonga izy ireo (vehivavy). <em>(arrivées : +es satria vehivavy ploraly)</em></span>
+    </div>
+
+    <h3>Miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>avoir</em> no auxiliaire, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong> (afa-tsy raha misy COD mialoha).</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a mangé</span> du riz.</span>
+      <span class="mg">Nihinana vary izy (vehivavy). <em>(mangé : tsy +e satria avoir)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">ont fini</span> le travail.</span>
+      <span class="mg">Nahavita ny asa izy ireo. <em>(fini : tsy +s satria avoir)</em></span>
+    </div>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> miaraka amin'ny <em>avoir</em>, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong>. Ohatra : ✗ <em>Elle a mangée.</em> → ✓ <em>Elle a mangé.</em>
+    </div>
+  </section>
+
+  <!-- ===================== 7. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">7</span> Ny fampiasana ny passé composé — 6 tranga</h2>
+
+    <!-- 1) ACTION TERMINÉE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Action terminée — hetsika vita</div>
+      <div class="expl">Hetsika <strong>vita tanteraka</strong> tao amin'ny lasa. Io no tena fampiasana fototra.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">ai mangé</span> une pomme.</span>
+        <span class="mg">Nihinana paoma aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a fini</span> ses devoirs.</span>
+        <span class="mg">Nahavita ny devoarany izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">avons visité</span> le musée.</span>
+        <span class="mg">Nitsidika ny tranombakoka izahay.</span>
+      </div>
+    </div>
+
+    <!-- 2) ACTION RÉPÉTÉE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Action répétée — hetsika miverimberina</div>
+      <div class="expl">Hetsika <strong>niverimberina</strong> tao amin'ny lasa, miaraka amin'ny <em>plusieurs fois, souvent…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">suis allé</span> trois fois à Paris.</span>
+        <span class="mg">Nandeha intelo tany Paris aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a téléphoné</span> plusieurs fois.</span>
+        <span class="mg">Niantso telefaonina imbetsaka izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Ils</span> <span class="verbe">ont visité</span> souvent ce musée.</span>
+        <span class="mg">Nitety io tranombakoka io matetika izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 3) ACTION ACCOMPLIE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Action accomplie — hetsika vita hatramin'izao</div>
+      <div class="expl">Hetsika <strong>vita hatramin'izao fotoana izao</strong>, matetika miaraka amin'ny <em>déjà, enfin, maintenant…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">ai déjà mangé</span>.</span>
+        <span class="mg">Efa nihinana aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">a enfin terminé</span> son travail.</span>
+        <span class="mg">Vita tamin'ny farany ny asany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">avons fini</span> maintenant.</span>
+        <span class="mg">Vita izahay izao.</span>
+      </div>
+    </div>
+
+    <!-- 4) ACTIONS SUCCESSIVES -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Actions successives — hetsika nifandimby</div>
+      <div class="expl">Hetsika <strong>maromaro nifandimby</strong> tao amin'ny lasa, matetika miaraka amin'ny <em>d'abord, ensuite, puis, enfin…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">D'abord, j'</span><span class="verbe">ai mangé</span>, puis <span class="sujet">je</span> <span class="verbe">suis sorti</span>.</span>
+        <span class="mg">Nihinana aloha aho, avy eo nivoaka.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">s'est levée</span>, <span class="verbe">s'est lavée</span>, puis <span class="verbe">est partie</span>.</span>
+        <span class="mg">Nifoha izy, nisasa, ary nandeha.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">avons pris</span> le train, <span class="verbe">sommes arrivés</span>, et <span class="verbe">avons visité</span> la ville.</span>
+        <span class="mg">Naka ny lamasinina izahay, tonga, ary nitety ny tanàna.</span>
+      </div>
+    </div>
+
+    <!-- 5) FAIRE SOULIGNER -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Mettre en relief un événement — mampisongadina zava-nitranga</div>
+      <div class="expl">Mampiasa ny passé composé <strong>hanamafisana</strong> hetsika iray manan-danja. Matetika miaraka amin'ny <em>enfin, voilà, c'est fait…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Voilà, c'est fait : j'</span><span class="verbe">ai acheté</span> la maison !</span>
+        <span class="mg">Izay, vita : nividy ny trano aho !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Enfin, tu</span> <span class="verbe">as compris</span> !</span>
+        <span class="mg">Tamin'ny farany, nahatakatra ianao !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Ça y est, nous</span> <span class="verbe">avons gagné</span> !</span>
+        <span class="mg">Vita, nandresy izahay !</span>
+      </div>
+    </div>
+
+    <!-- 6) PASSÉ COMPOSÉ vs IMPARFAIT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Fahasamihafana amin'ny imparfait — sehatra vs hetsika</div>
+      <div class="expl">Ny passé composé dia milaza <strong>hetsika vita</strong> (premier plan), fa ny imparfait kosa milaza <strong>sehatra / fahazarana / hetsika tsy vita</strong> (arrière-plan).</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">lisais</span> quand il <span class="verbe">est entré</span>.</span>
+        <span class="mg">Namaky aho rehefa niditra izy. <em>(imparfait : sehatra ; passé composé : hetsika)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">dormait</span> quand le téléphone <span class="verbe">a sonné</span>.</span>
+        <span class="mg">Natory izy rehefa naneno ny telefaonina.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">marchions</span> dans la rue quand il <span class="verbe">a commencé</span> à pleuvoir.</span>
+        <span class="mg">Nandeha teny an-dalambe izahay rehefa nanomboka nitete ny orana.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny passé composé dia milaza <strong>hetsika vita</strong>, <strong>hetsika niverimberina</strong>, <strong>hetsika vita hatramin'izao</strong>, <strong>hetsika nifandimby</strong>, ary <strong>zava-nitranga manan-danja</strong>. Izy no premier plan amin'ny fitantarana.
+    </div>
+  </section>
+
+  <!-- ===================== 8. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">8</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>mangé</strong> → <span class="correction">✓ j'ai mangé</span> (participe passé : <em>mangé</em>, fa tsy infinitif <em>manger</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>elle a <strong>mangée</strong> → <span class="correction">✓ elle a mangé</span> (miaraka amin'ny <em>avoir</em>, tsy mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je suis <strong>allé</strong> (vehivavy) → <span class="correction">✓ je suis allée</span> (miaraka amin'ny <em>être</em>, mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>allé</strong> → <span class="correction">✓ je suis allé</span> (<em>aller</em> mampiasa <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>venu</strong> → <span class="correction">✓ je suis venu</span> (<em>venir</em> mampiasa <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>elle s'est <strong>lavé</strong> → <span class="correction">✓ elle s'est lavée</span> (pronominal : mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>prendu</strong> → <span class="correction">✓ j'ai pris</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>faise</strong> → <span class="correction">✓ j'ai fait</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai sorti de la maison → <span class="correction">✓ je suis sorti de la maison</span> (tsy misy COD → <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je suis sorti le sac → <span class="correction">✓ j'ai sorti le sac</span> (misy COD → <em>avoir</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 9. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">9</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Passé composé = temps composé</strong> : auxiliaire (<em>avoir</em> na <em>être</em>) amin'ny présent + participe passé.</li>
+      <li><strong>Auxiliaire <em>avoir</em></strong> : ny ankamaroan'ny verbe.</li>
+      <li><strong>Auxiliaire <em>être</em></strong> : <strong>ny 14 verbes</strong> (aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer) + verbe pronominal.</li>
+      <li><strong>Verbe toy ny <em>sortir</em></strong> : mety haka <em>avoir</em> na <em>être</em> arakaraka ny fisian'ny COD — misy COD → <em>avoir</em>; tsy misy → <em>être</em>.</li>
+      <li><strong>Participe passé</strong> : 1er groupe <em>-é</em>, 2ème groupe <em>-i</em>, 3ème groupe irrégulier (tsianjery).</li>
+      <li><strong>Accord</strong> : miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet; miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet.</li>
+      <li><strong>Fampiasana 6</strong> : hetsika vita, hetsika niverimberina, hetsika vita hatramin'izao, hetsika nifandimby, zava-nitranga manan-danja, fahasamihafana amin'ny imparfait.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche corrigée — Temps n°3 : le Passé composé · Ny 14 verbes mampiasa <em>être</em>, ny fahasamihafana <em>avoir/être</em> amin'ny <em>sortir</em>, ary fampiasana 6.
+  </footer>
+
+</div>
+</body>
+</html>

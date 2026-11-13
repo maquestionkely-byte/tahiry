@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Imparfait — Temps n°2 | Fiche corrigée</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --violet:#7c3aed; --violet-clair:#a78bfa; --violet-pale:#f5f3ff;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#4c1d95,#7c3aed 60%,#a78bfa);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(76,29,149,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--violet);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--violet-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#4c1d95,#7c3aed);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(124,58,237,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--violet);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#4c1d95,#7c3aed);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:#f5f3ff;transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--violet);}
+
+  .encadre{border-left:5px solid var(--violet);background:var(--violet-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--violet);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--violet);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--violet);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #ddd6fe;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--violet);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(124,58,237,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--violet);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#4c1d95,#7c3aed);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#4c1d95,#7c3aed);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(76,29,149,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#ddd6fe;}
+
+  .correction-box{background:#fffbeb;border:2px solid #f59e0b;border-radius:12px;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+  .correction-box .titre-correction{font-weight:800;color:#b45309;margin-bottom:.6rem;font-size:1rem;}
+  .correction-box .faux{color:var(--rouge);text-decoration:line-through;font-style:italic;}
+  .correction-box .vrai{color:var(--vert);font-weight:700;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°2 — L'Imparfait · Fiche corrigée</span>
+    <h1>Ny Imparfait de l'indicatif</h1>
+    <p>Fiche feno sy voamarina : fananganana avy amin'ny <strong>radical du verbe</strong> (fa tsy « radical amin'ny nous »), terminaisons, fampiasana 10, fahasamihafana amin'ny passé composé, ary fandrika fanoratana.</p>
+  </header>
+
+  <!-- ===================== CORRECTION IMPORTANTE ===================== -->
+  <section>
+    <h2><span class="num">!</span> Fanitsiana manan-danja</h2>
+    <div class="correction-box">
+      <div class="titre-correction">⚠️ Fehezanteny diso tao amin'ny fiche taloha :</div>
+      <p class="faux">« Ny fototry ny imparfait dia avy amin'ny radical amin'ny nous amin'ny présent. »</p>
+      <div class="titre-correction" style="margin-top:1rem;">✅ Fehezanteny marina :</div>
+      <p class="vrai">« Ny imparfait dia foronina avy amin'ny <strong>radical du verbe</strong> (fototry ny matoanteny), ampiana ny terminaisons <em>-ais, -ais, -ait, -ions, -iez, -aient</em>. »</p>
+    </div>
+    <div class="encadre rouge">
+      <strong>Nahoana no diso ny « radical amin'ny nous » ?</strong><br>
+      Ny <em>nous</em> amin'ny présent dia <strong>fomba fanampiny</strong> hahitana ny radical amin'ny matoanteny sasany, fa <strong>tsy izany no fitsipika fototra</strong>. Ny fitsipika fototra dia ny <strong>radical du verbe</strong> — izany hoe ny fototry ny matoanteny. Ary misy exception : ny <em>être</em> dia manana radical <em>ét-</em> amin'ny imparfait, fa tsy avy amin'ny <em>nous sommes</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>imparfait de l'indicatif</strong> dia <strong>temps simple</strong> (teny iray ihany, tsy misy auxiliaire). Asongadiny ny hetsika <strong>lasa</strong> izay <strong>maharitra, miverimberina, na tsy vita</strong> tamin'ny fotoana iray. Tsy toy ny passé composé izay milaza zavatra vita — ny imparfait dia <strong>manome sary</strong> ny toe-javatra, toy ny fakantsary misintona sary lavareny.</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny imparfait dia fotoana fototra amin'ny fitantarana frantsay. Izy no ampiasaina hamaritana sehatra, fahazarana taloha, ary hetsika maharitra tao amin'ny lasa. <strong>Tsy misy hetsika vita</strong> amin'ny imparfait — raha vita ny hetsika, passé composé no ampiasaina.
+    </div>
+  </section>
+
+  <!-- ===================== 2. TERMINAISONS ===================== -->
+  <section>
+    <h2><span class="num">2</span> Ny terminaisons</h2>
+    <p>Ny imparfait dia manana <strong>terminaisons mitovy ho an'ny groupe rehetra</strong> — tsy misy exception amin'ny terminaisons, na inona na inona groupe.</p>
+
+    <h3>Ny terminaisons fototra (ho an'ny groupe rehetra)</h3>
+    <div class="terminaisons">
+      <div>je -<span>ais</span></div>
+      <div>tu -<span>ais</span></div>
+      <div>il/elle -<span>ait</span></div>
+      <div>nous -<span>ions</span></div>
+      <div>vous -<span>iez</span></div>
+      <div>ils/elles -<span>aient</span></div>
+    </div>
+
+    <h3>1er groupe — modely : <em>parler</em></h3>
+    <div class="terminaisons">
+      <div>je parl<span>ais</span></div>
+      <div>tu parl<span>ais</span></div>
+      <div>il/elle parl<span>ait</span></div>
+      <div>nous parl<span>ions</span></div>
+      <div>vous parl<span>iez</span></div>
+      <div>ils/elles parl<span>aient</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">parlais</span> souvent à ma mère.</span>
+      <span class="mg">Niresaka tamin'ny reniko matetika aho.</span>
+    </div>
+
+    <h3>2ème groupe — modely : <em>finir</em></h3>
+    <div class="terminaisons">
+      <div>je fin<span>issais</span></div>
+      <div>tu fin<span>issais</span></div>
+      <div>il/elle fin<span>issait</span></div>
+      <div>nous fin<span>issions</span></div>
+      <div>vous fin<span>issiez</span></div>
+      <div>ils/elles fin<span>issaient</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">finissions</span> le travail ensemble.</span>
+      <span class="mg">Niara-nahavita ny asa izahay.</span>
+    </div>
+
+    <h3>3ème groupe — ohatra : <em>prendre, venir, faire</em></h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>prenais</td><td>venais</td><td>faisais</td></tr>
+        <tr><td>tu</td><td>prenais</td><td>venais</td><td>faisais</td></tr>
+        <tr><td>il/elle</td><td>prenait</td><td>venait</td><td>faisait</td></tr>
+        <tr><td>nous</td><td>prenions</td><td>venions</td><td>faisions</td></tr>
+        <tr><td>vous</td><td>preniez</td><td>veniez</td><td>faisiez</td></tr>
+        <tr><td>ils/elles</td><td>prenaient</td><td>venaient</td><td>faisaient</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">3</span> Fananganana ny imparfait — fitsipika marina</h2>
+    <p>Ny imparfait dia foronina avy amin'ny <strong>radical du verbe</strong> (fototry ny matoanteny), ampiana ny terminaisons <em>-ais, -ais, -ait, -ions, -iez, -aient</em>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra marina :</strong><br>
+      <strong>Radical du verbe + terminaison = imparfait</strong>
+    </div>
+
+    <h3>Ohatra amin'ny radical du verbe</h3>
+    <table>
+      <thead>
+        <tr><th>Matoanteny</th><th>Radical du verbe</th><th>Imparfait (je)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>parler</td><td>parl-</td><td>je parlais</td></tr>
+        <tr><td>finir</td><td>finiss-</td><td>je finissais</td></tr>
+        <tr><td>prendre</td><td>pren-</td><td>je prenais</td></tr>
+        <tr><td>venir</td><td>ven-</td><td>je venais</td></tr>
+        <tr><td>faire</td><td>fais-</td><td>je faisais</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre orange">
+      <strong>Fanamarihana momba ny « nous » :</strong><br>
+      Ny <em>nous</em> amin'ny présent dia <strong>fomba fanampiny</strong> hahitana ny radical amin'ny matoanteny sasany (ohatra <em>nous parlons → parl-</em>), fa <strong>tsy izany no fitsipika fototra</strong>. Ny <strong>radical du verbe</strong> no fototra. Ary misy <strong>exception</strong> : ny <em>être</em> dia tsy manaraka izany — ny radical-ny amin'ny imparfait dia <em>ét-</em>, fa tsy <em>som-</em> avy amin'ny <em>nous sommes</em>.
+    </div>
+
+    <h3>Ny exception : <em>être</em></h3>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">être :</span> j'<span class="verbe">étais</span>, tu <span class="verbe">étais</span>, il <span class="verbe">était</span>, nous <span class="verbe">étions</span>, vous <span class="verbe">étiez</span>, ils <span class="verbe">étaient</span>.</span>
+      <span class="mg">(ho) : izaho dia, ianao dia, izy dia, izahay dia, ianareo dia, izy ireo dia.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">avoir :</span> j'<span class="verbe">avais</span>, nous <span class="verbe">avions</span>, ils <span class="verbe">avaient</span>.</span>
+      <span class="mg">(manana) : manana aho, manana izahay, manana izy ireo.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 4. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny fampiasana ny imparfait — 10 tranga feno</h2>
+    <p>Ny imparfait dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny <strong>tranga rehetra</strong>, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) DESCRIPTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Imparfait de description — famaritana</div>
+      <div class="expl">Mamaritra <strong>sehatra, toerana, olona, na endrika</strong> tao amin'ny lasa. Io no tena fampiasana fototra amin'ny fitantarana.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">La maison</span> <span class="verbe">était</span> grande et silencieuse.</span>
+        <span class="mg">Lehibe sy mangina ny trano.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Le ciel</span> <span class="verbe">était</span> bleu et les oiseaux <span class="verbe">chantaient</span>.</span>
+        <span class="mg">Manga ny lanitra ary nihira ny vorona.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">avait</span> de longs cheveux noirs.</span>
+        <span class="mg">Nanana volo mainty lava izy.</span>
+      </div>
+    </div>
+
+    <!-- 2) HABITUDE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Imparfait d'habitude — fahazarana taloha</div>
+      <div class="expl">Hetsika <strong>miverimberina</strong> tao amin'ny lasa. Matetika miaraka amin'ny teny toy ny <em>tous les jours, souvent, toujours, chaque…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">me levais</span> à 6 h tous les matins.</span>
+        <span class="mg">Nifoha tamin'ny 6 ora isa-maraina aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">allait</span> au marché chaque samedi.</span>
+        <span class="mg">Nandeha tany an-tsena izy isaky ny asabotsy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">mangions</span> du riz tous les soirs.</span>
+        <span class="mg">Nihinana vary izahay isa-paharivan'ny andro.</span>
+      </div>
+    </div>
+
+    <!-- 3) ACTION EN COURS -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Imparfait d'action en cours — hetsika maharitra</div>
+      <div class="expl">Hetsika <strong>efa nanomboka fa tsy vita</strong> tamin'ny fotoana iray tao amin'ny lasa. Matetika miaraka amin'ny passé composé (hetsika iray namely ny imparfait).</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">lisais</span> quand il est entré.</span>
+        <span class="mg">Namaky aho rehefa niditra izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">dormait</span> quand le téléphone a sonné.</span>
+        <span class="mg">Natory izy rehefa naneno ny telefaonina.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">marchions</span> dans la rue quand il a commencé à pleuvoir.</span>
+        <span class="mg">Nandeha teny an-dalambe izahay rehefa nanomboka nitete ny orana.</span>
+      </div>
+    </div>
+
+    <!-- 4) ATTÉNUATION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Imparfait d'atténuation — fangatahana malefaka</div>
+      <div class="expl">Mampiasa ny imparfait hanao <strong>fangatahana malefaka</strong> na <strong>fanajana</strong> (polite). Tsy mifandray amin'ny lasa izy eto, fa manalefaka ny feo.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">voulais</span> vous demander quelque chose.</span>
+        <span class="mg">Te-hangataka zavatra aminao aho (amin'ny fomba malefaka).</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Vous</span> <span class="verbe">pouviez</span> m'aider, s'il vous plaît ?</span>
+        <span class="mg">Afaka manampy ahy ve ianao azafady ? (malefaka)</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">aurais</span> aimé un café.</span>
+        <span class="mg">Te-hisotro kafe aho (amin'ny fomba malefaka).</span>
+      </div>
+    </div>
+
+    <!-- 5) HYPOTHÈSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Imparfait d'hypothèse (si + imparfait) — fiheverana</div>
+      <div class="expl">Miaraka amin'ny <strong>si + imparfait</strong>, maneho <strong>fiheverana</strong> na <strong>fepetra tsy tena izy</strong>. Ny valiny dia amin'ny conditionnel présent.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> j'<span class="verbe">avais</span> de l'argent, je voyagerais.</span>
+        <span class="mg">Raha nanana vola aho, dia nandeha nizaha tany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> tu <span class="verbe">venais</span>, nous serions contents.</span>
+        <span class="mg">Raha tonga ianao, dia ho faly izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> elle <span class="verbe">savait</span>, elle pleurerait.</span>
+        <span class="mg">Raha nahafantatra izy, dia nitomany.</span>
+      </div>
+    </div>
+
+    <!-- 6) DISCOURS INDIRECT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Imparfait dans le discours indirect — fitantarana ankolaka</div>
+      <div class="expl">Rehefa mitantara ny tenin'olona ianao ary ny matoanteny mpampiditra (<em>dire, penser, croire…</em>) dia amin'ny lasa, dia <strong>miova ho imparfait ny présent</strong> ao amin'ny discours direct. Ity no antsoina hoe <strong>concordance des temps</strong>.</div>
+      <div class="exemple">
+        <span class="fr">Paul a dit : « J'<span class="verbe">aime</span> ce livre. » → Paul a dit qu'il <span class="verbe">aimait</span> ce livre.</span>
+        <span class="mg">Nilaza i Paul hoe : « Tiako ity boky ity. » → Nilaza i Paul fa tiany io boky io.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle a expliqué : « Je <span class="verbe">travaille</span> beaucoup. » → Elle a expliqué qu'elle <span class="verbe">travaillait</span> beaucoup.</span>
+        <span class="mg">Nanazava izy hoe : « Miasa be aho. » → Nanazava izy fa miasa be izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ils ont dit : « Nous <span class="verbe">sommes</span> fatigués. » → Ils ont dit qu'ils <span class="verbe">étaient</span> fatigués.</span>
+        <span class="mg">Nilaza izy ireo hoe : « Reraka izahay. » → Nilaza izy ireo fa reraka izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 7) CONTREFACTUEL -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">7</span> Imparfait contrefactuel — fiheverana mifanohitra amin'ny zava-misy</div>
+      <div class="expl">Ny imparfait dia mety hidika <strong>zavatra tsy nitranga tamin'ny lasa</strong> raha tsy nisy ny antony iray. Matetika hita amin'ny fitantarana sy gazety.</div>
+      <div class="exemple">
+        <span class="fr">Sans le bon réflexe du conducteur, le cycliste <span class="verbe">était renversé</span>.</span>
+        <span class="mg">Raha tsy ny fahaizan'ny mpamily, dia voa ny mpitaingina bisikileta. (= aurait été renversé)</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Un pas de plus, et il <span class="verbe">tombait</span> dans le vide.</span>
+        <span class="mg">Dingana iray hafa, dia nianjera tao an-davaka izy. (= serait tombé)</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Sans ton aide, je <span class="verbe">ratais</span> l'examen.</span>
+        <span class="mg">Raha tsy ny fanampianao, dia tsy nahavita ny fanadinana aho. (= aurais raté)</span>
+      </div>
+    </div>
+
+    <!-- 8) FORAIN -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">8</span> Imparfait forain — fitantarana tsy ara-potoana</div>
+      <div class="expl">Fampiasana mahazatra amin'ny fiteny andavanandro, matetika amin'ny resaka tsy ara-potoana na amin'ny fitantarana mampihomehy. Mety ho toy ny présent de narration fa amin'ny lasa.</div>
+      <div class="exemple">
+        <span class="fr">Alors, hier, je <span class="verbe">sortais</span> du bureau, et qui je <span class="verbe">voyais</span> ? Marie !</span>
+        <span class="mg">Ary omaly, nivoaka ny birao aho, ary iza no hitako ? I Marie !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Il y a deux ans, j'<span class="verbe">habitais</span> à Paris. Un jour, je <span class="verbe">rencontrais</span> un ami.</span>
+        <span class="mg">Roa taona lasa izay, nipetraka tany Paris aho. Indray andro, nifanena tamin'ny namana iray aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle <span class="verbe">arrivait</span>, elle <span class="verbe">voyait</span> la scène, et elle <span class="verbe">comprenait</span> tout.</span>
+        <span class="mg">Tonga izy, nahita ny zava-nitranga, ary nahatakatra ny zava-drehetra.</span>
+      </div>
+    </div>
+
+    <!-- 9) HYPOCORISTIQUE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">9</span> Imparfait hypocoristique — fitiavana, fangorahana</div>
+      <div class="expl">Fampiasana manokana amin'ny fiteny amin'ny ankizy na amin'ny olona akaiky, mba hanehoana <strong>fitiavana, fangorahana, na fiahiana</strong>. Matetika miaraka amin'ny feo malefaka.</div>
+      <div class="exemple">
+        <span class="fr">Oh, le pauvre petit, il <span class="verbe">avait</span> peur !</span>
+        <span class="mg">Oh, ilay zaza mahantra, natahotra izy !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Comme il <span class="verbe">était</span> mignon, ce bébé !</span>
+        <span class="mg">Tena mahafatifaty ity zazakely ity !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ma petite chérie, elle <span class="verbe">était</span> fatiguée, n'est-ce pas ?</span>
+        <span class="mg">Ry zanako malala, reraka ianao, sa tsy izany ?</span>
+      </div>
+    </div>
+
+    <!-- 10) STYLE INDIRECT LIBRE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">10</span> Imparfait dans le style indirect libre — feo anaty</div>
+      <div class="expl">Fampiasana amin'ny literatiora: ny imparfait dia mampiseho ny <strong>eritreritry ny mpilalao</strong> tsy misy teny mpampiditra (<em>il pensait que…</em>). Hita amin'ny tantara frantsay.</div>
+      <div class="exemple">
+        <span class="fr">Il <span class="verbe">regardait</span> la mer. Que <span class="verbe">voulait</span>-il vraiment ? Il ne le <span class="verbe">savait</span> pas.</span>
+        <span class="mg">Nijery ny ranomasina izy. Inona no tena tadiaviny ? Tsy fantany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle <span class="verbe">pensait</span> à lui. Il <span class="verbe">était</span> loin, trop loin.</span>
+        <span class="mg">Nieritreritra azy izy. Lavitra izy, lavitra loatra.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Que <span class="verbe">voulait</span>-il ? Pourquoi <span class="verbe">était</span>-il venu ?</span>
+        <span class="mg">Inona no tadiaviny ? Nahoana izy no tonga ?</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny imparfait dia afaka milaza <strong>famaritana</strong>, <strong>fahazarana taloha</strong>, <strong>hetsika maharitra</strong>, <strong>fangatahana malefaka</strong>, <strong>fiheverana</strong>, <strong>fitantarana ankolaka</strong>, <strong>fiheverana mifanohitra amin'ny zava-misy</strong>, <strong>fitantarana tsy ara-potoana</strong>, <strong>fitiavana</strong>, ary <strong>feo anaty</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 5. IMPARFAIT vs PASSÉ COMPOSÉ ===================== -->
+  <section>
+    <h2><span class="num">5</span> Fahasamihafana amin'ny passé composé (tena ilaina)</h2>
+    <p>Ity no <strong>zavatra tena ilaina</strong> amin'ny fitantarana frantsay. Ny imparfait sy ny passé composé dia miara-miasa:</p>
+    <table>
+      <thead>
+        <tr><th>Imparfait</th><th>Passé composé</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sehatra, famaritana, fahazarana, hetsika tsy vita (arrière-plan)</td>
+          <td>Hetsika vita, nitranga indray mandeha (premier plan)</td>
+        </tr>
+        <tr>
+          <td>Manome sary ny toe-javatra</td>
+          <td>Mitantara hetsika iray</td>
+        </tr>
+        <tr>
+          <td><em>Je <strong>lisais</strong>.</em></td>
+          <td><em>Il <strong>est entré</strong>.</em></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">lisais</span> quand il <span class="verbe">est entré</span>.</span>
+      <span class="mg">Namaky aho rehefa niditra izy. <em>(Ny famakiana no sehatra, ny fidirana no hetsika.)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">dormait</span> quand le téléphone <span class="verbe">a sonné</span>.</span>
+      <span class="mg">Natory izy rehefa naneno ny telefaonina.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">marchions</span> dans la rue quand il <span class="verbe">a commencé</span> à pleuvoir.</span>
+      <span class="mg">Nandeha teny an-dalambe izahay rehefa nanomboka nitete ny orana.</span>
+    </div>
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> raha <strong>vita</strong> ny hetsika → passé composé. Raha <strong>mbola tsy vita</strong> na <strong>sehatra</strong> → imparfait. Ohatra: ✗ <em>Hier, je mangeais une pomme.</em> (mety, fa tsy mazava) → ✓ <em>Hier, j'ai mangé une pomme.</em> (vita).
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES D'ORTHOGRAPHE ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika fanoratana</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je parl<strong>ais</strong> → <span class="correction">✓ je parlais</span> (tsara, fa tadidio : <em>-ais</em>, fa tsy <em>-ait</em> amin'ny <em>je</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous parl<strong>ions</strong> → <span class="correction">✓ nous parlions</span> (mety, fa <em>-ions</em> fa tsy <em>-ons</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>ils parl<strong>aient</strong> → <span class="correction">✓ ils parlaient</span> (mety, fa <em>-aient</em> fa tsy <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je fini<strong>ssais</strong> → <span class="correction">✓ je finissais</span> (2 <em>s</em> : iray avy amin'ny radical, iray avy amin'ny terminaison).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous mang<strong>ions</strong> → <span class="correction">✓ nous mangions</span> (mety, fa tadidio ny <em>-eons</em> amin'ny présent, fa <em>-ions</em> amin'ny imparfait).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous commen<strong>cions</strong> → <span class="correction">✓ nous commencions</span> (cédille amin'ny <em>-cer</em> alohan'ny <em>i</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous cri<strong>ons</strong> → <span class="correction">✓ nous criions</span> (2 <em>i</em> : <em>cri-</em> + <em>-ions</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>vous voy<strong>ez</strong> → <span class="correction">✓ vous voyiez</span> (<em>y</em> + <em>i</em> : <em>voy-</em> + <em>-iez</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous étudi<strong>ons</strong> → <span class="correction">✓ nous étudiions</span> (2 <em>i</em> : <em>étudi-</em> + <em>-ions</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. IRRÉGULIERS ===================== -->
+  <section>
+    <h2><span class="num">7</span> Matoanteny tsy manaraka lalàna tokony ho fantatra</h2>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>être (ho)</th><th>avoir (manana)</th><th>aller (mandeha)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>étais</td><td>avais</td><td>allais</td></tr>
+        <tr><td>tu</td><td>étais</td><td>avais</td><td>allais</td></tr>
+        <tr><td>il/elle</td><td>était</td><td>avait</td><td>allait</td></tr>
+        <tr><td>nous</td><td>étions</td><td>avions</td><td>allions</td></tr>
+        <tr><td>vous</td><td>étiez</td><td>aviez</td><td>alliez</td></tr>
+        <tr><td>ils/elles</td><td>étaient</td><td>avaient</td><td>allaient</td></tr>
+      </tbody>
+    </table>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">J'</span><span class="verbe">étais</span> malgache et <span class="sujet">j'</span><span class="verbe">avais</span> un livre.</span>
+      <span class="mg">Malagasy aho ary nanana boky.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">allions</span> à l'école.</span>
+      <span class="mg">Nandeha tany an-tsekoly izahay.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 8. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">8</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Imparfait = temps simple</strong>, teny iray ihany, fotoana fototra amin'ny fitantarana.</li>
+      <li><strong>Fananganana</strong> : <strong>radical du verbe</strong> + terminaisons <em>-ais, -ais, -ait, -ions, -iez, -aient</em>.</li>
+      <li><strong>Terminaisons mitovy ho an'ny groupe rehetra</strong> — tsy misy exception amin'ny terminaisons.</li>
+      <li><strong>Fampiasana 10</strong> : famaritana, fahazarana, hetsika maharitra, fangatahana malefaka, fiheverana, discours indirect, contrefactuel, forain, hypocoristique, style indirect libre.</li>
+      <li><strong>Fahasamihafana amin'ny passé composé</strong> : imparfait = sehatra / tsy vita; passé composé = hetsika vita.</li>
+      <li><strong>Exception</strong> : ny <em>être</em> dia manana radical <em>ét-</em> amin'ny imparfait, fa tsy avy amin'ny <em>nous sommes</em>.</li>
+      <li><strong>Fandrika fanoratana</strong> : <em>-ais</em> amin'ny <em>je/tu</em>, <em>-ait</em> amin'ny <em>il/elle</em>, <em>-ions</em> amin'ny <em>nous</em>, <em>-iez</em> amin'ny <em>vous</em>, <em>-aient</em> amin'ny <em>ils/elles</em>; <strong>deux i</strong> (<em>nous criions</em>) sy <strong>y + i</strong> (<em>vous voyiez</em>).</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche corrigée — Temps n°2 : l'Imparfait · Fananganana avy amin'ny <strong>radical du verbe</strong>, fampiasana 10, fahasamihafana amin'ny passé composé, ary fandrika fanoratana.
+  </footer>
+
+</div>
+</body>
+</html>

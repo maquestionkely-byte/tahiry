@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Plus-que-parfait — Temps n°5 | Fiche complète</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --ambre:#b45309; --ambre-clair:#f59e0b; --ambre-pale:#fffbeb;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#78350f,#b45309 60%,#f59e0b);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(120,53,15,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--ambre);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--ambre-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#78350f,#b45309);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(180,83,9,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--ambre-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#78350f,#b45309);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--ambre-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--ambre);}
+
+  .encadre{border-left:5px solid var(--ambre-clair);background:var(--ambre-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--ambre);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--ambre-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--ambre);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--ambre);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(180,83,9,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--ambre);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#78350f,#b45309);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#78350f,#b45309);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(120,53,15,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#fde68a;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°5 — Le Plus-que-parfait</span>
+    <h1>Ny Plus-que-parfait</h1>
+    <p>Fananganana, auxiliaires <em>avoir/être</em> amin'ny <strong>imparfait</strong>, accord du participe passé, fampiasana 6, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>plus-que-parfait</strong> dia <strong>temps composé</strong> : foronina avy amin'ny <strong>auxiliaire</strong> (<em>avoir</em> na <em>être</em>) amin'ny <strong>imparfait</strong> + <strong>participe passé</strong> ny verbe. Asongadiny ny hetsika <strong>vita talohan'ny hetsika hafa tao amin'ny lasa</strong> — izany hoe « lasa tao amin'ny lasa ».</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny plus-que-parfait dia <strong>fotoana fototra amin'ny fitantarana</strong>. Izy no milaza hetsika efa vita <strong>talohan'ny</strong> hetsika iray hafa (matetika amin'ny passé composé na imparfait). Amin'ny teny malagasy, matetika adika amin'ny <em>« efa »</em> na <em>« efa vita »</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny plus-que-parfait</h2>
+    <p>Ny plus-que-parfait dia foronina amin'ny alalan'ny <strong>auxiliaire amin'ny imparfait</strong> + <strong>participe passé</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Auxiliaire (avoir na être) amin'ny imparfait + participe passé = plus-que-parfait</strong>
+    </div>
+
+    <h3>Ny auxiliaire <em>avoir</em> amin'ny imparfait</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>avoir (imparfait)</th><th>+ participe passé</th><th>Plus-que-parfait</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>avais</td><td>parlé</td><td>j'avais parlé</td></tr>
+        <tr><td>tu</td><td>avais</td><td>parlé</td><td>tu avais parlé</td></tr>
+        <tr><td>il/elle</td><td>avait</td><td>parlé</td><td>il avait parlé</td></tr>
+        <tr><td>nous</td><td>avions</td><td>parlé</td><td>nous avions parlé</td></tr>
+        <tr><td>vous</td><td>aviez</td><td>parlé</td><td>vous aviez parlé</td></tr>
+        <tr><td>ils/elles</td><td>avaient</td><td>parlé</td><td>ils avaient parlé</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ny auxiliaire <em>être</em> amin'ny imparfait</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>être (imparfait)</th><th>+ participe passé</th><th>Plus-que-parfait</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>étais</td><td>allé(e)</td><td>j'étais allé(e)</td></tr>
+        <tr><td>tu</td><td>étais</td><td>allé(e)</td><td>tu étais allé(e)</td></tr>
+        <tr><td>il/elle</td><td>était</td><td>allé(e)</td><td>il était allé / elle était allée</td></tr>
+        <tr><td>nous</td><td>étions</td><td>allé(e)s</td><td>nous étions allé(e)s</td></tr>
+        <tr><td>vous</td><td>étiez</td><td>allé(e)(s)</td><td>vous étiez allé(e)(s)</td></tr>
+        <tr><td>ils/elles</td><td>étaient</td><td>allé(e)s</td><td>ils étaient allés / elles étaient allées</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. AVOIR OU ÊTRE ===================== -->
+  <section>
+    <h2><span class="num">3</span> Rahoviana no <em>avoir</em> ary rahoviana no <em>être</em> ?</h2>
+    <p>Ny fitsipika dia <strong>mitovy amin'ny passé composé</strong> :</p>
+
+    <h3>Verbe mampiasa <em>avoir</em> (ny ankamaroany)</h3>
+    <p>Ny <strong>ankamaroan'ny verbe</strong> dia mampiasa <em>avoir</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">J'</span><span class="verbe">avais mangé</span> du riz.</span>
+      <span class="mg">Efa nihinana vary aho.</span>
+    </div>
+
+    <h3>Verbe mampiasa <em>être</em> (ny 14 verbe + pronominal)</h3>
+    <p>Ny <strong>14 verbes</strong> (aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer) sy ny <strong>verbe pronominal rehetra</strong> dia mampiasa <em>être</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">m'étais levé</span> à 6 h.</span>
+      <span class="mg">Efa nifoha tamin'ny 6 ora aho.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">était allée</span> à l'école.</span>
+      <span class="mg">Efa nandeha tany an-tsekoly izy.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 4. ACCORD DU PARTICIPE PASSÉ ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny accord du participe passé</h2>
+
+    <h3>Miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>être</em> no auxiliaire, ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> amin'ny genre sy nombre.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">était allée</span> à l'école.</span>
+      <span class="mg">Efa nandeha tany an-tsekoly izy (vehivavy). <em>(allée : +e satria vehivavy)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">étaient partis</span> tôt.</span>
+      <span class="mg">Efa nandeha aloha izy ireo (lehilahy). <em>(partis : +s satria ploraly)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elles</span> <span class="verbe">étaient arrivées</span>.</span>
+      <span class="mg">Efa ntonga izy ireo (vehivavy). <em>(arrivées : +es satria vehivavy ploraly)</em></span>
+    </div>
+
+    <h3>Miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>avoir</em> no auxiliaire, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong> (afa-tsy raha misy COD mialoha).</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">avait mangé</span> du riz.</span>
+      <span class="mg">Efa nihinana vary izy (vehivavy). <em>(mangé : tsy +e satria avoir)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">avaient fini</span> le travail.</span>
+      <span class="mg">Efa nahavita ny asa izy ireo. <em>(fini : tsy +s satria avoir)</em></span>
+    </div>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> miaraka amin'ny <em>avoir</em>, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong>. Ohatra : ✗ <em>Elle avait mangée.</em> → ✓ <em>Elle avait mangé.</em>
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny plus-que-parfait — 6 tranga</h2>
+    <p>Ny plus-que-parfait dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ANTÉRIORITÉ -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Antériorité — hetsika vita talohan'ny hetsika hafa</div>
+      <div class="expl">Hetsika <strong>vita talohan'ny hetsika iray hafa</strong> tao amin'ny lasa. Io no tena fampiasana fototra. Matetika miaraka amin'ny passé composé na imparfait.</div>
+      <div class="exemple">
+        <span class="fr">Quand je <span class="verbe">suis arrivé</span>, elle <span class="verbe">avait déjà mangé</span>.</span>
+        <span class="mg">Rehefa tonga aho, efa nihinana izy. <em>(ny fisakafoana no vita talohan'ny fahatongavana)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Il <span class="verbe">avait fini</span> son travail avant de partir.</span>
+        <span class="mg">Efa nahavita ny asany izy talohan'ny nandehanany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Nous <span class="verbe">étions partis</span> quand il est arrivé.</span>
+        <span class="mg">Efa nandeha izahay rehefa tonga izy.</span>
+      </div>
+    </div>
+
+    <!-- 2) BILAN -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Bilan — fanisana / famintinana tao amin'ny lasa</div>
+      <div class="expl">Manao <strong>famintinana</strong> na <strong>fanisana</strong> ny zavatra efa nitranga talohan'ny fotoana iray.</div>
+      <div class="exemple">
+        <span class="fr">En 2020, j'<span class="verbe">avais visité</span> dix pays.</span>
+        <span class="mg">Tamin'ny 2020, efa nitety firenena folo aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle <span class="verbe">avait lu</span> tous les livres de la bibliothèque.</span>
+        <span class="mg">Efa namaky ny boky rehetra tao amin'ny tranomboky izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ils <span class="verbe">avaient déjà gagné</span> trois matchs.</span>
+        <span class="mg">Efa nandresy lalao telo izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 3) CAUSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Cause — antony</div>
+      <div class="expl">Manazava ny <strong>antony</strong> na ny <strong>fiaviana</strong> ny toe-javatra iray tao amin'ny lasa.</div>
+      <div class="exemple">
+        <span class="fr">Il était fatigué parce qu'il <span class="verbe">avait beaucoup travaillé</span>.</span>
+        <span class="mg">Reraka izy satria efa niasa be.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle pleurait parce qu'elle <span class="verbe">avait perdu</span> son chat.</span>
+        <span class="mg">Nitomany izy satria efa namoy ny sakany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Nous étions inquiets car nous <span class="verbe">avions entendu</span> une mauvaise nouvelle.</span>
+        <span class="mg">Natahotra izahay satria efa nahare vaovao ratsy.</span>
+      </div>
+    </div>
+
+    <!-- 4) REGRET -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Regret — fanenenana</div>
+      <div class="expl">Maneho <strong>fanenenana</strong> na <strong>fisalasalana</strong> amin'ny zavatra tsy natao na tsy nitranga tao amin'ny lasa. Matetika miaraka amin'ny <em>si + plus-que-parfait</em>.</div>
+      <div class="exemple">
+        <span class="fr">Si j'<span class="verbe">avais su</span>, je serais venu.</span>
+        <span class="mg">Raha nahafantatra aho, dia tonga. <em>(fanenenana : tsy nahafantatra aho)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si elle <span class="verbe">avait étudié</span>, elle aurait réussi.</span>
+        <span class="mg">Raha nianatra izy, dia nahomby. <em>(fanenenana)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si nous <span class="verbe">étions partis</span> plus tôt, nous n'aurions pas raté le train.</span>
+        <span class="mg">Raha nandeha aloha kokoa izahay, dia tsy very ny lamasinina. <em>(fanenenana)</em></span>
+      </div>
+    </div>
+
+    <!-- 5) HYPOTHÈSE IRRÉELLE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Hypothèse irréelle — fiheverana tsy tena izy tao amin'ny lasa</div>
+      <div class="expl">Miaraka amin'ny <strong>si + plus-que-parfait</strong>, maneho <strong>fiheverana tsy tena izy</strong> tao amin'ny lasa. Ny valiny dia amin'ny <strong>conditionnel passé</strong>.</div>
+      <div class="exemple">
+        <span class="fr">Si tu <span class="verbe">m'avais prévenu</span>, j'aurais agi autrement.</span>
+        <span class="mg">Raha nampandre ahy ianao, dia nanao zavatra hafa aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si elle <span class="verbe">avait pris</span> le train, elle serait déjà arrivée.</span>
+        <span class="mg">Raha naka ny lamasinina izy, dia efa tonga.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si nous <span class="verbe">avions su</span> la vérité, nous aurions réagi.</span>
+        <span class="mg">Raha nahafantatra ny marina izahay, dia nanao zavatra.</span>
+      </div>
+    </div>
+
+    <!-- 6) DISCOURS INDIRECT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Discours indirect — fitantarana ankolaka</div>
+      <div class="expl">Rehefa mitantara ny tenin'olona ianao ary ny matoanteny mpampiditra dia amin'ny <strong>lasa</strong>, ny <strong>passé composé</strong> ao amin'ny discours direct dia miova ho <strong>plus-que-parfait</strong>.</div>
+      <div class="exemple">
+        <span class="fr">Paul a dit : « J'<span class="verbe">ai mangé</span>. » → Paul a dit qu'il <span class="verbe">avait mangé</span>.</span>
+        <span class="mg">Nilaza i Paul hoe : « Nihinana aho. » → Nilaza i Paul fa efa nihinana izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle a expliqué : « J'<span class="verbe">ai fini</span> le travail. » → Elle a expliqué qu'elle <span class="verbe">avait fini</span> le travail.</span>
+        <span class="mg">Nanazava izy hoe : « Nahavita ny asa aho. » → Nanazava izy fa efa nahavita ny asa izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ils ont dit : « Nous <span class="verbe">sommes partis</span>. » → Ils ont dit qu'ils <span class="verbe">étaient partis</span>.</span>
+        <span class="mg">Nilaza izy ireo hoe : « Nandeha izahay. » → Nilaza izy ireo fa efa nandeha izy ireo.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny plus-que-parfait dia milaza <strong>hetsika vita talohan'ny hetsika hafa</strong>, <strong>famintinana</strong>, <strong>antony</strong>, <strong>fanenenana</strong>, <strong>fiheverana tsy tena izy</strong>, ary <strong>fitantarana ankolaka</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'ai <strong>avais parlé</strong> → <span class="correction">✓ j'avais parlé</span> (auxiliaire <em>avoir</em> amin'ny imparfait : <em>avais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>suis allé</strong> (plus-que-parfait) → <span class="correction">✓ j'étais allé</span> (auxiliaire <em>être</em> amin'ny imparfait : <em>étais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>elle <strong>avait mangée</strong> → <span class="correction">✓ elle avait mangé</span> (miaraka amin'ny <em>avoir</em>, tsy mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>m'étais levé</strong> (vehivavy) → <span class="correction">✓ je m'étais levée</span> (miaraka amin'ny <em>être</em>, mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>il <strong>avait allé</strong> → <span class="correction">✓ il était allé</span> (<em>aller</em> mampiasa <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>avais prendu</strong> → <span class="correction">✓ j'avais pris</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>avais faise</strong> → <span class="correction">✓ j'avais fait</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Si j'<strong>avais sus</strong> → <span class="correction">✓ Si j'avais su</span> (participe passé irrégulier de <em>savoir</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Plus-que-parfait = temps composé</strong> : auxiliaire (<em>avoir</em> na <em>être</em>) amin'ny <strong>imparfait</strong> + participe passé.</li>
+      <li><strong>Auxiliaire <em>avoir</em></strong> : ny ankamaroan'ny verbe.</li>
+      <li><strong>Auxiliaire <em>être</em></strong> : ny <strong>14 verbes</strong> + verbe pronominal.</li>
+      <li><strong>Participe passé</strong> : 1er groupe <em>-é</em>, 2ème groupe <em>-i</em>, 3ème groupe irrégulier (tsianjery).</li>
+      <li><strong>Accord</strong> : miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet; miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet.</li>
+      <li><strong>Fampiasana 6</strong> : hetsika vita talohan'ny hetsika hafa, famintinana, antony, fanenenana, fiheverana tsy tena izy, fitantarana ankolaka.</li>
+      <li><strong>Fahasamihafana amin'ny passé composé</strong> : passé composé = hetsika vita; plus-que-parfait = hetsika vita <strong>talohan'ny</strong> hetsika hafa.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°5 : le Plus-que-parfait · Fananganana, auxiliaires, accord, fampiasana 6, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

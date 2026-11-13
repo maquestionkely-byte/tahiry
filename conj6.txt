@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Futur antérieur — Temps n°6 | Fiche complète</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --indigo:#3730a3; --indigo-clair:#6366f1; --indigo-pale:#eef2ff;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#1e1b4b,#3730a3 60%,#6366f1);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(30,27,75,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--indigo);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--indigo-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#1e1b4b,#3730a3);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(55,48,163,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--indigo-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#1e1b4b,#3730a3);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--indigo-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--indigo);}
+
+  .encadre{border-left:5px solid var(--indigo-clair);background:var(--indigo-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--indigo);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--indigo-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--indigo);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--indigo);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(55,48,163,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--indigo);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#1e1b4b,#3730a3);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#1e1b4b,#3730a3);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(30,27,75,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#c7d2fe;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°6 — Le Futur antérieur</span>
+    <h1>Ny Futur antérieur</h1>
+    <p>Fananganana, auxiliaires <em>avoir/être</em> amin'ny <strong>futur simple</strong>, accord du participe passé, fampiasana 5, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>futur antérieur</strong> dia <strong>temps composé</strong> : foronina avy amin'ny <strong>auxiliaire</strong> (<em>avoir</em> na <em>être</em>) amin'ny <strong>futur simple</strong> + <strong>participe passé</strong> ny verbe. Asongadiny ny hetsika <strong>vita talohan'ny hetsika hafa ao amin'ny hoavy</strong> — izany hoe « ho vita alohan'ny… ».</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny futur antérieur dia <strong>fotoana fototra amin'ny fitantarana ho avy</strong>. Izy no milaza hetsika efa ho vita <strong>talohan'ny</strong> hetsika iray hafa (matetika amin'ny futur simple). Amin'ny teny malagasy, matetika adika amin'ny <em>« efa ho »</em> na <em>« rehefa vita »</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny futur antérieur</h2>
+    <p>Ny futur antérieur dia foronina amin'ny alalan'ny <strong>auxiliaire amin'ny futur simple</strong> + <strong>participe passé</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Auxiliaire (avoir na être) amin'ny futur simple + participe passé = futur antérieur</strong>
+    </div>
+
+    <h3>Ny auxiliaire <em>avoir</em> amin'ny futur simple</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>avoir (futur simple)</th><th>+ participe passé</th><th>Futur antérieur</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>aurai</td><td>parlé</td><td>j'aurai parlé</td></tr>
+        <tr><td>tu</td><td>auras</td><td>parlé</td><td>tu auras parlé</td></tr>
+        <tr><td>il/elle</td><td>aura</td><td>parlé</td><td>il aura parlé</td></tr>
+        <tr><td>nous</td><td>aurons</td><td>parlé</td><td>nous aurons parlé</td></tr>
+        <tr><td>vous</td><td>aurez</td><td>parlé</td><td>vous aurez parlé</td></tr>
+        <tr><td>ils/elles</td><td>auront</td><td>parlé</td><td>ils auront parlé</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ny auxiliaire <em>être</em> amin'ny futur simple</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>être (futur simple)</th><th>+ participe passé</th><th>Futur antérieur</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>serai</td><td>allé(e)</td><td>je serai allé(e)</td></tr>
+        <tr><td>tu</td><td>seras</td><td>allé(e)</td><td>tu seras allé(e)</td></tr>
+        <tr><td>il/elle</td><td>sera</td><td>allé(e)</td><td>il sera allé / elle sera allée</td></tr>
+        <tr><td>nous</td><td>serons</td><td>allé(e)s</td><td>nous serons allé(e)s</td></tr>
+        <tr><td>vous</td><td>serez</td><td>allé(e)(s)</td><td>vous serez allé(e)(s)</td></tr>
+        <tr><td>ils/elles</td><td>seront</td><td>allé(e)s</td><td>ils seront allés / elles seront allées</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. AVOIR OU ÊTRE ===================== -->
+  <section>
+    <h2><span class="num">3</span> Rahoviana no <em>avoir</em> ary rahoviana no <em>être</em> ?</h2>
+    <p>Ny fitsipika dia <strong>mitovy amin'ny passé composé sy plus-que-parfait</strong> :</p>
+
+    <h3>Verbe mampiasa <em>avoir</em> (ny ankamaroany)</h3>
+    <p>Ny <strong>ankamaroan'ny verbe</strong> dia mampiasa <em>avoir</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">J'</span><span class="verbe">aurai mangé</span> du riz.</span>
+      <span class="mg">Efa ho nihinana vary aho.</span>
+    </div>
+
+    <h3>Verbe mampiasa <em>être</em> (ny 14 verbe + pronominal)</h3>
+    <p>Ny <strong>14 verbes</strong> (aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer) sy ny <strong>verbe pronominal rehetra</strong> dia mampiasa <em>être</em>.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">me serai levé</span> à 6 h.</span>
+      <span class="mg">Efa ho nifoha tamin'ny 6 ora aho.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">sera allée</span> à l'école.</span>
+      <span class="mg">Efa ho nandeha tany an-tsekoly izy.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 4. ACCORD DU PARTICIPE PASSÉ ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny accord du participe passé</h2>
+
+    <h3>Miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>être</em> no auxiliaire, ny participe passé dia <strong>mifanaraka amin'ny sujet</strong> amin'ny genre sy nombre.</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">sera allée</span> à l'école.</span>
+      <span class="mg">Efa ho nandeha tany an-tsekoly izy (vehivavy). <em>(allée : +e satria vehivavy)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">seront partis</span> tôt.</span>
+      <span class="mg">Efa ho nandeha aloha izy ireo (lehilahy). <em>(partis : +s satria ploraly)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elles</span> <span class="verbe">seront arrivées</span>.</span>
+      <span class="mg">Efa ho ntonga izy ireo (vehivavy). <em>(arrivées : +es satria vehivavy ploraly)</em></span>
+    </div>
+
+    <h3>Miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet</h3>
+    <p>Rehefa <em>avoir</em> no auxiliaire, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong> (afa-tsy raha misy COD mialoha).</p>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">aura mangé</span> du riz.</span>
+      <span class="mg">Efa ho nihinana vary izy (vehivavy). <em>(mangé : tsy +e satria avoir)</em></span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Ils</span> <span class="verbe">auront fini</span> le travail.</span>
+      <span class="mg">Efa ho nahavita ny asa izy ireo. <em>(fini : tsy +s satria avoir)</em></span>
+    </div>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> miaraka amin'ny <em>avoir</em>, ny participe passé dia <strong>tsy mifanaraka amin'ny sujet</strong>. Ohatra : ✗ <em>Elle aura mangée.</em> → ✓ <em>Elle aura mangé.</em>
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny futur antérieur — 5 tranga</h2>
+    <p>Ny futur antérieur dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ANTÉRIORITÉ FUTURE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Antériorité future — hetsika ho vita talohan'ny hetsika hafa</div>
+      <div class="expl">Hetsika <strong>ho vita talohan'ny hetsika iray hafa</strong> ao amin'ny hoavy. Io no tena fampiasana fototra. Matetika miaraka amin'ny futur simple.</div>
+      <div class="exemple">
+        <span class="fr">Quand tu <span class="verbe">arriveras</span>, j'<span class="verbe">aurai déjà mangé</span>.</span>
+        <span class="mg">Rehefa tonga ianao, efa ho nihinana aho. <em>(ny fisakafoana ho vita talohan'ny fahatongavana)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Il <span class="verbe">aura fini</span> son travail avant de partir.</span>
+        <span class="mg">Efa ho nahavita ny asany izy talohan'ny handehanany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Nous <span class="verbe">serons partis</span> quand il arrivera.</span>
+        <span class="mg">Efa ho nandeha izahay rehefa tonga izy.</span>
+      </div>
+    </div>
+
+    <!-- 2) BILAN FUTUR -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Bilan futur — famintinana ho avy</div>
+      <div class="expl">Manao <strong>famintinana</strong> na <strong>fanisana</strong> ny zavatra ho vita amin'ny fotoana iray ao amin'ny hoavy.</div>
+      <div class="exemple">
+        <span class="fr">En 2030, j'<span class="verbe">aurai visité</span> dix pays.</span>
+        <span class="mg">Amin'ny 2030, efa ho nitety firenena folo aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle <span class="verbe">aura lu</span> tous les livres de la bibliothèque.</span>
+        <span class="mg">Efa ho namaky ny boky rehetra tao amin'ny tranomboky izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ils <span class="verbe">auront gagné</span> trois matchs.</span>
+        <span class="mg">Efa ho nandresy lalao telo izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 3) CAUSE FUTURE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Cause future — antony ho avy</div>
+      <div class="expl">Manazava ny <strong>antony</strong> na ny <strong>fiaviana</strong> ny toe-javatra iray ao amin'ny hoavy.</div>
+      <div class="exemple">
+        <span class="fr">Il sera fatigué parce qu'il <span class="verbe">aura beaucoup travaillé</span>.</span>
+        <span class="mg">Ho reraka izy satria efa ho niasa be.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle sera contente parce qu'elle <span class="verbe">aura réussi</span> son examen.</span>
+        <span class="mg">Ho faly izy satria efa ho nahomby tamin'ny fanadinana.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Nous serons inquiets car nous <span class="verbe">aurons entendu</span> une mauvaise nouvelle.</span>
+        <span class="mg">Ho natahotra izahay satria efa ho nahare vaovao ratsy.</span>
+      </div>
+    </div>
+
+    <!-- 4) HYPOTHÈSE FUTURE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Hypothèse future — fiheverana ho avy</div>
+      <div class="expl">Miaraka amin'ny <strong>si + futur antérieur</strong>, maneho <strong>fiheverana</strong> izay ho vita alohan'ny hetsika hafa ao amin'ny hoavy.</div>
+      <div class="exemple">
+        <span class="fr">Si tu <span class="verbe">m'auras prévenu</span>, je pourrai t'aider.</span>
+        <span class="mg">Raha efa ho nampandre ahy ianao, dia afaka hanampy anao aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si elle <span class="verbe">aura pris</span> le train, elle sera arrivée à midi.</span>
+        <span class="mg">Raha efa ho naka ny lamasinina izy, dia ho tonga amin'ny mitataovovonana.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Si nous <span class="verbe">aurons su</span> la vérité, nous réagirons.</span>
+        <span class="mg">Raha efa ho nahafantatra ny marina izahay, dia hanao zavatra.</span>
+      </div>
+    </div>
+
+    <!-- 5) DISCOURS INDIRECT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Discours indirect — fitantarana ankolaka</div>
+      <div class="expl">Rehefa mitantara ny tenin'olona ianao ary ny matoanteny mpampiditra dia amin'ny <strong>futur simple</strong>, ny <strong>futur simple</strong> ao amin'ny discours direct dia miova ho <strong>futur antérieur</strong>.</div>
+      <div class="exemple">
+        <span class="fr">Paul dira : « Je <span class="verbe">mangerai</span>. » → Paul dira qu'il <span class="verbe">aura mangé</span>.</span>
+        <span class="mg">Holaza i Paul hoe : « Hihinana aho. » → Holaza i Paul fa efa ho nihinana izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Elle dira : « J'<span class="verbe">aurai fini</span> le travail. » → Elle dira qu'elle <span class="verbe">aura fini</span> le travail.</span>
+        <span class="mg">Holaza izy hoe : « Efa ho nahavita ny asa aho. » → Holaza izy fa efa ho nahavita ny asa izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Ils diront : « Nous <span class="verbe">serons partis</span>. » → Ils diront qu'ils <span class="verbe">seront partis</span>.</span>
+        <span class="mg">Holaza izy ireo hoe : « Efa ho nandeha izahay. » → Holaza izy ireo fa efa ho nandeha izy ireo.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny futur antérieur dia milaza <strong>hetsika ho vita talohan'ny hetsika hafa</strong>, <strong>famintinana ho avy</strong>, <strong>antony ho avy</strong>, <strong>fiheverana ho avy</strong>, ary <strong>fitantarana ankolaka</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>ai aurai parlé</strong> → <span class="correction">✓ j'aurai parlé</span> (auxiliaire <em>avoir</em> amin'ny futur simple : <em>aurai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>suis allé</strong> (futur antérieur) → <span class="correction">✓ je serai allé</span> (auxiliaire <em>être</em> amin'ny futur simple : <em>serai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>elle <strong>aura mangée</strong> → <span class="correction">✓ elle aura mangé</span> (miaraka amin'ny <em>avoir</em>, tsy mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>me serai levé</strong> (vehivavy) → <span class="correction">✓ je me serai levée</span> (miaraka amin'ny <em>être</em>, mifanaraka amin'ny sujet).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>il <strong>aura allé</strong> → <span class="correction">✓ il sera allé</span> (<em>aller</em> mampiasa <em>être</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>aurai prendu</strong> → <span class="correction">✓ j'aurai pris</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>aurai faise</strong> → <span class="correction">✓ j'aurai fait</span> (participe passé irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Si j'<strong>aurai su</strong> → <span class="correction">✓ Si j'ai su</span> na <span class="correction">✓ Si j'avais su</span> (tsy ampiasaina ny futur antérieur amin'ny <em>si</em> fepetra).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Futur antérieur = temps composé</strong> : auxiliaire (<em>avoir</em> na <em>être</em>) amin'ny <strong>futur simple</strong> + participe passé.</li>
+      <li><strong>Auxiliaire <em>avoir</em></strong> : ny ankamaroan'ny verbe.</li>
+      <li><strong>Auxiliaire <em>être</em></strong> : ny <strong>14 verbes</strong> + verbe pronominal.</li>
+      <li><strong>Participe passé</strong> : 1er groupe <em>-é</em>, 2ème groupe <em>-i</em>, 3ème groupe irrégulier (tsianjery).</li>
+      <li><strong>Accord</strong> : miaraka amin'ny <em>être</em> → mifanaraka amin'ny sujet; miaraka amin'ny <em>avoir</em> → tsy mifanaraka amin'ny sujet.</li>
+      <li><strong>Fampiasana 5</strong> : hetsika ho vita talohan'ny hetsika hafa, famintinana ho avy, antony ho avy, fiheverana ho avy, fitantarana ankolaka.</li>
+      <li><strong>Fahasamihafana amin'ny futur simple</strong> : futur simple = hetsika ho avy; futur antérieur = hetsika ho vita <strong>talohan'ny</strong> hetsika hafa.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°6 : le Futur antérieur · Fananganana, auxiliaires, accord, fampiasana 5, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

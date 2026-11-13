@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imparfait vs Passé composé — Temps n°20 | Fiche complète</title>
+<style>
+  :root{
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --violet:#5b21b6; --violet-clair:#8b5cf6; --violet-pale:#f5f3ff;
+    --bleu:#1e40af; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#3b0764,#5b21b6 60%,#8b5cf6);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(59,7,100,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--violet);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--violet-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#3b0764,#5b21b6);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(91,33,182,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--violet-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#3b0764,#5b21b6);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--violet-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--violet);}
+
+  .encadre{border-left:5px solid var(--violet-clair);background:var(--violet-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre.bleu{border-left-color:var(--bleu-clair);background:var(--bleu-pale);}
+  .encadre strong{color:var(--violet);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+  .encadre.bleu strong{color:var(--bleu);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--violet-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--violet);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .comparaison{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;}
+  .comparaison > div{border-radius:14px;padding:1.4rem;color:#fff;}
+  .comparaison .imparfait{background:linear-gradient(135deg,#1e40af,#3b82f6);}
+  .comparaison .passe{background:linear-gradient(135deg,#b45309,#ea580c);}
+  .comparaison h4{font-size:1.1rem;margin-bottom:.8rem;}
+  .comparaison ul{margin-left:1.1rem;}
+  .comparaison li{margin-bottom:.5rem;font-size:.93rem;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .recap{background:linear-gradient(135deg,#3b0764,#5b21b6);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(59,7,100,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#e9d5ff;}
+
+  .methode{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:14px;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+  .methode h4{color:#92400e;font-size:1.1rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+  .methode ol{margin-left:1.4rem;color:#78350f;}
+  .methode li{margin-bottom:.6rem;font-weight:600;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}.comparaison{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°20 — Imparfait vs Passé composé</span>
+    <h1>Ny fahasamihafana tsy ho diso</h1>
+    <p>Fomba meilleure hitadidy : <strong>imparfait = sehatra / tsy vita / fahazarana</strong>; <strong>passé composé = hetsika vita / indray mandeha</strong>. Miaraka amin'ny ohatra sy fandrika.</p>
+  </header>
+
+  <!-- ===================== 1. NY VALINY FOHIFOHY ===================== -->
+  <section>
+    <h2><span class="num">1</span> Ny valiny fohy — fitsipika 1</h2>
+    <div class="encadre bleu">
+      <strong>Fitsipika fototra :</strong><br>
+      <strong>Imparfait</strong> = <em>sehatra, famaritana, fahazarana, hetsika tsy vita</em> (arrière-plan).<br>
+      <strong>Passé composé</strong> = <em>hetsika vita, nitranga indray mandeha</em> (premier plan).
+    </div>
+    <p>Ny fitsipika tsotra indrindra : <strong>raha vita ny hetsika → passé composé; raha tsy vita na sehatra → imparfait</strong>.</p>
+  </section>
+
+  <!-- ===================== 2. TABILAO FAMPIHAROANA ===================== -->
+  <section>
+    <h2><span class="num">2</span> Tabilao fampiharana</h2>
+    <div class="comparaison">
+      <div class="imparfait">
+        <h4>🔵 Imparfait</h4>
+        <ul>
+          <li>Sehatra / famaritana</li>
+          <li>Fahazarana taloha</li>
+          <li>Hetsika tsy vita</li>
+          <li>Fihetsika miverimberina</li>
+          <li>Toe-javatra</li>
+        </ul>
+      </div>
+      <div class="passe">
+        <h4>🟠 Passé composé</h4>
+        <ul>
+          <li>Hetsika vita</li>
+          <li>Hetsika indray mandeha</li>
+          <li>Hetsika nifandimby</li>
+          <li>Vokatra mivantana</li>
+          <li>Zava-nitranga</li>
+        </ul>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Imparfait</th><th>Passé composé</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manome sary ny toe-javatra</td><td>Mitantara hetsika iray</td></tr>
+        <tr><td>Tsy misy fetra mazava</td><td>Misy fetra mazava</td></tr>
+        <tr><td><em>Je lisais.</em> (namaky aho)</td><td><em>J'ai lu.</em> (namaky aho — vita)</td></tr>
+        <tr><td><em>Il faisait beau.</em></td><td><em>Il a fait beau.</em></td></tr>
+        <tr><td><em>Elle chantait.</em></td><td><em>Elle a chanté.</em></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 3. NY FOMBA MEILLEURE ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny fomba meilleure hitadidy (méthode)</h2>
+
+    <div class="methode">
+      <h4>🎯 Méthode "F.I.V." — 3 fanontaniana</h4>
+      <ol>
+        <li><strong>F</strong>etra ve? → Raha <strong>misy fetra mazava</strong> ny hetsika (nanomboka sy nifarana) → <strong>passé composé</strong>.</li>
+        <li><strong>I</strong>ndray mandeha ve? → Raha <strong>nitranga indray mandeha</strong> → <strong>passé composé</strong>.</li>
+        <li><strong>V</strong>ita ve? → Raha <strong>vita</strong> ny hetsika → <strong>passé composé</strong>. Raha <strong>tsy vita</strong> na sehatra → <strong>imparfait</strong>.</li>
+      </ol>
+    </div>
+
+    <h3>Fanontaniana 5 hahafantarana</h3>
+    <table>
+      <thead>
+        <tr><th>Fanontaniana</th><th>Valiny</th><th>Temps</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vita ve ny hetsika?</td><td>Eny</td><td>Passé composé</td></tr>
+        <tr><td>Vita ve ny hetsika?</td><td>Tsia</td><td>Imparfait</td></tr>
+        <tr><td>Nitranga indray mandeha ve?</td><td>Eny</td><td>Passé composé</td></tr>
+        <tr><td>Niverimberina ve?</td><td>Eny</td><td>Imparfait</td></tr>
+        <tr><td>Sehatra / famaritana ve?</td><td>Eny</td><td>Imparfait</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 4. OHATRA FAMPIHAROANA ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ohatra fampiharana — 3 tranga</h2>
+
+    <!-- 1) SEHATRA vs HETSIKA -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Sehatra vs hetsika (arrière-plan vs premier plan)</div>
+      <div class="expl">Ny <strong>imparfait</strong> no manome ny sehatra, ny <strong>passé composé</strong> no mitantara ny hetsika nitranga tao anatin'io sehatra io. Matetika miaraka izy roa.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">lisais</span> quand il <span class="verbe">est entré</span>.</span>
+        <span class="mg">Namaky aho rehefa niditra izy. <em>(imparfait : sehatra ; passé composé : hetsika)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">dormait</span> quand le téléphone <span class="verbe">a sonné</span>.</span>
+        <span class="mg">Natory izy rehefa naneno ny telefaonina.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">marchions</span> dans la rue quand il <span class="verbe">a commencé</span> à pleuvoir.</span>
+        <span class="mg">Nandeha teny an-dalambe izahay rehefa nanomboka nitete ny orana.</span>
+      </div>
+    </div>
+
+    <!-- 2) FAHAZARANA vs INDRAY MANDEHA -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Fahazarana vs indray mandeha</div>
+      <div class="expl">Ny <strong>imparfait</strong> no milaza fahazarana (miverimberina); ny <strong>passé composé</strong> no milaza hetsika indray mandeha.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">me levais</span> à 6 h tous les matins.</span>
+        <span class="mg">Nifoha tamin'ny 6 ora isa-maraina aho. <em>(fahazarana → imparfait)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Hier, je</span> <span class="verbe">me suis levé</span> à 6 h.</span>
+        <span class="mg">Omaly, nifoha tamin'ny 6 ora aho. <em>(indray mandeha → passé composé)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">allait</span> au marché chaque samedi.</span>
+        <span class="mg">Nandeha tany an-tsena izy isaky ny asabotsy. <em>(fahazarana)</em></span>
+      </div>
+    </div>
+
+    <!-- 3) FAMARITANA vs VOKATRA -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Famaritana vs vokatra mivantana</div>
+      <div class="expl">Ny <strong>imparfait</strong> no mamaritra toe-javatra; ny <strong>passé composé</strong> no milaza vokatra mivantana na fiovana.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il</span> <span class="verbe">faisait</span> beau. <em>(famaritana)</em></span>
+        <span class="mg">Tsara ny andro. <em>(famaritana → imparfait)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Soudain, il</span> <span class="verbe">a plu</span>. <em>(fiovana tampoka)</em></span>
+        <span class="mg">Tampoka teo, nitete orana. <em>(fiovana → passé composé)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">était</span> triste. <em>(toe-javatra)</em> → <span class="sujet">Elle</span> <span class="verbe">est devenue</span> triste. <em>(fiovana)</em></span>
+        <span class="mg">Nalahelo izy. → Lasa nalahelo izy.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. FANDRIKA ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Hier, je <strong>mangeais</strong> une pomme. → <span class="correction">✓ Hier, j'ai mangé une pomme.</span> (hetsika vita indray mandeha → passé composé).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Quand j'étais petit, j'<strong>ai joué</strong> au foot. → <span class="correction">✓ Quand j'étais petit, je jouais au foot.</span> (fahazarana → imparfait).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Il <strong>a fait</strong> beau. → <span class="correction">✓ Il faisait beau.</span> (famaritana → imparfait).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Soudain, il <strong>pleuvait</strong>. → <span class="correction">✓ Soudain, il a plu.</span> (fiovana tampoka → passé composé).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>Je <strong>lisais</strong> quand il est entré. (mety) → <span class="correction">✓ Je lisais quand il est entré.</span> (sehatra + hetsika → samy mety).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 6. FAMINTINANA ===================== -->
+  <section class="recap">
+    <h2><span class="num">6</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Fitsipika fototra</strong> : <strong>imparfait</strong> = sehatra / tsy vita / fahazarana; <strong>passé composé</strong> = hetsika vita / indray mandeha.</li>
+      <li><strong>Méthode F.I.V.</strong> : (1) Misy fetra ve? (2) Indray mandeha ve? (3) Vita ve? → Raha eny → passé composé. Raha tsia → imparfait.</li>
+      <li><strong>Miara-miasa izy roa</strong> amin'ny fitantarana : imparfait = arrière-plan, passé composé = premier plan.</li>
+      <li><strong>Fandrika lehibe</strong> : aza mampiasa passé composé ho an'ny fahazarana, ary aza mampiasa imparfait ho an'ny hetsika vita indray mandeha.</li>
+      <li><strong>Tandremo</strong> : ny teny manodidina (<em>tous les jours, soudain, hier…</em>) no manampy amin'ny safidy.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°20 : Imparfait vs Passé composé · Fitsipika, méthode F.I.V., ohatra, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

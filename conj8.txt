@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Subjonctif présent — Temps n°8 | Fiche complète</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --teal:#115e59; --teal-clair:#14b8a6; --teal-pale:#f0fdfa;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#134e4a,#115e59 60%,#14b8a6);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(19,78,74,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--teal);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--teal-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#134e4a,#115e59);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(17,94,89,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--teal-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#134e4a,#115e59);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--teal-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--teal);}
+
+  .encadre{border-left:5px solid var(--teal-clair);background:var(--teal-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--teal);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--teal-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--teal);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border:1px solid #99f6e4;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--teal);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(17,94,89,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--teal);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#134e4a,#115e59);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#134e4a,#115e59);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(19,78,74,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#99f6e4;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°8 — Le Subjonctif présent</span>
+    <h1>Ny Subjonctif présent</h1>
+    <p>Fananganana, terminaisons, ny <strong>verbes irréguliers</strong>, fampiasana 6, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>subjonctif présent</strong> dia <strong>mode</strong> (fa tsy temps) ampiasaina hilaza <strong>zavatra tsy tena izy</strong> : faniriana, fepetra, fisalasalana, na fihetseham-po. Tsy toy ny indicatif izay milaza zava-misy — ny subjonctif dia <strong>miankina amin'ny fihetseham-pon'ny mpandahateny</strong>.</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny subjonctif dia matetika hita ao amin'ny <strong>fehezanteny miankina</strong> (proposition subordonnée), aorian'ny <em>que</em>, rehefa misy matoanteny mpaneho fihetseham-po na fisalasalana. Amin'ny teny malagasy, matetika adika amin'ny <em>« mba »</em> na <em>« tokony »</em>.
+    </div>
+    <div class="encadre orange">
+      <strong>Fanamarihana manan-danja :</strong> ny subjonctif dia <strong>mode</strong>, fa tsy temps. Misy ny <strong>subjonctif présent</strong> sy <strong>subjonctif passé</strong>. Eto isika dia mianatra ny <strong>subjonctif présent</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny subjonctif présent</h2>
+    <p>Ny subjonctif présent dia foronina avy amin'ny <strong>radical amin'ny 3ème personne ploraly (ils) amin'ny présent de l'indicatif</strong> + terminaisons <em>-e, -es, -e, -ions, -iez, -ent</em>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Radical (ils amin'ny présent) + terminaisons (-e, -es, -e, -ions, -iez, -ent) = subjonctif présent</strong>
+    </div>
+
+    <h3>Ny terminaisons (ho an'ny groupe rehetra)</h3>
+    <div class="terminaisons">
+      <div>que je -<span>e</span></div>
+      <div>que tu -<span>es</span></div>
+      <div>qu'il/elle -<span>e</span></div>
+      <div>que nous -<span>ions</span></div>
+      <div>que vous -<span>iez</span></div>
+      <div>qu'ils/elles -<span>ent</span></div>
+    </div>
+
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> ny terminaisons dia <strong>mitovy ho an'ny groupe rehetra</strong>. Ny <strong>radical</strong> ihany no mety miova. Tsy maintsy atao foana ny <em>que</em> alohan'ny subjonctif.
+    </div>
+  </section>
+
+  <!-- ===================== 3. LES 3 GROUPES ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny subjonctif présent isaky ny groupe</h2>
+
+    <h3>1er groupe — modely : <em>parler</em></h3>
+    <p>Radical <em>parl-</em> (avy amin'ny <em>ils parlent</em>) + terminaisons.</p>
+    <div class="terminaisons">
+      <div>que je parl<span>e</span></div>
+      <div>que tu parl<span>es</span></div>
+      <div>qu'il parl<span>e</span></div>
+      <div>que nous parl<span>ions</span></div>
+      <div>que vous parl<span>iez</span></div>
+      <div>qu'ils parl<span>ent</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr">Il faut que je <span class="verbe">parle</span> à ma mère.</span>
+      <span class="mg">Tsy maintsy miresaka amin'ny reniko aho.</span>
+    </div>
+
+    <h3>2ème groupe — modely : <em>finir</em></h3>
+    <p>Radical <em>finiss-</em> (avy amin'ny <em>ils finissent</em>) + terminaisons.</p>
+    <div class="terminaisons">
+      <div>que je finiss<span>e</span></div>
+      <div>que tu finiss<span>es</span></div>
+      <div>qu'il finiss<span>e</span></div>
+      <div>que nous finiss<span>ions</span></div>
+      <div>que vous finiss<span>iez</span></div>
+      <div>qu'ils finiss<span>ent</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr">Je veux que nous <span class="verbe">finissions</span> le travail.</span>
+      <span class="mg">Tiako ny hahavitanay ny asa.</span>
+    </div>
+
+    <h3>3ème groupe — ohatra : <em>prendre, venir, faire</em></h3>
+    <p>Radical <em>prenn-, vienn-, fass-</em> (avy amin'ny <em>ils prennent, ils viennent, ils font</em>) + terminaisons.</p>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>que je</td><td>prenne</td><td>vienne</td><td>fasse</td></tr>
+        <tr><td>que tu</td><td>prennes</td><td>viennes</td><td>fasses</td></tr>
+        <tr><td>qu'il/elle</td><td>prenne</td><td>vienne</td><td>fasse</td></tr>
+        <tr><td>que nous</td><td>prenions</td><td>venions</td><td>fassions</td></tr>
+        <tr><td>que vous</td><td>preniez</td><td>veniez</td><td>fassiez</td></tr>
+        <tr><td>qu'ils/elles</td><td>prennent</td><td>viennent</td><td>fassent</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 4. VERBES IRRÉGULIERS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny verbes irréguliers amin'ny subjonctif présent</h2>
+    <p>Ireto ny verbe manan-danja izay <strong>tsy manaraka</strong> ny fitsipika fototra. Ny radical-ny dia tsy maintsy tsianjery.</p>
+
+    <table>
+      <thead>
+        <tr><th>Verbe</th><th>Que je</th><th>Que nous</th><th>Dika malagasy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>être</td><td>sois</td><td>soyons</td><td>ho aho</td></tr>
+        <tr><td>avoir</td><td>aie</td><td>ayons</td><td>manana aho</td></tr>
+        <tr><td>aller</td><td>aille</td><td>allions</td><td>mandeha aho</td></tr>
+        <tr><td>faire</td><td>fasse</td><td>fassions</td><td>manao aho</td></tr>
+        <tr><td>pouvoir</td><td>puisse</td><td>puissions</td><td>afaka aho</td></tr>
+        <tr><td>savoir</td><td>sache</td><td>sachions</td><td>mahafantatra aho</td></tr>
+        <tr><td>vouloir</td><td>veuille</td><td>voulions</td><td>te-ho aho</td></tr>
+        <tr><td>valoir</td><td>vaille</td><td>valions</td><td>mendrika aho</td></tr>
+        <tr><td>falloir</td><td>qu'il faille</td><td>—</td><td>tsy maintsy</td></tr>
+        <tr><td>pleuvoir</td><td>qu'il pleuve</td><td>—</td><td>mitete orana</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> ny verbe <em>être</em> sy <em>avoir</em> dia tena irrégulier. Tsy maintsy tsianjery tsara : <em>que je sois, que j'aie, que nous soyons, que nous ayons</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny subjonctif présent — 6 tranga</h2>
+    <p>Ny subjonctif présent dia mety hanana dikany samihafa arakaraka ny matoanteny mpampiditra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) VOLONTÉ -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Volonté — faniriana, sitrapo</div>
+      <div class="expl">Rehefa misy matoanteny mpaneho <strong>faniriana, sitrapo, na baiko</strong> (<em>vouloir, désirer, exiger, ordonner, souhaiter…</em>), ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je veux que</span> tu <span class="verbe">viennes</span>.</span>
+        <span class="mg">Tiako ho tonga ianao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle souhaite que</span> nous <span class="verbe">soyons</span> heureux.</span>
+        <span class="mg">Maniry izy ho faly izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il exige que</span> tu <span class="verbe">fasses</span> tes devoirs.</span>
+        <span class="mg">Mitaky izy hanao ny devoaranao ianao.</span>
+      </div>
+    </div>
+
+    <!-- 2) ÉMOTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Émotion — fihetseham-po</div>
+      <div class="expl">Rehefa misy matoanteny mpaneho <strong>fihetseham-po</strong> (<em>être content, triste, surpris, avoir peur, regretter…</em>), ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je suis content que</span> tu <span class="verbe">sois</span> là.</span>
+        <span class="mg">Faly aho fa eto ianao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle a peur que</span> nous <span class="verbe">partions</span>.</span>
+        <span class="mg">Matahotra izy handeha izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je regrette qu'</span>il <span class="verbe">pleuve</span>.</span>
+        <span class="mg">Malahelo aho fa mitete orana.</span>
+      </div>
+    </div>
+
+    <!-- 3) DOUTE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Doute — fisalasalana</div>
+      <div class="expl">Rehefa misy matoanteny mpaneho <strong>fisalasalana</strong> (<em>douter, ne pas être sûr, nier, contester…</em>), ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je doute que</span> tu <span class="verbe">puisses</span> venir.</span>
+        <span class="mg">Misalasala aho fa afaka tonga ianao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il n'est pas sûr qu'</span>elle <span class="verbe">ait</span> raison.</span>
+        <span class="mg">Tsy azo antoka fa marina izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je ne crois pas qu'</span>il <span class="verbe">soit</span> là.</span>
+        <span class="mg">Tsy mino aho fa eto izy.</span>
+      </div>
+    </div>
+
+    <!-- 4) NÉCESSITÉ -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Nécessité — filàna, tsy maintsy</div>
+      <div class="expl">Rehefa misy <strong>il faut que, il est nécessaire que, il est important que…</strong>, ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il faut que</span> je <span class="verbe">parte</span> maintenant.</span>
+        <span class="mg">Tsy maintsy mandeha aho izao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il est important que</span> vous <span class="verbe">compreniez</span>.</span>
+        <span class="mg">Manan-danja ny hahatakaranao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il est nécessaire qu'</span>on <span class="verbe">fasse</span> attention.</span>
+        <span class="mg">Ilaina ny mitandrina isika.</span>
+      </div>
+    </div>
+
+    <!-- 5) BUT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> But — tanjona</div>
+      <div class="expl">Rehefa misy <strong>pour que, afin que, avant que…</strong>, ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Pour que</span> tu <span class="verbe">réussisses</span>, il faut travailler.</span>
+        <span class="mg">Mba hahombanao, tsy maintsy miasa ianao.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Afin qu'</span>il <span class="verbe">ait</span> son diplôme, elle étudie.</span>
+        <span class="mg">Mba hahazoany ny diplaomany, mianatra izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Avant que</span> nous <span class="verbe">partions</span>, il faut manger.</span>
+        <span class="mg">Alohan'ny handehanay, tsy maintsy mihinana.</span>
+      </div>
+    </div>
+
+    <!-- 6) CONDITION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Condition — fepetra</div>
+      <div class="expl">Rehefa misy <strong>à condition que, pourvu que, à moins que…</strong>, ny subjonctif no ampiasaina.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">À condition que</span> tu <span class="verbe">viennes</span>, je serai content.</span>
+        <span class="mg">Raha tonga ianao, ho faly aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Pourvu qu'</span>il <span class="verbe">fasse</span> beau.</span>
+        <span class="mg">Raha tsara ny andro.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">À moins qu'</span>elle <span class="verbe">soit</span> malade.</span>
+        <span class="mg">Raha tsy marary izy.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny subjonctif présent dia milaza <strong>faniriana</strong>, <strong>fihetseham-po</strong>, <strong>fisalasalana</strong>, <strong>filàna</strong>, <strong>tanjona</strong>, ary <strong>fepetra</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>parles</strong> → <span class="correction">✓ que je parle</span> (1er groupe : tsy misy <em>-s</em> amin'ny <em>je</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que tu <strong>parle</strong> → <span class="correction">✓ que tu parles</span> (misy <em>-s</em> amin'ny <em>tu</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>qu'il <strong>parles</strong> → <span class="correction">✓ qu'il parle</span> (tsy misy <em>-s</em> amin'ny <em>il</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que nous <strong>parlons</strong> → <span class="correction">✓ que nous parlions</span> (<em>-ions</em> fa tsy <em>-ons</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que vous <strong>parlez</strong> → <span class="correction">✓ que vous parliez</span> (<em>-iez</em> fa tsy <em>-ez</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>qu'ils <strong>parlent</strong> → <span class="correction">✓ qu'ils parlent</span> (mety, fa tadidio : <em>-ent</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>suis</strong> → <span class="correction">✓ que je sois</span> (être : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que j'<strong>ai</strong> → <span class="correction">✓ que j'aie</span> (avoir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>fais</strong> → <span class="correction">✓ que je fasse</span> (faire : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>peux</strong> → <span class="correction">✓ que je puisse</span> (pouvoir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>sais</strong> → <span class="correction">✓ que je sache</span> (savoir : irrégulier).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>que je <strong>veux</strong> → <span class="correction">✓ que je veuille</span> (vouloir : irrégulier).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Subjonctif présent = mode</strong> (fa tsy temps), ampiasaina hilaza zavatra tsy tena izy.</li>
+      <li><strong>Fananganana</strong> : radical amin'ny <em>ils</em> amin'ny présent + terminaisons <em>-e, -es, -e, -ions, -iez, -ent</em>.</li>
+      <li><strong>Terminaisons mitovy ho an'ny groupe rehetra</strong> — tsy misy exception amin'ny terminaisons.</li>
+      <li><strong>Verbes irréguliers</strong> : être → <em>sois</em>, avoir → <em>aie</em>, aller → <em>aille</em>, faire → <em>fasse</em>, pouvoir → <em>puisse</em>, savoir → <em>sache</em>, vouloir → <em>veuille</em>.</li>
+      <li><strong>Fampiasana 6</strong> : faniriana, fihetseham-po, fisalasalana, filàna, tanjona, fepetra.</li>
+      <li><strong>Fanamarihana</strong> : ny <em>que</em> dia tsy maintsy atao foana alohan'ny subjonctif.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°8 : le Subjonctif présent · Fananganana, terminaisons, verbes irréguliers, fampiasana 6, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

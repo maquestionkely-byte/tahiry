@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Futur proche — Temps n°15 | Fiche complète</title>
+<style>
+  :root{
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --azur:#0c4a6e; --azur-clair:#0ea5e9; --azur-pale:#f0f9ff;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#082f49,#0c4a6e 60%,#0ea5e9);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(8,47,73,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--azur);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--azur-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#082f49,#0c4a6e);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(12,74,110,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--azur-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#082f49,#0c4a6e);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--azur-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--azur);}
+
+  .encadre{border-left:5px solid var(--azur-clair);background:var(--azur-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--azur);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--azur-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--azur);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--azur);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(12,74,110,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--azur);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#082f49,#0c4a6e);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#082f49,#0c4a6e);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(8,47,73,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#bae6fd;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°15 — Le Futur proche</span>
+    <h1>Ny Futur proche</h1>
+    <p>Fananganana, <em>aller + infinitif</em>, fampiasana 4, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>futur proche</strong> dia <strong>temps composé mahazatra</strong> : foronina avy amin'ny <strong>verbe <em>aller</em> amin'ny présent</strong> + <strong>infinitif</strong> ny verbe fototra. Asongadiny ny hetsika <strong>ho avy akaiky</strong>, <strong>efa voalamina</strong>, na <strong>azo antoka</strong>. Amin'ny teny malagasy, matetika adika amin'ny <em>« handeha hanao »</em> na <em>« ho »</em>.
+    </p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny futur proche dia <strong>fotoana fototra amin'ny resaka andavanandro</strong>. Ampiasaina hilaza drafitra akaiky na hetsika ho avy. Tsy toy ny futur simple — ny futur proche dia <strong>manamafy ny fahatokisana</strong> sy ny <strong>akaiky</strong>.
+    </div>
+    <div class="encadre orange">
+      <strong>Fanamarihana manan-danja :</strong> ny futur proche dia <strong>mitovy amin'ny présent misolo futur</strong> amin'ny dikany, fa <strong>samihafa amin'ny endrika</strong> : futur proche = <em>aller + infinitif</em>; présent misolo futur = présent tsotra. Samy manamafy fahatokisana.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny futur proche</h2>
+    <p>Ny futur proche dia foronina amin'ny alalan'ny <strong>verbe <em>aller</em> amin'ny présent</strong> + <strong>infinitif</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Aller (présent) + infinitif = futur proche</strong>
+    </div>
+
+    <h3>Ny verbe <em>aller</em> amin'ny présent</h3>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>aller (présent)</th><th>+ infinitif</th><th>Futur proche</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>vais</td><td>parler</td><td>je vais parler</td></tr>
+        <tr><td>tu</td><td>vas</td><td>parler</td><td>tu vas parler</td></tr>
+        <tr><td>il/elle</td><td>va</td><td>parler</td><td>il va parler</td></tr>
+        <tr><td>nous</td><td>allons</td><td>parler</td><td>nous allons parler</td></tr>
+        <tr><td>vous</td><td>allez</td><td>parler</td><td>vous allez parler</td></tr>
+        <tr><td>ils/elles</td><td>vont</td><td>parler</td><td>ils vont parler</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> tsy misy accord amin'ny participe passé eto — satria <strong>infinitif</strong> no ampiana, fa tsy participe passé. Tsotra ny fananganana : <em>aller</em> + infinitif.
+    </div>
+  </section>
+
+  <!-- ===================== 3. VERBES PRONOMINAUX ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny verbe pronominal amin'ny futur proche</h2>
+    <p>Rehefa verbe pronominal no ampiasaina, ny <strong>pronom</strong> dia mijanona eo alohan'ny infinitif.</p>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>aller (présent)</th><th>+ pronom + infinitif</th><th>Futur proche</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>vais</td><td>me laver</td><td>je vais me laver</td></tr>
+        <tr><td>tu</td><td>vas</td><td>te laver</td><td>tu vas te laver</td></tr>
+        <tr><td>il/elle</td><td>va</td><td>se laver</td><td>il va se laver</td></tr>
+        <tr><td>nous</td><td>allons</td><td>nous laver</td><td>nous allons nous laver</td></tr>
+        <tr><td>vous</td><td>allez</td><td>vous laver</td><td>vous allez vous laver</td></tr>
+        <tr><td>ils/elles</td><td>vont</td><td>se laver</td><td>ils vont se laver</td></tr>
+      </tbody>
+    </table>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">vais me lever</span> à 6 h.</span>
+      <span class="mg">Hifoha amin'ny 6 ora aho.</span>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Elle</span> <span class="verbe">va s'habiller</span>.</span>
+      <span class="mg">Hitafy izy.</span>
+    </div>
+  </section>
+
+  <!-- ===================== 4. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny fampiasana ny futur proche — 4 tranga</h2>
+    <p>Ny futur proche dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) ACTION IMMINENTE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Action imminente — hetsika akaiky indrindra</div>
+      <div class="expl">Maneho <strong>hetsika hitranga tsy ho ela</strong>, efa akaiky ny fotoana. Io no tena fampiasana fototra.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">vais partir</span> maintenant.</span>
+        <span class="mg">Handeha izao aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Il</span> <span class="verbe">va pleuvoir</span>.</span>
+        <span class="mg">Hitete orana.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">va arriver</span> dans cinq minutes.</span>
+        <span class="mg">Ho tonga ao anatin'ny dimy minitra izy.</span>
+      </div>
+    </div>
+
+    <!-- 2) INTENTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Intention — fikasana</div>
+      <div class="expl">Maneho <strong>fikasana</strong> na <strong>drafitra</strong> hanao zavatra. Matetika miaraka amin'ny matoanteny voafaritra.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">vais acheter</span> une voiture.</span>
+        <span class="mg">Hividy fiara aho. <em>(drafitra)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">allons visiter</span> le musée.</span>
+        <span class="mg">Hitety ny tranombakoka izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Ils</span> <span class="verbe">vont déménager</span> bientôt.</span>
+        <span class="mg">Hifindra trano tsy ho ela izy ireo.</span>
+      </div>
+    </div>
+
+    <!-- 3) PRÉDICTION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Prédiction — faminaniana</div>
+      <div class="expl">Maminavina zavatra <strong>ho avy akaiky</strong>, matetika miaraka amin'ny <em>regarde, attention, on dirait…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Regarde, il</span> <span class="verbe">va tomber</span> !</span>
+        <span class="mg">Jereo, hianjera izy !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Attention, tu</span> <span class="verbe">vas te brûler</span> !</span>
+        <span class="mg">Mitandrema, ho may ianao !</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">On dirait qu'il</span> <span class="verbe">va neiger</span>.</span>
+        <span class="mg">Toa hitsoka ranomandry.</span>
+      </div>
+    </div>
+
+    <!-- 4) PROMESSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Promesse — fampanantenana</div>
+      <div class="expl">Manao <strong>fampanantenana</strong> hanao zavatra ho avy akaiky.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">vais t'aider</span>.</span>
+        <span class="mg">Hanampy anao aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">va t'appeler</span> ce soir.</span>
+        <span class="mg">Hiantso anao izy anio hariva.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">allons revenir</span> bientôt.</span>
+        <span class="mg">Hiverina tsy ho ela izahay.</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny futur proche dia milaza <strong>hetsika akaiky</strong>, <strong>fikasana</strong>, <strong>faminaniana</strong>, ary <strong>fampanantenana</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 5. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>suis parler</strong> → <span class="correction">✓ je vais parler</span> (<em>aller</em> + infinitif, fa tsy <em>être</em> + infinitif).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je vais <strong>parlé</strong> → <span class="correction">✓ je vais parler</span> (infinitif, fa tsy participe passé).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je vais <strong>me lave</strong> → <span class="correction">✓ je vais me laver</span> (infinitif, fa tsy présent).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous <strong>allez</strong> parler → <span class="correction">✓ nous allons parler</span> (aller amin'ny présent : <em>allons</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>ils <strong>allez</strong> partir → <span class="correction">✓ ils vont partir</span> (aller amin'ny présent : <em>vont</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je vais <strong>mangerai</strong> → <span class="correction">✓ je vais manger</span> (infinitif, fa tsy futur simple).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>elle va <strong>se laver</strong> (mety) → <span class="correction">✓ elle va se laver</span> (pronom eo alohan'ny infinitif).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>nous allons <strong>se laver</strong> → <span class="correction">✓ nous allons nous laver</span> (pronom mifanaraka amin'ny sujet).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 6. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">6</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Futur proche = temps composé mahazatra</strong> : <em>aller</em> amin'ny présent + infinitif.</li>
+      <li><strong>Tsy misy accord</strong> amin'ny participe passé — satria infinitif no ampiana.</li>
+      <li><strong>Verbe pronominal</strong> : ny pronom dia mijanona eo alohan'ny infinitif (<em>je vais me laver</em>).</li>
+      <li><strong>Fampiasana 4</strong> : hetsika akaiky, fikasana, faminaniana, fampanantenana.</li>
+      <li><strong>Fahasamihafana amin'ny futur simple</strong> : futur proche = akaiky / azo antoka / resaka andavanandro; futur simple = lavitra / tsy azo antoka / fitantarana an-tsoratra.</li>
+      <li><strong>Fahasamihafana amin'ny présent misolo futur</strong> : futur proche = <em>aller + infinitif</em>; présent misolo futur = présent tsotra. Samy manamafy fahatokisana.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°15 : le Futur proche · Fananganana, <em>aller + infinitif</em>, fampiasana 4, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Conditionnel présent — Temps n°7 | Fiche complète</title>
+<style>
+  :root{
+    --bleu:#1e3a8a; --bleu-clair:#3b82f6; --bleu-pale:#eff6ff;
+    --fond:#f1f5f9; --carte:#ffffff; --texte:#1f2937; --gris:#64748b;
+    --vert:#059669; --vert-pale:#ecfdf5;
+    --orange:#ea580c; --orange-pale:#fff7ed;
+    --rouge:#dc2626; --rouge-pale:#fef2f2;
+    --rose:#9d174d; --rose-clair:#ec4899; --rose-pale:#fdf2f8;
+    --bordure:#e2e8f0; --ombre:0 4px 20px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--fond); color:var(--texte);
+    line-height:1.75; padding:2rem 1rem 4rem;
+  }
+  .conteneur{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#831843,#9d174d 60%,#ec4899);
+    color:#fff; border-radius:20px; padding:3rem 2.5rem;
+    margin-bottom:2rem; box-shadow:0 20px 45px rgba(131,24,67,.30);
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;}
+  header::before{content:"";position:absolute;bottom:-80px;left:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;position:relative;z-index:1;}
+  header h1{font-size:2.2rem;margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1;}
+  header p{opacity:.95;font-size:1.05rem;max-width:700px;position:relative;z-index:1;}
+
+  section{background:var(--carte);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.8rem;box-shadow:var(--ombre);border:1px solid var(--bordure);}
+  section h2{font-size:1.35rem;color:var(--rose);margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:3px solid var(--rose-clair);display:flex;align-items:center;gap:.8rem;}
+  section h2 .num{background:linear-gradient(135deg,#831843,#9d174d);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 4px 10px rgba(157,23,77,.35);}
+  section h3{font-size:1.1rem;margin:1.6rem 0 .8rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+  section h3::before{content:"";width:6px;height:22px;background:var(--rose-clair);border-radius:3px;flex-shrink:0;}
+  section h3:first-of-type{margin-top:0;}
+  p{margin-bottom:1rem;}
+  ul,ol{margin:.5rem 0 1.2rem 1.6rem;}
+  li{margin-bottom:.5rem;}
+
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  thead{background:linear-gradient(135deg,#831843,#9d174d);color:#fff;}
+  th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--bordure);vertical-align:top;}
+  th{font-weight:700;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--rose-pale);transition:background .2s;}
+  td:first-child{font-weight:600;color:var(--rose);}
+
+  .encadre{border-left:5px solid var(--rose-clair);background:var(--rose-pale);padding:1.1rem 1.3rem;border-radius:10px;margin:1.2rem 0;}
+  .encadre.vert{border-left-color:var(--vert);background:var(--vert-pale);}
+  .encadre.orange{border-left-color:var(--orange);background:var(--orange-pale);}
+  .encadre.rouge{border-left-color:var(--rouge);background:var(--rouge-pale);}
+  .encadre strong{color:var(--rose);}
+  .encadre.vert strong{color:var(--vert);}
+  .encadre.orange strong{color:var(--orange);}
+  .encadre.rouge strong{color:var(--rouge);}
+
+  .exemple{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--rose-clair);border-radius:10px;padding:.8rem 1.1rem;margin:.7rem 0;}
+  .exemple .fr{display:block;font-style:italic;font-size:1rem;}
+  .exemple .fr .sujet{color:var(--rose);font-weight:700;font-style:normal;}
+  .exemple .fr .verbe{color:var(--orange);font-weight:600;font-style:normal;}
+  .exemple .mg{display:block;color:var(--vert);font-size:.93rem;margin-top:.3rem;padding-top:.3rem;border-top:1px dashed #d1fae5;}
+  .exemple .mg::before{content:"🇲🇬 ";}
+
+  .terminaisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0;}
+  .terminaisons div{background:linear-gradient(135deg,#fdf2f8,#fce7f3);border:1px solid #fbcfe8;border-radius:10px;padding:.9rem .6rem;text-align:center;font-weight:600;transition:transform .2s;}
+  .terminaisons div:hover{transform:scale(1.04);}
+  .terminaisons div span{color:var(--rose);font-weight:800;}
+
+  .piege{display:flex;gap:.9rem;padding:1rem 1.2rem;background:var(--rouge-pale);border-radius:10px;margin:.7rem 0;border-left:4px solid var(--rouge);}
+  .piege .croix{color:var(--rouge);font-weight:800;font-size:1.1rem;flex-shrink:0;}
+  .piege .correction{color:var(--vert);font-weight:700;}
+
+  .usage{border:1px solid var(--bordure);border-radius:14px;padding:1.4rem 1.5rem;margin:1.2rem 0;background:#fcfdff;transition:box-shadow .25s, transform .25s;}
+  .usage:hover{box-shadow:0 8px 25px rgba(157,23,77,.12);transform:translateY(-2px);}
+  .usage .titre-usage{display:flex;align-items:center;gap:.7rem;font-size:1.05rem;font-weight:700;color:var(--rose);margin-bottom:.6rem;}
+  .usage .titre-usage .puce{background:linear-gradient(135deg,#831843,#9d174d);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .usage .expl{color:var(--gris);font-size:.95rem;margin-bottom:1rem;font-style:italic;}
+
+  .recap{background:linear-gradient(135deg,#831843,#9d174d);color:#fff;border-radius:16px;padding:2rem 2.2rem;box-shadow:0 15px 40px rgba(131,24,67,.25);}
+  .recap h2{color:#fff;border-bottom-color:rgba(255,255,255,.3);}
+  .recap h2 .num{background:rgba(255,255,255,.25);box-shadow:none;}
+  .recap ul{margin-left:1.2rem;}
+  .recap li{margin-bottom:.7rem;}
+  .recap strong{color:#fbcfe8;}
+
+  footer{text-align:center;color:var(--gris);font-size:.88rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bordure);}
+
+  @media(max-width:600px){header{padding:2rem 1.4rem;}header h1{font-size:1.7rem;}section{padding:1.4rem 1.2rem;}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <header>
+    <span class="badge">Temps n°7 — Le Conditionnel présent</span>
+    <h1>Ny Conditionnel présent</h1>
+    <p>Fananganana, radical futur + terminaisons imparfait, fampiasana 6, ary fandrika — miaraka amin'ny ohatra frantsay sy malagasy.</p>
+  </header>
+
+  <!-- ===================== 1. DÉFINITION ===================== -->
+  <section>
+    <h2><span class="num">1</span> Famaritana</h2>
+    <p>Ny <strong>conditionnel présent</strong> dia <strong>temps simple</strong> (teny iray ihany). Ampiasaina hilaza <strong>hetsika mety hitranga</strong> raha tanteraka ny fepetra iray, na <strong>fangatahana malefaka</strong>, na <strong>fiheverana</strong>. Tsy fotoana tena izy izy — <strong>fepetra / fiheverana</strong> no fototry ny dikany.</p>
+    <div class="encadre">
+      <strong>Tadidio :</strong> ny conditionnel présent dia matetika miaraka amin'ny <strong>si + imparfait</strong> ao amin'ny fepetra. Amin'ny teny malagasy, matetika adika amin'ny <em>« raha… dia… »</em> na <em>« mety »</em>.
+    </div>
+  </section>
+
+  <!-- ===================== 2. FORMATION ===================== -->
+  <section>
+    <h2><span class="num">2</span> Fananganana ny conditionnel présent</h2>
+    <p>Ny conditionnel présent dia foronina avy amin'ny <strong>radical futur</strong> + <strong>terminaisons imparfait</strong>.</p>
+
+    <div class="encadre vert">
+      <strong>Raki-tsoratra :</strong><br>
+      <strong>Radical futur + terminaisons imparfait (-ais, -ais, -ait, -ions, -iez, -aient) = conditionnel présent</strong>
+    </div>
+
+    <h3>Ny terminaisons (mitovy amin'ny imparfait)</h3>
+    <div class="terminaisons">
+      <div>je -<span>ais</span></div>
+      <div>tu -<span>ais</span></div>
+      <div>il/elle -<span>ait</span></div>
+      <div>nous -<span>ions</span></div>
+      <div>vous -<span>iez</span></div>
+      <div>ils/elles -<span>aient</span></div>
+    </div>
+
+    <div class="encadre orange">
+      <strong>Torohevitra :</strong> ny radical futur dia <strong>mitovy amin'ny futur simple</strong>. Raha mahay futur simple ianao, dia mora ny conditionnel présent — soloina fotsiny ny terminaisons.
+    </div>
+  </section>
+
+  <!-- ===================== 3. LES 3 GROUPES ===================== -->
+  <section>
+    <h2><span class="num">3</span> Ny conditionnel présent isaky ny groupe</h2>
+
+    <h3>1er groupe — modely : <em>parler</em></h3>
+    <p>Radical futur <em>parler-</em> + terminaisons imparfait.</p>
+    <div class="terminaisons">
+      <div>je parler<span>ais</span></div>
+      <div>tu parler<span>ais</span></div>
+      <div>il/elle parler<span>ait</span></div>
+      <div>nous parler<span>ions</span></div>
+      <div>vous parler<span>iez</span></div>
+      <div>ils/elles parler<span>aient</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Je</span> <span class="verbe">parlerais</span> à ma mère.</span>
+      <span class="mg">Hiresaka amin'ny reniko aho (raha…).</span>
+    </div>
+
+    <h3>2ème groupe — modely : <em>finir</em></h3>
+    <p>Radical futur <em>finir-</em> + terminaisons imparfait.</p>
+    <div class="terminaisons">
+      <div>je finir<span>ais</span></div>
+      <div>tu finir<span>ais</span></div>
+      <div>il/elle finir<span>ait</span></div>
+      <div>nous finir<span>ions</span></div>
+      <div>vous finir<span>iez</span></div>
+      <div>ils/elles finir<span>aient</span></div>
+    </div>
+    <div class="exemple">
+      <span class="fr"><span class="sujet">Nous</span> <span class="verbe">finirions</span> le travail.</span>
+      <span class="mg">Hahavita ny asa izahay (raha…).</span>
+    </div>
+
+    <h3>3ème groupe — ohatra : <em>prendre, venir, faire</em></h3>
+    <p>Radical futur <em>prendr-, viendr-, fer-</em> + terminaisons imparfait.</p>
+    <table>
+      <thead>
+        <tr><th>Olon-tsotra</th><th>prendre (mandray)</th><th>venir (ho avy)</th><th>faire (manao)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>je</td><td>prendrais</td><td>viendrais</td><td>ferais</td></tr>
+        <tr><td>tu</td><td>prendrais</td><td>viendrais</td><td>ferais</td></tr>
+        <tr><td>il/elle</td><td>prendrait</td><td>viendrait</td><td>ferait</td></tr>
+        <tr><td>nous</td><td>prendrions</td><td>viendrions</td><td>ferions</td></tr>
+        <tr><td>vous</td><td>prendriez</td><td>viendriez</td><td>feriez</td></tr>
+        <tr><td>ils/elles</td><td>prendraient</td><td>viendraient</td><td>feraient</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== 4. VERBES IRRÉGULIERS ===================== -->
+  <section>
+    <h2><span class="num">4</span> Ny verbes irréguliers amin'ny conditionnel présent</h2>
+    <p>Ireto ny verbe manan-danja izay <strong>tsy manaraka</strong> ny fitsipika fototra. Ny radical-ny dia <strong>mitovy amin'ny futur simple</strong>.</p>
+
+    <table>
+      <thead>
+        <tr><th>Verbe</th><th>Radical</th><th>Je</th><th>Dika malagasy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>être</td><td>ser-</td><td>je serais</td><td>ho izaho (raha…)</td></tr>
+        <tr><td>avoir</td><td>aur-</td><td>j'aurais</td><td>hanana aho (raha…)</td></tr>
+        <tr><td>aller</td><td>ir-</td><td>j'irais</td><td>handeha aho (raha…)</td></tr>
+        <tr><td>faire</td><td>fer-</td><td>je ferais</td><td>hanao aho (raha…)</td></tr>
+        <tr><td>venir</td><td>viendr-</td><td>je viendrais</td><td>ho avy aho (raha…)</td></tr>
+        <tr><td>voir</td><td>verr-</td><td>je verrais</td><td>hahita aho (raha…)</td></tr>
+        <tr><td>pouvoir</td><td>pourr-</td><td>je pourrais</td><td>afaka aho (raha…)</td></tr>
+        <tr><td>vouloir</td><td>voudr-</td><td>je voudrais</td><td>te-ho aho (raha…)</td></tr>
+        <tr><td>savoir</td><td>saur-</td><td>je saurais</td><td>hahafantatra aho (raha…)</td></tr>
+        <tr><td>devoir</td><td>devr-</td><td>je devrais</td><td>tsy maintsy aho (raha…)</td></tr>
+        <tr><td>envoyer</td><td>enverr-</td><td>j'enverrais</td><td>handefa aho (raha…)</td></tr>
+        <tr><td>recevoir</td><td>recevr-</td><td>je recevrais</td><td>handray aho (raha…)</td></tr>
+        <tr><td>tenir</td><td>tiendr-</td><td>je tiendrais</td><td>hitana aho (raha…)</td></tr>
+        <tr><td>courir</td><td>courr-</td><td>je courrais</td><td>hihazakazaka aho (raha…)</td></tr>
+        <tr><td>mourir</td><td>mourr-</td><td>je mourrais</td><td>ho faty aho (raha…)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="encadre rouge">
+      <strong>Fandrika :</strong> ny verbe toy ny <em>appeler, jeter, acheter, payer</em> dia manana fanovana kely amin'ny radical (<em>appeller-, jetter-, achèter-, paier-</em>). Tsy maintsy jerena tsara.
+    </div>
+  </section>
+
+  <!-- ===================== 5. UTILISATIONS ===================== -->
+  <section>
+    <h2><span class="num">5</span> Ny fampiasana ny conditionnel présent — 6 tranga</h2>
+    <p>Ny conditionnel présent dia mety hanana dikany samihafa arakaraka ny toe-javatra. Ity ambany ity ny tranga lehibe, samy miaraka amin'ny fanazavana sy ohatra 3.</p>
+
+    <!-- 1) POLITESSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">1</span> Politesse — fangatahana malefaka</div>
+      <div class="expl">Mampiasa ny conditionnel <strong>hanao fangatahana malefaka</strong> na <strong>fanajana</strong>. Tsy mifandray amin'ny fepetra izy eto, fa manalefaka ny feo.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Je</span> <span class="verbe">voudrais</span> un café, s'il vous plaît.</span>
+        <span class="mg">Te-hisotro kafe aho azafady. <em>(malefaka)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Vous</span> <span class="verbe">pourriez</span> m'aider ?</span>
+        <span class="mg">Afaka manampy ahy ve ianao ? <em>(malefaka)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">aimerais</span> vous parler.</span>
+        <span class="mg">Te-hiresaka aminao aho. <em>(malefaka)</em></span>
+      </div>
+    </div>
+
+    <!-- 2) SOUHAIT -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">2</span> Souhait — faniriana</div>
+      <div class="expl">Maneho <strong>faniriana</strong> na <strong>fangatahana</strong> amin'ny fomba malefaka. Matetika miaraka amin'ny <em>j'aimerais, je voudrais…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">aimerais</span> voyager en France.</span>
+        <span class="mg">Te-hizaha tany Frantsa aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">voudrait</span> devenir médecin.</span>
+        <span class="mg">Te-ho lasa mpitsabo izy.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">aimerions</span> habiter à la campagne.</span>
+        <span class="mg">Te-hipetraka any ambanivohitra izahay.</span>
+      </div>
+    </div>
+
+    <!-- 3) HYPOTHÈSE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">3</span> Hypothèse — fiheverana (si + imparfait)</div>
+      <div class="expl">Miaraka amin'ny <strong>si + imparfait</strong>, maneho <strong>fiheverana</strong> na <strong>fepetra tsy tena izy</strong>. Ny valiny dia amin'ny conditionnel présent.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> j'avais de l'argent, j'<span class="verbe">achèterais</span> une maison.</span>
+        <span class="mg">Raha nanana vola aho, dia nividy trano.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> tu venais, nous <span class="verbe">serions</span> contents.</span>
+        <span class="mg">Raha tonga ianao, dia ho faly izahay.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> elle savait, elle <span class="verbe">pleurerait</span>.</span>
+        <span class="mg">Raha nahafantatra izy, dia nitomany.</span>
+      </div>
+    </div>
+
+    <!-- 4) INFORMATION INCERTAINE -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">4</span> Information incertaine — vaovao tsy azo antoka</div>
+      <div class="expl">Mampiasa ny conditionnel hilaza <strong>vaovao tsy voamarina</strong> na <strong>faminaniana tsy azo antoka</strong>. Matetika hita amin'ny gazety.</div>
+      <div class="exemple">
+        <span class="fr">Selon la presse, le président <span class="verbe">démissionnerait</span>.</span>
+        <span class="mg">Araka ny gazety, mety hametra-pialana ny filoha. <em>(tsy voamarina)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Il <span class="verbe">y aurait</span> vingt blessés.</span>
+        <span class="mg">Mety ho misy maratra roapolo. <em>(tsy voamarina)</em></span>
+      </div>
+      <div class="exemple">
+        <span class="fr">Le suspect <span class="verbe">serait</span> déjà parti.</span>
+        <span class="mg">Mety ho efa lasa ny ahiahiana. <em>(tsy voamarina)</em></span>
+      </div>
+    </div>
+
+    <!-- 5) IMAGINATION -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">5</span> Imagination — fiheverana an-tsaina</div>
+      <div class="expl">Mampiasa ny conditionnel hilaza <strong>zavatra an-tsaina</strong>, <strong>tantara noforonina</strong>, na <strong>lalao an-tsaina</strong>.</div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Si</span> j'étais un oiseau, je <span class="verbe">volerais</span> partout.</span>
+        <span class="mg">Raha vorona aho, dia ho nanao sidina eran-tany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">On</span> <span class="verbe">dirait</span> un rêve.</span>
+        <span class="mg">Toa nofinofy izany.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Imagine</span> que tu <span class="verbe">gagnerais</span> au loto.</span>
+        <span class="mg">Alaovy an-tsaina raha mandresy amin'ny loto ianao.</span>
+      </div>
+    </div>
+
+    <!-- 6) REGRET -->
+    <div class="usage">
+      <div class="titre-usage"><span class="puce">6</span> Regret — fanenenana</div>
+      <div class="expl">Maneho <strong>fanenenana</strong> na <strong>fisalasalana</strong> amin'ny zavatra tsy natao. Matetika miaraka amin'ny <em>j'aurais dû, j'aurais pu…</em></div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">J'</span><span class="verbe">aurais dû</span> étudier plus.</span>
+        <span class="mg">Tokony nianatra bebe kokoa aho.</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Elle</span> <span class="verbe">aurait pu</span> venir.</span>
+        <span class="mg">Afaka tonga izy (fa tsy tonga).</span>
+      </div>
+      <div class="exemple">
+        <span class="fr"><span class="sujet">Nous</span> <span class="verbe">aurions voulu</span> rester plus longtemps.</span>
+        <span class="mg">Te-hijanona ela kokoa izahay (fa tsy nijanona).</span>
+      </div>
+    </div>
+
+    <div class="encadre vert">
+      <strong>Famintinana :</strong> ny conditionnel présent dia milaza <strong>fangatahana malefaka</strong>, <strong>faniriana</strong>, <strong>fiheverana (si + imparfait)</strong>, <strong>vaovao tsy azo antoka</strong>, <strong>fiheverana an-tsaina</strong>, ary <strong>fanenenana</strong>.
+    </div>
+  </section>
+
+  <!-- ===================== 6. PIÈGES ===================== -->
+  <section>
+    <h2><span class="num">6</span> Ny fandrika tsy tokony hatao</h2>
+
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je parler<strong>ai</strong> (conditionnel) → <span class="correction">✓ je parlerais</span> (conditionnel : <em>-ais</em>, fa tsy <em>-ai</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je finir<strong>ai</strong> (conditionnel) → <span class="correction">✓ je finirais</span> (conditionnel : <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>prendrai</strong> (conditionnel) → <span class="correction">✓ je prendrais</span> (radical <em>prendr-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>serai</strong> (conditionnel) → <span class="correction">✓ je serais</span> (être → radical <em>ser-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>aurai</strong> (conditionnel) → <span class="correction">✓ j'aurais</span> (avoir → radical <em>aur-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>j'<strong>irai</strong> (conditionnel) → <span class="correction">✓ j'irais</span> (aller → radical <em>ir-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>ferai</strong> (conditionnel) → <span class="correction">✓ je ferais</span> (faire → radical <em>fer-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>viendrai</strong> (conditionnel) → <span class="correction">✓ je viendrais</span> (venir → radical <em>viendr-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>pourrai</strong> (conditionnel) → <span class="correction">✓ je pourrais</span> (pouvoir → radical <em>pourr-</em> + <em>-ais</em>).</span>
+    </div>
+    <div class="piege">
+      <span class="croix">✗</span>
+      <span>je <strong>voudrai</strong> (conditionnel) → <span class="correction">✓ je voudrais</span> (vouloir → radical <em>voudr-</em> + <em>-ais</em>).</span>
+    </div>
+  </section>
+
+  <!-- ===================== 7. RÉCAP ===================== -->
+  <section class="recap">
+    <h2><span class="num">7</span> Famintinana — ny zava-dehibe tokony hotadidina</h2>
+    <ul>
+      <li><strong>Conditionnel présent = temps simple</strong>, teny iray ihany.</li>
+      <li><strong>Fananganana</strong> : radical futur + terminaisons imparfait <em>-ais, -ais, -ait, -ions, -iez, -aient</em>.</li>
+      <li><strong>Radical</strong> : mitovy amin'ny futur simple (1er sy 2ème groupe → infinitif manontolo; 3ème groupe → radical miova).</li>
+      <li><strong>Verbes irréguliers</strong> : être → <em>ser-</em>, avoir → <em>aur-</em>, aller → <em>ir-</em>, faire → <em>fer-</em>, venir → <em>viendr-</em>, voir → <em>verr-</em>, pouvoir → <em>pourr-</em>, vouloir → <em>voudr-</em>, savoir → <em>saur-</em>, devoir → <em>devr-</em>.</li>
+      <li><strong>Fampiasana 6</strong> : fangatahana malefaka, faniriana, fiheverana (si + imparfait), vaovao tsy azo antoka, fiheverana an-tsaina, fanenenana.</li>
+      <li><strong>Fahasamihafana amin'ny futur simple</strong> : futur simple → hetsika ho avy azo antoka; conditionnel présent → hetsika mety hitranga raha tanteraka ny fepetra.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fiche pédagogique — Temps n°7 : le Conditionnel présent · Fananganana, radical futur, terminaisons imparfait, fampiasana 6, ary fandrika.
+  </footer>
+
+</div>
+</body>
+</html>
